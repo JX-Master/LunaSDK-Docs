@@ -4,4 +4,11 @@ theme: readthedocs
 
 nav:
     - Home: index.md
-    - Getting Started: getting_started.md
+    - Manual: 
+        - Introduction:
+            - Introduction: manual/introduction/index.md
+            - Getting Started: manual/introduction/getting_started/index.md
+        - Fundamental:
+            - Fundamental: manual/fundamental/index.md
+        - Modules:
+            - Rendering: manual/rendering/index.md

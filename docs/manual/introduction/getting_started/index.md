@@ -1,5 +1,5 @@
 # Getting Started
-Thanks for using Luna SDK. In this article, we will guide you to Luna SDK by creating a simple program that draws one textured 3D cube on the screen. At the end of this article, you will have a basic understanding of using Luna SDK to create a simple graphic program, and can start to explore more advanced features provided by Luna SDK.
+Welcome to Luna SDK. In this article, we will guide you to Luna SDK by creating a simple program that draws one textured 3D cube on the screen. At the end of this article, you will have a basic understanding of using Luna SDK to create a simple graphic program, and can start to explore more advanced features provided by Luna SDK.
 
 ## Prerequisites
 In this article, we assume that you have the basic knowledge of C++ programming and graphics programming (like using D3D11, D3D12 or OpenGL). You should also correctly setup Luna SDK and developing environments using the instructions provided in `README.md` of the project.
@@ -310,7 +310,7 @@ int main()
 
 Build and run `DemoApp`, and you will see a blank window appears, and the program exits when you click the close button of the window.
 
-![](getting_started/DemoApp-window.png)
+![](DemoApp-window.png)
 
 ## Fetching graphic device
 
@@ -845,7 +845,7 @@ as you can see, `Float4x4` is the matrix type used in Luna SDK. We also have `Fl
 
 The next step is to load our Luna LOGO image that will be drawn on the box surface:
 
-![](getting_started/luna.png)
+![](luna.png)
 
 Save the image file in the same directory as `main.cpp`, and naming it `luna.png`. You should have one file structure similar to this:
 
@@ -1065,9 +1065,11 @@ luexp(cmdbuf->reset());
 
 This concludes the `DemoApp::update` function. Build and run `DemoApp`, if everything goes correctly, you will see a textured rotating box in the screen:
 
-![](getting_started/DemoApp-final.png)
+![](DemoApp-final.png)
 
-The complete code for `main.cpp` is here for your reference:
+Congratulations! If you have followed every step of this article correctly, you should have a first impression of graphic programming using Luna SDK. If anything goes wrong, you can compare your code with the following reference code to identify the mistake.
+
+## Reference code for `main.cpp`
 
 ```c++
 #include <Runtime/Runtime.hpp>
@@ -1410,13 +1412,20 @@ int main()
 }
 ```
 
-## Where should I go next?
+ ## Reference code for `xmake.lua`
 
-Congratulations! If you have followed every step of this article, you should have a first impression of graphic programming using Luna SDK. If you have any question on the concepts and codes in this article, please leave comments below, so that we can improve this article to make it more clear for you.
-
-To go deeper into Luna SDK, we suggest you to read the technical documentations for modules you are interested in (like `Runtime`, `RHI`, etc.), where we discusses not only the functionalities of the module, but also the design considerations of such functionalities. Since the documentation is still being constructed and may not be comprehensive, if you cannot find what you are looking for in the documentation, we also suggest you to check the header file of the module (files not in the `Source` folder of the module root directory), since most module interfaces are pretty well documented in the header files.
-
-That's all of this article, thanks again for using Luna SDK.
-
- 
+```lua
+target("DemoApp")
+    set_luna_program()
+    add_headerfiles("**.hpp")
+    add_files("**.cpp")
+    add_deps("Runtime", "Window", "RHI", "ShaderCompiler", "Image")
+    before_build(function(target)
+        os.cp("$(scriptdir)/luna.png", target:targetdir() .. "/luna.png")
+    end)
+    after_install(function (target)
+        os.cp(target:targetdir() .. "/luna.png", target:installdir() .. "/bin/luna.png")
+    end)
+target_end()
+```
 
