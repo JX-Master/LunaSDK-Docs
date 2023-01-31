@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/memory_management/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Memory Management - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Memory Management";
+        var mkdocs_page_input_path = "manual\\basics\\memory_management.md";
+        var mkdocs_page_url = "/manual/basics/memory_management/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Basics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../strings/">Strings</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Memory Management</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#heap-memory-allocation-and-deallocation">Heap memory allocation and deallocation</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#memory-leak-detection">Memory leak detection</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dynamic-object-creation-and-destruction">Dynamic object creation and destruction</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#out-of-memory-oom">Out of memory (OOM)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#memory-manipulating-functions">Memory manipulating functions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#functions-defined-in-runtimebasehpp">Functions defined in Runtime/Base.hpp</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#functions-defined-in-runtimememoryutilshpp">Functions defined in Runtime/MemoryUtils.hpp</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Manual &raquo;</li>
+          <li>Basics &raquo;</li>
+      <li>Memory Management</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="memory-management">Memory Management</h1>
+<p>Luna SDK defines its own memory management functions instead of using those provided by standard libraries. The user should use functions provided by Luna SDK to manage memory when programming with Luna SDK.</p>
+<h2 id="heap-memory-allocation-and-deallocation">Heap memory allocation and deallocation</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Memory.hpp&gt;
+</code></pre>
+<p>The following functions allocate memory blocks in heaps.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>C++ STD Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>memalloc(size, alignment)</code></td>
+<td>Allocates memory block.</td>
+<td><code>malloc(size)</code></td>
+</tr>
+<tr>
+<td><code>memfree(ptr, alignment)</code></td>
+<td>Frees memory block.</td>
+<td><code>free(ptr)</code></td>
+</tr>
+<tr>
+<td><code>memrealloc(ptr, size, alignment)</code></td>
+<td>Reallocates memory block.</td>
+<td><code>realloc(ptr, size)</code></td>
+</tr>
+<tr>
+<td><code>memsize(ptr, alignment)</code></td>
+<td>Gets the size of the allocated memory block.</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p>You may notice that all heap memory allocation functions provided by Luna SDK takes an <code>alignment</code> parameter, which can be used to allocate memory blocks with special address alignment requirements. If you don't have such requirement, simply specify <code>alignment</code> as <code>0</code> and Luna SDK will use the default alignment requirement for allocating memory blocks, which is <code>8</code> on 32-bit platforms and <code>16</code> on 64-bit platforms.</p>
+<h3 id="memory-leak-detection">Memory leak detection</h3>
+<p>Luna SDK comes with an memory leak detection layer that tracks all memory blocks allocated from <code>memalloc</code> or <code>memrealloc</code>. The memory leak detection layer is disabled by default, you may enable it on xmake menus, or passing <code>--check_memory_leak=true</code> when building the SDK. You can use <code>LUNA_RUNTIME_CHECK_MEMORY_LEAK</code> macro to determine whether the memory leak detection layer is enabled.</p>
+<p>If memory leak detection layer is enabled and unfreed memory blocks are detected when Luna SDK is closing, Luna SDK will print warning messages for each unfreed memory block, including the size and the memory address of the block. If these blocks were allocated using <code>memnew</code>, the type of the block will also be printed, so that the user can detect the problem quickly.</p>
+<h2 id="dynamic-object-creation-and-destruction">Dynamic object creation and destruction</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Memory.hpp&gt;
+</code></pre>
+<p>The following functions creates and destroys dynamic objects.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>C++ STD Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>memnew&lt;T&gt;(args...)</code></td>
+<td>Creates a dynamic object.</td>
+<td><code>new T(args...)</code></td>
+</tr>
+<tr>
+<td><code>memdelete(ptr)</code></td>
+<td>Destroys a dynamic object.</td>
+<td><code>delete ptr</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="out-of-memory-oom">Out of memory (OOM)</h2>
+<p>Although <code>memalloc</code> and <code>memnew</code> returns <code>nullptr</code> to indicate a failed memory allocation, most functions in Luna SDK do not handle OOM and assumes that the memory allocation will never fail. We treat OOM as an unrecoverable error for the following reasons:</p>
+<ol>
+<li>Dynamic memory allocation is used in throughout Luna SDK. If we need to handle OOM correctly, the SDK code will become much complex and redundant. It is not worthwhile to pay such effort to handle one error that seldom happens in normal cases.</li>
+<li>OOM actually never happens on some operating systems, if such system fails to allocate memory, it will simply kill the current process or let the user kill another process to free up some memory.</li>
+<li>We consider OOM as an optimization problem, not a programming error, so it is improper to "handle" it. If your program suffers from OOM on the target platform, the best thing to do is reducing the memory size consumed by your program, rather than trying to recover from OOM.</li>
+</ol>
+<h2 id="memory-manipulating-functions">Memory manipulating functions</h2>
+<p>Luna SDK comes with some useful functions that can be used to manipulate memory data easily. You can check the docs for each function for their usages.</p>
+<h3 id="functions-defined-in-runtimebasehpp">Functions defined in <code>Runtime/Base.hpp</code></h3>
+<p><code>_kb</code>, <code>_mb</code>, <code>_gb</code>, <code>_tb</code> are <a href="https://en.cppreference.com/w/cpp/language/user_literal">integer literals</a> that can be used to define byte sizes clearly. For example, you can use <code>100_mb</code> to represent <code>100 * 1024 * 1024</code>, and they have the same meaning.</p>
+<p><code>memcpy</code>, <code>memcmp</code>, <code>memset</code>, <code>memmove</code> are memory manipulating functions provided by the C/C++ standard library. They can be used in Luna SDK as well. <code>memzero</code> is used to fill one range of memory with value <code>0</code>, it is equivalent to calling <code>memset</code> with value <code>0</code>.</p>
+<p><code>memcpy_bitmap</code> and <code>memcpy_bitmap3d</code> are used to copy binary data between two row-major 2D and 3D bitmaps. <code>pixel_offset</code> is used to fetch the address of one particular pixel in a row-major 2D or 3D bitmap. These functions can be useful when dealing with bitmap data.</p>
+<p><code>align_upper</code> increases the input size or address number to the nearest number that is a multiple of the alignment number.</p>
+<p><code>bit_test</code>, <code>bit_set</code>, <code>bit_reset</code> tests, sets and resets one specific bit on the given memory address. These functions can be useful when performing bitwise operations.</p>
+<h3 id="functions-defined-in-runtimememoryutilshpp">Functions defined in <code>Runtime/MemoryUtils.hpp</code></h3>
+<p><code>addressof</code> returns the real address of one object, even if the <code>operator&amp;</code> of the object has been overloaded.</p>
+<p><code>default_construct</code>, <code>value_construct</code>, <code>copy_construct</code>, <code>move_construct</code> and <code>direct_construct</code> performs object initialization on the object pointed by the specified iterator/pointer. <code>destruct</code> performs object destruction on the object pointed by the specified iterator/pointer.</p>
+<p><code>copy_assign</code> and <code>move_assign</code> perform copy assignment and move assignment on two objects pointed by the specified iterators/pointers.</p>
+<p><code>default_construct_range</code>, <code>value_construct_range</code>, <code>copy_construct_range</code> and <code>move_construct_range</code> performs object initialization on objects in the range specified by two iterators/pointers. <code>destruct_range</code> performs object destruction on objects in the range specified by two iterators/pointers.</p>
+<p><code>copy_assign_range</code>,  <code>move_assign_range</code> and <code>move_assign_range_backward</code> performs </p>
+<p>copy assignment and move assignment on objects in the range specified by two iterators/pointers.</p>
+<p><code>fill_construct_range</code> and <code>fill_assign_range</code> calls the copy constructor and copy assignment operator on objects with the specified instance.</p>
+<p><code>copy_relocate_range</code>, <code>copy_relocate</code>, <code>move_relocate_range</code> and <code>move_relocate_range_backward</code> relocates objects in the range specified by two iterators/pointers to another continuous range, preserving the order of objects. If the object is trivially relocatable, this function will perform memory copy and does not invoke any move constructor; if the object is not trivially relocatable, this call performs move construction on the new address, and destruction on the old address.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../strings/" class="btn btn-neutral float-left" title="Strings"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../strings/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

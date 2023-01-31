@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/initialization_and_shutdown/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Initialization and Shutdown - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Initialization and Shutdown";
+        var mkdocs_page_input_path = "manual\\basics\\initialization_and_shutdown.md";
+        var mkdocs_page_url = "/manual/basics/initialization_and_shutdown/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Basics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Initialization and Shutdown</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#sdk-initialization">SDK Initialization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sdk-shutdown">SDK shutdown</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#release-resources-before-closing-sdk">Release resources before closing SDK</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../memory_management/">Memory Management</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Manual &raquo;</li>
+          <li>Basics &raquo;</li>
+      <li>Initialization and Shutdown</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="initialization-and-shutdown">Initialization and Shutdown</h1>
+<h2 id="sdk-initialization">SDK Initialization</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Runtime.hpp&gt;
+</code></pre>
+<p>Call <code>Luna::init</code> to initialize Luna SDK. Most features provided by Luna SDK are only available after Luna SDK is initialized, so always initialize Luna SDK firstly on program startup. <code>Luna::init</code> returns one <code>bool</code> value, which indicates whether the initialization is succeeded. After the initialization is succeeded, following calls to <code>Luna::init</code> does nothing and returns <code>true</code> directly.</p>
+<p>Note that modules registered to Luna SDK will not be initialized by <code>Luna::init</code>, they should be initialized manually using functions like <code>init_modules</code>. See <a href="module_management.md">Module Management</a> for details.</p>
+<h2 id="sdk-shutdown">SDK shutdown</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Runtime.hpp&gt;
+</code></pre>
+<p>Call <code>Luna::close</code> to close Luna SDK. Most features provided by Luna SDK are not available after Luna SDK is closed. If Luna SDK is already closed, calling <code>Luna::close</code> does nothing and returns directly.</p>
+<p>Unlike SDK initialization, initialized modules <strong>will</strong> be closed by <code>Luna::close</code> in the reverse order of their initialization order, so they don't need to be closed manually.</p>
+<h3 id="release-resources-before-closing-sdk">Release resources before closing SDK</h3>
+<p>All dynamic memory allocated from <code>memalloc</code>, <code>memrealloc</code> and <code>memnew</code> must be freed before calling <code>Luna::close</code>. All boxed object created from <code>new_object</code> and <code>object_alloc</code> must be released before calling <code>Luna::close</code>. Calls to <code>memfree</code>, <code>memdelete</code>, <code>object_release</code> and other functions after <code>Luna::close</code> results in undefined behavior, and usually a program crash. This often happens when you declare global variables that hold dynamic allocated resources (such as <code>Ref</code>) and memory blocks (such as <code>UniquePtr</code>, and containers like <code>Vector</code>, <code>HashMap</code>, etc.). Remember to clear such resources before calling <code>Luna::close</code>. For some containers, you should call <code>clear</code> then <code>shrink_to_fit</code> to eventually frees the internal memory buffer used by containers.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../coding_convention/" class="btn btn-neutral float-left" title="Coding Convention"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../basic_types/" class="btn btn-neutral float-right" title="Basic Types">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../coding_convention/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../basic_types/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

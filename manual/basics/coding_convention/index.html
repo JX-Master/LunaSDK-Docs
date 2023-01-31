@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/coding_convention/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Coding Convention - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Coding Convention";
+        var mkdocs_page_input_path = "manual\\basics\\coding_convention.md";
+        var mkdocs_page_url = "/manual/basics/coding_convention/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Basics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Basics</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Coding Convention</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#disabled-c-features">Disabled C++ features</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#file-naming-conventions">File naming conventions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lexical-formats">Lexical formats</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#indents">Indents</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#scopes">Scopes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#documenting-comments">Documenting comments</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#naming-conventions">Naming conventions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#primitive-types">Primitive types</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#enumeration-types">Enumeration types</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#structure-and-class-types">Structure and class types</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#objects">Objects</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#namespace">Namespace</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#macros">Macros</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#templates">Templates</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../memory_management/">Memory Management</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Manual &raquo;</li>
+          <li>Basics &raquo;</li>
+      <li>Coding Convention</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="coding-convention">Coding Convention</h1>
+<p>This section discusses the coding conventions used in Luna SDK. All users using Luna SDK should follow these conventions to achieve a consistent code style and prevent programming errors.</p>
+<h2 id="disabled-c-features">Disabled C++ features</h2>
+<p>The following C++ features are disabled in Luna SDK:</p>
+<ol>
+<li>Exceptions (<code>try</code>, <code>throw</code>, <code>catch</code>).</li>
+<li>Real-time type identification (RTTI, <code>dynamic_cast</code> and <code>typeid</code> for objects). The use of <code>typeid</code> for static types is allowed.</li>
+</ol>
+<p>In rare cases, if you have to use these features (like integrating one third-party library that uses these features), make sure these features are used internally in your module, and not cross the module interface, or they may not be handled correctly.</p>
+<p>The <code>noexcept</code> decorator is not used in Luna SDK, since exceptions are disabled by default.</p>
+<h2 id="file-naming-conventions">File naming conventions</h2>
+<p>Use <code>.hpp</code> file extension name for C++ header files, use <code>.cpp</code> file extension name for C++ source files, use <code>.inl</code> file extension name for inlined C++ source files.</p>
+<p>Use Pascal case for file and folder names, like <code>FileIterator.hpp</code>. Do not add interface prefix <code>I</code> to the filename.</p>
+<p>Add the following comments at the beginning of every C++ header, source or inlined source file if you want to contribute it as part of Luna SDK.</p>
+<pre><code class="language-c++">/*!
+* This file is a portion of Luna SDK.
+* For conditions of distribution and use, see the disclaimer
+* and license in LICENSE.txt
+* 
+* @file {The filename of this file}
+* @author {Author name}
+* @date {The file creation date, YYYY/MM/DD}
+*/
+</code></pre>
+<h2 id="lexical-formats">Lexical formats</h2>
+<h3 id="indents">Indents</h3>
+<p>One indent can be represented by one tab character or four whitespace characters. Both forms are allowed.</p>
+<h3 id="scopes">Scopes</h3>
+<p>In most cases, scope opening and closing brackets should occupy a whole line. Nested scopes should be properly indented.</p>
+<pre><code class="language-c++">namesapce A
+{
+    namespace B
+    {
+        class C
+        {
+
+        };
+    }
+}
+</code></pre>
+<p>However, if the scope is empty or contains simple statements, you may write the opening and coding brackets without beginning a new line:</p>
+<pre><code class="language-c++">class A
+{
+    i32 n;
+public:
+    A() {} // Empty scope.
+    i32 get_n() { return n; }   // Simple scope.
+}
+</code></pre>
+<p>Always use the form that maximizes the readability when deciding scoping forms.</p>
+<h3 id="documenting-comments">Documenting comments</h3>
+<p>Use <a href="https://www.doxygen.nl/manual/docblocks.html">doxygen comment blocks</a> for documenting comments (comments that exists in the header file as the documentation of function, type or object).</p>
+<pre><code class="language-c++">//! Resets the task context and begins a new task.
+//! @param[in] world The world to run the task on.
+//! @param[in] exec_mode The task execution mode.
+//! @param[in] read_components If task mode is `shared`, specify components that will be read by this task.
+//! @param[in] write_components If task mode is `shared`, specify components that will be read and written by
+//! this task.
+//! @remark This call may block the current thread until all components required by this task can be safely
+//! accessed by this task, or until all other tasks are finished if this is a exclusive task.
+virtual void begin(
+    IWorld* world,
+    TaskExecutionMode exec_mode,
+    Span&lt;typeinfo_t&gt; read_components,
+    Span&lt;typeinfo_t&gt; write_components
+) = 0;
+</code></pre>
+<h2 id="naming-conventions">Naming conventions</h2>
+<h3 id="primitive-types">Primitive types</h3>
+<p>Primitive types (numbers, characters, pointers) and the aliasing primitive types are named using the underscore case:</p>
+<ul>
+<li><code>u8</code></li>
+<li><code>i32</code></li>
+<li><code>usize</code></li>
+</ul>
+<p>For all user-defined aliasing types of primitive types, uses <code>_t</code> suffix:</p>
+<ul>
+<li><code>using opaque_t = void*</code></li>
+</ul>
+<h3 id="enumeration-types">Enumeration types</h3>
+<p>Use <code>enum classs</code> instead of <code>enum</code> for all enumerations. All enumeration types are named using the Pascal case. Options of the enumeration are named using the underscore case.</p>
+<pre><code class="language-c++">enum class ResourceType : u8
+{
+    buffer,
+    texture_1d,
+    texture_2d,
+    texture_3d
+};
+</code></pre>
+<p>If the enumeration represents a single-value type, the use of <code>Type</code> or <code>Kind</code> suffix is suggested, but not required; if the enumeration represents a bit-OR-combined multi-value type, the use of <code>Flag</code> suffix is suggested, but not required. For all multi-value enumeration types, always provides one option <code>none</code> with the value <code>0</code>. Using hexadecimal form to represent multi-value enumeration option values is suggested, but not required.</p>
+<pre><code class="language-c++">enum class ResourceUsageFlag : u32
+{
+    none = 0x00,
+    shader_resource = 0x01,
+    constant_buffer = 0x02,
+    unordered_access = 0x04,
+    render_target = 0x08,
+    depth_stencil = 0x10,
+    vertex_buffer = 0x20,
+    index_buffer = 0x40,
+    stream_output = 0x80,
+    indirect_buffer = 0x100,
+};
+</code></pre>
+<h3 id="structure-and-class-types">Structure and class types</h3>
+<p>Types defined by <code>struct</code> and <code>class</code> are considered the same in Luna SDK, we use "structure type" to refer both.</p>
+<p>Most structure types are named using the Pascal case.</p>
+<pre><code class="language-c++">struct ResourceDesc
+{
+    ResourceType type;
+    ResourceHeapType heap_type;
+    Format pixel_format;
+    ResourceUsageFlag usages;
+    u64 width_or_buffer_size;
+    u32 height;
+    u32 depth_or_array_size;
+    u32 mip_levels;
+    u32 sample_count;
+    u32 sample_quality;
+    ResourceFlag flags;
+};
+</code></pre>
+<p>The only exception is the structure type that:</p>
+<ol>
+<li>contains only one primitive typed member object.</li>
+<li>can be trivially constructed, destructed, copied and moved.</li>
+<li>can be constructed by providing one value with the same type of its member variable, and the behavior is assigning its member object with the provided value.</li>
+</ol>
+<p>In such case, we consider the structure type as a aliasing type of the primitive type, thus use the underscore case with <code>_t</code> suffix for the type:</p>
+<pre><code class="language-c++">struct asset_t
+{
+    opaque_t handle;
+    asset_t() :
+        handle(nullptr) {}
+    constexpr asset_t(opaque_t handle) :
+        handle(handle) {}
+    constexpr bool operator==(const asset_t&amp; rhs) const
+    {
+        return handle == rhs.handle;
+    }
+    constexpr bool operator!=(const asset_t&amp; rhs) const
+    {
+        return handle != rhs.handle;
+    }
+    operator bool() const { return handle != nullptr; }
+};
+</code></pre>
+<p>Note that using the Pascal case for such structure type is also allowed.</p>
+<h4 id="interface-structure-types">Interface structure types</h4>
+<p>If the structure type represents an interface, append <code>I</code> prefix to the structure type name.</p>
+<pre><code class="language-c++">struct IStream : virtual Interface
+{
+    luiid(&quot;{0345f636-ca5c-4b4d-8416-29834377d239}&quot;);
+
+    virtual RV read(void* buffer, usize size, usize* read_bytes = nullptr) = 0;
+    virtual RV write(const void* buffer, usize size, usize* write_bytes = nullptr) = 0;
+};
+</code></pre>
+<h3 id="functions">Functions</h3>
+<p>All functions, including member functions of structure types, are named using the underscore case. Function parameters are also named using the underscore case.</p>
+<pre><code class="language-c++">RV read_file(opaque_t file, void* buffer, usize size, usize* read_bytes = nullptr);
+</code></pre>
+<p>For functions with long parameter lists, you can separate parameter lists into multiple lines, providing the parameter list line is correctly indented.</p>
+<pre><code class="language-c++">void draw_shape(u32 begin_command, u32 num_commands,
+    const Float2U&amp; min_position, const Float2U&amp; max_position,
+    const Float2U&amp; min_shapecoord, const Float2U&amp; max_shapecoord,
+    u32 color = 0xFFFFFFFF,
+    const Float2U&amp; min_texcoord = Float2U(0.0f), 
+    const Float2U&amp; max_texcoord = Float2U(0.0f));
+</code></pre>
+<p>These rules are also applied to member functions.</p>
+<h3 id="objects">Objects</h3>
+<p>All objects except global constants are named using the underscore case, including member object of structure types.</p>
+<pre><code class="language-c++">Float2U origin_point;
+</code></pre>
+<p>For member objects of structure types that are not exposed as part of module interface, the prefix <code>m_</code> is suggested, but not required.</p>
+<pre><code class="language-c++">struct ComponentBuffer
+{
+    typeinfo_t m_type;
+    void* m_data = nullptr;
+    usize m_size = 0;
+    usize m_capacity = 0;
+};
+</code></pre>
+<p>For global variables that are not exposed as part of module interface, the prefix <code>g_</code> is suggested, but not required.</p>
+<pre><code class="language-c++">Ref&lt;IFontFile&gt; g_default_font;
+</code></pre>
+<p>Global constants are named using uppercase words separated by underscores, and is decorated by <code>constexpr</code>.</p>
+<pre><code class="language-c++">constexpr f32 PI = 3.141592654f;
+constexpr entity_id_t NULL_ENTITY(0);
+</code></pre>
+<p>Prevent defining global constants using macros.</p>
+<h3 id="namespace">Namespace</h3>
+<p>All namespaces are named using the Pascal case.</p>
+<pre><code class="language-c++">namespace Luna
+{
+    namespace RHI
+    {
+    }
+}
+</code></pre>
+<p>All Luna SDK components are defined in <code>Luna</code> namespace, every Luna SDK module except <code>Runtime</code> should have its own namespace under <code>Luna</code> containing its own components.</p>
+<h3 id="macros">Macros</h3>
+<p>Macros can be declared using two forms. The first form is uppercase words separated by underscores, with <code>LUNA_</code> prefix. These macros are usually used for conditional compiling and replacing some platform-dependent keywords.</p>
+<pre><code class="language-c++">#define LUNA_DEBUG      1
+#define LUNA_PROFILE    1
+#define LUNA_RELEASE    1
+
+#if defined(LUNA_COMPILER_MSVC)
+    #define LUNA_DLL_EXPORT __declspec(dllexport)
+#else
+    #define LUNA_DLL_EXPORT __attribute__ ((visibility(&quot;default&quot;)))
+#endif
+</code></pre>
+<p>The second form is the underscore case with <code>lu</code> prefix. These macros are usually used to replace some code patterns to improve coding efficiency.</p>
+<pre><code class="language-c++">#define luassert(_condition) //...
+#define luassert_msg(_condition, _message) //...
+#define lustruct(_name, _guid) //...
+#define luproperty(_struct, _type, _name) //...
+#define luenum(_type, _name, _guid) //...
+#define luoption(_enum, _item) //...
+#define lucatchret //...
+</code></pre>
+<p>Macro parameters are allowed for both macro forms. Macro parameter names should be prefixed with one underscore character.</p>
+<h3 id="templates">Templates</h3>
+<p>Template type parameters should be decorated with <code>typename</code> instead of <code>class</code>, and should be prefixed with one underscore character.</p>
+<pre><code class="language-c++">template &lt;typename _Ty&gt;
+struct less
+{
+    constexpr bool operator()(const _Ty&amp; lhs, const _Ty&amp; rhs) const
+    {
+        return lhs &lt; rhs;
+    }
+};
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Basics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../initialization_and_shutdown/" class="btn btn-neutral float-right" title="Initialization and Shutdown">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../initialization_and_shutdown/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

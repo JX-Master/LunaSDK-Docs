@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/basic_types/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Basic Types - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Basic Types";
+        var mkdocs_page_input_path = "manual\\basics\\basic_types.md";
+        var mkdocs_page_url = "/manual/basics/basic_types/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Basics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Basic Types</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#primitive-typesthe-following-table-lists-all-primitive-typed-designed-by-luna-sdk">Primitive typesThe following table lists all primitive typed designed by Luna SDK.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#containers">Containers</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#self-indexed-map-containers">Self indexed map containers</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#guid">GUID</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#version-type">Version type</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pair-and-tuple-types">Pair and tuple types</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../memory_management/">Memory Management</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Manual &raquo;</li>
+          <li>Basics &raquo;</li>
+      <li>Basic Types</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="basic-types">Basic Types</h1>
+<h2 id="primitive-typesthe-following-table-lists-all-primitive-typed-designed-by-luna-sdk">Primitive typesThe following table lists all primitive typed designed by Luna SDK.</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>C++ STD Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>u8</code></td>
+<td>Unsigned 8-bit integer.</td>
+<td><code>std::uint8_t</code></td>
+</tr>
+<tr>
+<td><code>i8</code></td>
+<td>Signed 8-bit integer.</td>
+<td><code>std::int8_t</code></td>
+</tr>
+<tr>
+<td><code>u16</code></td>
+<td>Unsigned 16-bit integer.</td>
+<td><code>std::uint16_t</code></td>
+</tr>
+<tr>
+<td><code>i16</code></td>
+<td>Signed 16-bit integer.</td>
+<td><code>std::int16_t</code></td>
+</tr>
+<tr>
+<td><code>u32</code></td>
+<td>Unsigned 32-bit integer.</td>
+<td><code>std::uint32_t</code></td>
+</tr>
+<tr>
+<td><code>i32</code></td>
+<td>Signed 32-bit integer.</td>
+<td><code>std::int32_t</code></td>
+</tr>
+<tr>
+<td><code>u64</code></td>
+<td>Unsigned 64-bit integer.</td>
+<td><code>std::uint64_t</code></td>
+</tr>
+<tr>
+<td><code>i64</code></td>
+<td>Signed 64-bit integer.</td>
+<td><code>std::int64_t</code></td>
+</tr>
+<tr>
+<td><code>usize</code></td>
+<td>Unsigned machine-sized integer.</td>
+<td><code>std::size_t</code></td>
+</tr>
+<tr>
+<td><code>isize</code></td>
+<td>Signed machine-sized integer.</td>
+<td><code>std::ptrdiff_t</code></td>
+</tr>
+<tr>
+<td><code>f32</code></td>
+<td>32-bit floating-point number.</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td><code>f64</code></td>
+<td>64-bit floating-point number.</td>
+<td><code>double</code></td>
+</tr>
+<tr>
+<td><code>c8</code></td>
+<td>8-bit character.</td>
+<td><code>char</code></td>
+</tr>
+<tr>
+<td><code>c16</code></td>
+<td>16-bit character.</td>
+<td><code>chat16_t</code></td>
+</tr>
+<tr>
+<td><code>c32</code></td>
+<td>32-bit character.</td>
+<td><code>char32_t</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="containers">Containers</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Vector.hpp&gt;
+#include &lt;Runtime/List.hpp&gt;
+#include &lt;Runtime/HashMap.hpp&gt;
+#include &lt;Runtime/HashSet.hpp&gt;
+#include &lt;Runtime/UnorderedMap.hpp&gt;
+#include &lt;Runtime/UnorderedSet.hpp&gt;
+#include &lt;Runtime/UnorderedMultiMap.hpp&gt;
+#include &lt;Runtime/UnorderedMultiSet.hpp&gt;
+#include &lt;Runtime/SelfIndexedHashMap.hpp&gt;
+#include &lt;Runtime/SelfIndexedUnorderedMap.hpp&gt;
+#include &lt;Runtime/SelfIndexedUnorderedMultiMap.hpp&gt;
+#include &lt;Runtime/RingDeque.hpp&gt;
+</code></pre>
+<p>For compatibility and cross-platform consistency reasons, Luna SDK does not use C++ Standard Template Library (STD), but implements its own container types using APIs similar to those of STD. The following table lists all containers provided by Luna SDK.</p>
+<table>
+<thead>
+<tr>
+<th>Container Type</th>
+<th>Description</th>
+<th>C++ STD Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Vector&lt;T&gt;</code></td>
+<td>Dynamic array type.</td>
+<td><code>std::vector&lt;T&gt;</code></td>
+</tr>
+<tr>
+<td><code>List&lt;T&gt;</code></td>
+<td>Dynamic double-linked list type.</td>
+<td><code>std::list&lt;T&gt;</code></td>
+</tr>
+<tr>
+<td><code>HashMap&lt;K, V&gt;</code></td>
+<td>Closed hash map type using Robinhood Hashing.</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>HashSet&lt;V&gt;</code></td>
+<td>Closed hash set type using Robinhood Hashing.</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>UnorderedMap&lt;K, V&gt;</code></td>
+<td>Open hash map type.</td>
+<td><code>std::unordered_map&lt;K, V&gt;</code></td>
+</tr>
+<tr>
+<td><code>UnorderedSet&lt;V&gt;</code></td>
+<td>Open hash set type.</td>
+<td><code>std::unordered_set&lt;V&gt;</code></td>
+</tr>
+<tr>
+<td><code>UnorderedMultiMap&lt;K, V&gt;</code></td>
+<td>Open hash map type that allows elements with the same key.</td>
+<td><code>std::unordered_multimap&lt;K, V&gt;</code></td>
+</tr>
+<tr>
+<td><code>UnorderedMultiSet&lt;V&gt;</code></td>
+<td>Open hash map type that allows multiple insertions of the same elements.</td>
+<td><code>std::unordered_multiset&lt;K, V&gt;</code></td>
+</tr>
+<tr>
+<td><code>SelfIndexedHashMap&lt;K, V, E&gt;</code></td>
+<td>Closed hash map whose key type can be extracted from the value type.</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>SelfIndexedUnorderedMap&lt;K, V, E&gt;</code></td>
+<td>Open hash map whose key type can be extracted from the value type.</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>SelfIndexedUnorderedMultiMap&lt;K, V, E&gt;</code></td>
+<td>Open hash map whose key type can be extracted from the value type, and allows multiple insertions of the same elements.</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>RingDeque&lt;T&gt;</code></td>
+<td>Double-ended queue using ring buffering.</td>
+<td><code>std::deque&lt;T&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="self-indexed-map-containers">Self indexed map containers</h3>
+<p>Self indexed map containers are used for elements whose key is a part of the value object. For example, given the following structure:</p>
+<pre><code class="language-c++">struct Player
+{
+    Name name;
+    i32 hp;
+    i32 mp;
+};
+</code></pre>
+<p>Now we want to use one map to store all player records using their name as the key. If we use normal <code>HashMap</code> or <code>UnorderedMap</code> container, every entry in the container will be saved as <code>Pair&lt;const Name, Player&gt;</code>, thus stores the player name twice. In such case, we can use <code>SelfIndexedHashMap</code> and <code>SelfIndexedUnorderedMap</code> instead. The self indexed hash map container does not store the key object directly, instead, it requires the user to provide a special functional object <code>E</code>, which will be called when the key is needed. The functional object <code>E</code> takes a reference to the value object of the map element, and should returns a value or reference to the key object of the element. In our example, we can implement <code>E</code> as below:</p>
+<pre><code class="language-c++">struct PlayerExtractKey
+{
+    const Name&amp; operator()(const Player&amp; val) const
+    {
+        return val.name;
+    }
+};
+</code></pre>
+<p>Then we can define the self indexed map like so:</p>
+<pre><code class="language-c++">#include &lt;Runtime/SelfIndexedHashMap.hpp&gt;
+
+namespace Luna
+{
+    SelfIndexedHashMap&lt;Name, Player, PlayerExtractKey&gt; players;
+}
+</code></pre>
+<p>When using self indexed map containers, the user must ensure that the key object is immutable for all elements in the container, or the behavior is undefined.</p>
+<h2 id="guid">GUID</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Base.hpp&gt;
+</code></pre>
+<p>Globally Unique Identifier (GUID) is a algorithm-generated 128-bit integer identifier. In Luna SDK, GUIDs are represented by <code>Guid</code> type:</p>
+<pre><code class="language-c++">struct Guid
+{
+    u64 high;
+    u64 low;
+};
+</code></pre>
+<p>Luna SDK supports generating GUID instances from the registry form (<code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code> or <code>{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}</code>) at compile time:</p>
+<pre><code class="language-c++">constexpr Guid test_id(&quot;{5cf28858-60b0-49f2-9674-5888fa7ad027}&quot;);
+static_assert(test_id.low == 10841387548328775719Ui64, &quot;Incorrect GUID values.&quot;);
+static_assert(test_id.high == 6697565509014014450Ui64, &quot;Incorrect GUID values.&quot;);
+</code></pre>
+<p>GUIDs are used widely in Luna SDK for identifying assets, types, interfaces, objects and many other entities.</p>
+<h2 id="version-type">Version type</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Base.hpp&gt;
+</code></pre>
+<p><code>Version</code> represent the version of one application, module or any version-controlled entity. Every version is composed by three numbers: <code>major</code>, <code>minor</code> and <code>patch</code>:</p>
+<pre><code class="language-c++">struct Version
+{
+    u32 major;
+    u32 minor;
+    u32 patch;
+};
+</code></pre>
+<p>We suggest using the following rules to manage the version number:</p>
+<ol>
+<li>An increment of <code>major</code> version indicates a breaking change to the interface of the entity, so that existing codes, programs and services using the entity must be explicitly modified to use the newer version of the entity correctly.</li>
+<li>An increment of <code>minor</code> version indicates a non-breaking change to the interface of the entity, so that existing codes, programs and services can use the newer version of the entity correctly without any source-level modification.</li>
+<li>An increment of <code>patch</code> version indicates a internal change of the entity and should not affect the entity interface, so that existing codes, programs and services can use the newer version of the entity correctly without any source-level modification.</li>
+</ol>
+<h2 id="pair-and-tuple-types">Pair and tuple types</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Base.hpp&gt; // For Pair.
+#include &lt;Runtime/Tuple.hpp&gt; // For Tuple.
+</code></pre>
+<p><code>Pair&lt;T1, T2&gt;</code> encapsulates one pair of elements with <code>T1</code> and <code>T2</code> type as the <code>first</code> and <code>second</code> element of the pair. <code>Pair</code> is mainly used by map containers to represent elements.</p>
+<p><code>Tuple&lt;Tys...&gt;</code> is a generalization of <code>Pair</code> and may contain one or multiple elements. Elements in <code>Tuple</code> can be fetched by calling <code>get&lt;N&gt;(tuple)</code> function. This type is mainly used to store function arguments in functional programming.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../initialization_and_shutdown/" class="btn btn-neutral float-left" title="Initialization and Shutdown"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../strings/" class="btn btn-neutral float-right" title="Strings">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../initialization_and_shutdown/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../strings/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
