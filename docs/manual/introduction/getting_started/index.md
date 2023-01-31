@@ -1412,7 +1412,7 @@ int main()
 }
 ```
 
- ## Reference code for `xmake.lua`
+## Reference code for `xmake.lua`
 
 ```lua
 target("DemoApp")

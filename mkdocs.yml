@@ -8,7 +8,10 @@ nav:
         - Introduction:
             - Introduction: manual/introduction/index.md
             - Getting Started: manual/introduction/getting_started/index.md
-        - Fundamental:
-            - Fundamental: manual/fundamental/index.md
-        - Modules:
-            - Rendering: manual/rendering/index.md
+        - Basics:
+            - Basics: manual/basics/index.md
+            - Coding Convention: manual/basics/coding_convention.md
+            - Initialization and Shutdown: manual/basics/initialization_and_shutdown.md
+            - Basic Types: manual/basics/basic_types.md
+            - Strings: manual/basics/strings.md
+            - Memory Management: manual/basics/memory_management.md
