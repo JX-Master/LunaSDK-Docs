@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/modules/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Modules - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Modules";
+        var mkdocs_page_input_path = "manual\\basics\\modules.md";
+        var mkdocs_page_url = "/manual/basics/modules/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../memory_management/">Memory Management</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Modules</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="modules">Modules</h1>
+<p>Luna SDK is a modular framework, every function of Luna SDK is provided by one or more modules. The fundamental functions of Luna SDK are provided by <code>Runtime</code> module, which will be initialized along with Luna SDK and is can be used anywhere. Other functions are provided by dedicated modules and should be added to Luna SDK explicitly when required.</p>
+<h2 id="module-files">Module files</h2>
+<p>Every Luna SDK module should have its own directory under <code>${ROOT_DIR}/Modules</code> directory, with the module name as the directory name. Under the module root directory, every module must have one <code>xmake.lua</code> script defining the building rules of the module. The user can use the following code as the starting point for new modules:</p>
+<pre><code class="language-lua">target(&quot;MyModule&quot;)
+    set_luna_sdk_module()
+    add_headerfiles(&quot;*.hpp&quot;, &quot;Source/**.hpp&quot;)
+    add_files(&quot;Source/**.cpp&quot;)
+    add_deps(&quot;Runtime&quot;, &quot;MuDepModule1&quot;, &quot;MyDepModule2&quot;)
+target_end()
+</code></pre>
+<p><code>set_luna_sdk_module()</code> tells xmake to import all Luna SDK module global options and specifications to the current module, including one <code>set_kind</code> call to properly set the module target file kind. One module may be built into one static library (<code>.lib</code> or <code>.o</code>) or one shared library (<code>.dll</code> or <code>.so</code>) based on <code>build_shared_lib</code> xmake config of Luna SDK. <code>add_headerfiles</code> and <code>add_files</code> imports module header files (<code>.h</code>, <code>.hpp</code> and <code>.inl</code>) and module source files (<code>.c</code>, <code>.cpp</code>) to the module. <code>add_deps</code> adds dependency modules for the current module, so that they can be linked correctly.</p>
+<p>Every module should have one <code>Source</code> directory under the module root directory that contains all private files and directories only visible to the current module. All files and directories that are not in <code>Source</code> directory will be considered as module public files and should not contain module source files (<code>.c</code>, <code>.cpp</code> files). Luna SDK sets <code>${ROOT_DIR}/Modules</code> as the global include directory for all modules and programs, so you can simply include module interface files by <code>#include &lt;ModuleName/FileName.hpp&gt;</code>, like <code>#include &lt;RHI/RHI.hpp&gt;</code>.</p>
+<h2 id="module-namespace">Module namespace</h2>
+<p>Every module should declare all entities under its own namespace under <code>Luna</code> namespace. The namespace name for the module should be concise and is may not be equal to the name of the module. Do not declare <code>using namespace</code> under the module interface header files.</p>
+<pre><code class="language-c++">namespace Luna
+{
+    namespace MyModule
+    {
+        // Your declarations goes here...
+    }
+}
+</code></pre>
+<h2 id="module-api-declaration">Module API declaration</h2>
+<p>Module API functions and variables should have special linkage and codec specifications to be exported and linked correctly when compiled to shared or static libraries. Every module should use <code>LUNA_XXX_API</code> macro to decorate all APIs of the module, where <code>XXX</code> is the name of your module. <code>LUNA_XXX_API</code>  should be defined like so in the module header files:</p>
+<pre><code class="language-c++">#ifndef LUNA_XXX_API
+#define LUNA_XXX_API
+#endif
+
+// Your API.
+LUNA_XXX_API void do_something();
+</code></pre>
+<p>When you need to provide definitions for APIs on module source files, define <code>LUNA_XXX_API</code>  before including header files like so:</p>
+<pre><code class="language-c++">#include &lt;Runtime/PlatformDefines.hpp&gt;
+#define LUNA_XXX_API LUNA_EXPORT
+// Include your header files...
+</code></pre>
+<p>This will overwrite <code>LUNA_XXX_API</code>  with <code>LUNA_EXPORT</code>, which is a predefined platform-specific macro to append linkage and codec declarations for API functions and objects.</p>
+<h2 id="module-registration">Module registration</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Module.hpp&gt;
+</code></pre>
+<p>One module must be registered to Luna SDK before it can be initialized and used by your program or other modules. Modules are described by <code>ModuleDesc</code> structure, you can fill this structure and call <code>add_module</code> to add one module to Luna SDK.</p>
+<pre><code class="language-c++">ModuleDesc desc;
+desc.name = &quot;MyModule&quot;;
+desc.dependencies = &quot;MuDepModule1;MyDepModule2&quot;; // `Runtime` is always included and should not be listed here.
+desc.init_func = my_module_init;    // Can be `nullptr` if not needed.
+desc.close_func = my_module_close;  // Can be `nullptr` if not needed.
+add_module(&amp;desc);
+</code></pre>
+<p><code>add_module</code> is one of few functions that can be called before Luna SDK is initialized. <code>StaticRegisterModule</code> uses this behavior to register modules automatically by calling <code>add_module</code> in its constructor. We can simply declare it as a global object for our module to register our module automatically when the module library is loaded.</p>
+<pre><code class="language-c++">StaticRegisterModule my_module(&quot;MyModule&quot;, &quot;MuDepModule1;MyDepModule2&quot;, my_module_init, my_module_close);
+</code></pre>
+<h2 id="module-initialization">Module initialization</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Module.hpp&gt;
+</code></pre>
+<p>Modules are not initialized along with Luna SDK and should be manually initialized after Luna SDK is initialized. This behavior enables the user to have a precisely control over module initialization time and can perform some extra operations before the module is initialized. Module system provides three methods to initialize modules: <code>init_modules</code>, <code>init_module</code> and <code>init_module_dependencies</code>.</p>
+<p><code>init_modules</code> initialize all uninitialized modules registered to Luna SDK, by their dependency order. This is the simplest way to initialize all modules in one call, but the user does not have much control during the module initialization process.</p>
+<p><code>init_module</code>  initializes one specific module and all its recursively dependency modules of that module by their dependency order, while <code>init_module_dependencies</code> only initializes all recursively dependency modules of the specified module by their dependency order, but not the specified module. These two functions let the user pause the module initialization process to perform some extra tasks (like choosing the default graphic device), then continue to initialize other modules, which make the module initialization process more flexible.</p>
+<h2 id="module-closing">Module closing</h2>
+<p>Modules are closed along with Luna SDK in the reverse order of their initialization order. There is no approach to close modules manually.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

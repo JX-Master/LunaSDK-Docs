@@ -111,7 +111,7 @@
 <pre><code class="language-c++">#include &lt;Runtime/Runtime.hpp&gt;
 </code></pre>
 <p>Call <code>Luna::init</code> to initialize Luna SDK. Most features provided by Luna SDK are only available after Luna SDK is initialized, so always initialize Luna SDK firstly on program startup. <code>Luna::init</code> returns one <code>bool</code> value, which indicates whether the initialization is succeeded. After the initialization is succeeded, following calls to <code>Luna::init</code> does nothing and returns <code>true</code> directly.</p>
-<p>Note that modules registered to Luna SDK will not be initialized by <code>Luna::init</code>, they should be initialized manually using functions like <code>init_modules</code>. See <a href="module_management.md">Module Management</a> for details.</p>
+<p>Note that modules registered to Luna SDK will not be initialized by <code>Luna::init</code>, they should be initialized manually using functions like <code>init_modules</code>. See <a href="../modules/">Modules</a> for details.</p>
 <h2 id="sdk-shutdown">SDK shutdown</h2>
 <pre><code class="language-c++">#include &lt;Runtime/Runtime.hpp&gt;
 </code></pre>
