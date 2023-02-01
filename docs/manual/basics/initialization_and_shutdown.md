@@ -8,7 +8,7 @@
 
 Call `Luna::init` to initialize Luna SDK. Most features provided by Luna SDK are only available after Luna SDK is initialized, so always initialize Luna SDK firstly on program startup. `Luna::init` returns one `bool` value, which indicates whether the initialization is succeeded. After the initialization is succeeded, following calls to `Luna::init` does nothing and returns `true` directly.
 
-Note that modules registered to Luna SDK will not be initialized by `Luna::init`, they should be initialized manually using functions like `init_modules`. See [Module Management](module_management.md) for details.
+Note that modules registered to Luna SDK will not be initialized by `Luna::init`, they should be initialized manually using functions like `init_modules`. See [Modules](modules.md) for details.
 
 ## SDK shutdown
 
