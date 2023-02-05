@@ -64,13 +64,21 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">Basic Types</a>
     <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#primitive-typesthe-following-table-lists-all-primitive-typed-designed-by-luna-sdk">Primitive typesThe following table lists all primitive typed designed by Luna SDK.</a>
+    <li class="toctree-l3"><a class="reference internal" href="#primitive-types">Primitive types</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#aliasing-types-of-primitive-types">Aliasing types of primitive types</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#containers">Containers</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#self-indexed-map-containers">Self indexed map containers</a>
     </li>
         </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#blob">BLOB</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#span">Span</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#guid">GUID</a>
     </li>
@@ -85,6 +93,8 @@
                 <li class="toctree-l2"><a class="reference internal" href="../memory_management/">Memory Management</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../variant/">Variant</a>
                 </li>
     </ul>
                   </li>
@@ -115,7 +125,8 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="basic-types">Basic Types</h1>
-<h2 id="primitive-typesthe-following-table-lists-all-primitive-typed-designed-by-luna-sdk">Primitive typesThe following table lists all primitive typed designed by Luna SDK.</h2>
+<h2 id="primitive-types">Primitive types</h2>
+<p>The following table lists all primitive typed designed by Luna SDK.</p>
 <table>
 <thead>
 <tr>
@@ -202,6 +213,11 @@
 </tr>
 </tbody>
 </table>
+<h3 id="aliasing-types-of-primitive-types">Aliasing types of primitive types</h3>
+<p><code>byte_t</code> is an aliasing type of <code>u8</code> that indicates one byte. You should use <code>byte_t</code> instead of <code>u8</code> if you want to be clear that you are talking about bytes, not numbers, for example, in a binary stream (<code>byte_t*</code>).</p>
+<p><code>opaque_t</code> is an aliasing type of <code>void*</code> that indicated one opaque pointer that should not be dereferenced by the user. Such pointers are usually used as handles to internal data structures, the user should pass <code>opaque_t</code> to functions provided by the system to manipulate it.</p>
+<p><code>InitializerList&lt;T&gt;</code> is an aliasing type of <code>std::initializer_list&lt;_Ty&gt;</code>in Luna SDK.</p>
+<p><code>VarList</code> is an aliasing type of <code>va_list</code> in Luna SDK.</p>
 <h2 id="containers">Containers</h2>
 <pre><code class="language-c++">#include &lt;Runtime/Vector.hpp&gt;
 #include &lt;Runtime/List.hpp&gt;
@@ -315,6 +331,40 @@ namespace Luna
 }
 </code></pre>
 <p>When using self indexed map containers, the user must ensure that the key object is immutable for all elements in the container, or the behavior is undefined.</p>
+<h2 id="blob">BLOB</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Blob.hpp&gt;
+</code></pre>
+<p>BLOB refers to Binary Large OBject, which is a memory block with arbitrary data. In Luna SDK, we use <code>Blob</code> structure to represent one BLOB object. <code>Blob</code> can be used in many ways, but the common use for it is to store and transfer binary data. For example, <code>load_file_data</code> function returns a <code>Blob</code> object, which contains the data of the file.</p>
+<h2 id="span">Span</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Span.hpp&gt;
+</code></pre>
+<p><code>Span</code> is a template type that refers to one continuous sequence of instances. There are two types of spans in Luna SDK: fixed span and variable span.</p>
+<p>Fixed spans are spans whose size is decided at compile time, and cannot be changed. Such span only requires one pointer to the object range to be well defined, and the number of elements in the span should be declared as part of the type:</p>
+<pre><code class="language-c++">i32 data[] = {3, 4, 5, 6, 7};
+
+Span&lt;i32, 3&gt; range(data + 1);
+debug_printf(&quot;%d&quot;, range.size()); // 3
+for (i32 i : range) debug_printf(&quot;%d, &quot;, i); // 4, 5, 6,
+
+range = Span&lt;i32, 3&gt;(data + 2);
+debug_printf(&quot;%d&quot;, range.size()); // 3
+for (i32 i : range) debug_printf(&quot;%d, &quot;, i); // 5, 6, 7,
+</code></pre>
+<p>Variable spans are spans whose size may change at run time. Such span requires both the pointer to the object range and the size of the range to be well defined:</p>
+<pre><code class="language-c++">i32 data[] = {3, 4, 5, 6, 7};
+
+Span&lt;i32&gt; range(data + 1), 3;
+debug_printf(&quot;%d&quot;, range.size()); // 3
+for (i32 i : range) debug_printf(&quot;%d, &quot;, i); // 4, 5, 6, 
+
+range = Span&lt;i32&gt;(data + 2, 2);
+debug_printf(&quot;%d&quot;, range.size()); // 2
+for (i32 i : range) debug_printf(&quot;%d, &quot;, i); // 5, 6, 
+</code></pre>
+<p>Note that spans are NOT containers, they don't allocate memory to store the data, only stores pointers to the objects provided by the user. So use spans only when the original object sequence is valid.</p>
+<blockquote>
+<p>Prefer using <code>Span&lt;T&gt;</code> instead of C-style pointer and size pair when referring memory ranges.</p>
+</blockquote>
 <h2 id="guid">GUID</h2>
 <pre><code class="language-c++">#include &lt;Runtime/Base.hpp&gt;
 </code></pre>

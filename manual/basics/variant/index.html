@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/variant/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Variant - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Variant";
+        var mkdocs_page_input_path = "manual\\basics\\variant.md";
+        var mkdocs_page_url = "/manual/basics/variant/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Basics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../modules/">Modules</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Variant</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#variant-type">Variant type</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#null-variant">Null variant</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#number-variant">Number variant</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#string-variant">String variant</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#boolean-variant">Boolean variant</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#blob-variant">BLOB Variant</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pointer-variant">Pointer Variant</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#array-of-variants">Array of variants</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#associated-array-of-variants">Associated array of variants</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#variant-differential">Variant differential</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Manual &raquo;</li>
+          <li>Basics &raquo;</li>
+      <li>Variant</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="variant">Variant</h1>
+<pre><code>#include &lt;Runtime/Variant.hpp&gt;
+</code></pre>
+<p><code>Variant</code> is a dynamic typed object that stores data in a schema-less (self-described) manner. <code>Variant</code> is used as a general way of representing data for purposes like <a href="serialization_and_deserialization.md">serialization and deserialization</a>.</p>
+<h2 id="variant-type">Variant type</h2>
+<p>The type of one <code>Variant</code> is represented by <code>Variant::Type</code> enumeration and can be fetched by calling <code>type</code> method. Luna SDK supports the following variant types:</p>
+<ol>
+<li>Null</li>
+<li>Number</li>
+<li>String</li>
+<li>Boolean</li>
+<li>BLOB</li>
+<li>Pointer</li>
+<li>Array of variants</li>
+<li>Associated array of variants</li>
+</ol>
+<h2 id="null-variant">Null variant</h2>
+<p>Variant can be <code>null</code>, which represents the absence of value for the variant object. Calling <code>type</code> of one null variant returns <code>Variant::Type::null</code>, and calling <code>valid</code> of one null variant returns <code>false</code>.</p>
+<h2 id="number-variant">Number variant</h2>
+<p>Number variant contains one number of integer or floating-point type. The number type of one number variant is represented by <code>Variant::NumberType</code> enumeration and can be fetched by calling <code>number_type</code> method. If the variant object is not a number type, <code>NumberType::not_number</code> will be returned.</p>
+<p>The number value of the variant can be fetched by calling <code>unum</code>, <code>inum</code> and <code>fnum</code> methods, each of them returns the underlying number in specified format with implicit type conversion when needed. If the variant type is not <code>Variant::Type::number</code>, <code>0</code> or <code>0.0</code> will be returned.</p>
+<p>One variant can be set to number by assigning it with one integer or floating-point value or instance.</p>
+<h2 id="string-variant">String variant</h2>
+<p>String variant contains one single string represented by a <code>Name</code> object. You can fetch the underlying string of one variant by calling <code>str()</code> method, which returns one empty string if the type of the variant is not <code>Variant::Type::string</code>. We also provide <code>c_str</code> method to fetch the string buffer quickly, which will return <code>""</code> if the variant is not <code>Variant::Type::string</code>.</p>
+<p>One variant can be set to string by assigning it with one <code>Name</code> instance, one <code>String</code> instance, one string literal, or one zero-terminated <code>c8*</code> pointer instance.</p>
+<h2 id="boolean-variant">Boolean variant</h2>
+<p>Boolean variant contains only two kinds of values: <code>true</code> and <code>false</code>. The Boolean value of one variant can be fetched by calling <code>boolean</code> method, which returns <code>false</code> if the variant is not <code>Variant::Type::boolean</code>.</p>
+<p>One variant can be set to Boolean by assigning it with one <code>bool</code> value or instance.</p>
+<h2 id="blob-variant">BLOB Variant</h2>
+<p>BLOB variant contains one single binary large object. The data, size and alignment of the data can be fetched by calling <code>blob_data</code>, <code>blob_size</code> and <code>blob_alignment</code> methods. Note that <code>Variant</code> does optimizations for small blob data, so the blob data is not necessary represented by <code>Blob</code>. You may detach the blob data from the variant by calling <code>blob_detach</code>, which returns the blob data as a <code>Blob</code> object, and the variant will contain one empty blob after this operation.</p>
+<p>One variant can be set to pointer by assigning it with one <code>Blob</code> value or instance.</p>
+<h2 id="pointer-variant">Pointer Variant</h2>
+<p>Pointer variant contains one type-less user pointer. The pointer is stored as-is and can be fetched by calling <code>pointer</code> method, which returns <code>nullptr</code> if the variant is not <code>Variant::Type::pointer</code>.</p>
+<p>One variant can be set to pointer by assigning it with one pointer value or instance.</p>
+<h2 id="array-of-variants">Array of variants</h2>
+<p>Array variant contains one array of <code>Variant</code> objects, which acts as sub-objects of the current object. Note that <code>Variant</code> does optimizations for small array, so the array data is not necessary represented by <code>Vector&lt;Variant&gt;</code>.</p>
+<h2 id="associated-array-of-variants">Associated array of variants</h2>
+<p>Associated array variant contains one set of <code>Variant</code> objects, which acts as sub-objects of the current object. Unlike array variants, objects in associated array variant are indexed by <code>Name</code> objects, and does not have a particular order. Note that <code>Variant</code> does optimizations for small array, so the array data is not necessary represented by <code>HashMap&lt;Name, Variant&gt;</code>.</p>
+<p>For both array variants and associated array variants, <code>size</code> method returns the number of sub-objects in the array, and <code>empty</code> method returns <code>true</code> if <code>size()</code> returns <code>0</code>. The user can use subscript syntaxes (<code>[]</code>) to fetch elements in array variants (<code>[N]</code>) and associated array variants (<code>["Name"]</code>), if the specified element does not exist, one null variant will be returned. Using subscript syntaxes for variants with incorrect types always return null objects.</p>
+<h2 id="variant-differential">Variant differential</h2>
+<pre><code class="language-c++">#include &lt;Runtime/VariantDiff.hpp&gt;
+</code></pre>
+<p>Luna SDK comes with one variant differential library that computes and patches variant differences. <code>diff_variant</code> calculates the difference between <code>before</code> and <code>after</code> variant objects, and returns the difference as another variant object called <code>diff</code> object. <code>patch_variant_diff</code> applies <code>diff</code> object to <code>before</code> variant object to reproduce <code>after</code> object, and <code>reverse_variant_diff</code> removes the <code>diff</code> object from <code>after</code> object to reproduce <code>before</code> object. These functions are useful for implementing data versioning and undo/redo operations.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../modules/" class="btn btn-neutral float-left" title="Modules"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../modules/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
