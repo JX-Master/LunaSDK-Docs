@@ -16,3 +16,4 @@ nav:
             - Strings: manual/basics/strings.md
             - Memory Management: manual/basics/memory_management.md
             - Modules: manual/basics/modules.md
+            - Variant: manual/basics/variant.md

@@ -1,6 +1,8 @@
 # Basic Types
 
-## Primitive typesThe following table lists all primitive typed designed by Luna SDK.
+## Primitive types
+
+The following table lists all primitive typed designed by Luna SDK.
 
 | Type    | Description                     | C++ STD Equivalent |
 | ------- | ------------------------------- | ------------------ |
@@ -19,6 +21,16 @@
 | `c8`    | 8-bit character.                | `char`             |
 | `c16`   | 16-bit character.               | `chat16_t`         |
 | `c32`   | 32-bit character.               | `char32_t`         |
+
+### Aliasing types of primitive types
+
+`byte_t` is an aliasing type of `u8` that indicates one byte. You should use `byte_t` instead of `u8` if you want to be clear that you are talking about bytes, not numbers, for example, in a binary stream (`byte_t*`).
+
+`opaque_t` is an aliasing type of `void*` that indicated one opaque pointer that should not be dereferenced by the user. Such pointers are usually used as handles to internal data structures, the user should pass `opaque_t` to functions provided by the system to manipulate it.
+
+`InitializerList<T>` is an aliasing type of `std::initializer_list<_Ty> `in Luna SDK.
+
+`VarList` is an aliasing type of `va_list` in Luna SDK.
 
 ## Containers
 
@@ -91,6 +103,54 @@ namespace Luna
 ```
 
 When using self indexed map containers, the user must ensure that the key object is immutable for all elements in the container, or the behavior is undefined.
+
+## BLOB
+
+```c++
+#include <Runtime/Blob.hpp>
+```
+
+BLOB refers to Binary Large OBject, which is a memory block with arbitrary data. In Luna SDK, we use `Blob` structure to represent one BLOB object. `Blob` can be used in many ways, but the common use for it is to store and transfer binary data. For example, `load_file_data` function returns a `Blob` object, which contains the data of the file.
+
+## Span
+
+```c++
+#include <Runtime/Span.hpp>
+```
+
+`Span` is a template type that refers to one continuous sequence of instances. There are two types of spans in Luna SDK: fixed span and variable span.
+
+Fixed spans are spans whose size is decided at compile time, and cannot be changed. Such span only requires one pointer to the object range to be well defined, and the number of elements in the span should be declared as part of the type:
+
+```c++
+i32 data[] = {3, 4, 5, 6, 7};
+
+Span<i32, 3> range(data + 1);
+debug_printf("%d", range.size()); // 3
+for (i32 i : range) debug_printf("%d, ", i); // 4, 5, 6,
+
+range = Span<i32, 3>(data + 2);
+debug_printf("%d", range.size()); // 3
+for (i32 i : range) debug_printf("%d, ", i); // 5, 6, 7,
+```
+
+Variable spans are spans whose size may change at run time. Such span requires both the pointer to the object range and the size of the range to be well defined:
+
+```c++
+i32 data[] = {3, 4, 5, 6, 7};
+
+Span<i32> range(data + 1), 3;
+debug_printf("%d", range.size()); // 3
+for (i32 i : range) debug_printf("%d, ", i); // 4, 5, 6, 
+
+range = Span<i32>(data + 2, 2);
+debug_printf("%d", range.size()); // 2
+for (i32 i : range) debug_printf("%d, ", i); // 5, 6, 
+```
+
+Note that spans are NOT containers, they don't allocate memory to store the data, only stores pointers to the objects provided by the user. So use spans only when the original object sequence is valid.
+
+> Prefer using `Span<T>` instead of C-style pointer and size pair when referring memory ranges.
 
 ## GUID
 
