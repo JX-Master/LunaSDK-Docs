@@ -17,3 +17,4 @@ nav:
             - Memory Management: manual/basics/memory_management.md
             - Modules: manual/basics/modules.md
             - Variant: manual/basics/variant.md
+            - Type Reflection: manual/basics/type_reflection.md
