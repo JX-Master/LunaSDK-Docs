@@ -72,3 +72,13 @@ For both array variants and associated array variants, `size` method returns the
 ```
 
 Luna SDK comes with one variant differential library that computes and patches variant differences. `diff_variant` calculates the difference between `before` and `after` variant objects, and returns the difference as another variant object called `diff` object. `patch_variant_diff` applies `diff` object to `before` variant object to reproduce `after` object, and `reverse_variant_diff` removes the `diff` object from `after` object to reproduce `before` object. These functions are useful for implementing data versioning and undo/redo operations.
+
+## JSON encoding
+
+```c++
+#include <Runtime/VariantJSON.hpp>
+```
+
+Luna SDK comes with one JSON encoding/decoding library for `Variant` objects. `json_write` encodes one `Variant` to one JSON text stream, while `json_read` decodes one JSON text stream to one `Variant` object.
+
+When performing JSON encoding, `Variant` of `Variant::Type::pointer`will be ignored, and `Variant` with `Variant::Type::blob` will be encoded using [Base64](https://en.wikipedia.org/wiki/Base64) encoding format.

@@ -18,3 +18,4 @@ nav:
             - Modules: manual/basics/modules.md
             - Variant: manual/basics/variant.md
             - Type Reflection: manual/basics/type_reflection.md
+            - Serialization and Deserialization: manual/basics/serialization_and_deserialization.md
