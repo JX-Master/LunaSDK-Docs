@@ -92,9 +92,13 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#variant-differential">Variant differential</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#json-encoding">JSON encoding</a>
+    </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../type_reflection/">Type Reflection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../serialization_and_deserialization/">Serialization and Deserialization</a>
                 </li>
     </ul>
                   </li>
@@ -127,7 +131,7 @@
                 <h1 id="variant">Variant</h1>
 <pre><code>#include &lt;Runtime/Variant.hpp&gt;
 </code></pre>
-<p><code>Variant</code> is a dynamic typed object that stores data in a schema-less (self-described) manner. <code>Variant</code> is used as a general way of representing data for purposes like <a href="serialization_and_deserialization.md">serialization and deserialization</a>.</p>
+<p><code>Variant</code> is a dynamic typed object that stores data in a schema-less (self-described) manner. <code>Variant</code> is used as a general way of representing data for purposes like <a href="../serialization_and_deserialization/">serialization and deserialization</a>.</p>
 <h2 id="variant-type">Variant type</h2>
 <p>The type of one <code>Variant</code> is represented by <code>Variant::Type</code> enumeration and can be fetched by calling <code>type</code> method. Luna SDK supports the following variant types:</p>
 <ol>
@@ -167,6 +171,11 @@
 <pre><code class="language-c++">#include &lt;Runtime/VariantDiff.hpp&gt;
 </code></pre>
 <p>Luna SDK comes with one variant differential library that computes and patches variant differences. <code>diff_variant</code> calculates the difference between <code>before</code> and <code>after</code> variant objects, and returns the difference as another variant object called <code>diff</code> object. <code>patch_variant_diff</code> applies <code>diff</code> object to <code>before</code> variant object to reproduce <code>after</code> object, and <code>reverse_variant_diff</code> removes the <code>diff</code> object from <code>after</code> object to reproduce <code>before</code> object. These functions are useful for implementing data versioning and undo/redo operations.</p>
+<h2 id="json-encoding">JSON encoding</h2>
+<pre><code class="language-c++">#include &lt;Runtime/VariantJSON.hpp&gt;
+</code></pre>
+<p>Luna SDK comes with one JSON encoding/decoding library for <code>Variant</code> objects. <code>json_write</code> encodes one <code>Variant</code> to one JSON text stream, while <code>json_read</code> decodes one JSON text stream to one <code>Variant</code> object.</p>
+<p>When performing JSON encoding, <code>Variant</code> of <code>Variant::Type::pointer</code>will be ignored, and <code>Variant</code> with <code>Variant::Type::blob</code> will be encoded using <a href="https://en.wikipedia.org/wiki/Base64">Base64</a> encoding format.</p>
               
             </div>
           </div><footer>
