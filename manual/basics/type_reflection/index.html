@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/type_reflection/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Type Reflection - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Type Reflection";
+        var mkdocs_page_input_path = "manual\\basics\\type_reflection.md";
+        var mkdocs_page_url = "/manual/basics/type_reflection/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Basics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../variant/">Variant</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Type Reflection</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#type-object">Type object</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#type-name-and-guid">Type name and GUID</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#type-size-and-alignment">Type size and alignment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#type-class">Type class</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#primitive-type">Primitive type</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#structure-type">Structure type</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#enumeration-type">Enumeration type</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#generic-structure-type-and-generic-structure-instanced-type">Generic structure type and generic structure instanced type</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#registering-structure-type">Registering structure type</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#the-first-method">The first method</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#the-second-method">The second method</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#registering-enumeration-type">Registering enumeration type</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#registering-generic-structure-type">Registering generic structure type</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#implementing-typeof_tt-for-generic-structure-types">Implementing typeof_t&lt;T&gt; for generic structure types</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Manual &raquo;</li>
+          <li>Basics &raquo;</li>
+      <li>Type Reflection</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="type-reflection">Type reflection</h1>
+<p>Type reflection is the ability of a program to introspect type name, size, layout and other information in the program. Such ability can be used to write code that can operate on different types. Luna SDK comes with a run-time type reflection system that tracks most types used in the framework, it can also be extended to accept user-defined new types, including enumeration types, structure types and generic structure types.</p>
+<h2 id="type-object">Type object</h2>
+<pre><code class="language-c++">#include &lt;Runtime/TypeInfo.hpp&gt;
+</code></pre>
+<p><code>typeinfo_t</code> represents one type object that stores the type information for one type registered to type reflection system. You can get the type object of one specified type by calling <code>typeof&lt;T&gt;()</code>. If the specified type is not registered, the program may fail to compile or <code>nullptr</code> will be returned.</p>
+<h2 id="type-name-and-guid">Type name and GUID</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Reflection.hpp&gt;
+</code></pre>
+<p>Every registered type can be identified by name or by GUID, you can get one type object from its name by calling <code>get_type_by_name</code>, and from its GUID by calling <code>get_type_by_guid</code>. The name and GUID of one type object can be fetched by calling <code>get_type_name</code> and <code>get_type_guid</code>.</p>
+<p>Every type must have one unique GUID, but multiple types may have the same name. If multiple types have the same name, each of them should have one unique alias so that it can be differed from others. If the type is defined in namespaces, its namespace should be appended before the type name, separated by double colons (<code>::</code>).</p>
+<h2 id="type-size-and-alignment">Type size and alignment</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Reflection.hpp&gt;
+</code></pre>
+<p>Every registered type except generic structure type will have one specific size and alignment value, which can be fetched by <code>get_type_size</code> and <code>get_type_alignment</code>. Generic structure type is not a real type and will return <code>0</code> for both functions.</p>
+<h2 id="type-class">Type class</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Reflection.hpp&gt;
+</code></pre>
+<p>There are different type classes in Luna SDK, including:</p>
+<ol>
+<li>Primitive type</li>
+<li>Structure type</li>
+<li>Enumeration type</li>
+<li>Generic structure type</li>
+<li>Generic structure instanced type</li>
+</ol>
+<p>Every registered type in Luna SDK belong to one type class. You can use <code>is_primitive_type</code>, <code>is_struct_type</code>, <code>is_enum_type</code>, <code>is_generic_struct_type</code> and <code>is_generic_struct_instanced_type</code> to check the class of one <code>typeinfo_t</code> object. </p>
+<h3 id="primitive-type">Primitive type</h3>
+<p>Primitive types are predefined simple types, including <code>void</code>, <code>u8</code>, <code>i8</code>, <code>u16</code>, <code>i16</code>, <code>u32</code>, <code>i32</code>, <code>u64</code>, <code>i64</code>, <code>usize</code>, <code>isize</code>, <code>c8</code>, <code>c16</code>, <code>c32</code>, <code>f32</code>, <code>f64</code> and <code>bool</code>. <code>void</code> is a special type with <code>size</code> and <code>alignment</code> equal to <code>0</code>, and is mainly used as type parameters of generic types. </p>
+<p>Primitive types cannot be registered by users.</p>
+<h3 id="structure-type">Structure type</h3>
+<p>Structure types are used to represent a set of data of different types. Structure types may have properties (member objects), they can also define special functions called meta functions to let Luna SDK handle these types correctly. If such meta function is not provided, Luna SDK will use the default meta function for the type. The following table lists all meta functions provided for one structure type <code>T</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Meta function</th>
+<th>Usage</th>
+<th>Default meta function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Constructor</td>
+<td>Constructs one object of type <code>T</code>.</td>
+<td>Calls constructors for all properties of <code>T</code>.</td>
+</tr>
+<tr>
+<td>Destructor</td>
+<td>Destructs one object of type <code>T</code>.</td>
+<td>Calls destructors for all properties of <code>T</code>.</td>
+</tr>
+<tr>
+<td>Copy constructor</td>
+<td>Constructs one object of type <code>T</code> by coping data from another object of type <code>T</code>.</td>
+<td>Calls copy constructors for all properties of <code>T</code>.</td>
+</tr>
+<tr>
+<td>Move constructor</td>
+<td>Constructs one object of type <code>T</code> by moving data from another object of type <code>T</code>.</td>
+<td>Calls move constructors for all properties of <code>T</code>.</td>
+</tr>
+<tr>
+<td>Copy assignment operator</td>
+<td>Assigns data of one object of type <code>T</code> by coping data from another object of type <code>T</code>.</td>
+<td>Calls copy assignment operator for all properties of <code>T</code>.</td>
+</tr>
+<tr>
+<td>Move assignment operator</td>
+<td>Assigns data of one object of type <code>T</code> by moving data from another object of type <code>T</code>.</td>
+<td>Calls move assignment operator for all properties of <code>T</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Note that once the user-defined meta function is provided, the corresponding default meta function will not be called.</p>
+<h3 id="enumeration-type">Enumeration type</h3>
+<p>An enumeration type defines a group of options. Every enumeration have one integral underlying type, and every option of the enumeration is mapped to one specific value of that underlying type. Different options in the same enumeration must have different mapped values.</p>
+<p>Luna SDK supports <em>multiple enumeration type</em>, which enables the user to select multiple options instead of only one as the value of the enumeration. In such case, every option will take one bit of the underlying integral type, and the enumeration value is stored by bitwise OR combination of selected options.</p>
+<h3 id="generic-structure-type-and-generic-structure-instanced-type">Generic structure type and generic structure instanced type</h3>
+<p>Generic structure type represents one structure type with generic type parameters, such as <code>Vector&lt;T&gt;</code>. The number of generic type parameters can be uncertain, like <code>Tuple&lt;T1, T2, ...&gt;</code>.</p>
+<p>Generic structure types cannot be used directly, they must be instantiated to a <em>generic structure instanced type</em> by calling <code>get_generic_instanced_type</code>. The generic instantiation process is happened at run time, every generic instanced type with one particular set of generic structure type and generic type parameters will be instantiated only once, and the instantiated type will be reused. One generic structure instanced type can be used just as one normal structure type.</p>
+<h2 id="registering-structure-type">Registering structure type</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Reflection.hpp&gt;
+</code></pre>
+<p>There are two methods to register one structure type. The first method is simpler and can be used for most cases, the second method is non-intrusive can be used if the structure is defined in another module or third-party library and cannot be changed directly.</p>
+<h3 id="the-first-method">The first method</h3>
+<p>The first method is to insert one <code>lustruct</code> macro in your structure definition, specifying the name and GUID of the structure.</p>
+<pre><code class="language-c++">struct SpotLight
+{
+    lustruct(&quot;SpotLight&quot;, &quot;{2BB45396-E0E3-433E-8794-49BEE8BD1BB5}&quot;);
+    Float3 intensity = { 0.5f, 0.5f, 0.5f };
+    f32 intensity_multiplier = 1.0f;
+    f32 attenuation_power = 1.0f;
+    f32 spot_power = 64.0f;
+};
+</code></pre>
+<p>Then you can call <code>register_struct_type&lt;T&gt;</code> to register the type. The properties of the type can be specified quickly using <code>luproperty</code> macro:</p>
+<pre><code class="language-c++">register_struct_type&lt;SpotLight&gt;({
+    luproperty(SpotLight, Float3, intensity),
+    luproperty(SpotLight, f32, intensity_multiplier),
+    luproperty(SpotLight, f32, attenuation_power),
+    luproperty(SpotLight, f32, spot_power)
+    });
+</code></pre>
+<h3 id="the-second-method">The second method</h3>
+<p>In the second method, the user should fill one <code>StructureTypeDesc</code> structure, then call <code>register_struct_type</code> to register the type. For example, the following code registers <code>Name</code> type into the system.</p>
+<pre><code class="language-c++">StructureTypeDesc desc;
+desc.guid = Guid(&quot;{E5EEA2C6-2D51-4658-9B3F-C141DDE983D8}&quot;);
+desc.name = &quot;Name&quot;;
+desc.alias = &quot;&quot;;
+desc.size = sizeof(Name);
+desc.alignment = alignof(Name);
+desc.base_type = nullptr;
+desc.ctor = nullptr;
+desc.dtor = default_dtor&lt;Name&gt;;
+desc.copy_ctor = default_copy_ctor&lt;Name&gt;;
+desc.move_ctor = default_move_ctor&lt;Name&gt;;
+desc.copy_assign = default_copy_assign&lt;Name&gt;;
+desc.move_assign = default_move_assign&lt;Name&gt;;
+desc.trivially_relocatable = true;
+typeinfo_t type = register_struct_type(desc);
+</code></pre>
+<p>After the type is registered, the user should also implement <code>typeof_t&lt;T&gt;</code> structure for the type like so:</p>
+<pre><code class="language-c++">// In .hpp file:
+LUNA_MYMODULE_API typeinfo_t get_my_type();
+template &lt;&gt; struct typeof_t&lt;MyType&gt;
+{
+    typeinfo_t operator()() const { return get_my_type(); }
+};
+
+// In .cpp file:
+typeinfo_t g_my_type;
+LUNA_XXX_API typeinfo_t get_my_type() { return g_my_type; }
+</code></pre>
+<h2 id="registering-enumeration-type">Registering enumeration type</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Reflection.hpp&gt;
+</code></pre>
+<p>The user can use <code>register_enum_type</code> function and <code>luoption</code> macro to register one enumeration type. For example, if we have the following type:</p>
+<pre><code class="language-c++">enum class CameraType : u32
+{
+    perspective = 0,
+    orthographic = 1,
+};
+</code></pre>
+<p>The registration code will be:</p>
+<pre><code class="language-c++">register_enum_type&lt;CameraType&gt;({
+    luoption(CameraType, perspective),
+    luoption(CameraType, orthographic)
+});
+</code></pre>
+<p>Since enumeration types cannot include static variables, the GUID of the enumeration type must be declared separately using <code>luenum</code> like so:</p>
+<pre><code class="language-c++">luenum(CameraType, &quot;CameraType&quot;, &quot;{920C8F7F-7CEC-4776-BF01-1F63A4C51D9F}&quot;);
+</code></pre>
+<p><code>luenum</code> must be defined directly in <code>Luna</code> namespace, not the sub-namespace of <code>Luna</code> namespace.</p>
+<h2 id="registering-generic-structure-type">Registering generic structure type</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Reflection.hpp&gt;
+</code></pre>
+<p>Generic structure type is not actually a real type, but a <em>type generator</em> for generic structure instance types. To register one generic structure type, the user should fill one <code>GenericStructureTypeDesc</code> structure, and call <code>register_generic_struct_type</code> to register the generic structure type.</p>
+<p>The most important property of <code>GenericStructureTypeDesc</code> is <code>instantiate</code>, which is a callback function that generates one generic structure instance type based on type arguments provided:</p>
+<pre><code class="language-c++">GenericStructureInstantiateInfo instantiate(typeinfo_t generic_type, const typeinfo_t* generic_arguments, usize num_generic_arguments)
+</code></pre>
+<p>This function should returns one <code>GenericStructureInstantiateInfo</code> structure, which is similar to <code>StructureTypeDesc</code> and describes one generic structure instanced type. The generic structure instanced type is then registered to the system can will be returned by <code>get_generic_instanced_type</code>. The instantiation function never fails, if the instantiation function cannot handle the input type arguments, it should call <code>lupanic_msg</code> to crash the program.</p>
+<p>The base generic structure type and all its instanced types will have the same name and GUID, but each of them will have a unique <code>typeinfo_t</code> handle. You can get the type arguments of one generic structure instanced type by calling <code>count_struct_generic_arguments</code> and <code>get_struct_generic_argument</code>.</p>
+<h3 id="implementing-typeof_tt-for-generic-structure-types">Implementing <code>typeof_t&lt;T&gt;</code> for generic structure types</h3>
+<p>The user can implement <code>typeof_t&lt;T&gt;</code> using C++ partial template specification like so:</p>
+<pre><code class="language-c++">LUNA_RUNTIME_API typeinfo_t vector_type(); // Returns the generic structure type.
+template &lt;typename _Ty&gt; struct typeof_t&lt;Vector&lt;_Ty&gt;&gt;
+{
+    typeinfo_t operator()() const { return get_generic_instanced_type(vector_type(), { typeof&lt;_Ty&gt;() }); } // Returns the generic structure instanced type.
+};
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../variant/" class="btn btn-neutral float-left" title="Variant"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../variant/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
