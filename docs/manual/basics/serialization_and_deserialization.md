@@ -6,7 +6,7 @@
 
 Luna SDK comes with a built-in serialization and deserialization library that can serialize objects of serializable types to [`Variant`](variant.md) objects, with can then be encoded to byte streams using JSON or other text and binary formats. One type must meets the following requirements to be a serializable type:
 
-1. This type has been registered to the [type system](type_reflection.md).
+1. This type has been registered to the [type system](type_system.md).
 2. This type is marked as serializable by calling `set_serializable`.
 
 `set_serializable` accepts one optional `SerializableTypeDesc` structure, which let the user set serialization and deserialization callback functions for the type. If this structure is not provided, the default serialization and deserialization procedure will be used. For generic structure types, `set_serializable` will be applied to all instanced types of that generic type. The user can also call `set_serializable` on one specific instanced type to override the serialization and deserialization behavior set on the generic type.

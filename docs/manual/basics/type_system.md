@@ -1,4 +1,4 @@
-# Type reflection
+# Type system
 
 Type reflection is the ability of a program to introspect type name, size, layout and other information in the program. Such ability can be used to write code that can operate on different types. Luna SDK comes with a run-time type reflection system that tracks most types used in the framework, it can also be extended to accept user-defined new types, including enumeration types, structure types and generic structure types.
 
@@ -65,6 +65,10 @@ Structure types are used to represent a set of data of different types. Structur
 
 Note that once the user-defined meta function is provided, the corresponding default meta function will not be called.
 
+#### Structure inheritance
+
+One structure type can inherit from another structure type. The structure type being inherited from is called *base type* or *base structure*, and the structure type derived from the base type is called *derived type* or *derived structure*. Every structure type can only have at most one base type, but may have multiple derived types.
+
 ### Enumeration type
 
 An enumeration type defines a group of options. Every enumeration have one integral underlying type, and every option of the enumeration is mapped to one specific value of that underlying type. Different options in the same enumeration must have different mapped values.
@@ -110,6 +114,8 @@ register_struct_type<SpotLight>({
 	luproperty(SpotLight, f32, spot_power)
 	});
 ```
+
+If the structure type has base type, the base type should be specified as the second argument, after the property list.
 
 ### The second method
 

@@ -17,5 +17,6 @@ nav:
             - Memory Management: manual/basics/memory_management.md
             - Modules: manual/basics/modules.md
             - Variant: manual/basics/variant.md
-            - Type Reflection: manual/basics/type_reflection.md
+            - Type System: manual/basics/type_system.md
             - Serialization and Deserialization: manual/basics/serialization_and_deserialization.md
+            - Boxed Object: manual/basics/boxed_object.md
