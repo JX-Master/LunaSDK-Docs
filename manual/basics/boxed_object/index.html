@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/boxed_object/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Boxed Object - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Boxed Object";
+        var mkdocs_page_input_path = "manual\\basics\\boxed_object.md";
+        var mkdocs_page_url = "/manual/basics/boxed_object/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Basics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../variant/">Variant</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Boxed Object</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#registering-boxed-type">Registering boxed type</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#managing-boxed-object-manually">Managing boxed object manually</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#managing-boxed-object-automatically">Managing boxed object automatically</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#run-time-type-identification">Run-time type identification</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Manual &raquo;</li>
+          <li>Basics &raquo;</li>
+      <li>Boxed Object</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="boxed-object">Boxed object</h1>
+<p>Boxed objects are dynamic allocated objects managed by Luna SDK, so that they have the following features:</p>
+<ol>
+<li>The lifetime of boxed objects are managed by reference-counting.</li>
+<li>Real-time type identification (RTTI) can be used to check the type of boxed objects, and can be used to perform dynamic type casting safely.</li>
+<li>Boxed objects can implement <a href="interface.md">interfaces</a>.</li>
+</ol>
+<p>To implement such features, every boxed object will have one <em>Object Header</em> allocated along with the object data, and is used to record the object metadata like type and reference counter. Boxed objects should also be property referred using smart pointers (<code>Ref&lt;T&gt;</code> for typed boxed object and <code>ObjRef</code> for type-less boxed object) so that their reference counter can be properly maintained.</p>
+<h2 id="registering-boxed-type">Registering boxed type</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Object.hpp&gt;
+</code></pre>
+<p>One type must be registered to the <a href="../type_system/">type system</a> to be used for creating boxed objects. If you want to register one type solely for creating boxed objects, you may use <code>register_boxed_type</code> instead of calling <code>register_struct_type</code> directly.</p>
+<h2 id="managing-boxed-object-manually">Managing boxed object manually</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Object.hpp&gt;
+</code></pre>
+<p>Use <code>object_alloc</code> to allocate one boxed object. This call will allocate memory for the boxed object and the object header, initialize the object header, and returns one pointer to the allocated boxed object as <code>object_t</code>, which is an aliasing type of <code>void*</code>. The return pointer can be reinterpreted to the pointer of the required type directly, and it should be passed to all other boxed object management APIs. The object returned by <code>object_alloc</code> is not initialized, the user should then call constructors of the specified type manually to construct the object.</p>
+<p>Boxed objects implement both strong reference counting and weak reference counting. Use <code>object_retain</code>, <code>object_release</code> to increase and decrease the strong reference counter, and <code>object_retain_weak</code>, <code>object_release_weak</code> to increase and decrease the weak reference counter. One object will have <code>1</code> strong reference and <code>0</code> weak reference when allocated. If the strong reference counter value drops to <code>0</code>, the destructor of the object will be called. If the weak reference counter is not <code>0</code> when the object is being destructed, the object will be marked as <em>expired</em>, you can call <code>object_expired</code> to check whether one object is expired. One expired object cannot be used, the only valid operation for it is to release its weak references. The memory for one boxed object will be freed if both the strong and weak reference counter values drop to <code>0</code>.</p>
+<h2 id="managing-boxed-object-automatically">Managing boxed object automatically</h2>
+<pre><code>#include &lt;Runtime/Ref.hpp&gt;
+</code></pre>
+<p>In most of the time, you don't need to manage boxed object manually. You can use <code>new_object</code> to create one boxed object directly like <code>memnew</code>, this function allocates one boxed object, and initializes it using user-provided arguments. <code>new_object</code> returns one <code>Ref&lt;T&gt;</code> smart pointer, which represents one strong reference to the object. There are four smart pointers provided by Luna SDK:</p>
+<ul>
+<li><code>Ref&lt;T&gt;</code> for strong references to typed boxed objects.</li>
+<li><code>ObjRef</code> for strong references to type-less boxed objects, which can refer to any boxed object.</li>
+<li><code>WeakRef&lt;T&gt;</code> for weak references to typed boxed objects.</li>
+<li><code>WeakObjRef</code> for weak references to type-less boxed objects.</li>
+</ul>
+<p>All smart pointers decrease the reference counter value automatically when being destructed, so the user does not need to handle this manually. Coping one smart pointer object only increase the reference counter value of the object, the object itself is not copied. You can create one weak reference smart pointer object by casting from one strong reference smart pointer directly, but you should call <code>pin</code> on one weak reference smart pointer to fetch one strong reference smart pointer from it, which will return <code>nullptr</code> if failed. The weak smart pointer will be reset to <code>nullptr</code> automatically when the object is expired and the user calls <code>get</code> on the smart pointer.</p>
+<h2 id="run-time-type-identification">Run-time type identification</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Object.hpp&gt;
+</code></pre>
+<p>Use <code>get_object_type</code> on a boxed object to fetch the type of the object represented by <code>typeinfo_t</code>. You can create boxed objects of any real type, including structure type, primitive type, enumeration type and generic structure instanced type.</p>
+<p>Use <code>object_is_type</code> to check whether the given object is the specified type, or derived types of the specified type if the type is a structure type.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../serialization_and_deserialization/" class="btn btn-neutral float-left" title="Serialization and Deserialization"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../serialization_and_deserialization/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

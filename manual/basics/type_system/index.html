@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/type_reflection/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/type_system/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>Type Reflection - Luna SDK Docs</title>
+    <title>Type System - Luna SDK Docs</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Type Reflection";
-        var mkdocs_page_input_path = "manual\\basics\\type_reflection.md";
-        var mkdocs_page_url = "/manual/basics/type_reflection/";
+        var mkdocs_page_name = "Type System";
+        var mkdocs_page_input_path = "manual\\basics\\type_system.md";
+        var mkdocs_page_url = "/manual/basics/type_system/";
       </script>
     
     <script src="../../../js/jquery-3.6.0.min.js" defer></script>
@@ -72,7 +72,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../variant/">Variant</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Type Reflection</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Type System</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#type-object">Type object</a>
     </li>
@@ -112,6 +112,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../serialization_and_deserialization/">Serialization and Deserialization</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../boxed_object/">Boxed Object</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -131,7 +133,7 @@
     <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
-      <li>Type Reflection</li>
+      <li>Type System</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -140,7 +142,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="type-reflection">Type reflection</h1>
+                <h1 id="type-system">Type system</h1>
 <p>Type reflection is the ability of a program to introspect type name, size, layout and other information in the program. Such ability can be used to write code that can operate on different types. Luna SDK comes with a run-time type reflection system that tracks most types used in the framework, it can also be extended to accept user-defined new types, including enumeration types, structure types and generic structure types.</p>
 <h2 id="type-object">Type object</h2>
 <pre><code class="language-c++">#include &lt;Runtime/TypeInfo.hpp&gt;
@@ -214,6 +216,8 @@
 </tbody>
 </table>
 <p>Note that once the user-defined meta function is provided, the corresponding default meta function will not be called.</p>
+<h4 id="structure-inheritance">Structure inheritance</h4>
+<p>One structure type can inherit from another structure type. The structure type being inherited from is called <em>base type</em> or <em>base structure</em>, and the structure type derived from the base type is called <em>derived type</em> or <em>derived structure</em>. Every structure type can only have at most one base type, but may have multiple derived types.</p>
 <h3 id="enumeration-type">Enumeration type</h3>
 <p>An enumeration type defines a group of options. Every enumeration have one integral underlying type, and every option of the enumeration is mapped to one specific value of that underlying type. Different options in the same enumeration must have different mapped values.</p>
 <p>Luna SDK supports <em>multiple enumeration type</em>, which enables the user to select multiple options instead of only one as the value of the enumeration. In such case, every option will take one bit of the underlying integral type, and the enumeration value is stored by bitwise OR combination of selected options.</p>
@@ -243,6 +247,7 @@
     luproperty(SpotLight, f32, spot_power)
     });
 </code></pre>
+<p>If the structure type has base type, the base type should be specified as the second argument, after the property list.</p>
 <h3 id="the-second-method">The second method</h3>
 <p>In the second method, the user should fill one <code>StructureTypeDesc</code> structure, then call <code>register_struct_type</code> to register the type. For example, the following code registers <code>Name</code> type into the system.</p>
 <pre><code class="language-c++">StructureTypeDesc desc;

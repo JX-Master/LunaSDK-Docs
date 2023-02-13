@@ -2,67 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://www.lunasdk.org/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.lunasdk.org/manual/basics/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.lunasdk.org/manual/basics/basic_types/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.lunasdk.org/manual/basics/boxed_object/</loc>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.lunasdk.org/manual/basics/coding_convention/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.lunasdk.org/manual/basics/initialization_and_shutdown/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.lunasdk.org/manual/basics/memory_management/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.lunasdk.org/manual/basics/modules/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.lunasdk.org/manual/basics/serialization_and_deserialization/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.lunasdk.org/manual/basics/strings/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://www.lunasdk.org/manual/basics/type_reflection/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <loc>https://www.lunasdk.org/manual/basics/type_system/</loc>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.lunasdk.org/manual/basics/variant/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.lunasdk.org/manual/introduction/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.lunasdk.org/manual/introduction/getting_started/</loc>
-         <lastmod>2023-02-09</lastmod>
+         <lastmod>2023-02-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
