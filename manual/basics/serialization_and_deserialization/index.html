@@ -70,7 +70,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../modules/">Modules</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../variant/">Variant</a>
+                <li class="toctree-l2"><a class="reference internal" href="../variants/">Variants</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../type_system/">Type System</a>
                 </li>
@@ -80,7 +80,9 @@
     </li>
     </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../boxed_object/">Boxed Object</a>
+                <li class="toctree-l2"><a class="reference internal" href="../boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../interfaces/">Interfaces</a>
                 </li>
     </ul>
                   </li>
@@ -113,7 +115,7 @@
                 <h1 id="serialization-and-deserialization">Serialization and Deserialization</h1>
 <pre><code class="language-c++">#include &lt;Runtime/Serialization.hpp&gt;
 </code></pre>
-<p>Luna SDK comes with a built-in serialization and deserialization library that can serialize objects of serializable types to <a href="../variant/"><code>Variant</code></a> objects, with can then be encoded to byte streams using JSON or other text and binary formats. One type must meets the following requirements to be a serializable type:</p>
+<p>Luna SDK comes with a built-in serialization and deserialization library that can serialize objects of serializable types to <a href="../variants/"><code>Variant</code></a> objects, with can then be encoded to byte streams using JSON or other text and binary formats. One type must meets the following requirements to be a serializable type:</p>
 <ol>
 <li>This type has been registered to the <a href="../type_system/">type system</a>.</li>
 <li>This type is marked as serializable by calling <code>set_serializable</code>.</li>
@@ -138,7 +140,7 @@
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../type_system/" class="btn btn-neutral float-left" title="Type System"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../boxed_object/" class="btn btn-neutral float-right" title="Boxed Object">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../boxed_objects/" class="btn btn-neutral float-right" title="Boxed Objects">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -164,7 +166,7 @@
       <span><a href="../type_system/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../boxed_object/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../boxed_objects/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

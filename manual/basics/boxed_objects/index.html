@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/boxed_object/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/boxed_objects/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>Boxed Object - Luna SDK Docs</title>
+    <title>Boxed Objects - Luna SDK Docs</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Boxed Object";
-        var mkdocs_page_input_path = "manual\\basics\\boxed_object.md";
-        var mkdocs_page_url = "/manual/basics/boxed_object/";
+        var mkdocs_page_name = "Boxed Objects";
+        var mkdocs_page_input_path = "manual\\basics\\boxed_objects.md";
+        var mkdocs_page_url = "/manual/basics/boxed_objects/";
       </script>
     
     <script src="../../../js/jquery-3.6.0.min.js" defer></script>
@@ -70,13 +70,13 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../modules/">Modules</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../variant/">Variant</a>
+                <li class="toctree-l2"><a class="reference internal" href="../variants/">Variants</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../type_system/">Type System</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../serialization_and_deserialization/">Serialization and Deserialization</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Boxed Object</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Boxed Objects</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#registering-boxed-type">Registering boxed type</a>
     </li>
@@ -84,9 +84,11 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#managing-boxed-object-automatically">Managing boxed object automatically</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#run-time-type-identification">Run-time type identification</a>
+    <li class="toctree-l3"><a class="reference internal" href="#run-time-type-identification-and-dynamic-casting">Run-time type identification and dynamic casting</a>
     </li>
     </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../interfaces/">Interfaces</a>
                 </li>
     </ul>
                   </li>
@@ -107,7 +109,7 @@
     <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
-      <li>Boxed Object</li>
+      <li>Boxed Objects</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -116,12 +118,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="boxed-object">Boxed object</h1>
+                <h1 id="boxed-objects">Boxed objects</h1>
 <p>Boxed objects are dynamic allocated objects managed by Luna SDK, so that they have the following features:</p>
 <ol>
 <li>The lifetime of boxed objects are managed by reference-counting.</li>
 <li>Real-time type identification (RTTI) can be used to check the type of boxed objects, and can be used to perform dynamic type casting safely.</li>
-<li>Boxed objects can implement <a href="interface.md">interfaces</a>.</li>
+<li>Boxed objects can implement <a href="../interfaces/">interfaces</a>.</li>
 </ol>
 <p>To implement such features, every boxed object will have one <em>Object Header</em> allocated along with the object data, and is used to record the object metadata like type and reference counter. Boxed objects should also be property referred using smart pointers (<code>Ref&lt;T&gt;</code> for typed boxed object and <code>ObjRef</code> for type-less boxed object) so that their reference counter can be properly maintained.</p>
 <h2 id="registering-boxed-type">Registering boxed type</h2>
@@ -144,16 +146,19 @@
 <li><code>WeakObjRef</code> for weak references to type-less boxed objects.</li>
 </ul>
 <p>All smart pointers decrease the reference counter value automatically when being destructed, so the user does not need to handle this manually. Coping one smart pointer object only increase the reference counter value of the object, the object itself is not copied. You can create one weak reference smart pointer object by casting from one strong reference smart pointer directly, but you should call <code>pin</code> on one weak reference smart pointer to fetch one strong reference smart pointer from it, which will return <code>nullptr</code> if failed. The weak smart pointer will be reset to <code>nullptr</code> automatically when the object is expired and the user calls <code>get</code> on the smart pointer.</p>
-<h2 id="run-time-type-identification">Run-time type identification</h2>
+<h2 id="run-time-type-identification-and-dynamic-casting">Run-time type identification and dynamic casting</h2>
 <pre><code class="language-c++">#include &lt;Runtime/Object.hpp&gt;
 </code></pre>
-<p>Use <code>get_object_type</code> on a boxed object to fetch the type of the object represented by <code>typeinfo_t</code>. You can create boxed objects of any real type, including structure type, primitive type, enumeration type and generic structure instanced type.</p>
-<p>Use <code>object_is_type</code> to check whether the given object is the specified type, or derived types of the specified type if the type is a structure type.</p>
+<p>Luna SDK uses <code>object_t</code> to represent one type-less pointer to one boxed object. It is not safe to cast one <code>typeinfo_t</code> to one concrete typed pointer without checking whether the object type conforms to the pointer type specified. Luna SDK provides run-time type identification (RTTI) for all boxed objects to perform type casting safely at run time.</p>
+<p>Use <code>get_object_type</code> on <code>object_t</code> to fetch the real type of the object. This function returns one <code>typeinfo_t</code> directly, so it is suitable if you want to inspect the type to perform some special operations. </p>
+<p>Use <code>object_is_type</code> to check whether the given object conforms to the specified type, that is, either the object is the specified type, or the object is one type that derives from the specified type. Use this function if you want to perform dynamic casting safely like <code>dynamic_cast</code> (which cannot be used in Luna SDK).</p>
+<p>Any typed pointer to one boxed object can be casted to <code>object_t</code> without any run-time cost.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../serialization_and_deserialization/" class="btn btn-neutral float-left" title="Serialization and Deserialization"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../interfaces/" class="btn btn-neutral float-right" title="Interfaces">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -178,6 +183,8 @@
     
       <span><a href="../serialization_and_deserialization/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../interfaces/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

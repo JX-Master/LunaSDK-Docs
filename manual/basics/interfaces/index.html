@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/interfaces/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Interfaces - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Interfaces";
+        var mkdocs_page_input_path = "manual\\basics\\interfaces.md";
+        var mkdocs_page_url = "/manual/basics/interfaces/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Basics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Interfaces</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#declaring-interfaces">Declaring interfaces</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementing-interfaces">Implementing interfaces</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interface-conversion">Interface conversion</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#casting-typed-object-pointers-to-interface-pointers">Casting typed object pointers to interface pointers</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#casting-object_t-to-interface-pointers">Casting object_t to interface pointers</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#casting-interface-pointers-to-object_t">Casting interface pointers to object_t</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#smart-pointer-for-interface-types">Smart pointer for interface types</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Manual &raquo;</li>
+          <li>Basics &raquo;</li>
+      <li>Interfaces</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="interfaces">Interfaces</h1>
+<p>Interfaces are C++ structures that only have pure virtual functions. Luna SDK provides most its functionalities through interfaces, so that the implementation detail can be encapsulated and may be different on different platforms.</p>
+<h2 id="declaring-interfaces">Declaring interfaces</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Interface.hpp&gt;
+</code></pre>
+<p>To declare one interface, declare one structure with <code>I</code> name prefix, and virtually inherit from <code>Interface</code> structure. Every interface should have one GUID, which can be declared using <code>luiid</code> macro. Methods of the interface is represented by pure virtual functions.</p>
+<pre><code class="language-c++">struct IStream : virtual Interface
+{
+    luiid(&quot;{0345f636-ca5c-4b4d-8416-29834377d239}&quot;);
+
+    virtual RV read(void* buffer, usize size, usize* read_bytes = nullptr) = 0;
+    virtual RV write(const void* buffer, usize size, usize* write_bytes = nullptr) = 0;
+};
+</code></pre>
+<p>One interface can inherit <code>Interface</code> directly, or it can inherit multiple other interfaces. The behavior is correctly defined since virtual inheritance is used.</p>
+<pre><code class="language-c++">struct ISeekableStream : virtual IStream
+{
+    luiid(&quot;{42F66080-C388-4EE0-9C4D-1EEC1B82F692}&quot;);
+
+    virtual R&lt;u64&gt; tell() = 0;
+    virtual RV seek(i64 offset, SeekMode mode) = 0;
+    virtual u64 get_size() = 0;
+    virtual RV set_size(u64 sz) = 0;
+};
+</code></pre>
+<h2 id="implementing-interfaces">Implementing interfaces</h2>
+<p>Interfaces can be implemented by declaring structures that inherit from them.</p>
+<pre><code class="language-c++">struct WindowsFile : ISeekableStream
+{
+    lustruct(&quot;WindowsFile&quot;, &quot;{95a2e5b2-d48a-4f19-bfb8-22c273c0ad4b}&quot;);
+    luiimpl();
+
+    HANDLE m_file;
+    virtual RV read(void* buffer, usize size, usize* read_bytes) override;
+    virtual RV write(const void* buffer, usize size, usize* write_bytes) override;
+    virtual R&lt;u64&gt; tell() override;
+    virtual RV seek(i64 offset, SeekMode mode) override;
+    virtual u64 get_size() override;
+    virtual RV set_size(u64 sz) override;
+};
+</code></pre>
+<p>Note that interfaces only work for <a href="../boxed_objects/">boxed objects</a>. So the structure type that implements the interface should be registered to the type system either by <code>register_boxed_type</code> or by <code>register_struct_type</code>, and the object that implements the interface should only be created as boxed objects using <code>new_object</code>. Luna SDK also requires you to register interface implementation information to the system, so the registration code for the type above may looks like this:</p>
+<pre><code class="language-c++">register_boxed_type&lt;WindowsFile&gt;();
+impl_interface_for_type&lt;WindowsFile, ISeekableStream, IStream&gt;();
+</code></pre>
+<p>You can always use <code>is_interface_implemented_by_type</code> to check whether one interface is implemented by the specified type.</p>
+<h2 id="interface-conversion">Interface conversion</h2>
+<p>Besides the dynamic casting functionality provided by boxed objects, Luna SDK provides additional functionalities for casting between interface pointers and boxed object pointers safely at run time.</p>
+<h3 id="casting-typed-object-pointers-to-interface-pointers">Casting typed object pointers to interface pointers</h3>
+<p>Casting typed object pointers to interface pointers can be done directly using <code>static_cast</code> or C-style pointer casting, since the boxed type inherits from the interface type by declaration.</p>
+<h3 id="casting-object_t-to-interface-pointers">Casting <code>object_t</code> to interface pointers</h3>
+<p>If the underlying type of the interface is not exposed to the user, the user can use <code>query_interface</code> to fetch one pointer interface from <code>object_t</code>. This function will check whether the specified interface is implemented by the type of the specified object, and returns <code>nullptr</code> if not. The returned pointer can be casting to the specified interface type safely by using <code>static_cast</code> or C-style pointer casting.</p>
+<h3 id="casting-interface-pointers-to-object_t">Casting interface pointers to <code>object_t</code></h3>
+<p>Casting interface pointers to <code>object_t</code>  can be done by calling <code>get_object</code> function of the interface. This function is declared in <code>Interface</code> structure, and is implemented by <code>luiimpl</code> macro, so all interfaces support this function. The returned type of <code>get_object</code> is <code>object_t</code>, which is a type-less pointer, the user can then casting the pointer to one typed pointer using <a href="../boxed_objects/#run-time-type-identification-and-dynamic-casting">dynamic casting</a>.</p>
+<h2 id="smart-pointer-for-interface-types">Smart pointer for interface types</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Ref.hpp&gt;
+</code></pre>
+<p><code>Ref&lt;T&gt;</code> and <code>WeakRef&lt;T&gt;</code> support interface types. You can use <code>Ref&lt;IStream&gt;</code> to refer one boxed object that comforms to <code>IStream</code> interface directly. <code>Ref&lt;T&gt;</code> handles type conversions automatically, so you can assign <code>Ref</code> of any type to each other, and the destination pointer will be set to <code>nullptr</code> if type casting fails.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../boxed_objects/" class="btn btn-neutral float-left" title="Boxed Objects"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../boxed_objects/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
