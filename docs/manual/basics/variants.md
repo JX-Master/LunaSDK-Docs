@@ -1,4 +1,4 @@
-# Variant
+# Variants
 
 ```
 #include <Runtime/Variant.hpp>

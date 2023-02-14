@@ -1,10 +1,10 @@
-# Boxed object
+# Boxed objects
 
 Boxed objects are dynamic allocated objects managed by Luna SDK, so that they have the following features:
 
 1. The lifetime of boxed objects are managed by reference-counting.
 2. Real-time type identification (RTTI) can be used to check the type of boxed objects, and can be used to perform dynamic type casting safely.
-3. Boxed objects can implement [interfaces](interface.md).
+3. Boxed objects can implement [interfaces](interfaces.md).
 
 To implement such features, every boxed object will have one *Object Header* allocated along with the object data, and is used to record the object metadata like type and reference counter. Boxed objects should also be property referred using smart pointers (`Ref<T>` for typed boxed object and `ObjRef` for type-less boxed object) so that their reference counter can be properly maintained.
 
@@ -41,12 +41,16 @@ In most of the time, you don't need to manage boxed object manually. You can use
 
 All smart pointers decrease the reference counter value automatically when being destructed, so the user does not need to handle this manually. Coping one smart pointer object only increase the reference counter value of the object, the object itself is not copied. You can create one weak reference smart pointer object by casting from one strong reference smart pointer directly, but you should call `pin` on one weak reference smart pointer to fetch one strong reference smart pointer from it, which will return `nullptr` if failed. The weak smart pointer will be reset to `nullptr` automatically when the object is expired and the user calls `get` on the smart pointer.
 
-## Run-time type identification
+## Run-time type identification and dynamic casting
 
 ```c++
 #include <Runtime/Object.hpp>
 ```
 
-Use `get_object_type` on a boxed object to fetch the type of the object represented by `typeinfo_t`. You can create boxed objects of any real type, including structure type, primitive type, enumeration type and generic structure instanced type.
+Luna SDK uses `object_t` to represent one type-less pointer to one boxed object. It is not safe to cast one `typeinfo_t` to one concrete typed pointer without checking whether the object type conforms to the pointer type specified. Luna SDK provides run-time type identification (RTTI) for all boxed objects to perform type casting safely at run time.
 
-Use `object_is_type` to check whether the given object is the specified type, or derived types of the specified type if the type is a structure type.
+Use `get_object_type` on `object_t` to fetch the real type of the object. This function returns one `typeinfo_t` directly, so it is suitable if you want to inspect the type to perform some special operations. 
+
+Use `object_is_type` to check whether the given object conforms to the specified type, that is, either the object is the specified type, or the object is one type that derives from the specified type. Use this function if you want to perform dynamic casting safely like `dynamic_cast` (which cannot be used in Luna SDK).
+
+Any typed pointer to one boxed object can be casted to `object_t` without any run-time cost.

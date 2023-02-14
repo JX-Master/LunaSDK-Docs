@@ -4,7 +4,7 @@
 #include <Runtime/Serialization.hpp>
 ```
 
-Luna SDK comes with a built-in serialization and deserialization library that can serialize objects of serializable types to [`Variant`](variant.md) objects, with can then be encoded to byte streams using JSON or other text and binary formats. One type must meets the following requirements to be a serializable type:
+Luna SDK comes with a built-in serialization and deserialization library that can serialize objects of serializable types to [`Variant`](variants.md) objects, with can then be encoded to byte streams using JSON or other text and binary formats. One type must meets the following requirements to be a serializable type:
 
 1. This type has been registered to the [type system](type_system.md).
 2. This type is marked as serializable by calling `set_serializable`.
