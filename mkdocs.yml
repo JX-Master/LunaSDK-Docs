@@ -21,3 +21,4 @@ nav:
             - Serialization and Deserialization: manual/basics/serialization_and_deserialization.md
             - Boxed Objects: manual/basics/boxed_objects.md
             - Interfaces: manual/basics/interfaces.md
+            - Error Handling: manual/basics/error_handling.md
