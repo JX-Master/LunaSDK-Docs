@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/error_handling/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Error Handling - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Error Handling";
+        var mkdocs_page_input_path = "manual\\basics\\error_handling.md";
+        var mkdocs_page_url = "/manual/basics/error_handling/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Basics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Error Handling</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#error-code">Error code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#error-name-and-category">Error name and category</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#declaring-error-codes">Declaring error codes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#built-in-errors">Built-in errors</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#result-object">Result object</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#error-objects">Error objects</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#try-catch-macros-for-error-handling">Try-catch macros for error handling</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Manual &raquo;</li>
+          <li>Basics &raquo;</li>
+      <li>Error Handling</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="error-handling">Error Handling</h1>
+<p>Luna SDK does not use the exception mechanism provided by C++. Instead, it adopts a more light-weight error-handling mechanism by returning error codes. Compared to other error-code based solutions, Luna SDK manages error codes and the relationship between error codes, so the user can extend the error handling mechanism easily.</p>
+<h2 id="error-code">Error code</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Error.hpp&gt;
+</code></pre>
+<p><code>ErrCode</code> represents one error code, which is a machine-sized unsigned integer (<code>usize</code>). <code>ErrCode</code> is defined as a dedicated structure type to distinguish from normal return values, the actual error code value can be fetched by <code>code</code> property of <code>ErrCode</code>. We use error code <code>0</code> to represent a successful operation (no error), and any non-zero error code value represents one error.</p>
+<p>The error code value is not defined directly. Instead, the user should call <code>get_error_code_by_name</code> to fetch the error code for one specific error. The error code is generated by the system on the first call to <code>get_error_code_by_name</code>, and is cached and returned directly on succeeding calls to <code>get_error_code_by_name</code> with the same arguments. The error code for the same error will change in different processes, so do not store the error code directly, store its name and category (which will be explained in the following section) instead.</p>
+<h2 id="error-name-and-category">Error name and category</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Error.hpp&gt;
+</code></pre>
+<p>Every <code>ErrCode</code> is described by two properties: error name and error category, which is required when calling <code>get_error_code_by_name</code>, and can be fetched by <code>get_error_code_name</code> and <code>get_error_code_category</code>. Error name is a UTF-8 string that briefly describes the error, while error category is used to hold one set of error codes in the same domain. For example, the <code>Runtime</code> module of Luna SDK defines one error category called <code>BasicError</code>, which contains error codes like <code>bad_arguments</code>, <code>out_of_memory</code>, <code>not_supported</code>, etc. </p>
+<p>The error category is represented by <code>errcat_t</code>, and is identified by one UTF-8 name string. You can get <code>errcat_t</code> from its name by calling <code>get_error_category_by_name</code>, and get the name of one <code>errcat_t</code> by calling <code>get_error_category_name</code>. Error categories can also contain sub-categories, for example, <code>BasicError</code> may contains one <code>IOError</code> sub-category that contains all error codes related to IO errors. In such case, the error category name and sub-category name should both be specified for sub-categories, separated by double colons (<code>::</code>), like <code>BasicError::IOError</code>.</p>
+<p>You can call <code>get_all_error_codes_of_category</code> to get all error codes of one specific error category, and <code>get_all_error_subcategories_of_category</code> to get all error sub-categories of one specific error category.</p>
+<h2 id="declaring-error-codes">Declaring error codes</h2>
+<p>Error codes can be declared by specifying error categories as namespaces, and error codes as functions that return the corresponding <code>ErrCode</code> instances. All error categories should be declared directly in <code>Luna</code> namespace. Every error category should have one <code>errtype</code> function that returns the <code>errcat_t</code> instance of the specified error category.</p>
+<pre><code class="language-c++">namespace Luna
+{
+    namespace MyError
+    {
+        //! Gets the error category object of `MyError`.
+        LUNA_MYMODULE_API errcat_t errtype();
+
+        LUNA_MYMODULE_API ErrCode my_error_1();
+        LUNA_MYMODULE_API ErrCode my_error_2();
+        LUNA_MYMODULE_API ErrCode my_error_3();
+        //...
+        namespace MySubError
+        {
+            //! Gets the error category object of `MySubError`.
+            LUNA_MYMODULE_API errcat_t errtype();
+
+            LUNA_MYMODULE_API ErrCode my_error_4();
+            LUNA_MYMODULE_API ErrCode my_error_5();
+            //...
+        }
+    }
+}
+</code></pre>
+<p>When implementing such functions, you may use static local variables to prevent fetching the error code every time it is called:</p>
+<pre><code class="language-c++">namespace Luna
+{
+    namespace MyError
+    {
+        LUNA_MYMODULE_API errcat_t errtype()
+        {
+            static errcat_t e = get_error_category_by_name(&quot;MyError&quot;);
+            return e;
+        }
+        LUNA_MYMODULE_API ErrCode my_error_1();
+        {
+            static ErrCode e = get_error_code_by_name(&quot;MyError&quot;, &quot;my_error_1&quot;);
+            return e;
+        }
+        //...
+        namespace MySubError
+        {
+            LUNA_MYMODULE_API errcat_t errtype()
+            {
+                static errcat_t e = get_error_category_by_name(&quot;MyError::MySubError&quot;);
+                return e;
+            }
+            LUNA_MYMODULE_API ErrCode my_error_4()
+            {
+                 static ErrCode e = get_error_code_by_name(&quot;MyError::MySubError&quot;, &quot;my_error_4&quot;);
+                return e;
+            }
+            //...
+        }
+    }
+}
+</code></pre>
+<h2 id="built-in-errors">Built-in errors</h2>
+<p><code>Runtime/Error.hpp</code> contains a list of error codes that covers most common error types, like <code>bad_arguments</code>, <code>bad_platform_call</code>, <code>out_of_memory</code>, <code>not_found</code>, <code>already_exists</code>, etc. All these error codes are declared in <code>BasicError</code> error category, and can be used directly.</p>
+<p>Besides error codes in <code>BasicError</code> , some built-in modules of Luna SDK declare their own error codes. For example, <code>RHI</code> module declares <code>device_lost</code> in <code>RHIError</code> error category to indicate one graphic device removal error. You can check module documentations and interface files for error codes defined by such modules.</p>
+<h2 id="result-object">Result object</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Result.hpp&gt;
+</code></pre>
+<p>To represent one function that may throw errors, you should wrap the return type of the function with the result object type<code>R&lt;T&gt;</code> , which encapsulates the returned value of the function as well as one error code. The result object can be constructed by passing normal return values (which indicates a successful function call) or error codes (which indicates one error). If the result object is constructed by error, its result object will not be initialized.</p>
+<p>The following example shows how to declare and implement one function that may throw errors:</p>
+<pre><code class="language-c++">R&lt;u64&gt; get_file_size(File* file)
+{
+    u64 size;
+    BOOL succeeded = system_get_file_size(file, &amp;size);
+    if(succeeded) return size; // Return the return value means success.
+    else return BasicError::bad_platform_call(); // Return the error code means failure.
+}
+</code></pre>
+<p>If the return type of the function is <code>R&lt;void&gt;</code>, you can return <code>ok</code> to indicate one successful function call. Note that using <code>ok</code> is allowed only if the function return value is <code>R&lt;void&gt;</code>. You can also use <code>RV</code> to replace of <code>R&lt;void&gt;</code> for convenience.</p>
+<pre><code class="language-c++">RV reset_file_cursor(File* file)
+{
+    BOOL succeeded = system_reset_file_cursor(file);
+    if(succeeded) return ok;
+    else return BasicError::bad_platform_call();
+}
+</code></pre>
+<p>On the caller side, we can use <code>succeeded</code> and <code>failed</code> to test whether one result object represents one valid return value or one error code:</p>
+<pre><code class="language-c++">auto res = reset_file_cursor(file);
+if(failed(res))
+{
+    // Gets the error code stored in `R&lt;T&gt;`.
+    ErrCode err = res.errcode();
+    // Handle the error.
+    // ...
+}
+</code></pre>
+<h2 id="error-objects">Error objects</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Error.hpp&gt;
+</code></pre>
+<p>Error codes indicate only the type of the error, without any further information, which can be inconvenient for the user to indicating the error. For such purpose, Luna SDK provides error objects that extend error codes to provide more detailed information about the error.</p>
+<p>One error object is represented by <code>Error</code> and contains three members:</p>
+<ol>
+<li><code>code</code>: The error code.</li>
+<li><code>message</code>: One UTF-8 short description of the error.</li>
+<li><code>info</code>: One <code>Variant</code> that may contain any additional error information provided.</li>
+</ol>
+<p>To return one error object instead of one error code, first set the error object by calling <code>get_error</code>, then returns <code>BasicError::error_object</code> as the returned error code of the function:</p>
+<pre><code class="language-c++">Error&amp; err = get_error();
+err = Error(BasicError::not_found(), &quot;The specified file %s is not found.&quot;, file_name);
+return BasicError::error_object();
+</code></pre>
+<p>The error object fetched by <code>get_error</code> is a thread-local object attached to the current thread, so error objects in different threads are independent to each other. If you want to pass error objects between different threads, you can always store one <code>Error</code> instance down and pass it using your own methods.</p>
+<p>You can also use <code>set_error</code> to simplify the process of creating and returning error objects. The above code can be rewritten by:</p>
+<pre><code class="language-c++">return set_error(BasicError::not_found(), &quot;The specified file %s is not found.&quot;, file_name);
+</code></pre>
+<p><code>set_error</code> always returns <code>BasicError::error_object</code>, so we can return it directly.</p>
+<p>On the caller side, if we find the error code of one function is <code>BasicError::error_object</code>, we should retrieve the real error code by checking the same error object set by the calling function:</p>
+<pre><code class="language-c++">auto res = do_something();
+if(failed(res))
+{
+    ErrCode err = res.errcode();
+    if(err == BasicError::error_object())
+    {
+        err = get_error().code;
+    }
+    // Handle the error.
+    // ...
+}
+</code></pre>
+<p>We can use <code>unwrap_errcode</code> to simplify this process and retrieve the error code directly like so:</p>
+<pre><code class="language-c++">auto res = do_something();
+if(failed(res))
+{
+    ErrCode err = unwrap_errcode(res);
+    // Handle the error.
+    // ...
+}
+</code></pre>
+<p><code>unwrap_errcode</code> will retrieve the error code from <code>R&lt;T&gt;</code> result object, and if the error code is <code>BasicError::error_object</code>, it will then retrieve the real error code automatically from the error object of this thread.</p>
+<p>We can also call <code>explain</code> to fetch the message stored on the error object if the error code is <code>BasicError::error_object</code>, or the name of the error code if not:</p>
+<pre><code class="language-c++">auto res = do_something();
+if(failed(res))
+{
+    debug_printf(&quot;%s&quot;, explain(res.errcode()));
+}
+</code></pre>
+<h2 id="try-catch-macros-for-error-handling">Try-catch macros for error handling</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Result.hpp&gt;
+</code></pre>
+<p>Correctly handling functions that may throw errors requires a lot of <code>if</code> statements to judge whether every function call is successful, which takes a lot of effort. In order to ease this, Luna SDK provides macros that can be used to handle throwable functions using a try-catch syntax, much like those in C++.</p>
+<p>In order to catch error codes returned by throwable function, we firstly need to declare one pair of try-catch blocks using <code>lutry</code> and <code>lucatch</code> like so:</p>
+<pre><code class="language-c++">lutry
+{
+
+}
+lucatch
+{
+
+}
+</code></pre>
+<p><code>lutry</code> block is the place where throwable functions are called. In this block, throwable functions are wrapped by <code>luexp</code>, <code>lulet</code> and <code>luset</code> macros:</p>
+<ol>
+<li><code>luexp</code> is used if the return type of the function is <code>R&lt;void&gt;</code>.</li>
+<li><code>lulet</code> creates a new local variable to hold the return value of the function.</li>
+<li><code>luset</code> assigns the return value of the function to one existing variable.</li>
+</ol>
+<p>The user can also use <code>luthrow</code> to throw one directly. The following code shows the usage of these four macros:</p>
+<pre><code class="language-c++">lutry
+{
+    luexp(do_something_that_may_fail());
+    lulet(size, get_file_size(file)); // Creates one new local variable `size`.
+    luexp(set_file_size(file, 1024));
+    u64 new_size;
+    luset(new_size, get_file_size(file)); // Assigns to one existing variable `new_size`.
+    if(new_size != 1024)
+    {
+        luthrow(BasicError::bad_platform_call()); // Throw errors directly.
+    }
+}
+lucatch
+{
+    //...
+}
+</code></pre>
+<p>For all these four macros, if the calling function or <code>luthrow</code> throws errors, the execution flow will be interrupted and redirected to <code>lucatch</code> block by a internal <code>goto</code> jump. In <code>lucatch</code> block, the user should handle the error, or just return the error to the caller function. <code>lures</code> macro is used in this block to represent the error code.</p>
+<pre><code class="language-c++">lucatch
+{
+    ErrCode code = unwrap_errcode(lures); // To fetch the real error code if lures is `BasicError::error_object`.
+    if(code == BasicError::bad_platform_call())
+    {
+        // Do something...
+    }
+    else if(code == BasicError::bad_arguments())
+    {
+        // Do something...
+    }
+    else return lures; // Forward the error to caller function if the error cannot be handled here.
+}
+</code></pre>
+<p>If the user does not want to handle errors at all, she can use <code>lucatchret</code> instead of <code>lucatch</code> block, which will forward all errors caught to the caller function:</p>
+<pre><code class="language-c++">lutry
+{
+    //...
+}
+lucatchret; // Return all errors caught.
+</code></pre>
+<p>In most cases, only one <code>lutry</code>-<code>lucatch</code> pair is needed for one function. If you need multiple <code>lutry</code>-<code>lucatch</code> pairs in the same function, add suffix numbers to macros of succeeding <code>lutry</code>-<code>lucatch</code> pairs after the first pair like so:</p>
+<pre><code class="language-c++">RV func()
+{
+    // First pair.
+    lutry
+    {
+        luexp(...);
+        lulet(a, ...);
+        luset(a, ...);
+        luthrow(...);
+    }
+    lucatch
+    {
+        return lures;
+    }
+    // Another pair.
+    lutry2
+    {
+        luexp2(...);
+        lulet2(a, ...);
+        luset2(a, ...);
+        luthrow2(...);
+    }
+    lucatch2
+    {
+        return lures2;
+    }
+    // Another pair.
+    lutry3
+    {
+        luexp3(...);
+        lulet3(a, ...);
+        luset3(a, ...);
+        luthrow3(...);
+    }
+    lucatch3
+    {
+        return lures3;
+    }
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../interfaces/" class="btn btn-neutral float-left" title="Interfaces"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../interfaces/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
