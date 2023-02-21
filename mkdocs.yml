@@ -22,3 +22,8 @@ nav:
             - Boxed Objects: manual/basics/boxed_objects.md
             - Interfaces: manual/basics/interfaces.md
             - Error Handling: manual/basics/error_handling.md
+            - Assertions: manual/basics/assertions.md
+            - File Management: manual/basics/file_management.md
+            - Thread and Synchronization Objects: manual/basics/thread_and_synchronization_objects.md
+            - Time: manual/basics/time.md
+            - Logs: manual/basics/logs.md
