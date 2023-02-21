@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/serialization_and_deserialization/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/file_management/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>Serialization and Deserialization - Luna SDK Docs</title>
+    <title>File Management - Luna SDK Docs</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Serialization and Deserialization";
-        var mkdocs_page_input_path = "manual\\basics\\serialization_and_deserialization.md";
-        var mkdocs_page_url = "/manual/basics/serialization_and_deserialization/";
+        var mkdocs_page_name = "File Management";
+        var mkdocs_page_input_path = "manual\\basics\\file_management.md";
+        var mkdocs_page_url = "/manual/basics/file_management/";
       </script>
     
     <script src="../../../js/jquery-3.6.0.min.js" defer></script>
@@ -74,11 +74,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../type_system/">Type System</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Serialization and Deserialization</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#default-serialization-and-deserialization-behavior">Default serialization and deserialization behavior</a>
-    </li>
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../serialization_and_deserialization/">Serialization and Deserialization</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../boxed_objects/">Boxed Objects</a>
                 </li>
@@ -88,7 +84,13 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../assertions/">Assertions</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../file_management/">File Management</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">File Management</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#file-io">File IO</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#file-operations">File operations</a>
+    </li>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
                 </li>
@@ -115,7 +117,7 @@
     <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
-      <li>Serialization and Deserialization</li>
+      <li>File Management</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -124,35 +126,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="serialization-and-deserialization">Serialization and Deserialization</h1>
-<pre><code class="language-c++">#include &lt;Runtime/Serialization.hpp&gt;
+                <h1 id="file-management">File Management</h1>
+<pre><code class="language-c++">#include &lt;Runtime/File.hpp&gt;
 </code></pre>
-<p>Luna SDK comes with a built-in serialization and deserialization library that can serialize objects of serializable types to <a href="../variants/"><code>Variant</code></a> objects, with can then be encoded to byte streams using JSON or other text and binary formats. One type must meets the following requirements to be a serializable type:</p>
-<ol>
-<li>This type has been registered to the <a href="../type_system/">type system</a>.</li>
-<li>This type is marked as serializable by calling <code>set_serializable</code>.</li>
-</ol>
-<p><code>set_serializable</code> accepts one optional <code>SerializableTypeDesc</code> structure, which let the user set serialization and deserialization callback functions for the type. If this structure is not provided, the default serialization and deserialization procedure will be used. For generic structure types, <code>set_serializable</code> will be applied to all instanced types of that generic type. The user can also call <code>set_serializable</code> on one specific instanced type to override the serialization and deserialization behavior set on the generic type.</p>
-<p>For any serializable objects, the user can call <code>serialize</code> to serialize one object to one <code>Variant</code>, and call <code>deserialize</code> to deserialize one object from one <code>Variant</code>.</p>
-<h2 id="default-serialization-and-deserialization-behavior">Default serialization and deserialization behavior</h2>
-<p>The default serialization procedure checks the type of the object, then returns one <code>Variant</code> object based on the following rules:</p>
-<ol>
-<li>For structure types, the returned <code>Variant</code> will be an object of serializable properties, indexed by their property names. The data of every property is generated by another <code>serialize</code> call. Unserializable properties will be ignored.</li>
-<li>For single enumeration types, the returned <code>Variant</code> will be the name of the option that matches the underlying value of the object. If no option matches the underlying value, the serialization function will throw <code>BasicError::bad_data</code> error. </li>
-<li>For multiple enumeration types, the returned <code>Variant</code> will be an array that contains names of all selected options. If no option is selected, an empty <code>Variant</code> array will be returned.</li>
-</ol>
-<p>The default deserialization procedure checks the type of the object, then assigns the data of the object based on the following rules:</p>
-<ol>
-<li>For structure types, <code>deserialize</code> is called for every serializable property of the object with the data of that property. Properties without data in <code>Variant</code> and unrecognized properties will be ignored.</li>
-<li>For single enumeration types, the default deserialization function reads the name string stored in <code>Variant</code>, and assigns the enumeration object with the value whose option name matches the data. If no option matches the name string stored in <code>Variant</code>, the deserialization function will throw <code>BasicError::bad_data</code> error.</li>
-<li>For multiple enumeration types, the default deserialization function firstly clears the object to <code>0</code>, then reads the array of strings stored in <code>Variant</code>, and sets corresponding bits in the target object. Unrecognized options will be ignored.</li>
-</ol>
+<h2 id="file-io">File IO</h2>
+<p><code>IFile</code> represents one system-level file handle that can be used to read and write file data. The user can create one <code>IFile</code> interface using <code>open_file</code>, and the file handle will be closed when its reference count drops to <code>0</code>. Data in the file can be read by <code>IFile::read</code>, and can be written by <code>IFile::write</code>. The current file cursor for IO operations can be fetched by <code>IFile::tell</code>, and can be set by <code>IFile::seek</code>. The whole size of the file can be fetched by <code>IFile::get_size</code>, and can be set by <code>IFile::set_size</code>.</p>
+<p>In most cases, file data written by <code>IFile::write</code> will not be written to storage media immediately, but being cached in driver buffer and written back to the storage in next hardware flush. The user can wait such flush by calling <code>IFile::flush</code>, which blocks the current thread until all written data is successfully written back to storage and visible to other processes.</p>
+<p>If you simply want to load file data after opening one file, you can pass <code>IFile</code> to <code>load_file_data</code> immediately after it is opened, which loads the whole file binary data and returns the data as one <code>Blob</code> object.</p>
+<h2 id="file-operations">File operations</h2>
+<p>Use <code>file_attribute</code> to fetch the attribute of one specified file, like its creation time, last modified time, whether it is a directory, etc. </p>
+<p>Use <code>copy_file</code> and <code>move_file</code> for coping and moving files and directories. Use <code>delete_file</code> for deleting one file or directory.</p>
+<p>Use <code>open_dir</code> to create a file iterator (<code>IFileIterator</code>) that can be used to iterate over files and directories in the specified directory. Use <code>create_dir</code> to create a new empty directory on the specified directory.</p>
+<p>Use <code>get_current_dir</code> and <code>set_current_dir</code> to get and set the current working directory of the current process. Use <code>get_process_path</code> to get process executable file's absolute directory, ended with application executable name.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../type_system/" class="btn btn-neutral float-left" title="Type System"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../boxed_objects/" class="btn btn-neutral float-right" title="Boxed Objects">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../assertions/" class="btn btn-neutral float-left" title="Assertions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../thread_and_synchronization_objects/" class="btn btn-neutral float-right" title="Thread and Synchronization Objects">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -175,10 +166,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../type_system/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../assertions/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../boxed_objects/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../thread_and_synchronization_objects/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -106,6 +106,16 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../error_handling/">Error Handling</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../logs/">Logs</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -139,7 +149,7 @@
 </code></pre>
 <p><code>Variant</code> is a dynamic typed object that stores data in a schema-less (self-described) manner. <code>Variant</code> is used as a general way of representing data for purposes like <a href="../serialization_and_deserialization/">serialization and deserialization</a>.</p>
 <h2 id="variant-type">Variant type</h2>
-<p>The type of one <code>Variant</code> is represented by <code>Variant::Type</code> enumeration and can be fetched by calling <code>type</code> method. Luna SDK supports the following variant types:</p>
+<p>The type of one <code>Variant</code> is represented by <code>VariantType</code> enumeration and can be fetched by calling <code>type</code> method. Luna SDK supports the following variant types:</p>
 <ol>
 <li>Null</li>
 <li>Number</li>
@@ -151,22 +161,22 @@
 <li>Associated array of variants</li>
 </ol>
 <h2 id="null-variant">Null variant</h2>
-<p>Variant can be <code>null</code>, which represents the absence of value for the variant object. Calling <code>type</code> of one null variant returns <code>Variant::Type::null</code>, and calling <code>valid</code> of one null variant returns <code>false</code>.</p>
+<p>Variant can be <code>null</code>, which represents the absence of value for the variant object. Calling <code>type</code> of one null variant returns <code>VariantType::null</code>, and calling <code>valid</code> of one null variant returns <code>false</code>.</p>
 <h2 id="number-variant">Number variant</h2>
-<p>Number variant contains one number of integer or floating-point type. The number type of one number variant is represented by <code>Variant::NumberType</code> enumeration and can be fetched by calling <code>number_type</code> method. If the variant object is not a number type, <code>NumberType::not_number</code> will be returned.</p>
-<p>The number value of the variant can be fetched by calling <code>unum</code>, <code>inum</code> and <code>fnum</code> methods, each of them returns the underlying number in specified format with implicit type conversion when needed. If the variant type is not <code>Variant::Type::number</code>, <code>0</code> or <code>0.0</code> will be returned.</p>
+<p>Number variant contains one number of integer or floating-point type. The number type of one number variant is represented by <code>VariantNumberType</code> enumeration and can be fetched by calling <code>number_type</code> method. If the variant object is not a number type, <code>NumberType::not_number</code> will be returned.</p>
+<p>The number value of the variant can be fetched by calling <code>unum</code>, <code>inum</code> and <code>fnum</code> methods, each of them returns the underlying number in specified format with implicit type conversion when needed. If the variant type is not <code>VariantType::number</code>, <code>0</code> or <code>0.0</code> will be returned.</p>
 <p>One variant can be set to number by assigning it with one integer or floating-point value or instance.</p>
 <h2 id="string-variant">String variant</h2>
-<p>String variant contains one single string represented by a <code>Name</code> object. You can fetch the underlying string of one variant by calling <code>str()</code> method, which returns one empty string if the type of the variant is not <code>Variant::Type::string</code>. We also provide <code>c_str</code> method to fetch the string buffer quickly, which will return <code>""</code> if the variant is not <code>Variant::Type::string</code>.</p>
+<p>String variant contains one single string represented by a <code>Name</code> object. You can fetch the underlying string of one variant by calling <code>str()</code> method, which returns one empty string if the type of the variant is not <code>VariantType::string</code>. We also provide <code>c_str</code> method to fetch the string buffer quickly, which will return <code>""</code> if the variant is not <code>VariantType::string</code>.</p>
 <p>One variant can be set to string by assigning it with one <code>Name</code> instance, one <code>String</code> instance, one string literal, or one zero-terminated <code>c8*</code> pointer instance.</p>
 <h2 id="boolean-variant">Boolean variant</h2>
-<p>Boolean variant contains only two kinds of values: <code>true</code> and <code>false</code>. The Boolean value of one variant can be fetched by calling <code>boolean</code> method, which returns <code>false</code> if the variant is not <code>Variant::Type::boolean</code>.</p>
+<p>Boolean variant contains only two kinds of values: <code>true</code> and <code>false</code>. The Boolean value of one variant can be fetched by calling <code>boolean</code> method, which returns <code>false</code> if the variant is not <code>VariantType::boolean</code>.</p>
 <p>One variant can be set to Boolean by assigning it with one <code>bool</code> value or instance.</p>
 <h2 id="blob-variant">BLOB Variant</h2>
 <p>BLOB variant contains one single binary large object. The data, size and alignment of the data can be fetched by calling <code>blob_data</code>, <code>blob_size</code> and <code>blob_alignment</code> methods. Note that <code>Variant</code> does optimizations for small blob data, so the blob data is not necessary represented by <code>Blob</code>. You may detach the blob data from the variant by calling <code>blob_detach</code>, which returns the blob data as a <code>Blob</code> object, and the variant will contain one empty blob after this operation.</p>
 <p>One variant can be set to pointer by assigning it with one <code>Blob</code> value or instance.</p>
 <h2 id="pointer-variant">Pointer Variant</h2>
-<p>Pointer variant contains one type-less user pointer. The pointer is stored as-is and can be fetched by calling <code>pointer</code> method, which returns <code>nullptr</code> if the variant is not <code>Variant::Type::pointer</code>.</p>
+<p>Pointer variant contains one type-less user pointer. The pointer is stored as-is and can be fetched by calling <code>pointer</code> method, which returns <code>nullptr</code> if the variant is not <code>VariantType::pointer</code>.</p>
 <p>One variant can be set to pointer by assigning it with one pointer value or instance.</p>
 <h2 id="array-of-variants">Array of variants</h2>
 <p>Array variant contains one array of <code>Variant</code> objects, which acts as sub-objects of the current object. Note that <code>Variant</code> does optimizations for small array, so the array data is not necessary represented by <code>Vector&lt;Variant&gt;</code>.</p>
@@ -181,7 +191,7 @@
 <pre><code class="language-c++">#include &lt;Runtime/VariantJSON.hpp&gt;
 </code></pre>
 <p>Luna SDK comes with one JSON encoding/decoding library for <code>Variant</code> objects. <code>json_write</code> encodes one <code>Variant</code> to one JSON text stream, while <code>json_read</code> decodes one JSON text stream to one <code>Variant</code> object.</p>
-<p>When performing JSON encoding, <code>Variant</code> of <code>Variant::Type::pointer</code>will be ignored, and <code>Variant</code> with <code>Variant::Type::blob</code> will be encoded using <a href="https://en.wikipedia.org/wiki/Base64">Base64</a> encoding format.</p>
+<p>When performing JSON encoding, <code>Variant</code> of <code>VariantType::pointer</code>will be ignored, and <code>Variant</code> with <code>VariantType::blob</code> will be encoded using <a href="https://en.wikipedia.org/wiki/Base64">Base64</a> encoding format.</p>
               
             </div>
           </div><footer>

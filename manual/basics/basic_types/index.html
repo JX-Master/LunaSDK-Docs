@@ -86,6 +86,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#pair-and-tuple-types">Pair and tuple types</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#path">Path</a>
+    </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../strings/">Strings</a>
@@ -105,6 +107,16 @@
                 <li class="toctree-l2"><a class="reference internal" href="../interfaces/">Interfaces</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../logs/">Logs</a>
                 </li>
     </ul>
                   </li>
@@ -414,6 +426,11 @@ static_assert(test_id.high == 6697565509014014450Ui64, &quot;Incorrect GUID valu
 </code></pre>
 <p><code>Pair&lt;T1, T2&gt;</code> encapsulates one pair of elements with <code>T1</code> and <code>T2</code> type as the <code>first</code> and <code>second</code> element of the pair. <code>Pair</code> is mainly used by map containers to represent elements.</p>
 <p><code>Tuple&lt;Tys...&gt;</code> is a generalization of <code>Pair</code> and may contain one or multiple elements. Elements in <code>Tuple</code> can be fetched by calling <code>get&lt;N&gt;(tuple)</code> function. This type is mainly used to store function arguments in functional programming.</p>
+<h2 id="path">Path</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Path.hpp&gt;
+</code></pre>
+<p><code>Path</code> is one kind of string that describes the location of one node in a hierarchical-based node tree, given that each node in the tree can be identified by a name string. One common use of <code>Path</code> is to represent the location of one file or directory in the file system.</p>
+<p><code>Path</code> is represented by a root name (like <code>C:</code>), plus a <code>Vector</code> of <code>Name</code> that stores nodes of the path. One path can be absolute or relative, which is identified by <code>PathFlag::absolute</code>. One relative path can be calculated by two paths, it can also be appended to another path to create a new path. Path can be created form one string, it can also be encoded to one string using the user-specified path separator.</p>
               
             </div>
           </div><footer>

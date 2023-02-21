@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/serialization_and_deserialization/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/logs/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>Serialization and Deserialization - Luna SDK Docs</title>
+    <title>Logs - Luna SDK Docs</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Serialization and Deserialization";
-        var mkdocs_page_input_path = "manual\\basics\\serialization_and_deserialization.md";
-        var mkdocs_page_url = "/manual/basics/serialization_and_deserialization/";
+        var mkdocs_page_name = "Logs";
+        var mkdocs_page_input_path = "manual\\basics\\logs.md";
+        var mkdocs_page_url = "/manual/basics/logs/";
       </script>
     
     <script src="../../../js/jquery-3.6.0.min.js" defer></script>
@@ -74,11 +74,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../type_system/">Type System</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Serialization and Deserialization</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#default-serialization-and-deserialization-behavior">Default serialization and deserialization behavior</a>
-    </li>
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../serialization_and_deserialization/">Serialization and Deserialization</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../boxed_objects/">Boxed Objects</a>
                 </li>
@@ -94,7 +90,21 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../time/">Time</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../logs/">Logs</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Logs</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#log-message">Log message</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#log-handler">Log handler</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#built-in-log-handlers">Built-in log handlers</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#std-log-handler">STD log handler</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#file-log-handler">File log handler</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                 </li>
     </ul>
                   </li>
@@ -115,7 +125,7 @@
     <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
-      <li>Serialization and Deserialization</li>
+      <li>Logs</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -124,35 +134,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="serialization-and-deserialization">Serialization and Deserialization</h1>
-<pre><code class="language-c++">#include &lt;Runtime/Serialization.hpp&gt;
+                <h1 id="logs">Logs</h1>
+<pre><code class="language-c++">#include &lt;Runtime/Log.hpp&gt;
 </code></pre>
-<p>Luna SDK comes with a built-in serialization and deserialization library that can serialize objects of serializable types to <a href="../variants/"><code>Variant</code></a> objects, with can then be encoded to byte streams using JSON or other text and binary formats. One type must meets the following requirements to be a serializable type:</p>
+<p>Luna SDK contains a log system that can be used for logging and debugging purposes.</p>
+<h2 id="log-message">Log message</h2>
+<p><code>LogMessage</code> structure represents one log entry. Every log message contains four properties:</p>
 <ol>
-<li>This type has been registered to the <a href="../type_system/">type system</a>.</li>
-<li>This type is marked as serializable by calling <code>set_serializable</code>.</li>
+<li><code>sender</code>: The name of the function or module that emits this log, which can be used to filter logs.</li>
+<li><code>message</code>: The log message, which is a UTF-8 string.</li>
+<li><code>verbosity</code>: The verbosity level of the log, which can be used to filter logs based on verbosity level.</li>
+<li><code>extra</code>: Extra arguments attached to the log entry, represented by one <code>Variant</code> object.</li>
 </ol>
-<p><code>set_serializable</code> accepts one optional <code>SerializableTypeDesc</code> structure, which let the user set serialization and deserialization callback functions for the type. If this structure is not provided, the default serialization and deserialization procedure will be used. For generic structure types, <code>set_serializable</code> will be applied to all instanced types of that generic type. The user can also call <code>set_serializable</code> on one specific instanced type to override the serialization and deserialization behavior set on the generic type.</p>
-<p>For any serializable objects, the user can call <code>serialize</code> to serialize one object to one <code>Variant</code>, and call <code>deserialize</code> to deserialize one object from one <code>Variant</code>.</p>
-<h2 id="default-serialization-and-deserialization-behavior">Default serialization and deserialization behavior</h2>
-<p>The default serialization procedure checks the type of the object, then returns one <code>Variant</code> object based on the following rules:</p>
-<ol>
-<li>For structure types, the returned <code>Variant</code> will be an object of serializable properties, indexed by their property names. The data of every property is generated by another <code>serialize</code> call. Unserializable properties will be ignored.</li>
-<li>For single enumeration types, the returned <code>Variant</code> will be the name of the option that matches the underlying value of the object. If no option matches the underlying value, the serialization function will throw <code>BasicError::bad_data</code> error. </li>
-<li>For multiple enumeration types, the returned <code>Variant</code> will be an array that contains names of all selected options. If no option is selected, an empty <code>Variant</code> array will be returned.</li>
-</ol>
-<p>The default deserialization procedure checks the type of the object, then assigns the data of the object based on the following rules:</p>
-<ol>
-<li>For structure types, <code>deserialize</code> is called for every serializable property of the object with the data of that property. Properties without data in <code>Variant</code> and unrecognized properties will be ignored.</li>
-<li>For single enumeration types, the default deserialization function reads the name string stored in <code>Variant</code>, and assigns the enumeration object with the value whose option name matches the data. If no option matches the name string stored in <code>Variant</code>, the deserialization function will throw <code>BasicError::bad_data</code> error.</li>
-<li>For multiple enumeration types, the default deserialization function firstly clears the object to <code>0</code>, then reads the array of strings stored in <code>Variant</code>, and sets corresponding bits in the target object. Unrecognized options will be ignored.</li>
-</ol>
+<p>One log message can be submitted to the log system by constructing one <code>LogMessage</code> object and passing it to<code>log</code> function manually. It can also be submitted conveniently by calling <code>log_verbose</code>, <code>log_info</code>, <code>log_warning</code> and <code>log_error</code> based on the verbosity level of your log message.</p>
+<h2 id="log-handler">Log handler</h2>
+<p>Log handlers are entities that handle log messages to display or save them. For example, you may implement a log handler to display the log message on your game HUD or editor window. When one log is submitted to the log system, it will be dispatched to all handlers, the handler should decide whether to handle or skip this log by its filter and verbosity level settings.</p>
+<p>One log handler can be registered to the log system by <code>register_log_callback</code>, and unregistered from the log system by <code>unregister_log_callback</code>. When one log handler callback function is invoked, the same <code>LogMessage</code> object passed by the user or generated by the system will be provided, but is read-only to the handler.</p>
+<h2 id="built-in-log-handlers">Built-in log handlers</h2>
+<p>The log system includes two built-in log handlers: the STD log handler and the file log handler.</p>
+<h3 id="std-log-handler">STD log handler</h3>
+<p>STD log handler outputs log messages to the standard output (<code>stdout</code>) of the program using <code>printf</code>. The STD log handler is disabled by default, the user can call <code>set_log_std_enabled</code> to enable/disable it at any time. The verbosity level of STD log handler can be configured by <code>set_log_std_verbosity</code>.</p>
+<h3 id="file-log-handler">File log handler</h3>
+<p>File log handler outputs log messages to the file specified by the user. The file log handler is disabled by default, the user can call <code>set_log_file_enabled</code> to enable/disable it at any time. The user can call <code>set_log_file</code> to set the destination file of the log messages. If no file is set by the user, the handler will output logs to <code>Log.txt</code>file on the current working directory. For performance reasons, log messages will not be written to file immediately when being handled, but will be buffered internally and written to the file only when the buffer is full. You can also call <code>flush_log_to_file</code> manually if you want the buffer to be flushed immediately.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../type_system/" class="btn btn-neutral float-left" title="Type System"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../boxed_objects/" class="btn btn-neutral float-right" title="Boxed Objects">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../time/" class="btn btn-neutral float-left" title="Time"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -175,10 +183,8 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../type_system/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../time/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../boxed_objects/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
