@@ -211,3 +211,20 @@ We suggest using the following rules to manage the version number:
 `Pair<T1, T2>` encapsulates one pair of elements with `T1` and `T2` type as the `first` and `second` element of the pair. `Pair` is mainly used by map containers to represent elements.
 
 `Tuple<Tys...>` is a generalization of `Pair` and may contain one or multiple elements. Elements in `Tuple` can be fetched by calling `get<N>(tuple)` function. This type is mainly used to store function arguments in functional programming.
+
+## Path
+
+```c++
+#include <Runtime/Path.hpp>
+```
+
+`Path` is one kind of string that describes the location of one node in a hierarchical-based node tree, given that each node in the tree can be identified by a name string. One common use of `Path` is to represent the location of one file or directory in the file system.
+
+`Path` is represented by a root name (like `C:`), plus a `Vector` of `Name` that stores nodes of the path. One path can be absolute or relative, which is identified by `PathFlag::absolute`. One relative path can be calculated by two paths, it can also be appended to another path to create a new path. Path can be created form one string, it can also be encoded to one string using the user-specified path separator.
+
+
+
+
+
+
+
