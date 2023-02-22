@@ -1,6 +1,6 @@
 # License
 
-Luna SDK is licensed under the zlib/libpng license. Here is the full text of the license:
+Luna SDK is licensed under the zlib/libpng license. Here is a copy of the full text of the license:
 
 Copyright (c) 2018-2023 Jixiang Zhou (JXMaster)
 
