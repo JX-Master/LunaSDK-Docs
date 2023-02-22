@@ -4,6 +4,7 @@ theme: readthedocs
 
 nav:
     - Home: index.md
+    - License: license.md
     - Manual: 
         - Introduction:
             - Introduction: manual/introduction/index.md
