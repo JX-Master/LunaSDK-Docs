@@ -27,3 +27,4 @@ nav:
             - Thread and Synchronization Objects: manual/basics/thread_and_synchronization_objects.md
             - Time: manual/basics/time.md
             - Logs: manual/basics/logs.md
+            - Math Library: manual/basics/math_library.md
