@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/basics/math_library/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Math Library - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Math Library";
+        var mkdocs_page_input_path = "manual\\basics\\math_library.md";
+        var mkdocs_page_url = "/manual/basics/math_library/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Basics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../logs/">Logs</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Math Library</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#vectors">Vectors</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#matrices">Matrices</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quaternions">Quaternions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#transform">Transform</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#affine-matrix-operations">Affine matrix operations</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#projection-matrix-operations">Projection matrix operations</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Manual &raquo;</li>
+          <li>Basics &raquo;</li>
+      <li>Math Library</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="math-library">Math Library</h1>
+<p>Luna SDK comes with a math library that contains most math types and functions commonly-used in 3D applications. The math library contains the following parts:</p>
+<pre><code class="language-c++">#include &lt;Runtime/Math/Math.hpp&gt; // For basic math types and functions.
+#include &lt;Runtime/Math/Vector.hpp&gt; // For vector types and functions.
+#include &lt;Runtime/Math/Matrix.hpp&gt; // For matrix types and functions.
+#include &lt;Runtime/Math/Quaternion.hpp&gt; // For Quaternion type and functions.
+#include &lt;Runtime/Math/Transform.hpp&gt; // For transform operations.
+</code></pre>
+<p>The math library use SIMD instructions for vector and matrix calculations when possible. If SIMD instructions are not available on the target platform, we also have non-SIMD implementations for all math operations for compatibility. The SIMD instructions support of math library includes support of SSE/SSE2, SSE3, SSE4, AVX, AVX2, FMA3 and SVML instruction sets on x86/x64 processors, and NEON instruction set on arm/arm64 processors.</p>
+<h2 id="vectors">Vectors</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Math/Vector.hpp&gt;
+</code></pre>
+<p><code>Float2</code>, <code>Float3</code> and <code>Float4</code> represent 2D, 3D and 4D vectors. These three types are 16-bytes aligned for maximizing SIMD performance. Luna SDK also provides unaligned vector types, these types are <code>Vec2U&lt;T&gt;</code>, <code>Vec3U&lt;T&gt;</code> and <code>Vec4U&lt;T&gt;</code>. The unaligned types are used mainly for storing and transferring vectors, such types should be converted to aligned types before they can be used for calculations. Luna SDK also defines <code>Float2U</code>, <code>Int2U</code>, <code>UInt2U</code>, <code>Float3U</code>, <code>Int3U</code>, <code>UInt3U</code>, <code>Float4U</code>, <code>Int4U</code>, <code>UInt4U</code> as aliasing types of <code>Vec2U&lt;T&gt;</code>, <code>Vec3U&lt;T&gt;</code>, <code>Vec24U&lt;T&gt;</code> for convenience. Components of these vector types can be fetched by their <code>x</code>, <code>y</code>, <code>z</code> and <code>w</code> properties.</p>
+<p>Aligned vector types can be compared(<code>==</code> and <code>!=</code>), added (<code>+</code>), subtracted (<code>-</code>), multiplied (<code>*</code>) and divided (<code>/</code>) like normal scalar types. These calculations are performed as performing the same calculation on each component element of the vector individually. When performing mathematical calculations between vector types and scalar types, the scaler number will be applied to all components of the vector.</p>
+<p>Luna SDK defines a series of functions to perform basic vector calculations. All these functions provide overloaded versions for handling 2D, 3D and 4D vector types. The following table lists all vector functions.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>in_bounds(a, min, max)</code></td>
+<td>Tests if <code>a</code> is in <code>[min, max]</code> bounds.</td>
+</tr>
+<tr>
+<td><code>length(a)</code></td>
+<td>Returns the length of vector <code>a</code>.</td>
+</tr>
+<tr>
+<td><code>length_squared(a)</code></td>
+<td>Returns the squared length of vector <code>a</code>. This is faster than <code>length</code>.</td>
+</tr>
+<tr>
+<td><code>dot(a, b)</code></td>
+<td>Returns the dot product of vector <code>a</code> and vector <code>b</code>.</td>
+</tr>
+<tr>
+<td><code>cross(a, b)</code></td>
+<td>Returns the cross product of vector <code>a</code> and vector <code>b</code>.</td>
+</tr>
+<tr>
+<td><code>normalize(a)</code></td>
+<td>Returns the normalized vector of vector <code>a</code>.</td>
+</tr>
+<tr>
+<td><code>clamp(a, min, max)</code></td>
+<td>Clamps vector <code>a</code> in <code>[min, max]</code> range.</td>
+</tr>
+<tr>
+<td><code>distance(a, b)</code></td>
+<td>Returns the Euclidean distance from vector <code>a</code> to vector <code>b</code>.</td>
+</tr>
+<tr>
+<td><code>distance_squared(a, b)</code></td>
+<td>Returns the squared Euclidean distance from vector <code>a</code> to vector <code>b</code>. This is faster than <code>`distance</code>.</td>
+</tr>
+<tr>
+<td><code>min(a, b)</code></td>
+<td>Returns one vector composed by the smaller component of each component in <code>a</code> and <code>b</code>.</td>
+</tr>
+<tr>
+<td><code>max(a, b)</code></td>
+<td>Returns one vector composed by the larger component of each component in <code>a</code> and <code>b</code>.</td>
+</tr>
+<tr>
+<td><code>lerp(a, b, t)</code></td>
+<td>Performs <a href="https://en.wikipedia.org/wiki/Linear_interpolation">Linear interpolation</a> between vector <code>a</code> and vector <code>b</code> according to one scalar factor <code>t</code>.</td>
+</tr>
+<tr>
+<td><code>smoothstep(a, b, t)</code></td>
+<td>Performs <a href="https://en.wikipedia.org/wiki/Smoothstep">Smoothstep</a> between vector <code>a</code> and vector <code>b</code> according to one scalar factor <code>t</code>.</td>
+</tr>
+<tr>
+<td><code>barycentric(a, b, c, x, y)</code></td>
+<td>Performs <a href="https://learn.microsoft.com/en-us/windows/win32/api/directxmath/nf-directxmath-xmvectorbarycentric">Barycentric triangle interpolation</a> using three vector points <code>a</code>, <code>b</code>, <code>c</code> according to two scalar factors <code>x</code> and <code>y</code>.</td>
+</tr>
+<tr>
+<td><code>catmull_rom(a, b, c, d, t)</code></td>
+<td>Performs <a href="https://en.wikipedia.org/wiki/Centripetal_Catmull%E2%80%93Rom_spline">Catmull-Rom spline</a> interpolation using four vector points <code>a</code>, <code>b</code>, <code>c</code>, <code>d</code> according to one scalar factor <code>t</code>.</td>
+</tr>
+<tr>
+<td><code>hermite(a, t1, b, t2, t)</code></td>
+<td>Performs <a href="https://en.wikipedia.org/wiki/Cubic_Hermite_spline">Cubic Hermite spline</a> interpolation using two vector points <code>a</code>, <code>b</code>, two vector tangents <code>t1</code>, <code>t2</code> according to one scalar factor <code>t</code>.</td>
+</tr>
+<tr>
+<td><code>reflect(i, n)</code></td>
+<td>Computes the reflection vector of the incident vector <code>i</code> using the normal vector <code>n</code>.</td>
+</tr>
+<tr>
+<td><code>refract(i, n, r)</code></td>
+<td>Computes the refraction vector of the incident vector <code>i</code> using the normal vector <code>n</code> and refraction index <code>r</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="matrices">Matrices</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Math/Matrix.hpp&gt;
+</code></pre>
+<p><code>Float3x3</code> and <code>Float4x4</code> represent 3x3 and 4x4 32-bit floating-point matrices. These two types are 16-bytes aligned for maximizing SIMD performance. Luna SDK also provides unaligned matrix types, these types are <code>Float3x2U</code>, <code>Float3x3U</code>, <code>Float4x3U</code> and <code>Float4x4U</code>. The  unaligned types are used for storing and transferring matrices, and should be converted to aligned types (<code>Float3x2U</code> to <code>Float3x3</code>, <code>Float4x3U</code> to <code>Float4x4</code>) before they can be used for calculation. Rows in one matrix can be fetched by the <code>m</code> property of the matrix type, which is an array of <code>Float3</code> or <code>Float4</code> for <code>Float3x3</code> and <code>Float4x4</code>, or an two-dimensional <code>f32</code> array for any unaligned matrix type.</p>
+<p>Aligned matrix types can be compared(<code>==</code> and <code>!=</code>), added (<code>+</code>), subtracted (<code>-</code>), multiplied (<code>*</code>) and divided (<code>/</code>) like normal scalar types. These calculations are performed as performing the same calculation on each component element of the matrix individually. When performing mathematical calculations between matrix types and scalar types, the scaler number will be applied to all components of the matrix.</p>
+<p>Luna SDK defines a series of functions to perform basic matrix calculations. All these functions provide overloaded versions for handling different matrix types. The following table lists all matrix functions.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mul(a, b)</code></td>
+<td>Performs matrix multiplication between <code>a</code> and <code>b</code>, where <code>a</code> and <code>b</code> can be vector or matrix types.</td>
+</tr>
+<tr>
+<td><code>determinant(m)</code></td>
+<td>Computes determinant of one matrix <code>m</code>.</td>
+</tr>
+<tr>
+<td><code>transpose(m)</code></td>
+<td>Computes the transpose matrix of one matrix <code>m</code>.</td>
+</tr>
+<tr>
+<td><code>inverse(m)</code></td>
+<td>Computes the inversed matrix of one matrix <code>m</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quaternions">Quaternions</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Math/Quaternion.hpp&gt;
+</code></pre>
+<p><code>Quaternion</code> represents one Quaternion that can be used to represent a rotating operation in 3D space. Every <code>Quaternion</code> contains four <code>f32</code> components, and is 16-bytes aligned for maximizing SIMD performance. The user can convert one <code>Quaternion</code> to <code>Float4U</code> for storing and transferring the Quaternion.</p>
+<p><code>Quaternion</code> can be compared(<code>==</code> and <code>!=</code>), added (<code>+</code>), subtracted (<code>-</code>), multiplied (<code>*</code>) and divided (<code>/</code>) like normal scalar types. The addition and subtraction behavior of one Quaternion is the same as those of <code>Float4</code>. The multiplication operation concatenates two Quaternions, while the division operation decomposes one Quaternion into two.</p>
+<p>Luna SDK defines a series of functions to perform Quaternion calculations. The following table lists all Quaternion functions.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>length(q)</code></td>
+<td>Returns the length of one <code>Quaternion</code>. Same as <code>length</code> for <code>Float4</code>.</td>
+</tr>
+<tr>
+<td><code>length_squared(q)</code></td>
+<td>Returns the squared length of one <code>Quaternion</code>. Same as <code>length_squared</code> for <code>Float4</code>.</td>
+</tr>
+<tr>
+<td><code>normalize(q)</code></td>
+<td>Normalizes one <code>Quaternion</code>. Same as <code>normalize</code> for <code>Float4</code>.</td>
+</tr>
+<tr>
+<td><code>conjugate(q)</code></td>
+<td>Computes the conjugate of one <code>Quaternion</code>.</td>
+</tr>
+<tr>
+<td><code>inverse(q)</code></td>
+<td>Computes the inverse of one <code>Quaternion</code>.</td>
+</tr>
+<tr>
+<td><code>dot(q1, q2)</code></td>
+<td>Computes the dot product of two <code>Quaternion</code>s <code>q1</code> and <code>q2</code>. Same as <code>dot</code> for <code>Float4</code>.</td>
+</tr>
+<tr>
+<td><code>lerp(q1, q2, t)</code></td>
+<td>Performs <a href="https://en.wikipedia.org/wiki/Linear_interpolation">linear interpolation</a> on two <code>Quaternion</code>s <code>q1</code> and <code>q2</code> according to one scalar factor <code>t</code>.</td>
+</tr>
+<tr>
+<td><code>slerp(q1, q2, t)</code></td>
+<td>Performs <a href="https://en.wikipedia.org/wiki/Slerp">spherical linear interpolation</a> on two <code>Quaternion</code>s <code>q1</code> and <code>q2</code> according to one scalar factor <code>t</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="transform">Transform</h2>
+<pre><code class="language-c++">#include &lt;Runtime/Math/Transform.hpp&gt;
+</code></pre>
+<p>The transform header file does not include any new type. Instead, it defines a set of functions that can be useful for constructing affine matrices and projection matrices that are used in 2D and 3D transformations.</p>
+<h3 id="affine-matrix-operations">Affine matrix operations</h3>
+<p>2D affine matrices and 3D affine matrices are presented by <code>Float3x3</code> and <code>Float4x4</code>. The +x axis of one affine matrix points to right, the +y axis of one affine matrix points to top, the +z axis of one affine matrix points to forward.</p>
+<p>The following table lists all functions for operating affine matrices. All functions are declared in <code>AffineMatrix</code> namespace.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>make(p, r, s)</code></td>
+<td>Constructs one 2D or 3D affine matrix from position vector <code>p</code>, rotation scalar or Quaternion <code>r</code> and scaling vector <code>s</code>.</td>
+</tr>
+<tr>
+<td><code>up(m)</code></td>
+<td>Extracts the up vector from one 2D or 3D affine matrix.</td>
+</tr>
+<tr>
+<td><code>down(m)</code></td>
+<td>Extracts the down vector from one 2D or 3D affine matrix.</td>
+</tr>
+<tr>
+<td><code>left(m)</code></td>
+<td>Extracts the left vector from one 2D or 3D affine matrix.</td>
+</tr>
+<tr>
+<td><code>right(m)</code></td>
+<td>Extracts the right vector from one 2D or 3D affine matrix.</td>
+</tr>
+<tr>
+<td><code>forward</code></td>
+<td>Extracts the forward vector from one 3D affine matrix.</td>
+</tr>
+<tr>
+<td><code>backward</code></td>
+<td>Extracts the backward vector from one 2D or 3D affine matrix.</td>
+</tr>
+<tr>
+<td><code>translation(m)</code></td>
+<td>Extracts the translation vector from one 2D or 3D affine matrix.</td>
+</tr>
+<tr>
+<td><code>rotation(m)</code></td>
+<td>Extracts the rotation scalar or Quaternion from one 2D or 3D affine matrix.</td>
+</tr>
+<tr>
+<td><code>euler_angles(m)</code></td>
+<td>Extracts the rotation vector that uses stores the rotation in Euler angles (pitch, yaw, roll) from one 3D affine matrix.</td>
+</tr>
+<tr>
+<td><code>scaling(m)</code></td>
+<td>Extracts the scaling vector from one 2D or 3D affine matrix.</td>
+</tr>
+<tr>
+<td><code>translation_matrix(m)</code></td>
+<td>Extracts the translation matrix from one 2D or 3D affine matrix.</td>
+</tr>
+<tr>
+<td><code>rotation_matrix(m)</code></td>
+<td>Extracts the rotation matrix from one 2D or 3D affine matrix.</td>
+</tr>
+<tr>
+<td><code>scaling_matrix(m)</code></td>
+<td>Extracts the scaling matrix from one 2D or 3D affine matrix.</td>
+</tr>
+<tr>
+<td><code>make_translation(t)</code></td>
+<td>Constructs one 2D or 3D translation matrix from position vector <code>p</code>.</td>
+</tr>
+<tr>
+<td><code>make_rotation(r)</code></td>
+<td>Constructs one 2D or 3D rotation matrix from rotation scalar or Quaternion <code>r</code>.</td>
+</tr>
+<tr>
+<td><code>make_rotation_x(r)</code></td>
+<td>Constructs one 3D rotation matrix that represents one rotation alone x axis.</td>
+</tr>
+<tr>
+<td><code>make_rotation_y(r)</code></td>
+<td>Constructs one 3D rotation matrix that represents one rotation alone y axis.</td>
+</tr>
+<tr>
+<td><code>make_rotation_z(r)</code></td>
+<td>Constructs one 3D rotation matrix that represents one rotation alone z axis.</td>
+</tr>
+<tr>
+<td><code>make_rotation_axis_angle(axis, angle)</code></td>
+<td>Constructs one 3D rotation matrix by specifying the rotation axis and rotation angle.</td>
+</tr>
+<tr>
+<td><code>make_rotation_euler_angles</code></td>
+<td>Constructs one 3D rotation matrix from Euler angles (pitch, yaw, roll).</td>
+</tr>
+<tr>
+<td><code>make_scaling(s)</code></td>
+<td>Constructs one 2D or 3D scaling matrix from scaling vector <code>s</code>.</td>
+</tr>
+<tr>
+<td><code>make_look_at(eye, target, up)</code></td>
+<td>Constructs one view matrix that targets the specified position.</td>
+</tr>
+<tr>
+<td><code>make_look_to(eye, dir, up)</code></td>
+<td>Constructs one view matrix that targets the specified direction.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="projection-matrix-operations">Projection matrix operations</h3>
+<p>The following table lists all functions for operating projection matrices. All functions are declared in <code>ProjectionMatrix</code> namespace.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>make_perspective(width, height, near_z, far_z)</code></td>
+<td>Constructs a perspective projection matrix using width and height of the frustum.</td>
+</tr>
+<tr>
+<td><code>make_perspective_fov(fov, aspect_ratio, near_z, far_z)</code></td>
+<td>Constructs a perspective projection matrix using field-of-view and aspect_ratio of the frustum.</td>
+</tr>
+<tr>
+<td><code>make_perspective_off_center(left, right, bottom, top, near_z, far_z)</code></td>
+<td>Constructs a perspective projection matrix using offsets of the four sides of the frustum from the camera center.</td>
+</tr>
+<tr>
+<td><code>make_orthographic(width, height, near_z, far_z)</code></td>
+<td>Constructs a orthographic projection matrix using width and height of the frustum.</td>
+</tr>
+<tr>
+<td><code>make_orthographic_off_center(f32 left, f32 right, f32 bottom, f32 top, f32 near_z, f32 far_z)</code></td>
+<td>Constructs a orthographic projection matrix using offsets of the four sides of the frustum from the camera center.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../logs/" class="btn btn-neutral float-left" title="Logs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../logs/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
