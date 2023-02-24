@@ -404,8 +404,9 @@ struct SwapChainDesc
 {
 	u32 width;
 	u32 height;
+    u32 buffer_count;
 	Format pixel_format;
-	u32 buffer_count;
+	bool vertically_synchronized;
 };
 ```
 
@@ -420,14 +421,14 @@ RV DemoApp::resize(u32 width, u32 height)
     {
         using namespace RHI;
         auto dev = get_main_device();
-        luexp(swap_chain->resize_buffers(2, width, height, Format::rgba8_unorm));
+        luexp(swap_chain->reset({width, height, 2, Format::rgba8_unorm, true}));
     }
     lucatchret;
     return ok;
 }
 ```
 
-`ISwapChain::resize_buffers` will recreate the swap chain buffer according to the new window framebuffer size.
+`ISwapChain::reset` will reset the swap chain according to the new swap chain descriptor.
 
 ## Creating descriptor set layout and descriptor set
 
@@ -849,7 +850,7 @@ The next step is to load our Luna LOGO image that will be drawn on the box surfa
 
 Save the image file in the same directory as `main.cpp`, and naming it `luna.png`. You should have one file structure similar to this:
 
-```c++
+```
 DemoApp
 |- xmake.lua
 |- main.cpp
@@ -858,7 +859,7 @@ DemoApp
 
 Then fills `xmake.lua` with the following code:
 
-```
+```lua
 target("DemoApp")
     set_luna_program()
     add_headerfiles("**.hpp")
@@ -961,16 +962,16 @@ RV DemoApp::update()
 }
 ```
 
-After we updates the camera rotation, we need to calculate the view-projection matrix for the camera. Fortunately, the math library of the `Runtime` module already includes implementations for many commonly used vector and matrix calculations, and here we are going to use two of them: `AffineMatrix3D::make_look_at` and `perspective_projection_fov`:
+After we updates the camera rotation, we need to calculate the view-projection matrix for the camera. Fortunately, the math library of the `Runtime` module already includes implementations for many commonly used vector and matrix calculations, and here we are going to use two of them: `AffineMatrix::make_look_at` and `ProjectionMatrix::make_perspective_fov`:
 
 ```c++
 Float3 camera_pos(cosf(camera_rotation / 180.0f * PI) * 2.0f, 1.0f, sinf(camera_rotation / 180.0f * PI) * 2.0f);
-Float4x4 camera_mat = AffineMatrix3D::make_look_at(camera_pos, Float3(0, 0, 0), Float3(0, 1, 0));
+Float4x4 camera_mat = AffineMatrix::make_look_at(camera_pos, Float3(0, 0, 0), Float3(0, 1, 0));
 auto window_sz = window->get_framebuffer_size();
-camera_mat = mul(camera_mat, perspective_projection_fov(PI / 3.0f, (f32)window_sz.x / (f32)window_sz.y, 0.001f, 100.0f));
+camera_mat = mul(camera_mat, ProjectionMatrix::make_perspective_fov(PI / 3.0f, (f32)window_sz.x / (f32)window_sz.y, 0.001f, 100.0f));
 ```
 
-The `AffineMatrix3D` namespace includes common functions for generating and decomposing 3D affine matrices. In our example, `AffineMatrix3D::make_look_at` generates one camera view matrix from the position of the camera and the position of the point to look at. `perspective_projection_fov` is another helper function that generates one projection matrix from the specified field-of-view and aspect ratio values. Those two matrices are multiplied by `mul` function to get the final view-projection matrix. Note that when performing matrix multiplications, use `mul` instead of operator `*`, the later one is used to multiply each element in the matrix separately.
+The `AffineMatrix` namespace includes common functions for generating and decomposing 3D affine matrices. In our example, `AffineMatrix::make_look_at` generates one camera view matrix from the position of the camera and the position of the point to look at. `ProjectionMatrix::make_perspective_fov` is another helper function that generates one projection matrix from the specified field-of-view and aspect ratio values. Those two matrices are multiplied by `mul` function to get the final view-projection matrix. Note that when performing matrix multiplications, use `mul` instead of operator `*`, the later one is used to multiply each element in the matrix separately.
 
 After we get the matrix, we can upload the matrix data to our constant buffer using the syntax similar to those for vertex and index buffers:
 
@@ -1046,10 +1047,10 @@ This transfers the command buffer to the execution state, so we can no longer ad
 The last thing is to present our rendering result to the window (or precisely, the back buffer in the window swap chain), and this is done by calling `ISwapChain::presnet`:
 
 ```c++
-luexp(swap_chain->present(rt_tex, 0, 1));
+luexp(swap_chain->present(rt_tex, 0));
 ```
 
-The first two parameters are the texture resource and subresource id to get displayed, and the system will blit the texture to the back buffer. For compatibility reasons, the user cannot fetch the back buffer directly like in other graphic APIs, this will bring one extra blit overhead on some platforms, but it won't be the bottleneck of your program for most cases.
+The two parameters are the texture resource and subresource id to get displayed, and the system will blit the texture to the back buffer. For compatibility reasons, the user cannot fetch the back buffer directly like in other graphic APIs, this will bring one extra blit overhead on some platforms, but it won't be the bottleneck of your program for most cases.
 
 In Luna SDK, the present call is not synchronous, it only pushes the present command into the bounding command queue and returns directly. We should explicitly wait for the present command to be finished by calling `ISwapChain::wait` before we can start the next frame:
 
@@ -1313,9 +1314,9 @@ RV DemoApp::update()
     {
         camera_rotation += 1.0f;
         Float3 camera_pos(cosf(camera_rotation / 180.0f * PI) * 2.0f, 1.0f, sinf(camera_rotation / 180.0f * PI) * 2.0f);
-        Float4x4 camera_mat = AffineMatrix3D::make_look_at(camera_pos, Float3(0, 0, 0), Float3(0, 1, 0));
+        Float4x4 camera_mat = AffineMatrix::make_look_at(camera_pos, Float3(0, 0, 0), Float3(0, 1, 0));
         auto window_sz = window->get_framebuffer_size();
-        camera_mat = mul(camera_mat, perspective_projection_fov(PI / 3.0f, (f32)window_sz.x / (f32)window_sz.y, 0.001f, 100.0f));
+        camera_mat = mul(camera_mat, ProjectionMatrix::make_perspective_fov(PI / 3.0f, (f32)window_sz.x / (f32)window_sz.y, 0.001f, 100.0f));
         void* camera_mapped;
         luexp(cb->map_subresource(0, false, &camera_mapped));
         memcpy(camera_mapped, &camera_mat, sizeof(Float4x4));
@@ -1358,7 +1359,7 @@ RV DemoApp::update()
         cmdbuf->end_render_pass();
 
         luexp(cmdbuf->submit());
-        luexp(swap_chain->present(rt_tex, 0, 1));
+        luexp(swap_chain->present(rt_tex, 0));
         swap_chain->wait();
         luexp(cmdbuf->reset());
     }
@@ -1375,7 +1376,7 @@ RV DemoApp::resize(u32 width, u32 height)
     {
         using namespace RHI;
         auto dev = get_main_device();
-        luexp(swap_chain->resize_buffers(2, width, height, Format::rgba8_unorm));
+        luexp(swap_chain->reset({width, height, 2, Format::rgba8_unorm, true}));
         luset(rt_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::rgba8_unorm, 
             ResourceUsageFlag::shader_resource | ResourceUsageFlag::render_target, width, height, 1, 1)));
         luset(depth_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::d32_float, 
