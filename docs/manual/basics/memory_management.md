@@ -46,11 +46,13 @@ Although `memalloc` and `memnew` returns `nullptr` to indicate a failed memory a
 2. OOM actually never happens on some operating systems, if such system fails to allocate memory, it will simply kill the current process or let the user kill another process to free up some memory.
 3. We consider OOM as an optimization problem, not a programming error, so it is improper to "handle" it. If your program suffers from OOM on the target platform, the best thing to do is reducing the memory size consumed by your program, rather than trying to recover from OOM.
 
-## Memory manipulating functions
+## Memory utility library
 
-Luna SDK comes with some useful functions that can be used to manipulate memory data easily. You can check the docs for each function for their usages.
+```c++
+#include <Runtime/MemoryUtils.hpp>
+```
 
-### Functions defined in `Runtime/Base.hpp`
+Memory utility library provides functions that can be used to manipulate memory data easily. You can check the docs for each function for their usages.
 
 `_kb`, `_mb`, `_gb`, `_tb` are [integer literals](https://en.cppreference.com/w/cpp/language/user_literal) that can be used to define byte sizes clearly. For example, you can use `100_mb` to represent `100 * 1024 * 1024`, and they have the same meaning.
 
@@ -61,8 +63,6 @@ Luna SDK comes with some useful functions that can be used to manipulate memory 
 `align_upper` increases the input size or address number to the nearest number that is a multiple of the alignment number.
 
 `bit_test`, `bit_set`, `bit_reset` tests, sets and resets one specific bit on the given memory address. These functions can be useful when performing bitwise operations.
-
-### Functions defined in `Runtime/MemoryUtils.hpp`
 
 `addressof` returns the real address of one object, even if the `operator&` of the object has been overloaded.
 

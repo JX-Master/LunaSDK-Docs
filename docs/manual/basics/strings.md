@@ -1,6 +1,6 @@
 # Strings
 
-Strings are sequences of characters represented by `c8`, `c16` and `c32`, terminated by a null terminator (`\0`). Luna SDK provides various string types and libraries, they will be discuessed in this section.
+Strings are sequences of characters represented by `c8`, `c16` and `c32`, terminated by a null terminator (`\0`). Luna SDK provides various string types and libraries, they will be discussed in this section.
 
 ## String types
 
@@ -16,6 +16,43 @@ The `String` type is a sequence of `c8` characters ended with `\0`. We designed 
 The `Name` type represents one immutable `c8` string that is usually used as an identifier. We implemented a global name registry in Luna SDK so that every unique name will have only one data copy in the registry, and all `Name` objects with the same string data refers to that copy, thus can be compared for equality quickly. The name string data is reference counted, and will be freed when the last `Name` object that refers to the data is destructed. Strings stored in `Name` cannot be changed, if the user assigns `Name` with another string, the `Name` object will refer to another string data entry, remaining the original string entry unchanged.
 
 `Name` and `String` can be converted to each other implicitly. There is no enforced encoding format for string types, but most text processing APIs in Luna SDK expects UTF-8 encoded strings for `String` and `Name` types.
+
+## String utility library
+
+```c++
+#include <Runtime/StringUtils.hpp>
+```
+
+The string utility library provides functions for processing characters and strings. Luna SDK imports the following string and character processing functions from C standard library that can be used directly in Luna SDK:
+
+1. `strncpy`
+2. `strcat`
+3. `strncat`
+4. `strxfrm`
+5. `strncmp`
+6. `strcoll`
+7. `strchr`
+8. `strrchr`
+9. `strspn`
+10. `strpbrk`
+11. `strstr`
+12. `strtok`
+13. `isalnum`
+14. `isalpha`
+15. `islower`
+16. `isupper`
+17. `tolower`
+18. `toupper`
+19. `isdigit`
+20. `isxdigit`
+21. `iscntrl`
+22. `isgraph`
+23. `isspace`
+24. `isblank`
+25. `isprint`
+26. `ispunct`
+
+`strlen`, `strcpy` and `strcmp` are compatible to C standard library, but are extended by Luna SDK so they handles all character types. `strcmp_prefix` checks whether one string is the prefix string of another string, and returns `0` if is. `strtoi64`, `strtou64` and `strtof64` interprets one number value presented the by string, and returns the value.
 
 ## Unicode encoding library
 

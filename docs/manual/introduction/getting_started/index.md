@@ -9,13 +9,13 @@ The first thing to do is to create an binary target for our demo program, so tha
 
 ```lua
 target("DemoApp")
-    set_luna_program()
+    set_luna_sdk_program()
     add_files("**.cpp")
     add_deps("Runtime", "Window", "RHI", "ShaderCompiler", "Image")
 target_end()
 ```
 
-`target` and `target_end` enclose a *target scope*, where all target definitions are specified. `set_luna_program` tells XMake that we are defining one Luna SDK program, this will let XMake set the target kind to "binary" and import all SDK options for the program. `add_files("**.cpp")` tells XMake to add all CPP files in the current directory and all subdirectories to the this target. `add_deps` lists all libraries that this program links to, in our example, we need to link to the SDK runtime (`Runtime`), the window module (`Window`) , the Graphics API module (`RHI`), the shader compiler module (`ShaderCompiler`) and the image file module (`Image`). If you got unresolved external symbol errors when compiling, make sure you already link correct libraries.
+`target` and `target_end` enclose a *target scope*, where all target definitions are specified. `set_luna_sdk_program` tells XMake that we are defining one Luna SDK program, this will let XMake set the target kind to "binary" and import all SDK options for the program. `add_files("**.cpp")` tells XMake to add all CPP files in the current directory and all subdirectories to the this target. `add_deps` lists all libraries that this program links to, in our example, we need to link to the SDK runtime (`Runtime`), the window module (`Window`) , the Graphics API module (`RHI`), the shader compiler module (`ShaderCompiler`) and the image file module (`Image`). If you got unresolved external symbol errors when compiling, make sure you already link correct libraries.
 
 Then we need to create source CPP files for our program. Since out demo program is simple, we only create one "main.cpp" file to host all source codes. After this, the `DemoApp` directory should looks like this:
 ```
@@ -861,7 +861,7 @@ Then fills `xmake.lua` with the following code:
 
 ```lua
 target("DemoApp")
-    set_luna_program()
+    set_luna_sdk_program()
     add_headerfiles("**.hpp")
     add_files("**.cpp")
     add_deps("Runtime", "Window", "RHI", "ShaderCompiler", "Image")
@@ -1417,7 +1417,7 @@ int main()
 
 ```lua
 target("DemoApp")
-    set_luna_program()
+    set_luna_sdk_program()
     add_headerfiles("**.hpp")
     add_files("**.cpp")
     add_deps("Runtime", "Window", "RHI", "ShaderCompiler", "Image")
