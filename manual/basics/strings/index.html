@@ -48,6 +48,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../../../license/">License</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../roadmap/">Roadmap</a>
+                </li>
+              </ul>
               <p class="caption"><span class="caption-text">Manual</span></p>
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
@@ -71,6 +75,8 @@
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">Strings</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#string-types">String types</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#string-utility-library">String utility library</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#unicode-encoding-library">Unicode encoding library</a>
     </li>
@@ -135,7 +141,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="strings">Strings</h1>
-<p>Strings are sequences of characters represented by <code>c8</code>, <code>c16</code> and <code>c32</code>, terminated by a null terminator (<code>\0</code>). Luna SDK provides various string types and libraries, they will be discuessed in this section.</p>
+<p>Strings are sequences of characters represented by <code>c8</code>, <code>c16</code> and <code>c32</code>, terminated by a null terminator (<code>\0</code>). Luna SDK provides various string types and libraries, they will be discussed in this section.</p>
 <h2 id="string-types">String types</h2>
 <pre><code class="language-c++">#include &lt;Runtime/String.hpp&gt; // For String, String16 and String32.
 #include &lt;Runtime/Name.hpp&gt; // For Name.
@@ -144,6 +150,39 @@
 <p>The <code>String</code> type is a sequence of <code>c8</code> characters ended with <code>\0</code>. We designed <code>String</code> as a replacement of <code>std::string</code> in Luna SDK, so most methods used for <code>std::string</code> should work find with our <code>String</code> type. Besides the <code>String</code> type, we also have <code>String16</code> and <code>String32</code> as replacements for <code>std::u16string</code> and <code>std::u32string</code> that holds character sequences of <code>c16</code> and <code>c32</code> types.</p>
 <p>The <code>Name</code> type represents one immutable <code>c8</code> string that is usually used as an identifier. We implemented a global name registry in Luna SDK so that every unique name will have only one data copy in the registry, and all <code>Name</code> objects with the same string data refers to that copy, thus can be compared for equality quickly. The name string data is reference counted, and will be freed when the last <code>Name</code> object that refers to the data is destructed. Strings stored in <code>Name</code> cannot be changed, if the user assigns <code>Name</code> with another string, the <code>Name</code> object will refer to another string data entry, remaining the original string entry unchanged.</p>
 <p><code>Name</code> and <code>String</code> can be converted to each other implicitly. There is no enforced encoding format for string types, but most text processing APIs in Luna SDK expects UTF-8 encoded strings for <code>String</code> and <code>Name</code> types.</p>
+<h2 id="string-utility-library">String utility library</h2>
+<pre><code class="language-c++">#include &lt;Runtime/StringUtils.hpp&gt;
+</code></pre>
+<p>The string utility library provides functions for processing characters and strings. Luna SDK imports the following string and character processing functions from C standard library that can be used directly in Luna SDK:</p>
+<ol>
+<li><code>strncpy</code></li>
+<li><code>strcat</code></li>
+<li><code>strncat</code></li>
+<li><code>strxfrm</code></li>
+<li><code>strncmp</code></li>
+<li><code>strcoll</code></li>
+<li><code>strchr</code></li>
+<li><code>strrchr</code></li>
+<li><code>strspn</code></li>
+<li><code>strpbrk</code></li>
+<li><code>strstr</code></li>
+<li><code>strtok</code></li>
+<li><code>isalnum</code></li>
+<li><code>isalpha</code></li>
+<li><code>islower</code></li>
+<li><code>isupper</code></li>
+<li><code>tolower</code></li>
+<li><code>toupper</code></li>
+<li><code>isdigit</code></li>
+<li><code>isxdigit</code></li>
+<li><code>iscntrl</code></li>
+<li><code>isgraph</code></li>
+<li><code>isspace</code></li>
+<li><code>isblank</code></li>
+<li><code>isprint</code></li>
+<li><code>ispunct</code></li>
+</ol>
+<p><code>strlen</code>, <code>strcpy</code> and <code>strcmp</code> are compatible to C standard library, but are extended by Luna SDK so they handles all character types. <code>strcmp_prefix</code> checks whether one string is the prefix string of another string, and returns <code>0</code> if is. <code>strtoi64</code>, <code>strtou64</code> and <code>strtof64</code> interprets one number value presented the by string, and returns the value.</p>
 <h2 id="unicode-encoding-library">Unicode encoding library</h2>
 <pre><code class="language-c++">#include &lt;Runtime/UTF8.hpp&gt;
 </code></pre>

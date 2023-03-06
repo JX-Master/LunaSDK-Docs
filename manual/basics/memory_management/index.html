@@ -48,6 +48,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../../../license/">License</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../roadmap/">Roadmap</a>
+                </li>
+              </ul>
               <p class="caption"><span class="caption-text">Manual</span></p>
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
@@ -82,13 +86,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#out-of-memory-oom">Out of memory (OOM)</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#memory-manipulating-functions">Memory manipulating functions</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#functions-defined-in-runtimebasehpp">Functions defined in Runtime/Base.hpp</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#functions-defined-in-runtimememoryutilshpp">Functions defined in Runtime/MemoryUtils.hpp</a>
-    </li>
-        </ul>
+    <li class="toctree-l3"><a class="reference internal" href="#memory-utility-library">Memory utility library</a>
     </li>
     </ul>
                 </li>
@@ -219,15 +217,15 @@
 <li>OOM actually never happens on some operating systems, if such system fails to allocate memory, it will simply kill the current process or let the user kill another process to free up some memory.</li>
 <li>We consider OOM as an optimization problem, not a programming error, so it is improper to "handle" it. If your program suffers from OOM on the target platform, the best thing to do is reducing the memory size consumed by your program, rather than trying to recover from OOM.</li>
 </ol>
-<h2 id="memory-manipulating-functions">Memory manipulating functions</h2>
-<p>Luna SDK comes with some useful functions that can be used to manipulate memory data easily. You can check the docs for each function for their usages.</p>
-<h3 id="functions-defined-in-runtimebasehpp">Functions defined in <code>Runtime/Base.hpp</code></h3>
+<h2 id="memory-utility-library">Memory utility library</h2>
+<pre><code class="language-c++">#include &lt;Runtime/MemoryUtils.hpp&gt;
+</code></pre>
+<p>Memory utility library provides functions that can be used to manipulate memory data easily. You can check the docs for each function for their usages.</p>
 <p><code>_kb</code>, <code>_mb</code>, <code>_gb</code>, <code>_tb</code> are <a href="https://en.cppreference.com/w/cpp/language/user_literal">integer literals</a> that can be used to define byte sizes clearly. For example, you can use <code>100_mb</code> to represent <code>100 * 1024 * 1024</code>, and they have the same meaning.</p>
 <p><code>memcpy</code>, <code>memcmp</code>, <code>memset</code>, <code>memmove</code> are memory manipulating functions provided by the C/C++ standard library. They can be used in Luna SDK as well. <code>memzero</code> is used to fill one range of memory with value <code>0</code>, it is equivalent to calling <code>memset</code> with value <code>0</code>.</p>
 <p><code>memcpy_bitmap</code> and <code>memcpy_bitmap3d</code> are used to copy binary data between two row-major 2D and 3D bitmaps. <code>pixel_offset</code> is used to fetch the address of one particular pixel in a row-major 2D or 3D bitmap. These functions can be useful when dealing with bitmap data.</p>
 <p><code>align_upper</code> increases the input size or address number to the nearest number that is a multiple of the alignment number.</p>
 <p><code>bit_test</code>, <code>bit_set</code>, <code>bit_reset</code> tests, sets and resets one specific bit on the given memory address. These functions can be useful when performing bitwise operations.</p>
-<h3 id="functions-defined-in-runtimememoryutilshpp">Functions defined in <code>Runtime/MemoryUtils.hpp</code></h3>
 <p><code>addressof</code> returns the real address of one object, even if the <code>operator&amp;</code> of the object has been overloaded.</p>
 <p><code>default_construct</code>, <code>value_construct</code>, <code>copy_construct</code>, <code>move_construct</code> and <code>direct_construct</code> performs object initialization on the object pointed by the specified iterator/pointer. <code>destruct</code> performs object destruction on the object pointed by the specified iterator/pointer.</p>
 <p><code>copy_assign</code> and <code>move_assign</code> perform copy assignment and move assignment on two objects pointed by the specified iterators/pointers.</p>

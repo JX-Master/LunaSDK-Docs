@@ -48,6 +48,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../../../license/">License</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../roadmap/">Roadmap</a>
+                </li>
+              </ul>
               <p class="caption"><span class="caption-text">Manual</span></p>
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Introduction</a>
@@ -175,12 +179,12 @@
 <h2 id="creating-the-program">Creating the program</h2>
 <p>The first thing to do is to create an binary target for our demo program, so that XMake build system can correctly build our program. To create a new program, create a new folder in the <code>{LUNA_ROOT_DIR}/Programs</code> directory, and name it <code>DemoApp</code>. In this folder, create a new Lua script file called <code>xmake.lua</code>, and fill its content with the following text:</p>
 <pre><code class="language-lua">target(&quot;DemoApp&quot;)
-    set_luna_program()
+    set_luna_sdk_program()
     add_files(&quot;**.cpp&quot;)
     add_deps(&quot;Runtime&quot;, &quot;Window&quot;, &quot;RHI&quot;, &quot;ShaderCompiler&quot;, &quot;Image&quot;)
 target_end()
 </code></pre>
-<p><code>target</code> and <code>target_end</code> enclose a <em>target scope</em>, where all target definitions are specified. <code>set_luna_program</code> tells XMake that we are defining one Luna SDK program, this will let XMake set the target kind to "binary" and import all SDK options for the program. <code>add_files("**.cpp")</code> tells XMake to add all CPP files in the current directory and all subdirectories to the this target. <code>add_deps</code> lists all libraries that this program links to, in our example, we need to link to the SDK runtime (<code>Runtime</code>), the window module (<code>Window</code>) , the Graphics API module (<code>RHI</code>), the shader compiler module (<code>ShaderCompiler</code>) and the image file module (<code>Image</code>). If you got unresolved external symbol errors when compiling, make sure you already link correct libraries.</p>
+<p><code>target</code> and <code>target_end</code> enclose a <em>target scope</em>, where all target definitions are specified. <code>set_luna_sdk_program</code> tells XMake that we are defining one Luna SDK program, this will let XMake set the target kind to "binary" and import all SDK options for the program. <code>add_files("**.cpp")</code> tells XMake to add all CPP files in the current directory and all subdirectories to the this target. <code>add_deps</code> lists all libraries that this program links to, in our example, we need to link to the SDK runtime (<code>Runtime</code>), the window module (<code>Window</code>) , the Graphics API module (<code>RHI</code>), the shader compiler module (<code>ShaderCompiler</code>) and the image file module (<code>Image</code>). If you got unresolved external symbol errors when compiling, make sure you already link correct libraries.</p>
 <p>Then we need to create source CPP files for our program. Since out demo program is simple, we only create one "main.cpp" file to host all source codes. After this, the <code>DemoApp</code> directory should looks like this:</p>
 <pre><code>DemoApp
 |- xmake.lua
@@ -510,8 +514,9 @@ luset(cmdbuf, queue-&gt;new_command_buffer());
 {
     u32 width;
     u32 height;
-    Format pixel_format;
     u32 buffer_count;
+    Format pixel_format;
+    bool vertically_synchronized;
 };
 </code></pre>
 <p>When used for creating swap chains, you may pass <code>0</code> for <code>width</code> and <code>height</code> property, which indicates the system to use the window framebuffer size as the size of the swap chain.</p>
@@ -522,13 +527,13 @@ luset(cmdbuf, queue-&gt;new_command_buffer());
     {
         using namespace RHI;
         auto dev = get_main_device();
-        luexp(swap_chain-&gt;resize_buffers(2, width, height, Format::rgba8_unorm));
+        luexp(swap_chain-&gt;reset({width, height, 2, Format::rgba8_unorm, true}));
     }
     lucatchret;
     return ok;
 }
 </code></pre>
-<p><code>ISwapChain::resize_buffers</code> will recreate the swap chain buffer according to the new window framebuffer size.</p>
+<p><code>ISwapChain::reset</code> will reset the swap chain according to the new swap chain descriptor.</p>
 <h2 id="creating-descriptor-set-layout-and-descriptor-set">Creating descriptor set layout and descriptor set</h2>
 <p>The <em>descriptor set</em> object stores descriptors that bind resources to graphic or compute pipeline. Descriptors have the following types:</p>
 <ol>
@@ -845,14 +850,14 @@ luset(cb, dev-&gt;new_resource(ResourceDesc::buffer(ResourceHeapType::upload, Re
 <p>The next step is to load our Luna LOGO image that will be drawn on the box surface:</p>
 <p><img alt="" src="luna.png" /></p>
 <p>Save the image file in the same directory as <code>main.cpp</code>, and naming it <code>luna.png</code>. You should have one file structure similar to this:</p>
-<pre><code class="language-c++">DemoApp
+<pre><code>DemoApp
 |- xmake.lua
 |- main.cpp
 |- luna.png
 </code></pre>
 <p>Then fills <code>xmake.lua</code> with the following code:</p>
-<pre><code>target(&quot;DemoApp&quot;)
-    set_luna_program()
+<pre><code class="language-lua">target(&quot;DemoApp&quot;)
+    set_luna_sdk_program()
     add_headerfiles(&quot;**.hpp&quot;)
     add_files(&quot;**.cpp&quot;)
     add_deps(&quot;Runtime&quot;, &quot;Window&quot;, &quot;RHI&quot;, &quot;ShaderCompiler&quot;, &quot;Image&quot;)
@@ -920,13 +925,13 @@ desc_set-&gt;set_sampler(2, SamplerDesc(FilterMode::min_mag_mip_linear, TextureA
     return ok;
 }
 </code></pre>
-<p>After we updates the camera rotation, we need to calculate the view-projection matrix for the camera. Fortunately, the math library of the <code>Runtime</code> module already includes implementations for many commonly used vector and matrix calculations, and here we are going to use two of them: <code>AffineMatrix3D::make_look_at</code> and <code>perspective_projection_fov</code>:</p>
+<p>After we updates the camera rotation, we need to calculate the view-projection matrix for the camera. Fortunately, the math library of the <code>Runtime</code> module already includes implementations for many commonly used vector and matrix calculations, and here we are going to use two of them: <code>AffineMatrix::make_look_at</code> and <code>ProjectionMatrix::make_perspective_fov</code>:</p>
 <pre><code class="language-c++">Float3 camera_pos(cosf(camera_rotation / 180.0f * PI) * 2.0f, 1.0f, sinf(camera_rotation / 180.0f * PI) * 2.0f);
-Float4x4 camera_mat = AffineMatrix3D::make_look_at(camera_pos, Float3(0, 0, 0), Float3(0, 1, 0));
+Float4x4 camera_mat = AffineMatrix::make_look_at(camera_pos, Float3(0, 0, 0), Float3(0, 1, 0));
 auto window_sz = window-&gt;get_framebuffer_size();
-camera_mat = mul(camera_mat, perspective_projection_fov(PI / 3.0f, (f32)window_sz.x / (f32)window_sz.y, 0.001f, 100.0f));
+camera_mat = mul(camera_mat, ProjectionMatrix::make_perspective_fov(PI / 3.0f, (f32)window_sz.x / (f32)window_sz.y, 0.001f, 100.0f));
 </code></pre>
-<p>The <code>AffineMatrix3D</code> namespace includes common functions for generating and decomposing 3D affine matrices. In our example, <code>AffineMatrix3D::make_look_at</code> generates one camera view matrix from the position of the camera and the position of the point to look at. <code>perspective_projection_fov</code> is another helper function that generates one projection matrix from the specified field-of-view and aspect ratio values. Those two matrices are multiplied by <code>mul</code> function to get the final view-projection matrix. Note that when performing matrix multiplications, use <code>mul</code> instead of operator <code>*</code>, the later one is used to multiply each element in the matrix separately.</p>
+<p>The <code>AffineMatrix</code> namespace includes common functions for generating and decomposing 3D affine matrices. In our example, <code>AffineMatrix::make_look_at</code> generates one camera view matrix from the position of the camera and the position of the point to look at. <code>ProjectionMatrix::make_perspective_fov</code> is another helper function that generates one projection matrix from the specified field-of-view and aspect ratio values. Those two matrices are multiplied by <code>mul</code> function to get the final view-projection matrix. Note that when performing matrix multiplications, use <code>mul</code> instead of operator <code>*</code>, the later one is used to multiply each element in the matrix separately.</p>
 <p>After we get the matrix, we can upload the matrix data to our constant buffer using the syntax similar to those for vertex and index buffers:</p>
 <pre><code class="language-c++">void* camera_mapped;
 luexp(cb-&gt;map_subresource(0, false, &amp;camera_mapped));
@@ -980,9 +985,9 @@ cmdbuf-&gt;end_render_pass();
 <p>This transfers the command buffer to the execution state, so we can no longer adding commands to the command buffer until we reset the command buffer using <code>ICommandBuffer::reset</code>.</p>
 <h2 id="presenting-the-render-result">Presenting the render result</h2>
 <p>The last thing is to present our rendering result to the window (or precisely, the back buffer in the window swap chain), and this is done by calling <code>ISwapChain::presnet</code>:</p>
-<pre><code class="language-c++">luexp(swap_chain-&gt;present(rt_tex, 0, 1));
+<pre><code class="language-c++">luexp(swap_chain-&gt;present(rt_tex, 0));
 </code></pre>
-<p>The first two parameters are the texture resource and subresource id to get displayed, and the system will blit the texture to the back buffer. For compatibility reasons, the user cannot fetch the back buffer directly like in other graphic APIs, this will bring one extra blit overhead on some platforms, but it won't be the bottleneck of your program for most cases.</p>
+<p>The two parameters are the texture resource and subresource id to get displayed, and the system will blit the texture to the back buffer. For compatibility reasons, the user cannot fetch the back buffer directly like in other graphic APIs, this will bring one extra blit overhead on some platforms, but it won't be the bottleneck of your program for most cases.</p>
 <p>In Luna SDK, the present call is not synchronous, it only pushes the present command into the bounding command queue and returns directly. We should explicitly wait for the present command to be finished by calling <code>ISwapChain::wait</code> before we can start the next frame:</p>
 <pre><code class="language-c++">swap_chain-&gt;wait();
 </code></pre>
@@ -1234,9 +1239,9 @@ RV DemoApp::update()
     {
         camera_rotation += 1.0f;
         Float3 camera_pos(cosf(camera_rotation / 180.0f * PI) * 2.0f, 1.0f, sinf(camera_rotation / 180.0f * PI) * 2.0f);
-        Float4x4 camera_mat = AffineMatrix3D::make_look_at(camera_pos, Float3(0, 0, 0), Float3(0, 1, 0));
+        Float4x4 camera_mat = AffineMatrix::make_look_at(camera_pos, Float3(0, 0, 0), Float3(0, 1, 0));
         auto window_sz = window-&gt;get_framebuffer_size();
-        camera_mat = mul(camera_mat, perspective_projection_fov(PI / 3.0f, (f32)window_sz.x / (f32)window_sz.y, 0.001f, 100.0f));
+        camera_mat = mul(camera_mat, ProjectionMatrix::make_perspective_fov(PI / 3.0f, (f32)window_sz.x / (f32)window_sz.y, 0.001f, 100.0f));
         void* camera_mapped;
         luexp(cb-&gt;map_subresource(0, false, &amp;camera_mapped));
         memcpy(camera_mapped, &amp;camera_mat, sizeof(Float4x4));
@@ -1279,7 +1284,7 @@ RV DemoApp::update()
         cmdbuf-&gt;end_render_pass();
 
         luexp(cmdbuf-&gt;submit());
-        luexp(swap_chain-&gt;present(rt_tex, 0, 1));
+        luexp(swap_chain-&gt;present(rt_tex, 0));
         swap_chain-&gt;wait();
         luexp(cmdbuf-&gt;reset());
     }
@@ -1296,7 +1301,7 @@ RV DemoApp::resize(u32 width, u32 height)
     {
         using namespace RHI;
         auto dev = get_main_device();
-        luexp(swap_chain-&gt;resize_buffers(2, width, height, Format::rgba8_unorm));
+        luexp(swap_chain-&gt;reset({width, height, 2, Format::rgba8_unorm, true}));
         luset(rt_tex, dev-&gt;new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::rgba8_unorm, 
             ResourceUsageFlag::shader_resource | ResourceUsageFlag::render_target, width, height, 1, 1)));
         luset(depth_tex, dev-&gt;new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::d32_float, 
@@ -1334,7 +1339,7 @@ int main()
 </code></pre>
 <h2 id="reference-code-for-xmakelua">Reference code for <code>xmake.lua</code></h2>
 <pre><code class="language-lua">target(&quot;DemoApp&quot;)
-    set_luna_program()
+    set_luna_sdk_program()
     add_headerfiles(&quot;**.hpp&quot;)
     add_files(&quot;**.cpp&quot;)
     add_deps(&quot;Runtime&quot;, &quot;Window&quot;, &quot;RHI&quot;, &quot;ShaderCompiler&quot;, &quot;Image&quot;)
