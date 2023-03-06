@@ -5,6 +5,7 @@ theme: readthedocs
 nav:
     - Home: index.md
     - License: license.md
+    - Roadmap: roadmap.md
     - Manual: 
         - Introduction:
             - Introduction: manual/introduction/index.md
