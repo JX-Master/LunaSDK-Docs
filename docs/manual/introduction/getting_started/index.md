@@ -148,10 +148,7 @@ RV DemoApp::init()
 {
     lutry
     {
-        luset(window, Window::new_window("DemoApp", 0, 0, 0, 0, nullptr, 
-            Window::WindowCreationFlag::default_size | Window::WindowCreationFlag::position_center |
-            Window::WindowCreationFlag::minimizable | Window::WindowCreationFlag::maximizable |
-            Window::WindowCreationFlag::resizable));
+        luset(window, Window::new_window("DemoApp", Window::WindowDisplaySettings::as_windowed(), Window::WindowCreationFlag::resizable));
     }
     lucatch
     {
@@ -170,10 +167,7 @@ RV DemoApp::init()
 {
     lutry
     {
-        luset(window, Window::new_window("DemoApp", 0, 0, 0, 0, nullptr, 
-            Window::WindowCreationFlag::default_size | Window::WindowCreationFlag::position_center |
-            Window::WindowCreationFlag::minimizable | Window::WindowCreationFlag::maximizable |
-            Window::WindowCreationFlag::resizable));
+        luset(window, Window::new_window("DemoApp", Window::WindowDisplaySettings::as_windowed(), Window::WindowCreationFlag::resizable));
     }
     lucatchret;
     return ok;
@@ -182,16 +176,28 @@ RV DemoApp::init()
 
 Since we use `goto` statement to implement `lutry` and `lucatch`, it you needs multiple lutry-lucatch pairs in one function, you should use a numbered version for every pair (like `lutry2`, `lucatch2`, `luset`2, `lures2`, etc.). In most cases, only one lutry-lucatch pair is sufficient.
 
-Now let's get back to `Window::new_window` function that does the actual work. The function signature of this function is:
+Now let's get back to `Window::new_window` function that does the actual work:
 
 ```c++
-R<Ref<IWindow>> new_window(const c8* title, 
-	i32 x, i32 y, i32 width, i32 height, 
-	monitor_t monitor = nullptr,
-	WindowCreationFlag flags = WindowCreationFlag::none)
+R<Ref<IWindow>> new_window(const c8* title, const WindowDisplaySettings& display_settings, WindowCreationFlag flags)
 ```
 
-Most parameters are self-explained, `monitor` is one handle to one system monitor, if you need to create a full-screen window, you need to specify the monitor to create window for, otherwise just leave it `nullptr`. `flags` are a combination of `WindowCreationFlag` enumeration class that lists flags for window creation process. If `WindowCreationFlag::position_center` is set, then `x` and `y` will be ignored and the window will be positioned on the center of the primary monitor; if `Window::WindowCreationFlag::default_size` is set, then `width` and `height` will be ignored and the window size will be set to a proper value based on the primary monitor's resolution.
+In this function, `title` Specifies the title of the window, which is usually displayed on the title bar of the window. `flags` are a combination of `WindowCreationFlag` enumeration class that lists flags for window creation process, like whether the window is resizable by dragging the border of the window, whether the window is a border-less window, etc. `display_settings` specifies the display settings for the window, which is described by `WindowDisplaySettings` structre:
+
+```c++
+struct WindowDisplaySettings
+{
+	monitor_t monitor;
+	i32 x;
+	i32 y;
+	u32 width;
+	u32 height;
+	u32 refresh_rate;
+	bool full_screen;
+};
+```
+
+Every window can be displayed in windowed mode or full screen mode, which can be specified by `full_screen`. `monitor` specifies the monitor to attach the window to in full screen mode. If `monitor` is `nullptr` and the window is set to full screen mode, the primary monitor of the system will be used. `x` and `y` are the position of the window on screen coordinates in windowed mode. The user may pass `DEFAULT_POS` constant to indicate a system-specific default position for the window. `width` and `height` are used to control the size of the window, the user can pass `0` to indicate a system-specific default size. `refresh_rate` controls the refresh rate of the window, the user may pass `0` to use the default refresh rate of the system. `WindowDisplaySettings` comes with two static functions `as_windowed` and `as_full_screen` for quickly specify all parameters in one row, with default values specified when they are skipped by the user, just as in our example.
 
 After the window is created, we need to register window event callbacks so that we can handle window events properly. In this example, the events we need to handle is the close event (triggered when the close button of the window is pressed) and the framebuffer resize event (triggered when the window framebuffer size is changed). This can be done by the following statements:
 
@@ -256,10 +262,7 @@ RV DemoApp::init()
 {
     lutry
     {
-        luset(window, Window::new_window("DemoApp", 0, 0, 0, 0, nullptr, 
-            Window::WindowCreationFlag::default_size | Window::WindowCreationFlag::position_center |
-            Window::WindowCreationFlag::minimizable | Window::WindowCreationFlag::maximizable |
-            Window::WindowCreationFlag::resizable));
+        luset(window, Window::new_window("DemoApp", Window::WindowDisplaySettings::as_windowed(), Window::WindowCreationFlag::resizable));
         window->get_close_event() += [](Window::IWindow* window) { window->close(); };
         window->get_framebuffer_resize_event() += [](Window::IWindow* window, u32 width, u32 height) {
             lupanic_if_failed(g_app->resize(width, height));
@@ -312,9 +315,9 @@ Build and run `DemoApp`, and you will see a blank window appears, and the progra
 
 ![](DemoApp-window.png)
 
-## Fetching graphic device
+## Fetching graphics device
 
-After the window is created, we can start drawing our box. In Luna SDK, all graphic resources are related to one specific graphic device represented by `RHI::IDevice`, which is the virtual representation of the physical graphic device on the platform, so we need to add one property to `DemoApp` to hold this device:
+After the window is created, we can start drawing our box. In Luna SDK, all graphics resources are related to one specific graphics device represented by `RHI::IDevice`, which is the virtual representation of the physical graphics device on the platform, so we need to add one property to `DemoApp` to hold this device:
 
 ```c++
 Ref<RHI::IDevice> dev;
@@ -339,10 +342,7 @@ RV DemoApp::init()
 {
     lutry
     {
-    	luset(window, Window::new_window("DemoApp", 0, 0, 0, 0, nullptr, 
-            Window::WindowCreationFlag::default_size | Window::WindowCreationFlag::position_center |
-            Window::WindowCreationFlag::minimizable | Window::WindowCreationFlag::maximizable |
-            Window::WindowCreationFlag::resizable));
+    	luset(window, Window::new_window("DemoApp", Window::WindowDisplaySettings::as_windowed(), Window::WindowCreationFlag::resizable));
         window->get_close_event() += [](Window::IWindow* window) { window->close(); };
         window->get_framebuffer_resize_event() += [](Window::IWindow* window, u32 width, u32 height) {
             lupanic_if_failed(g_app->resize(width, height));
@@ -373,13 +373,13 @@ Ref<RHI::ICommandBuffer> cmdbuf;
 Then we can create the objects by adding the following codes to `DemoApp::init`:
 
 ```c++
-luset(queue, dev->new_command_queue(CommandQueueType::graphic));
+luset(queue, dev->new_command_queue(CommandQueueType::graphics));
 luset(cmdbuf, queue->new_command_buffer());
 ```
 
-When creating command queues, we must specify the type of the queue. There are three different queue types: `graphic`, `compute` and `copy`. The copy queue only accepts copy commands, and is used for transferring data between different resources; the compute queue accepts copy and compute tasks, while the graphic queue accepts graphic, compute and copy commands. In our case, we need to create one graphic queue.
+When creating command queues, we must specify the type of the queue. There are three different queue types: `graphics`, `compute` and `copy`. The copy queue only accepts copy commands, and is used for transferring data between different resources; the compute queue accepts copy and compute tasks, while the graphics queue accepts graphics, compute and copy commands. In our case, we need to create one graphics queue.
 
-Note that command buffers are created from command queues, not from the graphic device directly. Once the command buffer is created, it is bound to the queue who created the buffer, and the binding can not be changed.
+Note that command buffers are created from command queues, not from the graphics device directly. Once the command buffer is created, it is bound to the queue who created the buffer, and the binding can not be changed.
 
 ## Creating swap chain
 
@@ -391,10 +391,10 @@ We need to add one new property to `DemoApp` to hold the command queue and comma
 Ref<RHI::ISwapChain> swap_chain;
 ```
 
-In Luna SDK, the swap chain presentation is also a command that should be submitted using graphic command queues, so we need to specify the command queue we need to use when creating swap chains like so:
+In Luna SDK, the swap chain presentation is also a command that should be submitted using graphics command queues, so we need to specify the command queue we need to use when creating swap chains like so:
 
 ```c++
-luset(swap_chain, new_swap_chain(queue, window, SwapChainDesc(0, 0, Format::rgba8_unorm, 2)));
+luset(swap_chain, new_swap_chain(queue, window, SwapChainDesc(0, 0, 2, Format::rgba8_unorm, true)));
 ```
 
 The swap chain is described by one `SwapChainDesc` structure:
@@ -432,7 +432,7 @@ RV DemoApp::resize(u32 width, u32 height)
 
 ## Creating descriptor set layout and descriptor set
 
-The *descriptor set* object stores descriptors that bind resources to graphic or compute pipeline. Descriptors have the following types:
+The *descriptor set* object stores descriptors that bind resources to graphics or compute pipeline. Descriptors have the following types:
 
 1. Constant buffer view, which binds constant global data to shaders.
 2. Shader resource view, which binds read-only textures and structured buffers to shaders.
@@ -511,7 +511,7 @@ The next thing to do is compiling shaders for the pipeline state object. Luna SD
 #include <RHI/ShaderCompileHelper.hpp>
 ```
 
-`ShaderCompileHelper.hpp` includes `RHI::get_current_platform_shader_target_format()` function, which tell the shader compiler the native target target shader format for the current graphic API. Since our shader is rather simple, we declare our shader source code directly in the C++ source file, in `DemoApp::init` function:
+`ShaderCompileHelper.hpp` includes `RHI::get_current_platform_shader_target_format()` function, which tell the shader compiler the native target target shader format for the current graphics API. Since our shader is rather simple, we declare our shader source code directly in the C++ source file, in `DemoApp::init` function:
 
 ```c++
 const char vs_shader_code[] = R"(
@@ -587,7 +587,7 @@ The shader compilation process is fairly simple, we just set source code, compil
 
 ## Creating shader input layout and pipeline state
 
-The graphic and compute pipeline state is described by two objects: shader input layout object and pipeline state object. Shader input layout object stores the shader binding layout information for all shader stages, while pipeline state object stores pipeline settings for all graphic stages. 
+The graphics and compute pipeline state is described by two objects: shader input layout object and pipeline state object. Shader input layout object stores the shader binding layout information for all shader stages, while pipeline state object stores pipeline settings for all graphics stages. 
 
 Shader input layout is described by the `ShaderInputLayoutDesc` structure, which is set by specifying layouts of descriptor sets that will be bound to this pipeline and flags that specifies shaders that are allowed to access shader inputs.
 
@@ -615,10 +615,10 @@ luset(slayout, dev->new_shader_input_layout(ShaderInputLayoutDesc({dlayout},
     ShaderInputLayoutFlag::deny_geometry_shader_access)));
 ```
 
-The pipeline object is described by the `GraphicPipelineStateDesc` structure or the `ComputePipelineStateDesc` structure. Since we are creating one graphic pipeline, we need to fill the `GraphicPipelineStateDesc`  structure, which is a complex structure that contains all pipeline settings for one graphic pipeline:
+The pipeline object is described by the `GraphicsPipelineStateDesc` structure or the `ComputePipelineStateDesc` structure. Since we are creating one graphics pipeline, we need to fill the `GraphicsPipelineStateDesc`  structure, which is a complex structure that contains all pipeline settings for one graphics pipeline:
 
 ```c++
-struct GraphicPipelineStateDesc
+struct GraphicsPipelineStateDesc
 {
 	InputLayoutDesc input_layout;
 	IShaderInputLayout* shader_input_layout = nullptr;
@@ -653,7 +653,7 @@ Ref<RHI::IPipelineState> pso;
 Then we can create pipeline state object using the following code:
 
 ```c++
-GraphicPipelineStateDesc ps_desc;
+GraphicsPipelineStateDesc ps_desc;
 ps_desc.primitive_topology_type = PrimitiveTopologyType::triangle;
 ps_desc.sample_mask = U32_MAX;
 ps_desc.sample_quality = 0;
@@ -672,7 +672,7 @@ ps_desc.shader_input_layout = slayout;
 ps_desc.num_render_targets = 1;
 ps_desc.rtv_formats[0] = Format::rgba8_unorm;
 ps_desc.dsv_format = Format::d32_float;
-luset(pso, dev->new_graphic_pipeline_state(ps_desc));
+luset(pso, dev->new_graphics_pipeline_state(ps_desc));
 ```
 
 ## Creating render and depth textures
@@ -1016,14 +1016,14 @@ desc.depth_clear_value = 1.0f;
 desc.stencil_load_op = LoadOp::dont_care;
 desc.stencil_store_op = StoreOp::dont_care;
 cmdbuf->begin_render_pass(desc);
-cmdbuf->set_graphic_shader_input_layout(slayout);
+cmdbuf->set_graphics_shader_input_layout(slayout);
 cmdbuf->set_pipeline_state(pso);
-cmdbuf->set_graphic_descriptor_set(0, desc_set);
+cmdbuf->set_graphics_descriptor_set(0, desc_set);
 cmdbuf->set_primitive_topology(PrimitiveTopology::triangle_list);
 auto sz = vb->get_desc().width_or_buffer_size;
 cmdbuf->set_vertex_buffers(0, {VertexBufferViewDesc(vb, 0, sz, sizeof(Vertex))});
 sz = ib->get_desc().width_or_buffer_size;
-cmdbuf->set_index_buffer(ib, 0, sz, Format::r32_uint);
+cmdbuf->set_index_buffer(IndexBufferViewDesc(ib, 0, sz, Format::r32_uint));
 cmdbuf->set_scissor_rect(RectI(0, 0, (i32)window_sz.x, (i32)window_sz.y));
 cmdbuf->set_viewport(Viewport(0.0f, 0.0f, (f32)window_sz.x, (f32)window_sz.y, 0.0f, 1.0f));
 cmdbuf->draw_indexed(36, 0, 0);
@@ -1129,10 +1129,7 @@ RV DemoApp::init()
 {
     lutry
     {
-        luset(window, Window::new_window("DemoApp", 0, 0, 0, 0, nullptr, 
-            Window::WindowCreationFlag::default_size | Window::WindowCreationFlag::position_center |
-            Window::WindowCreationFlag::minimizable | Window::WindowCreationFlag::maximizable |
-            Window::WindowCreationFlag::resizable));
+        luset(window, Window::new_window("DemoApp", Window::WindowDisplaySettings::as_windowed(), Window::WindowCreationFlag::resizable));
         window->get_close_event() += [](Window::IWindow* window) { window->close(); };
         window->get_framebuffer_resize_event() += [](Window::IWindow* window, u32 width, u32 height) {
             lupanic_if_failed(g_app->resize(width, height));
@@ -1140,9 +1137,9 @@ RV DemoApp::init()
 
         dev = RHI::get_main_device();
         using namespace RHI;
-        luset(queue, dev->new_command_queue(CommandQueueType::graphic));
+        luset(queue, dev->new_command_queue(CommandQueueType::graphics));
         luset(cmdbuf, queue->new_command_buffer());
-        luset(swap_chain, new_swap_chain(queue, window, SwapChainDesc(0, 0, Format::rgba8_unorm, 2)));
+        luset(swap_chain, new_swap_chain(queue, window, SwapChainDesc(0, 0, 2, Format::rgba8_unorm, true)));
 
         luset(dlayout, dev->new_descriptor_set_layout(DescriptorSetLayoutDesc({
             {DescriptorType::cbv, 0, 1, ShaderVisibility::vertex},
@@ -1215,7 +1212,7 @@ RV DemoApp::init()
             ShaderInputLayoutFlag::deny_hull_shader_access |
             ShaderInputLayoutFlag::deny_domain_shader_access |
             ShaderInputLayoutFlag::deny_geometry_shader_access)));
-        GraphicPipelineStateDesc ps_desc;
+        GraphicsPipelineStateDesc ps_desc;
 		ps_desc.primitive_topology_type = PrimitiveTopologyType::triangle;
 		ps_desc.sample_mask = U32_MAX;
 		ps_desc.sample_quality = 0;
@@ -1234,7 +1231,7 @@ RV DemoApp::init()
 		ps_desc.num_render_targets = 1;
 		ps_desc.rtv_formats[0] = Format::rgba8_unorm;
 		ps_desc.dsv_format = Format::d32_float;
-        luset(pso, dev->new_graphic_pipeline_state(ps_desc));
+        luset(pso, dev->new_graphics_pipeline_state(ps_desc));
         
         auto window_size = window->get_framebuffer_size();
         luset(rt_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::rgba8_unorm, 
@@ -1345,14 +1342,14 @@ RV DemoApp::update()
         desc.stencil_load_op = LoadOp::dont_care;
         desc.stencil_store_op = StoreOp::dont_care;
         cmdbuf->begin_render_pass(desc);
-        cmdbuf->set_graphic_shader_input_layout(slayout);
+        cmdbuf->set_graphics_shader_input_layout(slayout);
         cmdbuf->set_pipeline_state(pso);
-        cmdbuf->set_graphic_descriptor_set(0, desc_set);
+        cmdbuf->set_graphics_descriptor_set(0, desc_set);
         cmdbuf->set_primitive_topology(PrimitiveTopology::triangle_list);
         auto sz = vb->get_desc().width_or_buffer_size;
         cmdbuf->set_vertex_buffers(0, {VertexBufferViewDesc(vb, 0, sz, sizeof(Vertex))});
         sz = ib->get_desc().width_or_buffer_size;
-        cmdbuf->set_index_buffer(ib, 0, sz, Format::r32_uint);
+        cmdbuf->set_index_buffer(IndexBufferViewDesc(ib, 0, sz, Format::r32_uint));
         cmdbuf->set_scissor_rect(RectI(0, 0, (i32)window_sz.x, (i32)window_sz.y));
         cmdbuf->set_viewport(Viewport(0.0f, 0.0f, (f32)window_sz.x, (f32)window_sz.y, 0.0f, 1.0f));
         cmdbuf->draw_indexed(36, 0, 0);
