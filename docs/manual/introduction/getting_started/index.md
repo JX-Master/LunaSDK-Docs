@@ -700,10 +700,9 @@ struct ResourceDesc
 
 `type` specifies the type of the resource, like `buffer`, `texture_2d`, etc. `heap_type` specifies which memory heap to create the resource in, possible options include:
 
-1. `local` - The resource can only be accessed by GPU, CPU access is disabled. This heap is suitable for GPU generated resources like temporary texture between render passes.
-2. `shared` and `shared_upload` - The resource can be accessed by both GPU and CPU, but is optimized for maximum GPU bandwidth, CPU access is slow and limited. `shared_upload` only allows CPU-write, while `shared` allows both CPU read and write. This heap is suitable for CPU-write-once textures like static textures read from file.
-3. `upload` - The resource can be written by CPU and read by GPU. This heap is suitable for resources that should be updated by CPU frequently. Textures cannot be created in this heap.
-4. `readback` - The resource can be written by GPU and read by CPU. This heap is suitable for transferring data from GPU to CPU frequently. Textures cannot be created in this heap.
+1. `local` - The resource can only be accessed by GPU, CPU access is disabled. This heap is suitable for resources that will be frequently accessed by GPU.
+2. `upload` - The resource can be written by CPU and read by GPU. This heap is suitable for resources that should be updated by CPU frequently. Textures cannot be created in this heap.
+3. `readback` - The resource can be written by GPU and read by CPU. This heap is suitable for transferring data from GPU to CPU. Textures cannot be created in this heap.
 
 `pixel_format` specifies the pixel format of the resource if the resource is a texture, otherwise is ignored and will be set to `unknown`. `usages` specifies all possible roles of the resource when being bound to a pipeline. `width_or_buffer_size`, `height` and `depth_or_array_size`  specifies the size of the resource, if the resource is a buffer, only `width_or_buffer_size` is used, and specifies the size of the buffer in bytes, otherwise, based on the `type` of the resource, those three properties specifies the width, height, depth (for 3D textures) or array size (for 1D and 2D textures) of the resource. `mip_levels` specifies the number of mips that should be allocated for the resource, if this is `0`, the system allocates full mipmap chain for the resource. `sample_count` and `sample_quality` specifies the sampling configuration for MSAA textures. `flags` specifies additional flags for the texture, like whether this texture can be simultaneously accessed by multiple command queues.
 
@@ -812,20 +811,17 @@ u32 indices[] = {
     16, 17, 18, 16, 18, 19,
     20, 21, 22, 20, 22, 23
 };
-luset(vb, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::shared_upload, ResourceUsageFlag::vertex_buffer, sizeof(vertices))));
-luset(ib, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::shared_upload, ResourceUsageFlag::index_buffer, sizeof(indices))));
-void* mapped = nullptr;
-luexp(vb->map_subresource(0, false, &mapped));
-memcpy(mapped, vertices, sizeof(vertices));
-vb->unmap_subresource(0, true);
-luexp(ib->map_subresource(0, false, &mapped));
-memcpy(mapped, indices, sizeof(indices));
-ib->unmap_subresource(0, true);
+luset(vb, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::local, ResourceUsageFlag::vertex_buffer, sizeof(vertices))));
+luset(ib, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::local, ResourceUsageFlag::index_buffer, sizeof(indices))));
+luexp(dev->copy_resource({
+            ResourceCopyDesc::as_write_buffer(vb, vertices, sizeof(vertices), 0),
+            ResourceCopyDesc::as_write_buffer(ib, indices, sizeof(indices), 0)
+        }));
 ```
 
-We firstly define vertex and index data for our box, then we create two buffer resources to hold the vertex and index data. Those two resources are created in `shared_upload` heap, so we can upload data to the resource, while still achieving maximum GPU bandwidth.  After the resource is created, we can map the resource to system memory by calling `IResource::map`, and retrieving one pointer to the memory, then we use `memcpy` to copy buffer data, and use `IResource::unmap` to release the memory mapping, and store the data to the resource.
+We firstly define vertex and index data for our box, then we create two buffer resources to hold the vertex and index data. Since we only need to upload their data once, we can place these two buffers in local heap to achieve maximum GPU bandwidth, and use `IDevice::copy_resource` to upload their data. Note that using `IDevice::copy_resource` to copy resource data is much slower than using `IResource::map` to access resource memory directly, so it should be used only when the CPU access is not very often, like uploading initial data for the resource.
 
-We can use similar code to create the constant buffer for uploading camera properties, but there are two differences. First, the graphic device usually has alignment requirements for constant buffers, which can be fetched from `IDevice::get_constant_buffer_data_alignment()`, so we use `align_upper` helper function to adjust the size of our constant buffer resource to meet the alignment requirement. Second, since we need to update constant buffer data once every frame, we should choose `upload` heap instead of `shared_upload` for maximum CPU bandwidth.
+We can use similar code to create the constant buffer for uploading camera properties, but there are two differences. First, the graphic device has alignment requirements for constant buffers, which can be fetched from `IDevice::get_constant_buffer_data_alignment()`, so we use `align_upper` helper function to adjust the size of our constant buffer resource to meet the alignment requirement. Second, since we need to update constant buffer data once every frame, we should choose `upload` heap instead of `local` to give CPU direct access to the resource.
 
 In our `DemoApp`, the data of the constant buffer is the 4x4 world-to-project matrix of the camera. We need to add a new include file to use matrix types:
 
@@ -906,16 +902,16 @@ lulet(image_data, Image::read_image_file(image_file_data.data(), image_file_data
 `Image::read_image_file` function outputs one `Image::ImageDesc` structure that describes the returned image data, including the width, height and pixel format of the image. The image data is arranged in a row-major manner and without and alignment padding. We then creates one new resource, and uploads the data to the resource:
 
 ```c++
-luset(file_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::shared_upload, Format::rgba8_unorm, 
-    ResourceUsageFlag::shader_resource, image_desc.width, image_desc.height, 1, 1)));
-luexp(file_tex->map_subresource(0, false));
-luexp(file_tex->write_subresource(0, image_data.data(), 
-    image_desc.width * Image::pixel_size(image_desc.format), 
-    image_desc.width * image_desc.height * Image::pixel_size(image_desc.format), BoxU(0, 0, 0, image_desc.width, image_desc.height, 1)));
-file_tex->unmap_subresource(0, true);
+luset(file_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::rgba8_unorm, 
+            ResourceUsageFlag::shader_resource, image_desc.width, image_desc.height, 1, 1)));
+luexp(dev->copy_resource({
+    ResourceCopyDesc::as_write_texture(file_tex, image_data.data(), image_desc.width * Image::pixel_size(image_desc.format), 
+        image_desc.width * image_desc.height * Image::pixel_size(image_desc.format), 0, BoxU(0, 0, 0, image_desc.width, image_desc.height, 1))
+}));
 ```
 
- Note that for texture resources, we cannot fetch pointers to the mapped data and copy data directly using `memcpy` like those in buffer resources. Instead, we need to call `IResource::write_subresource` after `IResource::map_subresource` to let the system copy data to the resource memory. The resource is created in `shared_upload` heap, which is the common option for resources whose data will be loaded from file.
+Uploading texture data is similar to uploading buffer data, but we should specify `ResourceCopyDesc::as_write_texture` instead of `ResourceCopyDesc::as_write_buffer` for one
+texture write operation. Note that every `IDevice::copy_resource` call accepts multiple copy operations of different types, the user is encouraged to batch copy operations into one `IDevice::copy_resource` call to increase performance. In our example, we use two separated `IDevice::copy_resource` calls for buffer and texture data, this is only for clarity purposes and the user should batch them into one call in real cases.
 
 ## Set up descriptor set
 
@@ -965,7 +961,7 @@ RV DemoApp::update()
 After we updates the camera rotation, we need to calculate the view-projection matrix for the camera. Fortunately, the math library of the `Runtime` module already includes implementations for many commonly used vector and matrix calculations, and here we are going to use two of them: `AffineMatrix::make_look_at` and `ProjectionMatrix::make_perspective_fov`:
 
 ```c++
-Float3 camera_pos(cosf(camera_rotation / 180.0f * PI) * 2.0f, 1.0f, sinf(camera_rotation / 180.0f * PI) * 2.0f);
+Float3 camera_pos(cosf(camera_rotation / 180.0f * PI) * 3.0f, 1.0f, sinf(camera_rotation / 180.0f * PI) * 3.0f);
 Float4x4 camera_mat = AffineMatrix::make_look_at(camera_pos, Float3(0, 0, 0), Float3(0, 1, 0));
 auto window_sz = window->get_framebuffer_size();
 camera_mat = mul(camera_mat, ProjectionMatrix::make_perspective_fov(PI / 3.0f, (f32)window_sz.x / (f32)window_sz.y, 0.001f, 100.0f));
@@ -973,13 +969,13 @@ camera_mat = mul(camera_mat, ProjectionMatrix::make_perspective_fov(PI / 3.0f, (
 
 The `AffineMatrix` namespace includes common functions for generating and decomposing 3D affine matrices. In our example, `AffineMatrix::make_look_at` generates one camera view matrix from the position of the camera and the position of the point to look at. `ProjectionMatrix::make_perspective_fov` is another helper function that generates one projection matrix from the specified field-of-view and aspect ratio values. Those two matrices are multiplied by `mul` function to get the final view-projection matrix. Note that when performing matrix multiplications, use `mul` instead of operator `*`, the later one is used to multiply each element in the matrix separately.
 
-After we get the matrix, we can upload the matrix data to our constant buffer using the syntax similar to those for vertex and index buffers:
+After we get the matrix, we need to copy the matrix data to the constant buffer resource. Since our constant buffer is created in `upload` heap, we can call `IResource::map` to acquire CPU access to the resource memory directly. After we have copied data to the resource memory, we can call `IResource::unmap` to release the CPU access and tells the driver to synchronize the resource data with GPU. `IResource::map` requires the user to specify the memory range that CPU wants to read data from, for resource created in `upload` heap, this must be an empty range, so we specify `0, 0` here. `IResource::unmap` requires the user to specify the memory range updated by CPU, we specify `0, sizeof(Float4x4)` to reflect the copy operation for the buffer data.
 
 ```c++
 void* camera_mapped;
-luexp(cb->map_subresource(0, false, &camera_mapped));
+luexp(cb->map_subresource(0, 0, 0, &camera_mapped));
 memcpy(camera_mapped, &camera_mat, sizeof(Float4x4));
-cb->unmap_subresource(0, true);
+cb->unmap_subresource(0, 0, sizeof(Float4x4));
 ```
 
 ## Resource barriers
@@ -1268,15 +1264,13 @@ RV DemoApp::init()
             16, 17, 18, 16, 18, 19,
             20, 21, 22, 20, 22, 23
         };
-        luset(vb, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::shared_upload, ResourceUsageFlag::vertex_buffer, sizeof(vertices))));
-        luset(ib, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::shared_upload, ResourceUsageFlag::index_buffer, sizeof(indices))));
-        void* mapped = nullptr;
-        luexp(vb->map_subresource(0, false, &mapped));
-        memcpy(mapped, vertices, sizeof(vertices));
-        vb->unmap_subresource(0, true);
-        luexp(ib->map_subresource(0, false, &mapped));
-        memcpy(mapped, indices, sizeof(indices));
-        ib->unmap_subresource(0, true);
+        luset(vb, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::local, ResourceUsageFlag::vertex_buffer, sizeof(vertices))));
+        luset(ib, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::local, ResourceUsageFlag::index_buffer, sizeof(indices))));
+        luexp(dev->copy_resource({
+            ResourceCopyDesc::as_write_buffer(vb, vertices, sizeof(vertices), 0),
+            ResourceCopyDesc::as_write_buffer(ib, indices, sizeof(indices), 0)
+        }));
+        
         auto cb_align = dev->get_constant_buffer_data_alignment();
         luset(cb, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::upload, ResourceUsageFlag::constant_buffer, align_upper(sizeof(Float4x4), cb_align))));
 
@@ -1285,13 +1279,12 @@ RV DemoApp::init()
         Image::ImageDesc image_desc;
         lulet(image_data, Image::read_image_file(image_file_data.data(), image_file_data.size(), Image::ImagePixelFormat::rgba8_unorm, image_desc));
 
-        luset(file_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::shared_upload, Format::rgba8_unorm, 
+        luset(file_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::rgba8_unorm, 
             ResourceUsageFlag::shader_resource, image_desc.width, image_desc.height, 1, 1)));
-        luexp(file_tex->map_subresource(0, false));
-        luexp(file_tex->write_subresource(0, image_data.data(), 
-            image_desc.width * Image::pixel_size(image_desc.format), 
-            image_desc.width * image_desc.height * Image::pixel_size(image_desc.format), BoxU(0, 0, 0, image_desc.width, image_desc.height, 1)));
-        file_tex->unmap_subresource(0, true);
+        luexp(dev->copy_resource({
+            ResourceCopyDesc::as_write_texture(file_tex, image_data.data(), image_desc.width * Image::pixel_size(image_desc.format), 
+                image_desc.width * image_desc.height * Image::pixel_size(image_desc.format), 0, BoxU(0, 0, 0, image_desc.width, image_desc.height, 1))
+        }));
 
         desc_set->set_cbv(0, cb, ConstantBufferViewDesc(0, align_upper(sizeof(Float4x4), cb_align)));
         desc_set->set_srv(1, file_tex);
@@ -1310,14 +1303,14 @@ RV DemoApp::update()
     lutry
     {
         camera_rotation += 1.0f;
-        Float3 camera_pos(cosf(camera_rotation / 180.0f * PI) * 2.0f, 1.0f, sinf(camera_rotation / 180.0f * PI) * 2.0f);
+        Float3 camera_pos(cosf(camera_rotation / 180.0f * PI) * 3.0f, 1.0f, sinf(camera_rotation / 180.0f * PI) * 3.0f);
         Float4x4 camera_mat = AffineMatrix::make_look_at(camera_pos, Float3(0, 0, 0), Float3(0, 1, 0));
         auto window_sz = window->get_framebuffer_size();
         camera_mat = mul(camera_mat, ProjectionMatrix::make_perspective_fov(PI / 3.0f, (f32)window_sz.x / (f32)window_sz.y, 0.001f, 100.0f));
         void* camera_mapped;
-        luexp(cb->map_subresource(0, false, &camera_mapped));
+        luexp(cb->map_subresource(0, 0, 0, &camera_mapped));
         memcpy(camera_mapped, &camera_mat, sizeof(Float4x4));
-        cb->unmap_subresource(0, true);
+        cb->unmap_subresource(0, 0, sizeof(Float4x4));
 
         using namespace RHI;
 
