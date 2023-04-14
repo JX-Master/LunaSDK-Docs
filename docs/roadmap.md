@@ -7,11 +7,9 @@ This page shows the planned features and services in the future releases of Luna
 * Vulkan and Metal implementation for `RHI`.
 * SPIR-V and MSL target for `ShaderCompiler`.
 * macOS porting of Luna SDK.
-* Pass-based rendering system implemented as a middleware module.
+* Pass-based rendering system (render graph).
 * More graphic features in `Studio`.
 
 ## Q3 2023
 
-* In-game GUI module based on `VG`.
-* Undo-redo support in `Studio`.
-
+* Graphic effects framework (specifying render passes using effects files, shader parameters reflection, automatic resource creation, etc.).
