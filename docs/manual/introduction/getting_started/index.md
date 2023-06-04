@@ -317,13 +317,19 @@ Build and run `DemoApp`, and you will see a blank window appears, and the progra
 
 ## Fetching graphics device
 
-After the window is created, we can start drawing our box. In Luna SDK, all graphics resources are related to one specific graphics device represented by `RHI::IDevice`, which is the virtual representation of the physical graphics device on the platform, so we need to add one property to `DemoApp` to hold this device:
+After the window is created, we can start drawing our box. Luna SDK provides all rendering features through `RHI` module, which is the abbreviation of *Rendering Hardware Interface*. To use RHI module, we need to include its header first:
+
+```c++
+#include <RHI/RHI.hpp>
+```
+
+In Luna SDK, all graphics resources are related to one specific graphics device represented by `RHI::IDevice`, which is the virtual representation of the physical graphics device on the platform, so we need to add one property to `DemoApp` to hold this device:
 
 ```c++
 Ref<RHI::IDevice> dev;
 ```
 
-When `RHI` module initializes, it automatically chooses the most suitable physical device and creates one device for you, which can be fetched by `RHI::get_main_device()`. You may also create additional devices for special use, but in our `DemoApp`, we will stick to the default one  by adding the following line in the `lutry ` scope of `DemoApp::init`:
+When `RHI` module initializes, it automatically chooses the most suitable physical device and creates one `IDevice` instance for you, which can be fetched by `RHI::get_main_device()`. You may also create additional devices for special use, but in our `DemoApp`, we will stick to the default one  by adding the following line in the `lutry ` scope of `DemoApp::init`:
 
 ```c++
 dev = RHI::get_main_device();
@@ -359,42 +365,71 @@ RV DemoApp::init()
 
 Unless explicitly specified, all codes we need to add to `DemoApp::init` in the following sections are added to the end of `lutry` scope, not in the end of the function scope directly.
 
-## Creating command queue and command buffer
+## Fetching command queue and creating command buffer
 
-Luna SDK employs *deferred execution model*, where render and compute calls are recorded as *commands* in *command buffers*, then submitted to GPU explicitly by submitting *command buffers* to *command queues*. The command buffer object manages memory allocated to store commands, it also tracks the execution state for commands in the buffer when the buffer is submitted for execution. The command queue object is a FIFO message buffer between CPU and GPU. CPU can push command buffers into the queue, and GPU will pop command buffers from the queue and execute commands in the buffer. Command buffers in the queue are guaranteed to execute one after another, the next command buffer will not being executed until the last command buffer is finished.
+Luna SDK employs *deferred execution model*, where render and compute invocations are recorded as *commands* in *command buffers*, then submitted to GPU explicitly by submitting *command buffers* to *command queues*. The command buffer object manages memory allocated to store commands, it also tracks the execution state for commands in the buffer when the buffer is submitted for execution. The command queue is a FIFO message queue between the host program and GPU. The host program submits command buffers to the command queue, and GPU consumes command buffers from the queue and execute commands in the buffer. Command buffers in the same queue are guaranteed to execute one after another, the next command buffer will not be executed until the last command buffer is finished.
 
-We need to add two new properties to `DemoApp` to hold the command queue and command buffer:
+When `IDevice` initializes, it creates one or multiple command queues based on the physical device architecture and limitation. The user can use `IDevice::get_num_command_queues` to fetch the number of command queues present on the current device, and use `IDevice::get_command_queue_desc` to fetch the command queue description of each command queue. `get_command_queue_desc` returns one `CommandQueueDesc` structure, which is defined as follows:
 
 ```c++
-Ref<RHI::ICommandQueue> queue;
+struct CommandQueueDesc
+{
+	CommandQueueType type;
+	CommandQueueFlag flags;
+};
+```
+
+`CommandQueueType` indicates the type of the command queue. There are three different queue types: `graphics`, `compute` and `copy`. The copy queue only accepts copy commands, and is used for transferring data between different resources; the compute queue accepts copy and compute tasks, while the graphics queue accepts graphics, compute and copy commands. `CommandQueueFlag` indicates additional properties for the queue, including `CommandQueueFlag::presenting`, which indicates one command queue that supports swap chain presenting. 
+
+In our program, we need to choose one command queue of `graphics` type, and has `CommandQueueFlag::presenting` flag present. We firstly need to add one property to `DemoApp` to store the command queue index we choose:
+
+```c++
+u32 queue;
+```
+
+Then the command queue can be fetched by adding the following codes to `DemoApp::init`:
+
+```c++
+queue = U32_MAX;
+u32 num_queues = dev->get_num_command_queues();
+for (u32 i = 0; i < num_queues; ++i)
+{
+	auto desc = dev->get_command_queue_desc(i);
+	if (desc.type == CommandQueueType::graphics && test_flags(desc.flags, CommandQueueFlag::presenting))
+	{
+		queue = i;
+		break;
+	}
+}
+if(queue == U32_MAX) return BasicError::not_supported();
+```
+
+After we fetched the command queue, we need to create one command buffer to record commands that will be submitted to that queue. We firstly need to add one new property to `DemoApp` to hold the command buffer:
+
+```c++
 Ref<RHI::ICommandBuffer> cmdbuf;
 ```
 
-Then we can create the objects by adding the following codes to `DemoApp::init`:
+Then we can create the command buffer by adding the following codes to `DemoApp::init`:
 
 ```c++
-luset(queue, dev->new_command_queue(CommandQueueType::graphics));
-luset(cmdbuf, queue->new_command_buffer());
+luset(cmdbuf, dev->new_command_buffer(queue));
 ```
 
-When creating command queues, we must specify the type of the queue. There are three different queue types: `graphics`, `compute` and `copy`. The copy queue only accepts copy commands, and is used for transferring data between different resources; the compute queue accepts copy and compute tasks, while the graphics queue accepts graphics, compute and copy commands. In our case, we need to create one graphics queue.
-
-Note that command buffers are created from command queues, not from the graphics device directly. Once the command buffer is created, it is bound to the queue who created the buffer, and the binding can not be changed.
+When we create the command buffer, we should pass the index of the command queue that is attached to the command buffer. The created command buffer can only be submitted to the command queue specified when creating the command buffer. 
 
 ## Creating swap chain
 
-The swap chain object contains resources that are used to present render results to our window. 
-
-We need to add one new property to `DemoApp` to hold the command queue and command buffer:
+The swap chain object contains resources that are used to present render results to our window. In order to create one swap chain, we firstly need to add one property to `DemoApp` to store the created swap chain:
 
 ```c++
 Ref<RHI::ISwapChain> swap_chain;
 ```
 
-In Luna SDK, the swap chain presentation is also a command that should be submitted using graphics command queues, so we need to specify the command queue we need to use when creating swap chains like so:
+In Luna SDK, the swap chain presentation is also a command that should be submitted using command queues, so we need to specify the command queue we need to use when creating swap chains like so:
 
 ```c++
-luset(swap_chain, new_swap_chain(queue, window, SwapChainDesc(0, 0, 2, Format::rgba8_unorm, true)));
+luset(swap_chain, dev->new_swap_chain(queue, window, SwapChainDesc(0, 0, 2, Format::bgra8_unorm, true)));
 ```
 
 The swap chain is described by one `SwapChainDesc` structure:
@@ -420,33 +455,38 @@ RV DemoApp::resize(u32 width, u32 height)
     lutry
     {
         using namespace RHI;
-        auto dev = get_main_device();
-        luexp(swap_chain->reset({width, height, 2, Format::rgba8_unorm, true}));
+        if(width && height)
+        {
+            auto dev = get_main_device();
+            luexp(swap_chain->reset({width, height, 2, Format::unknown, true}));
+        }
     }
     lucatchret;
     return ok;
 }
 ```
 
-`ISwapChain::reset` will reset the swap chain according to the new swap chain descriptor.
+`ISwapChain::reset` will reset the swap chain according to the new swap chain description, we can use `Format::unknown` to tell the system to use the current back buffer format for the new back buffer. Note that on some systems, the resize event will be emitted with both `width` and `height` being `0` if the window is minimized. We cannot create one swap chain with zero width or height, so we should handle this case and resize the back buffer with only non-zero size values.
 
 ## Creating descriptor set layout and descriptor set
 
 The *descriptor set* object stores descriptors that bind resources to graphics or compute pipeline. Descriptors have the following types:
 
-1. Constant buffer view, which binds constant global data to shaders.
-2. Shader resource view, which binds read-only textures and structured buffers to shaders.
-3. Unordered access view, which binds writable resources to compute shaders.
-4. Sampler, which stores sampling settings and exposes those settings for shaders.
+1. Uniform buffer view, which binds constant global data to shaders.
+2. Read buffer view, which binds buffers to shaders and enables load operations on the buffer data.
+3. Read texture view, which binds textures to shaders and enables sampling and load operations on the pixel data.
+4. Read write buffer view, which binds buffers to shaders and enables load, store and atomic operations on the buffer data.
+5. Read write texture view, which binds textures to shaders and enables load, store, and atomic operations on the pixel data.
+6. Sampler, which stores sampling settings and exposes those settings for shaders.
 
-Every pipeline may bind multiple descriptor sets, every descriptor set may contain all four kinds of descriptors listed above. The *descriptor set layout* object stores the layout of one descriptor set object, including the number of descriptors in the descriptor set and the property of each descriptor.
+Every pipeline may bind multiple descriptor sets, every descriptor set may contain all kinds of descriptors listed above. The *descriptor set layout* object stores the layout of one descriptor set object, including the number of descriptors in the descriptor set and the property of each descriptor.
 
 In order to create one descriptor set layout object, we need to fill one `DescriptorSetLayoutDesc` structure. Here is the definition of `DescriptorSetLayoutDesc` structure:
 
 ```c++
 struct DescriptorSetLayoutDesc
 {
-	Vector<DescriptorSetLayoutBinding> bindings;
+	Span<const DescriptorSetLayoutBinding> bindings;
 	DescriptorSetLayoutFlag flags = DescriptorSetLayoutFlag::none;
 };
 ```
@@ -459,7 +499,7 @@ struct DescriptorSetLayoutBinding
 	DescriptorType type;
 	u32 binding_slot;
 	u32 num_descs;
-	ShaderVisibility shader_visibility;
+	ShaderVisibilityFlag shader_visibility_flags;
 };
 ```
 
@@ -468,14 +508,16 @@ the `type` property describes the type of this binding. All descriptors in the s
 ```c++
 enum class DescriptorType : u32
 {
-	srv,
-	uav,
-	cbv,
+	uniform_buffer_view,
+	read_buffer_view,
+	read_write_buffer_view,
+    read_texture_view,
+    read_write_texture_view,
 	sampler
 };
 ```
 
-`binding_slot` and `num_descs` describes the binding slot range of this binding, starting from `0`. All slots in `[binding_slot, binding_slot + num_descs)` will be occupied by this binding and cannot be used by other bindings. If `num_descs` is greater than `1`, then this binding will be interpreted as one descriptor array in the shader. `shader_visibility` specifies which shader may access descriptors in this binding, you may restrict the visibility of one binding to one specific shader to potentially improve performance.
+`binding_slot` and `num_descs` describes the binding slot range of this binding, starting from `0`. All slots in `[binding_slot, binding_slot + num_descs)` will be occupied by this binding and cannot be used by other bindings. If `num_descs` is greater than `1`, then this binding will be interpreted as one descriptor array in the shader. `shader_visibility_flags` specifies which shaders may access descriptors in this binding, you may restrict the visibility of one binding to one set of specific shaders, which may improve performance on some platforms.
 
 We need to add two new properties to `DemoApp` to hold the descriptor set layout object and the descriptor set object:
 
@@ -488,19 +530,20 @@ We need **1** descriptor set with **1** constant buffer view, **1** shader resou
 
 ```c++
 luset(dlayout, dev->new_descriptor_set_layout(DescriptorSetLayoutDesc({
-    {DescriptorType::cbv, 0, 1, ShaderVisibility::vertex},
-    {DescriptorType::srv, 1, 1, ShaderVisibility::pixel},
-    {DescriptorType::sampler, 2, 1, ShaderVisibility::pixel}
+    {DescriptorType::uniform_buffer_view, 0, 1, ShaderVisibilityFlag::vertex},
+    {DescriptorType::read_texture_view, 1, 1, ShaderVisibilityFlag::pixel},
+    {DescriptorType::sampler, 2, 1, ShaderVisibilityFlag::pixel}
 })));
 ```
 
 Then we can create one descriptor set using the descriptor set layout object:
 
 ```c++
-luset(desc_set, dev->new_descriptor_set(DescriptorSetDesc(dlayout)));
+IDescriptorSetLayout* dl = dlayout.get();
+luset(desc_set, dev->new_descriptor_set({dl}));
 ```
 
-We will fill descriptors in the set by calling `set_cbv`, `set_srv` and `set_sampler` later.
+We will fill descriptors in the set by calling `update_descriptors` later.
 
 ## Compiling shaders
 
@@ -521,12 +564,16 @@ cbuffer vertexBuffer : register(b0)
 };
 struct VS_INPUT
 {
+    [[vk::location(0)]]
     float3 position : POSITION;
+    [[vk::location(1)]]
     float2 texcoord : TEXCOORD;
 };
 struct PS_INPUT
 {
+    [[vk::location(0)]]
     float4 position : SV_POSITION;
+    [[vk::location(1)]]
     float2 texcoord : TEXCOORD;
 };
 PS_INPUT main(VS_INPUT input)
@@ -542,9 +589,12 @@ Texture2D tex : register(t1);
 SamplerState tex_sampler : register(s2);
 struct PS_INPUT
 {
+    [[vk::location(0)]]
     float4 position : SV_POSITION;
+    [[vk::location(1)]]
     float2 texcoord : TEXCOORD;
 };
+[[vk::location(0)]]
 float4 main(PS_INPUT input) : SV_Target
 {
     return float4(tex.Sample(tex_sampler, input.texcoord));
@@ -562,7 +612,7 @@ compiler->set_source_name("DemoAppVS");
 compiler->set_entry_point("main");
 compiler->set_target_format(RHI::get_current_platform_shader_target_format());
 compiler->set_shader_type(ShaderCompiler::ShaderType::vertex);
-compiler->set_shader_model(5, 0);
+compiler->set_shader_model(6, 0);
 compiler->set_optimization_level(ShaderCompiler::OptimizationLevel::full);
 luexp(compiler->compile());
 auto vs_data = compiler->get_output();
@@ -574,7 +624,7 @@ compiler->set_source_name("DemoAppPS");
 compiler->set_entry_point("main");
 compiler->set_target_format(RHI::get_current_platform_shader_target_format());
 compiler->set_shader_type(ShaderCompiler::ShaderType::pixel);
-compiler->set_shader_model(5, 0);
+compiler->set_shader_model(6, 0);
 compiler->set_optimization_level(ShaderCompiler::OptimizationLevel::full);
 luexp(compiler->compile());
 auto ps_data = compiler->get_output();
@@ -582,8 +632,6 @@ Blob ps(ps_data.data(), ps_data.size());
 ```
 
 The shader compilation process is fairly simple, we just set source code, compilation settings, then triggers the compilation. The compilation result will be given by `get_output`, we use one `Blob` object , a container for binary data, to hold the compilation result. The compiled shader data will be used when creating pipeline state object later.
-
-
 
 ## Creating shader input layout and pipeline state
 
@@ -594,7 +642,7 @@ Shader input layout is described by the `ShaderInputLayoutDesc` structure, which
 ```c++
 struct ShaderInputLayoutDesc
 {
-	Vector<IDescriptorSetLayout*> descriptor_set_layouts;
+	Span<IDescriptorSetLayout*> descriptor_set_layouts;
 	ShaderInputLayoutFlag flags;
 };
 ```
@@ -608,11 +656,9 @@ Ref<RHI::IShaderInputLayout> slayout;
 Then we can create shader input layout object using the following code:
 
 ```c++
-luset(slayout, dev->new_shader_input_layout(ShaderInputLayoutDesc({dlayout}, 
-    ShaderInputLayoutFlag::allow_input_assembler_input_layout |
-    ShaderInputLayoutFlag::deny_hull_shader_access |
-    ShaderInputLayoutFlag::deny_domain_shader_access |
-    ShaderInputLayoutFlag::deny_geometry_shader_access)));
+auto dl = dlayout.get();
+luset(slayout, dev->new_shader_input_layout(ShaderInputLayoutDesc({&dl, 1}, 
+    ShaderInputLayoutFlag::allow_input_assembler_input_layout)));
 ```
 
 The pipeline object is described by the `GraphicsPipelineStateDesc` structure or the `ComputePipelineStateDesc` structure. Since we are creating one graphics pipeline, we need to fill the `GraphicsPipelineStateDesc`  structure, which is a complex structure that contains all pipeline settings for one graphics pipeline:
@@ -624,21 +670,16 @@ struct GraphicsPipelineStateDesc
 	IShaderInputLayout* shader_input_layout = nullptr;
 	Span<const byte_t> vs;
 	Span<const byte_t> ps;
-	Span<const byte_t> ds;
-	Span<const byte_t> hs;
-	Span<const byte_t> gs;
-	StreamOutputDesc stream_output;
-	BlendDesc blend_state;
 	RasterizerDesc rasterizer_state;
 	DepthStencilDesc depth_stencil_state;
+	BlendDesc blend_state;
 	IndexBufferStripCutValue ib_strip_cut_value = IndexBufferStripCutValue::disabled;
-	PrimitiveTopologyType primitive_topology_type = PrimitiveTopologyType::triangle;
-	u32 num_render_targets = 0;
-	Format rtv_formats[8] = { Format::unknown };
-	Format dsv_format = Format::unknown;
+	PrimitiveTopology primitive_topology = PrimitiveTopology::triangle_list;
+	u8 num_color_attachments = 0;
+	Format color_formats[8] = { Format::unknown };
+	Format depth_stencil_format = Format::unknown;
 	u32 sample_count = 1;
 	u32 sample_mask = 0xFFFFFFFF;
-	u32 sample_quality = 0;
 };
 ```
 
@@ -654,117 +695,94 @@ Then we can create pipeline state object using the following code:
 
 ```c++
 GraphicsPipelineStateDesc ps_desc;
-ps_desc.primitive_topology_type = PrimitiveTopologyType::triangle;
+ps_desc.primitive_topology = PrimitiveTopology::triangle_list;
 ps_desc.sample_mask = U32_MAX;
-ps_desc.sample_quality = 0;
-ps_desc.blend_state = BlendDesc(false, false, { RenderTargetBlendDesc(false, false, BlendFactor::src_alpha,
-	BlendFactor::inv_src_alpha, BlendOp::add, BlendFactor::inv_src_alpha, BlendFactor::zero, BlendOp::add, LogicOp::noop, ColorWriteMask::all) });
 ps_desc.rasterizer_state = RasterizerDesc(FillMode::solid, CullMode::back, 0, 0.0f, 0.0f, 0, false, true, false, false, false);
 ps_desc.depth_stencil_state = DepthStencilDesc(true, true, ComparisonFunc::less_equal, false, 0x00, 0x00, DepthStencilOpDesc(), DepthStencilOpDesc());
 ps_desc.ib_strip_cut_value = IndexBufferStripCutValue::disabled;
-ps_desc.input_layout = InputLayoutDesc({
-    {"POSITION", 0, Format::rgb32_float},
-    {"TEXCOORD", 0, Format::rg32_float},
-});
+InputAttributeDesc input_attributes[] = {
+    InputAttributeDesc("POSITION", 0, 0, 0, 0, Format::rgb32_float),
+    InputAttributeDesc("TEXCOORD", 0, 1, 0, 12, Format::rg32_float)
+};
+InputBindingDesc input_bindings[] = {
+    InputBindingDesc(0, 20, InputRate::per_vertex)
+};
+ps_desc.input_layout.attributes = {input_attributes, 2};
+ps_desc.input_layout.bindings = {input_bindings, 1};
 ps_desc.vs = vs.cspan();
 ps_desc.ps = ps.cspan();
 ps_desc.shader_input_layout = slayout;
-ps_desc.num_render_targets = 1;
-ps_desc.rtv_formats[0] = Format::rgba8_unorm;
-ps_desc.dsv_format = Format::d32_float;
+ps_desc.num_color_attachments = 1;
+ps_desc.color_formats[0] = Format::rgba8_unorm;
+ps_desc.depth_stencil_format = Format::d32_float;
 luset(pso, dev->new_graphics_pipeline_state(ps_desc));
 ```
 
-## Creating render and depth textures
+## Creating depth textures
 
-The next step is to create the render texture and depth texture that is used as render target and depth stencil target. We also need to create *render target view* object and *depth stencil view* object for our render texture and depth texture.
-
-All graphic resources in Luna SDK, including buffers and textures, are described by `ResourceDesc` structure, and are represented by `IResource` interface. Here is the definition of the`ResourceDesc` structure:
+The next step is to create one depth texture that is used as the depth stencil attachment when drawing our box. Texture objects in Luna SDK are represented by `ITexture` interface, and are described by `TextureDesc` structure, which is defined as follows:
 
 ```c++
-struct ResourceDesc
+struct TextureDesc
 {
-	ResourceType type;
-	ResourceHeapType heap_type;
-	Format pixel_format;
-	ResourceUsageFlag usages;
-	u64 width_or_buffer_size;
+	TextureType type;
+	Format format;
+	u32 width;
 	u32 height;
-	u32 depth_or_array_size;
+	u32 depth;
+	u32 array_size;
 	u32 mip_levels;
 	u32 sample_count;
-	u32 sample_quality;
+	TextureUsageFlag usages;
 	ResourceFlag flags;
-};
+}
 ```
 
-`type` specifies the type of the resource, like `buffer`, `texture_2d`, etc. `heap_type` specifies which memory heap to create the resource in, possible options include:
+`type` specifies the type of the texture, like `tex1d`, `tex2d`, etc. `format` specifies the pixel format of the texture. `usages` specifies all possible usages of the texture when being bound to a pipeline. `width`, `height` and `depth`  specifies the size of the texture. `array_size` specifies the number of texture elements if this texture object represents a texture array, otherwise `1` shall be specified. `mip_levels` specifies the number of mips that should be allocated for the resource, if this is `0`, the system allocates full mipmap chain for the resource. `sample_count` specifies the sampling count for MSAA textures. `flags` specifies additional features for the texture, like whether this texture can share memory with other resources.
 
-1. `local` - The resource can only be accessed by GPU, CPU access is disabled. This heap is suitable for resources that will be frequently accessed by GPU.
-2. `upload` - The resource can be written by CPU and read by GPU. This heap is suitable for resources that should be updated by CPU frequently. Textures cannot be created in this heap.
-3. `readback` - The resource can be written by GPU and read by CPU. This heap is suitable for transferring data from GPU to CPU. Textures cannot be created in this heap.
-
-`pixel_format` specifies the pixel format of the resource if the resource is a texture, otherwise is ignored and will be set to `unknown`. `usages` specifies all possible roles of the resource when being bound to a pipeline. `width_or_buffer_size`, `height` and `depth_or_array_size`  specifies the size of the resource, if the resource is a buffer, only `width_or_buffer_size` is used, and specifies the size of the buffer in bytes, otherwise, based on the `type` of the resource, those three properties specifies the width, height, depth (for 3D textures) or array size (for 1D and 2D textures) of the resource. `mip_levels` specifies the number of mips that should be allocated for the resource, if this is `0`, the system allocates full mipmap chain for the resource. `sample_count` and `sample_quality` specifies the sampling configuration for MSAA textures. `flags` specifies additional flags for the texture, like whether this texture can be simultaneously accessed by multiple command queues.
-
-To simplify the resource specification, we can use static methods provided by `ResourceDesc` to quickly construct `ResourceDesc` structure:
+To simplify the texture description, we can use static methods provided by `TextureDesc` to quickly construct `TextureDesc` structure:
 
 ```c++
-ResourceDesc ResourceDesc::buffer(ResourceHeapType heap_type, ResourceUsageFlag usages, u64 size, ResourceFlag flags = ResourceFlag::none);
+TextureDesc TextureDesc::tex1d(Format format, TextureUsageFlag usages, u64 width, u32 array_size = 1, u32 mip_levels = 0, ResourceFlag flags = ResourceFlag::none)
 
-ResourceDesc ResourceDesc::tex1d(ResourceHeapType heap_type, Format pixel_format, ResourceUsageFlag usages, u64 width, u32 array_size = 1, u32 mip_levels = 0, ResourceFlag flags = ResourceFlag::none);
+TextureDesc TextureDesc::tex2d(Format format, TextureUsageFlag usages, u64 width, u32 height, u32 array_size = 1, u32 mip_levels = 0, u32 sample_count = 1, ResourceFlag flags = ResourceFlag::none)
 
-ResourceDesc ResourceDesc::tex2d(ResourceHeapType heap_type, Format pixel_format, ResourceUsageFlag usages, u32 width, u32 height, u32 array_size = 1, u32 mip_levels = 0, u32 sample_count = 1, u32 sample_quality = 0, ResourceFlag flags = ResourceFlag::none);
-
-ResourceDesc ResourceDesc::tex3d(ResourceHeapType heap_type, Format pixel_format, ResourceUsageFlag usages, u32 width, u32 height, u32 depth, u32 mip_levels = 0, ResourceFlag flags = ResourceFlag::none);
+TextureDesc TextureDesc::tex3d(Format format, TextureUsageFlag usages, u64 width, u32 height, u32 depth, u32 mip_levels = 0, ResourceFlag flags = ResourceFlag::none)
 ```
 
-Back to our `DemoApp`, we need to add four new properties to `DemoApp` to hold the render texture, the depth texture, and two views:
+Back to our `DemoApp`, we need to add one new property to `DemoApp` to hold the depth texture:
 
 ```c++
-Ref<RHI::IResource> rt_tex;
-Ref<RHI::IRenderTargetView> rtv;
-Ref<RHI::IResource> depth_tex;
-Ref<RHI::IDepthStencilView> dsv;
+Ref<RHI::ITexture> depth_tex;
 ```
 
 Then we can create textures using the following code:
 
 ```c++
 auto window_size = window->get_framebuffer_size();
-
-luset(rt_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::rgba8_unorm, ResourceUsageFlag::shader_resource | ResourceUsageFlag::render_target, window_size.x, window_size.y, 1, 1)));
-
-luset(depth_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::d32_float, ResourceUsageFlag::depth_stencil, window_size.x, window_size.y, 1, 1)));
+luset(depth_tex, dev->new_texture(MemoryType::local, TextureDesc::tex2d(Format::d32_float, TextureUsageFlag::depth_stencil_attachment, window_size.x, window_size.y, 1, 1)));
 ```
+
+The first parameter of `new_texture` is the memory type of texture memory. The memory type is defined by `MemoryType` enumeration, possible options include:
+
+1. `local` - The memory can only be accessed by GPU, CPU access is disabled. This memory type is suitable for resources that will be frequently accessed by GPU.
+2. `upload` - The memory can be written by CPU and read by GPU. This memory type is suitable for resources that should be updated by CPU frequently. Textures cannot be created in this heap.
+3. `readback` - The memory can be written by GPU and read by CPU. This memory type is suitable for transferring data from GPU to CPU. Textures cannot be created in this heap.
 
 Note that when retrieving window size for rendering, we need to call `IWindow::get_framebuffer_size` instead of `IWindow::get_size`, on some platforms the window size is not necessary measured in pixels, causing these two methods return different values.
 
-We then need to create the render target view and depth stencil view for these two textures. Render target views and depth stencil views describes which portion of the texture will be bound to the graphic pipeline. Unlike other views, these two views are represented by dedicated objects: `IRenderTargetView` and `IDepthStencilView`, they can be created using the following code:
+Since we are using the window size as the depth texture size, the depth texture should also be recreated when the window size is changed. This can be done by adding the following code to the `DemoApp::resize` method:
 
 ```c++
-luset(rtv, dev->new_render_target_view(rt_tex));
-luset(dsv, dev->new_depth_stencil_view(depth_tex));
+luset(depth_tex, dev->new_texture(MemoryType::local, TextureDesc::tex2d(Format::d32_float, TextureUsageFlag::depth_stencil_attachment, width, height, 1, 1)));
 ```
 
-these two methods accepts additional `RenderTargetViewDesc` and `DepthStencilViewDesc` structures when creating views, but since we are using the default settings, these two structures can be omitted.
-
-Since we are using the window size as the render texture size, these textures should also be recreated when the window framebuffer is changed. This can be done by adding the following code to the `DemoApp::resize` method:
-
-```c++
-luset(rt_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::rgba8_unorm, 
-    ResourceUsageFlag::shader_resource | ResourceUsageFlag::render_target, width, height, 1, 1)));
-luset(depth_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::d32_float, 
-     ResourceUsageFlag::depth_stencil, width, height, 1, 1)));
-luset(rtv, dev->new_render_target_view(rt_tex));
-luset(dsv, dev->new_depth_stencil_view(depth_tex));
-```
-
-## Creating buffers
+## Creating buffers and uploading buffer data
 
 The next step is to create buffers used in our `DemoApp`, including:
 
 1. The vertex buffer and index buffer for our box mesh.
-2. The constant buffer for camera properties.
+2. The uniform buffer for camera properties.
 
 Firstly we need to define the vertex structure of our box. Adding the following code after the declaration of `DemoApp` structure:
 
@@ -776,17 +794,30 @@ struct Vertex
 };
 ```
 
-`Float2U` and `Float3U` are vector types used in Luna SDK, which represent 2D and 3D vectors. In Luna SDK, we have 16-bytes aligned vector types `Float2`, `Float3`, `Float4`, and unaligned vector types `Float2U`, `Float3U` and `Float4U`. The aligned vector types are used for calculations, SIMD functions like `min`, `max`, `lerp`, `clamp` only accepts aligned types, while unaligned vector types are used for storing and transferring data, such as in this case. The size of aligned vector types are all 16 bytes, while the size of unaligned types are 8, 12 and 16 for `Float2U`, `Float3U` and `Float4U`.
+`Float2U` and `Float3U` are vector types used in Luna SDK, which represent 2D and 3D vectors. In Luna SDK, we have 16-bytes aligned vector types `Float2`, `Float3`, `Float4`, and unaligned vector types `Float2U`, `Float3U` and `Float4U`. The aligned vector types are used for calculations, SIMD functions like `min`, `max`, `lerp`, `clamp` only accepts aligned types, while unaligned vector types are used for storing and transferring data, just like this case. The size of aligned vector types are all 16 bytes, while the size of unaligned types are 8, 12 and 16 for `Float2U`, `Float3U` and `Float4U`.
 
 We need to add three new properties to `DemoApp` to hold the these three buffers:
 
 ```c++
-Ref<RHI::IResource> vb;
-Ref<RHI::IResource> ib;
-Ref<RHI::IResource> cb;
+Ref<RHI::IBuffer> vb;
+Ref<RHI::IBuffer> ib;
+Ref<RHI::IBuffer> ub;
 ```
 
-Then, we need to create the vertex buffer and index buffer for our box using the following code:
+As you can see, buffer objects are represented by `IBuffer` interface. Both `IBuffer` and `ITexture` interface inherits from `IResource` interface, which provides one method to fetch the underlying memory of the resource. Fetching the underlying memory enables the user to create aliasing resources that share the same memory, which is an advanced feature that will not be covered in this article.
+
+One buffer resource is described by `BufferDesc` structure, which is defined as follows:
+
+```c++
+struct BufferDesc
+{
+	u64 size;
+	BufferUsageFlag usages;
+	ResourceFlag flags;
+}
+```
+
+`BufferDesc` is rather simple compared to `TextureDesc`. `size` specifies the size of the buffer, `usages` specifies all possible usages of the buffer when being bound to the pipeline, and `flags` specifies additional features of the buffer, like whether this buffer can share memory with other resources. Then, we need to create the vertex buffer and index buffer for our box using the following code:
 
 ```c++
 Vertex vertices[] = {
@@ -811,19 +842,15 @@ u32 indices[] = {
     16, 17, 18, 16, 18, 19,
     20, 21, 22, 20, 22, 23
 };
-luset(vb, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::local, ResourceUsageFlag::vertex_buffer, sizeof(vertices))));
-luset(ib, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::local, ResourceUsageFlag::index_buffer, sizeof(indices))));
-luexp(dev->copy_resource({
-            ResourceCopyDesc::as_write_buffer(vb, vertices, sizeof(vertices), 0),
-            ResourceCopyDesc::as_write_buffer(ib, indices, sizeof(indices), 0)
-        }));
+luset(vb, dev->new_buffer(MemoryType::local, BufferDesc(BufferUsageFlag::vertex_buffer | BufferUsageFlag::copy_dest, sizeof(vertices))));
+luset(ib, dev->new_buffer(MemoryType::local, BufferDesc(BufferUsageFlag::index_buffer | BufferUsageFlag::copy_dest, sizeof(indices))));
 ```
 
-We firstly define vertex and index data for our box, then we create two buffer resources to hold the vertex and index data. Since we only need to upload their data once, we can place these two buffers in local heap to achieve maximum GPU bandwidth, and use `IDevice::copy_resource` to upload their data. Note that using `IDevice::copy_resource` to copy resource data is much slower than using `IResource::map` to access resource memory directly, so it should be used only when the CPU access is not very often, like uploading initial data for the resource.
+We firstly define vertex and index data for our box, then we create two buffer resources to hold the vertex and index data. One buffer is created by calling `IDevice::new_buffer`, which is similar to `IDevice::new_texture`, but takes `BufferDesc` as the resource descriptor object. Since we only need to upload vertex and index buffer data once, these two buffers are created in local memory to achieve maximum GPU bandwidth.
 
-We can use similar code to create the constant buffer for uploading camera properties, but there are two differences. First, the graphic device has alignment requirements for constant buffers, which can be fetched from `IDevice::get_constant_buffer_data_alignment()`, so we use `align_upper` helper function to adjust the size of our constant buffer resource to meet the alignment requirement. Second, since we need to update constant buffer data once every frame, we should choose `upload` heap instead of `local` to give CPU direct access to the resource.
+We can use similar code to create the constant buffer for uploading camera properties, but there are two differences. First, the graphic device has alignment requirements for constant buffers, which can be fetched from `IDevice::get_uniform_buffer_data_alignment()`, so we use `align_upper` helper function to adjust the size of our uniform buffer resource to meet the alignment requirement. Second, since we need to update uniform buffer data once every frame, we should choose `upload` memory type instead of `local` to give host program direct access to that resource.
 
-In our `DemoApp`, the data of the constant buffer is the 4x4 world-to-project matrix of the camera. We need to add a new include file to use matrix types:
+In our `DemoApp`, the data of the uniform buffer is the 4x4 world-to-project matrix of the camera. We need to add a new include file to use matrix types:
 
 ```c++
 #include <Runtime/Math/Matrix.hpp>
@@ -832,11 +859,52 @@ In our `DemoApp`, the data of the constant buffer is the 4x4 world-to-project ma
 then we can use the following code to create constant buffer:
 
 ```c++
-auto cb_align = dev->get_constant_buffer_data_alignment();
-luset(cb, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::upload, ResourceUsageFlag::constant_buffer, align_upper(sizeof(Float4x4), cb_align))));
+auto ub_align = dev->get_uniform_buffer_data_alignment();
+luset(ub, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::uniform_buffer, align_upper(sizeof(Float4x4), ub_align))));
 ```
 
 as you can see, `Float4x4` is the matrix type used in Luna SDK. We also have `Float3x3` for 2D affine transformations.
+
+## Uploading vertex and index data
+
+Now that we have created one vertex buffer and one index buffer, we need to upload vertex and index data to these buffers, so that they can be used by GPU correctly. As we have mentioned before, resources with `local` memory type can not be accessed by the host directly. In order to upload data to resources with `local` memory type, we need to create intermediate buffers with `upload` memory type, upload data to such buffers, and use GPU to copy data from such buffers to resources with `local` memory type. Such intermediate buffers are usually called *staging buffers*, and are used frequently to copy data from host memory to device local memory.
+
+The following code shows how to upload data for our vertex and index buffer:
+
+```c++
+lulet(vb_staging, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::copy_source, sizeof(vertices))));
+lulet(ib_staging, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::copy_source, sizeof(indices))));
+void* vb_mapped = nullptr;
+luexp(vb_staging->map(0, 0, &vb_mapped));
+memcpy(vb_mapped, vertices, sizeof(vertices));
+vb_staging->unmap(0, sizeof(vertices));
+void* ib_mapped = nullptr;
+luexp(ib_staging->map(0, 0, &ib_mapped));
+memcpy(ib_mapped, indices, sizeof(indices));
+ib_staging->unmap(0, sizeof(indices));
+cmdbuf->set_context(CommandBufferContextType::copy);
+cmdbuf->resource_barrier({
+    BufferBarrier(vb, BufferStateFlag::automatic, BufferStateFlag::copy_dest),
+    BufferBarrier(vb_staging, BufferStateFlag::automatic, BufferStateFlag::copy_source),
+    BufferBarrier(ib, BufferStateFlag::automatic, BufferStateFlag::copy_dest),
+    BufferBarrier(ib_staging, BufferStateFlag::automatic, BufferStateFlag::copy_source),
+}, {});
+cmdbuf->copy_buffer(vb, 0, vb_staging, 0, sizeof(vertices));
+cmdbuf->copy_buffer(ib, 0, ib_staging, 0, sizeof(indices));
+cmdbuf->submit({}, {}, true);
+cmdbuf->wait();
+cmdbuf->reset();
+```
+
+Firstly, we create two staging buffers `vb_staging` and `ib_staging`. These two buffers have the same size as `vb` and `ib` and use upload memory type, so they can be written by the host directly. Then, we use `IBuffer::map` to take pointers to the buffer memory, use `memcpy` to copy data to the memory, then use `IBuffer::unmap` to release the host access to the memory. `map` takes two integer parameters indicating the host reading range of the mapped memory, this should always be `0` if the memory type of the buffer is not `readback`, just like this case. `unmap` takes another two integer parameters indicating the host writing range of the mapped memory. in our case, we have written memory in `[0, sizeof(data))` range, so we should specify the range correctly. There is a special range `[0, USIZE_MAX)` that indicates the whole buffer memory is read or written, so we don't need to specify the size explicitly.
+
+After we copy data to staging buffers, we need to tell GPU to copy data from staging buffers to GPU local resources. As we have mentioned before, to send commands to GPU, we need to record commands into command buffers, submit them to command queues, then waits for command buffers to be finished by GPU.
+
+The first command we need to record is `ICommandBuffer::set_context`, which tells GPU to setup a copy context. There are three kinds of contexts that we can set: `graphics`, `compute` and `copy`, only one context can be set at one time. A context switch will discard all previous context state. For example, if you bind one pipeline state object and multiple resources to a graphics pipeline, they you switch the context to `compute`, then all these bindings will be lost, and you need to bind them again when you switch the context back to `graphics`. Most commands can only be recorded in proper contexts, for example, `set_graphics_xxx` and `draw_xxx` commands can only be recorded in `graphics` context, `set_compute_xxx` and `dispatch` commands can only be recorded in `compute` context, and `copy_xxx` commands can only be recorded in copy context.
+
+After setting the proper context, we need to emit resource barriers to transfer resources used by GPU to compatible states. Resource barrier commands are recorded by `ICommandBuffer::resource_barrier`, and will be described later. After resources have been transferred into suitable states, we call `ICommandBuffer::copy_buffer` to record one buffer-to-buffer copy command. 
+
+When we finish recording commands into the command buffer, we call `ICommandBuffer::submit` to submit the command buffer to the command queue, call `ICommandBuffer::wait` to wait for the command buffer to be finished, then call `ICommandBuffer::reset` to clear commands in the command buffer, and reset the command buffer state so that it can be used for a recording new commands.
 
 ## Loading image from file
 
@@ -858,7 +926,6 @@ Then fills `xmake.lua` with the following code:
 ```lua
 target("DemoApp")
     set_luna_sdk_program()
-    add_headerfiles("**.hpp")
     add_files("**.cpp")
     add_deps("Runtime", "Window", "RHI", "ShaderCompiler", "Image")
     before_build(function(target)
@@ -872,10 +939,10 @@ target_end()
 
 This script triggers registers custom functions before building the program and after installing the program, the custom function copies the image file to same the directory of our program binary file, so that our program can correctly find the image file.
 
-We firstly need to add one new property to `DemoApp` to represent the loaded image:
+Then, go back to `main.cpp`, and add one new property to `DemoApp` to represent the loaded image:
 
 ```c++
-Ref<RHI::IResource> file_tex;
+Ref<RHI::ITexture> file_tex;
 ```
 
 To load the image in our program, we need to use one new module called `Image`, which parses image file data and gives row-majored image data in our desired format. We also need to use the file API provided by `Runtime` module, so we includes two new headers:
@@ -902,27 +969,39 @@ lulet(image_data, Image::read_image_file(image_file_data.data(), image_file_data
 `Image::read_image_file` function outputs one `Image::ImageDesc` structure that describes the returned image data, including the width, height and pixel format of the image. The image data is arranged in a row-major manner and without and alignment padding. We then creates one new resource, and uploads the data to the resource:
 
 ```c++
-luset(file_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::rgba8_unorm, 
-            ResourceUsageFlag::shader_resource, image_desc.width, image_desc.height, 1, 1)));
-luexp(dev->copy_resource({
-    ResourceCopyDesc::as_write_texture(file_tex, image_data.data(), image_desc.width * Image::pixel_size(image_desc.format), 
-        image_desc.width * image_desc.height * Image::pixel_size(image_desc.format), 0, BoxU(0, 0, 0, image_desc.width, image_desc.height, 1))
-}));
+luset(file_tex, dev->new_texture(MemoryType::local, TextureDesc::tex2d(Format::rgba8_unorm, 
+    TextureUsageFlag::copy_dest | TextureUsageFlag::read_texture, image_desc.width, image_desc.height, 1, 1)));
+u64 tex_size, tex_row_pitch, tex_slice_pitch;
+dev->get_texture_data_placement_info(image_desc.width, image_desc.height, 1, Format::rgba8_unorm, &tex_size, nullptr, &tex_row_pitch, &tex_slice_pitch);
+lulet(file_tex_staging, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::copy_source, tex_size)));
+void* file_tex_mapped = nullptr;
+luexp(file_tex_staging->map(0, 0, &file_tex_mapped));
+memcpy_bitmap(file_tex_mapped, image_data.data(), image_desc.width * 4, image_desc.height, tex_row_pitch, image_desc.width * 4);
+file_tex_staging->unmap(0, USIZE_MAX);
+cmdbuf->set_context(CommandBufferContextType::copy);
+cmdbuf->resource_barrier({
+    BufferBarrier(file_tex_staging, BufferStateFlag::automatic, BufferStateFlag::copy_source)
+}, {
+    TextureBarrier(file_tex, TEXTURE_BARRIER_ALL_SUBRESOURCES, TextureStateFlag::automatic, TextureStateFlag::copy_dest)
+});
+cmdbuf->copy_buffer_to_texture(file_tex, SubresourceIndex(0, 0), 0, 0, 0, file_tex_staging, 0, tex_row_pitch, tex_slice_pitch, image_desc.width, image_desc.height, 1);
+cmdbuf->submit({}, {}, true);
+cmdbuf->wait();
+cmdbuf->reset();
 ```
 
-Uploading texture data is similar to uploading buffer data, but we should specify `ResourceCopyDesc::as_write_texture` instead of `ResourceCopyDesc::as_write_buffer` for one
-texture write operation. Note that every `IDevice::copy_resource` call accepts multiple copy operations of different types, the user is encouraged to batch copy operations into one `IDevice::copy_resource` call to increase performance. In our example, we use two separated `IDevice::copy_resource` calls for buffer and texture data, this is only for clarity purposes and the user should batch them into one call in real cases.
+Uploading texture data is similar to uploading buffer data, we need to create one staging buffer to hold the texture data, then use `ICommandBuffer::copy_buffer_to_texture` to copy data from buffer to texture. Note that most systems have special alignment requirements for texture data in buffers when copying data between buffers and textures, the user should call `IDevice::get_texture_data_placement_info` to fetch the texture data placement information for one specific texture, and use that information to manipulate texture data in the buffer. Instead of `memcpy` , the user should call `memcpy_bitmap` to copy row-major bitmap data, which takes `src_row_pitch` and `dst_row_pitch` to correctly offsets every texture data row.
 
 ## Set up descriptor set
 
-Once the constant buffer and file texture is set up, we can bind these two resources to the descriptor set that we need to bind to the pipeline state later. We also need to set the sampler in the descriptor set to be used by the pixel shader.
+Once the uniform buffer and file texture is set up, we can bind these two resources to the descriptor set by calling `IDescriptorSet::update_descriptors`. We also need to set the sampler in the descriptor set to be used by the pixel shader.
 
 ```c++
-desc_set->set_cbv(0, cb, ConstantBufferViewDesc(0, align_upper(sizeof(Float4x4), cb_align)));
-desc_set->set_srv(1, file_tex);
-desc_set->set_sampler(2, SamplerDesc(FilterMode::min_mag_mip_linear, TextureAddressMode::clamp,
-				TextureAddressMode::clamp, TextureAddressMode::clamp, 0.0f, 1, ComparisonFunc::always, 
-                Float4U(0, 0, 0, 0), 0.0f, 0.0f));
+desc_set->update_descriptors({
+    WriteDescriptorSet::uniform_buffer_view(0, BufferViewDesc::uniform_buffer(ub)),
+    WriteDescriptorSet::read_texture_view(1, TextureViewDesc::tex2d(file_tex)),
+    WriteDescriptorSet::sampler(2, SamplerDesc(Filter::min_mag_mip_linear, TextureAddressMode::clamp, TextureAddressMode::clamp, TextureAddressMode::clamp))
+});
 ```
 
 This concludes the `DemoApp::init` function.
@@ -941,13 +1020,14 @@ We can increase the rotation angle of the camera by one at every frame by adding
 camera_rotation += 1.0f;
 ```
 
-Since we are going to use many functions that may throw errors, it is better to declare one `lutry`-`lucatch` scope that wraps all succeeding codes in `DemoApp:update`:
+Since we are going to use many functions that may throw errors, it is better to declare one `lutry`-`lucatch` scope that wraps all succeeding codes in `DemoApp:update`. Also, we don't want to render the image if the window is closed or minimized, so we add two early-out conditions after `Window::poll_events()`. Now `DemoApp::update` should look like this:
 
 ```c++
 RV DemoApp::update()
 {
     Window::poll_events();
     if(window->is_closed()) return ok;
+    if(window->is_minimized()) return ok;
     lutry
     {
         camera_rotation += 1.0f;
@@ -958,7 +1038,13 @@ RV DemoApp::update()
 }
 ```
 
-After we updates the camera rotation, we need to calculate the view-projection matrix for the camera. Fortunately, the math library of the `Runtime` module already includes implementations for many commonly used vector and matrix calculations, and here we are going to use two of them: `AffineMatrix::make_look_at` and `ProjectionMatrix::make_perspective_fov`:
+After we updates the camera rotation, we need to calculate the view-projection matrix for the camera. Fortunately, the math library of the `Runtime` module already includes implementations for many commonly used vector and matrix calculations, and here we are going to use two of them: `AffineMatrix::make_look_at` and `ProjectionMatrix::make_perspective_fov`. To use these two functions, we firstly need to add one new header file:
+
+```c+
+#include <Runtime/Math/Transform.hpp>
+```
+
+Then the matrix can be computed using the following code:
 
 ```c++
 Float3 camera_pos(cosf(camera_rotation / 180.0f * PI) * 3.0f, 1.0f, sinf(camera_rotation / 180.0f * PI) * 3.0f);
@@ -967,33 +1053,45 @@ auto window_sz = window->get_framebuffer_size();
 camera_mat = mul(camera_mat, ProjectionMatrix::make_perspective_fov(PI / 3.0f, (f32)window_sz.x / (f32)window_sz.y, 0.001f, 100.0f));
 ```
 
-The `AffineMatrix` namespace includes common functions for generating and decomposing 3D affine matrices. In our example, `AffineMatrix::make_look_at` generates one camera view matrix from the position of the camera and the position of the point to look at. `ProjectionMatrix::make_perspective_fov` is another helper function that generates one projection matrix from the specified field-of-view and aspect ratio values. Those two matrices are multiplied by `mul` function to get the final view-projection matrix. Note that when performing matrix multiplications, use `mul` instead of operator `*`, the later one is used to multiply each element in the matrix separately.
+`AffineMatrix::make_look_at` generates one camera view matrix from the position of the camera and the position of the point to look at. `ProjectionMatrix::make_perspective_fov` is another helper function that generates one projection matrix from the specified field-of-view and aspect ratio values. Those two matrices are multiplied by `mul` function to get the final view-projection matrix. Note that when performing matrix multiplications, use `mul` instead of operator `*`, the later one is used to multiply each element in the matrix separately.
 
-After we get the matrix, we need to copy the matrix data to the constant buffer resource. Since our constant buffer is created in `upload` heap, we can call `IResource::map` to acquire CPU access to the resource memory directly. After we have copied data to the resource memory, we can call `IResource::unmap` to release the CPU access and tells the driver to synchronize the resource data with GPU. `IResource::map` requires the user to specify the memory range that CPU wants to read data from, for resource created in `upload` heap, this must be an empty range, so we specify `0, 0` here. `IResource::unmap` requires the user to specify the memory range updated by CPU, we specify `0, sizeof(Float4x4)` to reflect the copy operation for the buffer data.
+After we get the matrix, we need to copy the matrix data to the uniform buffer resource like so:
 
 ```c++
 void* camera_mapped;
-luexp(cb->map_subresource(0, 0, 0, &camera_mapped));
+luexp(ub->map(0, 0, &camera_mapped));
 memcpy(camera_mapped, &camera_mat, sizeof(Float4x4));
-cb->unmap_subresource(0, 0, sizeof(Float4x4));
+ub->unmap(0, sizeof(Float4x4));
 ```
+
+## Fetching the back buffer
+
+In order to render contents to one window, we need to fetch back buffers managed by the window swap chain. The number of back buffers that are contained by a swap chain is determined by `SwapChainDesc::buffer_count`, which can be set when the swap chain is created or reset. At every frame, only one back buffer can be used for rendering, which can be fetched by calling `ISwapChain::get_current_back_buffer`:
+
+```c++
+lulet(back_buffer, swap_chain->get_current_back_buffer());
+```
+
+`ISwapChain::get_current_back_buffer` can be called multiple times during the same frame, and will return the same back buffer. The current back buffer will be switched when `ISwapChain::present` is called, the user should not use the back buffer in the previous frame after `ISwapChain::present` is called.
 
 ## Resource barriers
 
-In Luna SDK, every graphic resource has one state that describes the current memory layout and pipeline access polity of the resource. Before we can issue draw calls, we need to transfer every resource we use to their correct states. Luna SDK requires the user to transfer the state explicitly by calling `ICommandBuffer::resource_barriers` with transition-typed resource barriers. In our example, we need to perform the following transitions:
+In Luna SDK, every graphic resource has one state that describes the current memory layout and pipeline access polity of the resource. Before we can issue draw calls, we need to transfer every resource we use to their correct states. Luna SDK requires the user to transfer the state explicitly by calling `ICommandBuffer::resource_barrier` with transition-typed resource barriers. In our example, we need to perform the following transitions:
 
 ```c++
-cmdbuf->resource_barriers({
-    ResourceBarrierDesc::as_transition(cb, ResourceState::vertex_and_constant_buffer),
-    ResourceBarrierDesc::as_transition(vb, ResourceState::vertex_and_constant_buffer),
-    ResourceBarrierDesc::as_transition(ib, ResourceState::index_buffer),
-    ResourceBarrierDesc::as_transition(file_tex, ResourceState::shader_resource_pixel),
-    ResourceBarrierDesc::as_transition(rt_tex, ResourceState::render_target),
-    ResourceBarrierDesc::as_transition(depth_tex, ResourceState::depth_stencil_write)
+cmdbuf->set_context(CommandBufferContextType::graphics);
+cmdbuf->resource_barrier({
+    BufferBarrier(ub, BufferStateFlag::automatic, BufferStateFlag::uniform_buffer_vs),
+    BufferBarrier(vb, BufferStateFlag::automatic, BufferStateFlag::vertex_buffer),
+    BufferBarrier(ib, BufferStateFlag::automatic, BufferStateFlag::index_buffer)
+}, {
+    TextureBarrier(file_tex, TEXTURE_BARRIER_ALL_SUBRESOURCES, TextureStateFlag::automatic, TextureStateFlag::shader_read_ps),
+    TextureBarrier(back_buffer, SubresourceIndex(0, 0), TextureStateFlag::automatic, TextureStateFlag::color_attachment_write),
+    TextureBarrier(depth_tex, SubresourceIndex(0, 0), TextureStateFlag::automatic, TextureStateFlag::depth_stencil_attachment_write)
 });
 ```
 
-Luna SDK internally manages the current state for all resources, so we only need to specify the state of the resource **after** the transition. Luna SDK also omits unnecessary transitions automatically if the before and after state of one resource is same or compatible.
+One resource can have multiple states, so long as such states are compatible to each other. For example, one texture can have `TextureStateFlag::shader_read_vs` and `TextureStateFlag::shader_read_ps` at the same time if it will be accessed by both vertex and pixel shader, or can have `TextureStateFlag::shader_read_cs` and `TextureStateFlag::shader_write_cs` at the same time if it will be read and write by compute shader. Luna SDK internally tracks the current states for all resources, so we can set `before` states of resources to `automatic` in most cases, which tells the system to load the previous states automatically. Luna SDK also omits unnecessary barriers automatically.
 
 ## Drawing the box
 
@@ -1001,63 +1099,48 @@ Finally, we can issue the draw call that draws our box:
 
 ```c++
 RenderPassDesc desc;
-desc.rtvs[0] = rtv;
-desc.rt_load_ops[0] = LoadOp::clear;
-desc.rt_store_ops[0] = StoreOp::store;
-desc.rt_clear_values[0] = {0, 0, 0, 0};
-desc.dsv = dsv;
-desc.depth_load_op = LoadOp::clear;
-desc.depth_store_op = StoreOp::store;
-desc.depth_clear_value = 1.0f;
-desc.stencil_load_op = LoadOp::dont_care;
-desc.stencil_store_op = StoreOp::dont_care;
+desc.color_attachments[0] = ColorAttachment(back_buffer, LoadOp::clear, StoreOp::store, Float4U(0.0f));
+desc.depth_stencil_attachment = DepthStencilAttachment(depth_tex, false, LoadOp::clear, StoreOp::store, 1.0f);
 cmdbuf->begin_render_pass(desc);
 cmdbuf->set_graphics_shader_input_layout(slayout);
-cmdbuf->set_pipeline_state(pso);
+cmdbuf->set_graphics_pipeline_state(pso);
 cmdbuf->set_graphics_descriptor_set(0, desc_set);
-cmdbuf->set_primitive_topology(PrimitiveTopology::triangle_list);
-auto sz = vb->get_desc().width_or_buffer_size;
-cmdbuf->set_vertex_buffers(0, {VertexBufferViewDesc(vb, 0, sz, sizeof(Vertex))});
-sz = ib->get_desc().width_or_buffer_size;
-cmdbuf->set_index_buffer(IndexBufferViewDesc(ib, 0, sz, Format::r32_uint));
+auto sz = vb->get_desc().size;
+cmdbuf->set_vertex_buffers(0, {VertexBufferView(vb, 0, sz, sizeof(Vertex))});
+sz = ib->get_desc().size;
+cmdbuf->set_index_buffer(IndexBufferView(ib, 0, sz, Format::r32_uint));
 cmdbuf->set_scissor_rect(RectI(0, 0, (i32)window_sz.x, (i32)window_sz.y));
 cmdbuf->set_viewport(Viewport(0.0f, 0.0f, (f32)window_sz.x, (f32)window_sz.y, 0.0f, 1.0f));
 cmdbuf->draw_indexed(36, 0, 0);
 cmdbuf->end_render_pass();
 ```
 
-The first thing to do is to begin a *render pass* that attaches one set of render targets and/or the depth stencil target to the graphic pipeline, these render resources are bound to the pipeline during the current render pass and cannot be changed, while all other settings (like shader input layout object, pipeline state object, descriptor sets, etc) can be changed within the same render pass.
+The first thing to do is to begin a *render pass* that attaches one set of color attachments and/or the depth stencil attachment to the graphic pipeline, these textures are bound to the pipeline during the current render pass and cannot be changed, while all other settings (like shader input layout object, pipeline state object, descriptor sets, etc) can be changed within the same render pass.
 
 The render pass begins with `ICommandBuffer::begin_render_pass`. In the render pass, we set up all pipeline settings, and bind all resources required for the current draw call, then calls `ICommandBuffer::draw_indexed` to issue the draw call based on the current settings. Then we should close the render pass by calling `ICommandBuffer::end_render_pass`. We won't go detail about the pipeline setup for this draw call, they should be familiar to you if you have been using other graphics API before. For further explanations, please consult the documentations for the `RHI` module.
 
-As we have said before, commands in the command buffer will not be executed immediately, they should be submitted to the command queue explicitly to get executed. So we do it here:
+Before we can submit our command buffer, we need to insert another resource barrier to transfer our back buffer into `TextureStateFlag::present` state. This is required for one back buffer to be successfully presented.
 
 ```c++
-luexp(cmdbuf->submit());
+cmdbuf->resource_barrier({}, {
+    TextureBarrier(back_buffer, SubresourceIndex(0, 0), TextureStateFlag::automatic, TextureStateFlag::present)
+});
 ```
 
-This transfers the command buffer to the execution state, so we can no longer adding commands to the command buffer until we reset the command buffer using `ICommandBuffer::reset`.
+Finally, we submit our command buffer, waiting for its completion, and resets the command buffer for next frame:
+
+```c++
+cmdbuf->submit({}, {}, true);
+cmdbuf->wait();
+cmdbuf->reset();
+```
 
 ## Presenting the render result
 
-The last thing is to present our rendering result to the window (or precisely, the back buffer in the window swap chain), and this is done by calling `ISwapChain::presnet`:
+The last thing we need to do is to present our rendering result to the window. This is done by calling `ISwapChain::presnet`:
 
 ```c++
-luexp(swap_chain->present(rt_tex, 0));
-```
-
-The two parameters are the texture resource and subresource id to get displayed, and the system will blit the texture to the back buffer. For compatibility reasons, the user cannot fetch the back buffer directly like in other graphic APIs, this will bring one extra blit overhead on some platforms, but it won't be the bottleneck of your program for most cases.
-
-In Luna SDK, the present call is not synchronous, it only pushes the present command into the bounding command queue and returns directly. We should explicitly wait for the present command to be finished by calling `ISwapChain::wait` before we can start the next frame:
-
-```c++
-swap_chain->wait();
-```
-
-Since we submitted the command buffer before the present call, when the present command is finished, the command buffer is guaranteed to be finished, so that we don't need to call `cmdbuf->wait()` explicitly and can reset the command buffer safely now:
-
-```c++
-luexp(cmdbuf->reset());
+luexp(swap_chain->present());
 ```
 
 This concludes the `DemoApp::update` function. Build and run `DemoApp`, if everything goes correctly, you will see a textured rotating box in the screen:
@@ -1086,25 +1169,19 @@ using namespace Luna;
 struct DemoApp
 {
     Ref<Window::IWindow> window;
-
     Ref<RHI::IDevice> dev;
-    Ref<RHI::ICommandQueue> queue;
+    u32 queue;
     Ref<RHI::ICommandBuffer> cmdbuf;
     Ref<RHI::ISwapChain> swap_chain;
     Ref<RHI::IDescriptorSetLayout> dlayout;
     Ref<RHI::IDescriptorSet> desc_set;
     Ref<RHI::IShaderInputLayout> slayout;
     Ref<RHI::IPipelineState> pso;
-    Ref<RHI::IResource> rt_tex;
-    Ref<RHI::IRenderTargetView> rtv;
-    Ref<RHI::IResource> depth_tex;
-    Ref<RHI::IDepthStencilView> dsv;
-    Ref<RHI::IResource> vb;
-    Ref<RHI::IResource> ib;
-    Ref<RHI::IResource> cb;
-
-    Ref<RHI::IResource> file_tex;
-
+    Ref<RHI::ITexture> depth_tex;
+    Ref<RHI::IBuffer> vb;
+    Ref<RHI::IBuffer> ib;
+    Ref<RHI::IBuffer> ub;
+    Ref<RHI::ITexture> file_tex;
     f32 camera_rotation = 0.0f;
 
     RV init();
@@ -1113,13 +1190,13 @@ struct DemoApp
     RV resize(u32 width, u32 height);
 };
 
-DemoApp* g_app = nullptr;
-
 struct Vertex
 {
     Float3U position;
     Float2U texcoord;
 };
+
+DemoApp* g_app = nullptr;
 
 RV DemoApp::init()
 {
@@ -1130,129 +1207,135 @@ RV DemoApp::init()
         window->get_framebuffer_resize_event() += [](Window::IWindow* window, u32 width, u32 height) {
             lupanic_if_failed(g_app->resize(width, height));
         };
-
+        
         dev = RHI::get_main_device();
         using namespace RHI;
-        luset(queue, dev->new_command_queue(CommandQueueType::graphics));
-        luset(cmdbuf, queue->new_command_buffer());
-        luset(swap_chain, new_swap_chain(queue, window, SwapChainDesc(0, 0, 2, Format::rgba8_unorm, true)));
-
+        queue = U32_MAX;
+        u32 num_queues = dev->get_num_command_queues();
+		for (u32 i = 0; i < num_queues; ++i)
+		{
+			auto desc = dev->get_command_queue_desc(i);
+			if (desc.type == CommandQueueType::graphics && test_flags(desc.flags, CommandQueueFlag::presenting))
+			{
+				queue = i;
+				break;
+			}
+		}
+        if(queue == U32_MAX) return BasicError::not_supported();
+        luset(cmdbuf, dev->new_command_buffer(queue));
+        luset(swap_chain, dev->new_swap_chain(queue, window, SwapChainDesc(0, 0, 2, Format::bgra8_unorm, true)));
         luset(dlayout, dev->new_descriptor_set_layout(DescriptorSetLayoutDesc({
-            {DescriptorType::cbv, 0, 1, ShaderVisibility::vertex},
-            {DescriptorType::srv, 1, 1, ShaderVisibility::pixel},
-            {DescriptorType::sampler, 2, 1, ShaderVisibility::pixel}
+            {DescriptorType::uniform_buffer_view, 0, 1, ShaderVisibilityFlag::vertex},
+            {DescriptorType::read_texture_view, 1, 1, ShaderVisibilityFlag::pixel},
+            {DescriptorType::sampler, 2, 1, ShaderVisibilityFlag::pixel}
         })));
-        luset(desc_set, dev->new_descriptor_set(DescriptorSetDesc(dlayout)));
-
+        IDescriptorSetLayout* dl = dlayout.get();
+        luset(desc_set, dev->new_descriptor_set({dl}));
         const char vs_shader_code[] = R"(
-        cbuffer vertexBuffer : register(b0)
-        {
-            float4x4 world_to_proj;
-        };
-        struct VS_INPUT
-        {
-            float3 position : POSITION;
-            float2 texcoord : TEXCOORD;
-        };
-        struct PS_INPUT
-        {
-            float4 position : SV_POSITION;
-            float2 texcoord : TEXCOORD;
-        };
-        PS_INPUT main(VS_INPUT input)
-        {
-            PS_INPUT output;
-            output.position = mul(world_to_proj, float4(input.position, 1.0f));
-            output.texcoord = input.texcoord;
-            return output;
-        })";
-        
+cbuffer vertexBuffer : register(b0)
+{
+    float4x4 world_to_proj;
+};
+struct VS_INPUT
+{
+    [[vk::location(0)]]
+    float3 position : POSITION;
+    [[vk::location(1)]]
+    float2 texcoord : TEXCOORD;
+};
+struct PS_INPUT
+{
+    [[vk::location(0)]]
+    float4 position : SV_POSITION;
+    [[vk::location(1)]]
+    float2 texcoord : TEXCOORD;
+};
+PS_INPUT main(VS_INPUT input)
+{
+    PS_INPUT output;
+    output.position = mul(world_to_proj, float4(input.position, 1.0f));
+    output.texcoord = input.texcoord;
+    return output;
+})";
+
         const char ps_shader_code[] = R"(
-        Texture2D tex : register(t1);
-        SamplerState tex_sampler : register(s2);
-        struct PS_INPUT
-        {
-            float4 position : SV_POSITION;
-            float2 texcoord : TEXCOORD;
-        };
-        float4 main(PS_INPUT input) : SV_Target
-        {
-            return float4(tex.Sample(tex_sampler, input.texcoord));
-        })";
+Texture2D tex : register(t1);
+SamplerState tex_sampler : register(s2);
+struct PS_INPUT
+{
+    [[vk::location(0)]]
+    float4 position : SV_POSITION;
+    [[vk::location(1)]]
+    float2 texcoord : TEXCOORD;
+};
+[[vk::location(0)]]
+float4 main(PS_INPUT input) : SV_Target
+{
+    return float4(tex.Sample(tex_sampler, input.texcoord));
+})";
         auto compiler = ShaderCompiler::new_compiler();
-		compiler->set_source({ vs_shader_code, strlen(vs_shader_code)});
-		compiler->set_source_name("DemoAppVS");
-		compiler->set_entry_point("main");
-		compiler->set_target_format(RHI::get_current_platform_shader_target_format());
-		compiler->set_shader_type(ShaderCompiler::ShaderType::vertex);
-		compiler->set_shader_model(5, 0);
-		compiler->set_optimization_level(ShaderCompiler::OptimizationLevel::full);
-		luexp(compiler->compile());
-		auto vs_data = compiler->get_output();
-		Blob vs(vs_data.data(), vs_data.size());
+        compiler->set_source({ vs_shader_code, strlen(vs_shader_code) });
+        compiler->set_source_name("DemoAppVS");
+        compiler->set_entry_point("main");
+        compiler->set_target_format(RHI::get_current_platform_shader_target_format());
+        compiler->set_shader_type(ShaderCompiler::ShaderType::vertex);
+        compiler->set_shader_model(6, 0);
+        compiler->set_optimization_level(ShaderCompiler::OptimizationLevel::full);
+        luexp(compiler->compile());
+        auto vs_data = compiler->get_output();
+        Blob vs(vs_data.data(), vs_data.size());
 
         compiler->reset();
-		compiler->set_source({ ps_shader_code, strlen(ps_shader_code)});
-		compiler->set_source_name("DemoAppPS");
-		compiler->set_entry_point("main");
-		compiler->set_target_format(RHI::get_current_platform_shader_target_format());
-		compiler->set_shader_type(ShaderCompiler::ShaderType::pixel);
-		compiler->set_shader_model(5, 0);
-		compiler->set_optimization_level(ShaderCompiler::OptimizationLevel::full);
-		luexp(compiler->compile());
-		auto ps_data = compiler->get_output();
-		Blob ps(ps_data.data(), ps_data.size());
+        compiler->set_source({ ps_shader_code, strlen(ps_shader_code) });
+        compiler->set_source_name("DemoAppPS");
+        compiler->set_entry_point("main");
+        compiler->set_target_format(RHI::get_current_platform_shader_target_format());
+        compiler->set_shader_type(ShaderCompiler::ShaderType::pixel);
+        compiler->set_shader_model(6, 0);
+        compiler->set_optimization_level(ShaderCompiler::OptimizationLevel::full);
+        luexp(compiler->compile());
+        auto ps_data = compiler->get_output();
+        Blob ps(ps_data.data(), ps_data.size());
+        luset(slayout, dev->new_shader_input_layout(ShaderInputLayoutDesc({&dl, 1}, 
+            ShaderInputLayoutFlag::allow_input_assembler_input_layout)));
 
-        luset(slayout, dev->new_shader_input_layout(ShaderInputLayoutDesc({dlayout}, 
-            ShaderInputLayoutFlag::allow_input_assembler_input_layout |
-            ShaderInputLayoutFlag::deny_hull_shader_access |
-            ShaderInputLayoutFlag::deny_domain_shader_access |
-            ShaderInputLayoutFlag::deny_geometry_shader_access)));
         GraphicsPipelineStateDesc ps_desc;
-		ps_desc.primitive_topology_type = PrimitiveTopologyType::triangle;
-		ps_desc.sample_mask = U32_MAX;
-		ps_desc.sample_quality = 0;
-		ps_desc.blend_state = BlendDesc(false, false, { RenderTargetBlendDesc(false, false, BlendFactor::src_alpha,
-			BlendFactor::inv_src_alpha, BlendOp::add, BlendFactor::inv_src_alpha, BlendFactor::zero, BlendOp::add, LogicOp::noop, ColorWriteMask::all) });
-		ps_desc.rasterizer_state = RasterizerDesc(FillMode::solid, CullMode::back, 0, 0.0f, 0.0f, 0, false, true, false, false, false);
-		ps_desc.depth_stencil_state = DepthStencilDesc(true, true, ComparisonFunc::less_equal, false, 0x00, 0x00, DepthStencilOpDesc(), DepthStencilOpDesc());
-		ps_desc.ib_strip_cut_value = IndexBufferStripCutValue::disabled;
-		ps_desc.input_layout = InputLayoutDesc({
-            {"POSITION", 0, Format::rgb32_float},
-            {"TEXCOORD", 0, Format::rg32_float},
-        });
-		ps_desc.vs = vs.cspan();
-		ps_desc.ps = ps.cspan();
-		ps_desc.shader_input_layout = slayout;
-		ps_desc.num_render_targets = 1;
-		ps_desc.rtv_formats[0] = Format::rgba8_unorm;
-		ps_desc.dsv_format = Format::d32_float;
+        ps_desc.primitive_topology = PrimitiveTopology::triangle_list;
+        ps_desc.sample_mask = U32_MAX;
+        ps_desc.rasterizer_state = RasterizerDesc(FillMode::solid, CullMode::back, 0, 0.0f, 0.0f, 0, false, true, false, false, false);
+        ps_desc.depth_stencil_state = DepthStencilDesc(true, true, ComparisonFunc::less_equal, false, 0x00, 0x00, DepthStencilOpDesc(), DepthStencilOpDesc());
+        ps_desc.ib_strip_cut_value = IndexBufferStripCutValue::disabled;
+        InputAttributeDesc input_attributes[] = {
+            InputAttributeDesc("POSITION", 0, 0, 0, 0, Format::rgb32_float),
+            InputAttributeDesc("TEXCOORD", 0, 1, 0, 12, Format::rg32_float)
+        };
+        InputBindingDesc input_bindings[] = {
+            InputBindingDesc(0, 20, InputRate::per_vertex)
+        };
+        ps_desc.input_layout.attributes = {input_attributes, 2};
+        ps_desc.input_layout.bindings = {input_bindings, 1};
+        ps_desc.vs = vs.cspan();
+        ps_desc.ps = ps.cspan();
+        ps_desc.shader_input_layout = slayout;
+        ps_desc.num_color_attachments = 1;
+        ps_desc.color_formats[0] = Format::rgba8_unorm;
+        ps_desc.depth_stencil_format = Format::d32_float;
         luset(pso, dev->new_graphics_pipeline_state(ps_desc));
-        
-        auto window_size = window->get_framebuffer_size();
-        luset(rt_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::rgba8_unorm, 
-            ResourceUsageFlag::shader_resource | ResourceUsageFlag::render_target, window_size.x, window_size.y, 1, 1)));
-        luset(depth_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::d32_float, 
-            ResourceUsageFlag::depth_stencil, window_size.x, window_size.y, 1, 1)));
-        luset(rtv, dev->new_render_target_view(rt_tex));
-        luset(dsv, dev->new_depth_stencil_view(depth_tex));
 
+        auto window_size = window->get_framebuffer_size();
+        luset(depth_tex, dev->new_texture(MemoryType::local, TextureDesc::tex2d(Format::d32_float, TextureUsageFlag::depth_stencil_attachment, window_size.x, window_size.y, 1, 1)));
+    
         Vertex vertices[] = {
             {{+0.5, -0.5, -0.5}, {0.0, 1.0}}, {{+0.5, +0.5, -0.5}, {0.0, 0.0}},
             {{+0.5, +0.5, +0.5}, {1.0, 0.0}}, {{+0.5, -0.5, +0.5}, {1.0, 1.0}},
-
             {{+0.5, -0.5, +0.5}, {0.0, 1.0}}, {{+0.5, +0.5, +0.5}, {0.0, 0.0}},
             {{-0.5, +0.5, +0.5}, {1.0, 0.0}}, {{-0.5, -0.5, +0.5}, {1.0, 1.0}},
-
             {{-0.5, -0.5, +0.5}, {0.0, 1.0}}, {{-0.5, +0.5, +0.5}, {0.0, 0.0}},
             {{-0.5, +0.5, -0.5}, {1.0, 0.0}}, {{-0.5, -0.5, -0.5}, {1.0, 1.0}},
-
             {{-0.5, -0.5, -0.5}, {0.0, 1.0}}, {{-0.5, +0.5, -0.5}, {0.0, 0.0}},
             {{+0.5, +0.5, -0.5}, {1.0, 0.0}}, {{+0.5, -0.5, -0.5}, {1.0, 1.0}},
-
             {{-0.5, +0.5, -0.5}, {0.0, 1.0}}, {{-0.5, +0.5, +0.5}, {0.0, 0.0}},
             {{+0.5, +0.5, +0.5}, {1.0, 0.0}}, {{+0.5, +0.5, -0.5}, {1.0, 1.0}},
-
             {{+0.5, -0.5, -0.5}, {0.0, 1.0}}, {{+0.5, -0.5, +0.5}, {0.0, 0.0}},
             {{-0.5, -0.5, +0.5}, {1.0, 0.0}}, {{-0.5, -0.5, -0.5}, {1.0, 1.0}}
         };
@@ -1264,35 +1347,64 @@ RV DemoApp::init()
             16, 17, 18, 16, 18, 19,
             20, 21, 22, 20, 22, 23
         };
-        luset(vb, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::local, ResourceUsageFlag::vertex_buffer, sizeof(vertices))));
-        luset(ib, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::local, ResourceUsageFlag::index_buffer, sizeof(indices))));
-        luexp(dev->copy_resource({
-            ResourceCopyDesc::as_write_buffer(vb, vertices, sizeof(vertices), 0),
-            ResourceCopyDesc::as_write_buffer(ib, indices, sizeof(indices), 0)
-        }));
+        luset(vb, dev->new_buffer(MemoryType::local, BufferDesc(BufferUsageFlag::vertex_buffer | BufferUsageFlag::copy_dest, sizeof(vertices))));
+        luset(ib, dev->new_buffer(MemoryType::local, BufferDesc(BufferUsageFlag::index_buffer | BufferUsageFlag::copy_dest, sizeof(indices))));
+        auto ub_align = dev->get_uniform_buffer_data_alignment();
+        luset(ub, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::uniform_buffer, align_upper(sizeof(Float4x4), ub_align))));
+        lulet(vb_staging, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::copy_source, sizeof(vertices))));
+        lulet(ib_staging, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::copy_source, sizeof(indices))));
+        void* vb_mapped = nullptr;
+        luexp(vb_staging->map(0, 0, &vb_mapped));
+        memcpy(vb_mapped, vertices, sizeof(vertices));
+        vb_staging->unmap(0, sizeof(vertices));
+        void* ib_mapped = nullptr;
+        luexp(ib_staging->map(0, 0, &ib_mapped));
+        memcpy(ib_mapped, indices, sizeof(indices));
+        ib_staging->unmap(0, sizeof(indices));
+        cmdbuf->set_context(CommandBufferContextType::copy);
+        cmdbuf->resource_barrier({
+            BufferBarrier(vb, BufferStateFlag::automatic, BufferStateFlag::copy_dest),
+            BufferBarrier(vb_staging, BufferStateFlag::automatic, BufferStateFlag::copy_source),
+            BufferBarrier(ib, BufferStateFlag::automatic, BufferStateFlag::copy_dest),
+            BufferBarrier(ib_staging, BufferStateFlag::automatic, BufferStateFlag::copy_source),
+        }, {});
+        cmdbuf->copy_buffer(vb, 0, vb_staging, 0, sizeof(vertices));
+        cmdbuf->copy_buffer(ib, 0, ib_staging, 0, sizeof(indices));
+        cmdbuf->submit({}, {}, true);
+        cmdbuf->wait();
+        cmdbuf->reset();
         
-        auto cb_align = dev->get_constant_buffer_data_alignment();
-        luset(cb, dev->new_resource(ResourceDesc::buffer(ResourceHeapType::upload, ResourceUsageFlag::constant_buffer, align_upper(sizeof(Float4x4), cb_align))));
-
         lulet(image_file, open_file("Luna.png", FileOpenFlag::read, FileCreationMode::open_existing));
         lulet(image_file_data, load_file_data(image_file));
         Image::ImageDesc image_desc;
         lulet(image_data, Image::read_image_file(image_file_data.data(), image_file_data.size(), Image::ImagePixelFormat::rgba8_unorm, image_desc));
+        luset(file_tex, dev->new_texture(MemoryType::local, TextureDesc::tex2d(Format::rgba8_unorm, 
+            TextureUsageFlag::copy_dest | TextureUsageFlag::read_texture, image_desc.width, image_desc.height, 1, 1)));
+        u64 tex_size, tex_row_pitch, tex_slice_pitch;
+        dev->get_texture_data_placement_info(image_desc.width, image_desc.height, 1, Format::rgba8_unorm, &tex_size, nullptr, &tex_row_pitch, &tex_slice_pitch);
+        lulet(file_tex_staging, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::copy_source, tex_size)));
+        void* file_tex_mapped = nullptr;
+        luexp(file_tex_staging->map(0, 0, &file_tex_mapped));
+        memcpy_bitmap(file_tex_mapped, image_data.data(), image_desc.width * 4, image_desc.height, tex_row_pitch, image_desc.width * 4);
+        file_tex_staging->unmap(0, USIZE_MAX);
+        cmdbuf->set_context(CommandBufferContextType::copy);
+        cmdbuf->resource_barrier({
+            BufferBarrier(file_tex_staging, BufferStateFlag::automatic, BufferStateFlag::copy_source)
+        }, {
+            TextureBarrier(file_tex, TEXTURE_BARRIER_ALL_SUBRESOURCES, TextureStateFlag::automatic, TextureStateFlag::copy_dest)
+        });
+        cmdbuf->copy_buffer_to_texture(file_tex, SubresourceIndex(0, 0), 0, 0, 0, file_tex_staging, 0, tex_row_pitch, tex_slice_pitch, image_desc.width, image_desc.height, 1);
+        cmdbuf->submit({}, {}, true);
+        cmdbuf->wait();
+        cmdbuf->reset();
 
-        luset(file_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::rgba8_unorm, 
-            ResourceUsageFlag::shader_resource, image_desc.width, image_desc.height, 1, 1)));
-        luexp(dev->copy_resource({
-            ResourceCopyDesc::as_write_texture(file_tex, image_data.data(), image_desc.width * Image::pixel_size(image_desc.format), 
-                image_desc.width * image_desc.height * Image::pixel_size(image_desc.format), 0, BoxU(0, 0, 0, image_desc.width, image_desc.height, 1))
-        }));
-
-        desc_set->set_cbv(0, cb, ConstantBufferViewDesc(0, align_upper(sizeof(Float4x4), cb_align)));
-        desc_set->set_srv(1, file_tex);
-        desc_set->set_sampler(2, SamplerDesc(FilterMode::min_mag_mip_linear, TextureAddressMode::clamp,
-				TextureAddressMode::clamp, TextureAddressMode::clamp, 0.0f, 1, ComparisonFunc::always, 
-                Float4U(0, 0, 0, 0), 0.0f, 0.0f));
-        
+        desc_set->update_descriptors({
+            WriteDescriptorSet::uniform_buffer_view(0, BufferViewDesc::uniform_buffer(ub)),
+            WriteDescriptorSet::read_texture_view(1, TextureViewDesc::tex2d(file_tex)),
+            WriteDescriptorSet::sampler(2, SamplerDesc(Filter::min_mag_mip_linear, TextureAddressMode::clamp, TextureAddressMode::clamp, TextureAddressMode::clamp))
+        });
     }
+
     lucatchret;
     return ok;
 }
@@ -1300,58 +1412,52 @@ RV DemoApp::update()
 {
     Window::poll_events();
     if(window->is_closed()) return ok;
+    if(window->is_minimized()) return ok;
     lutry
     {
+        using namespace RHI;
         camera_rotation += 1.0f;
         Float3 camera_pos(cosf(camera_rotation / 180.0f * PI) * 3.0f, 1.0f, sinf(camera_rotation / 180.0f * PI) * 3.0f);
         Float4x4 camera_mat = AffineMatrix::make_look_at(camera_pos, Float3(0, 0, 0), Float3(0, 1, 0));
         auto window_sz = window->get_framebuffer_size();
         camera_mat = mul(camera_mat, ProjectionMatrix::make_perspective_fov(PI / 3.0f, (f32)window_sz.x / (f32)window_sz.y, 0.001f, 100.0f));
         void* camera_mapped;
-        luexp(cb->map_subresource(0, 0, 0, &camera_mapped));
+        luexp(ub->map(0, 0, &camera_mapped));
         memcpy(camera_mapped, &camera_mat, sizeof(Float4x4));
-        cb->unmap_subresource(0, 0, sizeof(Float4x4));
-
-        using namespace RHI;
-
-        cmdbuf->resource_barriers({
-            ResourceBarrierDesc::as_transition(cb, ResourceState::vertex_and_constant_buffer),
-            ResourceBarrierDesc::as_transition(vb, ResourceState::vertex_and_constant_buffer),
-            ResourceBarrierDesc::as_transition(ib, ResourceState::index_buffer),
-            ResourceBarrierDesc::as_transition(file_tex, ResourceState::shader_resource_pixel),
-            ResourceBarrierDesc::as_transition(rt_tex, ResourceState::render_target),
-            ResourceBarrierDesc::as_transition(depth_tex, ResourceState::depth_stencil_write)
+        ub->unmap(0, sizeof(Float4x4));
+        lulet(back_buffer, swap_chain->get_current_back_buffer());
+        cmdbuf->set_context(CommandBufferContextType::graphics);
+        cmdbuf->resource_barrier({
+            BufferBarrier(ub, BufferStateFlag::automatic, BufferStateFlag::uniform_buffer_vs),
+            BufferBarrier(vb, BufferStateFlag::automatic, BufferStateFlag::vertex_buffer),
+            BufferBarrier(ib, BufferStateFlag::automatic, BufferStateFlag::index_buffer)
+        }, {
+            TextureBarrier(file_tex, TEXTURE_BARRIER_ALL_SUBRESOURCES, TextureStateFlag::automatic, TextureStateFlag::shader_read_ps),
+            TextureBarrier(back_buffer, SubresourceIndex(0, 0), TextureStateFlag::automatic, TextureStateFlag::color_attachment_write),
+            TextureBarrier(depth_tex, SubresourceIndex(0, 0), TextureStateFlag::automatic, TextureStateFlag::depth_stencil_attachment_write)
         });
-
         RenderPassDesc desc;
-        desc.rtvs[0] = rtv;
-        desc.rt_load_ops[0] = LoadOp::clear;
-        desc.rt_store_ops[0] = StoreOp::store;
-        desc.rt_clear_values[0] = {0, 0, 0, 0};
-        desc.dsv = dsv;
-        desc.depth_load_op = LoadOp::clear;
-        desc.depth_store_op = StoreOp::store;
-        desc.depth_clear_value = 1.0f;
-        desc.stencil_load_op = LoadOp::dont_care;
-        desc.stencil_store_op = StoreOp::dont_care;
+        desc.color_attachments[0] = ColorAttachment(back_buffer, LoadOp::clear, StoreOp::store, Float4U(0.0f));
+        desc.depth_stencil_attachment = DepthStencilAttachment(depth_tex, false, LoadOp::clear, StoreOp::store, 1.0f);
         cmdbuf->begin_render_pass(desc);
         cmdbuf->set_graphics_shader_input_layout(slayout);
-        cmdbuf->set_pipeline_state(pso);
+        cmdbuf->set_graphics_pipeline_state(pso);
         cmdbuf->set_graphics_descriptor_set(0, desc_set);
-        cmdbuf->set_primitive_topology(PrimitiveTopology::triangle_list);
-        auto sz = vb->get_desc().width_or_buffer_size;
-        cmdbuf->set_vertex_buffers(0, {VertexBufferViewDesc(vb, 0, sz, sizeof(Vertex))});
-        sz = ib->get_desc().width_or_buffer_size;
-        cmdbuf->set_index_buffer(IndexBufferViewDesc(ib, 0, sz, Format::r32_uint));
+        auto sz = vb->get_desc().size;
+        cmdbuf->set_vertex_buffers(0, {VertexBufferView(vb, 0, sz, sizeof(Vertex))});
+        sz = ib->get_desc().size;
+        cmdbuf->set_index_buffer(IndexBufferView(ib, 0, sz, Format::r32_uint));
         cmdbuf->set_scissor_rect(RectI(0, 0, (i32)window_sz.x, (i32)window_sz.y));
         cmdbuf->set_viewport(Viewport(0.0f, 0.0f, (f32)window_sz.x, (f32)window_sz.y, 0.0f, 1.0f));
         cmdbuf->draw_indexed(36, 0, 0);
         cmdbuf->end_render_pass();
-
-        luexp(cmdbuf->submit());
-        luexp(swap_chain->present(rt_tex, 0));
-        swap_chain->wait();
-        luexp(cmdbuf->reset());
+        cmdbuf->resource_barrier({}, {
+            TextureBarrier(back_buffer, SubresourceIndex(0, 0), TextureStateFlag::automatic, TextureStateFlag::present)
+        });
+        cmdbuf->submit({}, {}, true);
+        cmdbuf->wait();
+        cmdbuf->reset();
+        luexp(swap_chain->present());
     }
     lucatchret;
     return ok;
@@ -1365,14 +1471,12 @@ RV DemoApp::resize(u32 width, u32 height)
     lutry
     {
         using namespace RHI;
-        auto dev = get_main_device();
-        luexp(swap_chain->reset({width, height, 2, Format::rgba8_unorm, true}));
-        luset(rt_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::rgba8_unorm, 
-            ResourceUsageFlag::shader_resource | ResourceUsageFlag::render_target, width, height, 1, 1)));
-        luset(depth_tex, dev->new_resource(ResourceDesc::tex2d(ResourceHeapType::local, Format::d32_float, 
-            ResourceUsageFlag::depth_stencil, width, height, 1, 1)));
-        luset(rtv, dev->new_render_target_view(rt_tex));
-        luset(dsv, dev->new_depth_stencil_view(depth_tex));
+        if(width && height)
+        {
+            auto dev = get_main_device();
+            luexp(swap_chain->reset({width, height, 2, Format::unknown, true}));
+            luset(depth_tex, dev->new_texture(MemoryType::local, TextureDesc::tex2d(Format::d32_float, TextureUsageFlag::depth_stencil_attachment, width, height, 1, 1)));
+        }
     }
     lucatchret;
     return ok;
@@ -1408,7 +1512,6 @@ int main()
 ```lua
 target("DemoApp")
     set_luna_sdk_program()
-    add_headerfiles("**.hpp")
     add_files("**.cpp")
     add_deps("Runtime", "Window", "RHI", "ShaderCompiler", "Image")
     before_build(function(target)
