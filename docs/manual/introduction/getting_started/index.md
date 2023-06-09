@@ -36,14 +36,14 @@ Next, fills `main.cpp` with the following initial content. As we go further, we 
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Module.hpp>
 #include <Runtime/Debug.hpp>
+#include <Runtime/UniquePtr.hpp>
 using namespace Luna;
 struct DemoApp
 {
     RV init();
     RV update();
-    bool is_closed();
+    bool is_exiting();
 };
-DemoApp* g_app = nullptr;
 RV DemoApp::init()
 {
     return ok;
@@ -60,12 +60,12 @@ RV run_app()
 {
     auto result = init_modules();
     if(failed(result)) return result;
-    g_app = memnew<DemoApp>();
-    result = g_app->init();
+    UniquePtr<DemoApp> app (memnew<DemoApp>());
+    result = app->init();
     if(failed(result)) return result;
-    while(!g_app->is_closed())
+    while(!app->is_exiting())
     {
-        result = g_app->update();
+        result = app->update();
         if(failed(result)) return result;
     }
     return ok;
@@ -76,17 +76,15 @@ int main()
     if(!initialized) return -1;
     RV result = run_app();
     if(failed(result)) debug_printf(explain(result.errcode()));
-    if(g_app) memdelete(g_app);
     Luna::close();
     return 0;
 }
 ```
-The first three lines includes the header files that we need to include to compile the program, which are:
+The first four lines includes the header files that we need to include to compile the program, which are:
 * <Runtime/Runtime.hpp> for `Luna::init()` and `Luna::shutdown()`.
-
 * <Runtime/Module.hpp> for `Luna::init_modules()`.
-
 * <Runtime/Debug.hpp> for `Luna::debug_printf()`.
+* <Runtime/UniquePtr.hpp> for `Luna::UniquePtr<T>`.
 
 You can include any SDK interface header files using similar syntax: `#include <Module/File>`. We set `{LUNA_ROOT_DIR}/Engine` as the global include directory, the user may check it for available header files. In this example, all header files are from the `Runtime` module, which is the core module of Luna SDK that provides fundamental SDK features.
 
@@ -107,7 +105,7 @@ In our `run_app` function, the first thing to do is calling `init_modules`, whic
 | `memnew<T>(args...)`               | `new T (args...)`      |
 | `memdelete(ptr)`                   | `delete ptr`           |
 
-The user should uses allocation functions provided by Luna SDK instead of those provided by C++ std. `DemoApp` will contain all states and logics for our demo program. The created `DempApp` instance then will be assigned to a global variable `g_app`, and will be deleted by `memdelete` when the program exits.
+The user should uses allocation functions provided by Luna SDK instead of those provided by C++ std. `DemoApp` will contain all states and logics for our demo program. The created `DempApp` instance will then be stored as a variable `app` with `UniquePtr<DemoApp>` type, which is a smart pointer that will delete the pointing object automatically when expired.
 
 `DemoApp` has three functions: `init`, `update` and `is_closed`. The `init` function initializes the program, and reports errors if the initialization is failed; the `update` function updates the program state and renders the image at every frame; the `is_exiting` function checks whether the program is exiting. We will implement these three methods in the following sections. 
 
@@ -202,10 +200,10 @@ Every window can be displayed in windowed mode or full screen mode, which can be
 After the window is created, we need to register window event callbacks so that we can handle window events properly. In this example, the events we need to handle is the close event (triggered when the close button of the window is pressed) and the framebuffer resize event (triggered when the window framebuffer size is changed). This can be done by the following statements:
 
 ```c++
-window->get_close_event() += [](Window::IWindow* window) { window->close(); };
-window->get_framebuffer_resize_event() += [](Window::IWindow* window, u32 width, u32 height) {
-    lupanic_if_failed(g_app->resize(width, height));
-};
+window->get_close_event().add_handler([](Window::IWindow* window) { window->close(); });
+window->get_framebuffer_resize_event().add_handler([this](Window::IWindow* window, u32 width, u32 height) {
+    lupanic_if_failed(this->resize(width, height));
+    });
 ```
 
 `get_close_event` and `get_framebuffer_resize_event` are methods of `IWindow` that gets the close event and the framebuffer resize event object of the window. The event object is a collection of callback functions that once triggered, calls all the callback functions. We then register one callback function to the close event that closes the window immediately, and one callback function to the framebuffer resize event that calls the `resize` method of our `DempApp`. The `resize` method is currently empty, we will fill the content of this method when we create render textures later:
@@ -242,10 +240,9 @@ So far, the complete code for `main.cpp` is:
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Module.hpp>
 #include <Runtime/Debug.hpp>
+#include <Runtime/UniquePtr.hpp>
 #include <Window/Window.hpp>
-
 using namespace Luna;
-
 struct DemoApp
 {
     Ref<Window::IWindow> window;
@@ -255,19 +252,15 @@ struct DemoApp
     bool is_exiting();
     RV resize(u32 width, u32 height);
 };
-
-DemoApp* g_app = nullptr;
-
 RV DemoApp::init()
 {
     lutry
     {
         luset(window, Window::new_window("DemoApp", Window::WindowDisplaySettings::as_windowed(), Window::WindowCreationFlag::resizable));
-        window->get_close_event() += [](Window::IWindow* window) { window->close(); };
-        window->get_framebuffer_resize_event() += [](Window::IWindow* window, u32 width, u32 height) {
-            lupanic_if_failed(g_app->resize(width, height));
-        };
-        
+        window->get_close_event().add_handler([](Window::IWindow* window) { window->close(); });
+        window->get_framebuffer_resize_event().add_handler([this](Window::IWindow* window, u32 width, u32 height) {
+            lupanic_if_failed(this->resize(width, height));
+            });
     }
     lucatchret;
     return ok;
@@ -289,12 +282,12 @@ RV run_app()
 {
     auto result = init_modules();
     if(failed(result)) return result;
-    g_app = memnew<DemoApp>();
-    result = g_app->init();
+    UniquePtr<DemoApp> app (memnew<DemoApp>());
+    result = app->init();
     if(failed(result)) return result;
-    while(!g_app->is_exiting())
+    while(!app->is_exiting())
     {
-        result = g_app->update();
+        result = app->update();
         if(failed(result)) return result;
     }
     return ok;
@@ -305,7 +298,6 @@ int main()
     if(!initialized) return -1;
     RV result = run_app();
     if(failed(result)) debug_printf(explain(result.errcode()));
-    if(g_app) memdelete(g_app);
     Luna::close();
     return 0;
 }
@@ -349,10 +341,10 @@ RV DemoApp::init()
     lutry
     {
     	luset(window, Window::new_window("DemoApp", Window::WindowDisplaySettings::as_windowed(), Window::WindowCreationFlag::resizable));
-        window->get_close_event() += [](Window::IWindow* window) { window->close(); };
-        window->get_framebuffer_resize_event() += [](Window::IWindow* window, u32 width, u32 height) {
-            lupanic_if_failed(g_app->resize(width, height));
-        };
+        window->get_close_event().add_handler([](Window::IWindow* window) { window->close(); });
+        window->get_framebuffer_resize_event().add_handler([this](Window::IWindow* window, u32 width, u32 height) {
+            lupanic_if_failed(this->resize(width, height));
+            });
 
         dev = RHI::get_main_device();
         using namespace RHI;
@@ -539,8 +531,7 @@ luset(dlayout, dev->new_descriptor_set_layout(DescriptorSetLayoutDesc({
 Then we can create one descriptor set using the descriptor set layout object:
 
 ```c++
-IDescriptorSetLayout* dl = dlayout.get();
-luset(desc_set, dev->new_descriptor_set({dl}));
+luset(desc_set, dev->new_descriptor_set(DescriptorSetDesc(dlayout)));
 ```
 
 We will fill descriptors in the set by calling `update_descriptors` later.
@@ -656,8 +647,7 @@ Ref<RHI::IShaderInputLayout> slayout;
 Then we can create shader input layout object using the following code:
 
 ```c++
-auto dl = dlayout.get();
-luset(slayout, dev->new_shader_input_layout(ShaderInputLayoutDesc({&dl, 1}, 
+luset(slayout, dev->new_shader_input_layout(ShaderInputLayoutDesc({dlayout}, 
     ShaderInputLayoutFlag::allow_input_assembler_input_layout)));
 ```
 
@@ -743,11 +733,11 @@ struct TextureDesc
 To simplify the texture description, we can use static methods provided by `TextureDesc` to quickly construct `TextureDesc` structure:
 
 ```c++
-TextureDesc TextureDesc::tex1d(Format format, TextureUsageFlag usages, u64 width, u32 array_size = 1, u32 mip_levels = 0, ResourceFlag flags = ResourceFlag::none)
+TextureDesc TextureDesc::tex1d(Format format, TextureUsageFlag usages, u64 width, u32 array_size = 1, u32 mip_levels = 0, ResourceFlag flags = ResourceFlag::none);
 
-TextureDesc TextureDesc::tex2d(Format format, TextureUsageFlag usages, u64 width, u32 height, u32 array_size = 1, u32 mip_levels = 0, u32 sample_count = 1, ResourceFlag flags = ResourceFlag::none)
+TextureDesc TextureDesc::tex2d(Format format, TextureUsageFlag usages, u64 width, u32 height, u32 array_size = 1, u32 mip_levels = 0, u32 sample_count = 1, ResourceFlag flags = ResourceFlag::none);
 
-TextureDesc TextureDesc::tex3d(Format format, TextureUsageFlag usages, u64 width, u32 height, u32 depth, u32 mip_levels = 0, ResourceFlag flags = ResourceFlag::none)
+TextureDesc TextureDesc::tex3d(Format format, TextureUsageFlag usages, u64 width, u32 height, u32 depth, u32 mip_levels = 0, ResourceFlag flags = ResourceFlag::none);
 ```
 
 Back to our `DemoApp`, we need to add one new property to `DemoApp` to hold the depth texture:
@@ -867,9 +857,11 @@ as you can see, `Float4x4` is the matrix type used in Luna SDK. We also have `Fl
 
 ## Uploading vertex and index data
 
-Now that we have created one vertex buffer and one index buffer, we need to upload vertex and index data to these buffers, so that they can be used by GPU correctly. As we have mentioned before, resources with `local` memory type can not be accessed by the host directly. In order to upload data to resources with `local` memory type, we need to create intermediate buffers with `upload` memory type, upload data to such buffers, and use GPU to copy data from such buffers to resources with `local` memory type. Such intermediate buffers are usually called *staging buffers*, and are used frequently to copy data from host memory to device local memory.
+Now that we have created one vertex buffer and one index buffer, we need to upload vertex and index data to these buffers, so that they can be used by GPU correctly. As we have mentioned before, resources with `local` memory type can not be accessed by the host directly. To copy data between local memory and host memory, we can either use *staging buffers* to transfer the data manually, or we can use `RHI::copy_resource_data` to perform data copy automatically. We will show how to perform data copy in both approaches.
 
-The following code shows how to upload data for our vertex and index buffer:
+### Uploading data manually
+
+In order to upload data to resources with `local` memory type, we need to create intermediate buffers with `upload` memory type, copy data to such buffers form the host, and use GPU to copy data from such buffers to resources with `local` memory type. Such intermediate buffers are usually called *staging buffers*, and are used frequently to copy data from host memory to device local memory. The following code shows how to upload data for our vertex and index buffer:
 
 ```c++
 lulet(vb_staging, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::copy_source, sizeof(vertices))));
@@ -905,6 +897,25 @@ The first command we need to record is `ICommandBuffer::set_context`, which tell
 After setting the proper context, we need to emit resource barriers to transfer resources used by GPU to compatible states. Resource barrier commands are recorded by `ICommandBuffer::resource_barrier`, and will be described later. After resources have been transferred into suitable states, we call `ICommandBuffer::copy_buffer` to record one buffer-to-buffer copy command. 
 
 When we finish recording commands into the command buffer, we call `ICommandBuffer::submit` to submit the command buffer to the command queue, call `ICommandBuffer::wait` to wait for the command buffer to be finished, then call `ICommandBuffer::reset` to clear commands in the command buffer, and reset the command buffer state so that it can be used for a recording new commands.
+
+### Uploading data using `RHI::copy_resource_data`
+
+In order to use `RHI::copy_resource_data`, we need to include one new header file:
+
+```c++
+#include <RHI/Utility.hpp>
+```
+
+`RHI/Utility.hpp` is an auxiliary library that defines high-level functionalities implemented using APIs provided by `RHI`, including `RHI::copy_resource_data` we use here. The following code shows how to upload data using `RHI::copy_resource_data`:
+
+```c++
+luexp(copy_resource_data(cmdbuf, {
+    CopyResourceData::write_buffer(vb, 0, vertices, sizeof(vertices)),
+    CopyResourceData::write_buffer(ib, 0, indices, sizeof(indices))
+}));
+```
+
+You can see how `RHI::copy_resource_data` greatly simplifies the code we need to write in order to upload resource data.
 
 ## Loading image from file
 
@@ -966,11 +977,16 @@ Image::ImageDesc image_desc;
 lulet(image_data, Image::read_image_file(image_file_data.data(), image_file_data.size(), Image::ImagePixelFormat::rgba8_unorm, image_desc));
 ```
 
-`Image::read_image_file` function outputs one `Image::ImageDesc` structure that describes the returned image data, including the width, height and pixel format of the image. The image data is arranged in a row-major manner and without and alignment padding. We then creates one new resource, and uploads the data to the resource:
+`Image::read_image_file` function outputs one `Image::ImageDesc` structure that describes the returned image data, including the width, height and pixel format of the image. The image data is arranged in a row-major manner and without and alignment padding. We can now creates the texture resource based on the image size:
 
 ```c++
 luset(file_tex, dev->new_texture(MemoryType::local, TextureDesc::tex2d(Format::rgba8_unorm, 
     TextureUsageFlag::copy_dest | TextureUsageFlag::read_texture, image_desc.width, image_desc.height, 1, 1)));
+```
+
+The following code shows how to upload data for our texture:
+
+```c++
 u64 tex_size, tex_row_pitch, tex_slice_pitch;
 dev->get_texture_data_placement_info(image_desc.width, image_desc.height, 1, Format::rgba8_unorm, &tex_size, nullptr, &tex_row_pitch, &tex_slice_pitch);
 lulet(file_tex_staging, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::copy_source, tex_size)));
@@ -992,16 +1008,25 @@ cmdbuf->reset();
 
 Uploading texture data is similar to uploading buffer data, we need to create one staging buffer to hold the texture data, then use `ICommandBuffer::copy_buffer_to_texture` to copy data from buffer to texture. Note that most systems have special alignment requirements for texture data in buffers when copying data between buffers and textures, the user should call `IDevice::get_texture_data_placement_info` to fetch the texture data placement information for one specific texture, and use that information to manipulate texture data in the buffer. Instead of `memcpy` , the user should call `memcpy_bitmap` to copy row-major bitmap data, which takes `src_row_pitch` and `dst_row_pitch` to correctly offsets every texture data row.
 
+We can also use `RHI::copy_resource_data` to upload data for textures like so:
+
+```c++
+luexp(copy_resource_data(cmdbuf, {
+    CopyResourceData::write_texture(file_tex, SubresourceIndex(0, 0), 0, 0, 0, 
+        image_data.data(), image_desc.width * 4, image_desc.width * image_desc.height * 4, image_desc.width, image_desc.height, 1)
+}));
+```
+
 ## Set up descriptor set
 
 Once the uniform buffer and file texture is set up, we can bind these two resources to the descriptor set by calling `IDescriptorSet::update_descriptors`. We also need to set the sampler in the descriptor set to be used by the pixel shader.
 
 ```c++
-desc_set->update_descriptors({
+luexp(desc_set->update_descriptors({
     WriteDescriptorSet::uniform_buffer_view(0, BufferViewDesc::uniform_buffer(ub)),
     WriteDescriptorSet::read_texture_view(1, TextureViewDesc::tex2d(file_tex)),
     WriteDescriptorSet::sampler(2, SamplerDesc(Filter::min_mag_mip_linear, TextureAddressMode::clamp, TextureAddressMode::clamp, TextureAddressMode::clamp))
-});
+}));
 ```
 
 This concludes the `DemoApp::init` function.
@@ -1130,9 +1155,9 @@ cmdbuf->resource_barrier({}, {
 Finally, we submit our command buffer, waiting for its completion, and resets the command buffer for next frame:
 
 ```c++
-cmdbuf->submit({}, {}, true);
+luexp(cmdbuf->submit({}, {}, true));
 cmdbuf->wait();
-cmdbuf->reset();
+luexp(cmdbuf->reset());
 ```
 
 ## Presenting the render result
@@ -1155,17 +1180,17 @@ Congratulations! If you have followed every step of this article correctly, you 
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Module.hpp>
 #include <Runtime/Debug.hpp>
+#include <Runtime/UniquePtr.hpp>
 #include <Window/Window.hpp>
 #include <RHI/RHI.hpp>
 #include <ShaderCompiler/ShaderCompiler.hpp>
 #include <RHI/ShaderCompileHelper.hpp>
 #include <Runtime/Math/Matrix.hpp>
+#include <RHI/Utility.hpp>
 #include <Runtime/File.hpp>
 #include <Image/Image.hpp>
 #include <Runtime/Math/Transform.hpp>
-
 using namespace Luna;
-
 struct DemoApp
 {
     Ref<Window::IWindow> window;
@@ -1189,38 +1214,34 @@ struct DemoApp
     bool is_exiting();
     RV resize(u32 width, u32 height);
 };
-
 struct Vertex
 {
     Float3U position;
     Float2U texcoord;
 };
-
-DemoApp* g_app = nullptr;
-
 RV DemoApp::init()
 {
     lutry
     {
         luset(window, Window::new_window("DemoApp", Window::WindowDisplaySettings::as_windowed(), Window::WindowCreationFlag::resizable));
-        window->get_close_event() += [](Window::IWindow* window) { window->close(); };
-        window->get_framebuffer_resize_event() += [](Window::IWindow* window, u32 width, u32 height) {
-            lupanic_if_failed(g_app->resize(width, height));
-        };
-        
+        window->get_close_event().add_handler([](Window::IWindow* window) { window->close(); });
+        window->get_framebuffer_resize_event().add_handler([this](Window::IWindow* window, u32 width, u32 height) {
+            lupanic_if_failed(this->resize(width, height));
+            });
+
         dev = RHI::get_main_device();
         using namespace RHI;
         queue = U32_MAX;
         u32 num_queues = dev->get_num_command_queues();
-		for (u32 i = 0; i < num_queues; ++i)
-		{
-			auto desc = dev->get_command_queue_desc(i);
-			if (desc.type == CommandQueueType::graphics && test_flags(desc.flags, CommandQueueFlag::presenting))
-			{
-				queue = i;
-				break;
-			}
-		}
+        for (u32 i = 0; i < num_queues; ++i)
+        {
+            auto desc = dev->get_command_queue_desc(i);
+            if (desc.type == CommandQueueType::graphics && test_flags(desc.flags, CommandQueueFlag::presenting))
+            {
+                queue = i;
+                break;
+            }
+        }
         if(queue == U32_MAX) return BasicError::not_supported();
         luset(cmdbuf, dev->new_command_buffer(queue));
         luset(swap_chain, dev->new_swap_chain(queue, window, SwapChainDesc(0, 0, 2, Format::bgra8_unorm, true)));
@@ -1229,8 +1250,7 @@ RV DemoApp::init()
             {DescriptorType::read_texture_view, 1, 1, ShaderVisibilityFlag::pixel},
             {DescriptorType::sampler, 2, 1, ShaderVisibilityFlag::pixel}
         })));
-        IDescriptorSetLayout* dl = dlayout.get();
-        luset(desc_set, dev->new_descriptor_set({dl}));
+        luset(desc_set, dev->new_descriptor_set(DescriptorSetDesc(dlayout)));
         const char vs_shader_code[] = R"(
 cbuffer vertexBuffer : register(b0)
 {
@@ -1296,7 +1316,8 @@ float4 main(PS_INPUT input) : SV_Target
         luexp(compiler->compile());
         auto ps_data = compiler->get_output();
         Blob ps(ps_data.data(), ps_data.size());
-        luset(slayout, dev->new_shader_input_layout(ShaderInputLayoutDesc({&dl, 1}, 
+
+        luset(slayout, dev->new_shader_input_layout(ShaderInputLayoutDesc({dlayout}, 
             ShaderInputLayoutFlag::allow_input_assembler_input_layout)));
 
         GraphicsPipelineStateDesc ps_desc;
@@ -1324,7 +1345,7 @@ float4 main(PS_INPUT input) : SV_Target
 
         auto window_size = window->get_framebuffer_size();
         luset(depth_tex, dev->new_texture(MemoryType::local, TextureDesc::tex2d(Format::d32_float, TextureUsageFlag::depth_stencil_attachment, window_size.x, window_size.y, 1, 1)));
-    
+
         Vertex vertices[] = {
             {{+0.5, -0.5, -0.5}, {0.0, 1.0}}, {{+0.5, +0.5, -0.5}, {0.0, 0.0}},
             {{+0.5, +0.5, +0.5}, {1.0, 0.0}}, {{+0.5, -0.5, +0.5}, {1.0, 1.0}},
@@ -1351,60 +1372,28 @@ float4 main(PS_INPUT input) : SV_Target
         luset(ib, dev->new_buffer(MemoryType::local, BufferDesc(BufferUsageFlag::index_buffer | BufferUsageFlag::copy_dest, sizeof(indices))));
         auto ub_align = dev->get_uniform_buffer_data_alignment();
         luset(ub, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::uniform_buffer, align_upper(sizeof(Float4x4), ub_align))));
-        lulet(vb_staging, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::copy_source, sizeof(vertices))));
-        lulet(ib_staging, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::copy_source, sizeof(indices))));
-        void* vb_mapped = nullptr;
-        luexp(vb_staging->map(0, 0, &vb_mapped));
-        memcpy(vb_mapped, vertices, sizeof(vertices));
-        vb_staging->unmap(0, sizeof(vertices));
-        void* ib_mapped = nullptr;
-        luexp(ib_staging->map(0, 0, &ib_mapped));
-        memcpy(ib_mapped, indices, sizeof(indices));
-        ib_staging->unmap(0, sizeof(indices));
-        cmdbuf->set_context(CommandBufferContextType::copy);
-        cmdbuf->resource_barrier({
-            BufferBarrier(vb, BufferStateFlag::automatic, BufferStateFlag::copy_dest),
-            BufferBarrier(vb_staging, BufferStateFlag::automatic, BufferStateFlag::copy_source),
-            BufferBarrier(ib, BufferStateFlag::automatic, BufferStateFlag::copy_dest),
-            BufferBarrier(ib_staging, BufferStateFlag::automatic, BufferStateFlag::copy_source),
-        }, {});
-        cmdbuf->copy_buffer(vb, 0, vb_staging, 0, sizeof(vertices));
-        cmdbuf->copy_buffer(ib, 0, ib_staging, 0, sizeof(indices));
-        cmdbuf->submit({}, {}, true);
-        cmdbuf->wait();
-        cmdbuf->reset();
-        
+
+        luexp(copy_resource_data(cmdbuf, {
+            CopyResourceData::write_buffer(vb, 0, vertices, sizeof(vertices)),
+            CopyResourceData::write_buffer(ib, 0, indices, sizeof(indices))
+        }));
+
         lulet(image_file, open_file("Luna.png", FileOpenFlag::read, FileCreationMode::open_existing));
         lulet(image_file_data, load_file_data(image_file));
         Image::ImageDesc image_desc;
         lulet(image_data, Image::read_image_file(image_file_data.data(), image_file_data.size(), Image::ImagePixelFormat::rgba8_unorm, image_desc));
         luset(file_tex, dev->new_texture(MemoryType::local, TextureDesc::tex2d(Format::rgba8_unorm, 
             TextureUsageFlag::copy_dest | TextureUsageFlag::read_texture, image_desc.width, image_desc.height, 1, 1)));
-        u64 tex_size, tex_row_pitch, tex_slice_pitch;
-        dev->get_texture_data_placement_info(image_desc.width, image_desc.height, 1, Format::rgba8_unorm, &tex_size, nullptr, &tex_row_pitch, &tex_slice_pitch);
-        lulet(file_tex_staging, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::copy_source, tex_size)));
-        void* file_tex_mapped = nullptr;
-        luexp(file_tex_staging->map(0, 0, &file_tex_mapped));
-        memcpy_bitmap(file_tex_mapped, image_data.data(), image_desc.width * 4, image_desc.height, tex_row_pitch, image_desc.width * 4);
-        file_tex_staging->unmap(0, USIZE_MAX);
-        cmdbuf->set_context(CommandBufferContextType::copy);
-        cmdbuf->resource_barrier({
-            BufferBarrier(file_tex_staging, BufferStateFlag::automatic, BufferStateFlag::copy_source)
-        }, {
-            TextureBarrier(file_tex, TEXTURE_BARRIER_ALL_SUBRESOURCES, TextureStateFlag::automatic, TextureStateFlag::copy_dest)
-        });
-        cmdbuf->copy_buffer_to_texture(file_tex, SubresourceIndex(0, 0), 0, 0, 0, file_tex_staging, 0, tex_row_pitch, tex_slice_pitch, image_desc.width, image_desc.height, 1);
-        cmdbuf->submit({}, {}, true);
-        cmdbuf->wait();
-        cmdbuf->reset();
-
-        desc_set->update_descriptors({
+        luexp(copy_resource_data(cmdbuf, {
+            CopyResourceData::write_texture(file_tex, SubresourceIndex(0, 0), 0, 0, 0, 
+                image_data.data(), image_desc.width * 4, image_desc.width * image_desc.height * 4, image_desc.width, image_desc.height, 1)
+        }));
+        luexp(desc_set->update_descriptors({
             WriteDescriptorSet::uniform_buffer_view(0, BufferViewDesc::uniform_buffer(ub)),
             WriteDescriptorSet::read_texture_view(1, TextureViewDesc::tex2d(file_tex)),
             WriteDescriptorSet::sampler(2, SamplerDesc(Filter::min_mag_mip_linear, TextureAddressMode::clamp, TextureAddressMode::clamp, TextureAddressMode::clamp))
-        });
+        }));
     }
-
     lucatchret;
     return ok;
 }
@@ -1454,9 +1443,9 @@ RV DemoApp::update()
         cmdbuf->resource_barrier({}, {
             TextureBarrier(back_buffer, SubresourceIndex(0, 0), TextureStateFlag::automatic, TextureStateFlag::present)
         });
-        cmdbuf->submit({}, {}, true);
+        luexp(cmdbuf->submit({}, {}, true));
         cmdbuf->wait();
-        cmdbuf->reset();
+        luexp(cmdbuf->reset());
         luexp(swap_chain->present());
     }
     lucatchret;
@@ -1485,12 +1474,12 @@ RV run_app()
 {
     auto result = init_modules();
     if(failed(result)) return result;
-    g_app = memnew<DemoApp>();
-    result = g_app->init();
+    UniquePtr<DemoApp> app (memnew<DemoApp>());
+    result = app->init();
     if(failed(result)) return result;
-    while(!g_app->is_exiting())
+    while(!app->is_exiting())
     {
-        result = g_app->update();
+        result = app->update();
         if(failed(result)) return result;
     }
     return ok;
@@ -1501,7 +1490,6 @@ int main()
     if(!initialized) return -1;
     RV result = run_app();
     if(failed(result)) debug_printf(explain(result.errcode()));
-    if(g_app) memdelete(g_app);
     Luna::close();
     return 0;
 }
