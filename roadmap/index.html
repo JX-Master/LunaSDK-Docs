@@ -34,7 +34,7 @@
           <a href=".." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -54,6 +54,10 @@
     <li class="toctree-l2"><a class="reference internal" href="#q2-2023">Q2 2023</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#q3-2023">Q3 2023</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#q4-2023">Q4 2023</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tbd">TBD</a>
     </li>
     </ul>
                 </li>
@@ -124,7 +128,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
       <li>Roadmap</li>
     <li class="wy-breadcrumbs-aside">
     </li>
@@ -136,17 +140,39 @@
               
                 <h1 id="roadmap">Roadmap</h1>
 <p>This page shows the planned features and services in the future releases of Luna SDK. Please note that we may update this page rapidly as existing features are completed or cancelled and new features are added.</p>
+<p>Legend:</p>
+<ul>
+<li>📅: This feature is scheduled.</li>
+<li>✅: This feature is completed and will be released on schedule.</li>
+<li>⚠️: This feature has risks of being delayed of abandoned.</li>
+<li>🔻: This feature is delayed and will not be completed in the current quarter.</li>
+<li>❌: This feature is abandoned.</li>
+</ul>
 <h2 id="q2-2023">Q2 2023</h2>
 <ul>
-<li>Vulkan and Metal implementation for <code>RHI</code>.</li>
-<li>SPIR-V and MSL target for <code>ShaderCompiler</code>.</li>
-<li>macOS porting of Luna SDK.</li>
-<li>Pass-based rendering system (render graph).</li>
-<li>More graphic features in <code>Studio</code>.</li>
+<li>✅Vulkan implementation for <code>RHI</code>.</li>
+<li>🔻Metal implementation for <code>RHI</code>.</li>
+<li>✅SPIR-V target for <code>ShaderCompiler</code>.</li>
+<li>🔻MSL target for <code>ShaderCompiler</code>.</li>
+<li>🔻macOS porting of Luna SDK.</li>
+<li>✅Pass-based rendering system (render graph).</li>
+<li>✅More graphic features in <code>Studio</code>.</li>
 </ul>
 <h2 id="q3-2023">Q3 2023</h2>
 <ul>
-<li>Graphic effects framework (specifying render passes using effects files, shader parameters reflection, automatic resource creation, etc.).</li>
+<li>📅Metal implementation for <code>RHI</code>.</li>
+<li>📅MSL target for <code>ShaderCompiler</code>.</li>
+<li>📅macOS porting.</li>
+<li>📅RHI module documentation.</li>
+</ul>
+<h2 id="q4-2023">Q4 2023</h2>
+<ul>
+<li>📅Vector-based GPU GUI module.</li>
+</ul>
+<h2 id="tbd">TBD</h2>
+<ul>
+<li>Android porting.</li>
+<li>iOS porting.</li>
 </ul>
               
             </div>
