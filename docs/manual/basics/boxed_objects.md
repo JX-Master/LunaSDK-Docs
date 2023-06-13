@@ -11,7 +11,7 @@ To implement such features, every boxed object will have one *Object Header* all
 ## Registering boxed type
 
 ```c++
-#include <Runtime/Object.hpp>
+#include <Luna/Runtime/Object.hpp>
 ```
 
 One type must be registered to the [type system](type_system.md) to be used for creating boxed objects. If you want to register one type solely for creating boxed objects, you may use `register_boxed_type` instead of calling `register_struct_type` directly.
@@ -19,7 +19,7 @@ One type must be registered to the [type system](type_system.md) to be used for 
 ## Managing boxed object manually
 
 ```c++
-#include <Runtime/Object.hpp>
+#include <Luna/Runtime/Object.hpp>
 ```
 
 Use `object_alloc` to allocate one boxed object. This call will allocate memory for the boxed object and the object header, initialize the object header, and returns one pointer to the allocated boxed object as `object_t`, which is an aliasing type of `void*`. The return pointer can be reinterpreted to the pointer of the required type directly, and it should be passed to all other boxed object management APIs. The object returned by `object_alloc` is not initialized, the user should then call constructors of the specified type manually to construct the object.
@@ -29,7 +29,7 @@ Boxed objects implement both strong reference counting and weak reference counti
 ## Managing boxed object automatically
 
 ```
-#include <Runtime/Ref.hpp>
+#include <Luna/Runtime/Ref.hpp>
 ```
 
 In most of the time, you don't need to manage boxed object manually. You can use `new_object` to create one boxed object directly like `memnew`, this function allocates one boxed object, and initializes it using user-provided arguments. `new_object` returns one `Ref<T>` smart pointer, which represents one strong reference to the object. There are four smart pointers provided by Luna SDK:
@@ -44,7 +44,7 @@ All smart pointers decrease the reference counter value automatically when being
 ## Run-time type identification and dynamic casting
 
 ```c++
-#include <Runtime/Object.hpp>
+#include <Luna/Runtime/Object.hpp>
 ```
 
 Luna SDK uses `object_t` to represent one type-less pointer to one boxed object. It is not safe to cast one `typeinfo_t` to one concrete typed pointer without checking whether the object type conforms to the pointer type specified. Luna SDK provides run-time type identification (RTTI) for all boxed objects to perform type casting safely at run time.

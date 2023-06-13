@@ -5,8 +5,8 @@ Strings are sequences of characters represented by `c8`, `c16` and `c32`, termin
 ## String types
 
 ```c++
-#include <Runtime/String.hpp> // For String, String16 and String32.
-#include <Runtime/Name.hpp> // For Name.
+#include <Luna/Runtime/String.hpp> // For String, String16 and String32.
+#include <Luna/Runtime/Name.hpp> // For Name.
 ```
 
 Luna SDK provides two kinds of string types: `String` and `Name`.
@@ -20,7 +20,7 @@ The `Name` type represents one immutable `c8` string that is usually used as an 
 ## String utility library
 
 ```c++
-#include <Runtime/StringUtils.hpp>
+#include <Luna/Runtime/StringUtils.hpp>
 ```
 
 The string utility library provides functions for processing characters and strings. Luna SDK imports the following string and character processing functions from C standard library that can be used directly in Luna SDK:
@@ -57,7 +57,7 @@ The string utility library provides functions for processing characters and stri
 ## Unicode encoding library
 
 ```c++
-#include <Runtime/UTF8.hpp>
+#include <Luna/Runtime/UTF8.hpp>
 ```
 
 [Unicode](https://home.unicode.org/) is a text encoding standard that is widely used in modern computers, programs and websites. Luna SDK comes with a built-in Unicode library for processing strings encoded in commonly-used Unicode formats, including UTF-8, UTF-16 (LE and GE) and UTF-32.
@@ -77,7 +77,7 @@ Luna SDK uses 32-bit character type (`c32`) to represent one Unicode character, 
 ## Base64 encoding library
 
 ```c++
-#include <Runtime/Base64.hpp>
+#include <Luna/Runtime/Base64.hpp>
 ```
 
 [Base64](https://en.wikipedia.org/wiki/Base64) is an encoding format that represents arbitrary binary data using 64 printable characters, plus one character (`=`) for paddings. It is useful to store binary data in a text-based file. Luna SDK comes with a built-in Base64 library for encoding and decoding binary data using Base64.

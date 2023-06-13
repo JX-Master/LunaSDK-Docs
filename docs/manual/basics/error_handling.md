@@ -5,7 +5,7 @@ Luna SDK does not use the exception mechanism provided by C++. Instead, it adopt
 ## Error code
 
 ```c++
-#include <Runtime/Error.hpp>
+#include <Luna/Runtime/Error.hpp>
 ```
 
 `ErrCode` represents one error code, which is a machine-sized unsigned integer (`usize`). `ErrCode` is defined as a dedicated structure type to distinguish from normal return values, the actual error code value can be fetched by `code` property of `ErrCode`. We use error code `0` to represent a successful operation (no error), and any non-zero error code value represents one error.
@@ -15,7 +15,7 @@ The error code value is not defined directly. Instead, the user should call `get
 ## Error name and category
 
 ```c++
-#include <Runtime/Error.hpp>
+#include <Luna/Runtime/Error.hpp>
 ```
 
 Every `ErrCode` is described by two properties: error name and error category, which is required when calling `get_error_code_by_name`, and can be fetched by `get_error_code_name` and `get_error_code_category`. Error name is a UTF-8 string that briefly describes the error, while error category is used to hold one set of error codes in the same domain. For example, the `Runtime` module of Luna SDK defines one error category called `BasicError`, which contains error codes like `bad_arguments`, `out_of_memory`, `not_supported`, etc. 
@@ -98,7 +98,7 @@ Besides error codes in `BasicError` , some built-in modules of Luna SDK declare 
 ## Result object
 
 ```c++
-#include <Runtime/Result.hpp>
+#include <Luna/Runtime/Result.hpp>
 ```
 
 To represent one function that may throw errors, you should wrap the return type of the function with the result object type`R<T>` , which encapsulates the returned value of the function as well as one error code. The result object can be constructed by passing normal return values (which indicates a successful function call) or error codes (which indicates one error). If the result object is constructed by error, its result object will not be initialized.
@@ -142,7 +142,7 @@ if(failed(res))
 ## Error objects
 
 ```c++
-#include <Runtime/Error.hpp>
+#include <Luna/Runtime/Error.hpp>
 ```
 
 Error codes indicate only the type of the error, without any further information, which can be inconvenient for the user to indicating the error. For such purpose, Luna SDK provides error objects that extend error codes to provide more detailed information about the error.
@@ -214,7 +214,7 @@ if(failed(res))
 ## Try-catch macros for error handling
 
 ```c++
-#include <Runtime/Result.hpp>
+#include <Luna/Runtime/Result.hpp>
 ```
 
 Correctly handling functions that may throw errors requires a lot of `if` statements to judge whether every function call is successful, which takes a lot of effort. In order to ease this, Luna SDK provides macros that can be used to handle throwable functions using a try-catch syntax, much like those in C++.

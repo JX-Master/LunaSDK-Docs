@@ -5,7 +5,7 @@ Interfaces are C++ structures that only have pure virtual functions. Luna SDK pr
 ## Declaring interfaces
 
 ```c++
-#include <Runtime/Interface.hpp>
+#include <Luna/Runtime/Interface.hpp>
 ```
 
 To declare one interface, declare one structure with `I` name prefix, and virtually inherit from `Interface` structure. Every interface should have one GUID, which can be declared using `luiid` macro. Methods of the interface is represented by pure virtual functions.
@@ -82,7 +82,7 @@ Casting interface pointers to `object_t`  can be done by calling `get_object` fu
 ## Smart pointer for interface types
 
 ```c++
-#include <Runtime/Ref.hpp>
+#include <Luna/Runtime/Ref.hpp>
 ```
 
 `Ref<T>` and `WeakRef<T>` support interface types. You can use `Ref<IStream>` to refer one boxed object that comforms to `IStream` interface directly. `Ref<T>` handles type conversions automatically, so you can assign `Ref` of any type to each other, and the destination pointer will be set to `nullptr` if type casting fails.

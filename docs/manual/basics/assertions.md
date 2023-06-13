@@ -1,7 +1,7 @@
 # Assertions
 
 ```c++
-#include <Runtime/Assertions.hpp>
+#include <Luna/Runtime/Assertions.hpp>
 ```
 
 Assertions are used to detect programming mistakes (or "bugs") when developing complex systems and modules. Unlike [error handling](error_handling.md) that is used for run-time errors, assertions are used for errors that should never happen on correctly behaved systems and are expected to interrupt the program immediately when such error occurs, so the developer can get into the code to check the error quickly when an debugger is attached to the process. After the application is fully tested, all assertions should be disabled to increase performance.

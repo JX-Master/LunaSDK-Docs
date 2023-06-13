@@ -1,7 +1,7 @@
 # Time
 
 ```c++
-#include <Runtime/Time.hpp>
+#include <Luna/Runtime/Time.hpp>
 ```
 
 ## High-resolution CPU timer

@@ -1,7 +1,7 @@
 # Logs
 
 ```c++
-#include <Runtime/Log.hpp>
+#include <Luna/Runtime/Log.hpp>
 ```
 
 Luna SDK contains a log system that can be used for logging and debugging purposes.

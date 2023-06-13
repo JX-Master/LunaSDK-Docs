@@ -5,7 +5,7 @@ Luna SDK defines its own memory management functions instead of using those prov
 ## Heap memory allocation and deallocation
 
 ```c++
-#include <Runtime/Memory.hpp>
+#include <Luna/Runtime/Memory.hpp>
 ```
 
 The following functions allocate memory blocks in heaps.
@@ -28,7 +28,7 @@ If memory leak detection layer is enabled and unfreed memory blocks are detected
 ## Dynamic object creation and destruction
 
 ```c++
-#include <Runtime/Memory.hpp>
+#include <Luna/Runtime/Memory.hpp>
 ```
 
 The following functions creates and destroys dynamic objects.
@@ -49,7 +49,7 @@ Although `memalloc` and `memnew` returns `nullptr` to indicate a failed memory a
 ## Memory utility library
 
 ```c++
-#include <Runtime/MemoryUtils.hpp>
+#include <Luna/Runtime/MemoryUtils.hpp>
 ```
 
 Memory utility library provides functions that can be used to manipulate memory data easily. You can check the docs for each function for their usages.

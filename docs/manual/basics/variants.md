@@ -1,7 +1,7 @@
 # Variants
 
 ```
-#include <Runtime/Variant.hpp>
+#include <Luna/Runtime/Variant.hpp>
 ```
 
 `Variant` is a dynamic typed object that stores data in a schema-less (self-described) manner. `Variant` is used as a general way of representing data for purposes like [serialization and deserialization](serialization_and_deserialization.md).
@@ -68,7 +68,7 @@ For both array variants and associated array variants, `size` method returns the
 ## Variant differential
 
 ```c++
-#include <Runtime/VariantDiff.hpp>
+#include <Luna/Runtime/VariantDiff.hpp>
 ```
 
 Luna SDK comes with one variant differential library that computes and patches variant differences. `diff_variant` calculates the difference between `before` and `after` variant objects, and returns the difference as another variant object called `diff` object. `patch_variant_diff` applies `diff` object to `before` variant object to reproduce `after` object, and `reverse_variant_diff` removes the `diff` object from `after` object to reproduce `before` object. These functions are useful for implementing data versioning and undo/redo operations.
@@ -76,7 +76,7 @@ Luna SDK comes with one variant differential library that computes and patches v
 ## JSON encoding
 
 ```c++
-#include <Runtime/VariantJSON.hpp>
+#include <Luna/Runtime/VariantJSON.hpp>
 ```
 
 Luna SDK comes with one JSON encoding/decoding library for `Variant` objects. `json_write` encodes one `Variant` to one JSON text stream, while `json_read` decodes one JSON text stream to one `Variant` object.
