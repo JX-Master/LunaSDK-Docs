@@ -34,7 +34,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -132,7 +132,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
       <li>Memory Management</li>
@@ -147,7 +147,7 @@
                 <h1 id="memory-management">Memory Management</h1>
 <p>Luna SDK defines its own memory management functions instead of using those provided by standard libraries. The user should use functions provided by Luna SDK to manage memory when programming with Luna SDK.</p>
 <h2 id="heap-memory-allocation-and-deallocation">Heap memory allocation and deallocation</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Memory.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Memory.hpp&gt;
 </code></pre>
 <p>The following functions allocate memory blocks in heaps.</p>
 <table>
@@ -186,7 +186,7 @@
 <p>Luna SDK comes with an memory leak detection layer that tracks all memory blocks allocated from <code>memalloc</code> or <code>memrealloc</code>. The memory leak detection layer is disabled by default, you may enable it on xmake menus, or passing <code>--check_memory_leak=true</code> when building the SDK. You can use <code>LUNA_RUNTIME_CHECK_MEMORY_LEAK</code> macro to determine whether the memory leak detection layer is enabled.</p>
 <p>If memory leak detection layer is enabled and unfreed memory blocks are detected when Luna SDK is closing, Luna SDK will print warning messages for each unfreed memory block, including the size and the memory address of the block. If these blocks were allocated using <code>memnew</code>, the type of the block will also be printed, so that the user can detect the problem quickly.</p>
 <h2 id="dynamic-object-creation-and-destruction">Dynamic object creation and destruction</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Memory.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Memory.hpp&gt;
 </code></pre>
 <p>The following functions creates and destroys dynamic objects.</p>
 <table>
@@ -218,7 +218,7 @@
 <li>We consider OOM as an optimization problem, not a programming error, so it is improper to "handle" it. If your program suffers from OOM on the target platform, the best thing to do is reducing the memory size consumed by your program, rather than trying to recover from OOM.</li>
 </ol>
 <h2 id="memory-utility-library">Memory utility library</h2>
-<pre><code class="language-c++">#include &lt;Runtime/MemoryUtils.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/MemoryUtils.hpp&gt;
 </code></pre>
 <p>Memory utility library provides functions that can be used to manipulate memory data easily. You can check the docs for each function for their usages.</p>
 <p><code>_kb</code>, <code>_mb</code>, <code>_gb</code>, <code>_tb</code> are <a href="https://en.cppreference.com/w/cpp/language/user_literal">integer literals</a> that can be used to define byte sizes clearly. For example, you can use <code>100_mb</code> to represent <code>100 * 1024 * 1024</code>, and they have the same meaning.</p>

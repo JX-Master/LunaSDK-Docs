@@ -34,7 +34,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -128,7 +128,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
       <li>Boxed Objects</li>
@@ -149,16 +149,16 @@
 </ol>
 <p>To implement such features, every boxed object will have one <em>Object Header</em> allocated along with the object data, and is used to record the object metadata like type and reference counter. Boxed objects should also be property referred using smart pointers (<code>Ref&lt;T&gt;</code> for typed boxed object and <code>ObjRef</code> for type-less boxed object) so that their reference counter can be properly maintained.</p>
 <h2 id="registering-boxed-type">Registering boxed type</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Object.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Object.hpp&gt;
 </code></pre>
 <p>One type must be registered to the <a href="../type_system/">type system</a> to be used for creating boxed objects. If you want to register one type solely for creating boxed objects, you may use <code>register_boxed_type</code> instead of calling <code>register_struct_type</code> directly.</p>
 <h2 id="managing-boxed-object-manually">Managing boxed object manually</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Object.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Object.hpp&gt;
 </code></pre>
 <p>Use <code>object_alloc</code> to allocate one boxed object. This call will allocate memory for the boxed object and the object header, initialize the object header, and returns one pointer to the allocated boxed object as <code>object_t</code>, which is an aliasing type of <code>void*</code>. The return pointer can be reinterpreted to the pointer of the required type directly, and it should be passed to all other boxed object management APIs. The object returned by <code>object_alloc</code> is not initialized, the user should then call constructors of the specified type manually to construct the object.</p>
 <p>Boxed objects implement both strong reference counting and weak reference counting. Use <code>object_retain</code>, <code>object_release</code> to increase and decrease the strong reference counter, and <code>object_retain_weak</code>, <code>object_release_weak</code> to increase and decrease the weak reference counter. One object will have <code>1</code> strong reference and <code>0</code> weak reference when allocated. If the strong reference counter value drops to <code>0</code>, the destructor of the object will be called. If the weak reference counter is not <code>0</code> when the object is being destructed, the object will be marked as <em>expired</em>, you can call <code>object_expired</code> to check whether one object is expired. One expired object cannot be used, the only valid operation for it is to release its weak references. The memory for one boxed object will be freed if both the strong and weak reference counter values drop to <code>0</code>.</p>
 <h2 id="managing-boxed-object-automatically">Managing boxed object automatically</h2>
-<pre><code>#include &lt;Runtime/Ref.hpp&gt;
+<pre><code>#include &lt;Luna/Runtime/Ref.hpp&gt;
 </code></pre>
 <p>In most of the time, you don't need to manage boxed object manually. You can use <code>new_object</code> to create one boxed object directly like <code>memnew</code>, this function allocates one boxed object, and initializes it using user-provided arguments. <code>new_object</code> returns one <code>Ref&lt;T&gt;</code> smart pointer, which represents one strong reference to the object. There are four smart pointers provided by Luna SDK:</p>
 <ul>
@@ -169,7 +169,7 @@
 </ul>
 <p>All smart pointers decrease the reference counter value automatically when being destructed, so the user does not need to handle this manually. Coping one smart pointer object only increase the reference counter value of the object, the object itself is not copied. You can create one weak reference smart pointer object by casting from one strong reference smart pointer directly, but you should call <code>pin</code> on one weak reference smart pointer to fetch one strong reference smart pointer from it, which will return <code>nullptr</code> if failed. The weak smart pointer will be reset to <code>nullptr</code> automatically when the object is expired and the user calls <code>get</code> on the smart pointer.</p>
 <h2 id="run-time-type-identification-and-dynamic-casting">Run-time type identification and dynamic casting</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Object.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Object.hpp&gt;
 </code></pre>
 <p>Luna SDK uses <code>object_t</code> to represent one type-less pointer to one boxed object. It is not safe to cast one <code>typeinfo_t</code> to one concrete typed pointer without checking whether the object type conforms to the pointer type specified. Luna SDK provides run-time type identification (RTTI) for all boxed objects to perform type casting safely at run time.</p>
 <p>Use <code>get_object_type</code> on <code>object_t</code> to fetch the real type of the object. This function returns one <code>typeinfo_t</code> directly, so it is suitable if you want to inspect the type to perform some special operations. </p>

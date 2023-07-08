@@ -34,7 +34,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -154,7 +154,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
       <li>Type System</li>
@@ -169,20 +169,20 @@
                 <h1 id="type-system">Type system</h1>
 <p>Type reflection is the ability of a program to introspect type name, size, layout and other information in the program. Such ability can be used to write code that can operate on different types. Luna SDK comes with a run-time type reflection system that tracks most types used in the framework, it can also be extended to accept user-defined new types, including enumeration types, structure types and generic structure types.</p>
 <h2 id="type-object">Type object</h2>
-<pre><code class="language-c++">#include &lt;Runtime/TypeInfo.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/TypeInfo.hpp&gt;
 </code></pre>
 <p><code>typeinfo_t</code> represents one type object that stores the type information for one type registered to type reflection system. You can get the type object of one specified type by calling <code>typeof&lt;T&gt;()</code>. If the specified type is not registered, the program may fail to compile or <code>nullptr</code> will be returned.</p>
 <h2 id="type-name-and-guid">Type name and GUID</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Reflection.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Reflection.hpp&gt;
 </code></pre>
 <p>Every registered type can be identified by name or by GUID, you can get one type object from its name by calling <code>get_type_by_name</code>, and from its GUID by calling <code>get_type_by_guid</code>. The name and GUID of one type object can be fetched by calling <code>get_type_name</code> and <code>get_type_guid</code>.</p>
 <p>Every type must have one unique GUID, but multiple types may have the same name. If multiple types have the same name, each of them should have one unique alias so that it can be differed from others. If the type is defined in namespaces, its namespace should be appended before the type name, separated by double colons (<code>::</code>).</p>
 <h2 id="type-size-and-alignment">Type size and alignment</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Reflection.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Reflection.hpp&gt;
 </code></pre>
 <p>Every registered type except generic structure type will have one specific size and alignment value, which can be fetched by <code>get_type_size</code> and <code>get_type_alignment</code>. Generic structure type is not a real type and will return <code>0</code> for both functions.</p>
 <h2 id="type-class">Type class</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Reflection.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Reflection.hpp&gt;
 </code></pre>
 <p>There are different type classes in Luna SDK, including:</p>
 <ol>
@@ -249,7 +249,7 @@
 <p>Generic structure type represents one structure type with generic type parameters, such as <code>Vector&lt;T&gt;</code>. The number of generic type parameters can be uncertain, like <code>Tuple&lt;T1, T2, ...&gt;</code>.</p>
 <p>Generic structure types cannot be used directly, they must be instantiated to a <em>generic structure instanced type</em> by calling <code>get_generic_instanced_type</code>. The generic instantiation process is happened at run time, every generic instanced type with one particular set of generic structure type and generic type parameters will be instantiated only once, and the instantiated type will be reused. One generic structure instanced type can be used just as one normal structure type.</p>
 <h2 id="registering-structure-type">Registering structure type</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Reflection.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Reflection.hpp&gt;
 </code></pre>
 <p>There are two methods to register one structure type. The first method is simpler and can be used for most cases, the second method is non-intrusive can be used if the structure is defined in another module or third-party library and cannot be changed directly.</p>
 <h3 id="the-first-method">The first method</h3>
@@ -303,7 +303,7 @@ typeinfo_t g_my_type;
 LUNA_XXX_API typeinfo_t get_my_type() { return g_my_type; }
 </code></pre>
 <h2 id="registering-enumeration-type">Registering enumeration type</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Reflection.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Reflection.hpp&gt;
 </code></pre>
 <p>The user can use <code>register_enum_type</code> function and <code>luoption</code> macro to register one enumeration type. For example, if we have the following type:</p>
 <pre><code class="language-c++">enum class CameraType : u32
@@ -323,7 +323,7 @@ LUNA_XXX_API typeinfo_t get_my_type() { return g_my_type; }
 </code></pre>
 <p><code>luenum</code> must be defined directly in <code>Luna</code> namespace, not the sub-namespace of <code>Luna</code> namespace.</p>
 <h2 id="registering-generic-structure-type">Registering generic structure type</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Reflection.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Reflection.hpp&gt;
 </code></pre>
 <p>Generic structure type is not actually a real type, but a <em>type generator</em> for generic structure instance types. To register one generic structure type, the user should fill one <code>GenericStructureTypeDesc</code> structure, and call <code>register_generic_struct_type</code> to register the generic structure type.</p>
 <p>The most important property of <code>GenericStructureTypeDesc</code> is <code>instantiate</code>, which is a callback function that generates one generic structure instance type based on type arguments provided:</p>

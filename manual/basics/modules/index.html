@@ -34,7 +34,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -132,7 +132,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
       <li>Modules</li>
@@ -156,7 +156,7 @@
 target_end()
 </code></pre>
 <p><code>set_luna_sdk_module()</code> tells xmake to import all Luna SDK module global options and specifications to the current module, including one <code>set_kind</code> call to properly set the module target file kind. One module may be built into one static library (<code>.lib</code> or <code>.o</code>) or one shared library (<code>.dll</code> or <code>.so</code>) based on <code>build_shared_lib</code> xmake config of Luna SDK. <code>add_headerfiles</code> and <code>add_files</code> imports module header files (<code>.h</code>, <code>.hpp</code> and <code>.inl</code>) and module source files (<code>.c</code>, <code>.cpp</code>) to the module. <code>add_deps</code> adds dependency modules for the current module, so that they can be linked correctly.</p>
-<p>Every module should have one <code>Source</code> directory under the module root directory that contains all private files and directories only visible to the current module. All files and directories that are not in <code>Source</code> directory will be considered as module public files and should not contain module source files (<code>.c</code>, <code>.cpp</code> files). Luna SDK sets <code>${ROOT_DIR}/Modules</code> as the global include directory for all modules and programs, so you can simply include module interface files by <code>#include &lt;ModuleName/FileName.hpp&gt;</code>, like <code>#include &lt;RHI/RHI.hpp&gt;</code>.</p>
+<p>Every module should have one <code>Source</code> directory under the module root directory that contains all private files and directories only visible to the current module. All files and directories that are not in <code>Source</code> directory will be considered as module public files and should not contain module source files (<code>.c</code>, <code>.cpp</code> files). Luna SDK sets <code>${ROOT_DIR}/Modules</code> as the global include directory for all modules and programs, so you can simply include module interface files by <code>#include &lt;Luna/ModuleName/FileName.hpp&gt;</code>, like <code>#include &lt;Luna/RHI/RHI.hpp&gt;</code>.</p>
 <h2 id="module-namespace">Module namespace</h2>
 <p>Every module should declare all entities under its own namespace under <code>Luna</code> namespace. The namespace name for the module should be concise and is may not be equal to the name of the module. Do not declare <code>using namespace</code> under the module interface header files.</p>
 <pre><code class="language-c++">namespace Luna
@@ -177,13 +177,13 @@ target_end()
 LUNA_XXX_API void do_something();
 </code></pre>
 <p>When you need to provide definitions for APIs on module source files, define <code>LUNA_XXX_API</code>  before including header files like so:</p>
-<pre><code class="language-c++">#include &lt;Runtime/PlatformDefines.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/PlatformDefines.hpp&gt;
 #define LUNA_XXX_API LUNA_EXPORT
 // Include your header files...
 </code></pre>
 <p>This will overwrite <code>LUNA_XXX_API</code>  with <code>LUNA_EXPORT</code>, which is a predefined platform-specific macro to append linkage and codec declarations for API functions and objects.</p>
 <h2 id="module-registration">Module registration</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Module.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Module.hpp&gt;
 </code></pre>
 <p>One module must be registered to Luna SDK before it can be initialized and used by your program or other modules. Modules are described by <code>ModuleDesc</code> structure, you can fill this structure and call <code>add_module</code> to add one module to Luna SDK.</p>
 <pre><code class="language-c++">ModuleDesc desc;
@@ -197,7 +197,7 @@ add_module(&amp;desc);
 <pre><code class="language-c++">StaticRegisterModule my_module(&quot;MyModule&quot;, &quot;MuDepModule1;MyDepModule2&quot;, my_module_init, my_module_close);
 </code></pre>
 <h2 id="module-initialization">Module initialization</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Module.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Module.hpp&gt;
 </code></pre>
 <p>Modules are not initialized along with Luna SDK and should be manually initialized after Luna SDK is initialized. This behavior enables the user to have a precisely control over module initialization time and can perform some extra operations before the module is initialized. Module system provides three methods to initialize modules: <code>init_modules</code>, <code>init_module</code> and <code>init_module_dependencies</code>.</p>
 <p><code>init_modules</code> initialize all uninitialized modules registered to Luna SDK, by their dependency order. This is the simplest way to initialize all modules in one call, but the user does not have much control during the module initialization process.</p>

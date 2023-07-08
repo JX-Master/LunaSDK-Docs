@@ -34,7 +34,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -144,7 +144,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
       <li>Basic Types</li>
@@ -251,18 +251,18 @@
 <p><code>InitializerList&lt;T&gt;</code> is an aliasing type of <code>std::initializer_list&lt;_Ty&gt;</code>in Luna SDK.</p>
 <p><code>VarList</code> is an aliasing type of <code>va_list</code> in Luna SDK.</p>
 <h2 id="containers">Containers</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Vector.hpp&gt;
-#include &lt;Runtime/List.hpp&gt;
-#include &lt;Runtime/HashMap.hpp&gt;
-#include &lt;Runtime/HashSet.hpp&gt;
-#include &lt;Runtime/UnorderedMap.hpp&gt;
-#include &lt;Runtime/UnorderedSet.hpp&gt;
-#include &lt;Runtime/UnorderedMultiMap.hpp&gt;
-#include &lt;Runtime/UnorderedMultiSet.hpp&gt;
-#include &lt;Runtime/SelfIndexedHashMap.hpp&gt;
-#include &lt;Runtime/SelfIndexedUnorderedMap.hpp&gt;
-#include &lt;Runtime/SelfIndexedUnorderedMultiMap.hpp&gt;
-#include &lt;Runtime/RingDeque.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Vector.hpp&gt;
+#include &lt;Luna/Runtime/List.hpp&gt;
+#include &lt;Luna/Runtime/HashMap.hpp&gt;
+#include &lt;Luna/Runtime/HashSet.hpp&gt;
+#include &lt;Luna/Runtime/UnorderedMap.hpp&gt;
+#include &lt;Luna/Runtime/UnorderedSet.hpp&gt;
+#include &lt;Luna/Runtime/UnorderedMultiMap.hpp&gt;
+#include &lt;Luna/Runtime/UnorderedMultiSet.hpp&gt;
+#include &lt;Luna/Runtime/SelfIndexedHashMap.hpp&gt;
+#include &lt;Luna/Runtime/SelfIndexedUnorderedMap.hpp&gt;
+#include &lt;Luna/Runtime/SelfIndexedUnorderedMultiMap.hpp&gt;
+#include &lt;Luna/Runtime/RingDeque.hpp&gt;
 </code></pre>
 <p>For compatibility and cross-platform consistency reasons, Luna SDK does not use C++ Standard Template Library (STD), but implements its own container types using APIs similar to those of STD. The following table lists all containers provided by Luna SDK.</p>
 <table>
@@ -355,7 +355,7 @@
 };
 </code></pre>
 <p>Then we can define the self indexed map like so:</p>
-<pre><code class="language-c++">#include &lt;Runtime/SelfIndexedHashMap.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/SelfIndexedHashMap.hpp&gt;
 
 namespace Luna
 {
@@ -364,11 +364,11 @@ namespace Luna
 </code></pre>
 <p>When using self indexed map containers, the user must ensure that the key object is immutable for all elements in the container, or the behavior is undefined.</p>
 <h2 id="blob">BLOB</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Blob.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Blob.hpp&gt;
 </code></pre>
 <p>BLOB refers to Binary Large OBject, which is a memory block with arbitrary data. In Luna SDK, we use <code>Blob</code> structure to represent one BLOB object. <code>Blob</code> can be used in many ways, but the common use for it is to store and transfer binary data. For example, <code>load_file_data</code> function returns a <code>Blob</code> object, which contains the data of the file.</p>
 <h2 id="span">Span</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Span.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Span.hpp&gt;
 </code></pre>
 <p><code>Span</code> is a template type that refers to one continuous sequence of instances. There are two types of spans in Luna SDK: fixed span and variable span.</p>
 <p>Fixed spans are spans whose size is decided at compile time, and cannot be changed. Such span only requires one pointer to the object range to be well defined, and the number of elements in the span should be declared as part of the type:</p>
@@ -398,7 +398,7 @@ for (i32 i : range) debug_printf(&quot;%d, &quot;, i); // 5, 6,
 <p>Prefer using <code>Span&lt;T&gt;</code> instead of C-style pointer and size pair when referring memory ranges.</p>
 </blockquote>
 <h2 id="guid">GUID</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Base.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Base.hpp&gt;
 </code></pre>
 <p>Globally Unique Identifier (GUID) is a algorithm-generated 128-bit integer identifier. In Luna SDK, GUIDs are represented by <code>Guid</code> type:</p>
 <pre><code class="language-c++">struct Guid
@@ -414,7 +414,7 @@ static_assert(test_id.high == 6697565509014014450Ui64, &quot;Incorrect GUID valu
 </code></pre>
 <p>GUIDs are used widely in Luna SDK for identifying assets, types, interfaces, objects and many other entities.</p>
 <h2 id="version-type">Version type</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Base.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Base.hpp&gt;
 </code></pre>
 <p><code>Version</code> represent the version of one application, module or any version-controlled entity. Every version is composed by three numbers: <code>major</code>, <code>minor</code> and <code>patch</code>:</p>
 <pre><code class="language-c++">struct Version
@@ -431,13 +431,13 @@ static_assert(test_id.high == 6697565509014014450Ui64, &quot;Incorrect GUID valu
 <li>An increment of <code>patch</code> version indicates a internal change of the entity and should not affect the entity interface, so that existing codes, programs and services can use the newer version of the entity correctly without any source-level modification.</li>
 </ol>
 <h2 id="pair-and-tuple-types">Pair and tuple types</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Base.hpp&gt; // For Pair.
-#include &lt;Runtime/Tuple.hpp&gt; // For Tuple.
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Base.hpp&gt; // For Pair.
+#include &lt;Luna/Runtime/Tuple.hpp&gt; // For Tuple.
 </code></pre>
 <p><code>Pair&lt;T1, T2&gt;</code> encapsulates one pair of elements with <code>T1</code> and <code>T2</code> type as the <code>first</code> and <code>second</code> element of the pair. <code>Pair</code> is mainly used by map containers to represent elements.</p>
 <p><code>Tuple&lt;Tys...&gt;</code> is a generalization of <code>Pair</code> and may contain one or multiple elements. Elements in <code>Tuple</code> can be fetched by calling <code>get&lt;N&gt;(tuple)</code> function. This type is mainly used to store function arguments in functional programming.</p>
 <h2 id="path">Path</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Path.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Path.hpp&gt;
 </code></pre>
 <p><code>Path</code> is one kind of string that describes the location of one node in a hierarchical-based node tree, given that each node in the tree can be identified by a name string. One common use of <code>Path</code> is to represent the location of one file or directory in the file system.</p>
 <p><code>Path</code> is represented by a root name (like <code>C:</code>), plus a <code>Vector</code> of <code>Name</code> that stores nodes of the path. One path can be absolute or relative, which is identified by <code>PathFlag::absolute</code>. One relative path can be calculated by two paths, it can also be appended to another path to create a new path. Path can be created form one string, it can also be encoded to one string using the user-specified path separator.</p>

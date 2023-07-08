@@ -34,7 +34,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -136,7 +136,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
       <li>Interfaces</li>
@@ -151,7 +151,7 @@
                 <h1 id="interfaces">Interfaces</h1>
 <p>Interfaces are C++ structures that only have pure virtual functions. Luna SDK provides most its functionalities through interfaces, so that the implementation detail can be encapsulated and may be different on different platforms.</p>
 <h2 id="declaring-interfaces">Declaring interfaces</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Interface.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Interface.hpp&gt;
 </code></pre>
 <p>To declare one interface, declare one structure with <code>I</code> name prefix, and virtually inherit from <code>Interface</code> structure. Every interface should have one GUID, which can be declared using <code>luiid</code> macro. Methods of the interface is represented by pure virtual functions.</p>
 <pre><code class="language-c++">struct IStream : virtual Interface
@@ -203,7 +203,7 @@ impl_interface_for_type&lt;WindowsFile, ISeekableStream, IStream&gt;();
 <h3 id="casting-interface-pointers-to-object_t">Casting interface pointers to <code>object_t</code></h3>
 <p>Casting interface pointers to <code>object_t</code>  can be done by calling <code>get_object</code> function of the interface. This function is declared in <code>Interface</code> structure, and is implemented by <code>luiimpl</code> macro, so all interfaces support this function. The returned type of <code>get_object</code> is <code>object_t</code>, which is a type-less pointer, the user can then casting the pointer to one typed pointer using <a href="../boxed_objects/#run-time-type-identification-and-dynamic-casting">dynamic casting</a>.</p>
 <h2 id="smart-pointer-for-interface-types">Smart pointer for interface types</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Ref.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Ref.hpp&gt;
 </code></pre>
 <p><code>Ref&lt;T&gt;</code> and <code>WeakRef&lt;T&gt;</code> support interface types. You can use <code>Ref&lt;IStream&gt;</code> to refer one boxed object that comforms to <code>IStream</code> interface directly. <code>Ref&lt;T&gt;</code> handles type conversions automatically, so you can assign <code>Ref</code> of any type to each other, and the destination pointer will be set to <code>nullptr</code> if type casting fails.</p>
               

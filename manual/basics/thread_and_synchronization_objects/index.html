@@ -34,7 +34,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -134,7 +134,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
       <li>Thread and Synchronization Objects</li>
@@ -148,13 +148,13 @@
               
                 <h1 id="thread-and-synchronization-objects">Thread and Synchronization Objects</h1>
 <h2 id="threads">Threads</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Thread.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Thread.hpp&gt;
 </code></pre>
 <p><code>new_thread</code> creates one system-level thread, which is represented by <code>IThread</code>. The user can wait for the thread to exit by calling <code>IThread::wait</code>, and check whether the thread is exited by calling <code>IThread::try_wait</code>. When the last reference to <code>IThread</code> is releasing, the system blocks the current thread until the thread quits.</p>
 <p>Every thread uses a thread-local variable to record the current thread's handle, which can be retrieved by <code>get_current_thread</code>. The main thread's handle is also recorded and can be retrieved from any thread by <code>get_main_thread</code>. The user can delay the execution of the current thread by calling <code>sleep</code> or <code>fast_sleep</code>, the second function is more accurate and will not suspend the current thread if the time specified is smaller than several milliseconds.</p>
 <p>The user can call <code>yield_current_thread</code> to yield the remain time slice of the current thread and let OS to schedule other threads. This is useful for reducing CPU cycles if the current thread is waiting for another operation to finish by hardware or another thread.</p>
 <h2 id="thread-local-storage-tls">Thread local storage (TLS)</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Thread.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Thread.hpp&gt;
 </code></pre>
 <p>Thread local storage is a set of pointer-sized memory slots that contains unique data for every thread. This can be useful to store thread-local data and is efficient since reading such data does not require synchronization between threads.</p>
 <p>Use <code>tls_alloc</code> to create a new thread local storage slot. The slot is allocated for every thread in the current process, including threads that are not yet created. Every thread local storage slot may accept an optional destructor function, which will be called to clean up the thread local object when one thread with one non-zero thread local value on the specified slot is exiting.</p>
@@ -164,17 +164,17 @@
 <p><code>tls_alloc</code> returns one <code>opaque_t</code>-typed handle, which will be used to get the pointer stored in the thread local storage by <code>tls_get</code>, and set the pointer stored in the thread local storage by <code>tls_set</code>. The stored pointer will be set to <code>0</code> by system before it is set by the user for the first time on one particular thread.</p>
 <p><code>tls_free</code> frees one thread local storage slot allocated by <code>tls_alloc</code>. Note that freeing one TLS slot will not call destructors registered by <code>tls_alloc</code>, so make sure to clean up such resources manually.</p>
 <h2 id="signals">Signals</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Signal.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Signal.hpp&gt;
 </code></pre>
 <p>Signal (<code>ISignal</code>) is a synchronization object for execution synchronization between threads. Every signal has two states: triggered and untriggered. When one signal is in untriggered state, all threads that wait for the signal will be blocked until the signal is switched to triggered state. When one signal is in triggered state, all threads that wait for the signal will be resumed.</p>
 <p>One signal can be created by <code>new_signal</code>, the signal is in untriggered state when created. One signal can be monitored by <code>ISignal::wait</code> and <code>ISignal::try_wait</code>, the second form returns <code>false</code> instead of blocking the current thread if the signal is in untriggered state. One signal can be triggered by <code>ISignal::trigger</code>, which transfers the signal to triggered state. One signal can be reset back to untriggered state manually or automatically, which is specified by <code>manual_reset</code> when creating the signal. If <code>manual_reset</code> is <code>true</code>, one <code>ISignal::trigger</code> call will resume all threads waiting for the signal, and the signal stays in triggered state until <code>ISignal::reset</code> is called; if <code>manual_reset</code> is <code>false</code>, every <code>ISignal::trigger</code> call will only resume exact one thread waiting for the signal, and the signal will be reset back to untriggered state automatically. The resuming order of threads waiting for the signal is unspecified in both modes.</p>
 <h2 id="mutex">Mutex</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Mutex.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Mutex.hpp&gt;
 </code></pre>
 <p>Mutex (<code>IMutex</code>) is a synchronization object for granting exclusive access of one entity to at most one thread. Every mutex have two states: locked and unlocked. When one mutex is in unlocked state, the first thread that tries to acquire the lock succeeds and transfers the mutex to locked state. When one mutex is in locked state, all other threads that try to acquire the mutex will get blocked until the mutex is released by its owning thread and is transferred to unlocked state. The mutex lock is recursive, acquiring the lock multiple times from the same thread is allowed, but the user should release the lock the same times as she acquires the lock to finally release the lock.</p>
 <p>One mutex can be created by <code>new_mutex</code>, the mutex is in unlocked state when created. One mutex can be locked by <code>IMutex::wait</code> and <code>IMutex::try_wait</code>, the second form returns <code>false</code> instead of blocking the current thread if failed to acquire the lock. One mutex can be unlocked by <code>IMutex::unlock</code>. The user can use <code>MutexGuard</code> helper object to lock one mutex in one function scope and release it automatically when <code>MutexGuard</code> is expired.</p>
 <h2 id="spin-lock">Spin lock</h2>
-<pre><code class="language-c++">#include &lt;Runtime/SpinLock.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/SpinLock.hpp&gt;
 </code></pre>
 <p>A spin lock (<code>SpinLock</code> or <code>RecursiveSpinLock</code>) is a light-weight version of <code>IMutex</code> with the following differences:</p>
 <ol>
@@ -184,12 +184,12 @@
 </ol>
 <p>One spin lock can be acquired by <code>lock</code> and <code>try_lock</code>, and can be released by <code>unlock</code>. Recursive locking from the same thread is supported only by <code>RecursiveSpinLock</code>, not <code>SpinLock</code>. The user can use <code>LockGuard</code> helper object to acquire one spin lock in one function scope and release it automatically when <code>LockGuard</code> is expired. <code>LockGuard</code> works for both <code>SpinLock</code>  and <code>RecursiveSpinLock</code>.</p>
 <h2 id="semaphore">Semaphore</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Semaphore.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Semaphore.hpp&gt;
 </code></pre>
 <p>Semaphore (<code>ISemaphore</code>) is a synchronization object which allows at most <code>max_count</code> number of threads to access the same resource. Every semaphore maintains one counter value between <code>0</code> and<code>max_count</code> , when the semaphore is acquired by one thread, its counter value is decreased by one; when the semaphore is released by one thread, its counter value is increased by one. If the counter value is <code>0</code> when one thread wants to acquire the semaphore, the thread will be blocked until another thread releases the semaphore to increase the counter value. The counter value of one semaphore will never go below <code>0</code>.</p>
 <p>One semaphore can be created by <code>new_semaphore</code>. When creating the semaphore, the user can specify the initial counter value and maximum counter value of the semaphore. One semaphore can be acquired by <code>ISemaphore::wait</code> and <code>ISemaphore::try_wait</code>, the second form returns <code>false</code> instead of blocking the current thread if failed to acquire the semaphore. One semaphore can be released by <code>ISemaphore::release</code>.</p>
 <h2 id="read-write-lock">Read write lock</h2>
-<pre><code class="language-c++">#include &lt;Runtime/ReadWriteLock.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/ReadWriteLock.hpp&gt;
 </code></pre>
 <p>A read write lock (<code>IReadWriteLock</code>) is a special mutex that allows unlimited number of read locks, but only one write lock at the same time. Every read write lock have three states: unlocked, read locked and write locked. When the read write lock is in unlocked state, the user can acquire both read and write lock from the object, which transfers the object into read locked or write locked state. When the read write lock is in read locked state, only read locks can be acquired, which increases the internal read count of the lock. The read locked state will be transferred back to unlocked state when all read locks are released. When the object is in write locked state, neither read lock nor write lock can be acquired. The write locked state will be transferred back to unlocked state when the unique write lock is released.</p>
 <p>One read write lock can be acquired by <code>new_read_write_lock</code>. The read lock of one read write lock can be acquired by <code>acquire_read</code> and <code>try_acquire_read</code>, and can be released by <code>release_read</code>. The write lock of one read write lock can be acquired by <code>acquire_write</code> and <code>try_acquire_write</code>, and can be released by <code>release_write</code>. <code>try_acquire_read</code> and <code>try_acquire_write</code> return <code>false</code> instead of blocking the current thread if failed to acquire the lock.</p>

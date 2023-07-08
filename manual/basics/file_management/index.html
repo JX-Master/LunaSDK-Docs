@@ -34,7 +34,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -124,7 +124,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
       <li>File Management</li>
@@ -137,7 +137,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="file-management">File Management</h1>
-<pre><code class="language-c++">#include &lt;Runtime/File.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/File.hpp&gt;
 </code></pre>
 <h2 id="file-io">File IO</h2>
 <p><code>IFile</code> represents one system-level file handle that can be used to read and write file data. The user can create one <code>IFile</code> interface using <code>open_file</code>, and the file handle will be closed when its reference count drops to <code>0</code>. Data in the file can be read by <code>IFile::read</code>, and can be written by <code>IFile::write</code>. The current file cursor for IO operations can be fetched by <code>IFile::tell</code>, and can be set by <code>IFile::seek</code>. The whole size of the file can be fetched by <code>IFile::get_size</code>, and can be set by <code>IFile::set_size</code>.</p>

@@ -34,7 +34,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -128,7 +128,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
       <li>Strings</li>
@@ -143,15 +143,15 @@
                 <h1 id="strings">Strings</h1>
 <p>Strings are sequences of characters represented by <code>c8</code>, <code>c16</code> and <code>c32</code>, terminated by a null terminator (<code>\0</code>). Luna SDK provides various string types and libraries, they will be discussed in this section.</p>
 <h2 id="string-types">String types</h2>
-<pre><code class="language-c++">#include &lt;Runtime/String.hpp&gt; // For String, String16 and String32.
-#include &lt;Runtime/Name.hpp&gt; // For Name.
+<pre><code class="language-c++">#include &lt;Luna/Runtime/String.hpp&gt; // For String, String16 and String32.
+#include &lt;Luna/Runtime/Name.hpp&gt; // For Name.
 </code></pre>
 <p>Luna SDK provides two kinds of string types: <code>String</code> and <code>Name</code>.</p>
 <p>The <code>String</code> type is a sequence of <code>c8</code> characters ended with <code>\0</code>. We designed <code>String</code> as a replacement of <code>std::string</code> in Luna SDK, so most methods used for <code>std::string</code> should work find with our <code>String</code> type. Besides the <code>String</code> type, we also have <code>String16</code> and <code>String32</code> as replacements for <code>std::u16string</code> and <code>std::u32string</code> that holds character sequences of <code>c16</code> and <code>c32</code> types.</p>
 <p>The <code>Name</code> type represents one immutable <code>c8</code> string that is usually used as an identifier. We implemented a global name registry in Luna SDK so that every unique name will have only one data copy in the registry, and all <code>Name</code> objects with the same string data refers to that copy, thus can be compared for equality quickly. The name string data is reference counted, and will be freed when the last <code>Name</code> object that refers to the data is destructed. Strings stored in <code>Name</code> cannot be changed, if the user assigns <code>Name</code> with another string, the <code>Name</code> object will refer to another string data entry, remaining the original string entry unchanged.</p>
 <p><code>Name</code> and <code>String</code> can be converted to each other implicitly. There is no enforced encoding format for string types, but most text processing APIs in Luna SDK expects UTF-8 encoded strings for <code>String</code> and <code>Name</code> types.</p>
 <h2 id="string-utility-library">String utility library</h2>
-<pre><code class="language-c++">#include &lt;Runtime/StringUtils.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/StringUtils.hpp&gt;
 </code></pre>
 <p>The string utility library provides functions for processing characters and strings. Luna SDK imports the following string and character processing functions from C standard library that can be used directly in Luna SDK:</p>
 <ol>
@@ -184,7 +184,7 @@
 </ol>
 <p><code>strlen</code>, <code>strcpy</code> and <code>strcmp</code> are compatible to C standard library, but are extended by Luna SDK so they handles all character types. <code>strcmp_prefix</code> checks whether one string is the prefix string of another string, and returns <code>0</code> if is. <code>strtoi64</code>, <code>strtou64</code> and <code>strtof64</code> interprets one number value presented the by string, and returns the value.</p>
 <h2 id="unicode-encoding-library">Unicode encoding library</h2>
-<pre><code class="language-c++">#include &lt;Runtime/UTF8.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/UTF8.hpp&gt;
 </code></pre>
 <p><a href="https://home.unicode.org/">Unicode</a> is a text encoding standard that is widely used in modern computers, programs and websites. Luna SDK comes with a built-in Unicode library for processing strings encoded in commonly-used Unicode formats, including UTF-8, UTF-16 (LE and GE) and UTF-32.</p>
 <p>Luna SDK uses 32-bit character type (<code>c32</code>) to represent one Unicode character, the value of the character object represents the codepoint of the character in Unicode character table. One Unicode character can be encoded to 1 <code>c32</code> character in UTF-32, 1 to 2 <code>c16</code> characters in UTF-16, and 1 to 6 <code>c8</code> characters in UTF-8.</p>
@@ -196,7 +196,7 @@
 <p><code>utf8_encode_char</code> and <code>utf16_encode_char</code> encode one Unicode character into multiple <code>c8</code> or <code>c16</code> characters using UTF-8 or UTF-16 encoding, write the encoded characters to the user-provided buffer, and return the number of characters written.  <code>utf8_decode_char</code> and <code>utf16_decode_char</code>, on the other side, read multiple <code>c8</code> or <code>c16</code> characters from the user-provided buffer, and returns the Unicode character represented by these characters.</p>
 <p><code>utf16_to_utf8</code> converts a UTF-8 encoded string to a UTF-16 encoded string, and <code>utf8_to_utf16</code> converts a UTF-16 encoded string to a UTF-8 encoded string. Both functions write result strings in a user-provided buffer, <code>utf16_to_utf8_len</code> and <code>utf8_to_utf16_len</code> can be used to calculate the minimum size (measured in number of <code>c8</code> or <code>c16</code> characters, not including the null terminator) required for the buffer to hold the result string.</p>
 <h2 id="base64-encoding-library">Base64 encoding library</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Base64.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Base64.hpp&gt;
 </code></pre>
 <p><a href="https://en.wikipedia.org/wiki/Base64">Base64</a> is an encoding format that represents arbitrary binary data using 64 printable characters, plus one character (<code>=</code>) for paddings. It is useful to store binary data in a text-based file. Luna SDK comes with a built-in Base64 library for encoding and decoding binary data using Base64.</p>
 <p><code>base64_encode</code> encodes the binary data in the user-provided source buffer to a Base64 encoded string, and writes the string to the user-provided destination buffer. To determine the size of the destination buffer required, call <code>base64_get_encoded_size</code> with the size of the row binary data.</p>

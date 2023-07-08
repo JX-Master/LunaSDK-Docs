@@ -34,7 +34,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -170,7 +170,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Introduction &raquo;</li>
       <li>Getting Started</li>
@@ -206,10 +206,10 @@ target_end()
 <p>Well done, now every is set up and we can start to program our first Luna SDK program!</p>
 <h2 id="program-structure">Program structure</h2>
 <p>Next, fills <code>main.cpp</code> with the following initial content. As we go further, we will add more properties and methods to our <code>DemoApp</code> structure, while remaining the rest part unchanged.</p>
-<pre><code class="language-c++">#include &lt;Runtime/Runtime.hpp&gt;
-#include &lt;Runtime/Module.hpp&gt;
-#include &lt;Runtime/Debug.hpp&gt;
-#include &lt;Runtime/UniquePtr.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Runtime.hpp&gt;
+#include &lt;Luna/Runtime/Module.hpp&gt;
+#include &lt;Luna/Runtime/Debug.hpp&gt;
+#include &lt;Luna/Runtime/UniquePtr.hpp&gt;
 using namespace Luna;
 struct DemoApp
 {
@@ -258,7 +258,7 @@ int main()
 * <Runtime/Module.hpp> for <code>Luna::init_modules()</code>.
 * <Runtime/Debug.hpp> for <code>Luna::debug_printf()</code>.
 * <Runtime/UniquePtr.hpp> for <code>Luna::UniquePtr&lt;T&gt;</code>.</p>
-<p>You can include any SDK interface header files using similar syntax: <code>#include &lt;Module/File&gt;</code>. We set <code>{LUNA_ROOT_DIR}/Engine</code> as the global include directory, the user may check it for available header files. In this example, all header files are from the <code>Runtime</code> module, which is the core module of Luna SDK that provides fundamental SDK features.</p>
+<p>You can include any SDK interface header files using similar syntax: <code>#include &lt;Luna/Module/File&gt;</code>. We set <code>{LUNA_ROOT_DIR}/Engine</code> as the global include directory, the user may check it for available header files. In this example, all header files are from the <code>Runtime</code> module, which is the core module of Luna SDK that provides fundamental SDK features.</p>
 <p>The next statement is <code>using namespace Luna</code>. In Luna SDK, all types, functions and variables are defined in <code>Luna</code> namespace, and every module will define its elements in nested namespace, such as <code>Luna::RHI</code>. So, we use this statement to prevent spelling the <code>Luna::</code> namespace prefix in our following code.</p>
 <p>The program starts with the <code>main</code> function, just like any normal C/C++ program. In the main function, we firstly call <code>Luna::init</code> to initialize Luna SDK. This function should be called before any other Luna SDK function. <code>Luna::init</code> returns one Boolean value to indicate whether the SDK initialization is succeeded, if the return value is <code>false</code>, we then return <code>-1</code> and exit the program to indicate one runtime error. If <code>Luna::init</code> returns <code>true</code>, then one <code>Luna::close</code> call is need before the program exit to let the SDK clean up all internal resources.</p>
 <p>We then wrap the real program logic in one <code>run_app</code> function. The return type of <code>run_app</code> is <code>RV</code>, which is a shortcut for <code>R&lt;void&gt;</code>, this is part of the error handling mechanism of Luna SDK. <code>R&lt;T&gt;</code> is a structure that encapsulates one return value with type <code>T</code> and one error code with type <code>ErrCode</code>, which is simply an alias of <code>usize</code> (or <code>std::size_t</code>). If the function succeeds, the returned value will be one <code>T</code>-typed value and one error code <code>0</code>; if the function fails, the returned value will be one non-zero error code, and the <code>T</code>-typed value will be uninitialized and inaccessible, you may call <code>errcode()</code> to fetch the error code from <code>R&lt;T&gt;</code>, and may call <code>explain</code> to get a brief description of the error. In our <code>main</code> function, we check whether our <code>run_app</code> function is failed by using <code>failed</code> helper function (there is also one <code>succeeded</code> helper function available), then we print the error description and exits the program if any error occurs.</p>
@@ -304,7 +304,7 @@ int main()
 <h2 id="window-creation-and-event-handling">Window creation and event handling</h2>
 <p>Now that we have one basic program structure, we need to create a system window so that we can render images to it. We also need to implement window event handling so that the program can exit when the user clicks the close button of the window.</p>
 <p>Window creation is fairly simple, we firstly need to introduce one new header:</p>
-<pre><code class="language-c++">#include &lt;Window/Window.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Window/Window.hpp&gt;
 </code></pre>
 <p>then we add one new property to our <code>DemoApp</code> structure:</p>
 <pre><code class="language-c++">struct DemoApp
@@ -387,11 +387,11 @@ window-&gt;get_framebuffer_resize_event().add_handler([this](Window::IWindow* wi
 }
 </code></pre>
 <p>So far, the complete code for <code>main.cpp</code> is:</p>
-<pre><code class="language-c++">#include &lt;Runtime/Runtime.hpp&gt;
-#include &lt;Runtime/Module.hpp&gt;
-#include &lt;Runtime/Debug.hpp&gt;
-#include &lt;Runtime/UniquePtr.hpp&gt;
-#include &lt;Window/Window.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Runtime.hpp&gt;
+#include &lt;Luna/Runtime/Module.hpp&gt;
+#include &lt;Luna/Runtime/Debug.hpp&gt;
+#include &lt;Luna/Runtime/UniquePtr.hpp&gt;
+#include &lt;Luna/Window/Window.hpp&gt;
 using namespace Luna;
 struct DemoApp
 {
@@ -456,7 +456,7 @@ int main()
 <p><img alt="" src="DemoApp-window.png" /></p>
 <h2 id="fetching-graphics-device">Fetching graphics device</h2>
 <p>After the window is created, we can start drawing our box. Luna SDK provides all rendering features through <code>RHI</code> module, which is the abbreviation of <em>Rendering Hardware Interface</em>. To use RHI module, we need to include its header first:</p>
-<pre><code class="language-c++">#include &lt;RHI/RHI.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/RHI/RHI.hpp&gt;
 </code></pre>
 <p>In Luna SDK, all graphics resources are related to one specific graphics device represented by <code>RHI::IDevice</code>, which is the virtual representation of the physical graphics device on the platform, so we need to add one property to <code>DemoApp</code> to hold this device:</p>
 <pre><code class="language-c++">Ref&lt;RHI::IDevice&gt; dev;
@@ -612,8 +612,8 @@ Ref&lt;RHI::IDescriptorSet&gt; desc_set;
 <p>We will fill descriptors in the set by calling <code>update_descriptors</code> later.</p>
 <h2 id="compiling-shaders">Compiling shaders</h2>
 <p>The next thing to do is compiling shaders for the pipeline state object. Luna SDK uses HLSL as the source shader language, and uses <code>ShaderCompiler</code> module to compile HLSL to DXBC, DXIL, SPIR-V and other target shading languages. To compile shader, we need to include corresponding header files:</p>
-<pre><code class="language-c++">#include &lt;ShaderCompiler/ShaderCompiler.hpp&gt;
-#include &lt;RHI/ShaderCompileHelper.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/ShaderCompiler/ShaderCompiler.hpp&gt;
+#include &lt;Luna/RHI/ShaderCompileHelper.hpp&gt;
 </code></pre>
 <p><code>ShaderCompileHelper.hpp</code> includes <code>RHI::get_current_platform_shader_target_format()</code> function, which tell the shader compiler the native target target shader format for the current graphics API. Since our shader is rather simple, we declare our shader source code directly in the C++ source file, in <code>DemoApp::init</code> function:</p>
 <pre><code class="language-c++">const char vs_shader_code[] = R&quot;(
@@ -847,7 +847,7 @@ luset(ib, dev-&gt;new_buffer(MemoryType::local, BufferDesc(BufferUsageFlag::inde
 <p>We firstly define vertex and index data for our box, then we create two buffer resources to hold the vertex and index data. One buffer is created by calling <code>IDevice::new_buffer</code>, which is similar to <code>IDevice::new_texture</code>, but takes <code>BufferDesc</code> as the resource descriptor object. Since we only need to upload vertex and index buffer data once, these two buffers are created in local memory to achieve maximum GPU bandwidth.</p>
 <p>We can use similar code to create the constant buffer for uploading camera properties, but there are two differences. First, the graphic device has alignment requirements for constant buffers, which can be fetched from <code>IDevice::get_uniform_buffer_data_alignment()</code>, so we use <code>align_upper</code> helper function to adjust the size of our uniform buffer resource to meet the alignment requirement. Second, since we need to update uniform buffer data once every frame, we should choose <code>upload</code> memory type instead of <code>local</code> to give host program direct access to that resource.</p>
 <p>In our <code>DemoApp</code>, the data of the uniform buffer is the 4x4 world-to-project matrix of the camera. We need to add a new include file to use matrix types:</p>
-<pre><code class="language-c++">#include &lt;Runtime/Math/Matrix.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Math/Matrix.hpp&gt;
 </code></pre>
 <p>then we can use the following code to create constant buffer:</p>
 <pre><code class="language-c++">auto ub_align = dev-&gt;get_uniform_buffer_data_alignment();
@@ -888,7 +888,7 @@ cmdbuf-&gt;reset();
 <p>When we finish recording commands into the command buffer, we call <code>ICommandBuffer::submit</code> to submit the command buffer to the command queue, call <code>ICommandBuffer::wait</code> to wait for the command buffer to be finished, then call <code>ICommandBuffer::reset</code> to clear commands in the command buffer, and reset the command buffer state so that it can be used for a recording new commands.</p>
 <h3 id="uploading-data-using-rhicopy_resource_data">Uploading data using <code>RHI::copy_resource_data</code></h3>
 <p>In order to use <code>RHI::copy_resource_data</code>, we need to include one new header file:</p>
-<pre><code class="language-c++">#include &lt;RHI/Utility.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/RHI/Utility.hpp&gt;
 </code></pre>
 <p><code>RHI/Utility.hpp</code> is an auxiliary library that defines high-level functionalities implemented using APIs provided by <code>RHI</code>, including <code>RHI::copy_resource_data</code> we use here. The following code shows how to upload data using <code>RHI::copy_resource_data</code>:</p>
 <pre><code class="language-c++">luexp(copy_resource_data(cmdbuf, {
@@ -924,8 +924,8 @@ target_end()
 <pre><code class="language-c++">Ref&lt;RHI::ITexture&gt; file_tex;
 </code></pre>
 <p>To load the image in our program, we need to use one new module called <code>Image</code>, which parses image file data and gives row-majored image data in our desired format. We also need to use the file API provided by <code>Runtime</code> module, so we includes two new headers:</p>
-<pre><code class="language-c++">#include &lt;Runtime/File.hpp&gt;
-#include &lt;Image/Image.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/File.hpp&gt;
+#include &lt;Luna/Image/Image.hpp&gt;
 </code></pre>
 <p>The first thing to do is to load image file data from our <code>luna.png</code> file. In order to load file data, we need to use the <code>open_file</code> function provided by the <code>Runtime</code> module. This function returns one file handle represented by <code>IFile</code> if the file is correctly opened. Then, we loads the file data into one <code>Blob</code> object by calling <code>load_file_data</code>, this function creates one properly-sized blob object, and calls <code>IFile::read</code> to read all data of the file to the blob, then returns the blob:</p>
 <pre><code class="language-c++">lulet(image_file, open_file(&quot;Luna.png&quot;, FileOpenFlag::read, FileCreationMode::open_existing));
@@ -997,7 +997,7 @@ cmdbuf-&gt;reset();
 }
 </code></pre>
 <p>After we updates the camera rotation, we need to calculate the view-projection matrix for the camera. Fortunately, the math library of the <code>Runtime</code> module already includes implementations for many commonly used vector and matrix calculations, and here we are going to use two of them: <code>AffineMatrix::make_look_at</code> and <code>ProjectionMatrix::make_perspective_fov</code>. To use these two functions, we firstly need to add one new header file:</p>
-<pre><code class="language-c+">#include &lt;Runtime/Math/Transform.hpp&gt;
+<pre><code class="language-c+">#include &lt;Luna/Runtime/Math/Transform.hpp&gt;
 </code></pre>
 <p>Then the matrix can be computed using the following code:</p>
 <pre><code class="language-c++">Float3 camera_pos(cosf(camera_rotation / 180.0f * PI) * 3.0f, 1.0f, sinf(camera_rotation / 180.0f * PI) * 3.0f);
@@ -1069,19 +1069,19 @@ luexp(cmdbuf-&gt;reset());
 <p><img alt="" src="DemoApp-final.png" /></p>
 <p>Congratulations! If you have followed every step of this article correctly, you should have a first impression of graphic programming using Luna SDK. If anything goes wrong, you can compare your code with the following reference code to identify the mistake.</p>
 <h2 id="reference-code-for-maincpp">Reference code for <code>main.cpp</code></h2>
-<pre><code class="language-c++">#include &lt;Runtime/Runtime.hpp&gt;
-#include &lt;Runtime/Module.hpp&gt;
-#include &lt;Runtime/Debug.hpp&gt;
-#include &lt;Runtime/UniquePtr.hpp&gt;
-#include &lt;Window/Window.hpp&gt;
-#include &lt;RHI/RHI.hpp&gt;
-#include &lt;ShaderCompiler/ShaderCompiler.hpp&gt;
-#include &lt;RHI/ShaderCompileHelper.hpp&gt;
-#include &lt;Runtime/Math/Matrix.hpp&gt;
-#include &lt;RHI/Utility.hpp&gt;
-#include &lt;Runtime/File.hpp&gt;
-#include &lt;Image/Image.hpp&gt;
-#include &lt;Runtime/Math/Transform.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Runtime.hpp&gt;
+#include &lt;Luna/Runtime/Module.hpp&gt;
+#include &lt;Luna/Runtime/Debug.hpp&gt;
+#include &lt;Luna/Runtime/UniquePtr.hpp&gt;
+#include &lt;Luna/Window/Window.hpp&gt;
+#include &lt;Luna/RHI/RHI.hpp&gt;
+#include &lt;Luna/ShaderCompiler/ShaderCompiler.hpp&gt;
+#include &lt;Luna/RHI/ShaderCompileHelper.hpp&gt;
+#include &lt;Luna/Runtime/Math/Matrix.hpp&gt;
+#include &lt;Luna/RHI/Utility.hpp&gt;
+#include &lt;Luna/Runtime/File.hpp&gt;
+#include &lt;Luna/Image/Image.hpp&gt;
+#include &lt;Luna/Runtime/Math/Transform.hpp&gt;
 using namespace Luna;
 struct DemoApp
 {

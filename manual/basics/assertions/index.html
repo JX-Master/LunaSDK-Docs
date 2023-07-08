@@ -34,7 +34,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -124,7 +124,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
       <li>Assertions</li>
@@ -137,7 +137,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="assertions">Assertions</h1>
-<pre><code class="language-c++">#include &lt;Runtime/Assertions.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Assertions.hpp&gt;
 </code></pre>
 <p>Assertions are used to detect programming mistakes (or "bugs") when developing complex systems and modules. Unlike <a href="../error_handling/">error handling</a> that is used for run-time errors, assertions are used for errors that should never happen on correctly behaved systems and are expected to interrupt the program immediately when such error occurs, so the developer can get into the code to check the error quickly when an debugger is attached to the process. After the application is fully tested, all assertions should be disabled to increase performance.</p>
 <p>In Luna SDK, we separate programming mistakes to internal programming mistakes and external programming mistakes, and use different macros to handle them.</p>

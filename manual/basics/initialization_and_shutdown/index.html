@@ -34,7 +34,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -128,7 +128,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
       <li>Initialization and Shutdown</li>
@@ -142,12 +142,12 @@
               
                 <h1 id="initialization-and-shutdown">Initialization and Shutdown</h1>
 <h2 id="sdk-initialization">SDK Initialization</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Runtime.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Runtime.hpp&gt;
 </code></pre>
 <p>Call <code>Luna::init</code> to initialize Luna SDK. Most features provided by Luna SDK are only available after Luna SDK is initialized, so always initialize Luna SDK firstly on program startup. <code>Luna::init</code> returns one <code>bool</code> value, which indicates whether the initialization is succeeded. After the initialization is succeeded, following calls to <code>Luna::init</code> does nothing and returns <code>true</code> directly.</p>
 <p>Note that modules registered to Luna SDK will not be initialized by <code>Luna::init</code>, they should be initialized manually using functions like <code>init_modules</code>. See <a href="../modules/">Modules</a> for details.</p>
 <h2 id="sdk-shutdown">SDK shutdown</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Runtime.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Runtime.hpp&gt;
 </code></pre>
 <p>Call <code>Luna::close</code> to close Luna SDK. Most features provided by Luna SDK are not available after Luna SDK is closed. If Luna SDK is already closed, calling <code>Luna::close</code> does nothing and returns directly.</p>
 <p>Unlike SDK initialization, initialized modules <strong>will</strong> be closed by <code>Luna::close</code> in the reverse order of their initialization order, so they don't need to be closed manually.</p>

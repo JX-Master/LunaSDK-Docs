@@ -34,7 +34,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -134,7 +134,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>Basics &raquo;</li>
       <li>Math Library</li>
@@ -148,15 +148,15 @@
               
                 <h1 id="math-library">Math Library</h1>
 <p>Luna SDK comes with a math library that contains most math types and functions commonly-used in 3D applications. The math library contains the following parts:</p>
-<pre><code class="language-c++">#include &lt;Runtime/Math/Math.hpp&gt; // For basic math types and functions.
-#include &lt;Runtime/Math/Vector.hpp&gt; // For vector types and functions.
-#include &lt;Runtime/Math/Matrix.hpp&gt; // For matrix types and functions.
-#include &lt;Runtime/Math/Quaternion.hpp&gt; // For Quaternion type and functions.
-#include &lt;Runtime/Math/Transform.hpp&gt; // For transform operations.
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Math/Math.hpp&gt; // For basic math types and functions.
+#include &lt;Luna/Runtime/Math/Vector.hpp&gt; // For vector types and functions.
+#include &lt;Luna/Runtime/Math/Matrix.hpp&gt; // For matrix types and functions.
+#include &lt;Luna/Runtime/Math/Quaternion.hpp&gt; // For Quaternion type and functions.
+#include &lt;Luna/Runtime/Math/Transform.hpp&gt; // For transform operations.
 </code></pre>
 <p>The math library use SIMD instructions for vector and matrix calculations when possible. If SIMD instructions are not available on the target platform, we also have non-SIMD implementations for all math operations for compatibility. The SIMD instructions support of math library includes support of SSE/SSE2, SSE3, SSE4, AVX, AVX2, FMA3 and SVML instruction sets on x86/x64 processors, and NEON instruction set on arm/arm64 processors.</p>
 <h2 id="vectors">Vectors</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Math/Vector.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Math/Vector.hpp&gt;
 </code></pre>
 <p><code>Float2</code>, <code>Float3</code> and <code>Float4</code> represent 2D, 3D and 4D vectors. These three types are 16-bytes aligned for maximizing SIMD performance. Luna SDK also provides unaligned vector types, these types are <code>Vec2U&lt;T&gt;</code>, <code>Vec3U&lt;T&gt;</code> and <code>Vec4U&lt;T&gt;</code>. The unaligned types are used mainly for storing and transferring vectors, such types should be converted to aligned types before they can be used for calculations. Luna SDK also defines <code>Float2U</code>, <code>Int2U</code>, <code>UInt2U</code>, <code>Float3U</code>, <code>Int3U</code>, <code>UInt3U</code>, <code>Float4U</code>, <code>Int4U</code>, <code>UInt4U</code> as aliasing types of <code>Vec2U&lt;T&gt;</code>, <code>Vec3U&lt;T&gt;</code>, <code>Vec24U&lt;T&gt;</code> for convenience. Components of these vector types can be fetched by their <code>x</code>, <code>y</code>, <code>z</code> and <code>w</code> properties.</p>
 <p>Aligned vector types can be compared(<code>==</code> and <code>!=</code>), added (<code>+</code>), subtracted (<code>-</code>), multiplied (<code>*</code>) and divided (<code>/</code>) like normal scalar types. These calculations are performed as performing the same calculation on each component element of the vector individually. When performing mathematical calculations between vector types and scalar types, the scaler number will be applied to all components of the vector.</p>
@@ -244,7 +244,7 @@
 </tbody>
 </table>
 <h2 id="matrices">Matrices</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Math/Matrix.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Math/Matrix.hpp&gt;
 </code></pre>
 <p><code>Float3x3</code> and <code>Float4x4</code> represent 3x3 and 4x4 32-bit floating-point matrices. These two types are 16-bytes aligned for maximizing SIMD performance. Luna SDK also provides unaligned matrix types, these types are <code>Float3x2U</code>, <code>Float3x3U</code>, <code>Float4x3U</code> and <code>Float4x4U</code>. The  unaligned types are used for storing and transferring matrices, and should be converted to aligned types (<code>Float3x2U</code> to <code>Float3x3</code>, <code>Float4x3U</code> to <code>Float4x4</code>) before they can be used for calculation. Rows in one matrix can be fetched by the <code>m</code> property of the matrix type, which is an array of <code>Float3</code> or <code>Float4</code> for <code>Float3x3</code> and <code>Float4x4</code>, or an two-dimensional <code>f32</code> array for any unaligned matrix type.</p>
 <p>Aligned matrix types can be compared(<code>==</code> and <code>!=</code>), added (<code>+</code>), subtracted (<code>-</code>), multiplied (<code>*</code>) and divided (<code>/</code>) like normal scalar types. These calculations are performed as performing the same calculation on each component element of the matrix individually. When performing mathematical calculations between matrix types and scalar types, the scaler number will be applied to all components of the matrix.</p>
@@ -276,7 +276,7 @@
 </tbody>
 </table>
 <h2 id="quaternions">Quaternions</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Math/Quaternion.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Math/Quaternion.hpp&gt;
 </code></pre>
 <p><code>Quaternion</code> represents one Quaternion that can be used to represent a rotating operation in 3D space. Every <code>Quaternion</code> contains four <code>f32</code> components, and is 16-bytes aligned for maximizing SIMD performance. The user can convert one <code>Quaternion</code> to <code>Float4U</code> for storing and transferring the Quaternion.</p>
 <p><code>Quaternion</code> can be compared(<code>==</code> and <code>!=</code>), added (<code>+</code>), subtracted (<code>-</code>), multiplied (<code>*</code>) and divided (<code>/</code>) like normal scalar types. The addition and subtraction behavior of one Quaternion is the same as those of <code>Float4</code>. The multiplication operation concatenates two Quaternions, while the division operation decomposes one Quaternion into two.</p>
@@ -324,7 +324,7 @@
 </tbody>
 </table>
 <h2 id="transform">Transform</h2>
-<pre><code class="language-c++">#include &lt;Runtime/Math/Transform.hpp&gt;
+<pre><code class="language-c++">#include &lt;Luna/Runtime/Math/Transform.hpp&gt;
 </code></pre>
 <p>The transform header file does not include any new type. Instead, it defines a set of functions that can be useful for constructing affine matrices and projection matrices that are used in 2D and 3D transformations.</p>
 <h3 id="affine-matrix-operations">Affine matrix operations</h3>
