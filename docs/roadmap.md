@@ -22,16 +22,18 @@ Legend:
 
 ## Q3 2023
 
-* 📅Metal implementation for `RHI`.
-* 📅MSL target for `ShaderCompiler`.
-* 📅macOS porting.
+* ✅Metal implementation for `RHI`.
+* ✅MSL target for `ShaderCompiler`.
+* ✅macOS porting.
 * 📅RHI module documentation.
+* 📅Android porting (Vulkan).
 
 ## Q4 2023
 
+* 📅API documentation page generation using Doxygen.
+* 📅iOS porting.
 * 📅Vector-based GPU GUI module.
 
 ## TBD
 
-* Android porting.
-* iOS porting.
+*Currently Empty*
