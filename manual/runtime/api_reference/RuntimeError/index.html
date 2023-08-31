@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/runtime/api_reference/RuntimeError/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>group `RuntimeError` - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "group `RuntimeError`";
+        var mkdocs_page_input_path = "manual\\runtime\\api_reference\\RuntimeError.md";
+        var mkdocs_page_url = "/manual/runtime/api_reference/RuntimeError/";
+      </script>
+    
+    <script src="../../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../license/">License</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../roadmap/">Roadmap</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Runtime</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">API Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../RuntimeBase64/">Base64</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>group `RuntimeError`</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="group-runtimeerror">group <code>RuntimeError</code></h1>
+<h2 id="summary">Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Members</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public LUNA_RUNTIME_API ErrCode</code><a href="#group___runtime_error_1gab4047acffa6af0420bf92901e2f07ba8"><code>get_error_code_by_name</code></a><code>(const c8 * errcat_name,const c8 * errcode_name)</code></td>
+<td>Gets the error code represented by the error name.</td>
+</tr>
+<tr>
+<td><code>public LUNA_RUNTIME_API errcat_t</code><a href="#group___runtime_error_1ga17efef408e548770acac8186945f7c75"><code>get_error_category_by_name</code></a><code>(const c8 * errcat_name)</code></td>
+<td>Gets the error category represented by the error category name.</td>
+</tr>
+<tr>
+<td><code>public LUNA_RUNTIME_API const c8 *</code><a href="#group___runtime_error_1ga46e67f4163fc20d29e14b81d5167cf0e"><code>get_error_code_name</code></a><code>(ErrCode err_code)</code></td>
+<td>Fetches the name of the error code.</td>
+</tr>
+<tr>
+<td><code>public LUNA_RUNTIME_API const c8 *</code><a href="#group___runtime_error_1ga73de9a4322821f48a624685f93008c46"><code>get_error_category_name</code></a><code>(errcat_t err_category)</code></td>
+<td>Fetches the name of the error category.</td>
+</tr>
+<tr>
+<td><code>public LUNA_RUNTIME_API errcat_t</code><a href="#group___runtime_error_1ga4437817972955ff98fab1784e86068d3"><code>get_error_code_category</code></a><code>(ErrCode err_code)</code></td>
+<td>Fetches the error category that holds the error code.</td>
+</tr>
+<tr>
+<td><code>public LUNA_RUNTIME_API Vector&lt; errcat_t &gt;</code><a href="#group___runtime_error_1ga05e6f20b9fbf7828647bc37af764271b"><code>get_all_error_categories</code></a><code>()</code></td>
+<td>Fetches all error categories registered in the system, including all subcategories.</td>
+</tr>
+<tr>
+<td><code>public LUNA_RUNTIME_API Vector&lt; ErrCode &gt;</code><a href="#group___runtime_error_1ga8b34f9aef2159f739515ce9e7c0f2514"><code>get_all_error_codes_of_category</code></a><code>(errcat_t err_category)</code></td>
+<td>Fetches all error codes that belongs to the specified error category.</td>
+</tr>
+<tr>
+<td><code>public LUNA_RUNTIME_API Vector&lt; errcat_t &gt;</code><a href="#group___runtime_error_1ga7bf9731f4ea5711e5fef31eb5bc8debf"><code>get_all_error_subcategories_of_category</code></a><code>(errcat_t err_category)</code></td>
+<td>Fetches all child error categories that belongs to the specified error category.</td>
+</tr>
+<tr>
+<td><code>public LUNA_RUNTIME_API Error &amp;</code><a href="#group___runtime_error_1ga021a2caad62ba01774af23ef12bd0a74"><code>get_error</code></a><code>()</code></td>
+<td>Gets the error object of this thread. Every thread will be assigned with one error object.</td>
+</tr>
+<tr>
+<td><code>public inline ErrCode</code><a href="#group___runtime_error_1ga79ce91deb9401d4c57db9f507d0ddf2c"><code>set_error</code></a><code>(ErrCode code,const c8 * fmt,VarList args)</code></td>
+<td>Sets the error object of this thread.</td>
+</tr>
+<tr>
+<td><code>public inline ErrCode</code><a href="#group___runtime_error_1gad5e5e99810880e93eab27e9b4055cc4e"><code>set_error</code></a><code>(ErrCode code,const c8 * fmt,...)</code></td>
+<td>Sets the error object of this thread.</td>
+</tr>
+<tr>
+<td><code>public inline const c8 *</code><a href="#group___runtime_error_1ga1ea36d40ac5c4958c59c02b441fb32a9"><code>explain</code></a><code>(ErrCode err_code)</code></td>
+<td>Gets a brief description about the error code.</td>
+</tr>
+<tr>
+<td><code>public inline ErrCode</code><a href="#group___runtime_error_1gab6fd95874bb887e0780a8c24b168eb3b"><code>unwrap_errcode</code></a><code>(ErrCode err_code)</code></td>
+<td>Gets the real error code if the error code is <a href="./md/undefined.md#group___runtime_error_1ga456321a8d6c21f2c44ad9697f3c61e1d">BasicError::error_object</a>.</td>
+</tr>
+<tr>
+<td><code>struct</code><a href="#struct_luna_1_1_err_code"><code>Luna::ErrCode</code></a></td>
+<td>The error code type represents one single error.</td>
+</tr>
+<tr>
+<td><code>struct</code><a href="#struct_luna_1_1hash_3_01_err_code_01_4"><code>Luna::hash&lt; ErrCode &gt;</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>struct</code><a href="#struct_luna_1_1_error"><code>Luna::Error</code></a></td>
+<td>The error object encapsulates one error code along with one string that describes the error.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="members">Members</h2>
+<h4 id="public-luna_runtime_api-errcodeget_error_code_by_nameconst-c8-errcat_nameconst-c8-errcode_name"><code>public LUNA_RUNTIME_API ErrCode</code><a href="#group___runtime_error_1gab4047acffa6af0420bf92901e2f07ba8"><code>get_error_code_by_name</code></a><code>(const c8 * errcat_name,const c8 * errcode_name)</code></h4>
+<p>Gets the error code represented by the error name.</p>
+<h4 id="parameters">Parameters</h4>
+<ul>
+<li>
+<p><code>errcat_name</code> The name of the category that holds the error name. Use "::" to separate category names if the category is a sub-category. </p>
+</li>
+<li>
+<p><code>errcode_name</code> The name of the error code. </p>
+</li>
+</ul>
+<h4 id="returns">Returns</h4>
+<p>Returns the error code of the corresponding error name. The return value will never be 0, if the error code name is required for the first time, the system creates one new registry for the error code, and returns one valid error code number that represents to the error.</p>
+<h4 id="public-luna_runtime_api-errcat_tget_error_category_by_nameconst-c8-errcat_name"><code>public LUNA_RUNTIME_API errcat_t</code><a href="#group___runtime_error_1ga17efef408e548770acac8186945f7c75"><code>get_error_category_by_name</code></a><code>(const c8 * errcat_name)</code></h4>
+<p>Gets the error category represented by the error category name.</p>
+<h4 id="parameters_1">Parameters</h4>
+<ul>
+<li><code>errcat_name</code> The full name of the error category. Use "::" to separate category names if the category is a sub-category. </li>
+</ul>
+<h4 id="returns_1">Returns</h4>
+<p>Returns the error category of the corresponding error name. The return value will never be 0, if the error category name is required for the first time, the system creates one new registry for the error category, and returns one valid error category number that represents to the error category.</p>
+<h4 id="public-luna_runtime_api-const-c8-get_error_code_nameerrcode-err_code"><code>public LUNA_RUNTIME_API const c8 *</code><a href="#group___runtime_error_1ga46e67f4163fc20d29e14b81d5167cf0e"><code>get_error_code_name</code></a><code>(ErrCode err_code)</code></h4>
+<p>Fetches the name of the error code.</p>
+<h4 id="parameters_2">Parameters</h4>
+<ul>
+<li><code>err_code</code> The error code value. </li>
+</ul>
+<h4 id="returns_2">Returns</h4>
+<p>Returns the name of the error code. This string is valid until the runtime is closed. Returns empty string ("") if the error code does not exist.</p>
+<h4 id="public-luna_runtime_api-const-c8-get_error_category_nameerrcat_t-err_category"><code>public LUNA_RUNTIME_API const c8 *</code><a href="#group___runtime_error_1ga73de9a4322821f48a624685f93008c46"><code>get_error_category_name</code></a><code>(errcat_t err_category)</code></h4>
+<p>Fetches the name of the error category.</p>
+<h4 id="parameters_3">Parameters</h4>
+<ul>
+<li><code>err_category</code> The error category value. </li>
+</ul>
+<h4 id="returns_3">Returns</h4>
+<p>Returns the name of the error category. This string is valid until the runtime is closed. Returns empty string ("") if the error category does not exist.</p>
+<h4 id="public-luna_runtime_api-errcat_tget_error_code_categoryerrcode-err_code"><code>public LUNA_RUNTIME_API errcat_t</code><a href="#group___runtime_error_1ga4437817972955ff98fab1784e86068d3"><code>get_error_code_category</code></a><code>(ErrCode err_code)</code></h4>
+<p>Fetches the error category that holds the error code.</p>
+<h4 id="parameters_4">Parameters</h4>
+<ul>
+<li><code>err_code</code> The error code value. </li>
+</ul>
+<h4 id="returns_4">Returns</h4>
+<p>Returns the error category that holds the error code, or 0 if the error code does not exist.</p>
+<h4 id="public-luna_runtime_api-vector-errcat_t-get_all_error_categories"><code>public LUNA_RUNTIME_API Vector&lt; errcat_t &gt;</code><a href="#group___runtime_error_1ga05e6f20b9fbf7828647bc37af764271b"><code>get_all_error_categories</code></a><code>()</code></h4>
+<p>Fetches all error categories registered in the system, including all subcategories.</p>
+<h4 id="returns_5">Returns</h4>
+<p>Returns all error categories registered in the system.</p>
+<h4 id="public-luna_runtime_api-vector-errcode-get_all_error_codes_of_categoryerrcat_t-err_category"><code>public LUNA_RUNTIME_API Vector&lt; ErrCode &gt;</code><a href="#group___runtime_error_1ga8b34f9aef2159f739515ce9e7c0f2514"><code>get_all_error_codes_of_category</code></a><code>(errcat_t err_category)</code></h4>
+<p>Fetches all error codes that belongs to the specified error category.</p>
+<h4 id="parameters_5">Parameters</h4>
+<ul>
+<li><code>err_category</code> The error category to look up. </li>
+</ul>
+<h4 id="returns_6">Returns</h4>
+<p>Returns all error codes that belongs to the specified category.</p>
+<h4 id="public-luna_runtime_api-vector-errcat_t-get_all_error_subcategories_of_categoryerrcat_t-err_category"><code>public LUNA_RUNTIME_API Vector&lt; errcat_t &gt;</code><a href="#group___runtime_error_1ga7bf9731f4ea5711e5fef31eb5bc8debf"><code>get_all_error_subcategories_of_category</code></a><code>(errcat_t err_category)</code></h4>
+<p>Fetches all child error categories that belongs to the specified error category.</p>
+<h4 id="parameters_6">Parameters</h4>
+<ul>
+<li><code>err_category</code> The error category to look up. </li>
+</ul>
+<h4 id="returns_7">Returns</h4>
+<p>Returns all child error categories that belongs to the specified category.</p>
+<h4 id="public-luna_runtime_api-error-get_error"><code>public LUNA_RUNTIME_API Error &amp;</code><a href="#group___runtime_error_1ga021a2caad62ba01774af23ef12bd0a74"><code>get_error</code></a><code>()</code></h4>
+<p>Gets the error object of this thread. Every thread will be assigned with one error object.</p>
+<h4 id="returns_8">Returns</h4>
+<p>Returns the error object of this thread.</p>
+<h4 id="public-inline-errcodeset_errorerrcode-codeconst-c8-fmtvarlist-args"><code>public inline ErrCode</code><a href="#group___runtime_error_1ga79ce91deb9401d4c57db9f507d0ddf2c"><code>set_error</code></a><code>(ErrCode code,const c8 * fmt,VarList args)</code></h4>
+<p>Sets the error object of this thread.</p>
+<p>This function is auxiliary and it behaves the same as fetching the error object then setting it. </p>
+<h4 id="parameters_7">Parameters</h4>
+<ul>
+<li>
+<p><code>code</code> The error code to set. </p>
+</li>
+<li>
+<p><code>fmt</code> The error message formatting syntax. </p>
+</li>
+<li>
+<p><code>args</code> The arguments for the error message. </p>
+</li>
+</ul>
+<h4 id="returns_9">Returns</h4>
+<p>Returns <a href="./md/undefined.md#group___runtime_error_1ga456321a8d6c21f2c44ad9697f3c61e1d">BasicError::error_object</a> always, so you may chain this function with the return statement like <code>return set_error(...)</code>.</p>
+<h4 id="public-inline-errcodeset_errorerrcode-codeconst-c8-fmt"><code>public inline ErrCode</code><a href="#group___runtime_error_1gad5e5e99810880e93eab27e9b4055cc4e"><code>set_error</code></a><code>(ErrCode code,const c8 * fmt,...)</code></h4>
+<p>Sets the error object of this thread.</p>
+<p>This function is auxiliary and it behaves the same as fetching the error object then setting it. </p>
+<h4 id="parameters_8">Parameters</h4>
+<ul>
+<li>
+<p><code>code</code> The error code to set. </p>
+</li>
+<li>
+<p><code>fmt</code> The error message formatting syntax. </p>
+</li>
+<li>
+<p><code>args</code> The arguments for the error message. </p>
+</li>
+</ul>
+<h4 id="returns_10">Returns</h4>
+<p>Returns <a href="./md/undefined.md#group___runtime_error_1ga456321a8d6c21f2c44ad9697f3c61e1d">BasicError::error_object</a> always, so you may chain this function with the return statement like <code>return set_error(...)</code>.</p>
+<h4 id="public-inline-const-c8-explainerrcode-err_code"><code>public inline const c8 *</code><a href="#group___runtime_error_1ga1ea36d40ac5c4958c59c02b441fb32a9"><code>explain</code></a><code>(ErrCode err_code)</code></h4>
+<p>Gets a brief description about the error code.</p>
+<h4 id="parameters_9">Parameters</h4>
+<ul>
+<li><code>err_code</code> The error code to fetch. </li>
+</ul>
+<h4 id="returns_11">Returns</h4>
+<p>Returns one C string that describes the error code. </p>
+<p>If <code>err_code</code> equals to <a href="./md/undefined.md#group___runtime_error_1ga456321a8d6c21f2c44ad9697f3c61e1d">BasicError::error_object</a>, the returned string will be fetched from <code>[get_error()](./md/undefined.md#group___runtime_error_1ga021a2caad62ba01774af23ef12bd0a74).message.c_str(), otherwise, the returned string will be fetched from</code>get_error_code_name(err_code)`.</p>
+<h4 id="public-inline-errcodeunwrap_errcodeerrcode-err_code"><code>public inline ErrCode</code><a href="#group___runtime_error_1gab6fd95874bb887e0780a8c24b168eb3b"><code>unwrap_errcode</code></a><code>(ErrCode err_code)</code></h4>
+<p>Gets the real error code if the error code is <a href="./md/undefined.md#group___runtime_error_1ga456321a8d6c21f2c44ad9697f3c61e1d">BasicError::error_object</a>.</p>
+<h4 id="parameters_10">Parameters</h4>
+<ul>
+<li><code>err_code</code> The error code to unwrap. </li>
+</ul>
+<h4 id="returns_12">Returns</h4>
+<p>If the error code is <a href="./md/undefined.md#group___runtime_error_1ga456321a8d6c21f2c44ad9697f3c61e1d">BasicError::error_object</a>, returns <code>[get_error()](./md/undefined.md#group___runtime_error_1ga021a2caad62ba01774af23ef12bd0a74).code</code>. Otherwise, returns <code>err_code</code> directly.</p>
+<h1 id="struct-lunaerrcode">struct <code>Luna::ErrCode</code></h1>
+<p>The error code type represents one single error.</p>
+<p>In <a href="./md/undefined.md#namespace_luna">Luna</a> Runtime, every error is represented by one error code, the code value will be determined when the error is firstly accessed, and will never be changed.</p>
+<p><a href="./md/undefined.md#struct_luna_1_1_any">Any</a> valid error code number will not be 0.</p>
+<p>The error code is wrapped in a unique structure so that it will never be confused with normal return value when the function return value is also an integer.</p>
+<h2 id="summary_1">Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Members</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public usize</code><a href="#struct_luna_1_1_err_code_1a1344cd806ac60ca3a9d72296e4fe9ee1"><code>code</code></a></td>
+<td>The identifier of the error code.</td>
+</tr>
+<tr>
+<td><code>public</code><a href="#struct_luna_1_1_err_code_1a3261adff3d3b4ee36ab27ede5f9f4596"><code>ErrCode</code></a><code>() = default</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public inline constexpr explicit</code><a href="#struct_luna_1_1_err_code_1a8bb6dd05d10fb451fb3e84201a61eccb"><code>ErrCode</code></a><code>(usize code)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public</code><a href="#struct_luna_1_1_err_code_1a558e4c750899e8eef6aacb16a8c77201"><code>ErrCode</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp;) = default</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public</code><a href="#struct_luna_1_1_err_code_1ab26faec5e9c6810d35c9b2f7442ae447"><code>ErrCode</code></a><code>(</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp;&amp;) = default</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp;</code><a href="#struct_luna_1_1_err_code_1ab9815f1be0bcbe0a8e4de86634e1fa81"><code>operator=</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp;) = default</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp;</code><a href="#struct_luna_1_1_err_code_1a5acd3c134ad8c79996f8aea7e319bec7"><code>operator=</code></a><code>(</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp;&amp;) = default</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public inline constexpr bool</code><a href="#struct_luna_1_1_err_code_1a02989dc15278a6cd070b62f4c25c2723"><code>operator==</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp; rhs) const</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public inline constexpr bool</code><a href="#struct_luna_1_1_err_code_1ae8780fd817b8663acf09f877036cf7ec"><code>operator!=</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp; rhs) const</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public inline constexpr bool</code><a href="#struct_luna_1_1_err_code_1aeb470ce692a777c6e1ed519ac3023724"><code>operator&gt;</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp; rhs) const</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public inline constexpr bool</code><a href="#struct_luna_1_1_err_code_1af319ce738664a59adcb32ebde462b652"><code>operator&lt;</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp; rhs) const</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public inline constexpr bool</code><a href="#struct_luna_1_1_err_code_1acad3ac48e9fe3c802cbca79ff671e40e"><code>operator&gt;=</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp; rhs) const</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public inline constexpr bool</code><a href="#struct_luna_1_1_err_code_1a8d2e6d60d758155a41d06e259bcdcfa8"><code>operator&lt;=</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp; rhs) const</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="members_1">Members</h2>
+<h4 id="public-usizecode"><code>public usize</code><a href="#struct_luna_1_1_err_code_1a1344cd806ac60ca3a9d72296e4fe9ee1"><code>code</code></a></h4>
+<p>The identifier of the error code.</p>
+<h4 id="publicerrcode-default"><code>public</code><a href="#struct_luna_1_1_err_code_1a3261adff3d3b4ee36ab27ede5f9f4596"><code>ErrCode</code></a><code>() = default</code></h4>
+<h4 id="public-inline-constexpr-expliciterrcodeusize-code"><code>public inline constexpr explicit</code><a href="#struct_luna_1_1_err_code_1a8bb6dd05d10fb451fb3e84201a61eccb"><code>ErrCode</code></a><code>(usize code)</code></h4>
+<h4 id="publicerrcodeconsterrcode-default"><code>public</code><a href="#struct_luna_1_1_err_code_1a558e4c750899e8eef6aacb16a8c77201"><code>ErrCode</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp;) = default</code></h4>
+<h4 id="publicerrcodeerrcode-default"><code>public</code><a href="#struct_luna_1_1_err_code_1ab26faec5e9c6810d35c9b2f7442ae447"><code>ErrCode</code></a><code>(</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp;&amp;) = default</code></h4>
+<h4 id="publicerrcodeoperatorconsterrcode-default"><code>public</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp;</code><a href="#struct_luna_1_1_err_code_1ab9815f1be0bcbe0a8e4de86634e1fa81"><code>operator=</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp;) = default</code></h4>
+<h4 id="publicerrcodeoperatorerrcode-default"><code>public</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp;</code><a href="#struct_luna_1_1_err_code_1a5acd3c134ad8c79996f8aea7e319bec7"><code>operator=</code></a><code>(</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp;&amp;) = default</code></h4>
+<h4 id="public-inline-constexpr-booloperatorconsterrcode-rhs-const"><code>public inline constexpr bool</code><a href="#struct_luna_1_1_err_code_1a02989dc15278a6cd070b62f4c25c2723"><code>operator==</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp; rhs) const</code></h4>
+<h4 id="public-inline-constexpr-booloperatorconsterrcode-rhs-const_1"><code>public inline constexpr bool</code><a href="#struct_luna_1_1_err_code_1ae8780fd817b8663acf09f877036cf7ec"><code>operator!=</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp; rhs) const</code></h4>
+<h4 id="public-inline-constexpr-booloperatorconsterrcode-rhs-const_2"><code>public inline constexpr bool</code><a href="#struct_luna_1_1_err_code_1aeb470ce692a777c6e1ed519ac3023724"><code>operator&gt;</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp; rhs) const</code></h4>
+<h4 id="public-inline-constexpr-booloperatorconsterrcode-rhs-const_3"><code>public inline constexpr bool</code><a href="#struct_luna_1_1_err_code_1af319ce738664a59adcb32ebde462b652"><code>operator&lt;</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp; rhs) const</code></h4>
+<h4 id="public-inline-constexpr-booloperatorconsterrcode-rhs-const_4"><code>public inline constexpr bool</code><a href="#struct_luna_1_1_err_code_1acad3ac48e9fe3c802cbca79ff671e40e"><code>operator&gt;=</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp; rhs) const</code></h4>
+<h4 id="public-inline-constexpr-booloperatorconsterrcode-rhs-const_5"><code>public inline constexpr bool</code><a href="#struct_luna_1_1_err_code_1a8d2e6d60d758155a41d06e259bcdcfa8"><code>operator&lt;=</code></a><code>(const</code><a href="#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>&amp; rhs) const</code></h4>
+<h1 id="struct-lunahash-errcode">struct <code>Luna::hash&lt; ErrCode &gt;</code></h1>
+<h2 id="summary_2">Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Members</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public inline usize</code><a href="#struct_luna_1_1hash_3_01_err_code_01_4_1aa5778c328e5210eff1889af941752a84"><code>operator()</code></a><code>(</code><a href="./md/RuntimeError.md#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>val) const</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="members_2">Members</h2>
+<h4 id="public-inline-usizeoperatorerrcodeval-const"><code>public inline usize</code><a href="#struct_luna_1_1hash_3_01_err_code_01_4_1aa5778c328e5210eff1889af941752a84"><code>operator()</code></a><code>(</code><a href="./md/RuntimeError.md#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>val) const</code></h4>
+<h1 id="struct-lunaerror">struct <code>Luna::Error</code></h1>
+<p>The error object encapsulates one error code along with one string that describes the error.</p>
+<h2 id="summary_3">Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Members</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public</code><a href="./md/RuntimeError.md#struct_luna_1_1_err_code"><code>ErrCode</code></a><code></code><a href="#struct_luna_1_1_error_1a8dfae4615e764ce52b24b2299b1841dd"><code>code</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public</code><a href="./md/undefined.md#class_luna_1_1_basic_string"><code>String</code></a><code></code><a href="#struct_luna_1_1_error_1a278b38171ec5b4f49c1e00c63ba3a27e"><code>message</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public</code><a href="./md/Runtime.md#class_luna_1_1_variant"><code>Variant</code></a><code></code><a href="#struct_luna_1_1_error_1a546d6ef6638e76e56f700cbc68a1c31c"><code>info</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public inline</code><a href="#struct_luna_1_1_error_1a8f33ea44a7748cd42c913e811238958f"><code>Error</code></a><code>()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public inline</code><a href="#struct_luna_1_1_error_1a6aa19800291102d0c54319b0cc4df40d"><code>Error</code></a><code>(</code><a href="./md/RuntimeError.md#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>code,const</code><a href="./md/undefined.md#class_luna_1_1_basic_string"><code>String</code></a><code>&amp; message)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public inline</code><a href="#struct_luna_1_1_error_1a03ec93fdc9d8ec170841ed13417d23bc"><code>Error</code></a><code>(</code><a href="./md/RuntimeError.md#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>code,const</code><a href="./md/undefined.md#group___runtime_1gaf451f055489e11dc332e7330d3b98ac3"><code>c8</code></a><code>* fmt,VarList args)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public inline</code><a href="#struct_luna_1_1_error_1a17fb583a6bf79117625978041462d945"><code>Error</code></a><code>(</code><a href="./md/RuntimeError.md#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>code,const</code><a href="./md/undefined.md#group___runtime_1gaf451f055489e11dc332e7330d3b98ac3"><code>c8</code></a><code>* fmt,...)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public</code><a href="#struct_luna_1_1_error_1ad66d9ffdc17d5f511a544866af96fd43"><code>Error</code></a><code>(const</code><a href="#struct_luna_1_1_error"><code>Error</code></a><code>&amp; rhs) = default</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public</code><a href="#struct_luna_1_1_error_1a7a90eac0bff69e7b454b1be44235ec18"><code>Error</code></a><code>(</code><a href="#struct_luna_1_1_error"><code>Error</code></a><code>&amp;&amp; rhs) = default</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public</code><a href="#struct_luna_1_1_error"><code>Error</code></a><code>&amp;</code><a href="#struct_luna_1_1_error_1a5636908ac75b527ba5b1cb9fe72e40d4"><code>operator=</code></a><code>(const</code><a href="#struct_luna_1_1_error"><code>Error</code></a><code>&amp; rhs) = default</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public</code><a href="#struct_luna_1_1_error"><code>Error</code></a><code>&amp;</code><a href="#struct_luna_1_1_error_1a607a7959e4aac4e365ad296b7d4c62a7"><code>operator=</code></a><code>(</code><a href="#struct_luna_1_1_error"><code>Error</code></a><code>&amp;&amp; rhs) = default</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public inline void</code><a href="#struct_luna_1_1_error_1a5aae694238058578220a4d2807afb8de"><code>reset</code></a><code>()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>public inline const</code><a href="./md/undefined.md#group___runtime_1gaf451f055489e11dc332e7330d3b98ac3"><code>c8</code></a><code>*</code><a href="#struct_luna_1_1_error_1a69e8ee0a07684f4a6e1493a53f7f15ba"><code>explain</code></a><code>() const</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="members_3">Members</h2>
+<h4 id="publicerrcodecode"><code>public</code><a href="./md/RuntimeError.md#struct_luna_1_1_err_code"><code>ErrCode</code></a><code></code><a href="#struct_luna_1_1_error_1a8dfae4615e764ce52b24b2299b1841dd"><code>code</code></a></h4>
+<h4 id="publicstringmessage"><code>public</code><a href="./md/undefined.md#class_luna_1_1_basic_string"><code>String</code></a><code></code><a href="#struct_luna_1_1_error_1a278b38171ec5b4f49c1e00c63ba3a27e"><code>message</code></a></h4>
+<h4 id="publicvariantinfo"><code>public</code><a href="./md/Runtime.md#class_luna_1_1_variant"><code>Variant</code></a><code></code><a href="#struct_luna_1_1_error_1a546d6ef6638e76e56f700cbc68a1c31c"><code>info</code></a></h4>
+<h4 id="public-inlineerror"><code>public inline</code><a href="#struct_luna_1_1_error_1a8f33ea44a7748cd42c913e811238958f"><code>Error</code></a><code>()</code></h4>
+<h4 id="public-inlineerrorerrcodecodeconststring-message"><code>public inline</code><a href="#struct_luna_1_1_error_1a6aa19800291102d0c54319b0cc4df40d"><code>Error</code></a><code>(</code><a href="./md/RuntimeError.md#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>code,const</code><a href="./md/undefined.md#class_luna_1_1_basic_string"><code>String</code></a><code>&amp; message)</code></h4>
+<h4 id="public-inlineerrorerrcodecodeconstc8-fmtvarlist-args"><code>public inline</code><a href="#struct_luna_1_1_error_1a03ec93fdc9d8ec170841ed13417d23bc"><code>Error</code></a><code>(</code><a href="./md/RuntimeError.md#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>code,const</code><a href="./md/undefined.md#group___runtime_1gaf451f055489e11dc332e7330d3b98ac3"><code>c8</code></a><code>* fmt,VarList args)</code></h4>
+<h4 id="public-inlineerrorerrcodecodeconstc8-fmt"><code>public inline</code><a href="#struct_luna_1_1_error_1a17fb583a6bf79117625978041462d945"><code>Error</code></a><code>(</code><a href="./md/RuntimeError.md#struct_luna_1_1_err_code"><code>ErrCode</code></a><code>code,const</code><a href="./md/undefined.md#group___runtime_1gaf451f055489e11dc332e7330d3b98ac3"><code>c8</code></a><code>* fmt,...)</code></h4>
+<h4 id="publicerrorconsterror-rhs-default"><code>public</code><a href="#struct_luna_1_1_error_1ad66d9ffdc17d5f511a544866af96fd43"><code>Error</code></a><code>(const</code><a href="#struct_luna_1_1_error"><code>Error</code></a><code>&amp; rhs) = default</code></h4>
+<h4 id="publicerrorerror-rhs-default"><code>public</code><a href="#struct_luna_1_1_error_1a7a90eac0bff69e7b454b1be44235ec18"><code>Error</code></a><code>(</code><a href="#struct_luna_1_1_error"><code>Error</code></a><code>&amp;&amp; rhs) = default</code></h4>
+<h4 id="publicerroroperatorconsterror-rhs-default"><code>public</code><a href="#struct_luna_1_1_error"><code>Error</code></a><code>&amp;</code><a href="#struct_luna_1_1_error_1a5636908ac75b527ba5b1cb9fe72e40d4"><code>operator=</code></a><code>(const</code><a href="#struct_luna_1_1_error"><code>Error</code></a><code>&amp; rhs) = default</code></h4>
+<h4 id="publicerroroperatorerror-rhs-default"><code>public</code><a href="#struct_luna_1_1_error"><code>Error</code></a><code>&amp;</code><a href="#struct_luna_1_1_error_1a607a7959e4aac4e365ad296b7d4c62a7"><code>operator=</code></a><code>(</code><a href="#struct_luna_1_1_error"><code>Error</code></a><code>&amp;&amp; rhs) = default</code></h4>
+<h4 id="public-inline-voidreset"><code>public inline void</code><a href="#struct_luna_1_1_error_1a5aae694238058578220a4d2807afb8de"><code>reset</code></a><code>()</code></h4>
+<h4 id="public-inline-constc8explain-const"><code>public inline const</code><a href="./md/undefined.md#group___runtime_1gaf451f055489e11dc332e7330d3b98ac3"><code>c8</code></a><code>*</code><a href="#struct_luna_1_1_error_1a69e8ee0a07684f4a6e1493a53f7f15ba"><code>explain</code></a><code>() const</code></h4>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme_extra.js" defer></script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

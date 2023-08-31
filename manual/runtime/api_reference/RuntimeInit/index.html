@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/runtime/api_reference/RuntimeInit/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>group `RuntimeInit` - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "group `RuntimeInit`";
+        var mkdocs_page_input_path = "manual\\runtime\\api_reference\\RuntimeInit.md";
+        var mkdocs_page_url = "/manual/runtime/api_reference/RuntimeInit/";
+      </script>
+    
+    <script src="../../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../license/">License</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../roadmap/">Roadmap</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Runtime</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">API Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../RuntimeBase64/">Base64</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>group `RuntimeInit`</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="group-runtimeinit">group <code>RuntimeInit</code></h1>
+<h2 id="summary">Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Members</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public LUNA_RUNTIME_API bool</code><a href="#group___runtime_init_1ga22bc2875f34db0c960aa6d55409aa1e1"><code>init</code></a><code>()</code></td>
+<td>Initializes <a href="./md/undefined.md#namespace_luna">Luna</a> SDK.</td>
+</tr>
+<tr>
+<td><code>public LUNA_RUNTIME_API void</code><a href="#group___runtime_init_1ga96f6d4005506528256f4bff025c548f6"><code>close</code></a><code>()</code></td>
+<td>Closes <a href="./md/undefined.md#namespace_luna">Luna</a> SDK.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="members">Members</h2>
+<h4 id="public-luna_runtime_api-boolinit"><code>public LUNA_RUNTIME_API bool</code><a href="#group___runtime_init_1ga22bc2875f34db0c960aa6d55409aa1e1"><code>init</code></a><code>()</code></h4>
+<p>Initializes <a href="./md/undefined.md#namespace_luna">Luna</a> SDK.</p>
+<p>Call this function to initialize <a href="./md/undefined.md#namespace_luna">Luna</a> SDK. Most features provided by <a href="./md/undefined.md#namespace_luna">Luna</a> SDK are only available after <a href="./md/undefined.md#namespace_luna">Luna</a> SDK is initialized, so always initialize <a href="./md/undefined.md#namespace_luna">Luna</a> SDK firstly on program startup. Calling this function when <a href="./md/undefined.md#namespace_luna">Luna</a> SDK is already initialized does nothing and returns <code>true</code> directly.</p>
+<p>Note that modules registered to <a href="./md/undefined.md#namespace_luna">Luna</a> SDK will not be initialized by this function, they should be initialized manually using functions like <a href="./md/undefined.md#namespace_luna_1ae2a5b336496a9647464b43ee62771436">init_modules</a>. </p>
+<h4 id="returns">Returns</h4>
+<p>Returns <code>true</code> if <a href="./md/undefined.md#namespace_luna">Luna</a> SDK is succssfully initialized, returns <code>false</code> otherwise.</p>
+<h4 id="public-luna_runtime_api-voidclose"><code>public LUNA_RUNTIME_API void</code><a href="#group___runtime_init_1ga96f6d4005506528256f4bff025c548f6"><code>close</code></a><code>()</code></h4>
+<p>Closes <a href="./md/undefined.md#namespace_luna">Luna</a> SDK.</p>
+<p>Call this function to close <a href="./md/undefined.md#namespace_luna">Luna</a> SDK. Most features provided by <a href="./md/undefined.md#namespace_luna">Luna</a> SDK are not available after <a href="./md/undefined.md#namespace_luna">Luna</a> SDK is closed. Calling this function when <a href="./md/undefined.md#namespace_luna">Luna</a> SDK is not initialized or already closed does nothing and returns directly.</p>
+<p>Initialized modules <em>will</em> be closed by this function in the reverse order of their initialization order, so they don't need to be closed manually. All dynamic memory allocated from <a href="./md/undefined.md#group___runtime_memory_1ga2865ad4300b9c5b4595bfc754d706bb6">memalloc</a>, <a href="./md/undefined.md#group___runtime_memory_1ga409d520f86f43d30f8c31cb14dde742d">memrealloc</a> and <a href="./md/undefined.md#group___runtime_memory_1gadfde7d89022e905c5c42749386942bad">memnew</a> must be freed before calling <a href="./md/undefined.md#group___runtime_init_1ga96f6d4005506528256f4bff025c548f6">close</a>, all boxed objects created from <a href="./md/undefined.md#namespace_luna_1a6fdbad2b7eb632a517c64ad8e3d16703">new_object</a> and <a href="./md/undefined.md#namespace_luna_1a17333428215f8dbf90fb18333356f19b">object_alloc</a> must be released before calling <a href="./md/undefined.md#group___runtime_init_1ga96f6d4005506528256f4bff025c548f6">close</a> too. Calls to <a href="./md/undefined.md#group___runtime_memory_1ga620e0fda611e0eafd713a94eb93fd197">memfree</a>, <a href="./md/undefined.md#group___runtime_memory_1gad6806df0c8479175351ac9f3d81fe342">memdelete</a>, <a href="./md/undefined.md#namespace_luna_1a3aef3dd68821d8eeef95ba314765ba15">object_release</a> and other functions after <a href="./md/undefined.md#group___runtime_init_1ga96f6d4005506528256f4bff025c548f6">close</a> results in undefined behavior, and usually a program crash. This often happens when you declare global variables that hold dynamic allocated resources (such as Ref) and memory blocks (such as UniquePtr, and containers like <a href="./md/Runtime.md#class_luna_1_1_vector">Vector</a>, HashMap, etc.). Remember to clear such resources before calling <a href="./md/undefined.md#group___runtime_init_1ga96f6d4005506528256f4bff025c548f6">close</a>. For some containers, you should call <code>clear</code> then <code>shrink_to_fit</code> to eventually frees the internal memory buffer used by containers.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme_extra.js" defer></script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
