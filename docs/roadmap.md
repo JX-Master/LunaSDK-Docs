@@ -26,11 +26,13 @@ Legend:
 * ✅MSL target for `ShaderCompiler`.
 * ✅macOS porting.
 * 📅RHI module documentation.
-* 📅Android porting (Vulkan).
+* 🔻Android porting (Vulkan).
 
 ## Q4 2023
 
 * 📅API documentation page generation using Doxygen.
+* 📅Android porting (Vulkan).
+
 * 📅iOS porting.
 * 📅Vector-based GPU GUI module.
 
