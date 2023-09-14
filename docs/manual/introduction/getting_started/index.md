@@ -37,7 +37,7 @@ Next, fills `main.cpp` with the following initial content. As we go further, we 
 ```c++
 #include <Luna/Runtime/Runtime.hpp>
 #include <Luna/Runtime/Module.hpp>
-#include <Luna/Runtime/Debug.hpp>
+#include <Luna/Runtime/Log.hpp>
 #include <Luna/Runtime/UniquePtr.hpp>
 using namespace Luna;
 struct DemoApp
@@ -77,7 +77,7 @@ int main()
     bool initialized = Luna::init();
     if(!initialized) return -1;
     RV result = run_app();
-    if(failed(result)) debug_printf(explain(result.errcode()));
+    if(failed(result)) log_error("DemoApp", "%s", explain(result.errcode()));
     Luna::close();
     return 0;
 }
@@ -85,7 +85,7 @@ int main()
 The first four lines includes the header files that we need to include to compile the program, which are:
 * <Runtime/Runtime.hpp> for `Luna::init()` and `Luna::shutdown()`.
 * <Runtime/Module.hpp> for `Luna::init_modules()`.
-* <Runtime/Debug.hpp> for `Luna::debug_printf()`.
+* <Runtime/Log.hpp> for `Luna::log_error()`.
 * <Runtime/UniquePtr.hpp> for `Luna::UniquePtr<T>`.
 
 You can include any SDK interface header files using similar syntax: `#include <Luna/Module/File>`. We set `{LUNA_ROOT_DIR}/Engine` as the global include directory, the user may check it for available header files. In this example, all header files are from the `Runtime` module, which is the core module of Luna SDK that provides fundamental SDK features.
@@ -241,7 +241,7 @@ So far, the complete code for `main.cpp` is:
 ```c++
 #include <Luna/Runtime/Runtime.hpp>
 #include <Luna/Runtime/Module.hpp>
-#include <Luna/Runtime/Debug.hpp>
+#include <Luna/Runtime/Log.hpp>
 #include <Luna/Runtime/UniquePtr.hpp>
 #include <Luna/Window/Window.hpp>
 using namespace Luna;
@@ -299,7 +299,7 @@ int main()
     bool initialized = Luna::init();
     if(!initialized) return -1;
     RV result = run_app();
-    if(failed(result)) debug_printf(explain(result.errcode()));
+    if(failed(result)) log_error("DemoApp", "%s", explain(result.errcode()));
     Luna::close();
     return 0;
 }
@@ -490,7 +490,8 @@ The descriptor set layout consists of multiple *bindings* specified by `Descript
 ```c++
 struct DescriptorSetLayoutBinding
 {
-	DescriptorType type;
+    DescriptorType type;
+    TextureViewType texture_view_type;
 	u32 binding_slot;
 	u32 num_descs;
 	ShaderVisibilityFlag shader_visibility_flags;
@@ -511,6 +512,8 @@ enum class DescriptorType : u32
 };
 ```
 
+the `texture_view_type` property describes the texture view type that can be set in this binding. This is required only when `type` of this binding is `read_texture_view` or `read_write_texture_view`. All texture views in the same binding must be the same type.
+
 `binding_slot` and `num_descs` describes the binding slot range of this binding, starting from `0`. All slots in `[binding_slot, binding_slot + num_descs)` will be occupied by this binding and cannot be used by other bindings. If `num_descs` is greater than `1`, then this binding will be interpreted as one descriptor array in the shader. `shader_visibility_flags` specifies which shaders may access descriptors in this binding, you may restrict the visibility of one binding to one set of specific shaders, which may improve performance on some platforms.
 
 We need to add two new properties to `DemoApp` to hold the descriptor set layout object and the descriptor set object:
@@ -524,9 +527,9 @@ We need **1** descriptor set with **1** constant buffer view, **1** shader resou
 
 ```c++
 luset(dlayout, dev->new_descriptor_set_layout(DescriptorSetLayoutDesc({
-    {DescriptorType::uniform_buffer_view, 0, 1, ShaderVisibilityFlag::vertex},
-    {DescriptorType::read_texture_view, 1, 1, ShaderVisibilityFlag::pixel},
-    {DescriptorType::sampler, 2, 1, ShaderVisibilityFlag::pixel}
+    DescriptorSetLayoutBinding::uniform_buffer_view(0, 1, ShaderVisibilityFlag::vertex),
+    DescriptorSetLayoutBinding::read_texture_view(TextureViewType::tex2d, 1, 1, ShaderVisibilityFlag::pixel),
+    DescriptorSetLayoutBinding::sampler(2, 1, ShaderVisibilityFlag::pixel)
 })));
 ```
 
