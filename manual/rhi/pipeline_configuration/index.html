@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/rhi/pipeline_configuration/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Pipeline Configuration - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pipeline Configuration";
+        var mkdocs_page_input_path = "manual\\rhi\\pipeline_configuration.md";
+        var mkdocs_page_url = "/manual/rhi/pipeline_configuration/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../license/">License</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../roadmap/">Roadmap</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_recording_and_submission/">Command Recording and Submission</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../resources/">Resources</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Pipeline Configuration</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pipeline-configuration">Pipeline Configuration</h1>
+<p>Pipelines are sequences of stages that are performed on graphics hardware to perform a certain task, like rendering or computing. In RHI, we have two kinds of pipeline: <strong>graphics pipeline</strong> and <strong>compute pipeline</strong>. The following diagram shows these two kinds of pipelines:</p>
+<p><img alt="pipleine_stages" src="../pipeline_stages.svg" /></p>
+<p>Most pipeline configurations are stored in <strong>pipeline state objects (PSO)</strong>, represented by <code>IPipelineState</code>. The graphics and compute pipeline state objects share the same interface type, but are created using different functions: <code>IDevice::new_graphics_pipeline_state(desc)</code> and <code>IDevice::new_compute_pipeline_state(desc)</code>. Besides pipeline state objects, some pipeline configurations are encoded in command buffers directly (like viewport sizes, scissor rect sizes, blend factors, etc.) and can be set by corresponding command buffer functions.</p>
+<h2 id="graphics-pipeline">Graphics pipeline</h2>
+<p>Graphics pipeline are used to perform render tasks, with draws primitives (points, lines, triangles) to texture attachments. One graphics pipeline has the following stages:</p>
+<ol>
+<li><strong>Input Assmbler</strong>, which reads data form vertex buffers and optionally index buffer to build a list of vertices to be processed.</li>
+<li><strong>Vertex Shader</strong>, which is a programmable function that will be called on every vertex to process the vertex data.</li>
+<li><strong>Rasterizer</strong>, which performs primitive rasterizing to generate pixels from geometries. The vertex shader outputs will be rasterized to every pixel as pixel shader inputs using linear interpolation. </li>
+<li><strong>Pixel Shader</strong>, which is a programmable function that will be called on every generated pixel to compute the final color that will be drawn to destination attachments.</li>
+<li><strong>Depth Stencil Testing</strong>, which performs <strong>depth tests</strong> and <strong>stencil tests</strong> to discard pixels if they do not pass such tests. This stage also updates the depth stencil attachment value if depth and/or stencil write is enabled.</li>
+<li><strong>Color Blending</strong>, which performs blending between the existing data on color attachments and the new color outputted by pixel shader, then writes the blend result to color attachments.</li>
+</ol>
+<p>Most configurations are done by filling <code>GraphicsPipelineStateDesc</code> descriptor, then call <code>IDevice::new_graphics_pipeline_state(desc)</code> with the descriptor to create a graphics pipeline state objects. When recording render commands, call <code>ICommandBuffer::set_graphics_pipeline_state(pso)</code> to bind the pipeline state object to the pipeline, then all configurations in the pipeline state object will apply to succeeding draw commands until another PSO is bind, or until the render pass is ended.</p>
+<h3 id="input-assembler">Input assembler</h3>
+<p>Input assembler reads the vertex buffers and index buffer to generate vertices that will be processed on succeeding stages. The configurations of input assember are set by filling <code>input_layout</code> property of <code>GraphicsPipelineStateDesc</code>, which includes <strong>input bindings</strong> configuration (<code>InputBindingDesc</code>) and <strong>input attributes</strong> configuration (<code>InputAttributeDesc</code>).</p>
+<p>Input bindings describe vertex buffers that are attached to the pipeline, including the binding slot of the vertex buffer, the size of elements in the vertex buffer, and the input rate of the vertex buffer (per vertex or per instance). The user should specify one input binding for every vertex buffer bound to the pipeline. Input attributes describe vertex attributes, including the format of the attribute, the semantic name and semantic index of the attribute, the location of the attribute, the binding slot of the vertex buffer that provides the attribute, and the byte offset of the attribute from the beginning of the element. The following diagram shows one comprehensive input assembler setup, where we provide vertices data using one vertex buffer, and provide instance data using two vertex buffers to draw the geometry multiple times using different color and transform information:</p>
+<p><img alt="Input Layout" src="../input_layout.svg" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

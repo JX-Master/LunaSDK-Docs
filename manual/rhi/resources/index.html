@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/rhi/resources/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Resources - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Resources";
+        var mkdocs_page_input_path = "manual\\rhi\\resources.md";
+        var mkdocs_page_url = "/manual/rhi/resources/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../license/">License</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../roadmap/">Roadmap</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">RHI</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_recording_and_submission/">Command Recording and Submission</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Resources</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#memory-types">Memory types</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#buffers">Buffers</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#buffer-usages">Buffer usages</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#usage-patterns">Usage patterns</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#textures">Textures</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#texture-usages">Texture usages</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#texture-types-and-dimensions">Texture types and dimensions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pixel-format">Pixel format</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#mipmap">Mipmap</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#texture-array">Texture array</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#subresources">Subresources</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#usage-patterns_1">Usage patterns</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Manual &raquo;</li>
+          <li>RHI &raquo;</li>
+      <li>Resources</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="resources">Resources</h1>
+<p>Resources (<code>IResource</code>) are GPU-accessible memories that stores certain data that can be used for reading, writing and sampling by GPU. Resources have two types: <strong>buffers</strong> and <strong>textures</strong>. Buffer resources can contain arbitrary binary data, and is usually used for storing parameters, geometry data, material data and so on. Texture resrouces can only contain image data of certain formats, and support hardware data sampling using samplers.</p>
+<h2 id="memory-types">Memory types</h2>
+<p>Memory type defines the memory properties of the resource, like which heap to allocate the memory for the resource, and the CPU access policy of the allocated memory. In RHI, we have three memory types: <strong>local</strong>, <strong>upload</strong> and <strong>readback</strong>.</p>
+<p>The local memory type is allocated on memory that is visible only to GPU. Such memory gains maximum GPU bandwidth, but cannot be accessed by CPU. On platforms with non-uniform memory architecture (NUMA), the local memory will be allocated on video memory, which cannot be accessed by CPU; in a platform with uniform memory architecture (UMA), the local memory will be allocated on system memory. While it is technically possible for CPU to access local memory on UMA, preventing such access gives the hardware and driver more rooms for optimizing GPU access efficiency.</p>
+<p>The upload memory type is allocated on system memory that is optimized for CPU writing. GPU cannot write to this memory and GPU reading from upload memory is slow. On NUMA platfroms, reading data from upload memory from GPU requires data transmission through PCI-Express bus, which is much slower than reading data in local memory from GPU. We recommend using upload memory only for uploading data to local memory or reading the data only once per CPU write.</p>
+<p>The readback memory type is allocated on system memory that is optimized for CPU reading. GPU writing to read back memory  is slow, and the only operation allowed for GPU is to copy data to the memory. On NUMA platfroms, writing data to readback memory from GPU requires data transmission through PCI-Express bus, which is a slow operation.</p>
+<p>The user should choose the suitable memory type based on the use situation. Here are some basic principles:
+1. If you need to create texture resources, use local memory. If you need to upload texture data from CPU side, use upload memory to copy data to the local memory.
+1. If you don't need to access resource data from CPU, use local memory.
+1. If you only need to upload data from CPU side once, like setting the initial data for static vertex and index buffers, use one local memory to store the data, then use one temporary upload memory to copy data to the local memory.
+1. If you need to upload data from CPU side multiple times, but the data is read by GPU only once per CPU update, use upload memory.
+1. If you need to upload data from CPU side multiple times, and the data will be read by GPU multiple times per CPU update, use one local memory resource for GPU access and one upload memory resource for CPU access, and copy data between two resources when needed.
+1. If you need to read resource data from CPU side, use readback memory.</p>
+<h2 id="buffers">Buffers</h2>
+<p>Buffers are memory blocks that can store arbitrary binary data. Typically, you use buffers to:
+1. Set uniform parameters that can be read by shaders using <strong>uniform buffers</strong>.
+1. Store mesh geometries for rendering using <strong>vertex buffers</strong> and <strong>index buffers</strong>.
+1. Pass array of structures (like model transform matrices, material parameters, etc.) using <strong>structured buffers</strong>.
+1. Copy data between host memory and device-local memory using <strong>upload buffers</strong> and <strong>readback buffers</strong>.
+1. Record GPU-generated draw and compute commands using <strong>indirect buffers</strong>.</p>
+<p>Buffers are described by <code>BufferDesc</code>, and are created by <code>IDevice::new_buffer(memory_type, desc)</code>. When creating buffers, the user must specify the memory type of the buffer, and one <code>BufferDesc</code> descriptor for the buffer. Properties for one buffer includes the size of the buffer and possible usages of the buffer. If one buffer is created using <strong>upload</strong> or <strong>readback</strong> memory type, the application can fetch one pointer to the buffer memory by calling <code>IBuffer::map</code>, and must release the pointer when the application no longer needs access to the buffer memory by calling <code>IBuffer::unmap</code>.</p>
+<h3 id="buffer-usages">Buffer usages</h3>
+<p>Buffer usages specify the possible usages of one buffer. One buffer can have multiple usages, which can be specified using a bitwise OR combination of multiple <code>BufferUsageFlag</code> flags. The buffer usages include:</p>
+<ol>
+<li><code>copy_source</code>: Allows this buffer to be bound as copy source.</li>
+<li><code>copy_dest</code>: Allows this buffer to be bound as copy destination.</li>
+<li><code>uniform_buffer</code>: Allows this buffer to be bound to a uniform buffer view.</li>
+<li><code>read_buffer</code>: Allows this buffer to be bound to a read buffer view.</li>
+<li><code>read_write_buffer</code>: Allows this buffer to be bound to a read-write buffer view.</li>
+<li><code>vertex_buffer</code>: Allows this buffer to be bound as a vertex buffer.</li>
+<li><code>index_buffer</code>: Allows this buffer to be bound as a index buffer.</li>
+<li><code>indirect_buffer</code>: Allows this buffer to be bound as a buffer providing indirect draw arguments.</li>
+</ol>
+<p>All possible usages for one buffer must be specified when the buffer is created, one buffer cannot be </p>
+<h3 id="usage-patterns">Usage patterns</h3>
+<p>Buffers themselves are scheme-less (or typeless), they can store arbitrary binary data, and it is up to the user how to interpret buffer data. Here we list some typeical usage patterns for buffers.</p>
+<h4 id="uniform-buffer">Uniform buffer</h4>
+<p>Uniform buffers are used to store uniform parameters that will be passed to all shader threads, they are set by the application and is read-only in shader code.</p>
+<p>To create a uniform buffer, call <code>IDevice::new_buffer(memory_type, desc)</code> with <code>MemoryType::upload</code> and <code>BufferUsageFlag::uniform_buffer</code>. The device has memory alignment requires for uniform buffers, which can be fetched by <code>IDevice::get_uniform_buffer_data_alignment()</code>. The buffer size for one uniform buffer must satisfy the alignment requires:</p>
+<pre><code class="language-c++">#include &lt;Luna/RHI/Device.hpp&gt;
+#include &lt;Luna/RHI/Buffer.hpp&gt;
+
+usize alignment = device-&gt;get_uniform_buffer_data_alignment();
+BufferDesc desc;
+desc.size = align_upper(sizeof(MyUniformBuffer), alignment);
+desc.usages = BufferUsageFlag::uniform_buffer;
+desc.flags = ResourceFlag::none;
+luexp(buffer, device-&gt;new_buffer(MemoryType::upload, desc));
+</code></pre>
+<p>You can also pack multiple uniform buffers into one big buffer. In such case, the offset and size of each uniform buffer must also satisfy alignment requirements for uniform buffers:</p>
+<pre><code class="language-c++">#include &lt;Luna/RHI/Device.hpp&gt;
+#include &lt;Luna/RHI/Buffer.hpp&gt;
+
+usize alignment = device-&gt;get_uniform_buffer_data_alignment();
+usize size = 0;
+for(auto&amp; my_buffer : my_buffers)
+{
+    my_buffer.uniform_buffer_offset = size;
+    my_buffer.uniform_buffer_size = align_upper(my_buffer.data_size, alignment);
+    size += my_buffer.uniform_buffer_size;
+}
+BufferDesc desc;
+desc.size = size;
+desc.usages = BufferUsageFlag::uniform_buffer;
+desc.flags = ResourceFlag::none;
+lulet(buffer, device-&gt;new_buffer(MemoryType::upload, desc));
+</code></pre>
+<p>When binding multiple uniform buffers in one <code>IBuffer</code> to descriptor sets, use <code>BufferViewDesc::uniform_buffer(buffer, offset, size)</code> to create proper buffer views for uniform buffers:</p>
+<pre><code class="language-c++">#include &lt;Luna/RHI/Device.hpp&gt;
+#include &lt;Luna/RHI/Buffer.hpp&gt;
+#include &lt;Luna/RHI/DescriptorSet.hpp&gt;
+
+Ref&lt;IDescriptorSet&gt; ds = get_my_descriptor_set();
+Ref&lt;IBuffer&gt; ub = get_my_uniform_buffer();
+Vector&lt;BufferViewDesc&gt; buffer_views;
+for(auto&amp; my_buffer : my_buffers)
+{
+    BufferViewDesc view = BufferViewDesc::uniform_buffer(ub, my_buffer.uniform_buffer_offset, my_buffer.uniform_buffer_size);
+    buffer_views.push_back(view);
+}
+WriteDescriptorSet write = WriteDescriptorSet::uniform_buffer_view_array(MY_UNIFORM_BUFFER_BINDING_SLOT, 0, {buffer_views.data(), buffer_views.size()});
+luexp(ds-&gt;update_descriptors({&amp;write, 1}));
+</code></pre>
+<h4 id="vertex-buffer-and-index-buffer">Vertex buffer and index buffer</h4>
+<p>Vertex buffers and index buffers store vertex data of one geometry. To create a vertex buffer, call <code>IDevice::new_buffer(memory_type, desc)</code> with <code>MemoryType::local</code> and <code>BufferUsageFlag::vertex_buffer | BufferUsageFlag::copy_dest</code>. To create a index buffer, call <code>IDevice::new_buffer(memory_type, desc)</code> with <code>MemoryType::local</code> and <code>BufferUsageFlag::index_buffer | BufferUsageFlag::copy_dest</code>. The data of vertex buffers and index buffers can be uploaded using <code>copy_resource_data(command_buffer, copies)</code>:</p>
+<pre><code class="language-c++">#include &lt;Luna/RHI/Device.hpp&gt;
+#include &lt;Luna/RHI/Buffer.hpp&gt;
+#include &lt;Luna/RHI/Utility.hpp&gt;
+
+u64 vb_size = sizeof(MyVertex) * num_vertices;
+u64 ib_size = sizeof(u32) * num_indices;
+BufferDesc desc;
+desc.size = vb_size;
+desc.usages = BufferUsageFlag::vertex_buffer | BufferUsageFlag::copy_dest;
+desc.flags = ResourceFlag::none;
+lulet(vb, device-&gt;new_buffer(MemoryType::local, desc));
+desc.size = ib_size;
+desc.usages = BufferUsageFlag::index_buffer | BufferUsageFlag::copy_dest;
+lulet(ib, device-&gt;new_buffer(MemoryType::local, desc));
+
+CopyResourceData copies[2] = {
+    CopyResourceData::write_buffer(vb, 0, my_vertex_data, vb_size),
+    CopyResourceData::write_buffer(ib, 0, my_index_data, ib_size)
+};
+luexp(copy_resource_data(get_copy_command_buffer(), {copies, 2}));
+</code></pre>
+<p>Vertex buffers and index buffers are described by <code>VertexBufferView</code> and <code>IndexBufferView</code>, and are bound to the pipeline directly by calling <code>ICommandBuffer::set_vertex_buffers(start_slot, views)</code> and <code>ICommandBuffer::set_index_buffer(view)</code>:</p>
+<pre><code class="language-c++">#include &lt;Luna/RHI/CommandBuffer.hpp&gt;
+
+ICommandBuffer* cmdbuf = get_render_command_buffer();
+VertexBufferView vb_view = VertexBufferView(vb, 0, sizeof(MyVertex) * num_vertices, sizeof(MyVertex));
+cmdbuf-&gt;set_vertex_buffers(0, {&amp;vb_view, 1});
+IndexBufferView ib_view = IndexBufferView(ib, 0, sizeof(u32) * num_indices, Format::r32_uint);
+cmdbuf-&gt;set_index_buffer(ib_view);
+</code></pre>
+<h4 id="structured-buffers">Structured buffers</h4>
+<p>Structured buffers can be used to store one array of structures, enabling shader code to index (read and write) any element in the buffer. Such buffers can be useful to store large-sized array like the model-to-world matrices for all meshes, the material parameters for all materials of the same type, etc.</p>
+<p>To create a structured buffer, call <code>IDevice::new_buffer(memory_type, desc)</code> with <code>MemoryType::local</code> or <code>MemoryType::upload</code>, depends on your update frequency, and <code>BufferUsageFlag::read_buffer</code> if you only need to read the buffer data from shader code, or <code>BufferUsageFlag::read_write_buffer</code> if you need to read and write buffer data from shader code.</p>
+<pre><code class="language-c++">#include &lt;Luna/RHI/Device.hpp&gt;
+#include &lt;Luna/RHI/Buffer.hpp&gt;
+
+BufferDesc desc;
+desc.size = sizeof(MyBufferElement) * num_elements;
+desc.usages = BufferUsageFlag::read_buffer;
+desc.flags = ResourceFlag::none;
+luexp(buffer, device-&gt;new_buffer(MemoryType::upload, desc));
+</code></pre>
+<p>To bind one structured buffer to the descriptor set, use <code>BufferViewDesc::structured_buffer(buffer, first_element, element_count, element_size)</code> to create a view for the buffer:</p>
+<pre><code class="language-c++">#include &lt;Luna/RHI/Device.hpp&gt;
+#include &lt;Luna/RHI/Buffer.hpp&gt;
+#include &lt;Luna/RHI/DescriptorSet.hpp&gt;
+
+Ref&lt;IDescriptorSet&gt; ds = get_my_descriptor_set();
+Ref&lt;IBuffer&gt; buffer = get_my_buffer();
+BufferViewDesc buffer_view = BufferViewDesc::structured_buffer(buffer, 0, num_elements, sizeof(MyBufferElement));
+WriteDescriptorSet write = WriteDescriptorSet::read_buffer_view(MY_STRUCTURED_BUFFER_BINDING_SLOT, buffer_view);
+luexp(ds-&gt;update_descriptors({&amp;write, 1}));
+</code></pre>
+<h2 id="textures">Textures</h2>
+<p>Textures are memory blocks that store 1D, 2D or 3D image data, and support hardware data sampling using samplers. Typically, you use textures to:
+1. Store images loaded from files to use them in rendering or computing.
+1. Store the render result of one render pass.
+1. Store the depth information of the scene, which will be used in depth and stencil testing.
+1. Store the intermediate render result in a multi-pass render pipeline.</p>
+<p>Textures are described by <code>TextureDesc</code>, and are created by <code>IDevice::new_texture(memory_type, desc, optimized_clear_value)</code>. When creating textures, the user must specify one <code>TextureDesc</code> descriptor for the texture. Currently, textures can only be created in local memory, so <code>memory_type</code> should always by <code>MemoryType::local</code> when creating textures. The user can also specify one optional optimized clear value for one texture, which <em>may</em> improve performance on some hardware when the texture is cleared using the same clear value as the specified.</p>
+<h3 id="texture-usages">Texture usages</h3>
+<p>Texture usages specify the possible usages of one texture. One texture can have multiple usages, which can be specified using a bitwise OR combination of multiple <code>TextureUsageFlag</code> flags. The texture usages include:</p>
+<ol>
+<li><code>copy_source</code>: Allows this texture to be bound as copy source.</li>
+<li><code>copy_dest</code>: Allows this texture to be bound as copy destination.</li>
+<li><code>read_texture</code>: Allows this texture to be bound to a read texture view.</li>
+<li><code>read_write_texture</code>: Allows this texture to be bound to a read-write texture view.</li>
+<li><code>color_attachment</code>: Allows this texture to be bound as color attachment.</li>
+<li><code>depth_stencil_attachment</code>: Allows this texture to be bound as depth stencil attachment.</li>
+<li><code>resolve_attachment</code>: Allows this texture to be bound to a resolve attachment.</li>
+<li><code>cube</code>: Allows this texture to be bound to a texture cube view.</li>
+</ol>
+<h3 id="texture-types-and-dimensions">Texture types and dimensions</h3>
+<p>Texture types identify the type of the texture, including:</p>
+<ol>
+<li><code>TextureType::tex1d</code>: 1-dimensional texture, which represents a vector of pixels.</li>
+<li><code>TextureType::tex2d</code>: 2-dimensional texture, which represents a 2D matrix of pixels.</li>
+<li><code>TextureType::tex3d</code>: 3-dimensional texture, which represents a 3D matrix of pixels.</li>
+</ol>
+<p>Textures have three dimensions of sizes: <strong>width</strong>, <strong>height</strong> and <strong>depth</strong>:
+1. For 1D textures, only width is available, height and depth must always be 1.
+1. For 2D textures, both width and height are available, depth must always be 1.
+1. For 3D textures, width, height and depth are available.</p>
+<h3 id="pixel-format">Pixel format</h3>
+<p>One texture also have a particular pixel format, which is identified by <code>Format</code> enumeration. Most formats are formed by a combination of the following three parts:
+1. Number of color channels. One pixel may have one to four color channels, identified as <code>r</code>, <code>g</code>, <code>b</code> and <code>a</code>.
+1. The bit width of every color channel. One pixel may have 8 to 64 bits per channel.
+1. The number format of every color channel. One pixel may have the following number formats:
+    1. <code>uint</code>: unsigned integer.
+    1. <code>sing</code>: signed integer.
+    1. <code>unorm</code>: unsigned normalized integer that maps the unsigned integer to [0.0, 1.0]. For example, if every channel have 8 bits, then the value range [0, 255] is mapped to [0.0, 1.0] in shader automatically. 
+    1. <code>snorm</code>: signed normalized integer that maps the signed integer to [-1.0, 1.0]. For example, if every channel have 8 bits, then the value range [-128, 127] is mapped to [-1.0, 1.0] in shader automatically. 
+    1. <code>float</code>: floating-point number.</p>
+<p>For exmaple:
+1. <code>Format::rgba8_unorm</code> represents a 4-channels pixel format, where every channel stores one 8-bit unsigned integer that will be mapped to [0.0, 1.0] in shader.
+1. <code>Format::rgba16_float</code> represents a 4-channels pixel format, where every channel stores one 16-bit floating-point number (half-precision).
+1. <code>Format::rg32_float</code> represents a 2-channels pixel format, where every channel stores one 32-bit floating-point number (single-precision).</p>
+<p>There are also some special formats:</p>
+<ol>
+<li>Formats begin with <code>d</code> like <code>Format::d16_unorm</code>, <code>Format::d32_float</code>, etc. are special formats used for depth stencil textures.</li>
+<li>Formats ends with <code>_srgb</code> are sRGB formats, the hardware will perform sRGB to linear color conversion when reading data from such formats.</li>
+<li>Some formats may reorder color channels, like <code>Format::bgra8_unorm</code>. Such formats are usually used for special cases like back buffers, where hardware has special requirements for the format that can be used for presenting the render results. The color channels will always be reordered to <code>rgba</code> implicitly when used in shaders.</li>
+<li>Some formats are compressed formats like BC, ASTC, etc. They uses pixel compression techniques to reduce texture file size and the memory consumption when being loaded. Compressed formats often has special requirements for texture dimensions sizes. For example, block compression (BC) format series only works on 2D textures, and requires the width and height of the texture being multiple of 4. Such formats will be hardware-uncompressed automatically when being sampled in shader.</li>
+</ol>
+<h3 id="mipmap">Mipmap</h3>
+<p>Mipmapping is a computer graphics technology that reduces aliasing artifacts when the texture is sampled in a lower resolution than the texture's original resolution. Such artifacts is usually called <a href="https://en.wikipedia.org/wiki/Moir%C3%A9_pattern">Moiré pattern</a>. When mipmapping is used, textures will be stored as as a sequence of sub-textures. The original texture is the first sub-texture in the sequence (called <strong>mip level 0</strong>), and every succeeding sub-texture in the sequence is a coarse representation of the previous sub-texture. In particular, for the <strong>mip level N</strong> sub-texture in the sequence, we have:</p>
+<pre><code>tex[N].width  = ceil(tex[N-1].width / 2.0)
+tex[N].height = ceil(tex[N-1].height / 2.0)
+tex[N].depth  = ceil(tex[N-1].depth / 2.0)
+</code></pre>
+<p>The user may control the number of sub-textures in the mipmap sequence by setting <code>mip_levels</code>. If this is <code>0</code>, the system will generate a <em>full mipmap chain</em> for the texture, which repeats the half-divide process until the last sub-texture in the mipmap sequence has width, height and depth all equal to <code>1</code>.</p>
+<h3 id="texture-array">Texture array</h3>
+<p>One 1D and 2D texture resource may contain multiple textures, which forms a texture array. The texture size, pixel format, usages and other properties apply to all textures in the texture array. If mipmaping is used, each texture in the texture array will have its independent mipmap chain. One texture array is bound to the pipeline as a single resource, and the user can access each texture of the texture array independently in shader code.</p>
+<h3 id="subresources">Subresources</h3>
+<p>Subresources are sub-textures that belongs to one texture resource. One texture resource may have mipmap subresources and/or array subresources, the total number of subresources one texture resource have are <code>mip_levels * array_size</code>. The following figure shows one 8x8 texture resource with 4 mip levels and 3 array elements, which counts to 12 subresources in total.</p>
+<p><img alt="Subresources" src="../subresources.svg" /></p>
+<p>To index one subresource, the user should pass the mip index and array index of the subresource. Every subresource in one texture can be indexed and manipulated independently.</p>
+<h3 id="usage-patterns_1">Usage patterns</h3>
+<p>Here we list some typeical usage patterns for textures.</p>
+<h4 id="color-attachments-and-depth-stencil-attachments">Color attachments and depth stencil attachments</h4>
+<p>Textures can be used as color attachments and depth stencil attachments for render passes. To create one texture used as color attachment, add <code>TextureUsageFlag::color_attachment</code> usage flag to texture usages. To create one texture used as depth stencil attachment, choose one depth format for the texture and add <code>TextureUsageFlag::depth_stencil_attachment</code> usage flag to the texture usages. Attachments usually have both <code>mip_levels</code> and <code>array_size</code> set to <code>1</code>.</p>
+<p>To bind attachments to render passes, firstly set textures in <code>RenderPassDesc</code>, then call <code>ICommandBuffer::begin_render_pass(desc)</code> with the render pass descriptor. Attachments will be bound to the render pass until <code>ICommandBuffer::end_render_pass()</code> is called.</p>
+<h4 id="static-textures">Static textures</h4>
+<p>Static textures store data loaded from image files, such texture is usually used for texturing models in the scene. To create one static texture, firstly add <code>TextureUsageFlag::read_texture</code> and <code>TextureUsageFlag::copy_dest</code> usage flags to texture usages. <code>mip_levels</code> is usually set to <code>0</code> to generate a full mipmap chain for such texture. After the texture is created, use <code>copy_resource_data(command_buffer, copies)</code> or upload buffers to upload texture data to the mip 0 of the texture.</p>
+<p>After the texture is created, we need to generate mipmaps for the texture. This can be done by using a compute shader to downsample from a detailed mip to a coarse mip.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../command_recording_and_submission/" class="btn btn-neutral float-left" title="Command Recording and Submission"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../command_recording_and_submission/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

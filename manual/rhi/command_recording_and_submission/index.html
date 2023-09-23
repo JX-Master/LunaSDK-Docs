@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/rhi/command_recording_and_submission/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Command Recording and Submission - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Command Recording and Submission";
+        var mkdocs_page_input_path = "manual\\rhi\\command_recording_and_submission.md";
+        var mkdocs_page_url = "/manual/rhi/command_recording_and_submission/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../license/">License</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../roadmap/">Roadmap</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">RHI</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../devices/">Devices</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Command Recording and Submission</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#command-queues">Command Queues</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#command-buffers">Command Buffers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#multi-queues-synchronization">Multi-queues Synchronization</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../resources/">Resources</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Manual &raquo;</li>
+          <li>RHI &raquo;</li>
+      <li>Command Recording and Submission</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="command-recording-and-submission">Command Recording and Submission</h1>
+<p>RHI employs a concurrent command recording and submission model, such model reduces CPU and GPU overhead by allowing multiple CPU threads and GPU engines work concurrently as much as possible, but such model also requires the user to pay more attention on how to record, submit and synchronize GPU commands. In paticular, by using the concurrent command recording and submission model, the user should pay attention to the following things:</p>
+<ol>
+<li>How to distribute command recording work to multiple CPU threads.</li>
+<li>How to submit commands recorded by multiple threads to GPU.</li>
+<li>How to determine whether commands submitted to GPU have been finished.</li>
+<li>How to synchronize commands submitted to different GPU queues, so they are executed in correct order.</li>
+</ol>
+<h2 id="command-queues">Command Queues</h2>
+<p><strong>Commands queues</strong> are FIFO (first-in-first-out) queues used by the application to submit commands to GPU. The appliaction can submit commands to one specific queue, which pushes such commands to the back of the queue; GPU engine will pop commands from the front of the queue, and executes such commands in the order they are submitted to the queue.</p>
+<p><img alt="Command Queue" src="../command_queue.svg" /></p>
+<p>One device may have one or multiple command queues. Command queues are initialized when creating the device, and can be used for submitting commands right after the device is created. Command queues have three types: <strong>graphics</strong>, <strong>compute</strong> and <strong>copy</strong>:
+* Graphics command queues can accept graphics, compute and copy commands.
+* Compute command queues can accept compute and copy commands.
+* Copy command queues accepts only copy commands. </p>
+<p>Every device has at least one graphics command queue that accepts all kinds of commands, some GPUs may have additional compute and copy engine that can run compute and copy commands concurrently with graphics commands. On such devices, the user can submit compute and copy commands to dedicated compute and copy queues to reduce graphics command queue workload and improve perfomance.</p>
+<p><img alt="Multiple Command Queues" src="../multiple_command_queues.svg" /></p>
+<p>The user can call <code>IDevice::get_num_command_queues</code> to fetch the number of command queues present on the device, then call <code>IDevice::get_command_queue_desc(command_queue_index)</code> to fetch a description of each command queue. On other APIs of RHI, the user can use the same index passed to <code>IDevice::get_command_queue_desc(command_queue_index)</code> to identify the specific command queue.</p>
+<h2 id="command-buffers">Command Buffers</h2>
+<p><strong>Command buffers</strong> are device-allocated memory that are used to store commands recorded by the application. The application does not push commands to the queue directly, instead, it records commands into command buffers, then submits command buffers to the command queue. By using command buffers, the application can use multiple threads to record multiple command buffers synchronously, then submits them in the main thread to improve performance.</p>
+<p><img alt="Multiple Command Buffers" src="../multiple_command_buffers.svg" /></p>
+<p>To create a command buffer, call <code>IDevice::new_command_buffer(command_queue_index)</code>. One command buffer is bound to one specific command queue, which shall be passed when the command buffer is created. This binding cannot be changed after the command buffer is created. One command queue can create multiple command buffers, each command buffer can only be accessed by one thread at one time, but different command buffers can be accessed by different threads concurrently.</p>
+<p>One command buffer have two states: <strong>recording state</strong> and <strong>execution state</strong>. When one command buffer is created, it is in recording state. When one command buffer is in recording state, it is accessible by the application, and the application can record commands to the command buffer. After the application finishes recording commands, it can call <code>ICommandBuffer::submit(wait_fences, signal_fences, allow_host_waiting)</code> to submit the command buffer to the command queue, and transfers the command buffer to execution state. When one command buffer is in execution state, it is accessible by GPU, but inaccessible by the application. The application can call <code>ICommandBuffer::reset()</code> to reset the command buffer back to recording state, this call will clear all commands and states recorded in the command buffer, so the application must ensure that GPU is not accessing the command buffer when <code>ICommandBuffer::reset()</code> is called.</p>
+<p>After the application submits the command buffer, GPU will pop the command buffer from the command queue and execute commands in the command buffer. As we said before, the user must wait for GPU to finish accessing commands in the command buffer before she can reset the command buffer. To wait for command buffers being completed by GPU, the user can set <code>allow_host_waiting</code> to <code>true</code> when submitting the command buffer, then call <code>ICommandBuffer::wait()</code> to block the current thread until the command buffer exectuion is completed, or call <code>ICommandBuffer::try_wait()</code> to check whether the command buffer exectuion is completed in a non-blocking way. Command buffers pushed to the same queue are guaranteed to be executed in their submission order, so if the user needs to submit multiple command buffers to the same queue, she only needs to wait for the last command buffer to be finished, and can then safely reset all command buffers submitted.</p>
+<p>The following diagram shows the state transition of one command buffer.</p>
+<p><img alt="Command Buffers Transition" src="../command_buffer_state_transitions.svg" /></p>
+<h2 id="multi-queues-synchronization">Multi-queues Synchronization</h2>
+<p>Command buffers pushed to the same queue are guaranteed to be executed in their submission order. However, command buffers pushed to different queues are executed out of order, since they can run concurrently on multiple GPU engines. If such command buffers have execution dependencies, the user must synchronize these command buffers' execution explicitly.</p>
+<p>The command buffer execution synchronization is achieved using fence objects, represented by <code>IFence</code>. Fence objects are created using <code>IDevice::new_fence()</code>. One fence have two states: signaled and unsignaled. One fence is unsignaled when it is created. When the user submits one command buffer by calling <code>ICommandBuffer::submit(wait_fences, signal_fences, allow_host_waiting)</code>, she can specify one set of wait fences and another set of signal fences. Before one command buffer gets executed, the device will wait for all fences in <code>wait_fences</code> to be in signaled state, then the device will reset all fences in <code>wait_fences</code> to unsignaled state and starts executing the command buffer. After one command buffer is finished, the device will set all fences in <code>signal_fences</code> to signaled state, so that other command buffers waiting for the fences can start executing. One signal operation can happen before or after one wait operation, but waits and signals to one fence object must occur in one-by-one pair, that is to say, every two wait operations must have one signal operation in between, and every two signal operations must have one wait operation in between.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../devices/" class="btn btn-neutral float-left" title="Devices"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../resources/" class="btn btn-neutral float-right" title="Resources">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../devices/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../resources/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
