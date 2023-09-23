@@ -30,3 +30,8 @@ nav:
             - Time: manual/basics/time.md
             - Logs: manual/basics/logs.md
             - Math Library: manual/basics/math_library.md
+        - RHI:
+            - RHI: manual/rhi/index.md
+            - Devices: manual/rhi/devices.md
+            - Command Recording and Submission: manual/rhi/command_recording_and_submission.md
+            - Resources: manual/rhi/resources.md
