@@ -6,36 +6,34 @@ Legend:
 
 * 📅: This feature is scheduled.
 * ✅: This feature is completed and will be released on schedule.
-* ⚠️: This feature has risks of being delayed of abandoned.
-* 🔻: This feature is delayed and will not be completed in the current quarter.
+* ❗: This feature is delayed and will not be completed in the current quarter.
 * ❌: This feature is abandoned.
 
-## Q2 2023
+## Q4 2023
 
-* ✅Vulkan implementation for `RHI`.
-* 🔻Metal implementation for `RHI`.
-* ✅SPIR-V target for `ShaderCompiler`.
-* 🔻MSL target for `ShaderCompiler`.
-* 🔻macOS porting of Luna SDK.
-* ✅Pass-based rendering system (render graph).
-* ✅More graphic features in `Studio`.
+* 📅RHI module documentation.
+* 📅API documentation page generation using Doxygen.
+* 📅Android porting (Vulkan).
+* 📅iOS porting.
 
 ## Q3 2023
 
 * ✅Metal implementation for `RHI`.
 * ✅MSL target for `ShaderCompiler`.
 * ✅macOS porting.
-* 📅RHI module documentation.
-* 🔻Android porting (Vulkan).
+* ❗RHI module documentation.
+* ❗Android porting (Vulkan).
 
-## Q4 2023
+## Q2 2023
 
-* 📅API documentation page generation using Doxygen.
-* 📅Android porting (Vulkan).
-
-* 📅iOS porting.
-* 📅Vector-based GPU GUI module.
+* ✅Vulkan implementation for `RHI`.
+* ❗Metal implementation for `RHI`.
+* ✅SPIR-V target for `ShaderCompiler`.
+* ❗MSL target for `ShaderCompiler`.
+* ❗macOS porting of Luna SDK.
+* ✅Pass-based rendering system (render graph).
+* ✅More graphic features in `Studio`.
 
 ## TBD
 
-*Currently Empty*
+* Vector-based GPU GUI module.
