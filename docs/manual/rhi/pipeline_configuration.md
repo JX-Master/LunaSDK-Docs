@@ -29,7 +29,7 @@ Vertex shaders are user-defined functions that are called on every vertex output
 
 ![ndc](./ndc.svg)
 
-Note that the depth value starts from **0.0**, not 1.0.
+Note that the depth value starts from **0.0**, not -1.0.
 
 ### Rasterizer
 Rasterizer generates pixels that will be used by pixel shaders from vertices outputted from vertex shaders. A traditional implementation of rasterizer performs the following tasks in order:
