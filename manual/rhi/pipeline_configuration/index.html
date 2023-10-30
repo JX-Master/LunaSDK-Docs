@@ -8,7 +8,7 @@
     <title>Pipeline Configuration - Luna SDK Docs</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,12 +17,11 @@
         var mkdocs_page_url = "/manual/rhi/pipeline_configuration/";
       </script>
     
-    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../../../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -34,7 +33,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -152,10 +151,10 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Manual &raquo;</li>
-          <li>RHI &raquo;</li>
-      <li>Pipeline Configuration</li>
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Manual</li>
+          <li class="breadcrumb-item">RHI</li>
+      <li class="breadcrumb-item active">Pipeline Configuration</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -214,16 +213,30 @@
 1. <code>front_counter_clockwise</code>: If this is <code>true</code>, the rasterizer will regard one triangle as front-facing if its three vertices are wound in counter clockwise order; if this is <code>false</code>, the rasterizer will regard one triangle as front-facing if its three vertices are wound in clockwise order.
 1. <code>depth_clip_enable</code>: If this is <code>true</code>, the rasterizer will discard pixels whose depth value (<code>z</code> component of position after divided by <code>w</code>) goes beyond ; if this is <code>false</code>, the rasterizer will clamp the depth value of pixel to <code>1.0</code> if it is greater than <code>1.0</code>, and retain the coverage value, which may cause depth test produce incorrect results.
 1. <code>depth_bias</code>, <code>slope_scaled_depth_bias</code> and <code>depth_bias_clamp</code> are used to compute one <strong>depth bias value</strong> that will be added to the original depth value in depth bias step. The depth bias value is computed as:</p>
-<p>$bias(depth) = clamp(C_{depth_bias} * \Epsilon + C_{slope_scaled_depth_bias} * max(ddx(depth), ddy(depth)), -C_{depth_bias_clamp}, C_{depth_bias_clamp})$</p>
-<p>where:
-1. $depth$ is the original depth of the pixel.
-1. $C_{depth_bias}$ is <code>depth_bias</code> converted to <code>f32</code>.
-1. $\Epsilon$ is a small number that represents the minimum representable value &gt; 0 in the depth stencil attachment format converted to <code>f32</code>:
-    1. If the depth stencil attachment is in a normalized format (<code>unorm</code>), $\Epsilon = 2^{-n}$, where $n$ is the number of precision bits of the attachment format, for example, $16$ for <code>d16_unorm</code>.
-    2. If the depth stencil attachment is in a floating-point format (<code>float</code>), $\Epsilon = 2^{e-n}$, where $e=log_2(max(depth))$ is the exponent of the maximum original depth value of the input primitive, and $n$ is the number of bits in the floating-point mantissa, for example, $23$ for <code>d32_float</code>.
-1. $C_{slope_scaled_depth_bias}$ is <code>slope_scaled_depth_bias</code>.
-1. $ddx(depth)$ and $ddy(depth)$ is the horizontal and vertical slopes of the depth value at the pixel position.
-1. $C_{depth_bias_clamp}$ is <code>depth_bias_clamp</code>.</p>
+<p>
+<script type="math/tex; mode=display">bias(depth) = clamp(C_{b} * E + C_{s} * slope(depth), -C_{clamp}, C_{clamp})</script>
+</p>
+<p>where:</p>
+<ol>
+<li>
+<script type="math/tex">depth</script> is the original depth of the pixel.</li>
+<li>
+<script type="math/tex">C_{b}</script> is <code>depth_bias</code> converted to <code>f32</code>.</li>
+<li>
+<script type="math/tex">E</script> is a small number that represents the minimum representable value &gt; 0 in the depth stencil attachment format converted to <code>f32</code>:<ol>
+<li>If the depth stencil attachment is in a normalized format (<code>unorm</code>), <script type="math/tex">E = 2^{-n}</script>, where <script type="math/tex">n</script> is the number of precision bits of the attachment format, for example, <script type="math/tex">16</script> for <code>d16_unorm</code>.</li>
+<li>If the depth stencil attachment is in a floating-point format (<code>float</code>), <script type="math/tex">E = 2^{e-n}</script>, where <script type="math/tex">e=log_2(max(depth))</script> is the exponent of the maximum original depth value of the input primitive, and <script type="math/tex">n</script> is the number of bits in the floating-point mantissa, for example, <script type="math/tex">23</script> for <code>d32_float</code>.</li>
+</ol>
+</li>
+<li>
+<script type="math/tex">C_{s}</script> is <code>slope_scaled_depth_bias</code>.</li>
+<li>
+<script type="math/tex">slope(depth)</script> is the slope of the depth value at pixel position, usually computed as <script type="math/tex">max(ddx(depth), ddy(depth))</script>.</li>
+<li>
+<script type="math/tex">ddx(depth)</script> and <script type="math/tex">ddy(depth)</script> is the horizontal and vertical slopes of the depth value at the pixel position.</li>
+<li>
+<script type="math/tex">C_{clamp}</script> is <code>depth_bias_clamp</code>.</li>
+</ol>
 <p>Note that different platforms may implement depth bias using slightly different formula and precision, so the user should not expect a exact bias number between different platforms and graphics API.</p>
 </li>
 </ol>
@@ -233,13 +246,19 @@
 1. <code>width</code> and <code>height</code> defines the size, in pixels, of the viewport.
 1. <code>min_depth</code> and <code>max_depth</code> defines the valid depth value of outputted vertex position in NDC. Both value must in range [<code>0.0</code>, <code>1.0</code>], but <code>min_depth</code> can be equal to or greater than <code>max_depth</code>. Any pixel whose depth value go beyond this range will be clamped to the range.</p>
 <p>The viewport transformation is performed using the following formulas:</p>
-<p>$X_{screen} = X_{top_left} + (P_x + 1.0) / 2.0 * width$</p>
-<p>$Y_{screen} = Y_{top_left} + (-P_y + 1.0) / 2.0 * height$</p>
-<p>$Z_{screen} = min_depth + P_z * (max_depth - min_depth)$</p>
+<p>
+<script type="math/tex; mode=display">X_{screen} = X_{top\_left} + (P_x + 1.0) / 2.0 * width</script>
+</p>
+<p>
+<script type="math/tex; mode=display">Y_{screen} = Y_{top\_left} + (-P_y + 1.0) / 2.0 * height</script>
+</p>
+<p>
+<script type="math/tex; mode=display">Z_{screen} = min_depth + P_z * (max_depth - min_depth)</script>
+</p>
 <p>where:
-1. $P$ is the vertex position in NDC.
-1. $X_{screen}$ and $Y_{screen}&amp; are the screen-space position of the vertex in pixels, relative to the top-left corder of the frame buffer.
-1. $Z_{screen}$ is the depth value written to the depth buffer.</p>
+1. <script type="math/tex">P</script> is the vertex position in NDC.
+1. <script type="math/tex">X_{screen}</script> and <script type="math/tex">Y_{screen}& are the screen-space position of the vertex in pixels, relative to the top-left corder of the frame buffer.
+1. </script>Z_{screen}$ is the depth value written to the depth buffer.</p>
 <p>After viewport transformation, scissor culling will be performed to discard pixels that go outside of the scissor rect. The scissor rect is defined by one <code>RectI</code> structure, while has the following components:
 1. <code>offset_x</code>: The X offset, in pixels, of the scissor rect relative to the top-left corner of the frame buffer.
 1. <code>offset_y</code>: The Y offset, in pixels, of the scissor rect relative to the top-left corner of the frame buffer.
@@ -356,15 +375,19 @@ if(stencil_enable)
 1. <code>independent_blend_enable</code>: If this is <code>false</code>, then all color attachments should use the same color blending settings specified by the first element of <code>attachments</code> array. If this is <code>true</code>, then each color attachment uses dedicated color blending setting specified by the corresponding elements of <code>attachments</code> array. Set this to <code>false</code> may improve performance on some platforms.
 1. <code>alpha_to_coverage_enable</code>: On MSAA pipelines, if this is <code>true</code>, alpha to coverage feature is enabled. See "Multisample anti-aliasing" section for details about coverage mask. This must be <code>false</code> on non-MSAA pipelines.</p>
 <p>The final written color for every color attachment is computed using the following equation:</p>
-<p>$C_{final} = (C_{src})\Delta_{color}(C_{dst})$</p>
-<p>$A_{final} = (A_{src})\Delta_{alpha}(A_{dst})$</p>
+<p>
+<script type="math/tex; mode=display">C_{final} = (C_{src})\Delta_{color}(C_{dst})</script>
+</p>
+<p>
+<script type="math/tex; mode=display">A_{final} = (A_{src})\Delta_{alpha}(A_{dst})</script>
+</p>
 <p>where:
-1. $C_{src}$ is the blend factor specified by <code>src_blend_color</code>.
-1. $C_{dst}$ is the blend factor specified by <code>dst_blend_color</code>.
-1. $\Delta_{color}$ is the blend operation specified by <code>blend_op_color</code>.
-1. $A_{src}$ is the blend factor specified by <code>src_blend_alpha</code>.
-1. $A_{dst}$ is the blend factor specified by <code>dst_blend_alpha</code>.
-1. $\Delta_{alpha}$ is the blend operation specified by <code>blend_op_alpha</code>.</p>
+1. <script type="math/tex">C_{src}</script> is the blend factor specified by <code>src_blend_color</code>.
+1. <script type="math/tex">C_{dst}</script> is the blend factor specified by <code>dst_blend_color</code>.
+1. <script type="math/tex">\Delta_{color}</script> is the blend operation specified by <code>blend_op_color</code>.
+1. <script type="math/tex">A_{src}</script> is the blend factor specified by <code>src_blend_alpha</code>.
+1. <script type="math/tex">A_{dst}</script> is the blend factor specified by <code>dst_blend_alpha</code>.
+1. <script type="math/tex">\Delta_{alpha}</script> is the blend operation specified by <code>blend_op_alpha</code>.</p>
 <h3 id="multisample-anti-aliasing">Multisample anti-aliasing</h3>
 <p>Multisample anti-aliasing (MSAA) is a hardware-accelerated anti-aliasing technique that relieve geometry aliasing artifacts. When MSAA is enabled, the render pipeline generates <code>sample_count</code> sub-pixels for every pixel, and performs rasterization, depth stencil test and color blending on every sub-pixel instead of every pixel. The pixel shader, however, is invoked only once for every pixel, and all sub-pixels in that pixel get the same output value from pixel shader.</p>
 <p>To enable MSAA for one render pipeline, performs the following steps:
@@ -432,14 +455,16 @@ if(stencil_enable)
     
   </span>
 </div>
-    <script>var base_url = '../../..';</script>
-    <script src="../../../js/theme_extra.js" defer></script>
-    <script src="../../../js/theme.js" defer></script>
-      <script src="../../../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
-        };
+        });
     </script>
 
 </body>

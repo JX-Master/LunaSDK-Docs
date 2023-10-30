@@ -8,7 +8,7 @@
     <title>Shader Resource Binding - Luna SDK Docs</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,12 +17,11 @@
         var mkdocs_page_url = "/manual/rhi/shader_resource_binding/";
       </script>
     
-    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../../../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -34,7 +33,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -154,10 +153,10 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Manual &raquo;</li>
-          <li>RHI &raquo;</li>
-      <li>Shader Resource Binding</li>
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Manual</li>
+          <li class="breadcrumb-item">RHI</li>
+      <li class="breadcrumb-item active">Shader Resource Binding</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -281,8 +280,8 @@
 <h4 id="texture-view-format">Texture view format</h4>
 <p><code>TextureViewDesc::format</code> tells the pipeline how to interpret data for one texture. When supported by the backend, one texture view may specify one format that is different than the native format of the binding texture, which will let the driver to reinterpret texture data when accessing textures. If format reinterpreting is not supported by the driver, the user must specify the same format for both texture and texture view. The texture view format can be <code>Format::unknown</code>, which tells the system to use the binding texture's native format as the texture view format.</p>
 <h4 id="mip-and-array-slice">Mip and array slice</h4>
-<p><code>TextureViewDesc::mip_slice</code> and <code>TextureViewDesc::mip_size</code> specifies the mip range $[mip_slice, mip_slice + mip_size)$ that will be bind to the pipeline. After specified, <code>TextureViewDesc::mip_slice</code> becomes the mip level 0 in shader code. <code>TextureViewDesc::mip_size</code> must be <code>1</code> for <code>tex2dms</code> and <code>tex2dmsarray</code> views, and views used for read-write texture descriptors. <code>TextureViewDesc::mip_size</code> may be <code>U32_MAX</code>, which tells the system to use all available mips since <code>TextureViewDesc::mip_slice</code>.</p>
-<p><code>TextureViewDesc::array_slice</code> and <code>TextureViewDesc::array_size</code> specifies the array range $[array_slice, array_slice + array_size)$ that will be bind to the pipeline. After specified, <code>TextureViewDesc::array_slice</code> becomes the first array element in shader code. <code>TextureViewDesc::array_slice</code> must be <code>0</code> for non-array texture views, <code>TextureViewDesc::array_size</code> must be:
+<p><code>TextureViewDesc::mip_slice</code> and <code>TextureViewDesc::mip_size</code> specifies the mip range <script type="math/tex">[mip\_slice, mip\_slice + mip\_size)</script> that will be bind to the pipeline. After specified, <code>TextureViewDesc::mip_slice</code> becomes the mip level 0 in shader code. <code>TextureViewDesc::mip_size</code> must be <code>1</code> for <code>tex2dms</code> and <code>tex2dmsarray</code> views, and views used for read-write texture descriptors. <code>TextureViewDesc::mip_size</code> may be <code>U32_MAX</code>, which tells the system to use all available mips since <code>TextureViewDesc::mip_slice</code>.</p>
+<p><code>TextureViewDesc::array_slice</code> and <code>TextureViewDesc::array_size</code> specifies the array range <script type="math/tex">[array\_slice, array\_slice + array\_size)</script> that will be bind to the pipeline. After specified, <code>TextureViewDesc::array_slice</code> becomes the first array element in shader code. <code>TextureViewDesc::array_slice</code> must be <code>0</code> for non-array texture views, <code>TextureViewDesc::array_size</code> must be:
 * <code>1</code> for <code>tex1d</code>, <code>tex2d</code>, <code>tex2dms</code> and <code>tex3d</code> views.
 * <code>6</code> for <code>texcube</code> views.
 * times of <code>6</code> for <code>texcubearray</code> views.</p>
@@ -337,14 +336,16 @@
     
   </span>
 </div>
-    <script>var base_url = '../../..';</script>
-    <script src="../../../js/theme_extra.js" defer></script>
-    <script src="../../../js/theme.js" defer></script>
-      <script src="../../../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
-        };
+        });
     </script>
 
 </body>
