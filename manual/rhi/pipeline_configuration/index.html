@@ -186,7 +186,7 @@
 <h3 id="vertex-shader">Vertex shader</h3>
 <p>Vertex shaders are user-defined functions that are called on every vertex outputted from input assembler. One vertex shader must have a four-component vector output attribute with <code>SV_POSITION</code> semantics that will be used as the vertex position for succeeding stages. The outputted vertex position is interpreted in normalized device coordinates (NDC), as shown below. If the fourth component (<code>w</code>) of the outputted vertex position is not <code>1.0</code>, the system divides each component of the vertex position with <code>w</code> to normalize it internally.</p>
 <p><img alt="ndc" src="../ndc.svg" /></p>
-<p>Note that the depth value starts from <strong>0.0</strong>, not 1.0.</p>
+<p>Note that the depth value starts from <strong>0.0</strong>, not -1.0.</p>
 <h3 id="rasterizer">Rasterizer</h3>
 <p>Rasterizer generates pixels that will be used by pixel shaders from vertices outputted from vertex shaders. A traditional implementation of rasterizer performs the following tasks in order:</p>
 <ol>
