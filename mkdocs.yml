@@ -33,5 +33,8 @@ nav:
         - RHI:
             - RHI: manual/rhi/index.md
             - Devices: manual/rhi/devices.md
-            - Command Recording and Submission: manual/rhi/command_recording_and_submission.md
+            - Command Queues and Command Buffers: manual/rhi/command_queues_and_command_buffers.md
             - Resources: manual/rhi/resources.md
+            - Pipeline Configuration: manual/rhi/pipeline_configuration.md
+            - Recording Commands: manual/rhi/recording_commands.md
+            - Shader Resource Binding: manual/rhi/shader_resource_binding.md

@@ -1,4 +1,4 @@
-# Command Recording and Submission
+# Command Queues and Command Buffers
 RHI employs a concurrent command recording and submission model, such model reduces CPU and GPU overhead by allowing multiple CPU threads and GPU engines work concurrently as much as possible, but such model also requires the user to pay more attention on how to record, submit and synchronize GPU commands. In paticular, by using the concurrent command recording and submission model, the user should pay attention to the following things:
 
 1. How to distribute command recording work to multiple CPU threads.
