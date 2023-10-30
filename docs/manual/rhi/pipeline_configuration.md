@@ -38,7 +38,7 @@ Rasterizer generates pixels that will be used by pixel shaders from vertices out
 1. Covering test: Performs covering test for every pixel position against every primitive to see if the pixel is covered by the primitive. If MSAA is enabled, the covering test will be performed on every sub-pixel instead of every pixel.
 1. Pixel list generation: For every primitive, generate a list of pixels that are covered by the primitive. If MSAA is enabled, one pixel will be included in the list if any of its sub-pixels is covered by the primitive.
 1. Depth bias: If depth bias is used, offsetting depth values for primitives.
-1. Attribute interpolation: For every primitive, fill pixel shader input data for every pixel in the list by linear interpolating on attributes outputted from the vertex shader.
+1. Attribute interpolation: For every primitive, fill pixel shader input data for every pixel in the list by linear interpolating attributes outputted from the vertex shader.
 
 Rasterizers are configured by the `rasterizer_state` property of `GraphicsPipelineStateDesc`, which has the following properties:
 
