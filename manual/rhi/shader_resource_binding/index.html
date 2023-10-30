@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/rhi/shader_resource_binding/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Shader Resource Binding - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Shader Resource Binding";
+        var mkdocs_page_input_path = "manual\\rhi\\shader_resource_binding.md";
+        var mkdocs_page_url = "/manual/rhi/shader_resource_binding/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">RHI</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Shader Resource Binding</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#descriptor-sets-and-descriptor-set-layouts">Descriptor sets and descriptor set layouts</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#unbound-descriptor-sets">Unbound descriptor sets</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#updating-descriptor-sets">Updating descriptor sets</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#buffer-view-descriptor">Buffer view descriptor</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#texture-view-descriptor">Texture view descriptor</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sampler-descriptor">Sampler descriptor</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pipeline-layouts">Pipeline layouts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#binding-descriptor-sets">Binding descriptor sets</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Manual &raquo;</li>
+          <li>RHI &raquo;</li>
+      <li>Shader Resource Binding</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="shader-resource-binding">Shader Resource Binding</h1>
+<p>Shader resources are resources that can be read/written by shader codes. Shader resources have the following types:</p>
+<ol>
+<li>Uniform buffer, which is a <code>IBuffer</code> that stores constants that can be read by shaders.</li>
+<li>Read buffer, which is a <code>IBuffer</code> that stores array of structures that can be read by shaders.</li>
+<li>Read write buffer, which is a <code>IBuffer</code> that stores array of structures that can be read and written by shaders.</li>
+<li>Read texture, which is a <code>ITexture</code> that can be sampled or read by shaders.</li>
+<li>Read write texture, which is a <code>ITexture</code> that can be sampled, read and written by shaders.</li>
+</ol>
+<h2 id="descriptor-sets-and-descriptor-set-layouts">Descriptor sets and descriptor set layouts</h2>
+<p>Shader resources are not bound to the pipeline directly, instead, they should be bound to a <strong>descriptor set</strong> (<code>IDescriptorSet</code>) firstly, then all resources referred by one descriptor set is bound to the pipeline in one call by <code>ICommandBuffer::set_graphics_descriptor_set(index, descriptor_set)</code> or <code>ICommandBuffer::set_compute_descriptor_set(index, descriptor_set)</code>. To create a descriptor set, the user should firstly create one descriptor set layout object (<code>IDescriptorSetLayout</code>). The descriptor set layout object describes the type and format of each descriptors in the descriptor set. In order to create one descriptor set layout object, the user should fill <code>DescriptorSetLayoutDesc</code> descriptor first, then call <code>IDevice::new_descriptor_set_layout(desc)</code>, passing the descriptor object. </p>
+<p>One <code>DescriptorSetLayoutDesc</code> describes several bindings, every binding describes one or an array of resources of the same type that can be accessed by shaders as one parameter entry. One binding is represented by <code>DescriptorSetLayoutBinding</code>, and contains the following properties:</p>
+<ol>
+<li><code>binding_slot</code>: The binding number of this binding. Every binding should have one unique binding number. Binding numbers for bindings in the same descriptor set do not need to be continuous, but must be incremental.</li>
+<li><code>num_descs</code>: The number of descriptors of this binding. The binding number range <code>[binding_slot, binding_slot + num_descs)</code> is occupied by this binding and cannot overlap with the binding number ranges of other bindings.</li>
+<li><code>type</code>: The type of descriptors of this binding. All descriptors in the same binding must have the same type.</li>
+<li><code>texture_view_type</code>: The texture view type of descriptors of this binding if <code>type</code> is <code>read_texture_view</code> or <code>read_write_texture_view</code>. All descriptors in the same binding must have the same texture view type.</li>
+<li><code>shader_visibility_flags</code>: Specify shaders that have access to resources of this binding.</li>
+</ol>
+<p>After one descriptor set layout object is created, the user can use this object to create descriptor set objects by calling <code>IDevice::new_descriptor_set(desc)</code>. When creating descriptor set objects, the user should fill one <code>DescriptorSetDesc</code> descriptor object, which is basically only stores one pointer to the descriptor set layout object being used.</p>
+<h3 id="unbound-descriptor-sets">Unbound descriptor sets</h3>
+<p>In normal cases, the number of descriptors for each binding must be determined when creating descriptor set layout objects. However, if <code>DeviceFeature::unbound_descriptor_array</code> is supported, the number of descriptors of the <strong>last binding</strong> can be uncertain when creating the descriptor set layout. This allows the user to perform some advanced resource binding techniques, for example, allocate one big descriptor set to bind all resources that might be used in rendering, and select resources in shader code so that meshes using different materials can be rendered without switching descriptor sets, such feature is usually called bindless rendering and is crucial for implemeting GPU-driven rendering.</p>
+<p>To create one variable descriptor set layout, specify <code>DescriptorSetLayoutFlag::variable_descriptors</code> when creating the descriptor set layout. In such case, <code>num_descs</code> of the last binding specifies the maximum number of descriptors that can be allocated. When creating descriptor sets from one variable descriptor set layout, the user should set <code>DescriptorSetDesc::num_variable_descriptors</code> to a non-zero value, which is the real number of descriptors allocated for the last binding. When using unbound descriptor sets, the shader code does not know the real number of descriptors of the last binding, the user should ensure that the shader code does not index one descriptor that is out of real descriptor array range.</p>
+<h2 id="updating-descriptor-sets">Updating descriptor sets</h2>
+<p>After creating descriptor sets, the user can write data to descriptors in descriptor sets. Updating descriptors in descriptor sets are done by <code>IDescriptorSet::update_descriptors(writes)</code>. The user may update multiple descriptors in multiple bindings in one update call, which is described by an array of <code>WriteDescriptorSet</code> structures passed to the update call. Every <code>WriteDescriptorSet</code> structure describes one continuous range of descriptors in the same <code>DescriptorSetLayoutBinding</code>. Based on the type of descriptors to be updated, the user should attach the descriptor array pointer to <code>buffer_views</code>, <code>texture_views</code> or <code>samplers</code>, and set the array size to <code>num_descs</code>.</p>
+<h3 id="buffer-view-descriptor">Buffer view descriptor</h3>
+<p>For descriptors with <code>DescriptorType::uniform_buffer_view</code>, <code>DescriptorType::read_buffer_view</code> and <code>DescriptorType::read_write_buffer_view</code> types, buffer view descriptors (<code>BufferViewDesc</code>) are used to update descriptors' data. One buffer view descriptor can restrain shader to access only one portion of the buffer, so that multiple data sections can be packed into one buffer and viewed by different view descriptors.</p>
+<h4 id="uniform-buffer">Uniform buffer</h4>
+<p>For uniform buffers, the user should use <code>BufferViewDesc::first_element</code> to specify the byte offset from the beginning of the buffer data to the first byte to be used, and <code>BufferViewDesc::element_size</code> to specify the size of the uniform buffer data to be used. The offset and size of one uniform data must satisfy hardware alignment requirements, which can be fetched by <code>IDevice::get_uniform_buffer_data_alignment()</code>. The user may use <code>BufferViewDesc::uniform_buffer(buffer, offset, size)</code> static constructor to create one <code>BufferViewDesc</code> for one uniform buffer descriptor quickly.</p>
+<h4 id="structured-buffer">Structured buffer</h4>
+<p>For read buffers and read-write buffers, the user should use <code>BufferViewDesc::element_size</code> to specify the size of each element in the buffer, <code>BufferViewDesc::first_element</code> to specify the index of the first element to be used, and <code>BufferViewDesc::element_count</code> to specify the number of elements to be used. The user may use <code>BufferViewDesc::structured_buffer(buffer, first_element, element_count, element_size)</code> static constructor to create one <code>BufferViewDesc</code> for one read buffer/read-write buffer descriptor quickly.</p>
+<h3 id="texture-view-descriptor">Texture view descriptor</h3>
+<p>For descriptors with <code>DescriptorType::read_texture_view</code> and <code>DescriptorType::read_write_texture_view</code> types, texture view descriptors (<code>TextureViewDesc</code>) are used to update descriptors' data. One texture view descriptor can restrain shader to access only a certain range of subresources of the texture, so that different subresources of one texture may be bound to the same or different pipeline using different texture views.</p>
+<h4 id="texture-view-type">Texture view type</h4>
+<p><code>TextureViewDesc::type</code> specifies the texture view type, which has the following options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Texture type</th>
+<th>Array</th>
+<th>Multisample</th>
+<th>Cube</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tex1d</code></td>
+<td>1D texture</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>tex2d</code></td>
+<td>2D texture</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>tex2dms</code></td>
+<td>2D texture</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>tex3d</code></td>
+<td>3D texture</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>texcube</code></td>
+<td>2D texture</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>tex1darray</code></td>
+<td>1D texture</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>tex2darray</code></td>
+<td>2D texture</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>tex2dmsarray</code></td>
+<td>2D texture</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>texcubearray</code></td>
+<td>2D texture</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>The texture view type of one texture view must be compatible with the viewing texture. For example, you cannot bind one 2D texture with <code>TextureViewType::tex1d</code> texture view. If you don't know the exact texture view type to use, you can specify <code>TextureViewType::unspecified</code> to let the system to choose one shitable texture view type based on the binding texture and view settings.</p>
+<h4 id="texture-view-format">Texture view format</h4>
+<p><code>TextureViewDesc::format</code> tells the pipeline how to interpret data for one texture. When supported by the backend, one texture view may specify one format that is different than the native format of the binding texture, which will let the driver to reinterpret texture data when accessing textures. If format reinterpreting is not supported by the driver, the user must specify the same format for both texture and texture view. The texture view format can be <code>Format::unknown</code>, which tells the system to use the binding texture's native format as the texture view format.</p>
+<h4 id="mip-and-array-slice">Mip and array slice</h4>
+<p><code>TextureViewDesc::mip_slice</code> and <code>TextureViewDesc::mip_size</code> specifies the mip range $[mip_slice, mip_slice + mip_size)$ that will be bind to the pipeline. After specified, <code>TextureViewDesc::mip_slice</code> becomes the mip level 0 in shader code. <code>TextureViewDesc::mip_size</code> must be <code>1</code> for <code>tex2dms</code> and <code>tex2dmsarray</code> views, and views used for read-write texture descriptors. <code>TextureViewDesc::mip_size</code> may be <code>U32_MAX</code>, which tells the system to use all available mips since <code>TextureViewDesc::mip_slice</code>.</p>
+<p><code>TextureViewDesc::array_slice</code> and <code>TextureViewDesc::array_size</code> specifies the array range $[array_slice, array_slice + array_size)$ that will be bind to the pipeline. After specified, <code>TextureViewDesc::array_slice</code> becomes the first array element in shader code. <code>TextureViewDesc::array_slice</code> must be <code>0</code> for non-array texture views, <code>TextureViewDesc::array_size</code> must be:
+* <code>1</code> for <code>tex1d</code>, <code>tex2d</code>, <code>tex2dms</code> and <code>tex3d</code> views.
+* <code>6</code> for <code>texcube</code> views.
+* times of <code>6</code> for <code>texcubearray</code> views.</p>
+<p><code>TextureViewDesc::array_size</code> may be <code>U32_MAX</code>, which tells the system to use all available array elements since <code>TextureViewDesc::array_slice</code>.</p>
+<h4 id="static-constructors">Static constructors</h4>
+<p>The user may use the following static constructors to declare texture views of different types quickly:
+* <code>TextureViewDesc::tex1d(texture, format, mip_slice, mip_size)</code>
+* <code>TextureViewDesc::tex1darray(texture, format, mip_slice, mip_size, array_slice, array_size)</code>
+* <code>TextureViewDesc::tex2d(texture, format, mip_slice, mip_size)</code>
+* <code>TextureViewDesc::tex2darray(texture, format, mip_slice, mip_size, array_slice, array_size)</code>
+* <code>TextureViewDesc::tex2dms(texture, format)</code>
+* <code>TextureViewDesc::tex2dmsarray(texture, format, array_slice, array_size)</code>
+* <code>TextureViewDesc::tex3d(texture, format, mip_slice, mip_size)</code>
+* <code>TextureViewDesc::texcube(texture, format, mip_slice, mip_size)</code>
+* <code>TextureViewDesc::texcubearray(texture, format, mip_slice, mip_size, array_slice, array_size)</code></p>
+<h3 id="sampler-descriptor">Sampler descriptor</h3>
+<p>For descriptors with <code>DescriptorType::sampler</code> type, sampler descriptors (<code>SamplerDesc</code>) are used to update descriptors' data. One sampler descriptor describes sampling configurations that shaders can use to sample textures.</p>
+<h2 id="pipeline-layouts">Pipeline layouts</h2>
+<p>Pipeline layouts (<code>IPipelineLayout</code>) describes the descriptor sets binding layout for one graphics or compute pipeline. Before descriptor sets are attached to one pipeline, its pipeline layout must be set firstly by <code>ICommandBuffer::set_graphics_pipeline_layout(pipeline_layout)</code> or <code>ICommandBuffer::set_compute_pipeline_layout(pipeline_layout)</code>.</p>
+<p>To create one pipeline layout, the user should fill one pipeline layout descriptor object (<code>PipelineLayoutDesc</code>), and pass the object to <code>IDevice::new_pipeline_layout(desc)</code>. When configuring <code>PipelineLayoutDesc</code>, the user should specify the number of descriptor sets that will be attached to the pipeline, and the descriptor set layout of every descriptor set. The user can also use <code>PipelineLayoutFlag</code> to control shaders and stages that can access bound resources, dening shaders and stages access to resources may improve performance on some hardwares.</p>
+<h2 id="binding-descriptor-sets">Binding descriptor sets</h2>
+<p>Once descriptors in descriptor sets are updated, the user can bind descriptor sets to pipelines so that all resources and configurations stored in descriptor sets are used in succeeding draw or dispatch calls. Binding descriptor sets to pipelines are achieved via <code>ICommandBuffer::set_graphics_descriptor_set(index, descriptor_set)</code> or <code>ICommandBuffer::set_graphics_descriptor_sets(start_index, descriptor_sets)</code> for graphics pipelines, and <code>ICommandBuffer::set_compute_descriptor_set(index, descriptor_set)</code> or <code>ICommandBuffer::set_compute_descriptor_sets(start_index, descriptor_sets)</code> for compute pipelines. Compatible pipeline layout must be set to the pipelines before binding descriptor sets. After one descriptor set is bound to one pipeline, the user cannot update descriptors in the descriptor set or bind the same descriptor set to another pipeline until the command buffer is finished executing or reset. If one pipeline have multiple descriptor sets, every descriptor set can be bound independently using dedicated binding calls, and descriptor sets bound to the pipeline stays bound until changed by another binding call, or the render or compute pass is closed.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../recording_commands/" class="btn btn-neutral float-left" title="Recording Commands"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../recording_commands/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

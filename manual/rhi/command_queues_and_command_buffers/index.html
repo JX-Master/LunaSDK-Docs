@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/rhi/command_recording_and_submission/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/manual/rhi/command_queues_and_command_buffers/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>Command Recording and Submission - Luna SDK Docs</title>
+    <title>Command Queues and Command Buffers - Luna SDK Docs</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Command Recording and Submission";
-        var mkdocs_page_input_path = "manual\\rhi\\command_recording_and_submission.md";
-        var mkdocs_page_url = "/manual/rhi/command_recording_and_submission/";
+        var mkdocs_page_name = "Command Queues and Command Buffers";
+        var mkdocs_page_input_path = "manual\\rhi\\command_queues_and_command_buffers.md";
+        var mkdocs_page_url = "/manual/rhi/command_queues_and_command_buffers/";
       </script>
     
     <script src="../../../js/jquery-3.6.0.min.js" defer></script>
@@ -46,10 +46,6 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../../../license/">License</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../../roadmap/">Roadmap</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Manual</span></p>
@@ -110,7 +106,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../devices/">Devices</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Command Recording and Submission</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Command Queues and Command Buffers</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#command-queues">Command Queues</a>
     </li>
@@ -121,6 +117,12 @@
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../shader_resource_binding/">Shader Resource Binding</a>
                 </li>
     </ul>
                   </li>
@@ -141,7 +143,7 @@
     <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Manual &raquo;</li>
           <li>RHI &raquo;</li>
-      <li>Command Recording and Submission</li>
+      <li>Command Queues and Command Buffers</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -150,7 +152,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="command-recording-and-submission">Command Recording and Submission</h1>
+                <h1 id="command-queues-and-command-buffers">Command Queues and Command Buffers</h1>
 <p>RHI employs a concurrent command recording and submission model, such model reduces CPU and GPU overhead by allowing multiple CPU threads and GPU engines work concurrently as much as possible, but such model also requires the user to pay more attention on how to record, submit and synchronize GPU commands. In paticular, by using the concurrent command recording and submission model, the user should pay attention to the following things:</p>
 <ol>
 <li>How to distribute command recording work to multiple CPU threads.</li>
