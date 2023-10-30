@@ -11,6 +11,7 @@ The upload memory type is allocated on system memory that is optimized for CPU w
 The readback memory type is allocated on system memory that is optimized for CPU reading. GPU writing to read back memory  is slow, and the only operation allowed for GPU is to copy data to the memory. On NUMA platfroms, writing data to readback memory from GPU requires data transmission through PCI-Express bus, which is a slow operation.
 
 The user should choose the suitable memory type based on the use situation. Here are some basic principles:
+
 1. If you need to create texture resources, use local memory. If you need to upload texture data from CPU side, use upload memory to copy data to the local memory.
 1. If you don't need to access resource data from CPU, use local memory.
 1. If you only need to upload data from CPU side once, like setting the initial data for static vertex and index buffers, use one local memory to store the data, then use one temporary upload memory to copy data to the local memory.
@@ -20,6 +21,7 @@ The user should choose the suitable memory type based on the use situation. Here
 
 ## Buffers
 Buffers are memory blocks that can store arbitrary binary data. Typically, you use buffers to:
+
 1. Set uniform parameters that can be read by shaders using **uniform buffers**.
 1. Store mesh geometries for rendering using **vertex buffers** and **index buffers**.
 1. Pass array of structures (like model transform matrices, material parameters, etc.) using **structured buffers**.
@@ -173,6 +175,7 @@ luexp(ds->update_descriptors({&write, 1}));
 
 ## Textures
 Textures are memory blocks that store 1D, 2D or 3D image data, and support hardware data sampling using samplers. Typically, you use textures to:
+
 1. Store images loaded from files to use them in rendering or computing.
 1. Store the render result of one render pass.
 1. Store the depth information of the scene, which will be used in depth and stencil testing.
@@ -200,12 +203,14 @@ Texture types identify the type of the texture, including:
 1. `TextureType::tex3d`: 3-dimensional texture, which represents a 3D matrix of pixels.
 
 Textures have three dimensions of sizes: **width**, **height** and **depth**:
+
 1. For 1D textures, only width is available, height and depth must always be 1.
 1. For 2D textures, both width and height are available, depth must always be 1.
 1. For 3D textures, width, height and depth are available.
 
 ### Pixel format
 One texture also have a particular pixel format, which is identified by `Format` enumeration. Most formats are formed by a combination of the following three parts:
+
 1. Number of color channels. One pixel may have one to four color channels, identified as `r`, `g`, `b` and `a`.
 1. The bit width of every color channel. One pixel may have 8 to 64 bits per channel.
 1. The number format of every color channel. One pixel may have the following number formats:
@@ -216,6 +221,7 @@ One texture also have a particular pixel format, which is identified by `Format`
     1. `float`: floating-point number.
 
 For exmaple:
+
 1. `Format::rgba8_unorm` represents a 4-channels pixel format, where every channel stores one 8-bit unsigned integer that will be mapped to [0.0, 1.0] in shader.
 1. `Format::rgba16_float` represents a 4-channels pixel format, where every channel stores one 16-bit floating-point number (half-precision).
 1. `Format::rg32_float` represents a 2-channels pixel format, where every channel stores one 32-bit floating-point number (single-precision).

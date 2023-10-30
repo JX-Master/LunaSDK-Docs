@@ -58,7 +58,7 @@ Rasterizers are configured by the `rasterizer_state` property of `GraphicsPipeli
     $$bias(depth) = clamp(C_{b} * E + C_{s} * slope(depth), -C_{clamp}, C_{clamp})$$
 
     where:
-    
+
     1. $depth$ is the original depth of the pixel.
     1. $C_{b}$ is `depth_bias` converted to `f32`.
     1. $E$ is a small number that represents the minimum representable value > 0 in the depth stencil attachment format converted to `f32`:
@@ -73,6 +73,7 @@ Rasterizers are configured by the `rasterizer_state` property of `GraphicsPipeli
 
 #### Viewports and scissor rects
 Viewports defines **viewport transformation**, which transforms positions in NDC to screen coordinates. Every viewport defines six properties: `top_left_x`, `top_left_y`, `width`, `height`, `min_depth` and `max_depth`.
+
 1. `top_left_x` and `top_left_y` defines the position, in pixels, of the top-left point of the viewport relative to the top-left corner of the frame buffer.
 1. `width` and `height` defines the size, in pixels, of the viewport.
 1. `min_depth` and `max_depth` defines the valid depth value of outputted vertex position in NDC. Both value must in range [`0.0`, `1.0`], but `min_depth` can be equal to or greater than `max_depth`. Any pixel whose depth value go beyond this range will be clamped to the range.
@@ -86,11 +87,13 @@ $$Y_{screen} = Y_{top\_left} + (-P_y + 1.0) / 2.0 * height$$
 $$Z_{screen} = min_depth + P_z * (max_depth - min_depth)$$
 
 where:
+
 1. $P$ is the vertex position in NDC.
 1. $X_{screen}$ and $Y_{screen}& are the screen-space position of the vertex in pixels, relative to the top-left corder of the frame buffer.
 1. $Z_{screen}$ is the depth value written to the depth buffer.
 
 After viewport transformation, scissor culling will be performed to discard pixels that go outside of the scissor rect. The scissor rect is defined by one `RectI` structure, while has the following components:
+
 1. `offset_x`: The X offset, in pixels, of the scissor rect relative to the top-left corner of the frame buffer.
 1. `offset_y`: The Y offset, in pixels, of the scissor rect relative to the top-left corner of the frame buffer.
 1. `width`: The width, in pixels, of the scissor rect.
@@ -199,6 +202,7 @@ if(stencil_enable)
 
 ### Color blending
 Color blending stage performs color blending between pixel colors outputted from pixel shader and pixel colors on the color attachment, and writes the blending result to the color attachment. Color blending stage is configured by `blend_state` for `GraphicsPipelineStateDesc`, which has the following properties:
+
 1. `attachments`: Specify the color blending settings for every color attachment. Every attachment blend setting is described by `AttachmentBlendDesc`, which has the following properties:
     1. `blend_enable`: Whether to enable blending for this attachment. Disabling blending behaves the same as setting `blend_op_color` to `add` and setting the source and destination blending factor for both color and alpha components to 1.0 and 0.0.
     1. `src_blend_color`: The blend factor for source color components (RGB).
@@ -218,6 +222,7 @@ $$C_{final} = (C_{src})\Delta_{color}(C_{dst})$$
 $$A_{final} = (A_{src})\Delta_{alpha}(A_{dst})$$
 
 where:
+
 1. $C_{src}$ is the blend factor specified by `src_blend_color`.
 1. $C_{dst}$ is the blend factor specified by `dst_blend_color`.
 1. $\Delta_{color}$ is the blend operation specified by `blend_op_color`.
@@ -229,6 +234,7 @@ where:
 Multisample anti-aliasing (MSAA) is a hardware-accelerated anti-aliasing technique that relieve geometry aliasing artifacts. When MSAA is enabled, the render pipeline generates `sample_count` sub-pixels for every pixel, and performs rasterization, depth stencil test and color blending on every sub-pixel instead of every pixel. The pixel shader, however, is invoked only once for every pixel, and all sub-pixels in that pixel get the same output value from pixel shader.
 
 To enable MSAA for one render pipeline, performs the following steps:
+
 1. Use color and depth attachments with `sample_count` of `TextureDesc` greater than `1`.
 1. Set `sample_count` of `GraphicsPipelineStateDesc` to a value greater than `1`. 
 1. Set `sample_count` of `RenderPassDesc` to a value greater than `1`.
@@ -236,25 +242,23 @@ To enable MSAA for one render pipeline, performs the following steps:
 The sample count number must be equal for `TextureDesc`, `GraphicsPipelineStateDesc` and `RenderPassDesc` used in one MSAA draw.
 
 #### Coverage mask
- For every pixel in every primitive pixel list, the render pipeline generates a **coverage mask** that records the coverage result of every sub-pixel of that pixel. Every sub-pixel in one pixel takes one bit of the coverage mask, and that bit will be set to `1` if the sub-pixel passes coverage test and depth stencil test, and `0` otherwise. If **alpha to coverage** is enabled, the render pipeline will generate another coverage mask based on the alpha value of the first shader output color. The coverage mask generation algorithm is platform-specific, but should unset all bit if alpha is 0.0, set all bits if alpha is 1.0, and set a number of bits proportionally to the value of the floating-point input. That coverage mask will be bitwise-AND combined with the original coverage mask to compute the final coverage mask. The final coverage mask is used in color blending to determine which sub-pixels should be written back to the color and depth stencil buffer.
+For every pixel in every primitive pixel list, the render pipeline generates a **coverage mask** thatrecords the coverage result of every sub-pixel of that pixel. Every sub-pixel in one pixel takes one bitof the coverage mask, and that bit will be set to `1` if the sub-pixel passes coverage test and depthstencil test, and `0` otherwise. If **alpha to coverage** is enabled, the render pipeline will generateanother coverage mask based on the alpha value of the first shader output color. The coverage maskgeneration algorithm is platform-specific, but should unset all bit if alpha is 0.0, set all bits ifalpha is 1.0, and set a number of bits proportionally to the value of the floating-point input. Thatcoverage mask will be bitwise-AND combined with the original coverage mask to compute the final coveragemask. The final coverage mask is used in color blending to determine which sub-pixels should be writtenback to the color and depth stencil buffer.
 
- ## Compute pipeline
- Compute pipelines are used to perform arbitrary compute tasks, which is somethings referred as general-purpose GPU (GPGPU) programming. The compute pipeline only includes one stage: the compute shader stage, which runs user-defined compute tasks. Compute pipelines configurations are done by filling `ComputePipelineStateDesc` descriptor, then call `IDevice::new_compute_pipeline_state(desc)` with the descriptor to create a compute pipeline state object. When recording compute commands, call `ICommandBuffer::set_compute_pipeline_state(pso)` to bind the pipeline state object to the pipeline, then all configurations in the pipeline state object will apply to succeeding dispatch commands until another PSO is bind, or until the render pass is ended.
+## Compute pipeline
+Compute pipelines are used to perform arbitrary compute tasks, which is somethings referred asgeneral-purpose GPU (GPGPU) programming. The compute pipeline only includes one stage: the computeshader stage, which runs user-defined compute tasks. Compute pipelines configurations are done byfilling `ComputePipelineStateDesc` descriptor, then call `IDevice::new_compute_pipeline_state(desc)`with the descriptor to create a compute pipeline state object. When recording compute commands, call`ICommandBuffer::set_compute_pipeline_state(pso)` to bind the pipeline state object to the pipeline,then all configurations in the pipeline state object will apply to succeeding dispatch commands untilanother PSO is bind, or until the render pass is ended.
 
- ## Shaders
- Shaders are user-defined functions that can be invoked by GPU to perform certain tasks. In LunaSDK, we have the following shaders:
+## Shaders
+Shaders are user-defined functions that can be invoked by GPU to perform certain tasks. In LunaSDK, wehave the following shaders:
 
- * Vertex shader, set by `GraphicsPipelineStateDesc::vs`.
- * Pixel shader, set by `GraphicsPipelineStateDesc::ps`.
- * Compute shader, set by `ComputePipelineStateDesc::cs`.
-
- All shaders are specified by providing shader binary data to the pipeline state descriptor when creating the pipeline state. The shader binary data has different formats in different backends:
-
- * Direct3D 12 accepts DXBC (produced by `D3DCompile` or `fxc`) or DXIL (produced by `dxc`) shader binary code.
- * Vulkan accepts SPIR-V shader binary code produced by `glslc` or `dxc`.
- * Metal is a little bit complicated. Since some settings (like the entry point of the shader) are not recorded in the shader code, but in application side, we need to append additional parameters to the shader data. Metal accepts a JSON string that indicates one object with the following properties:
+* Vertex shader, set by `GraphicsPipelineStateDesc::vs`.
+* Pixel shader, set by `GraphicsPipelineStateDesc::ps`.
+* Compute shader, set by `ComputePipelineStateDesc::cs`.
+All shaders are specified by providing shader binary data to the pipeline state descriptor when creatingthe pipeline state. The shader binary data has different formats in different backends:
+* Direct3D 12 accepts DXBC (produced by `D3DCompile` or `fxc`) or DXIL (produced by `dxc`) shader binarycode.
+* Vulkan accepts SPIR-V shader binary code produced by `glslc` or `dxc`.
+* Metal is a little bit complicated. Since some settings (like the entry point of the shader) are notrecorded in the shader code, but in application side, we need to append additional parameters to theshader data. Metal accepts a JSON string that indicates one object with the following properties:
     * `source`(String): The MSL shader source code.
     * `entry_point`(String): The name of the entry point function of the shader.
     * `numthreads`(Array of integer): For compute shaders, specify the number of threads per thread group.
-
+    
     Currently, Metal shaders are compiled during the pipeline object creation process.

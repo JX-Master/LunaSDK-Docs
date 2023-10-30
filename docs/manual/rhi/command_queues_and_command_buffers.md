@@ -13,6 +13,7 @@ RHI employs a concurrent command recording and submission model, such model redu
 ![Command Queue](./command_queue.svg)
 
 One device may have one or multiple command queues. Command queues are initialized when creating the device, and can be used for submitting commands right after the device is created. Command queues have three types: **graphics**, **compute** and **copy**:
+
 * Graphics command queues can accept graphics, compute and copy commands.
 * Compute command queues can accept compute and copy commands.
 * Copy command queues accepts only copy commands. 

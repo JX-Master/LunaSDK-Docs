@@ -64,6 +64,7 @@ The texture view type of one texture view must be compatible with the viewing te
 `TextureViewDesc::mip_slice` and `TextureViewDesc::mip_size` specifies the mip range $[mip\_slice, mip\_slice + mip\_size)$ that will be bind to the pipeline. After specified, `TextureViewDesc::mip_slice` becomes the mip level 0 in shader code. `TextureViewDesc::mip_size` must be `1` for `tex2dms` and `tex2dmsarray` views, and views used for read-write texture descriptors. `TextureViewDesc::mip_size` may be `U32_MAX`, which tells the system to use all available mips since `TextureViewDesc::mip_slice`.
 
 `TextureViewDesc::array_slice` and `TextureViewDesc::array_size` specifies the array range $[array\_slice, array\_slice + array\_size)$ that will be bind to the pipeline. After specified, `TextureViewDesc::array_slice` becomes the first array element in shader code. `TextureViewDesc::array_slice` must be `0` for non-array texture views, `TextureViewDesc::array_size` must be:
+
 * `1` for `tex1d`, `tex2d`, `tex2dms` and `tex3d` views.
 * `6` for `texcube` views.
 * times of `6` for `texcubearray` views.
@@ -72,6 +73,7 @@ The texture view type of one texture view must be compatible with the viewing te
 
 #### Static constructors
 The user may use the following static constructors to declare texture views of different types quickly:
+
 * `TextureViewDesc::tex1d(texture, format, mip_slice, mip_size)`
 * `TextureViewDesc::tex1darray(texture, format, mip_slice, mip_size, array_slice, array_size)`
 * `TextureViewDesc::tex2d(texture, format, mip_slice, mip_size)`

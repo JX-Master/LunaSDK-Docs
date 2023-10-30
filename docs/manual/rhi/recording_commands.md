@@ -44,6 +44,7 @@ All pipeline states must be valid only in a pass scope, when one pass is closed,
 
 ### Render commands
 Render commands are commands used for rendering tasks, they can only be recorded between `ICommandBuffer::begin_render_pass(desc)` and `ICommandBuffer::end_render_pass()`. Render commands have three types: graphics pipeline setup commands, draw commands and occlusion query commands. The following commands are graphics pipeline setup commands:
+
 1. `ICommandBuffer::set_graphics_pipeline_layout(pipeline_layout)`
 1. `ICommandBuffer::set_graphics_pipeline_state(pso)`
 1. `ICommandBuffer::set_vertex_buffers(start_slot, views)`
@@ -58,12 +59,14 @@ Render commands are commands used for rendering tasks, they can only be recorded
 1. `ICommandBuffer::set_stencil_ref(stencil_ref)`
 
 The following commands are draw commands:
+
 1. `ICommandBuffer::draw(vertex_count, start_vertex_location)`
 1. `ICommandBuffer::draw_indexed(index_count, start_index_location, base_vertex_location)`
 1. `ICommandBuffer::draw_instanced(vertex_count_per_instance, instance_count, start_vertex_location, start_instance_location)`
 1. `ICommandBuffer::draw_indexed_instanced(index_count_per_instance, instance_count, start_index_location, base_vertex_location, start_instance_location)`
 
 The following commands are occlusion query commands:
+
 1. `ICommandBuffer::begin_occlusion_query(mode, index)`
 1. `ICommandBuffer::end_occlusion_query(index)`
 
