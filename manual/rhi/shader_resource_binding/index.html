@@ -281,22 +281,26 @@
 <p><code>TextureViewDesc::format</code> tells the pipeline how to interpret data for one texture. When supported by the backend, one texture view may specify one format that is different than the native format of the binding texture, which will let the driver to reinterpret texture data when accessing textures. If format reinterpreting is not supported by the driver, the user must specify the same format for both texture and texture view. The texture view format can be <code>Format::unknown</code>, which tells the system to use the binding texture's native format as the texture view format.</p>
 <h4 id="mip-and-array-slice">Mip and array slice</h4>
 <p><code>TextureViewDesc::mip_slice</code> and <code>TextureViewDesc::mip_size</code> specifies the mip range <script type="math/tex">[mip\_slice, mip\_slice + mip\_size)</script> that will be bind to the pipeline. After specified, <code>TextureViewDesc::mip_slice</code> becomes the mip level 0 in shader code. <code>TextureViewDesc::mip_size</code> must be <code>1</code> for <code>tex2dms</code> and <code>tex2dmsarray</code> views, and views used for read-write texture descriptors. <code>TextureViewDesc::mip_size</code> may be <code>U32_MAX</code>, which tells the system to use all available mips since <code>TextureViewDesc::mip_slice</code>.</p>
-<p><code>TextureViewDesc::array_slice</code> and <code>TextureViewDesc::array_size</code> specifies the array range <script type="math/tex">[array\_slice, array\_slice + array\_size)</script> that will be bind to the pipeline. After specified, <code>TextureViewDesc::array_slice</code> becomes the first array element in shader code. <code>TextureViewDesc::array_slice</code> must be <code>0</code> for non-array texture views, <code>TextureViewDesc::array_size</code> must be:
-* <code>1</code> for <code>tex1d</code>, <code>tex2d</code>, <code>tex2dms</code> and <code>tex3d</code> views.
-* <code>6</code> for <code>texcube</code> views.
-* times of <code>6</code> for <code>texcubearray</code> views.</p>
+<p><code>TextureViewDesc::array_slice</code> and <code>TextureViewDesc::array_size</code> specifies the array range <script type="math/tex">[array\_slice, array\_slice + array\_size)</script> that will be bind to the pipeline. After specified, <code>TextureViewDesc::array_slice</code> becomes the first array element in shader code. <code>TextureViewDesc::array_slice</code> must be <code>0</code> for non-array texture views, <code>TextureViewDesc::array_size</code> must be:</p>
+<ul>
+<li><code>1</code> for <code>tex1d</code>, <code>tex2d</code>, <code>tex2dms</code> and <code>tex3d</code> views.</li>
+<li><code>6</code> for <code>texcube</code> views.</li>
+<li>times of <code>6</code> for <code>texcubearray</code> views.</li>
+</ul>
 <p><code>TextureViewDesc::array_size</code> may be <code>U32_MAX</code>, which tells the system to use all available array elements since <code>TextureViewDesc::array_slice</code>.</p>
 <h4 id="static-constructors">Static constructors</h4>
-<p>The user may use the following static constructors to declare texture views of different types quickly:
-* <code>TextureViewDesc::tex1d(texture, format, mip_slice, mip_size)</code>
-* <code>TextureViewDesc::tex1darray(texture, format, mip_slice, mip_size, array_slice, array_size)</code>
-* <code>TextureViewDesc::tex2d(texture, format, mip_slice, mip_size)</code>
-* <code>TextureViewDesc::tex2darray(texture, format, mip_slice, mip_size, array_slice, array_size)</code>
-* <code>TextureViewDesc::tex2dms(texture, format)</code>
-* <code>TextureViewDesc::tex2dmsarray(texture, format, array_slice, array_size)</code>
-* <code>TextureViewDesc::tex3d(texture, format, mip_slice, mip_size)</code>
-* <code>TextureViewDesc::texcube(texture, format, mip_slice, mip_size)</code>
-* <code>TextureViewDesc::texcubearray(texture, format, mip_slice, mip_size, array_slice, array_size)</code></p>
+<p>The user may use the following static constructors to declare texture views of different types quickly:</p>
+<ul>
+<li><code>TextureViewDesc::tex1d(texture, format, mip_slice, mip_size)</code></li>
+<li><code>TextureViewDesc::tex1darray(texture, format, mip_slice, mip_size, array_slice, array_size)</code></li>
+<li><code>TextureViewDesc::tex2d(texture, format, mip_slice, mip_size)</code></li>
+<li><code>TextureViewDesc::tex2darray(texture, format, mip_slice, mip_size, array_slice, array_size)</code></li>
+<li><code>TextureViewDesc::tex2dms(texture, format)</code></li>
+<li><code>TextureViewDesc::tex2dmsarray(texture, format, array_slice, array_size)</code></li>
+<li><code>TextureViewDesc::tex3d(texture, format, mip_slice, mip_size)</code></li>
+<li><code>TextureViewDesc::texcube(texture, format, mip_slice, mip_size)</code></li>
+<li><code>TextureViewDesc::texcubearray(texture, format, mip_slice, mip_size, array_slice, array_size)</code></li>
+</ul>
 <h3 id="sampler-descriptor">Sampler descriptor</h3>
 <p>For descriptors with <code>DescriptorType::sampler</code> type, sampler descriptors (<code>SamplerDesc</code>) are used to update descriptors' data. One sampler descriptor describes sampling configurations that shaders can use to sample textures.</p>
 <h2 id="pipeline-layouts">Pipeline layouts</h2>

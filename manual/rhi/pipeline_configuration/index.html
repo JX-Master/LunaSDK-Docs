@@ -129,6 +129,10 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#compute-pipeline">Compute pipeline</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#shaders">Shaders</a>
+    </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../recording_commands/">Recording Commands</a>
@@ -241,10 +245,12 @@
 </li>
 </ol>
 <h4 id="viewports-and-scissor-rects">Viewports and scissor rects</h4>
-<p>Viewports defines <strong>viewport transformation</strong>, which transforms positions in NDC to screen coordinates. Every viewport defines six properties: <code>top_left_x</code>, <code>top_left_y</code>, <code>width</code>, <code>height</code>, <code>min_depth</code> and <code>max_depth</code>.
-1. <code>top_left_x</code> and <code>top_left_y</code> defines the position, in pixels, of the top-left point of the viewport relative to the top-left corner of the frame buffer.
-1. <code>width</code> and <code>height</code> defines the size, in pixels, of the viewport.
-1. <code>min_depth</code> and <code>max_depth</code> defines the valid depth value of outputted vertex position in NDC. Both value must in range [<code>0.0</code>, <code>1.0</code>], but <code>min_depth</code> can be equal to or greater than <code>max_depth</code>. Any pixel whose depth value go beyond this range will be clamped to the range.</p>
+<p>Viewports defines <strong>viewport transformation</strong>, which transforms positions in NDC to screen coordinates. Every viewport defines six properties: <code>top_left_x</code>, <code>top_left_y</code>, <code>width</code>, <code>height</code>, <code>min_depth</code> and <code>max_depth</code>.</p>
+<ol>
+<li><code>top_left_x</code> and <code>top_left_y</code> defines the position, in pixels, of the top-left point of the viewport relative to the top-left corner of the frame buffer.</li>
+<li><code>width</code> and <code>height</code> defines the size, in pixels, of the viewport.</li>
+<li><code>min_depth</code> and <code>max_depth</code> defines the valid depth value of outputted vertex position in NDC. Both value must in range [<code>0.0</code>, <code>1.0</code>], but <code>min_depth</code> can be equal to or greater than <code>max_depth</code>. Any pixel whose depth value go beyond this range will be clamped to the range.</li>
+</ol>
 <p>The viewport transformation is performed using the following formulas:</p>
 <p>
 <script type="math/tex; mode=display">X_{screen} = X_{top\_left} + (P_x + 1.0) / 2.0 * width</script>
@@ -255,15 +261,22 @@
 <p>
 <script type="math/tex; mode=display">Z_{screen} = min_depth + P_z * (max_depth - min_depth)</script>
 </p>
-<p>where:
-1. <script type="math/tex">P</script> is the vertex position in NDC.
-1. <script type="math/tex">X_{screen}</script> and <script type="math/tex">Y_{screen}& are the screen-space position of the vertex in pixels, relative to the top-left corder of the frame buffer.
-1. </script>Z_{screen}$ is the depth value written to the depth buffer.</p>
-<p>After viewport transformation, scissor culling will be performed to discard pixels that go outside of the scissor rect. The scissor rect is defined by one <code>RectI</code> structure, while has the following components:
-1. <code>offset_x</code>: The X offset, in pixels, of the scissor rect relative to the top-left corner of the frame buffer.
-1. <code>offset_y</code>: The Y offset, in pixels, of the scissor rect relative to the top-left corner of the frame buffer.
-1. <code>width</code>: The width, in pixels, of the scissor rect.
-1. <code>height</code>: The height, in pixels, of the scissor rect.</p>
+<p>where:</p>
+<ol>
+<li>
+<script type="math/tex">P</script> is the vertex position in NDC.</li>
+<li>
+<script type="math/tex">X_{screen}</script> and $Y_{screen}&amp; are the screen-space position of the vertex in pixels, relative to the top-left corder of the frame buffer.</li>
+<li>
+<script type="math/tex">Z_{screen}</script> is the depth value written to the depth buffer.</li>
+</ol>
+<p>After viewport transformation, scissor culling will be performed to discard pixels that go outside of the scissor rect. The scissor rect is defined by one <code>RectI</code> structure, while has the following components:</p>
+<ol>
+<li><code>offset_x</code>: The X offset, in pixels, of the scissor rect relative to the top-left corner of the frame buffer.</li>
+<li><code>offset_y</code>: The Y offset, in pixels, of the scissor rect relative to the top-left corner of the frame buffer.</li>
+<li><code>width</code>: The width, in pixels, of the scissor rect.</li>
+<li><code>height</code>: The height, in pixels, of the scissor rect.</li>
+</ol>
 <p>Viewports and scissor rects are set dynamically in command recording by <code>ICommandBuffer::set_viewport(viewport)</code> and <code>ICommandBuffer::set_scissor_rect(rect)</code>. The user may also set multiple viewports and scissor rects for one draw call by calling <code>ICommandBuffer::set_viewports(viewports)</code> and <code>ICommandBuffer::set_scissor_rects(rects)</code>, in such case, the viewport array and scissor rect array must have the same size so that every viewport will have one corresponding scissor rect. Every primitive generated by the rasterizer can only be sent to one viewport, the user can use <code>SV_ViewportArrayIndex</code> (<code>uint</code>) vertex shader output semantics to select which viewport to use. All vertices in the same primitive should choose the same viewport, or the behavior is not defined. If <code>SV_ViewportArrayIndex</code> is not specified, the first viewport and scissor rect will be used.</p>
 <h3 id="pixel-shader">Pixel shader</h3>
 <p>Pixel shaders (or fragment shaders in some graphic APIs) are user-defined functions that are called on every pixel outputted from rasterizer whose coverage value is greater than zero. One pixel shader must have one output attribute with <code>SV_COLOR{N}</code> semantic for every color attachment of the render pass with correct type regarding to the format of the corresponding color attachment. Attribute values outputted from the vertex shader will be interpolated into every pixel and used as input attribute value of pixel shaders.</p>
@@ -362,18 +375,22 @@ if(stencil_enable)
 }
 </code></pre>
 <h3 id="color-blending">Color blending</h3>
-<p>Color blending stage performs color blending between pixel colors outputted from pixel shader and pixel colors on the color attachment, and writes the blending result to the color attachment. Color blending stage is configured by <code>blend_state</code> for <code>GraphicsPipelineStateDesc</code>, which has the following properties:
-1. <code>attachments</code>: Specify the color blending settings for every color attachment. Every attachment blend setting is described by <code>AttachmentBlendDesc</code>, which has the following properties:
-    1. <code>blend_enable</code>: Whether to enable blending for this attachment. Disabling blending behaves the same as setting <code>blend_op_color</code> to <code>add</code> and setting the source and destination blending factor for both color and alpha components to 1.0 and 0.0.
-    1. <code>src_blend_color</code>: The blend factor for source color components (RGB).
-    1. <code>dst_blend_color</code>: The  blend factor for destination color components (RGB).
-    1. <code>blend_op_color</code>: The blend operation for color components (RGB).
-    1. <code>src_blend_alpha</code>: The blend factor for the source alpha component (A).
-    1. <code>dst_blend_alpha</code>: The blend factor for the destination alpha component (A).
-    1. <code>blend_op_alpha</code>: The blend operation for the alpha component (A).
-    1. <code>render_target_write_mask</code>: Specify which color channels (RGBA) are written to the color attachment texture.
-1. <code>independent_blend_enable</code>: If this is <code>false</code>, then all color attachments should use the same color blending settings specified by the first element of <code>attachments</code> array. If this is <code>true</code>, then each color attachment uses dedicated color blending setting specified by the corresponding elements of <code>attachments</code> array. Set this to <code>false</code> may improve performance on some platforms.
-1. <code>alpha_to_coverage_enable</code>: On MSAA pipelines, if this is <code>true</code>, alpha to coverage feature is enabled. See "Multisample anti-aliasing" section for details about coverage mask. This must be <code>false</code> on non-MSAA pipelines.</p>
+<p>Color blending stage performs color blending between pixel colors outputted from pixel shader and pixel colors on the color attachment, and writes the blending result to the color attachment. Color blending stage is configured by <code>blend_state</code> for <code>GraphicsPipelineStateDesc</code>, which has the following properties:</p>
+<ol>
+<li><code>attachments</code>: Specify the color blending settings for every color attachment. Every attachment blend setting is described by <code>AttachmentBlendDesc</code>, which has the following properties:<ol>
+<li><code>blend_enable</code>: Whether to enable blending for this attachment. Disabling blending behaves the same as setting <code>blend_op_color</code> to <code>add</code> and setting the source and destination blending factor for both color and alpha components to 1.0 and 0.0.</li>
+<li><code>src_blend_color</code>: The blend factor for source color components (RGB).</li>
+<li><code>dst_blend_color</code>: The  blend factor for destination color components (RGB).</li>
+<li><code>blend_op_color</code>: The blend operation for color components (RGB).</li>
+<li><code>src_blend_alpha</code>: The blend factor for the source alpha component (A).</li>
+<li><code>dst_blend_alpha</code>: The blend factor for the destination alpha component (A).</li>
+<li><code>blend_op_alpha</code>: The blend operation for the alpha component (A).</li>
+<li><code>render_target_write_mask</code>: Specify which color channels (RGBA) are written to the color attachment texture.</li>
+</ol>
+</li>
+<li><code>independent_blend_enable</code>: If this is <code>false</code>, then all color attachments should use the same color blending settings specified by the first element of <code>attachments</code> array. If this is <code>true</code>, then each color attachment uses dedicated color blending setting specified by the corresponding elements of <code>attachments</code> array. Set this to <code>false</code> may improve performance on some platforms.</li>
+<li><code>alpha_to_coverage_enable</code>: On MSAA pipelines, if this is <code>true</code>, alpha to coverage feature is enabled. See "Multisample anti-aliasing" section for details about coverage mask. This must be <code>false</code> on non-MSAA pipelines.</li>
+</ol>
 <p>The final written color for every color attachment is computed using the following equation:</p>
 <p>
 <script type="math/tex; mode=display">C_{final} = (C_{src})\Delta_{color}(C_{dst})</script>
@@ -381,37 +398,45 @@ if(stencil_enable)
 <p>
 <script type="math/tex; mode=display">A_{final} = (A_{src})\Delta_{alpha}(A_{dst})</script>
 </p>
-<p>where:
-1. <script type="math/tex">C_{src}</script> is the blend factor specified by <code>src_blend_color</code>.
-1. <script type="math/tex">C_{dst}</script> is the blend factor specified by <code>dst_blend_color</code>.
-1. <script type="math/tex">\Delta_{color}</script> is the blend operation specified by <code>blend_op_color</code>.
-1. <script type="math/tex">A_{src}</script> is the blend factor specified by <code>src_blend_alpha</code>.
-1. <script type="math/tex">A_{dst}</script> is the blend factor specified by <code>dst_blend_alpha</code>.
-1. <script type="math/tex">\Delta_{alpha}</script> is the blend operation specified by <code>blend_op_alpha</code>.</p>
+<p>where:</p>
+<ol>
+<li>
+<script type="math/tex">C_{src}</script> is the blend factor specified by <code>src_blend_color</code>.</li>
+<li>
+<script type="math/tex">C_{dst}</script> is the blend factor specified by <code>dst_blend_color</code>.</li>
+<li>
+<script type="math/tex">\Delta_{color}</script> is the blend operation specified by <code>blend_op_color</code>.</li>
+<li>
+<script type="math/tex">A_{src}</script> is the blend factor specified by <code>src_blend_alpha</code>.</li>
+<li>
+<script type="math/tex">A_{dst}</script> is the blend factor specified by <code>dst_blend_alpha</code>.</li>
+<li>
+<script type="math/tex">\Delta_{alpha}</script> is the blend operation specified by <code>blend_op_alpha</code>.</li>
+</ol>
 <h3 id="multisample-anti-aliasing">Multisample anti-aliasing</h3>
 <p>Multisample anti-aliasing (MSAA) is a hardware-accelerated anti-aliasing technique that relieve geometry aliasing artifacts. When MSAA is enabled, the render pipeline generates <code>sample_count</code> sub-pixels for every pixel, and performs rasterization, depth stencil test and color blending on every sub-pixel instead of every pixel. The pixel shader, however, is invoked only once for every pixel, and all sub-pixels in that pixel get the same output value from pixel shader.</p>
-<p>To enable MSAA for one render pipeline, performs the following steps:
-1. Use color and depth attachments with <code>sample_count</code> of <code>TextureDesc</code> greater than <code>1</code>.
-1. Set <code>sample_count</code> of <code>GraphicsPipelineStateDesc</code> to a value greater than <code>1</code>. 
-1. Set <code>sample_count</code> of <code>RenderPassDesc</code> to a value greater than <code>1</code>.</p>
+<p>To enable MSAA for one render pipeline, performs the following steps:</p>
+<ol>
+<li>Use color and depth attachments with <code>sample_count</code> of <code>TextureDesc</code> greater than <code>1</code>.</li>
+<li>Set <code>sample_count</code> of <code>GraphicsPipelineStateDesc</code> to a value greater than <code>1</code>. </li>
+<li>Set <code>sample_count</code> of <code>RenderPassDesc</code> to a value greater than <code>1</code>.</li>
+</ol>
 <p>The sample count number must be equal for <code>TextureDesc</code>, <code>GraphicsPipelineStateDesc</code> and <code>RenderPassDesc</code> used in one MSAA draw.</p>
 <h4 id="coverage-mask">Coverage mask</h4>
-<p>For every pixel in every primitive pixel list, the render pipeline generates a <strong>coverage mask</strong> that records the coverage result of every sub-pixel of that pixel. Every sub-pixel in one pixel takes one bit of the coverage mask, and that bit will be set to <code>1</code> if the sub-pixel passes coverage test and depth stencil test, and <code>0</code> otherwise. If <strong>alpha to coverage</strong> is enabled, the render pipeline will generate another coverage mask based on the alpha value of the first shader output color. The coverage mask generation algorithm is platform-specific, but should unset all bit if alpha is 0.0, set all bits if alpha is 1.0, and set a number of bits proportionally to the value of the floating-point input. That coverage mask will be bitwise-AND combined with the original coverage mask to compute the final coverage mask. The final coverage mask is used in color blending to determine which sub-pixels should be written back to the color and depth stencil buffer.</p>
-<p>## Compute pipeline
- Compute pipelines are used to perform arbitrary compute tasks, which is somethings referred as general-purpose GPU (GPGPU) programming. The compute pipeline only includes one stage: the compute shader stage, which runs user-defined compute tasks. Compute pipelines configurations are done by filling <code>ComputePipelineStateDesc</code> descriptor, then call <code>IDevice::new_compute_pipeline_state(desc)</code> with the descriptor to create a compute pipeline state object. When recording compute commands, call <code>ICommandBuffer::set_compute_pipeline_state(pso)</code> to bind the pipeline state object to the pipeline, then all configurations in the pipeline state object will apply to succeeding dispatch commands until another PSO is bind, or until the render pass is ended.</p>
-<p>## Shaders
- Shaders are user-defined functions that can be invoked by GPU to perform certain tasks. In LunaSDK, we have the following shaders:</p>
+<p>For every pixel in every primitive pixel list, the render pipeline generates a <strong>coverage mask</strong> thatrecords the coverage result of every sub-pixel of that pixel. Every sub-pixel in one pixel takes one bitof the coverage mask, and that bit will be set to <code>1</code> if the sub-pixel passes coverage test and depthstencil test, and <code>0</code> otherwise. If <strong>alpha to coverage</strong> is enabled, the render pipeline will generateanother coverage mask based on the alpha value of the first shader output color. The coverage maskgeneration algorithm is platform-specific, but should unset all bit if alpha is 0.0, set all bits ifalpha is 1.0, and set a number of bits proportionally to the value of the floating-point input. Thatcoverage mask will be bitwise-AND combined with the original coverage mask to compute the final coveragemask. The final coverage mask is used in color blending to determine which sub-pixels should be writtenback to the color and depth stencil buffer.</p>
+<h2 id="compute-pipeline">Compute pipeline</h2>
+<p>Compute pipelines are used to perform arbitrary compute tasks, which is somethings referred asgeneral-purpose GPU (GPGPU) programming. The compute pipeline only includes one stage: the computeshader stage, which runs user-defined compute tasks. Compute pipelines configurations are done byfilling <code>ComputePipelineStateDesc</code> descriptor, then call <code>IDevice::new_compute_pipeline_state(desc)</code>with the descriptor to create a compute pipeline state object. When recording compute commands, call<code>ICommandBuffer::set_compute_pipeline_state(pso)</code> to bind the pipeline state object to the pipeline,then all configurations in the pipeline state object will apply to succeeding dispatch commands untilanother PSO is bind, or until the render pass is ended.</p>
+<h2 id="shaders">Shaders</h2>
+<p>Shaders are user-defined functions that can be invoked by GPU to perform certain tasks. In LunaSDK, wehave the following shaders:</p>
 <ul>
 <li>Vertex shader, set by <code>GraphicsPipelineStateDesc::vs</code>.</li>
 <li>Pixel shader, set by <code>GraphicsPipelineStateDesc::ps</code>.</li>
-<li>Compute shader, set by <code>ComputePipelineStateDesc::cs</code>.</li>
-</ul>
-<p>All shaders are specified by providing shader binary data to the pipeline state descriptor when creating the pipeline state. The shader binary data has different formats in different backends:</p>
-<ul>
-<li>Direct3D 12 accepts DXBC (produced by <code>D3DCompile</code> or <code>fxc</code>) or DXIL (produced by <code>dxc</code>) shader binary code.</li>
+<li>Compute shader, set by <code>ComputePipelineStateDesc::cs</code>.
+All shaders are specified by providing shader binary data to the pipeline state descriptor when creatingthe pipeline state. The shader binary data has different formats in different backends:</li>
+<li>Direct3D 12 accepts DXBC (produced by <code>D3DCompile</code> or <code>fxc</code>) or DXIL (produced by <code>dxc</code>) shader binarycode.</li>
 <li>Vulkan accepts SPIR-V shader binary code produced by <code>glslc</code> or <code>dxc</code>.</li>
 <li>
-<p>Metal is a little bit complicated. Since some settings (like the entry point of the shader) are not recorded in the shader code, but in application side, we need to append additional parameters to the shader data. Metal accepts a JSON string that indicates one object with the following properties:</p>
+<p>Metal is a little bit complicated. Since some settings (like the entry point of the shader) are notrecorded in the shader code, but in application side, we need to append additional parameters to theshader data. Metal accepts a JSON string that indicates one object with the following properties:</p>
 <ul>
 <li><code>source</code>(String): The MSL shader source code.</li>
 <li><code>entry_point</code>(String): The name of the entry point function of the shader.</li>

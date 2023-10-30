@@ -162,10 +162,12 @@
 <h2 id="command-queues">Command Queues</h2>
 <p><strong>Commands queues</strong> are FIFO (first-in-first-out) queues used by the application to submit commands to GPU. The appliaction can submit commands to one specific queue, which pushes such commands to the back of the queue; GPU engine will pop commands from the front of the queue, and executes such commands in the order they are submitted to the queue.</p>
 <p><img alt="Command Queue" src="../command_queue.svg" /></p>
-<p>One device may have one or multiple command queues. Command queues are initialized when creating the device, and can be used for submitting commands right after the device is created. Command queues have three types: <strong>graphics</strong>, <strong>compute</strong> and <strong>copy</strong>:
-* Graphics command queues can accept graphics, compute and copy commands.
-* Compute command queues can accept compute and copy commands.
-* Copy command queues accepts only copy commands. </p>
+<p>One device may have one or multiple command queues. Command queues are initialized when creating the device, and can be used for submitting commands right after the device is created. Command queues have three types: <strong>graphics</strong>, <strong>compute</strong> and <strong>copy</strong>:</p>
+<ul>
+<li>Graphics command queues can accept graphics, compute and copy commands.</li>
+<li>Compute command queues can accept compute and copy commands.</li>
+<li>Copy command queues accepts only copy commands. </li>
+</ul>
 <p>Every device has at least one graphics command queue that accepts all kinds of commands, some GPUs may have additional compute and copy engine that can run compute and copy commands concurrently with graphics commands. On such devices, the user can submit compute and copy commands to dedicated compute and copy queues to reduce graphics command queue workload and improve perfomance.</p>
 <p><img alt="Multiple Command Queues" src="../multiple_command_queues.svg" /></p>
 <p>The user can call <code>IDevice::get_num_command_queues</code> to fetch the number of command queues present on the device, then call <code>IDevice::get_command_queue_desc(command_queue_index)</code> to fetch a description of each command queue. On other APIs of RHI, the user can use the same index passed to <code>IDevice::get_command_queue_desc(command_queue_index)</code> to identify the specific command queue.</p>

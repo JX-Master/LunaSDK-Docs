@@ -180,20 +180,24 @@
 <p>The local memory type is allocated on memory that is visible only to GPU. Such memory gains maximum GPU bandwidth, but cannot be accessed by CPU. On platforms with non-uniform memory architecture (NUMA), the local memory will be allocated on video memory, which cannot be accessed by CPU; in a platform with uniform memory architecture (UMA), the local memory will be allocated on system memory. While it is technically possible for CPU to access local memory on UMA, preventing such access gives the hardware and driver more rooms for optimizing GPU access efficiency.</p>
 <p>The upload memory type is allocated on system memory that is optimized for CPU writing. GPU cannot write to this memory and GPU reading from upload memory is slow. On NUMA platfroms, reading data from upload memory from GPU requires data transmission through PCI-Express bus, which is much slower than reading data in local memory from GPU. We recommend using upload memory only for uploading data to local memory or reading the data only once per CPU write.</p>
 <p>The readback memory type is allocated on system memory that is optimized for CPU reading. GPU writing to read back memory  is slow, and the only operation allowed for GPU is to copy data to the memory. On NUMA platfroms, writing data to readback memory from GPU requires data transmission through PCI-Express bus, which is a slow operation.</p>
-<p>The user should choose the suitable memory type based on the use situation. Here are some basic principles:
-1. If you need to create texture resources, use local memory. If you need to upload texture data from CPU side, use upload memory to copy data to the local memory.
-1. If you don't need to access resource data from CPU, use local memory.
-1. If you only need to upload data from CPU side once, like setting the initial data for static vertex and index buffers, use one local memory to store the data, then use one temporary upload memory to copy data to the local memory.
-1. If you need to upload data from CPU side multiple times, but the data is read by GPU only once per CPU update, use upload memory.
-1. If you need to upload data from CPU side multiple times, and the data will be read by GPU multiple times per CPU update, use one local memory resource for GPU access and one upload memory resource for CPU access, and copy data between two resources when needed.
-1. If you need to read resource data from CPU side, use readback memory.</p>
+<p>The user should choose the suitable memory type based on the use situation. Here are some basic principles:</p>
+<ol>
+<li>If you need to create texture resources, use local memory. If you need to upload texture data from CPU side, use upload memory to copy data to the local memory.</li>
+<li>If you don't need to access resource data from CPU, use local memory.</li>
+<li>If you only need to upload data from CPU side once, like setting the initial data for static vertex and index buffers, use one local memory to store the data, then use one temporary upload memory to copy data to the local memory.</li>
+<li>If you need to upload data from CPU side multiple times, but the data is read by GPU only once per CPU update, use upload memory.</li>
+<li>If you need to upload data from CPU side multiple times, and the data will be read by GPU multiple times per CPU update, use one local memory resource for GPU access and one upload memory resource for CPU access, and copy data between two resources when needed.</li>
+<li>If you need to read resource data from CPU side, use readback memory.</li>
+</ol>
 <h2 id="buffers">Buffers</h2>
-<p>Buffers are memory blocks that can store arbitrary binary data. Typically, you use buffers to:
-1. Set uniform parameters that can be read by shaders using <strong>uniform buffers</strong>.
-1. Store mesh geometries for rendering using <strong>vertex buffers</strong> and <strong>index buffers</strong>.
-1. Pass array of structures (like model transform matrices, material parameters, etc.) using <strong>structured buffers</strong>.
-1. Copy data between host memory and device-local memory using <strong>upload buffers</strong> and <strong>readback buffers</strong>.
-1. Record GPU-generated draw and compute commands using <strong>indirect buffers</strong>.</p>
+<p>Buffers are memory blocks that can store arbitrary binary data. Typically, you use buffers to:</p>
+<ol>
+<li>Set uniform parameters that can be read by shaders using <strong>uniform buffers</strong>.</li>
+<li>Store mesh geometries for rendering using <strong>vertex buffers</strong> and <strong>index buffers</strong>.</li>
+<li>Pass array of structures (like model transform matrices, material parameters, etc.) using <strong>structured buffers</strong>.</li>
+<li>Copy data between host memory and device-local memory using <strong>upload buffers</strong> and <strong>readback buffers</strong>.</li>
+<li>Record GPU-generated draw and compute commands using <strong>indirect buffers</strong>.</li>
+</ol>
 <p>Buffers are described by <code>BufferDesc</code>, and are created by <code>IDevice::new_buffer(memory_type, desc)</code>. When creating buffers, the user must specify the memory type of the buffer, and one <code>BufferDesc</code> descriptor for the buffer. Properties for one buffer includes the size of the buffer and possible usages of the buffer. If one buffer is created using <strong>upload</strong> or <strong>readback</strong> memory type, the application can fetch one pointer to the buffer memory by calling <code>IBuffer::map</code>, and must release the pointer when the application no longer needs access to the buffer memory by calling <code>IBuffer::unmap</code>.</p>
 <h3 id="buffer-usages">Buffer usages</h3>
 <p>Buffer usages specify the possible usages of one buffer. One buffer can have multiple usages, which can be specified using a bitwise OR combination of multiple <code>BufferUsageFlag</code> flags. The buffer usages include:</p>
@@ -313,11 +317,13 @@ WriteDescriptorSet write = WriteDescriptorSet::read_buffer_view(MY_STRUCTURED_BU
 luexp(ds-&gt;update_descriptors({&amp;write, 1}));
 </code></pre>
 <h2 id="textures">Textures</h2>
-<p>Textures are memory blocks that store 1D, 2D or 3D image data, and support hardware data sampling using samplers. Typically, you use textures to:
-1. Store images loaded from files to use them in rendering or computing.
-1. Store the render result of one render pass.
-1. Store the depth information of the scene, which will be used in depth and stencil testing.
-1. Store the intermediate render result in a multi-pass render pipeline.</p>
+<p>Textures are memory blocks that store 1D, 2D or 3D image data, and support hardware data sampling using samplers. Typically, you use textures to:</p>
+<ol>
+<li>Store images loaded from files to use them in rendering or computing.</li>
+<li>Store the render result of one render pass.</li>
+<li>Store the depth information of the scene, which will be used in depth and stencil testing.</li>
+<li>Store the intermediate render result in a multi-pass render pipeline.</li>
+</ol>
 <p>Textures are described by <code>TextureDesc</code>, and are created by <code>IDevice::new_texture(memory_type, desc, optimized_clear_value)</code>. When creating textures, the user must specify one <code>TextureDesc</code> descriptor for the texture. Currently, textures can only be created in local memory, so <code>memory_type</code> should always by <code>MemoryType::local</code> when creating textures. The user can also specify one optional optimized clear value for one texture, which <em>may</em> improve performance on some hardware when the texture is cleared using the same clear value as the specified.</p>
 <h3 id="texture-usages">Texture usages</h3>
 <p>Texture usages specify the possible usages of one texture. One texture can have multiple usages, which can be specified using a bitwise OR combination of multiple <code>TextureUsageFlag</code> flags. The texture usages include:</p>
@@ -338,24 +344,32 @@ luexp(ds-&gt;update_descriptors({&amp;write, 1}));
 <li><code>TextureType::tex2d</code>: 2-dimensional texture, which represents a 2D matrix of pixels.</li>
 <li><code>TextureType::tex3d</code>: 3-dimensional texture, which represents a 3D matrix of pixels.</li>
 </ol>
-<p>Textures have three dimensions of sizes: <strong>width</strong>, <strong>height</strong> and <strong>depth</strong>:
-1. For 1D textures, only width is available, height and depth must always be 1.
-1. For 2D textures, both width and height are available, depth must always be 1.
-1. For 3D textures, width, height and depth are available.</p>
+<p>Textures have three dimensions of sizes: <strong>width</strong>, <strong>height</strong> and <strong>depth</strong>:</p>
+<ol>
+<li>For 1D textures, only width is available, height and depth must always be 1.</li>
+<li>For 2D textures, both width and height are available, depth must always be 1.</li>
+<li>For 3D textures, width, height and depth are available.</li>
+</ol>
 <h3 id="pixel-format">Pixel format</h3>
-<p>One texture also have a particular pixel format, which is identified by <code>Format</code> enumeration. Most formats are formed by a combination of the following three parts:
-1. Number of color channels. One pixel may have one to four color channels, identified as <code>r</code>, <code>g</code>, <code>b</code> and <code>a</code>.
-1. The bit width of every color channel. One pixel may have 8 to 64 bits per channel.
-1. The number format of every color channel. One pixel may have the following number formats:
-    1. <code>uint</code>: unsigned integer.
-    1. <code>sing</code>: signed integer.
-    1. <code>unorm</code>: unsigned normalized integer that maps the unsigned integer to [0.0, 1.0]. For example, if every channel have 8 bits, then the value range [0, 255] is mapped to [0.0, 1.0] in shader automatically. 
-    1. <code>snorm</code>: signed normalized integer that maps the signed integer to [-1.0, 1.0]. For example, if every channel have 8 bits, then the value range [-128, 127] is mapped to [-1.0, 1.0] in shader automatically. 
-    1. <code>float</code>: floating-point number.</p>
-<p>For exmaple:
-1. <code>Format::rgba8_unorm</code> represents a 4-channels pixel format, where every channel stores one 8-bit unsigned integer that will be mapped to [0.0, 1.0] in shader.
-1. <code>Format::rgba16_float</code> represents a 4-channels pixel format, where every channel stores one 16-bit floating-point number (half-precision).
-1. <code>Format::rg32_float</code> represents a 2-channels pixel format, where every channel stores one 32-bit floating-point number (single-precision).</p>
+<p>One texture also have a particular pixel format, which is identified by <code>Format</code> enumeration. Most formats are formed by a combination of the following three parts:</p>
+<ol>
+<li>Number of color channels. One pixel may have one to four color channels, identified as <code>r</code>, <code>g</code>, <code>b</code> and <code>a</code>.</li>
+<li>The bit width of every color channel. One pixel may have 8 to 64 bits per channel.</li>
+<li>The number format of every color channel. One pixel may have the following number formats:<ol>
+<li><code>uint</code>: unsigned integer.</li>
+<li><code>sing</code>: signed integer.</li>
+<li><code>unorm</code>: unsigned normalized integer that maps the unsigned integer to [0.0, 1.0]. For example, if every channel have 8 bits, then the value range [0, 255] is mapped to [0.0, 1.0] in shader automatically. </li>
+<li><code>snorm</code>: signed normalized integer that maps the signed integer to [-1.0, 1.0]. For example, if every channel have 8 bits, then the value range [-128, 127] is mapped to [-1.0, 1.0] in shader automatically. </li>
+<li><code>float</code>: floating-point number.</li>
+</ol>
+</li>
+</ol>
+<p>For exmaple:</p>
+<ol>
+<li><code>Format::rgba8_unorm</code> represents a 4-channels pixel format, where every channel stores one 8-bit unsigned integer that will be mapped to [0.0, 1.0] in shader.</li>
+<li><code>Format::rgba16_float</code> represents a 4-channels pixel format, where every channel stores one 16-bit floating-point number (half-precision).</li>
+<li><code>Format::rg32_float</code> represents a 2-channels pixel format, where every channel stores one 32-bit floating-point number (single-precision).</li>
+</ol>
 <p>There are also some special formats:</p>
 <ol>
 <li>Formats begin with <code>d</code> like <code>Format::d16_unorm</code>, <code>Format::d32_float</code>, etc. are special formats used for depth stencil textures.</li>

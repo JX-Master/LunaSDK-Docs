@@ -199,27 +199,33 @@
 <li>Stencil reference values.</li>
 </ol>
 <h3 id="render-commands">Render commands</h3>
-<p>Render commands are commands used for rendering tasks, they can only be recorded between <code>ICommandBuffer::begin_render_pass(desc)</code> and <code>ICommandBuffer::end_render_pass()</code>. Render commands have three types: graphics pipeline setup commands, draw commands and occlusion query commands. The following commands are graphics pipeline setup commands:
-1. <code>ICommandBuffer::set_graphics_pipeline_layout(pipeline_layout)</code>
-1. <code>ICommandBuffer::set_graphics_pipeline_state(pso)</code>
-1. <code>ICommandBuffer::set_vertex_buffers(start_slot, views)</code>
-1. <code>ICommandBuffer::set_index_buffer(view)</code>
-1. <code>ICommandBuffer::set_graphics_descriptor_set(index, descriptor_set)</code>
-1. <code>ICommandBuffer::set_graphics_descriptor_sets(start_index, descriptor_sets)</code>
-1. <code>ICommandBuffer::set_viewport(viewport)</code>
-1. <code>ICommandBuffer::set_viewports(viewports)</code>
-1. <code>ICommandBuffer::set_scissor_rect(rect)</code>
-1. <code>ICommandBuffer::set_scissor_rects(rects)</code>
-1. <code>ICommandBuffer::set_blend_factor(blend_factor)</code>
-1. <code>ICommandBuffer::set_stencil_ref(stencil_ref)</code></p>
-<p>The following commands are draw commands:
-1. <code>ICommandBuffer::draw(vertex_count, start_vertex_location)</code>
-1. <code>ICommandBuffer::draw_indexed(index_count, start_index_location, base_vertex_location)</code>
-1. <code>ICommandBuffer::draw_instanced(vertex_count_per_instance, instance_count, start_vertex_location, start_instance_location)</code>
-1. <code>ICommandBuffer::draw_indexed_instanced(index_count_per_instance, instance_count, start_index_location, base_vertex_location, start_instance_location)</code></p>
-<p>The following commands are occlusion query commands:
-1. <code>ICommandBuffer::begin_occlusion_query(mode, index)</code>
-1. <code>ICommandBuffer::end_occlusion_query(index)</code></p>
+<p>Render commands are commands used for rendering tasks, they can only be recorded between <code>ICommandBuffer::begin_render_pass(desc)</code> and <code>ICommandBuffer::end_render_pass()</code>. Render commands have three types: graphics pipeline setup commands, draw commands and occlusion query commands. The following commands are graphics pipeline setup commands:</p>
+<ol>
+<li><code>ICommandBuffer::set_graphics_pipeline_layout(pipeline_layout)</code></li>
+<li><code>ICommandBuffer::set_graphics_pipeline_state(pso)</code></li>
+<li><code>ICommandBuffer::set_vertex_buffers(start_slot, views)</code></li>
+<li><code>ICommandBuffer::set_index_buffer(view)</code></li>
+<li><code>ICommandBuffer::set_graphics_descriptor_set(index, descriptor_set)</code></li>
+<li><code>ICommandBuffer::set_graphics_descriptor_sets(start_index, descriptor_sets)</code></li>
+<li><code>ICommandBuffer::set_viewport(viewport)</code></li>
+<li><code>ICommandBuffer::set_viewports(viewports)</code></li>
+<li><code>ICommandBuffer::set_scissor_rect(rect)</code></li>
+<li><code>ICommandBuffer::set_scissor_rects(rects)</code></li>
+<li><code>ICommandBuffer::set_blend_factor(blend_factor)</code></li>
+<li><code>ICommandBuffer::set_stencil_ref(stencil_ref)</code></li>
+</ol>
+<p>The following commands are draw commands:</p>
+<ol>
+<li><code>ICommandBuffer::draw(vertex_count, start_vertex_location)</code></li>
+<li><code>ICommandBuffer::draw_indexed(index_count, start_index_location, base_vertex_location)</code></li>
+<li><code>ICommandBuffer::draw_instanced(vertex_count_per_instance, instance_count, start_vertex_location, start_instance_location)</code></li>
+<li><code>ICommandBuffer::draw_indexed_instanced(index_count_per_instance, instance_count, start_index_location, base_vertex_location, start_instance_location)</code></li>
+</ol>
+<p>The following commands are occlusion query commands:</p>
+<ol>
+<li><code>ICommandBuffer::begin_occlusion_query(mode, index)</code></li>
+<li><code>ICommandBuffer::end_occlusion_query(index)</code></li>
+</ol>
 <p>The graphics pipeline behaves like a state machine: states set by <code>ICommandBuffer::set_xxx</code> stays in the state until changed by another set state call. All graphics pipeline states are undefined at the beginning of one render pass, the user should set all necessary states explicitly before she issues the draw call. All states will be lost at the end of the render pass, the user should set such states again for one new render pass.</p>
 <p>When setting pipeline states, the user should following the following rules:</p>
 <ol>
