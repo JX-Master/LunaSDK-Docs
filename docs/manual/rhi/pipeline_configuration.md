@@ -55,17 +55,19 @@ Rasterizers are configured by the `rasterizer_state` property of `GraphicsPipeli
 1. `depth_clip_enable`: If this is `true`, the rasterizer will discard pixels whose depth value (`z` component of position after divided by `w`) goes beyond ; if this is `false`, the rasterizer will clamp the depth value of pixel to `1.0` if it is greater than `1.0`, and retain the coverage value, which may cause depth test produce incorrect results.
 1. `depth_bias`, `slope_scaled_depth_bias` and `depth_bias_clamp` are used to compute one **depth bias value** that will be added to the original depth value in depth bias step. The depth bias value is computed as:
 
-    $bias(depth) = clamp(C_{depth\_bias} * \Epsilon + C_{slope\_scaled\_depth\_bias} * max(ddx(depth), ddy(depth)), -C_{depth\_bias\_clamp}, C_{depth\_bias\_clamp})$
+    $$bias(depth) = clamp(C_{b} * E + C_{s} * slope(depth), -C_{clamp}, C_{clamp})$$
 
     where:
+    
     1. $depth$ is the original depth of the pixel.
-    1. $C_{depth\_bias}$ is `depth_bias` converted to `f32`.
-    1. $\Epsilon$ is a small number that represents the minimum representable value > 0 in the depth stencil attachment format converted to `f32`:
-        1. If the depth stencil attachment is in a normalized format (`unorm`), $\Epsilon = 2^{-n}$, where $n$ is the number of precision bits of the attachment format, for example, $16$ for `d16_unorm`.
-        2. If the depth stencil attachment is in a floating-point format (`float`), $\Epsilon = 2^{e-n}$, where $e=log_2(max(depth))$ is the exponent of the maximum original depth value of the input primitive, and $n$ is the number of bits in the floating-point mantissa, for example, $23$ for `d32_float`.
-    1. $C_{slope\_scaled\_depth\_bias}$ is `slope_scaled_depth_bias`.
+    1. $C_{b}$ is `depth_bias` converted to `f32`.
+    1. $E$ is a small number that represents the minimum representable value > 0 in the depth stencil attachment format converted to `f32`:
+        1. If the depth stencil attachment is in a normalized format (`unorm`), $E = 2^{-n}$, where $n$ is the number of precision bits of the attachment format, for example, $16$ for `d16_unorm`.
+        2. If the depth stencil attachment is in a floating-point format (`float`), $E = 2^{e-n}$, where $e=log_2(max(depth))$ is the exponent of the maximum original depth value of the input primitive, and $n$ is the number of bits in the floating-point mantissa, for example, $23$ for `d32_float`.
+    1. $C_{s}$ is `slope_scaled_depth_bias`.
+    1. $slope(depth)$ is the slope of the depth value at pixel position, usually computed as $max(ddx(depth), ddy(depth))$.
     1. $ddx(depth)$ and $ddy(depth)$ is the horizontal and vertical slopes of the depth value at the pixel position.
-    1. $C_{depth\_bias\_clamp}$ is `depth_bias_clamp`.
+    1. $C_{clamp}$ is `depth_bias_clamp`.
 
     Note that different platforms may implement depth bias using slightly different formula and precision, so the user should not expect a exact bias number between different platforms and graphics API.
 
@@ -77,11 +79,11 @@ Viewports defines **viewport transformation**, which transforms positions in NDC
 
 The viewport transformation is performed using the following formulas:
 
-$X_{screen} = X_{top\_left} + (P_x + 1.0) / 2.0 * width$
+$$X_{screen} = X_{top\_left} + (P_x + 1.0) / 2.0 * width$$
 
-$Y_{screen} = Y_{top\_left} + (-P_y + 1.0) / 2.0 * height$
+$$Y_{screen} = Y_{top\_left} + (-P_y + 1.0) / 2.0 * height$$
 
-$Z_{screen} = min_depth + P_z * (max_depth - min_depth)$
+$$Z_{screen} = min_depth + P_z * (max_depth - min_depth)$$
 
 where:
 1. $P$ is the vertex position in NDC.
@@ -211,9 +213,9 @@ Color blending stage performs color blending between pixel colors outputted from
 
 The final written color for every color attachment is computed using the following equation:
 
-$C_{final} = (C_{src})\Delta_{color}(C_{dst})$
+$$C_{final} = (C_{src})\Delta_{color}(C_{dst})$$
 
-$A_{final} = (A_{src})\Delta_{alpha}(A_{dst})$
+$$A_{final} = (A_{src})\Delta_{alpha}(A_{dst})$$
 
 where:
 1. $C_{src}$ is the blend factor specified by `src_blend_color`.
