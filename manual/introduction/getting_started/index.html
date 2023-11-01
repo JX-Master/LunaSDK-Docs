@@ -730,7 +730,6 @@ Blob ps(ps_data.data(), ps_data.size());
     Format color_formats[8] = { Format::unknown };
     Format depth_stencil_format = Format::unknown;
     u32 sample_count = 1;
-    u32 sample_mask = 0xFFFFFFFF;
 };
 </code></pre>
 <p>Most graphic settings are similar to those in D3D11, D3D12, OpenGL or Vulkan, we will not explain these settings, but only gives the code that correctly sets every setting of the pipeline. You can see docs for <code>RHI</code> module for detailed explanations of these settings.</p>
@@ -740,7 +739,6 @@ Blob ps(ps_data.data(), ps_data.size());
 <p>Then we can create pipeline state object using the following code:</p>
 <pre><code class="language-c++">GraphicsPipelineStateDesc ps_desc;
 ps_desc.primitive_topology = PrimitiveTopology::triangle_list;
-ps_desc.sample_mask = U32_MAX;
 ps_desc.rasterizer_state = RasterizerDesc();
 ps_desc.depth_stencil_state = DepthStencilDesc(true, true, CompareFunction::less_equal);
 ps_desc.ib_strip_cut_value = IndexBufferStripCutValue::disabled;
@@ -857,12 +855,12 @@ luset(vb, dev-&gt;new_buffer(MemoryType::local, BufferDesc(BufferUsageFlag::vert
 luset(ib, dev-&gt;new_buffer(MemoryType::local, BufferDesc(BufferUsageFlag::index_buffer | BufferUsageFlag::copy_dest, sizeof(indices))));
 </code></pre>
 <p>We firstly define vertex and index data for our box, then we create two buffer resources to hold the vertex and index data. One buffer is created by calling <code>IDevice::new_buffer</code>, which is similar to <code>IDevice::new_texture</code>, but takes <code>BufferDesc</code> as the resource descriptor object. Since we only need to upload vertex and index buffer data once, these two buffers are created in local memory to achieve maximum GPU bandwidth.</p>
-<p>We can use similar code to create the constant buffer for uploading camera properties, but there are two differences. First, the graphic device has alignment requirements for constant buffers, which can be fetched from <code>IDevice::get_uniform_buffer_data_alignment()</code>, so we use <code>align_upper</code> helper function to adjust the size of our uniform buffer resource to meet the alignment requirement. Second, since we need to update uniform buffer data once every frame, we should choose <code>upload</code> memory type instead of <code>local</code> to give host program direct access to that resource.</p>
+<p>We can use similar code to create the constant buffer for uploading camera properties, but there are two differences. First, the graphic device has alignment requirements for constant buffers, which can be fetched from <code>IDevice::check_feature(DeviceFeature::uniform_buffer_data_alignment)</code>, so we use <code>align_upper</code> helper function to adjust the size of our uniform buffer resource to meet the alignment requirement. Second, since we need to update uniform buffer data once every frame, we should choose <code>upload</code> memory type instead of <code>local</code> to give host program direct access to that resource.</p>
 <p>In our <code>DemoApp</code>, the data of the uniform buffer is the 4x4 world-to-project matrix of the camera. We need to add a new include file to use matrix types:</p>
 <pre><code class="language-c++">#include &lt;Luna/Runtime/Math/Matrix.hpp&gt;
 </code></pre>
 <p>then we can use the following code to create constant buffer:</p>
-<pre><code class="language-c++">auto ub_align = dev-&gt;get_uniform_buffer_data_alignment();
+<pre><code class="language-c++">auto ub_align = dev-&gt;check_feature(DeviceFeature::uniform_buffer_data_alignment).uniform_buffer_data_alignment;
 luset(ub, dev-&gt;new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::uniform_buffer, align_upper(sizeof(Float4x4), ub_align))));
 </code></pre>
 <p>as you can see, <code>Float4x4</code> is the matrix type used in Luna SDK. We also have <code>Float3x3</code> for 2D affine transformations.</p>
