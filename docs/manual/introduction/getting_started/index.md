@@ -674,7 +674,6 @@ struct GraphicsPipelineStateDesc
 	Format color_formats[8] = { Format::unknown };
 	Format depth_stencil_format = Format::unknown;
 	u32 sample_count = 1;
-	u32 sample_mask = 0xFFFFFFFF;
 };
 ```
 
@@ -691,7 +690,6 @@ Then we can create pipeline state object using the following code:
 ```c++
 GraphicsPipelineStateDesc ps_desc;
 ps_desc.primitive_topology = PrimitiveTopology::triangle_list;
-ps_desc.sample_mask = U32_MAX;
 ps_desc.rasterizer_state = RasterizerDesc();
 ps_desc.depth_stencil_state = DepthStencilDesc(true, true, CompareFunction::less_equal);
 ps_desc.ib_strip_cut_value = IndexBufferStripCutValue::disabled;
@@ -843,7 +841,7 @@ luset(ib, dev->new_buffer(MemoryType::local, BufferDesc(BufferUsageFlag::index_b
 
 We firstly define vertex and index data for our box, then we create two buffer resources to hold the vertex and index data. One buffer is created by calling `IDevice::new_buffer`, which is similar to `IDevice::new_texture`, but takes `BufferDesc` as the resource descriptor object. Since we only need to upload vertex and index buffer data once, these two buffers are created in local memory to achieve maximum GPU bandwidth.
 
-We can use similar code to create the constant buffer for uploading camera properties, but there are two differences. First, the graphic device has alignment requirements for constant buffers, which can be fetched from `IDevice::get_uniform_buffer_data_alignment()`, so we use `align_upper` helper function to adjust the size of our uniform buffer resource to meet the alignment requirement. Second, since we need to update uniform buffer data once every frame, we should choose `upload` memory type instead of `local` to give host program direct access to that resource.
+We can use similar code to create the constant buffer for uploading camera properties, but there are two differences. First, the graphic device has alignment requirements for constant buffers, which can be fetched from `IDevice::check_feature(DeviceFeature::uniform_buffer_data_alignment)`, so we use `align_upper` helper function to adjust the size of our uniform buffer resource to meet the alignment requirement. Second, since we need to update uniform buffer data once every frame, we should choose `upload` memory type instead of `local` to give host program direct access to that resource.
 
 In our `DemoApp`, the data of the uniform buffer is the 4x4 world-to-project matrix of the camera. We need to add a new include file to use matrix types:
 
@@ -854,7 +852,7 @@ In our `DemoApp`, the data of the uniform buffer is the 4x4 world-to-project mat
 then we can use the following code to create constant buffer:
 
 ```c++
-auto ub_align = dev->get_uniform_buffer_data_alignment();
+auto ub_align = dev->check_feature(DeviceFeature::uniform_buffer_data_alignment).uniform_buffer_data_alignment;
 luset(ub, dev->new_buffer(MemoryType::upload, BufferDesc(BufferUsageFlag::uniform_buffer, align_upper(sizeof(Float4x4), ub_align))));
 ```
 
