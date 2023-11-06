@@ -943,7 +943,7 @@ lulet(image_file_data, load_file_data(image_file));
 </code></pre>
 <p>Now that the file data has been stored in <code>image_file_data</code>, we need to call <code>Image::read_image_file</code> function to parse the file data and gives the real image data:</p>
 <pre><code class="language-c++">Image::ImageDesc image_desc;
-lulet(image_data, Image::read_image_file(image_file_data.data(), image_file_data.size(), Image::ImagePixelFormat::rgba8_unorm, image_desc));
+lulet(image_data, Image::read_image_file(image_file_data.data(), image_file_data.size(), Image::ImageFormat::rgba8_unorm, image_desc));
 </code></pre>
 <p><code>Image::read_image_file</code> function outputs one <code>Image::ImageDesc</code> structure that describes the returned image data, including the width, height and pixel format of the image. The image data is arranged in a row-major manner and without and alignment padding. We can now creates the texture resource based on the image size:</p>
 <pre><code class="language-c++">luset(file_tex, dev-&gt;new_texture(MemoryType::local, TextureDesc::tex2d(Format::rgba8_unorm, 
