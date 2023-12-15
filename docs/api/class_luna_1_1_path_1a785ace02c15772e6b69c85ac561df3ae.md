@@ -1,0 +1,18 @@
+# Luna::Path::replace_extension
+
+```c++
+void replace_extension(const c8 *new_extension, usize count)
+```
+
+Replaces the extension. 
+
+## Overview
+
+
+## Parameters
+### new_extension
+The new extension to replace. 
+
+### count
+The length of the new extension string. 
+

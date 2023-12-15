@@ -1,0 +1,18 @@
+# Luna::HashSet::contains
+
+```c++
+bool contains(const key_type &key) const
+```
+
+Checks whether at least one element with the specified key exists. 
+
+## Overview
+
+
+## Parameters
+### key
+The key of the element to check. 
+
+## Return value
+Returns `ture` if at least one element with the specified key exists. Returns `false` otherwise. 
+

@@ -41,3 +41,5 @@ nav:
             - Pipeline Configuration: manual/rhi/pipeline_configuration.md
             - Recording Commands: manual/rhi/recording_commands.md
             - Shader Resource Binding: manual/rhi/shader_resource_binding.md
+    - Programming Reference:
+        - Runtime: api/runtime.md

@@ -1,0 +1,14 @@
+# Luna::ObjRef::detach
+
+```c++
+object_t detach()
+```
+
+Detaches the stored pointer. The reference becomes null after this operation. 
+
+## Overview
+This operation does not modify the reference counter of the original boxed object. 
+
+## Return value
+Returns the pointer to the original boxed object. Returns `nullptr` if the reference is null when this function is called. 
+
