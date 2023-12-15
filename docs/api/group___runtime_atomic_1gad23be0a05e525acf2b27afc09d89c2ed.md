@@ -6,7 +6,6 @@ usize atom_compare_exchange_usize(usize volatile *dst, usize exchange, usize com
 
 Atomically compares the value of the variable with the specified comperand, and sets the variable to the specified value if equal. 
 
-## Overview
 
 
 ## Parameters

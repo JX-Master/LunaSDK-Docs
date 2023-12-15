@@ -6,7 +6,6 @@ List< _Ty, _Alloc >::iterator insert(const_iterator pos, value_type &&value)
 
 Inserts the specified element to the list. 
 
-## Overview
 
 
 ## Parameters

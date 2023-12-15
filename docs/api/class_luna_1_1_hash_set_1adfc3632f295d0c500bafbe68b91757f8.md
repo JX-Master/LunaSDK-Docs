@@ -6,7 +6,6 @@ Pair< iterator, bool > insert(value_type &&value)
 
 Inserts the specified value to the set. 
 
-## Overview
 
 
 ## Parameters

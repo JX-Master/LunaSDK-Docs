@@ -6,7 +6,6 @@ using structure_move_ctor_t =  void(typeinfo_t type, void* dst, void* src)
 
 The structure move constructor used by the reflection system. 
 
-## Overview
 
 
 ## Parameters

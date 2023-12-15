@@ -6,7 +6,6 @@ LUNA_RUNTIME_API typeinfo_t i16_type()
 
 Gets the type object of `i16` type. 
 
-## Overview
 
 
 ## Return value

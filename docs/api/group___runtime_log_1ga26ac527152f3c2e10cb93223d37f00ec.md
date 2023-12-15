@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void set_log_file(const c8 *file)
 
 Sets the file path of the log file. 
 
-## Overview
 
 
 ## Parameters

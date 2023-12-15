@@ -6,7 +6,6 @@ const_iterator cbegin() const
 
 Gets one constant iterator pointing to the first name node of the path. 
 
-## Overview
 
 
 ## Return value

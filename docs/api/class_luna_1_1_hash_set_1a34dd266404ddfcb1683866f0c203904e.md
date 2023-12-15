@@ -6,7 +6,6 @@ usize erase(const key_type &key)
 
 Removes elements with the specified key from the set. 
 
-## Overview
 
 
 ## Parameters

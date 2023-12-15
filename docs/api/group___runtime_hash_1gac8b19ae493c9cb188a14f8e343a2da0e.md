@@ -4,7 +4,6 @@
 u64 memhash64(const void *data, usize size, u64 h=0)
 ```
 
-## Overview
 A specialization of memhash that computes 64-bit hash code. 
 
 ## Parameters

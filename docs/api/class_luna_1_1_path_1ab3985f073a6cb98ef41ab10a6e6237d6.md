@@ -6,7 +6,6 @@ PathFlag & flags()
 
 Gets the path flags. 
 
-## Overview
 
 
 ## Return value

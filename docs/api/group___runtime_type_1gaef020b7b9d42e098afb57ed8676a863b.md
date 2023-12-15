@@ -7,7 +7,6 @@ typeinfo_t register_struct_type(Span< const StructurePropertyDesc > properties, 
 
 Registers one structure type to the type system. The structure type must have one lustruct macro defined in the structure body. 
 
-## Overview
 
 
 ## Parameters

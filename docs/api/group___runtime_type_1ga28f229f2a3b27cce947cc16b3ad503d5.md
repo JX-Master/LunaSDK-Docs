@@ -6,7 +6,6 @@ LUNA_RUNTIME_API usize get_type_alignment(typeinfo_t type)
 
 Gets the alignment requirement of the specified type. 
 
-## Overview
 
 
 ## Parameters

@@ -6,7 +6,6 @@ usize atom_add_usize(usize volatile *base, isize v)
 
 Atomically increase the value of the variable by the the value provided. 
 
-## Overview
 This operation cannot be interrupted by system thread switching. 
 
 ## Parameters

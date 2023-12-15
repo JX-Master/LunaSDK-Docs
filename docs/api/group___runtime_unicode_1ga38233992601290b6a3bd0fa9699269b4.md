@@ -6,7 +6,6 @@ constexpr usize utf8_charspan(c32 ch)
 
 Gets the number of UTF-8 characters needed to store the Unicode char in UTF-8 encoding. 
 
-## Overview
 
 
 ## Parameters

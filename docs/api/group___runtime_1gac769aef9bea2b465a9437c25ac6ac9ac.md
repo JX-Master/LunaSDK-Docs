@@ -7,7 +7,6 @@ _Return invoke_r(_Func &&f, _Args &&... args)
 
 Invokes the specified callable object. 
 
-## Overview
 
 
 ## Parameters

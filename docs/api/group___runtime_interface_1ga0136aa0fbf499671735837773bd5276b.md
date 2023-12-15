@@ -6,7 +6,6 @@ LUNA_RUNTIME_API bool is_interface_implemented_by_type(typeinfo_t type, const Gu
 
 Checks whether the specified type implements the specified interface. 
 
-## Overview
 
 
 ## Parameters

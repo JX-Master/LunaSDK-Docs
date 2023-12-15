@@ -6,7 +6,6 @@ LUNA_RUNTIME_API Vector< Name > get_type_attributes(typeinfo_t type)
 
 Gets all attributes of the specified type. 
 
-## Overview
 
 
 ## Parameters

@@ -7,7 +7,6 @@ bool includes(_InputIt1 first1, _InputIt1 last1, _InputIt2 first2, _InputIt2 las
 
 Checks if the sorted range [`first2`, `last2`) is a subsequence of the sorted range [`first1`, `last1`). (A subsequence need not be contiguous.) 
 
-## Overview
 
 
 ## Parameters

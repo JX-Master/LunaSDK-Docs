@@ -6,7 +6,6 @@ virtual i32 gen_i32()=0
 
 Generates one random 32-bit signed integer. 
 
-## Overview
 
 
 ## Return value

@@ -7,7 +7,6 @@ auto invoke(_Func &&f, _Ty &&arg1, _Args &&... args) -> invoke_result_t< _Func, 
 
 Invokes the specified callable object. 
 
-## Overview
 
 
 ## Parameters

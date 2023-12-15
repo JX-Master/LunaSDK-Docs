@@ -6,7 +6,6 @@ LUNA_RUNTIME_API usize base85_decode(void *dst, usize dst_max_bytes, const c8 *s
 
 Decode a base85 string to binary data. The system assumes the string passed in is a valid base85 string. 
 
-## Overview
 
 
 ## Parameters

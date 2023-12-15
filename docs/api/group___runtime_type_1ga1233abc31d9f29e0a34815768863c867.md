@@ -6,7 +6,6 @@ LUNA_RUNTIME_API Span< const typeinfo_t > get_struct_generic_arguments(typeinfo_
 
 Gets the generic arguments used to instantiate one generic structure instanced type. 
 
-## Overview
 
 
 ## Parameters

@@ -6,7 +6,6 @@ bool empty() const
 
 Checks whether this path is empty, that is, the size of this path is `0`. 
 
-## Overview
 
 
 ## Return value

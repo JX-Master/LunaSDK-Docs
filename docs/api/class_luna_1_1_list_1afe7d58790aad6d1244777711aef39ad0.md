@@ -6,7 +6,6 @@ void resize(usize count)
 
 Changes the number of elements in the list. 
 
-## Overview
 
 
 ## Parameters

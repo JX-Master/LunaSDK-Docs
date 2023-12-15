@@ -6,7 +6,6 @@ LUNA_RUNTIME_API bool object_is_type(object_t object_ptr, typeinfo_t type)
 
 Checks whether the boxed object is the specified type or derived types of the specified type. 
 
-## Overview
 
 
 ## Parameters

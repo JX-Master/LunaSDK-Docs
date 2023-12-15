@@ -6,7 +6,6 @@ R & operator=(R &&rhs)
 
 Assigns the result object by moving from another result object. 
 
-## Overview
 The return value will be move-assigned if valid. 
 
 ## Parameters

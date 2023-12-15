@@ -6,7 +6,6 @@ LUNA_RUNTIME_API const c8 ** stack_backtrace_symbols(Span< const opaque_t > fram
 
 Gets symbolic names for frames returned by stack_backtrace. 
 
-## Overview
 
 
 ## Parameters

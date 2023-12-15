@@ -6,7 +6,6 @@ using structure_dtor_t =  void(typeinfo_t type, void* inst)
 
 The structure destructor used by the reflection system. 
 
-## Overview
 
 
 ## Parameters

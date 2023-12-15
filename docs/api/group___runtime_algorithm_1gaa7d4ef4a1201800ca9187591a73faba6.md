@@ -7,7 +7,6 @@ auto find_end(_ForwardIt first, _ForwardIt last, _ForwardIt pattern_first, _Forw
 
 Searches for the last occurrence of the sequence of elements in the specified range. 
 
-## Overview
 
 
 ## Parameters

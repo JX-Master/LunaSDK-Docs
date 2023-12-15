@@ -6,7 +6,6 @@ bool bit_test(const void *base_addr, usize bit_offset)
 
 Tests if specified bit is 1. 
 
-## Overview
 
 
 ## Parameters

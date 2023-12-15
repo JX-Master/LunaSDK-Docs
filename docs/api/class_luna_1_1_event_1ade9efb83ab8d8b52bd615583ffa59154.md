@@ -7,7 +7,6 @@ void operator()(_Args &&... args)
 
 Triggers this event and invokes all handlers. 
 
-## Overview
 
 
 ## Parameters

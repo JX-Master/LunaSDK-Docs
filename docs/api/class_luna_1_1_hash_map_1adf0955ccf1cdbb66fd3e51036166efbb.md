@@ -6,7 +6,6 @@ void rehash(usize new_data_table_size)
 
 Changes the data table size and rehashes all elements to insert them to the new data table. 
 
-## Overview
 
 
 ## Parameters

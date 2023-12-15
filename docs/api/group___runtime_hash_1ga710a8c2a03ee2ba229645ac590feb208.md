@@ -4,7 +4,6 @@
 u32 memhash32(const void *data, usize size, u32 h=0)
 ```
 
-## Overview
 A specialization of memhash that computes 32-bit hash code. 
 
 ## Parameters

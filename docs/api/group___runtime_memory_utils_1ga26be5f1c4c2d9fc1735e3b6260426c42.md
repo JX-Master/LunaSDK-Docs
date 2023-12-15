@@ -6,7 +6,6 @@ void calculate_union_memory_layout(Span< MemoryLayoutMember > members, usize &ou
 
 Calculates the size, alignment and memory layout for one union type. 
 
-## Overview
 The calculated size, alignment and memory layout is compatible with C standard union layout. 
 
 ## Parameters

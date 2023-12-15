@@ -7,7 +7,6 @@ constexpr _Ty1 align_upper(_Ty1 origin, _Ty2 alignment)
 
 Returns the address/size that aligns the origin address/size to the nearest matched aligned address/size that is greater than or equal to the the origin address/size. 
 
-## Overview
 
 
 ## Parameters

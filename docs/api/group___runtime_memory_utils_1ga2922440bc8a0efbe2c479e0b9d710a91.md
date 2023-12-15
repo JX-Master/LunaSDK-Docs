@@ -7,7 +7,6 @@ auto move_assign_range(_Iter1 first, _Iter1 last, _Iter2 d_first) -> enable_if_t
 
 Performs move assignment operation on every object in the destination range using the corresponding object in the source range. 
 
-## Overview
 
 
 ## Parameters

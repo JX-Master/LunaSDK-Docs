@@ -7,7 +7,6 @@ _Ity * query_interface(object_t object)
 
 Gets one interface pointer from one pointer to one boxed object that implements the interface. 
 
-## Overview
 
 
 ## Parameters

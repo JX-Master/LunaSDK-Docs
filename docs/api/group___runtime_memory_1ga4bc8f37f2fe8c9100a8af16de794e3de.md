@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void memfree(void *ptr, usize alignment=0)
 
 Frees heap memory. 
 
-## Overview
 
 
 ## Parameters

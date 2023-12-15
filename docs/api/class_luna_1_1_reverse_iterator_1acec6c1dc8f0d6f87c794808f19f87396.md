@@ -6,7 +6,6 @@ constexpr ReverseIterator operator--(int)
 
 Post-decrements the iterator to the last object, which is the next object the base iterator points to. 
 
-## Overview
 
 
 ## Return value

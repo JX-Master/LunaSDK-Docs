@@ -6,7 +6,6 @@ ErrCode set_error(ErrCode code, const c8 *fmt, VarList args)
 
 Sets the error object of this thread. 
 
-## Overview
 This function is auxiliary and it behaves the same as fetching the error object then setting it. 
 
 ## Parameters

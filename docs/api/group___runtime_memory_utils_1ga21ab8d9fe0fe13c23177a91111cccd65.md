@@ -6,7 +6,6 @@ void * memzero(void *dst, usize byte_count)
 
 Clears the specified memory region to 0. 
 
-## Overview
 
 
 ## Parameters

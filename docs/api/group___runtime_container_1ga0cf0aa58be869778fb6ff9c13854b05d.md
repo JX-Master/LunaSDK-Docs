@@ -4,7 +4,6 @@
 LUNA_RUNTIME_API typeinfo_t hash_map_type()
 ```
 
-## Overview
 Gets the type object of [HashMap](class_luna_1_1_hash_map.md). 
 
 ## Return value

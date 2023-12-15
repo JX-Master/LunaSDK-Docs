@@ -6,7 +6,6 @@ using log_callback_t =  void(LogVerbosity verbosity, const c8* tag, usize tag_le
 
 Called by the log system when one log is emitted. 
 
-## Overview
 
 
 ## Parameters

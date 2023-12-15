@@ -6,7 +6,6 @@ constexpr usize utf16_index(const c16 *str, usize n)
 
 Gets the index of the first UTF-16 character for the specified Unicode character. 
 
-## Overview
 
 
 ## Parameters

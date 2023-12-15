@@ -6,7 +6,6 @@ LUNA_RUNTIME_API RV move_file(const c8 *from_path, const c8 *to_path, FileMoveFl
 
 Moves the file or directory from the source path to the destination path. This call can also be used to rename a file. 
 
-## Overview
 
 
 ## Parameters

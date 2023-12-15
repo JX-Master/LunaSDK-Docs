@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void * memalloc(usize size, usize alignment=0)
 
 Allocates heap memory. 
 
-## Overview
 
 
 ## Parameters

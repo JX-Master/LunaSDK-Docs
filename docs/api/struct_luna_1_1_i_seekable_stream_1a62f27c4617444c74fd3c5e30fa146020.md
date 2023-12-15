@@ -6,7 +6,6 @@ virtual R< u64 > tell()=0
 
 Gets the current position of the stream cursor. 
 
-## Overview
 
 
 ## Return value

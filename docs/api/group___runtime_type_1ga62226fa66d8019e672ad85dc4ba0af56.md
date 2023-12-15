@@ -6,7 +6,6 @@ LUNA_RUNTIME_API bool is_type_equatable(typeinfo_t type)
 
 Checks whether the specified type supports equality testing. 
 
-## Overview
 
 
 ## Parameters

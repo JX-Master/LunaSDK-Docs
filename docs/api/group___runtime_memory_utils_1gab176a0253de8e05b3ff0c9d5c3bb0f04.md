@@ -7,7 +7,6 @@ auto copy_relocate_range(_Iter1 first, _Iter1 last, _Iter2 d_first) -> enable_if
 
 Relocates objects in the source range to a new range that is not overlap with the source range. 
 
-## Overview
 After this call, the objects in the destination range behaves the same as the corresponding objects formerly in the source range, except that the places(memory addresses) for objects are changed. 
 
 ## Parameters

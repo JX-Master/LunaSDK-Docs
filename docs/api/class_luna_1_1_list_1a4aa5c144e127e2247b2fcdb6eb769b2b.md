@@ -7,7 +7,6 @@ List< _Ty, _Alloc >::iterator emplace(const_iterator pos, _Args &&... args)
 
 Constructs one element directly on the specified position of the list using the provided arguments. 
 
-## Overview
 
 
 ## Parameters

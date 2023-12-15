@@ -6,7 +6,6 @@ reference operator[](usize index)
 
 Gets the name node at the specified index. 
 
-## Overview
 
 
 ## Parameters

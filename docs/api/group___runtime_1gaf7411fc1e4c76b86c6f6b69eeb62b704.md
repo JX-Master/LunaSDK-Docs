@@ -7,7 +7,6 @@ auto invoke(_Func &&f) -> decltype(static_cast< _Func && >(f)())
 
 Invokes the specified callable object. 
 
-## Overview
 
 
 ## Parameters

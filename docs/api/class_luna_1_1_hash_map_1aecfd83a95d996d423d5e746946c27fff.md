@@ -6,7 +6,6 @@ HashMap(HashMap &&rhs, const allocator_type &alloc)
 
 Constructs a map with an custom allocator and with elements moved from another map. 
 
-## Overview
 
 
 ## Parameters

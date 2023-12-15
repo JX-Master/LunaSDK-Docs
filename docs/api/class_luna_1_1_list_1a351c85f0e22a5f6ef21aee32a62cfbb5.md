@@ -6,7 +6,6 @@ List< _Ty, _Alloc >::iterator erase(const_iterator first, const_iterator last)
 
 Removes one range of elements from the list. 
 
-## Overview
 
 
 ## Parameters

@@ -6,7 +6,6 @@ operator bool() const
 
 Checks whether this name string is empty. 
 
-## Overview
 
 
 ## Return value

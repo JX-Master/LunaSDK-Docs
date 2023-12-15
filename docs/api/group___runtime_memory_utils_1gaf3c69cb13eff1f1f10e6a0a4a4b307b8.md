@@ -6,7 +6,6 @@ const void * pixel_offset(const void *base, usize x, usize y, usize z, usize byt
 
 Returns a pointer that offsets the specified pixels in the bitmap. 
 
-## Overview
 
 
 ## Parameters

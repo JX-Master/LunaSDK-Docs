@@ -6,7 +6,6 @@ void pop_back()
 
 Removes the last element of the list. 
 
-## Overview
 
 
 #### Valid Usage

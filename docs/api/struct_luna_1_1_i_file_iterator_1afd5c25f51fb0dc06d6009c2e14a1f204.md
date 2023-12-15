@@ -6,7 +6,6 @@ virtual FileAttributeFlag get_attributes()=0
 
 Gets the file attribute flags of the file. 
 
-## Overview
 
 
 ## Return value

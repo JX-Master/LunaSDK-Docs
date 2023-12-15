@@ -6,7 +6,6 @@ LUNA_RUNTIME_API c32 utf8_decode_char(const c8 *str)
 
 Decodes one Unicode character from 1~6 UTF-8 characters. 
 
-## Overview
 
 
 ## Parameters

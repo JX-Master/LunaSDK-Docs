@@ -6,7 +6,6 @@ void assign(const c8 *s, usize count)
 
 Replaces content of the path by parsing the specified path string. 
 
-## Overview
 
 
 ## Parameters

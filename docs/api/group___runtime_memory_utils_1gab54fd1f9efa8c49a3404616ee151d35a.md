@@ -7,7 +7,6 @@ void value_construct(_Iter dst)
 
 Calls the value constructor for the object. 
 
-## Overview
 
 
 ## Parameters

@@ -6,7 +6,6 @@ LUNA_RUNTIME_API typeinfo_t c8_type()
 
 Gets the type object of `c8` type. 
 
-## Overview
 
 
 ## Return value

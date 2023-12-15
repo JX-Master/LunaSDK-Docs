@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void remove_property_attribute(typeinfo_t type, const Name &pro
 
 Removes one attribute of the specified property. 
 
-## Overview
 
 
 ## Parameters

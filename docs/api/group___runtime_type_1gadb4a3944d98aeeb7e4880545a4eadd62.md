@@ -6,7 +6,6 @@ LUNA_RUNTIME_API typeinfo_t get_struct_generic_type(typeinfo_t type)
 
 Gets the generic structure type from one generic structure instanced type. 
 
-## Overview
 
 
 ## Parameters

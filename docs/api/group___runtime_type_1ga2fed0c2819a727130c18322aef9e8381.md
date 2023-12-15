@@ -6,7 +6,6 @@ using generic_structure_instantiate_t =  GenericStructureInstantiateInfo(typeinf
 
 The generic structure instantiation function called by the reflection system when one new generic structure instanced type is required. 
 
-## Overview
 
 
 ## Parameters

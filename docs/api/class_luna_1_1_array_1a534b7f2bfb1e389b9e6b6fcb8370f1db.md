@@ -6,7 +6,6 @@ constexpr reference operator[](usize pos)
 
 Gets a refernece of the element at the specified index. 
 
-## Overview
 
 
 ## Parameters

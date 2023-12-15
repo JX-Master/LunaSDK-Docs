@@ -6,7 +6,6 @@ _Ty & get()
 
 Get a reference to the object. 
 
-## Overview
 
 
 ## Return value

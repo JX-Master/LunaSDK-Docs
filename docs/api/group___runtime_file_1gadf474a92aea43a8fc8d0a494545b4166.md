@@ -6,7 +6,6 @@ LUNA_RUNTIME_API RV delete_file(const c8 *file_path)
 
 Deletes the specified file or directory. 
 
-## Overview
 
 
 ## Parameters

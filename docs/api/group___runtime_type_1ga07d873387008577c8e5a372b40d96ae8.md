@@ -6,7 +6,6 @@ LUNA_RUNTIME_API typeinfo_t usize_type()
 
 Gets the type object of `usize` type. 
 
-## Overview
 
 
 ## Return value

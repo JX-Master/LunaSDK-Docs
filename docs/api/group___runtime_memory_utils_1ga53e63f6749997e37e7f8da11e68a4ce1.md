@@ -7,7 +7,6 @@ void move_construct(_Iter1 dst, _Iter2 src)
 
 Calls the move constructor for the object. 
 
-## Overview
 
 
 ## Parameters

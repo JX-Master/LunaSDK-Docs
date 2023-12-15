@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void memory_profiler_set_memory_domain(void *ptr, const c8 *dom
 
 Sets the memory domain. 
 
-## Overview
 The memory domain is usually the heap or pool that allocates this memory block. This function emits one PROFILER_EVENT_ID_SET_MEMORY_DOMAIN profiler event. 
 
 ## Parameters

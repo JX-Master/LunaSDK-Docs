@@ -7,7 +7,6 @@ _ForwardIt binary_search_iter(_ForwardIt first, _ForwardIt last, const _Ty &valu
 
 Finds an element equivalent to the specified value in the range. 
 
-## Overview
 
 
 ## Parameters

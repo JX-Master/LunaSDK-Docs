@@ -6,7 +6,6 @@ LUNA_RUNTIME_API typeinfo_t i8_type()
 
 Gets the type object of `i8` type. 
 
-## Overview
 
 
 ## Return value

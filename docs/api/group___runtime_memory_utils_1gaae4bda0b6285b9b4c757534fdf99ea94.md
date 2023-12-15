@@ -7,7 +7,6 @@ auto copy_construct_range(_Iter1 first, _Iter1 last, _Iter2 d_first) -> enable_i
 
 Copy-constructs a range of objects. 
 
-## Overview
 
 
 ## Parameters

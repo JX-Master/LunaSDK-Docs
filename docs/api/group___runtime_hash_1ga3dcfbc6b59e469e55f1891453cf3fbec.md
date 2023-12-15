@@ -4,7 +4,6 @@
 constexpr u8 strhash8(const c8 *s, u8 h=0)
 ```
 
-## Overview
 A specialization of strhash that computes 8-bit hash code. 
 
 ## Parameters

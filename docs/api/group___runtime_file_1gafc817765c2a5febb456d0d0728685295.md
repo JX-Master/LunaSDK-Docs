@@ -6,7 +6,6 @@ LUNA_RUNTIME_API R< FileAttribute > get_file_attribute(const c8 *path)
 
 Gets the file attribute. 
 
-## Overview
 
 
 ## Parameters

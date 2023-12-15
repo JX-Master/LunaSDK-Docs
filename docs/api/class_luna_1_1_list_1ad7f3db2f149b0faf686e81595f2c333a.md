@@ -6,7 +6,6 @@ void splice(const_iterator pos, List &other, const_iterator it)
 
 Transfers one element from another list to this list. 
 
-## Overview
 No memory allocation or element copy/move will be performed, this function transfers elements by changing their pointers directly so that they link to the new list. 
 
 ## Parameters

@@ -6,7 +6,6 @@ bool equal_to(const Path &rhs, PathComponent compared_components=PathComponent::
 
 Compares two paths for equality. 
 
-## Overview
 
 
 ## Parameters

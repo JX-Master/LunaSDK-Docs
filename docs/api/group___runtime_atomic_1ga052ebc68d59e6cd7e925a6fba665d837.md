@@ -6,7 +6,6 @@ u32 atom_compare_exchange_u32(u32 volatile *dst, u32 exchange, u32 comperand)
 
 Atomically compares the value of the variable with the specified comperand, and sets the variable to the specified value if equal. 
 
-## Overview
 
 
 ## Parameters

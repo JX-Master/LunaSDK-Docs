@@ -7,7 +7,6 @@ bool succeeded(const R< _Ty > &r)
 
 Tests whether the specified result is successful. 
 
-## Overview
 
 
 ## Parameters

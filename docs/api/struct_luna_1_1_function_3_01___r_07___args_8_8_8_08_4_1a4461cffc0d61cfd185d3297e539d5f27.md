@@ -6,7 +6,6 @@ _R operator()(_Args... args) const
 
 Invokes the function wrapper. This will invoke the callable object that is stored in the function. 
 
-## Overview
 
 
 ## Parameters

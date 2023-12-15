@@ -6,7 +6,6 @@ virtual RV seek(i64 offset, SeekMode mode)=0
 
 Moves the read/write cursor to a new position. 
 
-## Overview
 
 
 ## Parameters

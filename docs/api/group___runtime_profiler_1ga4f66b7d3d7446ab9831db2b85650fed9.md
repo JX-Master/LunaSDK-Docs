@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void memory_profiler_allocate(void *ptr, usize size)
 
 Emits one PROFILER_EVENT_ID_MEMORY_ALLOCATE profiler event. 
 
-## Overview
 
 
 ## Parameters

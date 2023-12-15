@@ -6,7 +6,6 @@ object_t detach()
 
 Detaches the stored pointer. The reference becomes null after this operation. 
 
-## Overview
 This operation does not modify the reference counter of the original boxed object. 
 
 ## Return value

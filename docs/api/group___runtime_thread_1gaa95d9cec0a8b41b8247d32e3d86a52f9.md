@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void sleep(u32 time_milliseconds)
 
 Suspends current thread for a specific period of time. 
 
-## Overview
 The actual suspended time may be longer than required. 
 
 ## Parameters

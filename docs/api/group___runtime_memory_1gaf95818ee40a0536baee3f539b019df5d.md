@@ -7,7 +7,6 @@ void memdelete(_Ty *o)
 
 Destructs one object and frees its memory. 
 
-## Overview
 
 
 ## Parameters

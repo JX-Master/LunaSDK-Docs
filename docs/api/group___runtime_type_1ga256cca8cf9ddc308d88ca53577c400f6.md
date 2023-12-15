@@ -6,7 +6,6 @@ LUNA_RUNTIME_API usize get_type_size(typeinfo_t type)
 
 Gets the size of the specified type. 
 
-## Overview
 
 
 ## Parameters

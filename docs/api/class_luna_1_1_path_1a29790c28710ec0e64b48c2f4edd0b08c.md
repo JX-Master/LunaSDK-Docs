@@ -6,7 +6,6 @@ iterator erase(const_iterator pos)
 
 Removes one name node from the path. 
 
-## Overview
 
 
 ## Parameters

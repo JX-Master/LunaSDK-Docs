@@ -6,7 +6,6 @@ Function(function_t *func)
 
 Constructs an function wrapper using one function pointer. 
 
-## Overview
 
 
 ## Parameters

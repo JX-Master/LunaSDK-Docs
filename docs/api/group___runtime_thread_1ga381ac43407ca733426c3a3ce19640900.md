@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void tls_set(opaque_t handle, void *ptr)
 
 Set the data bound to the current thread's TLS slot specified by `handle`. 
 
-## Overview
 
 
 ## Parameters

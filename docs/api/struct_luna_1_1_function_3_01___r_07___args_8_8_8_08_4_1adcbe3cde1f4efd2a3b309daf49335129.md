@@ -6,7 +6,6 @@ Function(Function &&rhs)
 
 Constructs an function wrapper by moving from another function object. 
 
-## Overview
 
 
 ## Parameters

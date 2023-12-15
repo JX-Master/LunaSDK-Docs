@@ -6,7 +6,6 @@ typeinfo_t type() const
 
 Gets the type object of the boxed object. 
 
-## Overview
 
 
 ## Return value

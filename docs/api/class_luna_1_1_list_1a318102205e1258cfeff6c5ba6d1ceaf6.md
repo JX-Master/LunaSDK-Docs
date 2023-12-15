@@ -6,7 +6,6 @@ void push_front(const value_type &value)
 
 Inserts one element at the front of the list. 
 
-## Overview
 
 
 ## Parameters

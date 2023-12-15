@@ -6,7 +6,6 @@ String encode(PathSeparator separator=PathSeparator::slash, bool has_root=true) 
 
 Encodes the current path to a string. 
 
-## Overview
 
 
 ## Parameters

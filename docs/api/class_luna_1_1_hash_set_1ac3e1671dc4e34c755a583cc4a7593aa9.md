@@ -6,7 +6,6 @@ HashSet(const allocator_type &alloc)
 
 Constructs an empty set with an custom allocator. 
 
-## Overview
 
 
 ## Parameters

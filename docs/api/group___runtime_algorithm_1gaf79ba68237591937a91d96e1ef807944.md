@@ -7,7 +7,6 @@ void sort(_RandomIt first, _RandomIt last, _Compare comp)
 
 Sorts the elements in the range in non-descending order. The order of equal elements is not guaranteed to be preserved. 
 
-## Overview
 
 
 ## Parameters

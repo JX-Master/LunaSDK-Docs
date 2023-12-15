@@ -6,7 +6,6 @@ bool operator==(const Name &rhs) const
 
 Compares two names for equality. 
 
-## Overview
 
 
 ## Parameters

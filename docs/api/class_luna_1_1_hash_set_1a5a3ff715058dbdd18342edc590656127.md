@@ -6,7 +6,6 @@ void swap(HashSet &rhs)
 
 Swaps elements of this set with the specified set. 
 
-## Overview
 
 
 ## Parameters

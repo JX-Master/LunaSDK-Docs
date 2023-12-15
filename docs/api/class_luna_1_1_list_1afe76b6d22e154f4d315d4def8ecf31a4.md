@@ -6,7 +6,6 @@ List< _Ty, _Alloc >::reference back()
 
 Gets the last element in the list. 
 
-## Overview
 
 
 ## Return value

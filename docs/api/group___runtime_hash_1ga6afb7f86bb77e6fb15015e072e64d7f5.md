@@ -7,7 +7,6 @@ constexpr _HashTy strhash(const c8 *s, _HashTy h=0)
 
 Computes a hash code for the specified string. 
 
-## Overview
 
 
 ## Parameters

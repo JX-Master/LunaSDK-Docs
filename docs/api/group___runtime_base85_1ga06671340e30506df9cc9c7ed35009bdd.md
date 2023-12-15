@@ -6,7 +6,6 @@ constexpr usize base85_get_decoded_size(usize encoded_size)
 
 Get the decoded binary size from the encoded base85 string size. 
 
-## Overview
 
 
 ## Parameters

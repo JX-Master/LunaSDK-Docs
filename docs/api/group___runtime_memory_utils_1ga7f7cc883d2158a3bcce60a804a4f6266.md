@@ -7,7 +7,6 @@ auto value_construct_range(_Iter *first, _Iter *last) -> enable_if_t< Impl::valu
 
 Value-constructs a range of objects. 
 
-## Overview
 
 
 ## Parameters

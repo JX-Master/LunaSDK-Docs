@@ -6,7 +6,6 @@ iterator erase(const_iterator pos)
 
 Removes one element from the map. 
 
-## Overview
 
 
 ## Parameters

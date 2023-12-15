@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void retain_name(const c8 *name)
 
 Increases the reference count of the name string by 1. 
 
-## Overview
 
 
 ## Parameters

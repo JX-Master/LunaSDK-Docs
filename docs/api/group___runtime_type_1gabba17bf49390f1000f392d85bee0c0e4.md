@@ -6,7 +6,6 @@ LUNA_RUNTIME_API typeinfo_t get_base_type(typeinfo_t type)
 
 Gets the base type of the specified type. 
 
-## Overview
 
 
 ## Parameters

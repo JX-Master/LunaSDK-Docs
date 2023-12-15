@@ -6,7 +6,6 @@ using structure_ctor_t =  void(typeinfo_t type, void* inst)
 
 The structure constructor used by the reflection system. 
 
-## Overview
 
 
 ## Parameters

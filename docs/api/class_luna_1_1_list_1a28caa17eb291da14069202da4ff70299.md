@@ -6,7 +6,6 @@ List< _Ty, _Alloc >::const_reference back() const
 
 Gets the last element in the list. 
 
-## Overview
 
 
 ## Return value

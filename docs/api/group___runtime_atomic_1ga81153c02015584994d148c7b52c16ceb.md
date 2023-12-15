@@ -7,7 +7,6 @@ _Ty * atom_compare_exchange_pointer(_Ty *volatile *dst, void *exchange, void *co
 
 Atomically compares the value of the variable with the specified comperand, and sets the variable to the specified value if equal. 
 
-## Overview
 
 
 ## Parameters

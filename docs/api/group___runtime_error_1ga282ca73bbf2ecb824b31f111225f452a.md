@@ -6,7 +6,6 @@ LUNA_RUNTIME_API const c8 * get_error_code_name(ErrCode err_code)
 
 Fetches the name of the error code. 
 
-## Overview
 
 
 ## Parameters

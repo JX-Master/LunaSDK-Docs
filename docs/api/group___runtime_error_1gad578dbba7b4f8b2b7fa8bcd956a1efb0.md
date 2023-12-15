@@ -6,7 +6,6 @@ const c8 * explain(ErrCode err_code)
 
 Gets a brief description about the error code. 
 
-## Overview
 
 
 ## Parameters

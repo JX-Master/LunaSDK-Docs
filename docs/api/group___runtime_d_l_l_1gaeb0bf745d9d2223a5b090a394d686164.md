@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void free_library(opaque_t handle)
 
 Unloads the specified library. 
 
-## Overview
 
 
 ## Parameters

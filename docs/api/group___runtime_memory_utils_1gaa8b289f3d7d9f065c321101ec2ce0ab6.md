@@ -7,7 +7,6 @@ void move_assign(_Iter1 dst, _Iter2 src)
 
 Calls the move assignment operator of the object. 
 
-## Overview
 
 
 ## Parameters

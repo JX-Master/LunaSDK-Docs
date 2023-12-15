@@ -7,7 +7,6 @@ _OutputIt set_intersection(_InputIt1 first1, _InputIt1 last1, _InputIt2 first2, 
 
 Constructs a sorted range consisting of elements that are found in both sorted ranges. 
 
-## Overview
 
 
 ## Parameters

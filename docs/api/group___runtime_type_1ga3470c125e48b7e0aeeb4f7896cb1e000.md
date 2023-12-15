@@ -6,7 +6,6 @@ LUNA_RUNTIME_API Span< const Name > get_struct_generic_parameter_names(typeinfo_
 
 Gets the generic parameter names of the specified type. 
 
-## Overview
 
 
 ## Parameters

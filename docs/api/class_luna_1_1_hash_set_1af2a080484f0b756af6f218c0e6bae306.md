@@ -6,7 +6,6 @@ const_iterator find(const key_type &key) const
 
 Finds the specified element in the set. 
 
-## Overview
 
 
 ## Parameters

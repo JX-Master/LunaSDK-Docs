@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void set_hashable(typeinfo_t type, hash_func_t *func)
 
 Sets one type to support hash code computing. 
 
-## Overview
 
 
 ## Parameters

@@ -6,7 +6,6 @@ MutexGuard(IMutex *mtx)
 
 Constructs a mutex lock that locks the specified mutex. 
 
-## Overview
 
 
 ## Parameters

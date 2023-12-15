@@ -6,7 +6,6 @@ LUNA_RUNTIME_API usize register_profiler_callback(const Function< on_profiler_ev
 
 Registers one profiler callback function. 
 
-## Overview
 
 
 ## Parameters

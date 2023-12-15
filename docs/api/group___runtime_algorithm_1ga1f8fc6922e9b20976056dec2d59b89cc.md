@@ -7,7 +7,6 @@ _ForwardIt upper_bound(_ForwardIt first, _ForwardIt last, const _Ty &value)
 
 Finds the first element in the range such that `value < element` is `true`. 
 
-## Overview
 
 
 ## Parameters

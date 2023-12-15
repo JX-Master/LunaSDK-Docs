@@ -7,7 +7,6 @@ List< _Ty, _Alloc >::reference emplace_back(_Args &&... args)
 
 Constructs one element directly on the back of the list using the provided arguments. 
 
-## Overview
 
 
 ## Parameters

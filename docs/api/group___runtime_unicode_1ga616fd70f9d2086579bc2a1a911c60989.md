@@ -6,7 +6,6 @@ LUNA_RUNTIME_API usize utf16_to_utf8(c8 *dst, usize dst_max_chars, const c16 *sr
 
 Converts a UTF-16 string to UTF-8 string. 
 
-## Overview
 
 
 ## Parameters

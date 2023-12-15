@@ -6,7 +6,6 @@ LUNA_RUNTIME_API bool check_property_attribute(typeinfo_t type, const Name &prop
 
 Checks whether the attribute of the specified property exists. 
 
-## Overview
 
 
 ## Parameters

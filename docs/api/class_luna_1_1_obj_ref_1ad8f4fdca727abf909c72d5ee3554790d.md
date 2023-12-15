@@ -6,7 +6,6 @@ bool operator==(const ObjRef &rhs) const
 
 Compares two references for equality. 
 
-## Overview
 Two references are equal if their underlying pointers are equal. 
 
 ## Parameters

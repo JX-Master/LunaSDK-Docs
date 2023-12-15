@@ -6,7 +6,6 @@ constexpr reference operator[](isize n) const
 
 Returns a reference to the element at specified relative location. 
 
-## Overview
 
 
 ## Parameters

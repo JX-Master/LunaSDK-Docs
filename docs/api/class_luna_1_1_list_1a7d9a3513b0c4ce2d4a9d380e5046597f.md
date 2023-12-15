@@ -6,7 +6,6 @@ List(const List &rhs)
 
 Constructs a list by copying elements from another list. 
 
-## Overview
 
 
 ## Parameters

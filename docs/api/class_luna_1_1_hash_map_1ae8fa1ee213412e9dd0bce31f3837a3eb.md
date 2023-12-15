@@ -6,7 +6,6 @@ HashMap(HashMap &&rhs)
 
 Constructs a map by moving elements from another map. 
 
-## Overview
 
 
 ## Parameters

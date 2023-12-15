@@ -7,7 +7,6 @@ _ForwardIt lower_bound(_ForwardIt first, _ForwardIt last, const _Ty &value, _Com
 
 Finds the first element in the range such that `comp(element, value)` is `false`. 
 
-## Overview
 
 
 ## Parameters

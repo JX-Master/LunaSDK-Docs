@@ -6,7 +6,6 @@ LUNA_RUNTIME_API typeinfo_t get_object_type(object_t object_ptr)
 
 Gets the type object of the boxed object. 
 
-## Overview
 
 
 ## Parameters

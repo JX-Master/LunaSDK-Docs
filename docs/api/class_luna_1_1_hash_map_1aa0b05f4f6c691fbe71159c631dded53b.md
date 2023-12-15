@@ -6,7 +6,6 @@ bool contains(const key_type &key) const
 
 Checks whether at least one element with the specified key exists. 
 
-## Overview
 
 
 ## Parameters

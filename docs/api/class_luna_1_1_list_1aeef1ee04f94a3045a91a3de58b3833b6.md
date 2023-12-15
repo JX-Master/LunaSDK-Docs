@@ -6,7 +6,6 @@ List< _Ty, _Alloc >::const_reference front() const
 
 Gets the first element in the list. 
 
-## Overview
 
 
 ## Return value

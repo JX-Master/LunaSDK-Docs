@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void * allocate_profiler_event_data(usize size, usize alignment
 
 Allocates one temporary buffer that can be used to store event data for the next profiler event. 
 
-## Overview
 
 
 ## Parameters

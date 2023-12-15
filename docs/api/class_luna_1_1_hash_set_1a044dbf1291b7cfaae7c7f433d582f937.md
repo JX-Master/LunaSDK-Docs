@@ -7,7 +7,6 @@ Pair< iterator, bool > emplace(_Args &&... args)
 
 Constructs one element directly in the set using the provided arguments. 
 
-## Overview
 
 
 ## Parameters

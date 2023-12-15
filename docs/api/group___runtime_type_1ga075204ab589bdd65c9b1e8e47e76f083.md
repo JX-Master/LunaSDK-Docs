@@ -6,7 +6,6 @@ LUNA_RUNTIME_API bool is_enum_type(typeinfo_t type)
 
 Checks whether one type is an enumeration type. 
 
-## Overview
 
 
 ## Parameters

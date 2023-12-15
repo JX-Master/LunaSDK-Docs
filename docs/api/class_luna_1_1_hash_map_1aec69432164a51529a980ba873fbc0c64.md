@@ -7,7 +7,6 @@ Pair< iterator, bool > insert_or_assign(key_type &&key, _M &&value)
 
 Assigns the value to the element with the specified key, or inserts the key-value pair to the map if such element is not found. 
 
-## Overview
 
 
 ## Parameters

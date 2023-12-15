@@ -7,7 +7,6 @@ void destruct(_Iter dst)
 
 Calls the destructor of the object. 
 
-## Overview
 
 
 ## Parameters

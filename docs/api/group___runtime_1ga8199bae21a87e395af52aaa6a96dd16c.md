@@ -7,7 +7,6 @@ constexpr auto test_flags(_Ty flags, _Ty options) -> enable_if_t< is_enum_v< _Ty
 
 Tests if the provided enumeration contains the specified enumeration option. 
 
-## Overview
 
 
 ## Parameters

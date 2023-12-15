@@ -6,7 +6,6 @@ HashMap(const HashMap &rhs)
 
 Constructs a map by coping elements from another map. 
 
-## Overview
 
 
 ## Parameters

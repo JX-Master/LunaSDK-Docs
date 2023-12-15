@@ -7,7 +7,6 @@ constexpr _UnaryFunction for_each(_InputIt first, _InputIt last, _UnaryFunction 
 
 Applies the given function object to every element in the range, in order. 
 
-## Overview
 
 
 ## Parameters

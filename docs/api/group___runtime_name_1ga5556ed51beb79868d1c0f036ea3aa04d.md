@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void release_name(const c8 *name)
 
 Decreases the reference count of the name string by 1, and eventually frees the name string when the reference count goes to 0. 
 
-## Overview
 
 
 ## Parameters

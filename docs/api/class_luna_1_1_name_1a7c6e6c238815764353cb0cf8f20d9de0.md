@@ -6,7 +6,6 @@ Name(const c8 *name, usize count)
 
 Constructs one name with the provided name string and size. 
 
-## Overview
 
 
 ## Parameters

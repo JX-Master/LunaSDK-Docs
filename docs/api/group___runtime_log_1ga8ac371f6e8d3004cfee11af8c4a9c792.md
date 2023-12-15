@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void log_debug(const c8 *tag, const c8 *format,...)
 
 Outputs one log message with LogVerbosity::debug verbosity. 
 
-## Overview
 
 
 ## Parameters

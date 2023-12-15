@@ -4,7 +4,6 @@
 constexpr u64 strhash64(const c8 *s, u64 h=0)
 ```
 
-## Overview
 A specialization of strhash that computes 64-bit hash code. 
 
 ## Parameters

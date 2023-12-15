@@ -6,7 +6,6 @@ List< _Ty, _Alloc >::iterator insert(const_iterator pos, InitializerList< value_
 
 Inserts one range of elements specified by the initializer list to the list. 
 
-## Overview
 
 
 ## Parameters

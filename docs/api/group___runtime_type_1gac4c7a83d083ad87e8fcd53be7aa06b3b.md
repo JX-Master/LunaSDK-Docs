@@ -6,7 +6,6 @@ LUNA_RUNTIME_API typeinfo_t get_type_by_name(const Name &name, const Name &alias
 
 Gets one type by its name. 
 
-## Overview
 
 
 ## Parameters

@@ -6,7 +6,6 @@ LUNA_RUNTIME_API RV create_dir(const c8 *path)
 
 Creates one empty directory. 
 
-## Overview
 
 
 ## Parameters

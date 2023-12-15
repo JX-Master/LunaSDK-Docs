@@ -7,7 +7,6 @@ _Ty * memzero(_Ty *dst)
 
 Clears the memory of the specified object to 0. 
 
-## Overview
 
 
 ## Parameters

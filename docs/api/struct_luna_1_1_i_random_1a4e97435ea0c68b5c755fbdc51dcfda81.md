@@ -6,7 +6,6 @@ virtual u32 gen_u32()=0
 
 Generates one random 32-bit unsigned integer. 
 
-## Overview
 
 
 ## Return value

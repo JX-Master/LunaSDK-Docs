@@ -6,7 +6,6 @@ reference back()
 
 Gets the last name node in the path. 
 
-## Overview
 
 
 ## Return value

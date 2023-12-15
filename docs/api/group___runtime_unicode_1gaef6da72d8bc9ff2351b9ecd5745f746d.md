@@ -6,7 +6,6 @@ LUNA_RUNTIME_API usize utf8_to_utf16_len(const c8 *src, usize src_chars=USIZE_MA
 
 Determines the length of the corresponding UTF-16 string for a UTF-8 string, not include the null-terminator. 
 
-## Overview
 
 
 ## Parameters

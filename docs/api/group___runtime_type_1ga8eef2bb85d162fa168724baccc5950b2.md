@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void * set_type_private_data(typeinfo_t type, const Guid &data_
 
 Sets user defined private data for the specified type. 
 
-## Overview
 
 
 ## Parameters

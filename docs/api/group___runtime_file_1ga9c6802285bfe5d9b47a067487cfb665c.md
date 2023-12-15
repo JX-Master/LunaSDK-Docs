@@ -6,7 +6,6 @@ LUNA_RUNTIME_API R< Ref< IFile > > open_file(const c8 *path, FileOpenFlag flags,
 
 Opens one file. 
 
-## Overview
 
 
 ## Parameters

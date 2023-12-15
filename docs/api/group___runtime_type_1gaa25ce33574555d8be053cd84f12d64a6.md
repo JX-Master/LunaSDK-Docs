@@ -6,7 +6,6 @@ using equal_to_func_t =  bool(typeinfo_t type, const void* lhs, const void* rhs)
 
 The equality testing function used by the reflection system. 
 
-## Overview
 
 
 ## Parameters

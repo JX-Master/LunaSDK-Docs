@@ -6,7 +6,6 @@ ObjRef(ObjRef &&rhs)
 
 Constructs one reference by moving the pointer from another reference. 
 
-## Overview
 The reference counter of the new boxed object is not modified. 
 
 ## Parameters

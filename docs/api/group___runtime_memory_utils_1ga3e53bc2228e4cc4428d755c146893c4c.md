@@ -7,7 +7,6 @@ auto copy_relocate(_Iter1 dst, _Iter2 src) -> enable_if_t< Impl::copy_relocate_i
 
 Relocates one object. 
 
-## Overview
 After this call, the object in the destination memory behaves the same as the object formerly in the source memory, except that the place(memory address) for the object is changed. 
 
 ## Parameters

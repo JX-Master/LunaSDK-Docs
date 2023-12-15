@@ -7,7 +7,6 @@ Pair< _ForwardIt, _ForwardIt > equal_range(_ForwardIt first, _ForwardIt last, co
 
 Gets a range containing all elements equivalent to the specified value in the range. 
 
-## Overview
 
 
 ## Parameters

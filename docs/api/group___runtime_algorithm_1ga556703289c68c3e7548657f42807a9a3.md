@@ -7,7 +7,6 @@ _OutputIt set_symmetric_difference(_InputIt1 first1, _InputIt1 last1, _InputIt2 
 
 Computes symmetric difference of two sorted ranges: elements that are found in either of the ranges, but not in both of them are copied to the destination range. The destination range is also sorted. 
 
-## Overview
 
 
 ## Parameters

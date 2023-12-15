@@ -6,7 +6,6 @@ HashMap(const allocator_type &alloc)
 
 Constructs an empty map with an custom allocator. 
 
-## Overview
 
 
 ## Parameters

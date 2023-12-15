@@ -6,7 +6,6 @@ LUNA_RUNTIME_API Name get_type_name(typeinfo_t type, Name *alias=nullptr)
 
 Gets the name of the specified type. 
 
-## Overview
 
 
 ## Parameters

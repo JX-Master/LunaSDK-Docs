@@ -6,7 +6,6 @@ ErrCode unwrap_errcode(ErrCode err_code)
 
 Gets the real error code if the error code is BasicError::error_object. 
 
-## Overview
 
 
 ## Parameters

@@ -6,7 +6,6 @@ LUNA_RUNTIME_API usize memsize(void *ptr, usize alignment=0)
 
 Gets the allocated size of one memory block. 
 
-## Overview
 
 
 ## Parameters

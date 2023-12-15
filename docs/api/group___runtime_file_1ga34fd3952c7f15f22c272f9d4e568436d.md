@@ -6,7 +6,6 @@ LUNA_RUNTIME_API R< Ref< IFileIterator > > open_dir(const c8 *path)
 
 Creates a file iterator that can be used to iterate all files in the specified directory. 
 
-## Overview
 
 
 ## Parameters

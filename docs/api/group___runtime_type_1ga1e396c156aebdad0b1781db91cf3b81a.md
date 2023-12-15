@@ -6,7 +6,6 @@ LUNA_RUNTIME_API bool check_type_attribute(typeinfo_t type, const Name &name)
 
 Checks whether the attribute of the specified type exists. 
 
-## Overview
 
 
 ## Parameters

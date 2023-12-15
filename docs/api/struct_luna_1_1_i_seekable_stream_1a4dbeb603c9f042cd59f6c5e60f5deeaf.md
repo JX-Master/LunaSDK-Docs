@@ -6,7 +6,6 @@ virtual u64 get_size()=0
 
 Gets the size of the stream buffer in bytes. 
 
-## Overview
 
 
 ## Return value

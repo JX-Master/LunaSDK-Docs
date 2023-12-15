@@ -6,7 +6,6 @@ LUNA_RUNTIME_API usize hash_type(typeinfo_t type, const void *inst)
 
 Computes the hash code of one instance of the specified type. 
 
-## Overview
 
 
 ## Parameters

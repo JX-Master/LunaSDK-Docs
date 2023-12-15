@@ -6,7 +6,6 @@ void swap(List &rhs)
 
 Swaps elements of this list with the specified list. 
 
-## Overview
 
 
 ## Parameters

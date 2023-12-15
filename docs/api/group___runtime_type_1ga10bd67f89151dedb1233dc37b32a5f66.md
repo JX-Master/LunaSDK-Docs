@@ -6,7 +6,6 @@ LUNA_RUNTIME_API bool equal_to_type(typeinfo_t type, const void *lhs, const void
 
 Checks whether two instances of one type are equal. 
 
-## Overview
 
 
 ## Parameters

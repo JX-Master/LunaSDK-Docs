@@ -7,7 +7,6 @@ void copy_assign(_Iter1 dst, _Iter2 src)
 
 Calls the copy assignment operator of the object. 
 
-## Overview
 
 
 ## Parameters

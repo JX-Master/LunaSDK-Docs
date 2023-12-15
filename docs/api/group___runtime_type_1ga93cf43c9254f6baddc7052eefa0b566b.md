@@ -6,7 +6,6 @@ LUNA_RUNTIME_API Variant get_type_attribute(typeinfo_t type, const Name &name)
 
 Gets the attribute of the specified type. 
 
-## Overview
 
 
 ## Parameters

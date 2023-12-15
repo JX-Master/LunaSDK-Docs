@@ -6,7 +6,6 @@ virtual bool try_acquire_read()=0
 
 Tries to acquire one read ownership of the lock. 
 
-## Overview
 This operation does not block the current thread, it returns immediately no matter whether the ownership is acquired. 
 
 ## Return value

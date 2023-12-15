@@ -6,7 +6,6 @@ LUNA_RUNTIME_API Vector< ErrCode > get_all_error_codes_of_category(errcat_t err_
 
 Fetches all error codes that belongs to the specified error category. 
 
-## Overview
 
 
 ## Parameters

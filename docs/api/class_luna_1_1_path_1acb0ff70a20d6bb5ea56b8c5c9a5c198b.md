@@ -6,7 +6,6 @@ void push_back(const Name &path_node)
 
 Inserts one name node at the back of the path. 
 
-## Overview
 
 
 ## Parameters

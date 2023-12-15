@@ -6,7 +6,6 @@ using hash_func_t =  usize(typeinfo_t type, const void* inst)
 
 The hash code computing function used by the reflection system. 
 
-## Overview
 
 
 ## Parameters

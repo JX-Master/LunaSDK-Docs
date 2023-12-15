@@ -6,7 +6,6 @@ LUNA_RUNTIME_API typeinfo_t f32_type()
 
 Gets the type object of `f32` type. 
 
-## Overview
 
 
 ## Return value

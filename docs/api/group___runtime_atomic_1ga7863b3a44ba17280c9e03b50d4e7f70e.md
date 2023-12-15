@@ -6,7 +6,6 @@ usize atom_exchange_usize(usize volatile *dst, usize v)
 
 Atomically replace the value of the variable with the value provided. 
 
-## Overview
 This operation cannot be interrupted by system thread switching. 
 
 ## Parameters

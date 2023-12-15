@@ -6,7 +6,6 @@ LUNA_RUNTIME_API bool is_multienum_type(typeinfo_t type)
 
 Checks if the specified type is a multi-value enumeration type. 
 
-## Overview
 
 
 ## Parameters

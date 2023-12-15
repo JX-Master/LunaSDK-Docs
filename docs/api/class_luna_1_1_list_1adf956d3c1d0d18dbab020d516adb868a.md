@@ -6,7 +6,6 @@ List(const List &rhs, const allocator_type &alloc)
 
 Constructs a list with an custom allocator and with elements copied from another list. 
 
-## Overview
 
 
 ## Parameters

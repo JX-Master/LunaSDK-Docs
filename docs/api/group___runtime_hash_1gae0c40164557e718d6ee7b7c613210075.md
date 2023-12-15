@@ -7,7 +7,6 @@ _HashTy memhash(const void *data, usize size, _HashTy h=0)
 
 Computes a hash code for the specified binary data. 
 
-## Overview
 This is the basic hash function that uses crc32 hash algorithm to hash any kind of binary data stream to a single hash value. 
 
 ## Parameters

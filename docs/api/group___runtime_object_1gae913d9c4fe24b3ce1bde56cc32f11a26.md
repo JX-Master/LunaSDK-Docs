@@ -6,7 +6,6 @@ LUNA_RUNTIME_API ref_count_t object_ref_count(object_t object_ptr)
 
 Fetches the strong refernece counter value of the boxed object. 
 
-## Overview
 
 
 ## Parameters

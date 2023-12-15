@@ -6,7 +6,6 @@ LUNA_RUNTIME_API IThread * get_main_thread()
 
 Gets the thread object of the main thread. 
 
-## Overview
 
 
 ## Return value

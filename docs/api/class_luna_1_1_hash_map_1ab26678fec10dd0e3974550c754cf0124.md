@@ -6,7 +6,6 @@ void swap(HashMap &rhs)
 
 Swaps elements of this map with the specified map. 
 
-## Overview
 
 
 ## Parameters

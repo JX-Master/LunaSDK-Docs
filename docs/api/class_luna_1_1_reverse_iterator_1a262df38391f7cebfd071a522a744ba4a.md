@@ -6,7 +6,6 @@ constexpr ReverseIterator(iterator_type i)
 
 Constructs a reverse iterator for the given iterator. 
 
-## Overview
 
 
 ## Parameters

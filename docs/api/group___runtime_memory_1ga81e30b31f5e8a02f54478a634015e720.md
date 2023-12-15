@@ -7,7 +7,6 @@ _Ty * memnew(_Args &&... args)
 
 Allocates heap memory for one object and constructs the object. 
 
-## Overview
 
 
 ## Return value

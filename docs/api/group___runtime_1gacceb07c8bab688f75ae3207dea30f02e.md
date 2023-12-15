@@ -7,7 +7,6 @@ isize distance(_It first, _It last)
 
 Gets the number of elements between two iterators. 
 
-## Overview
 
 
 ## Parameters

@@ -6,7 +6,6 @@ i32 atom_add_i32(i32 volatile *base, i32 v)
 
 Atomically increase the value of the variable by the the value provided. 
 
-## Overview
 This operation cannot be interrupted by system thread switching. 
 
 ## Parameters

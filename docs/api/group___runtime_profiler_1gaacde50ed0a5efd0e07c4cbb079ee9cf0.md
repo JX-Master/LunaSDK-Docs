@@ -7,7 +7,6 @@ void profiler_event_data_dtor(void *data)
 
 One helper function that calls the destructor of the specified type on the pointer. 
 
-## Overview
 
 
 ## Parameters

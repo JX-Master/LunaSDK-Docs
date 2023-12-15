@@ -6,7 +6,6 @@ LUNA_RUNTIME_API typeinfo_t register_enum_type(const EnumerationTypeDesc &desc)
 
 Registers one enumeration type. 
 
-## Overview
 If one type with the same name or GUID already exists, the new type will not be registered. 
 
 ## Parameters

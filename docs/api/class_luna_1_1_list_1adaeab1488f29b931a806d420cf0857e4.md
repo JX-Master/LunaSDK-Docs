@@ -7,7 +7,6 @@ auto assign(_InputIt first, _InputIt last) -> enable_if_t<!is_integral_v< _Input
 
 Replaces elements of the list by elements specified by one range. Elements in the range will be copy-inserted into the list. 
 
-## Overview
 
 
 ## Parameters

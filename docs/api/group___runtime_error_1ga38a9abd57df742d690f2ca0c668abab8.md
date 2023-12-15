@@ -6,7 +6,6 @@ _Ty & get()
 
 Gets the return value of the result object. 
 
-## Overview
 
 
 ## Return value

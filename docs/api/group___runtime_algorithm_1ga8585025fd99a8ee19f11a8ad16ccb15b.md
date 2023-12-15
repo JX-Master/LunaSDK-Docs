@@ -7,7 +7,6 @@ _ForwardIt upper_bound(_ForwardIt first, _ForwardIt last, const _Ty &value, _Com
 
 Finds the first element in the range such that `comp(value, element)` is `true`. 
 
-## Overview
 
 
 ## Parameters

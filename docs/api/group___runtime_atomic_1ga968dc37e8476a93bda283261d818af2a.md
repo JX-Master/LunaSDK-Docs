@@ -6,7 +6,6 @@ u64 atom_exchange_u64(u64 volatile *dst, u64 v)
 
 Atomically replace the value of the variable with the value provided. 
 
-## Overview
 This operation cannot be interrupted by system thread switching. 
 
 ## Parameters

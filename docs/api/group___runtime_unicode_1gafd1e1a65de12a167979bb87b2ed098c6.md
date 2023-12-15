@@ -6,7 +6,6 @@ constexpr usize utf16_charlen(const c16 *src)
 
 Gets the number of UTF-16 characters the Unicode character takes from the first UTF-16 character. 
 
-## Overview
 
 
 ## Parameters

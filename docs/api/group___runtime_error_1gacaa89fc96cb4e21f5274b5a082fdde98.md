@@ -6,7 +6,6 @@ ErrCode errcode() const
 
 Gets the error code of the result object. 
 
-## Overview
 
 
 ## Return value

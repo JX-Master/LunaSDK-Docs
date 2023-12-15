@@ -6,7 +6,6 @@ virtual f32 gen_f32(f32 range_begin, f32 range_end)=0
 
 Generates one random 32-bit floating-point number. 
 
-## Overview
 
 
 ## Parameters

@@ -7,7 +7,6 @@ typeinfo_t register_enum_type(Span< const EnumerationOptionDesc > options, bool 
 
 Registers one enumeration type to the type system. The enumeration type must have one luenum macro defined directly in `Luna` namespace. 
 
-## Overview
 
 
 ## Parameters

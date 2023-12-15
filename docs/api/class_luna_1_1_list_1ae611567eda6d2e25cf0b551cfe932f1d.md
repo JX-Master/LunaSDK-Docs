@@ -6,7 +6,6 @@ List(const allocator_type &alloc)
 
 Constructs an empty list with an custom allocator. 
 
-## Overview
 
 
 ## Parameters

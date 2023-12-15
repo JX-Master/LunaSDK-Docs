@@ -7,7 +7,6 @@ void swap(_Ty &a, _Ty &b)
 
 Swaps two values. 
 
-## Overview
 
 
 ## Parameters

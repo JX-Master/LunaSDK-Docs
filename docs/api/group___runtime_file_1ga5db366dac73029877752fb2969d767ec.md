@@ -6,7 +6,6 @@ LUNA_RUNTIME_API R< Blob > load_file_data(IFile *file)
 
 Returns the data in the specified file as a blob object. 
 
-## Overview
 
 
 ## Parameters

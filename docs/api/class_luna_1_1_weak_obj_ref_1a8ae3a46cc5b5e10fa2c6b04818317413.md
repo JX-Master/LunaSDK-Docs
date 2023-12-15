@@ -6,7 +6,6 @@ bool operator==(const WeakObjRef &rhs) const
 
 Compares two references for equality. 
 
-## Overview
 Two references are equal if their underlying pointers are either equal or both invalid. 
 
 ## Parameters

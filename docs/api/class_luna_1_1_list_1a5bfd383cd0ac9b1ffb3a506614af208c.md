@@ -6,7 +6,6 @@ List(InitializerList< value_type > ilist, const allocator_type &alloc=allocator_
 
 Constructs a list with elements specified by one initializer list. 
 
-## Overview
 
 
 ## Parameters

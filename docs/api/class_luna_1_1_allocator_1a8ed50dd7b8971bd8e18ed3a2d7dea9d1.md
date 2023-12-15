@@ -7,7 +7,6 @@ _Ty * allocate(usize n=1)
 
 Allocates memory for the specified number of elements. 
 
-## Overview
 
 
 ## Parameters

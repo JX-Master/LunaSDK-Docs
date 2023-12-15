@@ -6,7 +6,6 @@ constexpr usize base64_get_encoded_size(usize raw_size)
 
 Get the encoded base64 string size from the raw data size. 
 
-## Overview
 
 
 ## Parameters

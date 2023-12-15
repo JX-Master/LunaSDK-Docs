@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void * memrealloc(void *ptr, usize size, usize alignment=0)
 
 Reallocates heap memory. 
 
-## Overview
 
 
 ## Parameters

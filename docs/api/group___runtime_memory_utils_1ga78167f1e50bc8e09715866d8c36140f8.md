@@ -6,7 +6,6 @@ void * memcpy_bitmap(void *dst, const void *src, usize copy_size_per_row, usize 
 
 Copies the data for a 2D bitmap. 
 
-## Overview
 
 
 ## Parameters

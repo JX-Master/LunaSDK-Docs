@@ -6,7 +6,6 @@ void * pixel_offset(void *base, usize x, usize y, usize z, usize bytes_per_pixel
 
 Returns a pointer that offsets the specified pixels in the bitmap. 
 
-## Overview
 
 
 ## Parameters

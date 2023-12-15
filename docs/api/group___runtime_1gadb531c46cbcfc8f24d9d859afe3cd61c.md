@@ -7,7 +7,6 @@ constexpr auto set_flags(_Ty flags, _Ty options, bool value) -> enable_if_t< is_
 
 Sets the provided enumeration options to 1 or 0 based on the value provided. 
 
-## Overview
 
 
 ## Parameters

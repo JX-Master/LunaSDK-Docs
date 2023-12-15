@@ -7,7 +7,6 @@ constexpr ReverseIterator(const ReverseIterator< _Uty > &ri)
 
 Constructs a reverse iterator by coping from the specified reverse iterator of different iterator type. 
 
-## Overview
 
 
 ## Parameters

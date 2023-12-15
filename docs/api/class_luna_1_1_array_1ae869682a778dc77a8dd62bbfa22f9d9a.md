@@ -6,7 +6,6 @@ constexpr reference back()
 
 Gets a reference to the last (size - 1) element in the array. 
 
-## Overview
 
 
 ## Return value

@@ -6,7 +6,6 @@ LUNA_RUNTIME_API Span< const EnumerationOptionDesc > get_enum_options(typeinfo_t
 
 Gets options of the specified enumeration. 
 
-## Overview
 
 
 ## Parameters

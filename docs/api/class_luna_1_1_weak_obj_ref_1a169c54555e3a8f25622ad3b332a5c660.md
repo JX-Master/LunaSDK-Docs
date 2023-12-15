@@ -6,7 +6,6 @@ WeakObjRef & operator=(WeakObjRef &&rhs)
 
 Assigns this reference by moving the pointer from another reference. 
 
-## Overview
 The reference counter of the new boxed object is not modified. The weak reference counter of the original boxed object, if not null, will be decreased before assignment. 
 
 ## Parameters

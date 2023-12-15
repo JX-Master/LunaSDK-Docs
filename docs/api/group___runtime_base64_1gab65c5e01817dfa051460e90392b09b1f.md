@@ -6,7 +6,6 @@ LUNA_RUNTIME_API usize base64_decode(void *dst, usize dst_max_bytes, const c8 *s
 
 Decode a base64 string to binary data. The system assumes the string passed in is a valid base64 string. 
 
-## Overview
 
 
 ## Parameters

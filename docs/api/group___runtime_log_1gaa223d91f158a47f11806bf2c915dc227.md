@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void unregister_log_handler(usize handler_id)
 
 Unregisters one registered log handler. 
 
-## Overview
 
 
 ## Parameters

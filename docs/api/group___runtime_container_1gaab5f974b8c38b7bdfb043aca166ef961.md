@@ -4,7 +4,6 @@
 LUNA_RUNTIME_API typeinfo_t hash_set_type()
 ```
 
-## Overview
 Gets the type object of [HashSet](class_luna_1_1_hash_set.md). 
 
 ## Return value

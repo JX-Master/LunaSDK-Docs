@@ -7,7 +7,6 @@ _Ty * addressof(_Ty &value)
 
 Gets the real address for object or function `value`, even if the `operator&` of the object has been overloaded. 
 
-## Overview
 
 
 ## Parameters

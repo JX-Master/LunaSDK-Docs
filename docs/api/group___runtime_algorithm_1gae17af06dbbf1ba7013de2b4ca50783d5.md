@@ -7,7 +7,6 @@ bool binary_search(_ForwardIt first, _ForwardIt last, const _Ty &value, _Compare
 
 Checks if an element equivalent to the specified value appears within the range. 
 
-## Overview
 
 
 ## Parameters

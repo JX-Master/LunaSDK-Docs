@@ -4,7 +4,6 @@
 virtual RV read(void *buffer, usize size, usize *read_bytes=nullptr)=0
 ```
 
-## Overview
 Reads data from the current position the cursor is pointing to and offsets the cursor back. If the data to be read is not ready, the platform suspends the calling thread until the data is ready. 
 
 ## Parameters

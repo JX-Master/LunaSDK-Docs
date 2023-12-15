@@ -6,7 +6,6 @@ LUNA_RUNTIME_API Variant get_property_attribute(typeinfo_t type, const Name &pro
 
 Gets the attribute of the specified property. 
 
-## Overview
 
 
 ## Parameters

@@ -7,7 +7,6 @@ void direct_construct(_Iter dst, _Args &&... args)
 
 Calls the direct constructor for the object. 
 
-## Overview
 
 
 ## Parameters

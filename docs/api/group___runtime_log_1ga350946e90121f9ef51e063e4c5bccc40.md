@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void log(LogVerbosity verbosity, const c8 *tag, const c8 *forma
 
 Logs one message. 
 
-## Overview
 
 
 ## Parameters

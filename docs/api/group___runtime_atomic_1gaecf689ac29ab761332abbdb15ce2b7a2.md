@@ -6,7 +6,6 @@ u32 atom_exchange_u32(u32 volatile *dst, u32 v)
 
 Atomically replace the value of the variable with the value provided. 
 
-## Overview
 This operation cannot be interrupted by system thread switching. 
 
 ## Parameters

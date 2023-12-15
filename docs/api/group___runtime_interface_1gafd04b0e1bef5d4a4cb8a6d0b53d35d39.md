@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void impl_interface_for_type(const InterfaceImplDesc &desc)
 
 Registers one interface implementation. 
 
-## Overview
 
 
 ## Parameters

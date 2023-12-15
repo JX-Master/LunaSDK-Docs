@@ -4,7 +4,6 @@
 virtual RV write(const void *buffer, usize size, usize *write_bytes=nullptr)=0
 ```
 
-## Overview
 Writes data to the current position the cursor is pointing to and offsets the cursor back. This call returns after all data have been written. 
 
 ## Parameters

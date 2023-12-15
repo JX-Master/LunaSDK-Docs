@@ -4,7 +4,6 @@
 LUNA_RUNTIME_API Ref< IMutex > new_mutex()
 ```
 
-## Overview
 Creates a new mutex object. 
 
 ## Return value

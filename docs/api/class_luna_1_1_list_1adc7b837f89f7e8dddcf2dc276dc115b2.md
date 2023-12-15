@@ -6,7 +6,6 @@ void push_back(value_type &&value)
 
 Inserts one element at the back of the list. 
 
-## Overview
 
 
 ## Parameters

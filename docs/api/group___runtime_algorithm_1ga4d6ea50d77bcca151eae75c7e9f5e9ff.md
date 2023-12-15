@@ -7,7 +7,6 @@ constexpr bool any_of(_InputIt first, _InputIt last, _UnaryPredicate p)
 
 Checks if the unary predicate returns `true` for at least one element in the range. 
 
-## Overview
 
 
 ## Parameters

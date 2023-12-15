@@ -7,7 +7,6 @@ Ref< _Ty > new_object(_Args &&... args)
 
 Creates one new boxed object. 
 
-## Overview
 This function uses object_alloc to allocate one new boxed object, then use placement new operator to initialize the object. 
 
 ## Parameters

@@ -6,7 +6,6 @@ Ref & operator=(Ref &&rhs)
 
 Assigns this reference by moving the pointer from another reference of the same type. 
 
-## Overview
 The reference counter of the new boxed object is not modified. The strong reference counter of the original boxed object, if not null, will be decreased before assignment. 
 
 ## Parameters

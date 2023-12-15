@@ -6,7 +6,6 @@ constexpr usize utf8_charlen(const c8 *src)
 
 Gets the number of UTF-8 characters the Unicode character takes from the first UTF-8 character. 
 
-## Overview
 
 
 ## Parameters

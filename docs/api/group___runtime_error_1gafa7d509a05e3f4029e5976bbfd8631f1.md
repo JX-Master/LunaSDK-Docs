@@ -6,7 +6,6 @@ LUNA_RUNTIME_API Vector< errcat_t > get_all_error_subcategories_of_category(errc
 
 Fetches all child error categories that belongs to the specified error category. 
 
-## Overview
 
 
 ## Parameters

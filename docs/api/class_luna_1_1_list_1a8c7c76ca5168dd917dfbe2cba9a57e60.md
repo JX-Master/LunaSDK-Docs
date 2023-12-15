@@ -6,7 +6,6 @@ List< _Ty, _Alloc >::iterator erase(const_iterator pos)
 
 Removes one element from the list. 
 
-## Overview
 
 
 ## Parameters

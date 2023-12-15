@@ -6,7 +6,6 @@ LUNA_RUNTIME_API IThread * get_current_thread()
 
 Gets the thread object of current running thread. 
 
-## Overview
 
 
 ## Return value

@@ -7,7 +7,6 @@ void default_construct(_Iter dst)
 
 Calls the default constructor for the object. 
 
-## Overview
 
 
 ## Parameters

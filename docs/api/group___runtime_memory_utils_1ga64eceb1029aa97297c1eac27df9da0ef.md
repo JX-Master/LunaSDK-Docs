@@ -7,7 +7,6 @@ auto destruct_range(_Iter first, _Iter last) -> enable_if_t< Impl::destruct_rang
 
 Destructs every object in the range. 
 
-## Overview
 
 
 ## Parameters

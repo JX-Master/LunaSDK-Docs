@@ -6,7 +6,6 @@ operator bool() const
 
 Tests whether this function wrapper is non-empty. 
 
-## Overview
 
 
 ## Return value

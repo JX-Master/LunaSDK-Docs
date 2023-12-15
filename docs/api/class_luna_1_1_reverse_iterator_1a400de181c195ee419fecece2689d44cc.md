@@ -6,7 +6,6 @@ constexpr iterator_type base() const
 
 Gets the base iterator of this reverse iterator. 
 
-## Overview
 
 
 ## Return value

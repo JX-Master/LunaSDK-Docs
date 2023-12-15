@@ -7,7 +7,6 @@ _Iter1 fill_construct_range(_Iter1 first, _Iter1 last, const _Ty &value)
 
 Performs copy construct on each of the object in the range by taking a copy of the provided object. 
 
-## Overview
 
 
 ## Parameters

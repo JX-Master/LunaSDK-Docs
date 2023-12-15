@@ -6,7 +6,6 @@ LUNA_RUNTIME_API const c8 * intern_name(const c8 *name)
 
 Interns one name string to the runtime and fetches the interned address for it. 
 
-## Overview
 
 
 ## Parameters

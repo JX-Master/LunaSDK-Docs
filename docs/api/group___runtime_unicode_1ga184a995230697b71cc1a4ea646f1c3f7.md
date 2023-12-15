@@ -6,7 +6,6 @@ constexpr usize utf8_index(const c8 *str, usize n)
 
 Gets the index of the first UTF-8 character for the specified Unicode character. 
 
-## Overview
 
 
 ## Parameters

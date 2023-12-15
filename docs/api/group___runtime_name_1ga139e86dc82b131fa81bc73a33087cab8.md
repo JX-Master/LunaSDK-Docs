@@ -6,7 +6,6 @@ LUNA_RUNTIME_API usize get_name_size(const c8 *name)
 
 Fetches the size of the name string. 
 
-## Overview
 
 
 ## Parameters

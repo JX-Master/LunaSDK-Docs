@@ -7,7 +7,6 @@ constexpr _InputIt find_if(_InputIt first, _InputIt last, _UnaryPredicate p)
 
 Searches for the first element in the range that passes the user-provided unary predicate. 
 
-## Overview
 
 
 ## Parameters

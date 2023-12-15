@@ -6,7 +6,6 @@ WeakObjRef(WeakObjRef &&rhs)
 
 Constructs one reference by moving the pointer from another reference. 
 
-## Overview
 The weak reference counter of the new boxed object is not modified. 
 
 ## Parameters

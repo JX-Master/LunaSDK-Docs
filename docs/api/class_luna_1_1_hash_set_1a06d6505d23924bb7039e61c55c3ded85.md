@@ -6,7 +6,6 @@ HashSet(HashSet &&rhs)
 
 Constructs a set by moving elements from another set. 
 
-## Overview
 
 
 ## Parameters

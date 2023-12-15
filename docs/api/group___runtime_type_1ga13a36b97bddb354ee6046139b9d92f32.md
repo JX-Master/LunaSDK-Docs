@@ -7,7 +7,6 @@ typeinfo_t typeof()
 
 Gets the type object of the specified type. 
 
-## Overview
 
 
 ## Return value

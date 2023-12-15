@@ -6,7 +6,6 @@ LUNA_RUNTIME_API usize register_log_handler(const Function< log_callback_t > &ha
 
 Registers one custom log handler that will be called when a new log message is spawned. 
 
-## Overview
 
 
 ## Parameters

@@ -6,7 +6,6 @@ LUNA_RUNTIME_API opaque_t tls_alloc(tls_destructor *destructor=nullptr)
 
 Allocates one thread local storage (TLS) slot. 
 
-## Overview
 The TLS slot is allocated for every thread running in this process, including the thread that is currently not being created yet. After the handle is returned, every thread can set a thread-local value to this slot using this handle.
 
 The allocated slot is large enough to store one pointer to the real thread-local data. The pointer is `nullptr` for every thread before it is firstly modified by that thread. 

@@ -6,7 +6,6 @@ void bit_set(void *addr, usize bit_offset, bool value)
 
 Sets the specified bit to 1 if `value` is `true`, or to 0 if `value` is `false`. 
 
-## Overview
 
 
 ## Parameters

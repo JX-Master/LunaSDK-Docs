@@ -6,7 +6,6 @@ virtual const c8 * get_filename()=0
 
 Gets the filename of the file that the iterator currently points to. 
 
-## Overview
 
 
 ## Return value

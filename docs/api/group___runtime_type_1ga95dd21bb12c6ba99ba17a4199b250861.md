@@ -6,7 +6,6 @@ using structure_copy_ctor_t =  void(typeinfo_t type, void* dst, void* src)
 
 The structure copy constructor used by the reflection system. 
 
-## Overview
 
 
 ## Parameters

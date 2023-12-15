@@ -6,7 +6,6 @@ LUNA_RUNTIME_API Span< const StructurePropertyDesc > get_struct_properties(typei
 
 Gets properties of the specified structure. 
 
-## Overview
 
 
 ## Parameters

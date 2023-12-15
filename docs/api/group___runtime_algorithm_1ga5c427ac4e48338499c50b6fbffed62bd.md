@@ -7,7 +7,6 @@ constexpr _InputIt find(_InputIt first, _InputIt last, const _Ty &value)
 
 Searches for the first element in the range that is equal to (==) the specified value. 
 
-## Overview
 
 
 ## Parameters

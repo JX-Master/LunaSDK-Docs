@@ -6,7 +6,6 @@ virtual f64 gen_f64(f64 range_begin, f64 range_end)=0
 
 Generates one random 64-bit floating-point number. 
 
-## Overview
 
 
 ## Parameters

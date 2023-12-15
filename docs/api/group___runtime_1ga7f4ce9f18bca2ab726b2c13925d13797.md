@@ -7,7 +7,6 @@ constexpr auto set_flags(_Ty &flags, _Ty options) -> enable_if_t< is_enum_v< _Ty
 
 Sets the provided enumeration options to 1. 
 
-## Overview
 
 
 ## Parameters

@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void logv_error(const c8 *tag, const c8 *format, VarList args)
 
 Outputs one log message with LogVerbosity::error verbosity. 
 
-## Overview
 
 
 ## Parameters

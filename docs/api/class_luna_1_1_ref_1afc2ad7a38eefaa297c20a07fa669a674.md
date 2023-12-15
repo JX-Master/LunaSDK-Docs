@@ -6,7 +6,6 @@ _Ty * operator->() const
 
 Gets the boxed object casted to `_Ty`. 
 
-## Overview
 This call does not modify the reference counter of the object. 
 
 ## Return value

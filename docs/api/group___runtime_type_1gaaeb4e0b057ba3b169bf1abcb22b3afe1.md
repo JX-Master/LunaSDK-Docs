@@ -6,7 +6,6 @@ LUNA_RUNTIME_API i64 get_enum_instance_value(typeinfo_t type, const void *data)
 
 Extracts the mapped value of the enumeration, regardless of the underlying type of the enumeration. 
 
-## Overview
 
 
 ## Parameters

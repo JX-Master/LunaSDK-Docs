@@ -6,7 +6,6 @@ virtual Guid gen_guid()=0
 
 Generates one random GUID (Globally Unique Identifier). 
 
-## Overview
 
 
 ## Return value

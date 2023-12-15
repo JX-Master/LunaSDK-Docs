@@ -6,7 +6,6 @@ LUNA_RUNTIME_API ref_count_t object_retain_weak(object_t object_ptr)
 
 Increases the weak refernece counter value by one. 
 
-## Overview
 
 
 ## Parameters

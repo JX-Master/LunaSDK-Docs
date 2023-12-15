@@ -4,7 +4,6 @@
 constexpr u16 strhash16(const c8 *s, u16 h=0)
 ```
 
-## Overview
 A specialization of strhash that computes 16-bit hash code. 
 
 ## Parameters

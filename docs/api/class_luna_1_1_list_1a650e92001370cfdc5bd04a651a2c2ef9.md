@@ -7,7 +7,6 @@ auto insert(const_iterator pos, _InputIt first, _InputIt last) -> enable_if_t<!i
 
 Inserts one range of elements to the list. 
 
-## Overview
 
 
 ## Parameters

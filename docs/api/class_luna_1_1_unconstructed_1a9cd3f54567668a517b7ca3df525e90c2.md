@@ -7,7 +7,6 @@ void construct(Args &&... args)
 
 Constructs the object. 
 
-## Overview
 
 
 ## Parameters

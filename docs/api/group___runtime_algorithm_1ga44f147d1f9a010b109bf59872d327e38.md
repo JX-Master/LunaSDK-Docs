@@ -7,7 +7,6 @@ constexpr const _Ty & max(const _Ty &a, const _Ty &b)
 
 Returns the greater of the given values. 
 
-## Overview
 
 
 ## Parameters

@@ -7,7 +7,6 @@ void advance(_Iter &it, _Distance n)
 
 Advances the given iterator by `n` positions respectively. 
 
-## Overview
 
 
 ## Parameters

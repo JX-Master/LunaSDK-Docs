@@ -6,7 +6,6 @@ Path(const String &str, usize pos, usize count)
 
 Constructs one path by parsing the specified path string with custom starting position and string size. 
 
-## Overview
 
 
 ## Parameters

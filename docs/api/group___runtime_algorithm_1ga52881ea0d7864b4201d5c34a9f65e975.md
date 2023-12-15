@@ -7,7 +7,6 @@ _OutputIt set_union(_InputIt1 first1, _InputIt1 last1, _InputIt2 first2, _InputI
 
 Constructs a sorted union beginning at the destination range consisting of the set of elements present in one or both sorted ranges. 
 
-## Overview
 
 
 ## Parameters

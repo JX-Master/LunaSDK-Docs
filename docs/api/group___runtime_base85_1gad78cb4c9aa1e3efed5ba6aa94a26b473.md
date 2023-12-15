@@ -6,7 +6,6 @@ LUNA_RUNTIME_API usize base85_encode(c8 *dst, usize dst_max_chars, const void *s
 
 Encode a binary data to a base85 string. 
 
-## Overview
 
 
 ## Parameters

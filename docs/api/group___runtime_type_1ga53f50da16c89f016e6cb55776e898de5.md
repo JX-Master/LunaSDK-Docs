@@ -6,7 +6,6 @@ LUNA_RUNTIME_API Guid get_type_guid(typeinfo_t type)
 
 Gets the GUID of the specified type. 
 
-## Overview
 
 
 ## Parameters

@@ -7,7 +7,6 @@ void sort(_Compare comp)
 
 Sorts elements in using the user-specified comparison function object. 
 
-## Overview
 
 
 ## Parameters

@@ -6,7 +6,6 @@ LUNA_RUNTIME_API typeinfo_t i32_type()
 
 Gets the type object of `i32` type. 
 
-## Overview
 
 
 ## Return value

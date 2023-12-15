@@ -6,7 +6,6 @@ LUNA_RUNTIME_API usize utf16_encode_char(c16 *dst, c32 ch)
 
 Encodes the Unicode character into 1~2 UTF-16 characters using platform-native endian. 
 
-## Overview
 
 
 ## Parameters

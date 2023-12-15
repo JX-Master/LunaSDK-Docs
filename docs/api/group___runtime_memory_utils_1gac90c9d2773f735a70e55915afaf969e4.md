@@ -6,7 +6,6 @@ void calculate_struct_memory_layout(Span< MemoryLayoutMember > members, usize &o
 
 Calculates the size, alignment and memory layout for one structure type. 
 
-## Overview
 The calculated size, alignment and memory layout is compatible with C standard structure layout. 
 
 ## Parameters

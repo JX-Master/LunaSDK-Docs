@@ -6,7 +6,6 @@ List< _Ty, _Alloc >::reference front()
 
 Gets the first element in the list. 
 
-## Overview
 
 
 ## Return value

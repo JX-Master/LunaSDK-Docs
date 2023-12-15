@@ -6,7 +6,6 @@ LUNA_RUNTIME_API bool is_type_hashable(typeinfo_t type)
 
 Checks whether the specified type supports hash code computing. 
 
-## Overview
 
 
 ## Parameters

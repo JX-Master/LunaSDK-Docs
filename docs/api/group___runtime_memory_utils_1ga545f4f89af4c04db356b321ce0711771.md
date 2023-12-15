@@ -7,7 +7,6 @@ auto move_assign_range_backward(_Iter1 first, _Iter1 last, _Iter2 d_last) -> ena
 
 Same as move_assign_range, but performs the move assign from back to front. 
 
-## Overview
 
 
 ## Parameters

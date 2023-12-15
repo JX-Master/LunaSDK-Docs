@@ -7,7 +7,6 @@ _OutputIt copy_if(_InputIt first, _InputIt last, _OutputIt d_first, UnaryPredica
 
 Copies elements that pass user-defined function from one range to another range. The relative order of elements that are copied is preserved. 
 
-## Overview
 
 
 ## Parameters

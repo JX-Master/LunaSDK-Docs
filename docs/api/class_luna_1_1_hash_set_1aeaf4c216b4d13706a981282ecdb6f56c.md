@@ -6,7 +6,6 @@ HashSet(HashSet &&rhs, const allocator_type &alloc)
 
 Constructs a set with an custom allocator and with elements moved from another set. 
 
-## Overview
 
 
 ## Parameters

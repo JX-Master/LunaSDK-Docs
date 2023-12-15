@@ -7,7 +7,6 @@ constexpr auto reset_flags(_Ty &flags, _Ty options) -> enable_if_t< is_enum_v< _
 
 Resets the provided enumeration options to 0. 
 
-## Overview
 
 
 ## Parameters

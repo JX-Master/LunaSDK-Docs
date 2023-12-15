@@ -7,7 +7,6 @@ constexpr _InputIt find_if_not(_InputIt first, _InputIt last, _UnaryPredicate q)
 
 Searches for the first element in the range that fails the user-provided unary predicate. 
 
-## Overview
 
 
 ## Parameters

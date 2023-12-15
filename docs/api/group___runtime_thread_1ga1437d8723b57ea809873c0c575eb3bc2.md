@@ -6,7 +6,6 @@ LUNA_RUNTIME_API u32 get_processors_count()
 
 Gets the number of logical processors on the platform. 
 
-## Overview
 
 
 ## Return value

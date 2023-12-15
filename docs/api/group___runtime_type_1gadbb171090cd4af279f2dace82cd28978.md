@@ -6,7 +6,6 @@ LUNA_RUNTIME_API bool is_generic_struct_type(typeinfo_t type)
 
 Checks whether one type is a generic structure type. 
 
-## Overview
 
 
 ## Parameters

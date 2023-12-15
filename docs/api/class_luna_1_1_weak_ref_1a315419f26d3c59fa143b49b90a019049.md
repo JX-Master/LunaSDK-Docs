@@ -6,7 +6,6 @@ bool valid() const
 
 Checks whether this reference is valid. 
 
-## Overview
 One weak reference is valid when it is not null, and the boxed object is not expired. 
 
 ## Return value

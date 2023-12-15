@@ -6,7 +6,6 @@ List< _Ty, _Alloc >::iterator insert(const_iterator pos, usize count, const valu
 
 Inserts several copies of the element to the list. 
 
-## Overview
 
 
 ## Parameters

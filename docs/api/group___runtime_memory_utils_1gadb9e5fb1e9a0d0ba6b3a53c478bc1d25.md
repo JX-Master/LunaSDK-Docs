@@ -7,7 +7,6 @@ auto default_construct_range(_Iter first, _Iter last) -> enable_if_t< Impl::defa
 
 Default-constructs a range of objects. 
 
-## Overview
 
 
 ## Parameters

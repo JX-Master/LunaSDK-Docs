@@ -6,7 +6,6 @@ void pop_front()
 
 Removes the first element of the list. 
 
-## Overview
 
 
 #### Valid Usage

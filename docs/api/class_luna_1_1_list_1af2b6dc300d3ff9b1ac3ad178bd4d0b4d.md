@@ -7,7 +7,6 @@ void merge(List &other, _Compare comp)
 
 Merges another list into this list. 
 
-## Overview
 No memory allocation or element copy/move will be performed, this function transfers elements by changing their pointers directly so that they link to the new list. Elements are compared using the user-specified comparison function object. 
 
 ## Parameters

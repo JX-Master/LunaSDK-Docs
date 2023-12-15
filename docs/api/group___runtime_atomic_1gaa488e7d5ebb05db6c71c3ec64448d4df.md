@@ -6,7 +6,6 @@ u64 atom_inc_u64(u64 volatile *v)
 
 Atomically increase the value of the variable by 1. 
 
-## Overview
 This operation cannot be interrupted by system thread switching. 
 
 ## Parameters

@@ -6,7 +6,6 @@ iterator erase(const_iterator pos)
 
 Removes one element from the set. 
 
-## Overview
 
 
 ## Parameters

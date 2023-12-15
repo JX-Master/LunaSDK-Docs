@@ -7,7 +7,6 @@ List(enable_if_t<!is_integral_v< _InputIt >, _InputIt > first, _InputIt last, co
 
 Constructs a list with elements specified by one range. Elements in the range will be copy-inserted into the list. 
 
-## Overview
 
 
 ## Parameters

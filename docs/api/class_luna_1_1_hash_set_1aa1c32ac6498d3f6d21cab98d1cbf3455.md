@@ -6,7 +6,6 @@ void reserve(usize new_cap)
 
 Expands the data table size to the specified value. 
 
-## Overview
 
 
 ## Parameters

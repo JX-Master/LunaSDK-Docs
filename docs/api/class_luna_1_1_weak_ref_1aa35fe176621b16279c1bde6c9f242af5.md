@@ -6,7 +6,6 @@ object_t object() const
 
 Gets the boxed object. 
 
-## Overview
 This call does not modify the reference counter of the object. 
 
 ## Return value

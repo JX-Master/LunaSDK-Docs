@@ -7,7 +7,6 @@ _OutputIt set_difference(_InputIt1 first1, _InputIt1 last1, _InputIt2 first2, _I
 
 Copies elements that appear in the first sorted range and do not appear in the second sorted range to the destination range. The destination range is also sorted. 
 
-## Overview
 
 
 ## Parameters

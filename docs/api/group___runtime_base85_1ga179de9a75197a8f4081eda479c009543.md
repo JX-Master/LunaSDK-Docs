@@ -6,7 +6,6 @@ constexpr usize base85_get_encoded_size(usize raw_size)
 
 Get the encoded base85 string size from the raw data size. 
 
-## Overview
 
 
 ## Parameters

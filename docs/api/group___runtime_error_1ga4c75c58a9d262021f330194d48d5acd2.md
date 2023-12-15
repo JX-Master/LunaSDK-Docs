@@ -7,7 +7,6 @@ bool failed(const R< _Ty > &r)
 
 Tests whether the specified result is failed. 
 
-## Overview
 
 
 ## Parameters

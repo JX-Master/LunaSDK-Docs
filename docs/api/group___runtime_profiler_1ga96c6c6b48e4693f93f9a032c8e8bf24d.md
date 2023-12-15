@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void unregister_profiler_callback(usize handler_id)
 
 Unregisters one profiler callback function. 
 
-## Overview
 
 
 ## Parameters

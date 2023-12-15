@@ -6,7 +6,6 @@ LUNA_RUNTIME_API void memory_profiler_set_memory_name(void *ptr, const c8 *name,
 
 Sets a debug name for the memory block, for example, the name of the resource file this memory block is allocated for. This function emits one PROFILER_EVENT_ID_SET_MEMORY_NAME profiler event. 
 
-## Overview
 
 
 ## Parameters

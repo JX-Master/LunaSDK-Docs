@@ -6,7 +6,6 @@ LUNA_RUNTIME_API bool is_primitive_type(typeinfo_t type)
 
 Checks whether one type is a primitive type. 
 
-## Overview
 
 
 ## Parameters

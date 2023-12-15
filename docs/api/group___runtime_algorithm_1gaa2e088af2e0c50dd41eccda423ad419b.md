@@ -7,7 +7,6 @@ constexpr bool none_of(_InputIt first, _InputIt last, _UnaryPredicate p)
 
 Checks if the unary predicate returns `false` for all elements in the range. 
 
-## Overview
 
 
 ## Parameters

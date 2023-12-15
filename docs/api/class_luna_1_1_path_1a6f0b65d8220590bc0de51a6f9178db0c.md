@@ -6,7 +6,6 @@ Path(const Path &rhs)
 
 Constructs one path by moving coping content from another path. 
 
-## Overview
 
 
 ## Parameters

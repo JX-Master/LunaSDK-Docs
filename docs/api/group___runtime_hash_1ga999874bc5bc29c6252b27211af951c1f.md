@@ -4,7 +4,6 @@
 constexpr u32 strhash32(const c8 *s, u32 h=0)
 ```
 
-## Overview
 A specialization of strhash that computes 32-bit hash code. 
 
 ## Parameters

@@ -6,7 +6,6 @@ void bit_reset(void *addr, usize bit_offset)
 
 Sets the specified bit to 0. 
 
-## Overview
 
 
 ## Parameters

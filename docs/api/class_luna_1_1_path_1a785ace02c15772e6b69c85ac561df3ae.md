@@ -6,7 +6,6 @@ void replace_extension(const c8 *new_extension, usize count)
 
 Replaces the extension. 
 
-## Overview
 
 
 ## Parameters

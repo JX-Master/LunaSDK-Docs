@@ -6,7 +6,6 @@ LUNA_RUNTIME_API f64 random_f64(f64 range_begin, f64 range_end)
 
 Generates one random 64-bit floating-point number. 
 
-## Overview
 
 
 ## Parameters

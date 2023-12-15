@@ -7,7 +7,6 @@ _Ty * allocate_profiler_event_data()
 
 Allocates one temporary object that can be used to store event data for the next profiler event. 
 
-## Overview
 This function uses the specified type to provide size, alignment and destructor for the memory. 
 
 ## Return value

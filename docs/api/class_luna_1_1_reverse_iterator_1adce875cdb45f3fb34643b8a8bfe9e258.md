@@ -6,7 +6,6 @@ constexpr pointer operator->() const
 
 Gets one pointer to the object this iterator points to. 
 
-## Overview
 
 
 ## Return value

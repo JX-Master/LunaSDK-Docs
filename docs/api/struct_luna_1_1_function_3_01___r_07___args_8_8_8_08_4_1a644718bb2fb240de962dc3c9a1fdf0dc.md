@@ -6,7 +6,6 @@ bool empty() const
 
 Tests whether this function wrapper is empty. 
 
-## Overview
 
 
 ## Return value

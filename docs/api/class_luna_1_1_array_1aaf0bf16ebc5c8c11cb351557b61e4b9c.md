@@ -6,7 +6,6 @@ constexpr _Ty * data()
 
 Gets one pointer to the array data memory. 
 
-## Overview
 
 
 ## Return value

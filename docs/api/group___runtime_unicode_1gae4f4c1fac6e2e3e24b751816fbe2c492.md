@@ -6,7 +6,6 @@ constexpr usize utf16_strlen(const c16 *src)
 
 Gets the number of Unicode characters in a null-terminated UTF-16 string, not including the null terminator. 
 
-## Overview
 
 
 ## Parameters

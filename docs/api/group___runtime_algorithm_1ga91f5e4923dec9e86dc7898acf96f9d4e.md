@@ -7,7 +7,6 @@ auto search(_ForwardIt first, _ForwardIt last, _ForwardIt pattern_first, _Forwar
 
 Searches for the first occurrence of the sequence of elements in the specified range. 
 
-## Overview
 
 
 ## Parameters

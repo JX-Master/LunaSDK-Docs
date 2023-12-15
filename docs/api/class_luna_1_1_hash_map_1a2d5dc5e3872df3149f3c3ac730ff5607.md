@@ -6,7 +6,6 @@ usize count(const key_type &key) const
 
 Gets the number of elements whose key is equal to the specified key. 
 
-## Overview
 
 
 ## Parameters

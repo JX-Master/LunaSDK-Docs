@@ -6,7 +6,6 @@ void pop_back()
 
 Removes the last name node of the path. 
 
-## Overview
 
 
 #### Valid Usage

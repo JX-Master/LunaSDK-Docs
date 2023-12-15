@@ -7,7 +7,6 @@ _OutputIt copy(_InputIt first, _InputIt last, _OutputIt d_first)
 
 Copies elements from one range to another range. 
 
-## Overview
 
 
 ## Parameters

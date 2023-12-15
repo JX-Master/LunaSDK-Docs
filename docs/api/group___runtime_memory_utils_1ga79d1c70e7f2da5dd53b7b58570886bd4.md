@@ -7,7 +7,6 @@ auto move_relocate_range_backward(_Iter1 first, _Iter1 last, _Iter2 d_last) -> e
 
 Relocates objects in the source range to a new range. 
 
-## Overview
 This function behaves the same as move_relocate_range, except that it relocates object from last to first, so the last object in the destination range should not in the source range. memmove is used instead of memcpy if the whole range can be relocated in one call. 
 
 ## Parameters

@@ -6,7 +6,6 @@ LUNA_RUNTIME_API RV copy_file(const c8 *from_path, const c8 *to_path, FileCopyFl
 
 Copies the file or directory from the source path to the destination path. 
 
-## Overview
 
 
 ## Parameters

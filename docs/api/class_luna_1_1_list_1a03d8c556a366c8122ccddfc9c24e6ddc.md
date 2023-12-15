@@ -7,7 +7,6 @@ usize remove_if(_UnaryPredicate p)
 
 Removes all elements for which the specified predicate returns `true`. 
 
-## Overview
 
 
 ## Parameters

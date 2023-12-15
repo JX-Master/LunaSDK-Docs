@@ -6,7 +6,6 @@ LUNA_RUNTIME_API Ref< IThread > new_thread(void(*entry_func)(void *params), void
 
 Create a new system thread and make it run the callback function. The thread will be closed when the callback function returns. 
 
-## Overview
 
 
 ## Parameters

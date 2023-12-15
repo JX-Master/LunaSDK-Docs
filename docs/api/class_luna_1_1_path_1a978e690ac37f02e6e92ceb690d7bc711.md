@@ -6,7 +6,6 @@ void append_extension(const c8 *new_extension)
 
 Appends the extension. 
 
-## Overview
 The system adds one extension separator (".") between extension and filename automatically. 
 
 ## Parameters

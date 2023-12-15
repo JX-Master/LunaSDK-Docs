@@ -6,7 +6,6 @@ bool valid() const
 
 Tests if the result is successful. 
 
-## Overview
 
 
 ## Return value

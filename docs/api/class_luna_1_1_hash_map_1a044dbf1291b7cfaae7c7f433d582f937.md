@@ -7,7 +7,6 @@ Pair< iterator, bool > emplace(_Args &&... args)
 
 Constructs one element directly in the map using the provided arguments. 
 
-## Overview
 
 
 ## Parameters

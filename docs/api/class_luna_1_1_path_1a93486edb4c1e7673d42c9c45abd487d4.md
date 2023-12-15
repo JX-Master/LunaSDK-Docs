@@ -6,7 +6,6 @@ Path(const c8 *s, usize count)
 
 Constructs one path by parsing the specified path string. 
 
-## Overview
 
 
 ## Parameters

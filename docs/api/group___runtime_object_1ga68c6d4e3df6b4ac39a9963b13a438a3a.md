@@ -6,7 +6,6 @@ LUNA_RUNTIME_API ref_count_t object_release_weak(object_t object_ptr)
 
 Decreases the weak refernece counter value by one. 
 
-## Overview
 
 
 ## Parameters

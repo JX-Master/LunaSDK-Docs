@@ -6,7 +6,6 @@ Ref< _Ty > pin() const
 
 Creates one strong reference from this weak reference. 
 
-## Overview
 
 
 ## Return value

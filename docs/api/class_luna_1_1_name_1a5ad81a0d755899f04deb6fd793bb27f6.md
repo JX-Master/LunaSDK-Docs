@@ -6,7 +6,6 @@ const c8 * c_str() const
 
 Gets the internal string pointer of this name. 
 
-## Overview
 
 
 ## Return value

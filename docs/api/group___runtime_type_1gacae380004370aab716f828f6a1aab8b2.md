@@ -6,7 +6,6 @@ LUNA_RUNTIME_API typeinfo_t register_generic_struct_type(const GenericStructureT
 
 Registers one generic structure type. 
 
-## Overview
 If one type with the same name or GUID already exists, the new type will not be registered. 
 
 ## Parameters

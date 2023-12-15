@@ -6,7 +6,6 @@ LUNA_RUNTIME_API typeinfo_t get_generic_instanced_type(typeinfo_t generic_type, 
 
 Gets one instanced type of one generic type. 
 
-## Overview
 
 
 ## Parameters

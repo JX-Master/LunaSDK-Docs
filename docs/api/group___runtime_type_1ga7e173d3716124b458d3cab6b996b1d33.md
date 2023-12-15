@@ -6,7 +6,6 @@ using structure_copy_assign_t =  void(typeinfo_t type, void* dst, void* src)
 
 The structure copy assignment operator used by the reflection system. 
 
-## Overview
 
 
 ## Parameters

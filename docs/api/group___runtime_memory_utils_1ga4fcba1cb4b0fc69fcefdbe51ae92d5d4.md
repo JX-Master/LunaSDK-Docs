@@ -7,7 +7,6 @@ void copy_construct(_Iter1 dst, _Iter2 src)
 
 Calls the copy constructor for the object. 
 
-## Overview
 
 
 ## Parameters

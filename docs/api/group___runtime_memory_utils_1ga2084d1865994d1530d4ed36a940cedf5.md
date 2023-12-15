@@ -6,7 +6,6 @@ void * memcpy_bitmap3d(void *dst, const void *src, usize copy_size_per_row, usiz
 
 Copies the data for a 3D bitmap. 
 
-## Overview
 
 
 ## Parameters

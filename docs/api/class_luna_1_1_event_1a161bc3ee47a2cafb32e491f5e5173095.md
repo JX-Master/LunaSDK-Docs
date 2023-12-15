@@ -6,7 +6,6 @@ usize add_handler(const Function< _Func > &func)
 
 Adds one new handler to the event. 
 
-## Overview
 
 
 ## Parameters

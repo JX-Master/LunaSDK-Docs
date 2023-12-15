@@ -6,7 +6,6 @@ LUNA_RUNTIME_API object_t object_alloc(typeinfo_t type)
 
 Allocates one boxed object. 
 
-## Overview
 
 
 ## Parameters

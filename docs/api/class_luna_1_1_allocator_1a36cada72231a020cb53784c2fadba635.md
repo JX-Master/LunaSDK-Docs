@@ -7,7 +7,6 @@ void deallocate(_Ty *ptr, usize n=1)
 
 Deallocates memory allocated from allocate. 
 
-## Overview
 
 
 ## Parameters

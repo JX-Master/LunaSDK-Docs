@@ -7,7 +7,6 @@ bool equal(_Iter1 first1, _Iter1 last1, _Iter2 first2, _EqualComp equal_compare)
 
 Tests the equality of two ranges. 
 
-## Overview
 
 
 ## Parameters

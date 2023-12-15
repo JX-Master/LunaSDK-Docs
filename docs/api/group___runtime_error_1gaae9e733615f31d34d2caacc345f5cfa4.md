@@ -6,7 +6,6 @@ LUNA_RUNTIME_API const c8 * get_error_category_name(errcat_t err_category)
 
 Fetches the name of the error category. 
 
-## Overview
 
 
 ## Parameters

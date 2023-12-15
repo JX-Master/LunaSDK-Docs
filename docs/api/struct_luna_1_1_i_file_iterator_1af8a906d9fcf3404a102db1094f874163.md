@@ -6,7 +6,6 @@ virtual bool move_next()=0
 
 Moves the iterator to the next file in the directory. 
 
-## Overview
 
 
 ## Return value

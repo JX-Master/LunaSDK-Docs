@@ -6,7 +6,6 @@ LUNA_RUNTIME_API errcat_t get_error_code_category(ErrCode err_code)
 
 Fetches the error category that holds the error code. 
 
-## Overview
 
 
 ## Parameters

@@ -7,7 +7,6 @@ constexpr const _Ty & min(const _Ty &a, const _Ty &b)
 
 Returns the smaller of the given values. 
 
-## Overview
 
 
 ## Parameters

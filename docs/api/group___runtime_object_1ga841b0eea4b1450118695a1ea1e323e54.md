@@ -6,7 +6,6 @@ LUNA_RUNTIME_API ref_count_t object_release(object_t object_ptr)
 
 Decreases the strong refernece counter value by one, and destroys the object if the reference counter drops to 0. 
 
-## Overview
 
 
 ## Parameters

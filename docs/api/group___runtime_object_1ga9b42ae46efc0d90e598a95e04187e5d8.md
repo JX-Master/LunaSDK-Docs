@@ -7,7 +7,6 @@ _Rty * cast_object(object_t object_ptr)
 
 Casts the object to the specified type. 
 
-## Overview
 
 
 ## Parameters

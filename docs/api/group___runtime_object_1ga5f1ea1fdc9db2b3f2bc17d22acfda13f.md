@@ -6,7 +6,6 @@ LUNA_RUNTIME_API bool object_expired(object_t object_ptr)
 
 Checks if the boxed object is expired, that is, destructed but its memeory is not freed. 
 
-## Overview
 One object will be expired if its strong reference counter value drops 0, but its weak reference counter value is not 0. 
 
 ## Parameters

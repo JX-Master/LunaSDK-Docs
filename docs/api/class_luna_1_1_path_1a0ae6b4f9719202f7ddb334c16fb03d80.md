@@ -6,7 +6,6 @@ const_reference front() const
 
 Gets the first name node in the path. 
 
-## Overview
 
 
 ## Return value

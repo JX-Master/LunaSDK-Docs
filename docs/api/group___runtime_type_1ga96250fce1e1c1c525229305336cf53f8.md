@@ -6,7 +6,6 @@ LUNA_RUNTIME_API bool is_generic_struct_instanced_type(typeinfo_t type)
 
 Checks whether one type is a generic instanced structure type. 
 
-## Overview
 
 
 ## Parameters

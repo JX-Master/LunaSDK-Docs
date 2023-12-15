@@ -6,7 +6,6 @@ LUNA_RUNTIME_API R< opaque_t > load_library(const c8 *path)
 
 Loads the specified library to the process's address space. This call may load additional libraries required by the specified library. 
 
-## Overview
 
 
 ## Parameters
