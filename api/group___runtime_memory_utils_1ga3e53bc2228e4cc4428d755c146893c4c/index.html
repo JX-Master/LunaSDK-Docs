@@ -151,7 +151,6 @@
 auto copy_relocate(_Iter1 dst, _Iter2 src) -&gt; enable_if_t&lt; Impl::copy_relocate_is_value_type_trivial&lt; _Iter1, _Iter2 &gt;::value, _Iter1 &gt;
 </code></pre>
 <p>Relocates one object. </p>
-<h2 id="overview">Overview</h2>
 <p>After this call, the object in the destination memory behaves the same as the object formerly in the source memory, except that the place(memory address) for the object is changed. </p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="dst">dst</h3>

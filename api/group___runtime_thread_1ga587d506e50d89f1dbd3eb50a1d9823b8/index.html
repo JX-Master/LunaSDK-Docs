@@ -150,7 +150,6 @@
 <pre><code class="language-c++">LUNA_RUNTIME_API Ref&lt; IThread &gt; new_thread(void(*entry_func)(void *params), void *params, const c8 *name=nullptr, u32 stack_size=0)
 </code></pre>
 <p>Create a new system thread and make it run the callback function. The thread will be closed when the callback function returns. </p>
-<h2 id="overview">Overview</h2>
 <h2 id="parameters">Parameters</h2>
 <h3 id="entry_func">entry_func</h3>
 <p>The function to invoke by the new thread. </p>

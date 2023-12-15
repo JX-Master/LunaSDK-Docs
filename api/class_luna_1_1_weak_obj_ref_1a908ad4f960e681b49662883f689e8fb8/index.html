@@ -150,7 +150,6 @@
 <pre><code class="language-c++">WeakObjRef &amp; operator=(object_t rhs)
 </code></pre>
 <p>Replaces the underlying pointer of this reference with the given pointer. </p>
-<h2 id="overview">Overview</h2>
 <p>The weak reference counter of the new boxed object will be increased if the provided pointer is valid. The weak reference counter of the original boxed object, if not null, will be decreased before assignment. </p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="rhs">rhs</h3>

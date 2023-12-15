@@ -150,7 +150,6 @@
 <pre><code class="language-c++">LUNA_RUNTIME_API bool object_expired(object_t object_ptr)
 </code></pre>
 <p>Checks if the boxed object is expired, that is, destructed but its memeory is not freed. </p>
-<h2 id="overview">Overview</h2>
 <p>One object will be expired if its strong reference counter value drops 0, but its weak reference counter value is not 0. </p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="object_ptr">object_ptr</h3>

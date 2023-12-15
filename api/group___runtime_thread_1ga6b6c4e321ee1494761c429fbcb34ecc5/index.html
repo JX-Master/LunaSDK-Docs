@@ -150,7 +150,6 @@
 <pre><code class="language-c++">LUNA_RUNTIME_API void tls_free(opaque_t handle)
 </code></pre>
 <p>Frees the TLS slot allocated by <code>tls_alloc</code>. </p>
-<h2 id="overview">Overview</h2>
 <p>The handle will be invalid after this call and the pointer stored for every thread will be discarded.</p>
 <p>Make sure to free all resources bound to the specified slot manually before calling this, or they will never be freed. </p>
 <h2 id="parameters">Parameters</h2>

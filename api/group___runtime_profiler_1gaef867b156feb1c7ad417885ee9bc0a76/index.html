@@ -151,7 +151,6 @@
 _Ty * allocate_profiler_event_data()
 </code></pre>
 <p>Allocates one temporary object that can be used to store event data for the next profiler event. </p>
-<h2 id="overview">Overview</h2>
 <p>This function uses the specified type to provide size, alignment and destructor for the memory. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the allocated object. The returned object is not initialized, the user should call <code>new (ptr) _Ty(...)</code> to initialize the object manually. </p>

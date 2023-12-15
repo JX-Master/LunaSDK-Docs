@@ -151,7 +151,6 @@
 auto insert(const_iterator pos, _InputIt first, _InputIt last) -&gt; enable_if_t&lt;!is_integral_v&lt; _InputIt &gt;, List&lt; _Ty, _Alloc &gt;::iterator &gt;
 </code></pre>
 <p>Inserts one range of elements to the list. </p>
-<h2 id="overview">Overview</h2>
 <h2 id="parameters">Parameters</h2>
 <h3 id="pos">pos</h3>
 <p>The iterator pointing to the position to insert elements. The elements will be inserted before the element pointed by this iterator. This can be <code>end()</code>, indicating that the element will be inserted at the end of the list. </p>

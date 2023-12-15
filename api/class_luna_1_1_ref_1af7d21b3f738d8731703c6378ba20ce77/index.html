@@ -151,7 +151,6 @@
 Ref(const Ref&lt; _Rty &gt; &amp;rhs)
 </code></pre>
 <p>Constructs one reference by coping the pointer from another reference of one different type. </p>
-<h2 id="overview">Overview</h2>
 <p>The assignment will fail if the new reference is null or cannot be casted to <code>_Ty</code>. If the assignment fails, this reference will be null after this operation. If the assignment succeeds, The strong reference counter of the new boxed object will be increased. </p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="rhs">rhs</h3>

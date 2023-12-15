@@ -150,7 +150,6 @@
 <pre><code class="language-c++">virtual void trigger()=0
 </code></pre>
 <p>Set this signal to trigged state. </p>
-<h2 id="overview">Overview</h2>
 <p>If this signal is not a manual reset signal, all threads that are waiting for this signal will be waken up and continue to run.</p>
 <p>If this signal is a manual reset signal, only one thread that waits for this signal will be waken up, and the signal will be reset to untriggered state automatically. If no thread is waiting for this signal when the signal is triggered, the signal stays in triggered state until one thread calls <code>wait</code> or <code>try_wait</code> to reset the signal. </p>
               

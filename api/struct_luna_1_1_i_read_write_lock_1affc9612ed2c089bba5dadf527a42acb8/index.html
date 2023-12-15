@@ -150,7 +150,6 @@
 <pre><code class="language-c++">virtual bool try_acquire_read()=0
 </code></pre>
 <p>Tries to acquire one read ownership of the lock. </p>
-<h2 id="overview">Overview</h2>
 <p>This operation does not block the current thread, it returns immediately no matter whether the ownership is acquired. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns <code>true</code> if the ownership is acquired when this function returns. Returns <code>false</code> otherwise. </p>
