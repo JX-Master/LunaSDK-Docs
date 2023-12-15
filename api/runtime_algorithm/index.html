@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/runtime_algorithm/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Algorithms - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Algorithms";
+        var mkdocs_page_input_path = "api\\runtime_algorithm.md";
+        var mkdocs_page_url = "/api/runtime_algorithm/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Algorithms</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="algorithms">Algorithms</h1>
+<h2 id="functions">Functions</h2>
+<ul>
+<li>
+<p><a href="../group___runtime_algorithm_1ga147659ad95276a9b14825c4c2452bce6/">constexpr const _Ty &amp; min(const _Ty &amp;a, const _Ty &amp;b)</a></p>
+<p>Returns the smaller of the given values. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga3a8ea741d7e44683b3f90bf71fced6fa/">constexpr const _Ty &amp; min(const _Ty &amp;a, const _Ty &amp;b, _LessComp less_comp)</a></p>
+<p>Returns the smaller of the given values. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga44f147d1f9a010b109bf59872d327e38/">constexpr const _Ty &amp; max(const _Ty &amp;a, const _Ty &amp;b)</a></p>
+<p>Returns the greater of the given values. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gae0f2d82171f4e735f6c9c667ca4c61dd/">constexpr const _Ty &amp; max(const _Ty &amp;a, const _Ty &amp;b, _LessComp less_comp)</a></p>
+<p>Returns the greater of the given values. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gab9f335c1db01662355d08c95f82d1d24/">void swap(_Ty &amp;a, _Ty &amp;b)</a></p>
+<p>Swaps two values. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga622971e5f7d0e413ef3941c6092d7849/">bool equal(_Iter1 first1, _Iter1 last1, _Iter2 first2)</a></p>
+<p>Tests the equality of two ranges. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga0391eb9b8b2b28284c625b1e51f02813/">bool equal(_Iter1 first1, _Iter1 last1, _Iter2 first2, _EqualComp equal_compare)</a></p>
+<p>Tests the equality of two ranges. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga91f5e4923dec9e86dc7898acf96f9d4e/">auto search(_ForwardIt first, _ForwardIt last, _ForwardIt pattern_first, _ForwardIt pattern_last) -&gt; enable_if_t&lt; is_pointer_v&lt; _ForwardIt &gt;, _ForwardIt &gt;</a></p>
+<p>Searches for the first occurrence of the sequence of elements in the specified range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gaa7d4ef4a1201800ca9187591a73faba6/">auto find_end(_ForwardIt first, _ForwardIt last, _ForwardIt pattern_first, _ForwardIt pattern_last) -&gt; enable_if_t&lt; is_pointer_v&lt; _ForwardIt &gt;, _ForwardIt &gt;</a></p>
+<p>Searches for the last occurrence of the sequence of elements in the specified range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga5c427ac4e48338499c50b6fbffed62bd/">constexpr _InputIt find(_InputIt first, _InputIt last, const _Ty &amp;value)</a></p>
+<p>Searches for the first element in the range that is equal to (==) the specified value. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gae5453bc4d172c9055454c73fb47150d9/">constexpr _InputIt find_if(_InputIt first, _InputIt last, _UnaryPredicate p)</a></p>
+<p>Searches for the first element in the range that passes the user-provided unary predicate. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gacd42dbba4eb002d62aba4a5e73136c1a/">constexpr _InputIt find_if_not(_InputIt first, _InputIt last, _UnaryPredicate q)</a></p>
+<p>Searches for the first element in the range that fails the user-provided unary predicate. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gaeb67b9af6950f0144ee3940274a2f586/">constexpr bool all_of(_InputIt first, _InputIt last, _UnaryPredicate p)</a></p>
+<p>Checks if the unary predicate returns <code>true</code> for all elements in the range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga4d6ea50d77bcca151eae75c7e9f5e9ff/">constexpr bool any_of(_InputIt first, _InputIt last, _UnaryPredicate p)</a></p>
+<p>Checks if the unary predicate returns <code>true</code> for at least one element in the range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gaa2e088af2e0c50dd41eccda423ad419b/">constexpr bool none_of(_InputIt first, _InputIt last, _UnaryPredicate p)</a></p>
+<p>Checks if the unary predicate returns <code>false</code> for all elements in the range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gaec62c07d494fde510ad4bc6a4421b51c/">constexpr _UnaryFunction for_each(_InputIt first, _InputIt last, _UnaryFunction f)</a></p>
+<p>Applies the given function object to every element in the range, in order. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gac1955e41a312fe40f9795a44a51cb4cf/">void sort(_RandomIt first, _RandomIt last)</a></p>
+<p>Sorts the elements in the range in non-descending order. The order of equal elements is not guaranteed to be preserved. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gaf79ba68237591937a91d96e1ef807944/">void sort(_RandomIt first, _RandomIt last, _Compare comp)</a></p>
+<p>Sorts the elements in the range in non-descending order. The order of equal elements is not guaranteed to be preserved. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga1f8fc6922e9b20976056dec2d59b89cc/">_ForwardIt upper_bound(_ForwardIt first, _ForwardIt last, const _Ty &amp;value)</a></p>
+<p>Finds the first element in the range such that <code>value &lt; element</code> is <code>true</code>. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga8585025fd99a8ee19f11a8ad16ccb15b/">_ForwardIt upper_bound(_ForwardIt first, _ForwardIt last, const _Ty &amp;value, _Compare comp)</a></p>
+<p>Finds the first element in the range such that <code>comp(value, element)</code> is <code>true</code>. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gadb4722898f14cc14eca45afc0affe514/">_ForwardIt lower_bound(_ForwardIt first, _ForwardIt last, const _Ty &amp;value)</a></p>
+<p>Finds the first element in the range such that <code>element &lt; value</code> is <code>false</code>. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga6ac8c4d3198b4604c7a091ed93521b48/">_ForwardIt lower_bound(_ForwardIt first, _ForwardIt last, const _Ty &amp;value, _Compare comp)</a></p>
+<p>Finds the first element in the range such that <code>comp(element, value)</code> is <code>false</code>. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga56e90c79b7400e2bbff7b2fc7e0baf1d/">bool binary_search(_ForwardIt first, _ForwardIt last, const _Ty &amp;value)</a></p>
+<p>Checks if an element equivalent to the specified value appears within the range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gae17af06dbbf1ba7013de2b4ca50783d5/">bool binary_search(_ForwardIt first, _ForwardIt last, const _Ty &amp;value, _Compare comp)</a></p>
+<p>Checks if an element equivalent to the specified value appears within the range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga9780e6b83d6b4e4c2a8fb6f1195daf2d/">_ForwardIt binary_search_iter(_ForwardIt first, _ForwardIt last, const _Ty &amp;value)</a></p>
+<p>Finds an element equivalent to the specified value in the range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga0ad37076ea35bbf85db8b16099e57f5a/">_ForwardIt binary_search_iter(_ForwardIt first, _ForwardIt last, const _Ty &amp;value, _Compare comp)</a></p>
+<p>Finds an element equivalent to the specified value in the range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga53e062c1f9ef3170e738a71ea756a7bd/">Pair&lt; _ForwardIt, _ForwardIt &gt; equal_range(_ForwardIt first, _ForwardIt last, const _Ty &amp;value)</a></p>
+<p>Gets a range containing all elements equivalent to the specified value in the range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gaf65d96a5a322fb0ed174cda6b3de8847/">Pair&lt; _ForwardIt, _ForwardIt &gt; equal_range(_ForwardIt first, _ForwardIt last, const _Ty &amp;value, _Compare comp)</a></p>
+<p>Gets a range containing all elements equivalent to the specified value in the range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gab776c0c36632ba15f2b8637f4aa18b16/">bool includes(_InputIt1 first1, _InputIt1 last1, _InputIt2 first2, _InputIt2 last2)</a></p>
+<p>Checks if the sorted range [<code>first2</code>, <code>last2</code>) is a subsequence of the sorted range [<code>first1</code>, <code>last1</code>). (A subsequence need not be contiguous.) </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga5f2487857061fcf0a115c13a476a1222/">bool includes(_InputIt1 first1, _InputIt1 last1, _InputIt2 first2, _InputIt2 last2, _Compare comp)</a></p>
+<p>Checks if the sorted range [<code>first2</code>, <code>last2</code>) is a subsequence of the sorted range [<code>first1</code>, <code>last1</code>). (A subsequence need not be contiguous.) </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga82c4c36785b5acdc4d4f8a702b949660/">_OutputIt copy(_InputIt first, _InputIt last, _OutputIt d_first)</a></p>
+<p>Copies elements from one range to another range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gac9ec916bcbe424ac468c46772bb94605/">_OutputIt copy_if(_InputIt first, _InputIt last, _OutputIt d_first, UnaryPredicate pred)</a></p>
+<p>Copies elements that pass user-defined function from one range to another range. The relative order of elements that are copied is preserved. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga7f57a6a6498420c062c1af9141080b17/">_OutputIt set_difference(_InputIt1 first1, _InputIt1 last1, _InputIt2 first2, _InputIt2 last2, _OutputIt d_first)</a></p>
+<p>Copies elements that appear in the first sorted range and do not appear in the second sorted range to the destination range. The destination range is also sorted. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gad5b157c8d26251a7520da620b9434554/">_OutputIt set_difference(_InputIt1 first1, _InputIt1 last1, _InputIt2 first2, _InputIt2 last2, _OutputIt d_first, _Compare comp)</a></p>
+<p>Copies elements that appear in the first sorted range and do not appear in the second sorted range to the destination range. The destination range is also sorted. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga6c2f327e87aecc5de9593f6b4b2807ce/">_OutputIt set_intersection(_InputIt1 first1, _InputIt1 last1, _InputIt2 first2, _InputIt2 last2, _OutputIt d_first)</a></p>
+<p>Constructs a sorted range consisting of elements that are found in both sorted ranges. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1gaf546e5c4c399943badebda3ff2f355c0/">_OutputIt set_intersection(_InputIt1 first1, _InputIt1 last1, _InputIt2 first2, _InputIt2 last2, _OutputIt d_first, _Compare comp)</a></p>
+<p>Constructs a sorted range consisting of elements that are found in both sorted ranges. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga4902d63e5b5d907172734ff3ec4a2adf/">_OutputIt set_symmetric_difference(_InputIt1 first1, _InputIt1 last1, _InputIt2 first2, _InputIt2 last2, _OutputIt d_first)</a></p>
+<p>Computes symmetric difference of two sorted ranges: elements that are found in either of the ranges, but not in both of them are copied to the destination range. The destination range is also sorted. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga556703289c68c3e7548657f42807a9a3/">_OutputIt set_symmetric_difference(_InputIt1 first1, _InputIt1 last1, _InputIt2 first2, _InputIt2 last2, _OutputIt d_first, _Compare comp)</a></p>
+<p>Computes symmetric difference of two sorted ranges: elements that are found in either of the ranges, but not in both of them are copied to the destination range. The destination range is also sorted. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga52881ea0d7864b4201d5c34a9f65e975/">_OutputIt set_union(_InputIt1 first1, _InputIt1 last1, _InputIt2 first2, _InputIt2 last2, _OutputIt d_first)</a></p>
+<p>Constructs a sorted union beginning at the destination range consisting of the set of elements present in one or both sorted ranges. </p>
+</li>
+<li>
+<p><a href="../group___runtime_algorithm_1ga69dd3d53c2eb4f49fefa002b643e3231/">_OutputIt set_union(_InputIt1 first1, _InputIt1 last1, _InputIt2 first2, _InputIt2 last2, _OutputIt d_first, _Compare comp)</a></p>
+<p>Constructs a sorted union beginning at the destination range consisting of the set of elements present in one or both sorted ranges. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

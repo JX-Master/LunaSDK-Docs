@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/runtime_memory_utils/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Memory utility library - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Memory utility library";
+        var mkdocs_page_input_path = "api\\runtime_memory_utils.md";
+        var mkdocs_page_url = "/api/runtime_memory_utils/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Memory utility library</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="memory-utility-library">Memory utility library</h1>
+<h2 id="classes">Classes</h2>
+<ul>
+<li><a href="../class_luna_1_1_unconstructed/">Luna::Unconstructed</a></li>
+<li><a href="../struct_luna_1_1_memory_layout_member/">Luna::MemoryLayoutMember</a></li>
+</ul>
+<h2 id="functions">Functions</h2>
+<ul>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga21ab8d9fe0fe13c23177a91111cccd65/">void * memzero(void *dst, usize byte_count)</a></p>
+<p>Clears the specified memory region to 0. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1gae8b5a7ce4c407bbaddac2fa58d7a30ef/">_Ty * memzero(_Ty *dst)</a></p>
+<p>Clears the memory of the specified object to 0. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga78167f1e50bc8e09715866d8c36140f8/">void * memcpy_bitmap(void <em>dst, const void </em>src, usize copy_size_per_row, usize num_rows, usize dst_row_pitch, usize src_row_pitch)</a></p>
+<p>Copies the data for a 2D bitmap. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga2084d1865994d1530d4ed36a940cedf5/">void * memcpy_bitmap3d(void <em>dst, const void </em>src, usize copy_size_per_row, usize num_rows, usize num_slices, usize dst_row_pitch, usize src_row_pitch, usize dst_slice_pitch, usize src_slice_pitch)</a></p>
+<p>Copies the data for a 3D bitmap. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga0fc5695a322734022f1a887933f4f8d6/">void * pixel_offset(void *base, usize x, usize y, usize z, usize bytes_per_pixel, usize row_pitch, usize slice_pitch)</a></p>
+<p>Returns a pointer that offsets the specified pixels in the bitmap. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1gaf3c69cb13eff1f1f10e6a0a4a4b307b8/">const void * pixel_offset(const void *base, usize x, usize y, usize z, usize bytes_per_pixel, usize row_pitch, usize slice_pitch)</a></p>
+<p>Returns a pointer that offsets the specified pixels in the bitmap. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga20408cbb7d15561150338b30cdad1aa7/">constexpr unsigned long long operator""_kb(unsigned long long v)</a></p>
+<p>A integer literal suffix that multiples one number with 1024. Use it like <code>3_kb</code>. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga99a857fef948b5282d2b7a8615aa4f6f/">constexpr unsigned long long operator""_mb(unsigned long long v)</a></p>
+<p>A integer literal suffix that multiples one number with 1024 * 1024. Use it like <code>3_mb</code>. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga179f7247b699a3cd0a12ded569cb22db/">constexpr unsigned long long operator""_gb(unsigned long long v)</a></p>
+<p>A integer literal suffix that multiples one number with 1024 * 1024 * 1024. Use it like <code>3_gb</code>. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga883bca1e3e4c74e7a5518d4efd77f450/">constexpr unsigned long long operator""_tb(unsigned long long v)</a></p>
+<p>A integer literal suffix that multiples one number with 1024 * 1024 * 1024 * 1024. Use it like <code>3_tb</code>. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1gaacaed16341185899ffe0d769237104f2/">bool bit_test(const void *base_addr, usize bit_offset)</a></p>
+<p>Tests if specified bit is 1. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga92aea26ede77acd254d90f668e0250ef/">void bit_set(void *addr, usize bit_offset)</a></p>
+<p>Sets the specified bit to 1. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1gac1d215202704b075901d5fdb7a31f27d/">void bit_reset(void *addr, usize bit_offset)</a></p>
+<p>Sets the specified bit to 0. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1gaad21944619c742f48231d090194ce3b0/">void bit_set(void *addr, usize bit_offset, bool value)</a></p>
+<p>Sets the specified bit to 1 if <code>value</code> is <code>true</code>, or to 0 if <code>value</code> is <code>false</code>. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1gaf3a51fa286a5f834344de34d0b3faa29/">constexpr _Ty1 align_upper(_Ty1 origin, _Ty2 alignment)</a></p>
+<p>Returns the address/size that aligns the origin address/size to the nearest matched aligned address/size that is greater than or equal to the the origin address/size. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1gaead7e7ca97779e77866f1d76b3e1ae8e/">_Ty * addressof(_Ty &amp;value)</a></p>
+<p>Gets the real address for object or function <code>value</code>, even if the <code>operator&amp;</code> of the object has been overloaded. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga8df6e6633f16f6f0e07dd0e8f065deb8/">void default_construct(_Iter dst)</a></p>
+<p>Calls the default constructor for the object. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1gab54fd1f9efa8c49a3404616ee151d35a/">void value_construct(_Iter dst)</a></p>
+<p>Calls the value constructor for the object. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga4fcba1cb4b0fc69fcefdbe51ae92d5d4/">void copy_construct(_Iter1 dst, _Iter2 src)</a></p>
+<p>Calls the copy constructor for the object. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga53e63f6749997e37e7f8da11e68a4ce1/">void move_construct(_Iter1 dst, _Iter2 src)</a></p>
+<p>Calls the move constructor for the object. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga7f83a4d50176950eae166cc199de2929/">void direct_construct(_Iter dst, _Args &amp;&amp;... args)</a></p>
+<p>Calls the direct constructor for the object. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga01d4057e7a6026e025cbc30d10d60f89/">void destruct(_Iter dst)</a></p>
+<p>Calls the destructor of the object. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga7cc40d476affed8c5cd975d060e001e9/">void copy_assign(_Iter1 dst, _Iter2 src)</a></p>
+<p>Calls the copy assignment operator of the object. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1gaa8b289f3d7d9f065c321101ec2ce0ab6/">void move_assign(_Iter1 dst, _Iter2 src)</a></p>
+<p>Calls the move assignment operator of the object. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1gadb9e5fb1e9a0d0ba6b3a53c478bc1d25/">auto default_construct_range(_Iter first, _Iter last) -&gt; enable_if_t&lt; Impl::default_construct_range_is_value_type_class&lt; _Iter &gt;::value, void &gt;</a></p>
+<p>Default-constructs a range of objects. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga7f7cc883d2158a3bcce60a804a4f6266/">auto value_construct_range(_Iter <em>first, _Iter </em>last) -&gt; enable_if_t&lt; Impl::value_construct_range_is_value_type_trivial&lt; _Iter &gt;::value, void &gt;</a></p>
+<p>Value-constructs a range of objects. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1gaae4bda0b6285b9b4c757534fdf99ea94/">auto copy_construct_range(_Iter1 first, _Iter1 last, _Iter2 d_first) -&gt; enable_if_t&lt;!Impl::copy_construct_range_is_value_type_trivial&lt; _Iter1, _Iter2 &gt;::value, _Iter2 &gt;</a></p>
+<p>Copy-constructs a range of objects. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga34b6950d39deaf037807db6f0804efb8/">auto copy_construct_range_n(_Iter1 first, usize count, _Iter2 d_first) -&gt; enable_if_t&lt;!Impl::copy_construct_range_is_value_type_trivial&lt; _Iter1, _Iter2 &gt;::value, _Iter2 &gt;</a></p>
+<p>Copy-constructs a range of objects. The range is provided by first object and object count. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga94d2203ccaa43a601091490af58fc272/">auto move_construct_range(_Iter1 first, _Iter1 last, _Iter2 d_first) -&gt; enable_if_t&lt; Impl::move_construct_range_is_value_type_trivial&lt; _Iter1, _Iter2 &gt;::value, _Iter2 &gt;</a></p>
+<p>Move-constructs a range of objects. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga64eceb1029aa97297c1eac27df9da0ef/">auto destruct_range(_Iter first, _Iter last) -&gt; enable_if_t&lt; Impl::destruct_range_is_value_type_trivial&lt; _Iter &gt;::value, void &gt;</a></p>
+<p>Destructs every object in the range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1gafa31716cbdd53a44b1ab5bf5289ebd34/">auto copy_assign_range(_Iter1 first, _Iter1 last, _Iter2 d_first) -&gt; enable_if_t&lt;!Impl::copy_assign_range_is_value_type_trivial&lt; _Iter1, _Iter2 &gt;::value, _Iter2 &gt;</a></p>
+<p>Performs copy assignment operation on every object in the destination range using the corresponding object in the source range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga2922440bc8a0efbe2c479e0b9d710a91/">auto move_assign_range(_Iter1 first, _Iter1 last, _Iter2 d_first) -&gt; enable_if_t&lt;!Impl::move_assign_range_is_value_type_trivial&lt; _Iter1, _Iter2 &gt;::value, _Iter2 &gt;</a></p>
+<p>Performs move assignment operation on every object in the destination range using the corresponding object in the source range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga545f4f89af4c04db356b321ce0711771/">auto move_assign_range_backward(_Iter1 first, _Iter1 last, _Iter2 d_last) -&gt; enable_if_t&lt;!Impl::move_assign_range_backward_is_value_type_trivial&lt; _Iter1, _Iter2 &gt;::value, _Iter2 &gt;</a></p>
+<p>Same as move_assign_range, but performs the move assign from back to front. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga8dd1b61c0dd3d9efdd8c23e0cb42afe4/">_Iter1 fill_construct_range(_Iter1 first, _Iter1 last, const _Ty &amp;value)</a></p>
+<p>Performs copy construct on each of the object in the range by taking a copy of the provided object. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga3e9313d372b263d059cb71cb3d65a8a9/">_Iter1 fill_assign_range(_Iter1 first, _Iter1 last, const _Ty &amp;value)</a></p>
+<p>Performs copy assignment on each of the object in the range by taking a copy of the provided object. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1gab176a0253de8e05b3ff0c9d5c3bb0f04/">auto copy_relocate_range(_Iter1 first, _Iter1 last, _Iter2 d_first) -&gt; enable_if_t&lt; Impl::copy_relocate_is_value_type_trivial&lt; _Iter1, _Iter2 &gt;::value, _Iter2 &gt;</a></p>
+<p>Relocates objects in the source range to a new range that is not overlap with the source range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga3e53bc2228e4cc4428d755c146893c4c/">auto copy_relocate(_Iter1 dst, _Iter2 src) -&gt; enable_if_t&lt; Impl::copy_relocate_is_value_type_trivial&lt; _Iter1, _Iter2 &gt;::value, _Iter1 &gt;</a></p>
+<p>Relocates one object. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga63af54bbd0fa7737dc2d6b7a6d16e7fa/">auto move_relocate_range(_Iter1 first, _Iter1 last, _Iter2 d_first) -&gt; enable_if_t&lt; Impl::move_relocate_is_value_type_trivial&lt; _Iter1, _Iter2 &gt;::value, _Iter2 &gt;</a></p>
+<p>Relocates objects in the source range to a new range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga79d1c70e7f2da5dd53b7b58570886bd4/">auto move_relocate_range_backward(_Iter1 first, _Iter1 last, _Iter2 d_last) -&gt; enable_if_t&lt; Impl::move_relocate_backward_is_value_type_trivial&lt; _Iter1, _Iter2 &gt;::value, _Iter2 &gt;</a></p>
+<p>Relocates objects in the source range to a new range. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1gac90c9d2773f735a70e55915afaf969e4/">void calculate_struct_memory_layout(Span&lt; MemoryLayoutMember &gt; members, usize &amp;out_size, usize &amp;out_alignment)</a></p>
+<p>Calculates the size, alignment and memory layout for one structure type. </p>
+</li>
+<li>
+<p><a href="../group___runtime_memory_utils_1ga26be5f1c4c2d9fc1735e3b6260426c42/">void calculate_union_memory_layout(Span&lt; MemoryLayoutMember &gt; members, usize &amp;out_size, usize &amp;out_alignment)</a></p>
+<p>Calculates the size, alignment and memory layout for one union type. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

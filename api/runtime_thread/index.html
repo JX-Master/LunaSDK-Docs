@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/runtime_thread/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Thread management and synchronization methods - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Thread management and synchronization methods";
+        var mkdocs_page_input_path = "api\\runtime_thread.md";
+        var mkdocs_page_url = "/api/runtime_thread/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Thread management and synchronization methods</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="thread-management-and-synchronization-methods">Thread management and synchronization methods</h1>
+<h2 id="classes">Classes</h2>
+<ul>
+<li><a href="../struct_luna_1_1_i_mutex/">Luna::IMutex</a></li>
+<li><a href="../class_luna_1_1_mutex_guard/">Luna::MutexGuard</a></li>
+<li><a href="../struct_luna_1_1_i_read_write_lock/">Luna::IReadWriteLock</a></li>
+<li><a href="../struct_luna_1_1_i_semaphore/">Luna::ISemaphore</a></li>
+<li><a href="../struct_luna_1_1_i_signal/">Luna::ISignal</a></li>
+<li><a href="../struct_luna_1_1_i_thread/">Luna::IThread</a></li>
+</ul>
+<h2 id="functions">Functions</h2>
+<ul>
+<li><a href="../group___runtime_thread_1gaee1e0f158ed71c7afce1527e76c4efaf/">LUNA_RUNTIME_API Ref&lt; IMutex &gt; new_mutex()</a></li>
+<li>
+<p><a href="../group___runtime_thread_1ga03c08e87246f2dc76f18f1645c9e734d/">LUNA_RUNTIME_API Ref&lt; IReadWriteLock &gt; new_read_write_lock()</a></p>
+<p>Creates one new read write lock. </p>
+</li>
+<li>
+<p><a href="../group___runtime_thread_1ga8f5fe21392376f0cb63e03e62a49d73b/">LUNA_RUNTIME_API Ref&lt; ISemaphore &gt; new_semaphore(i32 initial_count, i32 max_count)</a></p>
+</li>
+<li>
+<p><a href="../group___runtime_thread_1ga89646b80a87875a1678378af7041450f/">LUNA_RUNTIME_API Ref&lt; ISignal &gt; new_signal(bool manual_reset)</a></p>
+<p>Create a new signal object. </p>
+</li>
+<li>
+<p><a href="../group___runtime_thread_1ga1437d8723b57ea809873c0c575eb3bc2/">LUNA_RUNTIME_API u32 get_processors_count()</a></p>
+<p>Gets the number of logical processors on the platform. </p>
+</li>
+<li>
+<p><a href="../group___runtime_thread_1ga587d506e50d89f1dbd3eb50a1d9823b8/">LUNA_RUNTIME_API Ref&lt; IThread &gt; new_thread(void(<em>entry_func)(void </em>params), void <em>params, const c8 </em>name=nullptr, u32 stack_size=0)</a></p>
+<p>Create a new system thread and make it run the callback function. The thread will be closed when the callback function returns. </p>
+</li>
+<li>
+<p><a href="../group___runtime_thread_1ga18a1eaf3fc4ff341726a06d62c2d1eb5/">LUNA_RUNTIME_API IThread * get_current_thread()</a></p>
+<p>Gets the thread object of current running thread. </p>
+</li>
+<li>
+<p><a href="../group___runtime_thread_1gad33a876fa281df87180c9f54902f4a6a/">LUNA_RUNTIME_API IThread * get_main_thread()</a></p>
+<p>Gets the thread object of the main thread. </p>
+</li>
+<li>
+<p><a href="../group___runtime_thread_1gaa95d9cec0a8b41b8247d32e3d86a52f9/">LUNA_RUNTIME_API void sleep(u32 time_milliseconds)</a></p>
+<p>Suspends current thread for a specific period of time. </p>
+</li>
+<li>
+<p><a href="../group___runtime_thread_1ga11420d821a7729b18412dae6d9e7152b/">LUNA_RUNTIME_API void fast_sleep(u32 time_microseconds)</a></p>
+<p>Delays the execution of this thread for a very shout time by yielding this thread several times. </p>
+</li>
+<li>
+<p><a href="../group___runtime_thread_1gae5db165e70e5e860edb44d4fcfae8125/">LUNA_RUNTIME_API void yield_current_thread()</a></p>
+<p>Yields the remain time slice of the current thread and let OS to schedule other threads. </p>
+</li>
+<li>
+<p><a href="../group___runtime_thread_1gaed1656336d293f6fdbce19481fef2916/">LUNA_RUNTIME_API opaque_t tls_alloc(tls_destructor *destructor=nullptr)</a></p>
+<p>Allocates one thread local storage (TLS) slot. </p>
+</li>
+<li>
+<p><a href="../group___runtime_thread_1ga6b6c4e321ee1494761c429fbcb34ecc5/">LUNA_RUNTIME_API void tls_free(opaque_t handle)</a></p>
+<p>Frees the TLS slot allocated by <code>tls_alloc</code>. </p>
+</li>
+<li>
+<p><a href="../group___runtime_thread_1ga381ac43407ca733426c3a3ce19640900/">LUNA_RUNTIME_API void tls_set(opaque_t handle, void *ptr)</a></p>
+<p>Set the data bound to the current thread's TLS slot specified by <code>handle</code>. </p>
+</li>
+<li>
+<p><a href="../group___runtime_thread_1ga6597acf90d9ec80a6195bf673e994174/">LUNA_RUNTIME_API void * tls_get(opaque_t handle)</a></p>
+<p>Get the value bound to the TLS slot of current thread. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/class_luna_1_1_list/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Luna::List - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Luna::List";
+        var mkdocs_page_input_path = "api\\class_luna_1_1_list.md";
+        var mkdocs_page_url = "/api/class_luna_1_1_list/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Luna::List</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lunalist">Luna::List</h1>
+<p>A container that stores elements as double-linked lists (nodes connected by pointers). </p>
+<pre><code class="language-c++">class Luna::List
+</code></pre>
+<h2 id="functions">Functions</h2>
+<ul>
+<li>
+<p><a href="../class_luna_1_1_list_1a17e6c90f14225bdac5c65ed915b0a2f6/">List()</a></p>
+<p>Constructs an empty list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1ae611567eda6d2e25cf0b551cfe932f1d/">List(const allocator_type &amp;alloc)</a></p>
+<p>Constructs an empty list with an custom allocator. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a251d138a94e827712a83f49b4cef65a9/">List(usize count, const_reference value, const allocator_type &amp;alloc=allocator_type())</a></p>
+<p>Constructs a list with the specified number of elements. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1aa2997a1f0d7569dce584f12f24a0ee7c/">List(usize count, const allocator_type &amp;alloc=allocator_type())</a></p>
+<p>Constructs a list with the specified number of elements. Elements will be default-initialized. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a9013680ffde3a32db98bcee53a4e1499/">List(enable_if_t&lt;!is_integral_v&lt; _InputIt &gt;, _InputIt &gt; first, _InputIt last, const allocator_type &amp;alloc=allocator_type())</a></p>
+<p>Constructs a list with elements specified by one range. Elements in the range will be copy-inserted into the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a7d9a3513b0c4ce2d4a9d380e5046597f/">List(const List &amp;rhs)</a></p>
+<p>Constructs a list by copying elements from another list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1adf956d3c1d0d18dbab020d516adb868a/">List(const List &amp;rhs, const allocator_type &amp;alloc)</a></p>
+<p>Constructs a list with an custom allocator and with elements copied from another list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a09400e81df2e73cf04d8233bb49d7241/">List(List &amp;&amp;rhs)</a></p>
+<p>Constructs a list by moving elements from another list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1abd1f6d5eae1fda09c94e99d624a31efd/">List(List &amp;&amp;rhs, const allocator_type &amp;alloc)</a></p>
+<p>Constructs a list with an custom allocator and with elements moved from another list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a5bfd383cd0ac9b1ffb3a506614af208c/">List(InitializerList&lt; value_type &gt; ilist, const allocator_type &amp;alloc=allocator_type())</a></p>
+<p>Constructs a list with elements specified by one initializer list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a8f3b26193f01b56297c3c18713ba9ef7/">List&lt; _Ty, _Alloc &gt; &amp; operator=(const List &amp;rhs)</a></p>
+<p>Replaces elements of the list by coping elements from another list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a273a8d653cc24bdb145322a79408b192/">List&lt; _Ty, _Alloc &gt; &amp; operator=(List &amp;&amp;rhs)</a></p>
+<p>Replaces elements of the list by moving elements from another list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a94af6ef06d505162a657a8c2b0496ec0/">List&lt; _Ty, _Alloc &gt; &amp; operator=(InitializerList&lt; value_type &gt; ilist)</a></p>
+<p>Replaces elements of the list by elements from one initializer list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1aafc1352043c99963fa09825f1a384a10/">void assign(usize count, const value_type &amp;value)</a></p>
+<p>Replaces elements of the list by several copies of the specified value. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1adaeab1488f29b931a806d420cf0857e4/">auto assign(_InputIt first, _InputIt last) -&gt; enable_if_t&lt;!is_integral_v&lt; _InputIt &gt;, void &gt;</a></p>
+<p>Replaces elements of the list by elements specified by one range. Elements in the range will be copy-inserted into the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1af80ee60b2d616a86fe008cf226795f26/">void assign(InitializerList&lt; value_type &gt; ilist)</a></p>
+<p>Replaces elements of the list by elements from one initializer list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1ab224d00c52b43f870e827b15993bc2fe/">List&lt; _Ty, _Alloc &gt;::reference front()</a></p>
+<p>Gets the first element in the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1aeef1ee04f94a3045a91a3de58b3833b6/">List&lt; _Ty, _Alloc &gt;::const_reference front() const</a></p>
+<p>Gets the first element in the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1afe76b6d22e154f4d315d4def8ecf31a4/">List&lt; _Ty, _Alloc &gt;::reference back()</a></p>
+<p>Gets the last element in the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a28caa17eb291da14069202da4ff70299/">List&lt; _Ty, _Alloc &gt;::const_reference back() const</a></p>
+<p>Gets the last element in the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1ae49b602ba0b25adb8379bf8727507324/">List&lt; _Ty, _Alloc &gt;::iterator begin()</a></p>
+<p>Gets one iterator pointing to the first element of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a520e28135a0b37738c459a2f0c182dff/">List&lt; _Ty, _Alloc &gt;::const_iterator begin() const</a></p>
+<p>Gets one constant iterator pointing to the first element of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a75f81254aa74d19c9e72bbe3bdd92c8a/">List&lt; _Ty, _Alloc &gt;::const_iterator cbegin() const</a></p>
+<p>Gets one constant iterator pointing to the first element of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a7ec56631bf0f334d845e6a198618360a/">List&lt; _Ty, _Alloc &gt;::iterator end()</a></p>
+<p>Gets one iterator pointing to the one past last element of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a33e164de8d71f0ce8ddc3d7b8fc567e0/">List&lt; _Ty, _Alloc &gt;::const_iterator end() const</a></p>
+<p>Gets one constant iterator pointing to the one past last element of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a55c434a81cad9990fb3429a3e549657f/">List&lt; _Ty, _Alloc &gt;::const_iterator cend() const</a></p>
+<p>Gets one constant iterator pointing to the one past last element of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1abe03ab15dca2df019aa3b28ae52081d7/">List&lt; _Ty, _Alloc &gt;::reverse_iterator rbegin()</a></p>
+<p>Gets one reverse iterator pointing to the last element of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1ae9756b0302b9bea3fc6094fcc773acef/">List&lt; _Ty, _Alloc &gt;::const_reverse_iterator rbegin() const</a></p>
+<p>Gets one constant reverse iterator pointing to the last element of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1aa378c7002668de375ecb9b69f0173520/">List&lt; _Ty, _Alloc &gt;::const_reverse_iterator crbegin() const</a></p>
+<p>Gets one constant reverse iterator pointing to the last element of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a5b16bb5e06bf3ed7733795fab95d9492/">List&lt; _Ty, _Alloc &gt;::reverse_iterator rend()</a></p>
+<p>Gets one reverse iterator pointing to the one-before-first element of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1acef94bdef07ba09516830c5d427f7c87/">List&lt; _Ty, _Alloc &gt;::const_reverse_iterator rend() const</a></p>
+<p>Gets one constant reverse iterator pointing to the one-before-first element of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1aeeb4338da0a6043328f277d27c783d34/">List&lt; _Ty, _Alloc &gt;::const_reverse_iterator crend() const</a></p>
+<p>Gets one constant reverse iterator pointing to the one-before-first element of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a644718bb2fb240de962dc3c9a1fdf0dc/">bool empty() const</a></p>
+<p>Checks whether this list is empty, that is, the size of this list is <code>0</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a79348f1b7c06b34052b42656a0279429/">usize size() const</a></p>
+<p>Gets the size of the list, that is, the number of elements in the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1ac8bb3912a3ce86b15842e79d0b421204/">void clear()</a></p>
+<p>Removes all elements in the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a99f2047c0b82c7ea135983a5925ad28b/">List&lt; _Ty, _Alloc &gt;::iterator insert(const_iterator pos, const value_type &amp;value)</a></p>
+<p>Inserts the specified element to the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a80b6f2d2e03ae9edc8117ade0716e70d/">List&lt; _Ty, _Alloc &gt;::iterator insert(const_iterator pos, value_type &amp;&amp;value)</a></p>
+<p>Inserts the specified element to the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a2532c4989fc583a2a513b8bd5a3ad87e/">List&lt; _Ty, _Alloc &gt;::iterator insert(const_iterator pos, usize count, const value_type &amp;value)</a></p>
+<p>Inserts several copies of the element to the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a650e92001370cfdc5bd04a651a2c2ef9/">auto insert(const_iterator pos, _InputIt first, _InputIt last) -&gt; enable_if_t&lt;!is_integral_v&lt; _InputIt &gt;, List&lt; _Ty, _Alloc &gt;::iterator &gt;</a></p>
+<p>Inserts one range of elements to the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a6e7b23b089aa694e8076d13dae6bac3d/">List&lt; _Ty, _Alloc &gt;::iterator insert(const_iterator pos, InitializerList&lt; value_type &gt; ilist)</a></p>
+<p>Inserts one range of elements specified by the initializer list to the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a4aa5c144e127e2247b2fcdb6eb769b2b/">List&lt; _Ty, _Alloc &gt;::iterator emplace(const_iterator pos, _Args &amp;&amp;... args)</a></p>
+<p>Constructs one element directly on the specified position of the list using the provided arguments. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a8c7c76ca5168dd917dfbe2cba9a57e60/">List&lt; _Ty, _Alloc &gt;::iterator erase(const_iterator pos)</a></p>
+<p>Removes one element from the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a351c85f0e22a5f6ef21aee32a62cfbb5/">List&lt; _Ty, _Alloc &gt;::iterator erase(const_iterator first, const_iterator last)</a></p>
+<p>Removes one range of elements from the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1ab249999c1e6caf5fc15da072edfb7cf2/">void push_back(const value_type &amp;value)</a></p>
+<p>Inserts one element at the back of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1adc7b837f89f7e8dddcf2dc276dc115b2/">void push_back(value_type &amp;&amp;value)</a></p>
+<p>Inserts one element at the back of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1ab877c1d244ce584e04e71592cc5fb28b/">List&lt; _Ty, _Alloc &gt;::reference emplace_back(_Args &amp;&amp;... args)</a></p>
+<p>Constructs one element directly on the back of the list using the provided arguments. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a058bda4957df6a97b1ea6c9fd783f672/">void pop_back()</a></p>
+<p>Removes the last element of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a318102205e1258cfeff6c5ba6d1ceaf6/">void push_front(const value_type &amp;value)</a></p>
+<p>Inserts one element at the front of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1ac5507a062255b274ef3b0557b5925087/">void push_front(value_type &amp;&amp;value)</a></p>
+<p>Inserts one element at the front of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1ac80bf569e193eb38de839b1fc2d2b508/">List&lt; _Ty, _Alloc &gt;::reference emplace_front(_Args &amp;&amp;... args)</a></p>
+<p>Constructs one element directly on the front of the list using the provided arguments. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a56f4ffbc6fd414b3c02a6c368e99594f/">void pop_front()</a></p>
+<p>Removes the first element of the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1afe7d58790aad6d1244777711aef39ad0/">void resize(usize count)</a></p>
+<p>Changes the number of elements in the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a05ef093245a3749df69b46f59230454b/">void resize(usize count, const value_type &amp;value)</a></p>
+<p>Changes the number of elements in the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a67991a77c21b55d8a770cd3a8e36cd34/">void swap(List &amp;rhs)</a></p>
+<p>Swaps elements of this list with the specified list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1aadabb3f9c00e459c78581e00207a9f2f/">void merge(List &amp;other)</a></p>
+<p>Merges another list into this list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a92d577d3e25fe2d9e2ab698c461f5189/">void merge(List &amp;&amp;other)</a></p>
+<p>Merges another list into this list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1af2b6dc300d3ff9b1ac3ad178bd4d0b4d/">void merge(List &amp;other, _Compare comp)</a></p>
+<p>Merges another list into this list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a2f8f6e82f209f35a4a02e978b03ffea9/">void merge(List &amp;&amp;other, _Compare comp)</a></p>
+<p>Merges another list into this list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a9e4924c2cff390d0bfe276fd83eb0aa9/">void splice(const_iterator pos, List &amp;other)</a></p>
+<p>Transfers all elements from another list to this list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a5553842996c4ac239a5311aad4c29252/">void splice(const_iterator pos, List &amp;&amp;other)</a></p>
+<p>Transfers all elements from another list to this list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1ad7f3db2f149b0faf686e81595f2c333a/">void splice(const_iterator pos, List &amp;other, const_iterator it)</a></p>
+<p>Transfers one element from another list to this list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1afd0e7fad7eae2aa017ac604c1ed6af5f/">void splice(const_iterator pos, List &amp;&amp;other, const_iterator it)</a></p>
+<p>Transfers one element from another list to this list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a32274c2c8ee987aadfacdf1fd9c6d31a/">void splice(const_iterator pos, List &amp;other, const_iterator first, const_iterator last)</a></p>
+<p>Transfers elements from another list to this list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1ab467c6181c9578af00b91c1caa15b7ae/">void splice(const_iterator pos, List &amp;&amp;other, const_iterator first, const_iterator last)</a></p>
+<p>Transfers elements from another list to this list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a42ee9dddf42e7f12f53d596ad4451dcb/">usize remove(const value_type &amp;value)</a></p>
+<p>Removes all elements that are equal to value. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a03d8c556a366c8122ccddfc9c24e6ddc/">usize remove_if(_UnaryPredicate p)</a></p>
+<p>Removes all elements for which the specified predicate returns <code>true</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a310c0bebc002158f5646a91d60e4dc89/">void reverse()</a></p>
+<p>Reverses the order of the elements in the list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1ad95db96bc0c2ccfb45416ad2590561ef/">usize unique()</a></p>
+<p>Removes all consecutive duplicate elements from the container. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a74f6d3924c2755549821dd1e4e1875f9/">usize unique(_BinaryPredicate p)</a></p>
+<p>Removes all consecutive duplicate elements from the container. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a47fdc9eea42b6975cdc835bb2e08810e/">void sort()</a></p>
+<p>Sorts elements in ascending order. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1aa410e59eb5490c3896b76be4d5d418f9/">void sort(_Compare comp)</a></p>
+<p>Sorts elements in using the user-specified comparison function object. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list_1a5d1a6ef108d9c2004e07e8183c716d1b/">List&lt; _Ty, _Alloc &gt;::allocator_type get_allocator() const</a></p>
+<p>Gets the allocator of the list. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
