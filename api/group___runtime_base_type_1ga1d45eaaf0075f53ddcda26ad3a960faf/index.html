@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/group___runtime_module_1ga14d0363490b3940dd1edc58edaa9bba6/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/group___runtime_base_type_1ga1d45eaaf0075f53ddcda26ad3a960faf/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>LUNA_STATIC_REGISTER_MODULE - Luna SDK Docs</title>
+    <title>Luna::opaque_t - Luna SDK Docs</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "LUNA_STATIC_REGISTER_MODULE";
-        var mkdocs_page_input_path = "api\\group___runtime_module_1ga14d0363490b3940dd1edc58edaa9bba6.md";
-        var mkdocs_page_url = "/api/group___runtime_module_1ga14d0363490b3940dd1edc58edaa9bba6/";
+        var mkdocs_page_name = "Luna::opaque_t";
+        var mkdocs_page_input_path = "api\\group___runtime_base_type_1ga1d45eaaf0075f53ddcda26ad3a960faf.md";
+        var mkdocs_page_url = "/api/group___runtime_base_type_1ga1d45eaaf0075f53ddcda26ad3a960faf/";
       </script>
     
     <!--[if lt IE 9]>
@@ -137,7 +137,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">LUNA_STATIC_REGISTER_MODULE</li>
+      <li class="breadcrumb-item active">Luna::opaque_t</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -146,31 +146,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="luna_static_register_module">LUNA_STATIC_REGISTER_MODULE</h1>
-<pre><code class="language-c++">#define LUNA_STATIC_REGISTER_MODULE(_name, _dependencies, _init_func, _close_func)
+                <h1 id="lunaopaque_t">Luna::opaque_t</h1>
+<pre><code class="language-c++">using opaque_t =  void*
 </code></pre>
-<p>Registers one module statically. Define this in one of CPP files of your module. </p>
-<h2 id="parameters">Parameters</h2>
-<ul>
-<li>
-<p><em>in</em> <strong>_name</strong></p>
-<p>The name of the module. Used by the system to index this module. </p>
-</li>
-<li>
-<p><em>in</em> <strong>_dependencies</strong></p>
-<p>The dependency modules of this module, written in one string separated by semicolons (";"). </p>
-</li>
-<li>
-<p><em>in</em> <strong>_init_func</strong></p>
-<p>The module initialization function. </p>
-</li>
-<li>
-<p><em>in</em> <strong>_close_func</strong></p>
-<p>The module close function. </p>
-</li>
-</ul>
-<h2 id="remark">Remark</h2>
-<p>See docs of <a href="../struct_luna_1_1_module_desc/">Luna::ModuleDesc</a> for details about every parameter of this macro. </p>
+<p><code>opaque_t</code> is used to represent one opaque pointer that shall not be reinterpreted or dereferred by the user. opaque_t are ususally used as arguments or returns values of interface functions to hide the implementation from the user. </p>
               
             </div>
           </div><footer>
