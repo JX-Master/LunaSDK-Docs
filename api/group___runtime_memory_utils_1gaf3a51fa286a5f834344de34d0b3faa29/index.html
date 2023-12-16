@@ -152,10 +152,16 @@ constexpr _Ty1 align_upper(_Ty1 origin, _Ty2 alignment)
 </code></pre>
 <p>Returns the address/size that aligns the origin address/size to the nearest matched aligned address/size that is greater than or equal to the the origin address/size. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="origin">origin</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>origin</strong></p>
 <p>The unaligned address/size. </p>
-<h3 id="alignment">alignment</h3>
+</li>
+<li>
+<p><em>in</em> <strong>alignment</strong></p>
 <p>The alignment boundary. If alignment is 0, <code>origin</code> will be returned as-is. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns the aligned address/size. </p>
               

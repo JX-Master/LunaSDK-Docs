@@ -147,12 +147,12 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaget_library_function">Luna::get_library_function</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API R&lt; void * &gt; get_library_function(opaque_t handle, const c8 *symbol)
+<pre><code class="language-c++">R&lt; void * &gt; get_library_function(opaque_t handle, const c8 *symbol)
 </code></pre>
 <p>Gets the function address (function pointer) of one function in the library from its symbol name. </p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="handle">handle</h3>
-<p>The library handle returned by load_library. </p>
+<p>The library handle returned by <a href="../group___runtime_d_l_l_1gaf089b17ba5687b844e5ab7233a65a24e/">load_library</a>. </p>
 <h3 id="symbol">symbol</h3>
 <p>The function's symbol name. </p>
 <h2 id="return-value">Return value</h2>

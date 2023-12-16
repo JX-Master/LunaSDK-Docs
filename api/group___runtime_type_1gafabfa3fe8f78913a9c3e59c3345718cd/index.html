@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaget_enum_options">Luna::get_enum_options</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API Span&lt; const EnumerationOptionDesc &gt; get_enum_options(typeinfo_t type)
+<pre><code class="language-c++">Span&lt; const EnumerationOptionDesc &gt; get_enum_options(typeinfo_t type)
 </code></pre>
 <p>Gets options of the specified enumeration. </p>
 <h2 id="parameters">Parameters</h2>
@@ -155,7 +155,7 @@
 <p>The type to query. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns options of the specified enumeration. The returned buffer is valid until SDK shutdown. Returns one empty range if <code>type</code> is not an enumeration type. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li><code>type</code> must specify one valid type object. </li>
 </ul>

@@ -156,47 +156,47 @@
 <h2 id="functions">Functions</h2>
 <ul>
 <li>
-<p><a href="../group___runtime_file_1ga9c6802285bfe5d9b47a067487cfb665c/">LUNA_RUNTIME_API R&lt; Ref&lt; IFile &gt; &gt; open_file(const c8 *path, FileOpenFlag flags, FileCreationMode creation)</a></p>
+<p><a href="../group___runtime_file_1gac58018b1b29fb266021f23592cc864e2/">R&lt; Ref&lt; IFile &gt; &gt; open_file(const c8 *path, FileOpenFlag flags, FileCreationMode creation)</a></p>
 <p>Opens one file. </p>
 </li>
 <li>
-<p><a href="../group___runtime_file_1ga5db366dac73029877752fb2969d767ec/">LUNA_RUNTIME_API R&lt; Blob &gt; load_file_data(IFile *file)</a></p>
+<p><a href="../group___runtime_file_1gab709b1bf8a06e1a9246b72566789181d/">R&lt; Blob &gt; load_file_data(IFile *file)</a></p>
 <p>Returns the data in the specified file as a blob object. </p>
 </li>
 <li>
-<p><a href="../group___runtime_file_1gafc817765c2a5febb456d0d0728685295/">LUNA_RUNTIME_API R&lt; FileAttribute &gt; get_file_attribute(const c8 *path)</a></p>
+<p><a href="../group___runtime_file_1ga91b8113efb2471820d683bb2cfacdb06/">R&lt; FileAttribute &gt; get_file_attribute(const c8 *path)</a></p>
 <p>Gets the file attribute. </p>
 </li>
 <li>
-<p><a href="../group___runtime_file_1ga403fdc9a5e3d0192d169112ab09937c3/">LUNA_RUNTIME_API RV copy_file(const c8 <em>from_path, const c8 </em>to_path, FileCopyFlag flags=FileCopyFlag::none)</a></p>
+<p><a href="../group___runtime_file_1gaadaeff79e86e7dedf1ececda9f02e4e8/">RV copy_file(const c8 <em>from_path, const c8 </em>to_path, FileCopyFlag flags=FileCopyFlag::none)</a></p>
 <p>Copies the file or directory from the source path to the destination path. </p>
 </li>
 <li>
-<p><a href="../group___runtime_file_1gacd11152f82d27b7d4edaead28e0056c0/">LUNA_RUNTIME_API RV move_file(const c8 <em>from_path, const c8 </em>to_path, FileMoveFlag flags=FileMoveFlag::none)</a></p>
+<p><a href="../group___runtime_file_1ga1e4a037bfade99aee7028bcced878edd/">RV move_file(const c8 <em>from_path, const c8 </em>to_path, FileMoveFlag flags=FileMoveFlag::none)</a></p>
 <p>Moves the file or directory from the source path to the destination path. This call can also be used to rename a file. </p>
 </li>
 <li>
-<p><a href="../group___runtime_file_1gadf474a92aea43a8fc8d0a494545b4166/">LUNA_RUNTIME_API RV delete_file(const c8 *file_path)</a></p>
+<p><a href="../group___runtime_file_1ga2cd87aeda1bc96a0141f10208ccbf2fb/">RV delete_file(const c8 *file_path)</a></p>
 <p>Deletes the specified file or directory. </p>
 </li>
 <li>
-<p><a href="../group___runtime_file_1ga34fd3952c7f15f22c272f9d4e568436d/">LUNA_RUNTIME_API R&lt; Ref&lt; IFileIterator &gt; &gt; open_dir(const c8 *path)</a></p>
+<p><a href="../group___runtime_file_1ga7a98d4ebd233ae412f59326e7e51af14/">R&lt; Ref&lt; IFileIterator &gt; &gt; open_dir(const c8 *path)</a></p>
 <p>Creates a file iterator that can be used to iterate all files in the specified directory. </p>
 </li>
 <li>
-<p><a href="../group___runtime_file_1ga88c4a1aee80b54bcc1c6220f64151028/">LUNA_RUNTIME_API RV create_dir(const c8 *path)</a></p>
+<p><a href="../group___runtime_file_1gabb8938ea556e26b6ba025786d0fbfaf9/">RV create_dir(const c8 *path)</a></p>
 <p>Creates one empty directory. </p>
 </li>
 <li>
-<p><a href="../group___runtime_file_1gaf2b20ca5fdbac9bed29388cb94d4a68a/">LUNA_RUNTIME_API u32 get_current_dir(u32 buffer_length, c8 *buffer)</a></p>
+<p><a href="../group___runtime_file_1gaef6a98ebbc81d069386bc889b345774d/">u32 get_current_dir(u32 buffer_length, c8 *buffer)</a></p>
 <p>Gets the current working directory path for the underlying system. </p>
 </li>
 <li>
-<p><a href="../group___runtime_file_1gae7531a6ee8352538200ef1502d2dedc2/">LUNA_RUNTIME_API RV set_current_dir(const c8 *path)</a></p>
+<p><a href="../group___runtime_file_1ga1d1db0602d90a54a2beb1318be009c23/">RV set_current_dir(const c8 *path)</a></p>
 <p>Sets the current working directory path for the underlying system. The current directory will be set for the process scope. </p>
 </li>
 <li>
-<p><a href="../group___runtime_file_1gac78ec88a75597d9ed708a7e53109de15/">LUNA_RUNTIME_API const c8 * get_process_path()</a></p>
+<p><a href="../group___runtime_file_1gab7c97dde34657264bfd5f1c6a6bd3a0d/">const c8 * get_process_path()</a></p>
 <p>Gets the full (absolute) path of the application's executable file. </p>
 </li>
 </ul>

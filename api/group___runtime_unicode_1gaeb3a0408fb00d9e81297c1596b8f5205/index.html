@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunautf16_decode_char">Luna::utf16_decode_char</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API c32 utf16_decode_char(const c16 *str)
+<pre><code class="language-c++">c32 utf16_decode_char(const c16 *str)
 </code></pre>
 <p>Decodes one Unicode character from 1~2 UTF-16 characters. </p>
 <h2 id="parameters">Parameters</h2>
@@ -155,7 +155,7 @@
 <p>The pointer that points to UTF-16 characters to decode. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the decoded Unicode character. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li><code>str</code> must points to a valid UTF-16 character string in platform-native endian. </li>
 </ul>

@@ -147,12 +147,12 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunanew_signal">Luna::new_signal</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API Ref&lt; ISignal &gt; new_signal(bool manual_reset)
+<pre><code class="language-c++">Ref&lt; ISignal &gt; new_signal(bool manual_reset)
 </code></pre>
 <p>Create a new signal object. </p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="manual_reset">manual_reset</h3>
-<p>If we need to manually reset the trigger state of the signal object. If set to <code>false</code>, the signal will be automatically reset to not triggered state when a single thread that waiting for this signal is passed. If set to <code>true</code>, user needs to manually reset the state by calling ISignal::reset. </p>
+<p>If we need to manually reset the trigger state of the signal object. If set to <code>false</code>, the signal will be automatically reset to not triggered state when a single thread that waiting for this signal is passed. If set to <code>true</code>, user needs to manually reset the state by calling <a href="../struct_luna_1_1_i_signal_1a20dcbdfbd0ec77afc802522bb7e379c1/">ISignal::reset</a>. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the new created signal object. </p>
               

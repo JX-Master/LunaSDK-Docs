@@ -151,10 +151,21 @@
 </code></pre>
 <p>Moves the read/write cursor to a new position. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="offset">offset</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>offset</strong></p>
 <p>Number of bytes to move relative to the position specified by <code>mode</code>. </p>
-<h3 id="mode">mode</h3>
+</li>
+<li>
+<p><em>in</em> <strong>mode</strong></p>
 <p>The seek mode to use. </p>
+</li>
+</ul>
+<h2 id="remark">Remark</h2>
+<p>The cursor position is not bound to the size of the stream. If you move the cursor beyond the end of the stream, the cursor is still valid with the following behaviors:1. All read operations succeed with 0 byte being read, just like EOF behaviors.</p>
+<ol>
+<li>All write operations extends the size of the stream before the actual write operation performed.</li>
+</ol>
 <p>The cursor value cannot be negative, if the new cursor position goes below 0, the seek operation fails. </p>
               
             </div>

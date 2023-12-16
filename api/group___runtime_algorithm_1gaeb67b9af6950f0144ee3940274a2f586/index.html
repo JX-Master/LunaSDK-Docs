@@ -152,15 +152,23 @@ constexpr bool all_of(_InputIt first, _InputIt last, _UnaryPredicate p)
 </code></pre>
 <p>Checks if the unary predicate returns <code>true</code> for all elements in the range. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="first">first</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>first</strong></p>
 <p>The iterator pointing to the first element of the range. </p>
-<h3 id="last">last</h3>
+</li>
+<li>
+<p><em>in</em> <strong>last</strong></p>
 <p>The iterator pointing to the one-past-last element of the range. </p>
-<h3 id="p">p</h3>
+</li>
+<li>
+<p><em>in</em> <strong>p</strong></p>
 <p>The user-provided unary predicate which will be called to test elements. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns <code>ture</code> if the unary predicate returns <code>true</code> for all elements in the range. Returns <code>false</code> otherwise. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li>The expression <code>p(v)</code> must be convertible to <code>bool</code> for every argument <code>v</code> of type <code>VT</code>, where <code>VT</code> is the value type of <code>_InputIt</code>, and must not modify <code>v</code>. </li>
 </ul>

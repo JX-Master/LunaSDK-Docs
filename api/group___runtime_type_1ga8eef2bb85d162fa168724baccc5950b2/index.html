@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaset_type_private_data">Luna::set_type_private_data</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void * set_type_private_data(typeinfo_t type, const Guid &amp;data_guid, usize data_size, usize data_alignment=0, void(*data_dtor)(void *)=nullptr)
+<pre><code class="language-c++">void * set_type_private_data(typeinfo_t type, const Guid &amp;data_guid, usize data_size, usize data_alignment=0, void(*data_dtor)(void *)=nullptr)
 </code></pre>
 <p>Sets user defined private data for the specified type. </p>
 <h2 id="parameters">Parameters</h2>
@@ -161,7 +161,7 @@
 <p>The alignment requirement of the data in bytes. Specify <code>0</code> to use the default alignment, which is MAX_ALIGN. </p>
 <h3 id="data_dtor">data_dtor</h3>
 <p>One optional callback function that will be called when the data is going to be freed if specified. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li><code>type</code> must specify one valid type object. </li>
 </ul>

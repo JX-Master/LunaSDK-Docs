@@ -153,6 +153,8 @@
 <p>This call does not modify the reference counter of the object. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the interface or object pointer of the boxed object. Returns <code>nullptr</code> if the reference is not valid. </p>
+<h2 id="remark">Remark</h2>
+<p>Note that the pointer returned by <a href="./">get</a> may not equal to the pointer returned by <a href="../class_luna_1_1_ref_1aa35fe176621b16279c1bde6c9f242af5/">object</a> due to interface vtable offsetting. When you perform typeless object operations like increasing/decreasing reference counters, casting types using RTTI, etc, always call <a href="../class_luna_1_1_ref_1aa35fe176621b16279c1bde6c9f242af5/">object</a> on this reference or <a href="../struct_luna_1_1_interface_1aac55ad90c6087dc9330066b4d5c07a83/">Interface::get_object</a> on the interface pointer to get object pointer. </p>
               
             </div>
           </div><footer>

@@ -151,14 +151,22 @@
 auto move_relocate_range(_Iter1 first, _Iter1 last, _Iter2 d_first) -&gt; enable_if_t&lt; Impl::move_relocate_is_value_type_trivial&lt; _Iter1, _Iter2 &gt;::value, _Iter2 &gt;
 </code></pre>
 <p>Relocates objects in the source range to a new range. </p>
-<p>This function behaves the same as copy_relocate_range, except that it allows the destination range overlaps with the source range, proved that the first object in the destination range does not in the source range. memmove is used instead of memcpy if the whole range can be relocated in one call. </p>
+<p>This function behaves the same as <a href="../group___runtime_memory_utils_1gab176a0253de8e05b3ff0c9d5c3bb0f04/">copy_relocate_range</a>, except that it allows the destination range overlaps with the source range, proved that the first object in the destination range does not in the source range. memmove is used instead of memcpy if the whole range can be relocated in one call. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="first">first</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>first</strong></p>
 <p>An iterator to the first object to be relocated from. </p>
-<h3 id="last">last</h3>
+</li>
+<li>
+<p><em>in</em> <strong>last</strong></p>
 <p>An iterator to one-past-last object to be relocated from. </p>
-<h3 id="d_first">d_first</h3>
+</li>
+<li>
+<p><em>in</em> <strong>d_first</strong></p>
 <p>An iterator to the first object to be relocated to. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns an iterator to the one-past-last object to be relocated to. </p>
               

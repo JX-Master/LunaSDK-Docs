@@ -152,8 +152,12 @@ Pair&lt; iterator, bool &gt; emplace(_Args &amp;&amp;... args)
 </code></pre>
 <p>Constructs one element directly in the map using the provided arguments. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="args">args</h3>
-<p>The arguments to construct the element. <code>[Pair](struct_luna_1_1_pair.md)&lt;const _Kty, _Ty&gt;(args...)</code> will be used to construct the element. </p>
+<ul>
+<li>
+<p><em>in</em> <strong>args</strong></p>
+<p>The arguments to construct the element. <code>Pair&lt;const _Kty, _Ty&gt;(args...)</code> will be used to construct the element. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns one iterator-bool pair indicating the result:* If the returned Boolean value is <code>true</code>, then the element is successfully constructed and inserted to the map, and the returned iterator points to the inserted element.</p>
 <ul>

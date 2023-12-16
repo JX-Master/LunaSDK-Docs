@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunayield_current_thread">Luna::yield_current_thread</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void yield_current_thread()
+<pre><code class="language-c++">void yield_current_thread()
 </code></pre>
 <p>Yields the remain time slice of the current thread and let OS to schedule other threads. </p>
 <p>There is no way to resume a thread from user mode, since threads are scheduled by OS automatically. </p>

@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunamemsize">Luna::memsize</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API usize memsize(void *ptr, usize alignment=0)
+<pre><code class="language-c++">usize memsize(void *ptr, usize alignment=0)
 </code></pre>
 <p>Gets the allocated size of one memory block. </p>
 <h2 id="parameters">Parameters</h2>
@@ -157,14 +157,14 @@
 <p>Optional. The alignment requirement of the allocated memory block. Default is 0. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the size of bytes of the memory block. Returns <code>0</code> if <code>ptr</code> is <code>nullptr</code>.</p>
-<p>The returned size is the size allocated for the memory block and is available for the user to use. The allocated size may be larger than the required size passed to memalloc or memrealloc to satisfy alignment and padding requirements. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<p>The returned size is the size allocated for the memory block and is available for the user to use. The allocated size may be larger than the required size passed to <a href="../group___runtime_memory_1ga76969916b035a432b54deb6920d3259c/">memalloc</a> or <a href="../group___runtime_memory_1ga60e9e4772655c0a60fbd5e311010b6d5/">memrealloc</a> to satisfy alignment and padding requirements. </p>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li>
-<p>If <code>ptr</code> is not <code>nullptr</code>, <code>ptr</code> be allocated by a prior call to memalloc or memrealloc.</p>
+<p>If <code>ptr</code> is not <code>nullptr</code>, <code>ptr</code> be allocated by a prior call to <a href="../group___runtime_memory_1ga76969916b035a432b54deb6920d3259c/">memalloc</a> or <a href="../group___runtime_memory_1ga60e9e4772655c0a60fbd5e311010b6d5/">memrealloc</a>.</p>
 </li>
 <li>
-<p>If <code>ptr</code> is not <code>nullptr</code>, <code>alignment</code> be equal to <code>alignment</code> passed to memalloc or memrealloc which allocates <code>ptr</code>. </p>
+<p>If <code>ptr</code> is not <code>nullptr</code>, <code>alignment</code> be equal to <code>alignment</code> passed to <a href="../group___runtime_memory_1ga76969916b035a432b54deb6920d3259c/">memalloc</a> or <a href="../group___runtime_memory_1ga60e9e4772655c0a60fbd5e311010b6d5/">memrealloc</a> which allocates <code>ptr</code>. </p>
 </li>
 </ul>
               

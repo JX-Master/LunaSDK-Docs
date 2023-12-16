@@ -147,26 +147,26 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunamemrealloc">Luna::memrealloc</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void * memrealloc(void *ptr, usize size, usize alignment=0)
+<pre><code class="language-c++">void * memrealloc(void *ptr, usize size, usize alignment=0)
 </code></pre>
 <p>Reallocates heap memory. </p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="ptr">ptr</h3>
-<p>The pointer to the former allocated memory block. If this is <code>nullptr</code>, this method behaves the same as memalloc. </p>
+<p>The pointer to the former allocated memory block. If this is <code>nullptr</code>, this method behaves the same as <a href="../group___runtime_memory_1ga76969916b035a432b54deb6920d3259c/">memalloc</a>. </p>
 <h3 id="size">size</h3>
-<p>The size, in bytes, of the new memory to allocate. If this is <code>0</code> and <code>ptr</code> is not <code>nullptr</code>, this function behaves the same as memfree. </p>
+<p>The size, in bytes, of the new memory to allocate. If this is <code>0</code> and <code>ptr</code> is not <code>nullptr</code>, this function behaves the same as <a href="../group___runtime_memory_1ga4bc8f37f2fe8c9100a8af16de794e3de/">memfree</a>. </p>
 <h3 id="alignment">alignment</h3>
-<p>Optional. The alignment requirement of the allocated memory block. Default is 0. memrealloc cannot change the alignment requirement of the memory block. In other words, if <code>ptr</code> is not <code>nullptr</code>, the alignment requirements of the old and new memory block must be the same. </p>
+<p>Optional. The alignment requirement of the allocated memory block. Default is 0. <a href="./">memrealloc</a> cannot change the alignment requirement of the memory block. In other words, if <code>ptr</code> is not <code>nullptr</code>, the alignment requirements of the old and new memory block must be the same. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns one pointer to the reallocated memory block. Returns <code>nullptr</code> if the allocation is failed. In such case, the old memory block (if have) is not changed.</p>
 <p>This function allocates a new memory block with the specified size and alignment requirement, copies the data from the old memory block to the new one, and frees the old memory block. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li>
-<p>If <code>ptr</code> is not <code>nullptr</code>, <code>ptr</code> be allocated by a prior call to memalloc or memrealloc.</p>
+<p>If <code>ptr</code> is not <code>nullptr</code>, <code>ptr</code> be allocated by a prior call to <a href="../group___runtime_memory_1ga76969916b035a432b54deb6920d3259c/">memalloc</a> or <a href="./">memrealloc</a>.</p>
 </li>
 <li>
-<p>If <code>ptr</code> is not <code>nullptr</code>, <code>alignment</code> be equal to <code>alignment</code> passed to memalloc or memrealloc which allocates <code>ptr</code>. </p>
+<p>If <code>ptr</code> is not <code>nullptr</code>, <code>alignment</code> be equal to <code>alignment</code> passed to <a href="../group___runtime_memory_1ga76969916b035a432b54deb6920d3259c/">memalloc</a> or <a href="./">memrealloc</a> which allocates <code>ptr</code>. </p>
 </li>
 </ul>
               

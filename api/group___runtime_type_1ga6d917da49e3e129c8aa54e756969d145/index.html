@@ -147,12 +147,35 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunacopy_assign_type_range">Luna::copy_assign_type_range</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void copy_assign_type_range(typeinfo_t type, void *dst, void *src, usize count)
+<pre><code class="language-c++">void copy_assign_type_range(typeinfo_t type, void *dst, void *src, usize count)
 </code></pre>
 <p>Copy assigns one array of instances of the specified type. </p>
-<p>The assignment is performed as follows:* <code>type</code> must specify one valid type object and cannot be a generic structure type.</p>
+<p>The assignment is performed as follows:1. If <code>type</code> is a trivially copy assignable type, use memcpy to copy instance data.</p>
+<ol>
+<li>
+<p>If <code>type</code> is a non-trivially-copy-assignable type with user defined copy assignment function, calls the function.</p>
+</li>
+<li>
+<p>If <code>type</code> is a non-trivially-copy-assignable type without user defined copy assignment function, copy assigns every property of the structure recursively. </p>
+</li>
+</ol>
+<h2 id="parameters">Parameters</h2>
+<h3 id="type">type</h3>
+<p>The type object. </p>
+<h3 id="dst">dst</h3>
+<p>The pointer to the instance array to be copy assigned. </p>
+<h3 id="src">src</h3>
+<p>The pointer to the instance array to copy data from. </p>
+<h3 id="count">count</h3>
+<p>The number of instances to assign. </p>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
-<li><code>dst</code> and <code>src</code> must specify one valid memory address. </li>
+<li>
+<p><code>type</code> must specify one valid type object and cannot be a generic structure type.</p>
+</li>
+<li>
+<p><code>dst</code> and <code>src</code> must specify one valid memory address. </p>
+</li>
 </ul>
               
             </div>

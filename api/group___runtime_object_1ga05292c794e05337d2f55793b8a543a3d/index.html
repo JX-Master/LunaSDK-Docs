@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaobject_retain">Luna::object_retain</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API ref_count_t object_retain(object_t object_ptr)
+<pre><code class="language-c++">ref_count_t object_retain(object_t object_ptr)
 </code></pre>
 <p>Increases the strong refernece counter value by one. </p>
 <h2 id="parameters">Parameters</h2>
@@ -155,9 +155,9 @@
 <p>The object pointer. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the strong reference counter value of the object after the operation. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
-<li><code>object_ptr</code> must points to one memory returned by object_alloc. </li>
+<li><code>object_ptr</code> must points to one memory returned by <a href="../group___runtime_object_1ga8ba411b5dc3e81b9d5c0283752e22b9e/">object_alloc</a>. </li>
 </ul>
               
             </div>

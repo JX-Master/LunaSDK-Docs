@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaget_type_private_data">Luna::get_type_private_data</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void * get_type_private_data(typeinfo_t type, const Guid &amp;data_guid)
+<pre><code class="language-c++">void * get_type_private_data(typeinfo_t type, const Guid &amp;data_guid)
 </code></pre>
 <p>Gets user defined private data for the specified type. </p>
 <h2 id="parameters">Parameters</h2>
@@ -157,7 +157,7 @@
 <p>The GUID of the private data to check. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns one pointer to the private data. Returns <code>nullptr</code> if such data does not exist. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li><code>type</code> must specify one valid type object. </li>
 </ul>

@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaequal_to_type">Luna::equal_to_type</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API bool equal_to_type(typeinfo_t type, const void *lhs, const void *rhs)
+<pre><code class="language-c++">bool equal_to_type(typeinfo_t type, const void *lhs, const void *rhs)
 </code></pre>
 <p>Checks whether two instances of one type are equal. </p>
 <h2 id="parameters">Parameters</h2>
@@ -159,7 +159,7 @@
 <p>The pointer to the second instance to be compared. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns <code>true</code> if two instances are equal. Returns <code>false</code> otherwise. Returns <code>false</code> if the type does not support equality testing. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li><code>type</code> must specify one valid type object and cannot be a generic structure type. </li>
 </ul>

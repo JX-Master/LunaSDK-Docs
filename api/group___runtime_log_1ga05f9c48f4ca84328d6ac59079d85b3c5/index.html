@@ -147,9 +147,11 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaflush_log_to_file">Luna::flush_log_to_file</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void flush_log_to_file()
+<pre><code class="language-c++">void flush_log_to_file()
 </code></pre>
 <p>Flushes the log-to-file cache and writes all cached logs to the log file. </p>
+<h2 id="remark">Remark</h2>
+<p>For performance reasons, when logging-to-file is enabled, log messages will be cached in a log buffer and written to the log file in one call when the buffer is full. The user can also call <a href="./">flush_log_to_file</a> to flush the cache manually when needed. </p>
               
             </div>
           </div><footer>

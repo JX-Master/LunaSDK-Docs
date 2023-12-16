@@ -147,12 +147,14 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunamemory_profiler_deallocate">Luna::memory_profiler_deallocate</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void memory_profiler_deallocate(void *ptr)
+<pre><code class="language-c++">void memory_profiler_deallocate(void *ptr)
 </code></pre>
 <p>Emits one PROFILER_EVENT_ID_MEMORY_DEALLOCATE profiler event. </p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="ptr">ptr</h3>
 <p>The registered memory pointer. </p>
+<h2 id="remark">Remark</h2>
+<p>Memory deallocations through <code>memfree</code> call this internally when memory profiling is enabled, thus the user does not need to call this again. </p>
               
             </div>
           </div><footer>

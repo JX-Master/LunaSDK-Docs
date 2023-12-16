@@ -147,6 +147,25 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="assertions">Assertions</h1>
+<h2 id="macros">Macros</h2>
+<ul>
+<li>
+<p><a href="../group___runtime_assert_1ga6ff7328a1c0f2aad0370c688e4484c0b/">luassert_always(_condition)</a></p>
+<p>Evaluates the given expression, and if the result value cannot pass <code>if</code> statement, calls <code>assert_fail</code>. This function works in all builds. </p>
+</li>
+<li>
+<p><a href="../group___runtime_assert_1ga7cb678a69cc15617424105ec1889f55f/">luassert_msg_always(_condition, _message)</a></p>
+<p>Same as luassert_always, but displays a custom message instead of the expression. </p>
+</li>
+<li>
+<p><a href="../group___runtime_assert_1gab0ffa5909cac7ae483c08743e71bb77a/">lupanic_always()</a></p>
+<p>Triggers an assertion failure directly. </p>
+</li>
+<li>
+<p><a href="../group___runtime_assert_1gacec4e09cb86fa610072a84ee9f980a7d/">lupanic_msg_always(_message)</a></p>
+<p>Triggers an assertion failure with custom message. </p>
+</li>
+</ul>
               
             </div>
           </div><footer>

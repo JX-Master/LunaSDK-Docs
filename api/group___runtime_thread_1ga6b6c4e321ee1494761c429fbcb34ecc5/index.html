@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunatls_free">Luna::tls_free</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void tls_free(opaque_t handle)
+<pre><code class="language-c++">void tls_free(opaque_t handle)
 </code></pre>
 <p>Frees the TLS slot allocated by <code>tls_alloc</code>. </p>
 <p>The handle will be invalid after this call and the pointer stored for every thread will be discarded.</p>
@@ -155,6 +155,8 @@
 <h2 id="parameters">Parameters</h2>
 <h3 id="handle">handle</h3>
 <p>The handle returned by <code>tls_alloc</code>. </p>
+<h2 id="remark">Remark</h2>
+<p>Note that calling <code>tls_free</code> will not call the destructor registered for this slot on any thread. After <code>tls_free</code> is called, the destructor will be cleared and will not be called any more. </p>
               
             </div>
           </div><footer>

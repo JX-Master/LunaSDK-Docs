@@ -151,12 +151,20 @@
 </code></pre>
 <p>Tests if specified bit is 1. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="base_addr">base_addr</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>base_addr</strong></p>
 <p>The address of the bit to offset from. </p>
-<h3 id="bit_offset">bit_offset</h3>
+</li>
+<li>
+<p><em>in</em> <strong>bit_offset</strong></p>
 <p>The number of bits shifted from the <code>base_addr</code>. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns <code>true</code> if the bit is 1, <code>false</code> if the bit is 0. </p>
+<h2 id="remark">Remark</h2>
+<p>The following cases demonstrate the index order of <code>bit_test</code>, <code>bit_set</code> and <code>bit_reset</code>.</p>
 <p>base_addr: 0x1000, bit_offset: 0, <code>*((u8*)0x1000)</code>: 0000 1000b* test result: false.</p>
 <ul>
 <li>

@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaload_file_data">Luna::load_file_data</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API R&lt; Blob &gt; load_file_data(IFile *file)
+<pre><code class="language-c++">R&lt; Blob &gt; load_file_data(IFile *file)
 </code></pre>
 <p>Returns the data in the specified file as a blob object. </p>
 <h2 id="parameters">Parameters</h2>
@@ -155,7 +155,7 @@
 <p>The file to read. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the data of the file. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li><code>file</code> must be opened with FileOpenFlag::read flag. </li>
 </ul>

@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaget_type_attribute">Luna::get_type_attribute</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API Variant get_type_attribute(typeinfo_t type, const Name &amp;name)
+<pre><code class="language-c++">Variant get_type_attribute(typeinfo_t type, const Name &amp;name)
 </code></pre>
 <p>Gets the attribute of the specified type. </p>
 <h2 id="parameters">Parameters</h2>
@@ -157,7 +157,7 @@
 <p>The name of the attribute to get. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the requested attribute. Returns one null variant if the attribute does not exist. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li>
 <p><code>type</code> must specify one valid type object.</p>

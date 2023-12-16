@@ -152,9 +152,13 @@
 <p>Merges another list into this list. </p>
 <p>No memory allocation or element copy/move will be performed, this function transfers elements by changing their pointers directly so that they link to the new list. Elements are compared using <code>less&lt;_Ty&gt;</code>. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="other">other</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>other</strong></p>
 <p>The list to merge. This list will be empty after this operation. If this is equal to <code>*this</code>, this function does nothing. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+</li>
+</ul>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li>Elements in <code>*this</code> and <code>other</code> must be sorted in ascending order. </li>
 </ul>

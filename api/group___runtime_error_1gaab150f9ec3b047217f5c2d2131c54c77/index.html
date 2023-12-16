@@ -152,12 +152,20 @@
 <p>Sets the error object of this thread. </p>
 <p>This function is auxiliary and it behaves the same as fetching the error object then setting it. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="code">code</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>code</strong></p>
 <p>The error code to set. </p>
-<h3 id="fmt">fmt</h3>
+</li>
+<li>
+<p><em>in</em> <strong>fmt</strong></p>
 <p>The error message formatting syntax. </p>
-<h3 id="args">args</h3>
+</li>
+<li>
+<p><em>in</em> <strong>args</strong></p>
 <p>The arguments for the error message. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns BasicError::error_object always, so you may chain this function with the return statement like <code>return set_error(...)</code>. </p>
               

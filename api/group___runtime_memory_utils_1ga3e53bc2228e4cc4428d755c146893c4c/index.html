@@ -153,10 +153,16 @@ auto copy_relocate(_Iter1 dst, _Iter2 src) -&gt; enable_if_t&lt; Impl::copy_relo
 <p>Relocates one object. </p>
 <p>After this call, the object in the destination memory behaves the same as the object formerly in the source memory, except that the place(memory address) for the object is changed. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="dst">dst</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>dst</strong></p>
 <p>An iterator to relocation destination. </p>
-<h3 id="src">src</h3>
+</li>
+<li>
+<p><em>in</em> <strong>src</strong></p>
 <p>An iterator to the object to be relocated. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns <code>dst</code>. </p>
               

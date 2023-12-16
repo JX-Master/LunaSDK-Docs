@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunabase64_decode">Luna::base64_decode</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API usize base64_decode(void *dst, usize dst_max_bytes, const c8 *src, usize src_size_chars=USIZE_MAX)
+<pre><code class="language-c++">usize base64_decode(void *dst, usize dst_max_bytes, const c8 *src, usize src_size_chars=USIZE_MAX)
 </code></pre>
 <p>Decode a base64 string to binary data. The system assumes the string passed in is a valid base64 string. </p>
 <h2 id="parameters">Parameters</h2>

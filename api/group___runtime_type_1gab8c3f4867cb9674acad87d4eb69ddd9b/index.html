@@ -147,10 +147,22 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunais_type_trivially_move_assignable">Luna::is_type_trivially_move_assignable</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API bool is_type_trivially_move_assignable(typeinfo_t type)
+<pre><code class="language-c++">bool is_type_trivially_move_assignable(typeinfo_t type)
 </code></pre>
 <p>Checks whether one type is a trivially move assignable type. </p>
-<p>One type is trivially move assignable if:* <code>type</code> must specify one valid type object. </p>
+<p>One type is trivially move assignable if:1. It is a primitive or enumeration type, or</p>
+<ol>
+<li>It is a structure or generic structure instanced type without user-provided move assignment function, and all properties of the type are trivially move assignable. </li>
+</ol>
+<h2 id="parameters">Parameters</h2>
+<h3 id="type">type</h3>
+<p>The type object. </p>
+<h2 id="return-value">Return value</h2>
+<p>Returns <code>true</code> if the specified type is a trivially move assignable type. Returns <code>false</code> otherwise. </p>
+<h2 id="valid-usage">Valid Usage</h2>
+<ul>
+<li><code>type</code> must specify one valid type object. </li>
+</ul>
               
             </div>
           </div><footer>

@@ -150,11 +150,20 @@
 <p>A container that contains a sequence of names that describe one path. </p>
 <pre><code class="language-c++">class Luna::Path
 </code></pre>
-<h2 id="overview">Overview</h2>
 <p><a href="./">Path</a> is one kind of string that describes the location of one node in a hierarchical-based node tree, given that each node in the tree can be identified by a name string. For example, a file path is used to identify a file or folder in the given file system.</p>
 <p><a href="./">Path</a> is designed to be platform-independent and efficient to handle file path related operations. In implementation, the path object does not store the path string directly, but breaks it down to several parts, and stores each part independently. This makes path-related operations very fast and consumes less memory if you need to store lots of paths.</p>
-<p>One path is composed by the following components:</p>
-<h2 id="functions">Functions</h2>
+<p>One path is composed by the following components:1. The root name, which usually determines the domain of the path. For example, then volume symbol on Windows (like C:) is one kind of root name.</p>
+<ol>
+<li>
+<p>The directory nodes that composes the path. For example, "C:\Games\MyGame\" has root name "C:" and two directory nodes 
+"Games" and "MyGame". In file object, every directory node as well as the root name is stored independently as one <a href="../class_luna_1_1_name/">Name</a>
+ object, and they are grouped into one array to form the path sequence.</p>
+</li>
+<li>
+<p>The path flags, see <code>EPathFlag</code> for details. Basically, path object uses flags to determine if one path is absolute (if begins with one separator), and if one path represents a directory (if it ends with one separator). This flags are properly set when the path string gets parsed, but it may not be correct. For example, if you parse one path string that represents a directory but does not ends with a separator, the <code>EPathFlag::directory</code> will not be set for that path. The path object will not use runtime system calls like <code>file_attribute</code> to determine if one path is valid or represents a directory, it is the user's responsibility to check it before using it. </p>
+</li>
+</ol>
+<h2 id="member-functions">Member functions</h2>
 <ul>
 <li>
 <p><a href="../class_luna_1_1_path_1aaa44fef284bec9041f7eb22b921c6174/">Path()</a></p>

@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunabase85_decode">Luna::base85_decode</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API usize base85_decode(void *dst, usize dst_max_bytes, const c8 *src, usize src_size_chars=USIZE_MAX)
+<pre><code class="language-c++">usize base85_decode(void *dst, usize dst_max_bytes, const c8 *src, usize src_size_chars=USIZE_MAX)
 </code></pre>
 <p>Decode a base85 string to binary data. The system assumes the string passed in is a valid base85 string. </p>
 <h2 id="parameters">Parameters</h2>
@@ -161,7 +161,7 @@
 <p>The maximum characters to read in the <code>src</code> string. Specify <code>USIZE_MAX</code> to read the full string. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the number of bytes decoded into the <code>dst</code> buffer. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li>If <code>src_size_bytes</code> is neither <code>0</code> nor <code>USIZE_MAX</code>, <code>src_size_bytes</code> must be times of 5. </li>
 </ul>

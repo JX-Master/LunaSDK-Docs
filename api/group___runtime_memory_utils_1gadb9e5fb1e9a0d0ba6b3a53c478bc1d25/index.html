@@ -152,11 +152,19 @@ auto default_construct_range(_Iter first, _Iter last) -&gt; enable_if_t&lt; Impl
 </code></pre>
 <p>Default-constructs a range of objects. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="first">first</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>first</strong></p>
 <p>An iterator to the first object to be constructed. </p>
-<h3 id="last">last</h3>
+</li>
+<li>
+<p><em>in</em> <strong>last</strong></p>
 <p>An iterator to one-past-last object to be constructed.</p>
+</li>
+</ul>
 <p>This function performs default initialization on each object in the range [<code>first</code>, <code>last</code>). </p>
+<h2 id="remark">Remark</h2>
+<p>If _Ty is a class type (<code>is_class&lt;_Ty&gt;::value</code> is <code>true_type</code>), this function calls the default constructor for each object. Otherwise, this call does nothing, as described by C++ standard. ref: <a href="https://en.cppreference.com/w/cpp/language/default_initialization">https://en.cppreference.com/w/cpp/language/default_initialization</a></p>
               
             </div>
           </div><footer>

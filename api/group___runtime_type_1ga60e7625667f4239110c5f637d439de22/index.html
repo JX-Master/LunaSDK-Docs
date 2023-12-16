@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaset_equatable">Luna::set_equatable</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void set_equatable(typeinfo_t type, equal_to_func_t *func)
+<pre><code class="language-c++">void set_equatable(typeinfo_t type, equal_to_func_t *func)
 </code></pre>
 <p>Sets one type to support equality testing. </p>
 <h2 id="parameters">Parameters</h2>
@@ -155,7 +155,7 @@
 <p>The type object. </p>
 <h3 id="func">func</h3>
 <p>The equality testing function to use. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li>
 <p><code>type</code> must specify one valid type object and cannot be a generic structure type.</p>

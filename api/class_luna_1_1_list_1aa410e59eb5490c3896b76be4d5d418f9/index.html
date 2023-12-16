@@ -152,9 +152,13 @@ void sort(_Compare comp)
 </code></pre>
 <p>Sorts elements in using the user-specified comparison function object. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="comp">comp</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>comp</strong></p>
 <p>The comparison function object to use. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+</li>
+</ul>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li><code>comp</code> must provide the following function: <code>bool operator()(const _Ty&amp; a, const _Ty&amp; b)</code>, that returns <code>true</code> if <code>a</code> should appear in the list before <code>b</code>. </li>
 </ul>

@@ -158,60 +158,60 @@
 </ul>
 <h2 id="functions">Functions</h2>
 <ul>
-<li><a href="../group___runtime_thread_1gaee1e0f158ed71c7afce1527e76c4efaf/">LUNA_RUNTIME_API Ref&lt; IMutex &gt; new_mutex()</a></li>
+<li><a href="../group___runtime_thread_1gaaf4b4510b9d6c01a12e3064691d15bdc/">Ref&lt; IMutex &gt; new_mutex()</a></li>
 <li>
-<p><a href="../group___runtime_thread_1ga03c08e87246f2dc76f18f1645c9e734d/">LUNA_RUNTIME_API Ref&lt; IReadWriteLock &gt; new_read_write_lock()</a></p>
+<p><a href="../group___runtime_thread_1ga35f290e06f79b34a7a4b72368a88e6b4/">Ref&lt; IReadWriteLock &gt; new_read_write_lock()</a></p>
 <p>Creates one new read write lock. </p>
 </li>
 <li>
-<p><a href="../group___runtime_thread_1ga8f5fe21392376f0cb63e03e62a49d73b/">LUNA_RUNTIME_API Ref&lt; ISemaphore &gt; new_semaphore(i32 initial_count, i32 max_count)</a></p>
+<p><a href="../group___runtime_thread_1ga63acf4d842bfddff65e76b2e84524134/">Ref&lt; ISemaphore &gt; new_semaphore(i32 initial_count, i32 max_count)</a></p>
 </li>
 <li>
-<p><a href="../group___runtime_thread_1ga89646b80a87875a1678378af7041450f/">LUNA_RUNTIME_API Ref&lt; ISignal &gt; new_signal(bool manual_reset)</a></p>
+<p><a href="../group___runtime_thread_1ga451437bc4ec31226c33c379fbd7d7a24/">Ref&lt; ISignal &gt; new_signal(bool manual_reset)</a></p>
 <p>Create a new signal object. </p>
 </li>
 <li>
-<p><a href="../group___runtime_thread_1ga1437d8723b57ea809873c0c575eb3bc2/">LUNA_RUNTIME_API u32 get_processors_count()</a></p>
+<p><a href="../group___runtime_thread_1gac8b023e3dd3ae6a46516fa958f2ad7b9/">u32 get_processors_count()</a></p>
 <p>Gets the number of logical processors on the platform. </p>
 </li>
 <li>
-<p><a href="../group___runtime_thread_1ga587d506e50d89f1dbd3eb50a1d9823b8/">LUNA_RUNTIME_API Ref&lt; IThread &gt; new_thread(void(<em>entry_func)(void </em>params), void <em>params, const c8 </em>name=nullptr, u32 stack_size=0)</a></p>
+<p><a href="../group___runtime_thread_1gac1aad6a8f99159d07fe287db59c0a318/">Ref&lt; IThread &gt; new_thread(void(<em>entry_func)(void </em>params), void <em>params, const c8 </em>name=nullptr, u32 stack_size=0)</a></p>
 <p>Create a new system thread and make it run the callback function. The thread will be closed when the callback function returns. </p>
 </li>
 <li>
-<p><a href="../group___runtime_thread_1ga18a1eaf3fc4ff341726a06d62c2d1eb5/">LUNA_RUNTIME_API IThread * get_current_thread()</a></p>
+<p><a href="../group___runtime_thread_1ga3ed3f90467bd6b3e0b75a8c1c4562068/">IThread * get_current_thread()</a></p>
 <p>Gets the thread object of current running thread. </p>
 </li>
 <li>
-<p><a href="../group___runtime_thread_1gad33a876fa281df87180c9f54902f4a6a/">LUNA_RUNTIME_API IThread * get_main_thread()</a></p>
+<p><a href="../group___runtime_thread_1ga1bed2d312e6b95a39bd841d0ededf2b4/">IThread * get_main_thread()</a></p>
 <p>Gets the thread object of the main thread. </p>
 </li>
 <li>
-<p><a href="../group___runtime_thread_1gaa95d9cec0a8b41b8247d32e3d86a52f9/">LUNA_RUNTIME_API void sleep(u32 time_milliseconds)</a></p>
+<p><a href="../group___runtime_thread_1ga2ed6b20ac018dd695a1189c68629132a/">void sleep(u32 time_milliseconds)</a></p>
 <p>Suspends current thread for a specific period of time. </p>
 </li>
 <li>
-<p><a href="../group___runtime_thread_1ga11420d821a7729b18412dae6d9e7152b/">LUNA_RUNTIME_API void fast_sleep(u32 time_microseconds)</a></p>
+<p><a href="../group___runtime_thread_1gaf28258e2d025ad9da4aa4aa5de2bc339/">void fast_sleep(u32 time_microseconds)</a></p>
 <p>Delays the execution of this thread for a very shout time by yielding this thread several times. </p>
 </li>
 <li>
-<p><a href="../group___runtime_thread_1gae5db165e70e5e860edb44d4fcfae8125/">LUNA_RUNTIME_API void yield_current_thread()</a></p>
+<p><a href="../group___runtime_thread_1ga612f977ca8fde0829d4fcf182d4cad00/">void yield_current_thread()</a></p>
 <p>Yields the remain time slice of the current thread and let OS to schedule other threads. </p>
 </li>
 <li>
-<p><a href="../group___runtime_thread_1gaed1656336d293f6fdbce19481fef2916/">LUNA_RUNTIME_API opaque_t tls_alloc(tls_destructor *destructor=nullptr)</a></p>
+<p><a href="../group___runtime_thread_1ga627934a51a920ff58c694cdb89083fe4/">opaque_t tls_alloc(tls_destructor *destructor=nullptr)</a></p>
 <p>Allocates one thread local storage (TLS) slot. </p>
 </li>
 <li>
-<p><a href="../group___runtime_thread_1ga6b6c4e321ee1494761c429fbcb34ecc5/">LUNA_RUNTIME_API void tls_free(opaque_t handle)</a></p>
+<p><a href="../group___runtime_thread_1gab3909da8f640a34cf007e78404b41226/">void tls_free(opaque_t handle)</a></p>
 <p>Frees the TLS slot allocated by <code>tls_alloc</code>. </p>
 </li>
 <li>
-<p><a href="../group___runtime_thread_1ga381ac43407ca733426c3a3ce19640900/">LUNA_RUNTIME_API void tls_set(opaque_t handle, void *ptr)</a></p>
+<p><a href="../group___runtime_thread_1gacb55d976ce0cbe2683bf03116be2d2f2/">void tls_set(opaque_t handle, void *ptr)</a></p>
 <p>Set the data bound to the current thread's TLS slot specified by <code>handle</code>. </p>
 </li>
 <li>
-<p><a href="../group___runtime_thread_1ga6597acf90d9ec80a6195bf673e994174/">LUNA_RUNTIME_API void * tls_get(opaque_t handle)</a></p>
+<p><a href="../group___runtime_thread_1gab310bb1422cf8f1b192bdcc5b3668cc4/">void * tls_get(opaque_t handle)</a></p>
 <p>Get the value bound to the TLS slot of current thread. </p>
 </li>
 </ul>

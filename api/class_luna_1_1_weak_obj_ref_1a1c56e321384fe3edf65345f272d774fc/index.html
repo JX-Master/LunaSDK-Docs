@@ -153,6 +153,8 @@
 <p>This call does not modify the reference counter of the object. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns one pointer to the boxed object. Returns <code>nullptr</code> if the reference is null or the boxed object is expired. </p>
+<h2 id="remark">Remark</h2>
+<p>It is not safe to use the returned boxed object directly, since one weak reference does not prevent one object from destructing itself if all strong references are released. This function only guarantees that the returned boxed object is valid when this function returns, but not after. To use the boxed object, the user should use <a href="../class_luna_1_1_weak_obj_ref_1af6347ac675db0acd160d0b36e8418dfd/">pin</a> to create one strong reference from this reference, then use that reference instead. </p>
               
             </div>
           </div><footer>

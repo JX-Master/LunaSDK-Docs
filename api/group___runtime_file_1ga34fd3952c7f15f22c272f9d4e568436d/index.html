@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaopen_dir">Luna::open_dir</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API R&lt; Ref&lt; IFileIterator &gt; &gt; open_dir(const c8 *path)
+<pre><code class="language-c++">R&lt; Ref&lt; IFileIterator &gt; &gt; open_dir(const c8 *path)
 </code></pre>
 <p>Creates a file iterator that can be used to iterate all files in the specified directory. </p>
 <h2 id="parameters">Parameters</h2>
@@ -155,7 +155,7 @@
 <p>The directory path to open. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns a file iterator object. </p>
-<h4 id="possible-errors">Possible Errors</h4>
+<h2 id="possible-errors">Possible Errors</h2>
 <ul>
 <li>
 <p>BasicError::not_found</p>

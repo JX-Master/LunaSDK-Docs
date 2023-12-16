@@ -147,12 +147,14 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaset_log_file">Luna::set_log_file</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void set_log_file(const c8 *file)
+<pre><code class="language-c++">void set_log_file(const c8 *file)
 </code></pre>
 <p>Sets the file path of the log file. </p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="file">file</h3>
 <p>The file path of the log file. The file path may be absolute or relative to the current working directory. </p>
+<h2 id="remark">Remark</h2>
+<p>If the log file path is not set by the user, the default log file path will be <code>"./Log.txt"</code>. </p>
               
             </div>
           </div><footer>

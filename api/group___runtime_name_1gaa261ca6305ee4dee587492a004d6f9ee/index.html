@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaintern_name">Luna::intern_name</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API const c8 * intern_name(const c8 *name)
+<pre><code class="language-c++">const c8 * intern_name(const c8 *name)
 </code></pre>
 <p>Interns one name string to the runtime and fetches the interned address for it. </p>
 <h2 id="parameters">Parameters</h2>
@@ -155,9 +155,11 @@
 <p>The name string to intern. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the interned address for the name string. If <code>name</code> is <code>nullptr</code> or points to an empty string (<code>""</code>), the returned address is <code>nullptr</code> and the memory block is not interned. </p>
-<p>For each call to intern_name, one call to release_name is needed to finally release the internal name string block.</p>
+<h2 id="remark">Remark</h2>
+<p>The name string is saved in the runtime and is reference counted. The first call to <a href="./">intern_name</a> with a new string allocates the memory block to store the string and returns the block address. Additional calls to <a href="./">intern_name</a> with the same string will only increase the reference count of the memory block and returns the same address, so the user can simply compares two address (pointer) to check if they refer to the same string.</p>
+<p>For each call to <a href="./">intern_name</a>, one call to <a href="../group___runtime_name_1ga5556ed51beb79868d1c0f036ea3aa04d/">release_name</a> is needed to finally release the internal name string block.</p>
 <p>For end user, prefer using <a href="../class_luna_1_1_name/">Name</a> objects instead of calling these APIs directly. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li>If <code>name</code> is not <code>nullptr</code>, it must be ended with one null terminator. </li>
 </ul>

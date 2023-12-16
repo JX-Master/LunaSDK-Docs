@@ -152,15 +152,23 @@ Pair&lt; _ForwardIt, _ForwardIt &gt; equal_range(_ForwardIt first, _ForwardIt la
 </code></pre>
 <p>Gets a range containing all elements equivalent to the specified value in the range. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="first">first</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>first</strong></p>
 <p>The iterator pointing to the first element of the range. </p>
-<h3 id="last">last</h3>
+</li>
+<li>
+<p><em>in</em> <strong>last</strong></p>
 <p>The iterator pointing to the one-past-last element of the range. </p>
-<h3 id="value">value</h3>
+</li>
+<li>
+<p><em>in</em> <strong>value</strong></p>
 <p>The value to compare elements to. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns a pair of iterators pointing to the begin and end of the range. The first iterator points to the first element of the range, the second iterator points to the one-past-last element of the range. If the specified element is not found in the range, returns one pair of iterators that are equal to each other. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li>Elements in the range specified by [<code>first</code>, <code>last</code>) must be sorted in non-descending order. </li>
 </ul>

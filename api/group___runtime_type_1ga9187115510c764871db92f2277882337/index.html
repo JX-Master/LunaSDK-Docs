@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaset_type_attribute">Luna::set_type_attribute</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void set_type_attribute(typeinfo_t type, const Name &amp;name, const Variant &amp;value=Variant())
+<pre><code class="language-c++">void set_type_attribute(typeinfo_t type, const Name &amp;name, const Variant &amp;value=Variant())
 </code></pre>
 <p>Sets one attribute of the specified type. </p>
 <h2 id="parameters">Parameters</h2>
@@ -157,7 +157,9 @@
 <p>The name of the attribute to set. </p>
 <h3 id="value">value</h3>
 <p>The value of the attribute. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="remark">Remark</h2>
+<p>If <code>type</code> specifies one generic type, the attribute will be applied to all instanced types of that generic type. </p>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li>
 <p><code>type</code> must specify one valid type object.</p>

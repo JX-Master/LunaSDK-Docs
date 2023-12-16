@@ -150,11 +150,10 @@
 <p>The error code type represents one single error. </p>
 <pre><code class="language-c++">struct Luna::ErrCode
 </code></pre>
-<h2 id="overview">Overview</h2>
 <p>In Luna Runtime, every error is represented by one error code, the code value will be determined when the error is firstly accessed, and will never be changed.</p>
 <p>Any valid error code number will not be 0.</p>
 <p>The error code is wrapped in a unique structure so that it will never be misinterpreted to a normal return value when the function return value is also an integer. </p>
-<h2 id="properties">Properties</h2>
+<h2 id="member-objects">Member objects</h2>
 <ul>
 <li>
 <p><a href="../struct_luna_1_1_err_code_1a77ca0743e6dd02f1f1ca0b3f5a772388/">usize code</a></p>

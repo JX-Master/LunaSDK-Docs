@@ -152,10 +152,16 @@ typeinfo_t register_struct_type(Span&lt; const StructurePropertyDesc &gt; proper
 </code></pre>
 <p>Registers one structure type to the type system. The structure type must have one lustruct macro defined in the structure body. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="properties">properties</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>properties</strong></p>
 <p>A list of properties that should be tracked by the type system. The user can use luproperty macro to declare properties conveniently. </p>
-<h3 id="base_type">base_type</h3>
+</li>
+<li>
+<p><em>in</em> <strong>base_type</strong></p>
 <p>The base type of the type to register. This can be <code>nullptr</code>. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns the registered structure type. </p>
               

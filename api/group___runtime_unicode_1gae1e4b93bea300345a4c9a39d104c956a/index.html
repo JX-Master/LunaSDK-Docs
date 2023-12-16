@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunautf16_encode_char">Luna::utf16_encode_char</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API usize utf16_encode_char(c16 *dst, c32 ch)
+<pre><code class="language-c++">usize utf16_encode_char(c16 *dst, c32 ch)
 </code></pre>
 <p>Encodes the Unicode character into 1~2 UTF-16 characters using platform-native endian. </p>
 <h2 id="parameters">Parameters</h2>
@@ -157,9 +157,9 @@
 <p>The Unicode character to encode. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the number of UTF-16 characters written to <code>dst</code>. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
-<li><code>dst</code> must be large enough to hold all UTF-16 characters written. The user can use utf16_charspan to check the required space in advance. </li>
+<li><code>dst</code> must be large enough to hold all UTF-16 characters written. The user can use <a href="../group___runtime_unicode_1gaee1dfeafcf1e5b2e0abfded74899f3c6/">utf16_charspan</a> to check the required space in advance. </li>
 </ul>
               
             </div>

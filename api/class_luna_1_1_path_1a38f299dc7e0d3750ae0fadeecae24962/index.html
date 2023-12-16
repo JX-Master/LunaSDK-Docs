@@ -151,12 +151,23 @@
 </code></pre>
 <p>Assigns the content of this path with a new path that if appended to <code>base</code> path, creates a path equal to <code>target</code> path. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="base">base</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>base</strong></p>
 <p>The base path. </p>
-<h3 id="target">target</h3>
+</li>
+<li>
+<p><em>in</em> <strong>target</strong></p>
 <p>The target path. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>If the system can decide how to redirect target path to this path, returns the relative path, else, returns failure. </p>
+<h2 id="remark">Remark</h2>
+<p>In order to let this function succeeds, the following conditions are required:1. The root name of this path and target path must be equal, either <code>nullptr</code> or points to the same <code>Name</code> object.</p>
+<ol>
+<li>Both path should either all be absolute or all be relative. The returned path has the same root name as this path, and will always be a relative path. If this path is a directory, then the returned path will be marked as directory. The target path will always be recognized as directory, no matter if it is marked as directory. </li>
+</ol>
               
             </div>
           </div><footer>

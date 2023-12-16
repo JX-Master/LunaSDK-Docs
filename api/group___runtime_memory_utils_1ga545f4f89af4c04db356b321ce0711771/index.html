@@ -150,14 +150,22 @@
 <pre><code class="language-c++">template &lt;typename _Iter1, typename _Iter2&gt;
 auto move_assign_range_backward(_Iter1 first, _Iter1 last, _Iter2 d_last) -&gt; enable_if_t&lt;!Impl::move_assign_range_backward_is_value_type_trivial&lt; _Iter1, _Iter2 &gt;::value, _Iter2 &gt;
 </code></pre>
-<p>Same as move_assign_range, but performs the move assign from back to front. </p>
+<p>Same as <a href="../group___runtime_memory_utils_1ga2922440bc8a0efbe2c479e0b9d710a91/">move_assign_range</a>, but performs the move assign from back to front. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="first">first</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>first</strong></p>
 <p>An iterator to the first object to be moved from. </p>
-<h3 id="last">last</h3>
+</li>
+<li>
+<p><em>in</em> <strong>last</strong></p>
 <p>An iterator to one-past-last object to be moved from. </p>
-<h3 id="d_last">d_last</h3>
+</li>
+<li>
+<p><em>in</em> <strong>d_last</strong></p>
 <p>An iterator to the one-past-back object in the range to be assigned. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns an iterator to the front object in the range to be assigned.</p>
 <p>The last element in destination range must not in the source range. </p>

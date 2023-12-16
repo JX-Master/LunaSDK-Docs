@@ -150,9 +150,8 @@
 <p>The default allocator implementation that can be used for allocating memory for containers defined in Runtime module. </p>
 <pre><code class="language-c++">class Luna::Allocator
 </code></pre>
-<h2 id="overview">Overview</h2>
-<p>The default allocator allocates memory by calling memalloc, and deallocates memory by calling memfree. </p>
-<h2 id="functions">Functions</h2>
+<p>The default allocator allocates memory by calling <a href="../group___runtime_memory_1ga341bf6dd4a6ca9712174e6548774bc31/">memalloc</a>, and deallocates memory by calling <a href="../group___runtime_memory_1ga102bf0df13784b9f636c555461862a14/">memfree</a>. </p>
+<h2 id="member-functions">Member functions</h2>
 <ul>
 <li>
 <p><a href="../class_luna_1_1_allocator_1a8ed50dd7b8971bd8e18ed3a2d7dea9d1/">_Ty * allocate(usize n=1)</a></p>
@@ -160,7 +159,7 @@
 </li>
 <li>
 <p><a href="../class_luna_1_1_allocator_1a36cada72231a020cb53784c2fadba635/">void deallocate(_Ty *ptr, usize n=1)</a></p>
-<p>Deallocates memory allocated from allocate. </p>
+<p>Deallocates memory allocated from <a href="../class_luna_1_1_allocator_1a8ed50dd7b8971bd8e18ed3a2d7dea9d1/">allocate</a>. </p>
 </li>
 </ul>
               

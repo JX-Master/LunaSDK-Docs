@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunafast_sleep">Luna::fast_sleep</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void fast_sleep(u32 time_microseconds)
+<pre><code class="language-c++">void fast_sleep(u32 time_microseconds)
 </code></pre>
 <p>Delays the execution of this thread for a very shout time by yielding this thread several times. </p>
 <p>This is more accurate to <code>sleep</code> method and will not suspend current thread unless the specified time is larger than several milliseconds. </p>

@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunautf8_to_utf16">Luna::utf8_to_utf16</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API usize utf8_to_utf16(c16 *dst, usize dst_max_chars, const c8 *src, usize src_chars=USIZE_MAX)
+<pre><code class="language-c++">usize utf8_to_utf16(c16 *dst, usize dst_max_chars, const c8 *src, usize src_chars=USIZE_MAX)
 </code></pre>
 <p>Converts a UTF-8 string to UTF-16 string. </p>
 <h2 id="parameters">Parameters</h2>
@@ -161,7 +161,7 @@
 <p>The maximum characters to read. Specify <code>USIZE_MAX</code> to read till the end of the string. The conversion process will stop on first null terminator, or when <code>src_chars</code> is reached. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the number of characters outputted to the <code>dst</code> buffer, not including the null-terminator. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li><code>src</code> must be a valid UTF-8 string. </li>
 </ul>

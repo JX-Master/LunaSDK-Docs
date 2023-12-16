@@ -149,12 +149,18 @@
                 <h1 id="lunastrhash64">Luna::strhash64</h1>
 <pre><code class="language-c++">constexpr u64 strhash64(const c8 *s, u64 h=0)
 </code></pre>
-<p>A specialization of strhash that computes 64-bit hash code. </p>
+<p>A specialization of <a href="../group___runtime_hash_1ga6afb7f86bb77e6fb15015e072e64d7f5/">strhash</a> that computes 64-bit hash code. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="s">s</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>s</strong></p>
 <p>A pointer to one null-terminated string to compute. </p>
-<h3 id="h">h</h3>
-<p>A initial hash value. See memhash for details. </p>
+</li>
+<li>
+<p><em>in</em> <strong>h</strong></p>
+<p>A initial hash value. See <a href="../group___runtime_hash_1gae0c40164557e718d6ee7b7c613210075/">memhash</a> for details. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns the hash code of the string. </p>
               

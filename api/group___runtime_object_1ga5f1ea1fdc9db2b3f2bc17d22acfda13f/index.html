@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaobject_expired">Luna::object_expired</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API bool object_expired(object_t object_ptr)
+<pre><code class="language-c++">bool object_expired(object_t object_ptr)
 </code></pre>
 <p>Checks if the boxed object is expired, that is, destructed but its memeory is not freed. </p>
 <p>One object will be expired if its strong reference counter value drops 0, but its weak reference counter value is not 0. </p>
@@ -156,9 +156,9 @@
 <p>The object pointer. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns <code>true</code> if the object is expired, returns <code>false</code> otherwise. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
-<li><code>object_ptr</code> must points to one memory returned by object_alloc. </li>
+<li><code>object_ptr</code> must points to one memory returned by <a href="../group___runtime_object_1ga8ba411b5dc3e81b9d5c0283752e22b9e/">object_alloc</a>. </li>
 </ul>
               
             </div>

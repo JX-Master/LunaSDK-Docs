@@ -151,10 +151,16 @@
 </code></pre>
 <p>Gets a brief description about the error code. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="err_code">err_code</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>err_code</strong></p>
 <p>The error code to fetch. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns one C string that describes the error code. </p>
+<h2 id="remark">Remark</h2>
+<p>If <code>err_code</code> equals to BasicError::error_object, the returned string will be fetched from <code>get_error().message.c_str(), otherwise, the returned string will be fetched from</code>get_error_code_name(err_code)`. </p>
               
             </div>
           </div><footer>

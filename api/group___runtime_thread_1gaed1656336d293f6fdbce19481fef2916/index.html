@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunatls_alloc">Luna::tls_alloc</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API opaque_t tls_alloc(tls_destructor *destructor=nullptr)
+<pre><code class="language-c++">opaque_t tls_alloc(tls_destructor *destructor=nullptr)
 </code></pre>
 <p>Allocates one thread local storage (TLS) slot. </p>
 <p>The TLS slot is allocated for every thread running in this process, including the thread that is currently not being created yet. After the handle is returned, every thread can set a thread-local value to this slot using this handle.</p>

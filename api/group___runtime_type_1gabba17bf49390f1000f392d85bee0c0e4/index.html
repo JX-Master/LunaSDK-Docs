@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaget_base_type">Luna::get_base_type</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API typeinfo_t get_base_type(typeinfo_t type)
+<pre><code class="language-c++">typeinfo_t get_base_type(typeinfo_t type)
 </code></pre>
 <p>Gets the base type of the specified type. </p>
 <h2 id="parameters">Parameters</h2>
@@ -155,7 +155,7 @@
 <p>The type to query. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the base type of the specified type. Returns <code>nullptr</code> if the specified type is not a structure type, or if the type does not have a base type. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li><code>type</code> must specify one valid type object. </li>
 </ul>

@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaopen_file">Luna::open_file</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API R&lt; Ref&lt; IFile &gt; &gt; open_file(const c8 *path, FileOpenFlag flags, FileCreationMode creation)
+<pre><code class="language-c++">R&lt; Ref&lt; IFile &gt; &gt; open_file(const c8 *path, FileOpenFlag flags, FileCreationMode creation)
 </code></pre>
 <p>Opens one file. </p>
 <h2 id="parameters">Parameters</h2>
@@ -159,7 +159,7 @@
 <p>The file creation mode. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the new opened file object. </p>
-<h4 id="possible-errors">Possible Errors</h4>
+<h2 id="possible-errors">Possible Errors</h2>
 <ul>
 <li>
 <p>BasicError::bad_arguments</p>

@@ -152,8 +152,12 @@
 <p>Assigns this reference by moving the pointer from one typeless reference. </p>
 <p>The assignment will fail if the new reference is null or cannot be casted to <code>_Ty</code>. If the assignment fails, this reference will be null after this operation, and the strong reference counter of the new boxed object, if not null, will be decreased. If the assignment succeeds, the reference counter of the new boxed object will not be modified. The strong reference counter of the original boxed object, if not null, will be decreased before assignment. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="rhs">rhs</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>rhs</strong></p>
 <p>The reference to move from. This reference will be null after this operation. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns <code>*this</code>. </p>
               

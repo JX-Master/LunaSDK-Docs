@@ -153,11 +153,15 @@ usize unique(_BinaryPredicate p)
 <p>Removes all consecutive duplicate elements from the container. </p>
 <p>Only the first element in each group of equal elements is left. Elements are compared using the user-provided binary predicate. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="p">p</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>p</strong></p>
 <p>The binary predicate which returns <code>​true</code> if two elements are equal. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns the number of elements removed. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li><code>p</code> must provide the following function: <code>bool operator()(const _Ty&amp; a, const _Ty&amp; b)</code>, that returns <code>true</code> if <code>a</code> and <code>b</code> is equal. </li>
 </ul>

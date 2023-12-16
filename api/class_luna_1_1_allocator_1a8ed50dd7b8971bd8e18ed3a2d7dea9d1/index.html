@@ -152,8 +152,12 @@ _Ty * allocate(usize n=1)
 </code></pre>
 <p>Allocates memory for the specified number of elements. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="n">n</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>n</strong></p>
 <p>The number of elements to allocate memory for. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns the allocated memory. The size of the allocated memory is at least <code>sizeof(_Ty) * n</code> bytes, and the alignment of the allocated memory is at least <code>alignof(_Ty)</code> bytes. The returned memory is uninitialized. If the allocation fails, returns <code>nullptr</code>. </p>
               

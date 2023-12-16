@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunais_type_hashable">Luna::is_type_hashable</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API bool is_type_hashable(typeinfo_t type)
+<pre><code class="language-c++">bool is_type_hashable(typeinfo_t type)
 </code></pre>
 <p>Checks whether the specified type supports hash code computing. </p>
 <h2 id="parameters">Parameters</h2>
@@ -155,7 +155,7 @@
 <p>The type object. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns <code>true</code> if the specified type supports hash code computing. Returns <code>false</code> otherwise. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li><code>type</code> must specify one valid type object and cannot be a generic structure type. </li>
 </ul>

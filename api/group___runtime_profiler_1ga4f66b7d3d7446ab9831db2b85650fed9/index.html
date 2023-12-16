@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunamemory_profiler_allocate">Luna::memory_profiler_allocate</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void memory_profiler_allocate(void *ptr, usize size)
+<pre><code class="language-c++">void memory_profiler_allocate(void *ptr, usize size)
 </code></pre>
 <p>Emits one PROFILER_EVENT_ID_MEMORY_ALLOCATE profiler event. </p>
 <h2 id="parameters">Parameters</h2>
@@ -155,6 +155,8 @@
 <p>The pointer that represents the memory. This pointer is used only for identifing the memory block, it may not be the real memory address of the memory block, but must be unique in the application domain. </p>
 <h3 id="size">size</h3>
 <p>The size of the memory block, in bytes. </p>
+<h2 id="remark">Remark</h2>
+<p>Memory allocations through <code>memalloc</code> call this internally when memory profiling is enabled, thus the user does not need to call this again. </p>
               
             </div>
           </div><footer>

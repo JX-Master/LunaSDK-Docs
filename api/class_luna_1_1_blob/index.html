@@ -150,8 +150,7 @@
 <p>Represents one binary large object (BLOB). </p>
 <pre><code class="language-c++">class Luna::Blob
 </code></pre>
-<h2 id="overview">Overview</h2>
-<p><a href="./">Blob</a> can be used as a RAII wrapper for arbitrary memory allocation. One blob object allocates and manages one memory block that stores the blob data, which we call the "managed memory" of the blob object. The managed memory is always allocated from memalloc or memrealloc. The user can also allocate the memory manually then attach it to one blob object by calling Blob::attach, or call Blob::detach to take ownership of the managed memory from one blob object. </p>
+<p><a href="./">Blob</a> can be used as a RAII wrapper for arbitrary memory allocation. One blob object allocates and manages one memory block that stores the blob data, which we call the "managed memory" of the blob object. The managed memory is always allocated from <a href="../group___runtime_memory_1ga341bf6dd4a6ca9712174e6548774bc31/">memalloc</a> or <a href="../group___runtime_memory_1ga9e2c0a02d9b513dc3f7f1b101860d11f/">memrealloc</a>. The user can also allocate the memory manually then attach it to one blob object by calling Blob::attach, or call Blob::detach to take ownership of the managed memory from one blob object. </p>
               
             </div>
           </div><footer>

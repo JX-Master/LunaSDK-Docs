@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunamove_file">Luna::move_file</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API RV move_file(const c8 *from_path, const c8 *to_path, FileMoveFlag flags=FileMoveFlag::none)
+<pre><code class="language-c++">RV move_file(const c8 *from_path, const c8 *to_path, FileMoveFlag flags=FileMoveFlag::none)
 </code></pre>
 <p>Moves the file or directory from the source path to the destination path. This call can also be used to rename a file. </p>
 <h2 id="parameters">Parameters</h2>
@@ -157,7 +157,7 @@
 <p>Destination file or directory path. </p>
 <h3 id="flags">flags</h3>
 <p>The attributes for one file move operation. </p>
-<h4 id="possible-errors">Possible Errors</h4>
+<h2 id="possible-errors">Possible Errors</h2>
 <ul>
 <li>
 <p>BasicError::bad_arguments</p>

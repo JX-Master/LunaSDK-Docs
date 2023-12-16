@@ -149,14 +149,22 @@
                 <h1 id="lunamemhash32">Luna::memhash32</h1>
 <pre><code class="language-c++">u32 memhash32(const void *data, usize size, u32 h=0)
 </code></pre>
-<p>A specialization of memhash that computes 32-bit hash code. </p>
+<p>A specialization of <a href="../group___runtime_hash_1gae0c40164557e718d6ee7b7c613210075/">memhash</a> that computes 32-bit hash code. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="data">data</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>data</strong></p>
 <p>A pointer to the data to be hashed. </p>
-<h3 id="size">size</h3>
+</li>
+<li>
+<p><em>in</em> <strong>size</strong></p>
 <p>The length of the data in bytes. </p>
-<h3 id="h">h</h3>
-<p>A initial hash value. See memhash for details. </p>
+</li>
+<li>
+<p><em>in</em> <strong>h</strong></p>
+<p>A initial hash value. See <a href="../group___runtime_hash_1gae0c40164557e718d6ee7b7c613210075/">memhash</a> for details. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns the hash code of the data. </p>
               

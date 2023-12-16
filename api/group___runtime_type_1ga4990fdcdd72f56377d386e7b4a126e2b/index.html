@@ -147,12 +147,30 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunarelocate_type_range">Luna::relocate_type_range</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void relocate_type_range(typeinfo_t type, void *dst, void *src, usize count)
+<pre><code class="language-c++">void relocate_type_range(typeinfo_t type, void *dst, void *src, usize count)
 </code></pre>
 <p>Relocates one array of instances of the specified type. </p>
-<p>The relocation is performed as follows:* <code>type</code> must specify one valid type object and cannot be a generic structure type.</p>
+<p>The relocation is performed as follows:1. If <code>type</code> is a trivially relocatable type, use memcpy to move instance data.</p>
+<ol>
+<li>If <code>type</code> is a non-trivially-relocatable type, use <a href="../group___runtime_type_1gaedb52c18aad27367293256207fa535f0/">move_construct_type</a> to move construct one new instance on new location, then use <a href="../group___runtime_type_1ga89512f37edb473f255611970ac49d7d4/">destruct_type</a> to destruct the old instance. </li>
+</ol>
+<h2 id="parameters">Parameters</h2>
+<h3 id="type">type</h3>
+<p>The type object. </p>
+<h3 id="dst">dst</h3>
+<p>The pointer to the instance array to be relocated. </p>
+<h3 id="src">src</h3>
+<p>The pointer to the new location of the instance array. </p>
+<h3 id="count">count</h3>
+<p>The number of instances to relocate. </p>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
-<li><code>dst</code> and <code>src</code> must specify one valid memory address. </li>
+<li>
+<p><code>type</code> must specify one valid type object and cannot be a generic structure type.</p>
+</li>
+<li>
+<p><code>dst</code> and <code>src</code> must specify one valid memory address. </p>
+</li>
 </ul>
               
             </div>

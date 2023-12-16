@@ -149,7 +149,6 @@
                 <h1 id="lunaselfindexedhashmap">Luna::SelfIndexedHashMap</h1>
 <pre><code class="language-c++">class Luna::SelfIndexedHashMap
 </code></pre>
-<h2 id="overview">Overview</h2>
 <p>The self indexed hash map is for values whose key is one data member of the value, or can be computed from the value. For every value type that the user want to use for self indexed hash map, the user must define one special structure called "key extractor", and passes the type as the <code>_ExtractKey</code> template argument for the map. In this structure, one operator function <code>const _Kty&amp; operator()(const _Ty&amp; p) const</code> (or <code>_Kty operator()(const _Ty&amp; p) const</code> if the key is computed from value) must be defined to fetch the key of the value.</p>
 <p>The user must ensure that the key data member is not changed after the element is inserted to the map and before the element is removed from the map, or the behavior is undefined. </p>
               

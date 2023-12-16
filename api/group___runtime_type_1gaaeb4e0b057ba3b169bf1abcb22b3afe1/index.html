@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaget_enum_instance_value">Luna::get_enum_instance_value</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API i64 get_enum_instance_value(typeinfo_t type, const void *data)
+<pre><code class="language-c++">i64 get_enum_instance_value(typeinfo_t type, const void *data)
 </code></pre>
 <p>Extracts the mapped value of the enumeration, regardless of the underlying type of the enumeration. </p>
 <h2 id="parameters">Parameters</h2>
@@ -157,7 +157,7 @@
 <p>The instance data. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the mapped value of the enumeration converted to signed 64-bit integer. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li>
 <p><code>type</code> must specify one valid enumeration type object.</p>

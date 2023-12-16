@@ -147,11 +147,13 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaclose">Luna::close</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void close()
+<pre><code class="language-c++">void close()
 </code></pre>
 <p>Closes Luna SDK. </p>
 <p>Call this function to close Luna SDK. Most features provided by Luna SDK are not available after Luna SDK is closed. Calling this function when Luna SDK is not initialized or already closed does nothing and returns directly.</p>
 <p>Initialized modules  be closed by this function in the reverse order of their initialization order, so they don't need to be closed manually. </p>
+<h2 id="remark">Remark</h2>
+<p>All dynamic memory allocated from <a href="../group___runtime_memory_1ga76969916b035a432b54deb6920d3259c/">memalloc</a>, <a href="../group___runtime_memory_1ga60e9e4772655c0a60fbd5e311010b6d5/">memrealloc</a> and <a href="../group___runtime_memory_1ga81e30b31f5e8a02f54478a634015e720/">memnew</a> must be freed before calling <a href="./">close</a>, all boxed objects created from <a href="../group___runtime_1gaa7e539a91bc5a8e68c91db8d2d8a9c23/">new_object</a> and <a href="../group___runtime_object_1ga8ba411b5dc3e81b9d5c0283752e22b9e/">object_alloc</a> must be released before calling <a href="./">close</a> too. Calls to <a href="../group___runtime_memory_1ga4bc8f37f2fe8c9100a8af16de794e3de/">memfree</a>, <a href="../group___runtime_memory_1gaf95818ee40a0536baee3f539b019df5d/">memdelete</a>, <a href="../group___runtime_object_1ga841b0eea4b1450118695a1ea1e323e54/">object_release</a> and other functions after <a href="./">close</a> results in undefined behavior, and usually a program crash. This often happens when you declare global variables that hold dynamic allocated resources (such as <a href="../class_luna_1_1_ref/">Ref</a>) and memory blocks (such as UniquePtr, and containers like <a href="../class_luna_1_1_vector/">Vector</a>, <a href="../class_luna_1_1_hash_map/">HashMap</a>, etc.). Remember to clear such resources before calling <a href="./">close</a>. For some containers, you should call <code>clear</code> then <code>shrink_to_fit</code> to eventually frees the internal memory buffer used by containers. </p>
               
             </div>
           </div><footer>

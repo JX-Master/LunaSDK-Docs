@@ -152,14 +152,32 @@ auto move_assign_range(_Iter1 first, _Iter1 last, _Iter2 d_first) -&gt; enable_i
 </code></pre>
 <p>Performs move assignment operation on every object in the destination range using the corresponding object in the source range. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="first">first</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>first</strong></p>
 <p>An iterator to the first object to be moved from. </p>
-<h3 id="last">last</h3>
+</li>
+<li>
+<p><em>in</em> <strong>last</strong></p>
 <p>An iterator to one-past-last object to be moved from. </p>
-<h3 id="d_first">d_first</h3>
+</li>
+<li>
+<p><em>in</em> <strong>d_first</strong></p>
 <p>An iterator to the first object to be assigned. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns an iterator to the one-past-last object to be assigned. </p>
+<h2 id="remark">Remark</h2>
+<p>The move operation is performed from first to last, the first element in destination range must not in the source range. <code>memmove</code> is used to move the data directly if:1. Both <code>_Iter1</code> and <code>_Iter2</code> are pointer types.</p>
+<ol>
+<li>
+<p><code>value_type</code> of <code>_Iter1</code> and <code>_Iter2</code> is same.</p>
+</li>
+<li>
+<p><code>value_type</code> is trivially copy assignable and trivially move assignable. (If the type is trivially move assignable but not trivially copy assignable, the move assignment operator behaves the same as the copy assignment operator.) Otherwise, the move assignment operator is called for every object to move assign objects in destination range. </p>
+</li>
+</ol>
               
             </div>
           </div><footer>

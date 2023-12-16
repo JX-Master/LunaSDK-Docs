@@ -150,9 +150,48 @@
 <p>An container that contains key-value pairs with unique keys using open-addressing hashing algorithm. </p>
 <pre><code class="language-c++">class Luna::HashMap
 </code></pre>
-<h2 id="overview">Overview</h2>
+<h2 id="remark">Remark</h2>
+<p>LunaSDK provides two kinds of hashing-based containers: open-addressing containers and closed-addressing containers. The following containers are open-addressing containers, implemented using Robinhood hashing:</p>
+<ol>
+<li>
+<p><a href="./">HashMap</a></p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_hash_set/">HashSet</a></p>
+</li>
+<li>
+<p>SelfIndexedHashmap The following containers are closed-addressing containers, implemented using buckets and per-bucket linked-lists:</p>
+</li>
+<li>
+<p>UnorderedMap</p>
+</li>
+<li>
+<p>UnorderedSet</p>
+</li>
+<li>
+<p>UnorderedMultiMap</p>
+</li>
+<li>
+<p>UnorderedMultiSet</p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_self_indexed_unordered_map/">SelfIndexedUnorderedMap</a></p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_self_indexed_unordered_multi_map/">SelfIndexedUnorderedMultiMap</a></p>
+</li>
+</ol>
+<p>Open addressing (also known as closed hashing) algorithms store elements directly in hash table arrays, while closed addressing (also known as open hashing) algorithms allocate dedicated memory for every element, and stores pointers to such elements in hash table arrays. In open-addressing containers, one hash table slot can only store on element, the second element with the same hash value must be relocated to another empty slot; in closed-addressing containers, all elements with the same hash value can be stored in the same hash table slot, usually stored as linked lists. See <a href="https://programming.guide/hash-tables-open-vs-closed-addressing.html">Open vs Closed Addressing</a> for a detailed comparison of open addressing and closed addressing.</p>
 <p>Prefer <a href="./">HashMap</a> and <a href="../class_luna_1_1_hash_set/">HashSet</a> instead of UnorderedMap and UnorderedSet, since it performs better in memory fragmentation, memory locality and cache performance. Use UnorderedMap and UnorderedSet if you have the following requirements:</p>
-<h2 id="functions">Functions</h2>
+<ol>
+<li>
+<p>You want to insert multiple elements with the same key to the map, which is only supported by closed-addressing maps. Use UnorderedMultiMap, <a href="../class_luna_1_1_self_indexed_unordered_multi_map/">SelfIndexedUnorderedMultiMap</a> and UnorderedMultiSet in such case.</p>
+</li>
+<li>
+<p>You element type has very big size, usually larger than 256, causing allocating element memory in data table become unacceptable because it will waste a lot of memory when the load factor is low. Closed-addressing maps only allocate memory for alive elements, making it consuming much less memory than open-addressing maps when the element size is big. Closed-addressing maps also support extracting element nodes from one map and insert them to another maps without the need of allocating memory for elements, making it efficient to transfer elements between maps. </p>
+</li>
+</ol>
+<h2 id="member-functions">Member functions</h2>
 <ul>
 <li>
 <p><a href="../class_luna_1_1_hash_map_1a8e7da885280257b837a2de2b94e02fcd/">HashMap()</a></p>

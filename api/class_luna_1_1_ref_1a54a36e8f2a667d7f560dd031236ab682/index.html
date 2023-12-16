@@ -153,8 +153,12 @@ Ref(Ref&lt; _Rty &gt; &amp;&amp;rhs)
 <p>Constructs one reference by moving the pointer from another reference of one different type. </p>
 <p>The assignment will fail if the new reference is null or cannot be casted to <code>_Ty</code>. If the assignment fails, this reference will be null after this operation, and the strong reference counter of the new boxed object, if not null, will be decreased. If the assignment succeeds, the reference counter of the new boxed object will not be modified. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="rhs">rhs</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>rhs</strong></p>
 <p>The reference to move from. This reference will be null after this operation. </p>
+</li>
+</ul>
               
             </div>
           </div><footer>

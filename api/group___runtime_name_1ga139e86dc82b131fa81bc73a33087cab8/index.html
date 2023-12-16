@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaget_name_size">Luna::get_name_size</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API usize get_name_size(const c8 *name)
+<pre><code class="language-c++">usize get_name_size(const c8 *name)
 </code></pre>
 <p>Fetches the size of the name string. </p>
 <h2 id="parameters">Parameters</h2>
@@ -155,10 +155,12 @@
 <p>The pointer of the string. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the size of the name. Returns <code>0</code> if <code>name</code> is <code>nullptr</code>. </p>
+<h2 id="remark">Remark</h2>
+<p>Note that the size returned is not always equal to the size returnd by <code>strlen</code>, since the string that contains the null terminator is allowed as a name, so always fetches the name size using this API.</p>
 <p>The size of the name is cached in the system, so this call returns in constant time. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
-<li>If <code>name</code> is not <code>nullptr</code>, it must be a string pointer returned by intern_name. </li>
+<li>If <code>name</code> is not <code>nullptr</code>, it must be a string pointer returned by <a href="../group___runtime_name_1gaa261ca6305ee4dee587492a004d6f9ee/">intern_name</a>. </li>
 </ul>
               
             </div>

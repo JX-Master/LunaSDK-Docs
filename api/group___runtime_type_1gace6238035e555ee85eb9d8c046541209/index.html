@@ -147,12 +147,33 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunamove_assign_type">Luna::move_assign_type</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void move_assign_type(typeinfo_t type, void *dst, void *src)
+<pre><code class="language-c++">void move_assign_type(typeinfo_t type, void *dst, void *src)
 </code></pre>
 <p>Move assigns one instance of the specified type. </p>
-<p>The assignment is performed as follows:* <code>type</code> must specify one valid type object and cannot be a generic structure type.</p>
+<p>The assignment is performed as follows:1. If <code>type</code> is a trivially move assignable type, use memcpy to move instance data.</p>
+<ol>
+<li>
+<p>If <code>type</code> is a non-trivially-move-assignable type with user defined move assignment function, calls the function.</p>
+</li>
+<li>
+<p>If <code>type</code> is a non-trivially-move-assignable type without user defined move assignment function, move assigns every property of the structure recursively. </p>
+</li>
+</ol>
+<h2 id="parameters">Parameters</h2>
+<h3 id="type">type</h3>
+<p>The type object. </p>
+<h3 id="dst">dst</h3>
+<p>The pointer to the instance to be move assigned. </p>
+<h3 id="src">src</h3>
+<p>The pointer to the instance to move data from. </p>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
-<li><code>dst</code> and <code>src</code> must specify one valid memory address. </li>
+<li>
+<p><code>type</code> must specify one valid type object and cannot be a generic structure type.</p>
+</li>
+<li>
+<p><code>dst</code> and <code>src</code> must specify one valid memory address. </p>
+</li>
 </ul>
               
             </div>

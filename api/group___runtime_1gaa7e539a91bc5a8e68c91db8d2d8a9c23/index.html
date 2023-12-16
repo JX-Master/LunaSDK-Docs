@@ -151,10 +151,14 @@
 Ref&lt; _Ty &gt; new_object(_Args &amp;&amp;... args)
 </code></pre>
 <p>Creates one new boxed object. </p>
-<p>This function uses object_alloc to allocate one new boxed object, then use placement new operator to initialize the object. </p>
+<p>This function uses <a href="../group___runtime_object_1gabbcaac45f20e9e4c322fb1db0376b641/">object_alloc</a> to allocate one new boxed object, then use placement new operator to initialize the object. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="args">args</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>args</strong></p>
 <p>The arguments to construct the new boxed object. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns one strong reference to the new boxed object. </p>
               

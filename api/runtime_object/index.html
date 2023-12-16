@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="boxed-objects">Boxed objects</h1>
-<h2 id="aliasing-types">Aliasing types</h2>
+<h2 id="alias-types">Alias types</h2>
 <ul>
 <li>
 <p><a href="../group___runtime_object_1ga4d287a1c3bd0821c2391f4613686e35a/">using object_t =  opaque_t</a></p>
@@ -165,47 +165,47 @@
 <p>Registers one type so that it can be used for creating boxed objects. </p>
 </li>
 <li>
-<p><a href="../group___runtime_object_1ga8ba411b5dc3e81b9d5c0283752e22b9e/">LUNA_RUNTIME_API object_t object_alloc(typeinfo_t type)</a></p>
+<p><a href="../group___runtime_object_1gabbcaac45f20e9e4c322fb1db0376b641/">object_t object_alloc(typeinfo_t type)</a></p>
 <p>Allocates one boxed object. </p>
 </li>
 <li>
-<p><a href="../group___runtime_object_1ga05292c794e05337d2f55793b8a543a3d/">LUNA_RUNTIME_API ref_count_t object_retain(object_t object_ptr)</a></p>
+<p><a href="../group___runtime_object_1ga58de8f9cd270cba319bf80ec78fe51a7/">ref_count_t object_retain(object_t object_ptr)</a></p>
 <p>Increases the strong refernece counter value by one. </p>
 </li>
 <li>
-<p><a href="../group___runtime_object_1ga841b0eea4b1450118695a1ea1e323e54/">LUNA_RUNTIME_API ref_count_t object_release(object_t object_ptr)</a></p>
+<p><a href="../group___runtime_object_1ga7f822bf9876967630b4090507fff9465/">ref_count_t object_release(object_t object_ptr)</a></p>
 <p>Decreases the strong refernece counter value by one, and destroys the object if the reference counter drops to 0. </p>
 </li>
 <li>
-<p><a href="../group___runtime_object_1gae913d9c4fe24b3ce1bde56cc32f11a26/">LUNA_RUNTIME_API ref_count_t object_ref_count(object_t object_ptr)</a></p>
+<p><a href="../group___runtime_object_1ga649ddc0df3cdb7de5b618e692c35422c/">ref_count_t object_ref_count(object_t object_ptr)</a></p>
 <p>Fetches the strong refernece counter value of the boxed object. </p>
 </li>
 <li>
-<p><a href="../group___runtime_object_1ga16a414bc273f61c5b494bbfeede47dc8/">LUNA_RUNTIME_API ref_count_t object_retain_weak(object_t object_ptr)</a></p>
+<p><a href="../group___runtime_object_1gab248f4fee54777f33eca884e848e5c06/">ref_count_t object_retain_weak(object_t object_ptr)</a></p>
 <p>Increases the weak refernece counter value by one. </p>
 </li>
 <li>
-<p><a href="../group___runtime_object_1ga68c6d4e3df6b4ac39a9963b13a438a3a/">LUNA_RUNTIME_API ref_count_t object_release_weak(object_t object_ptr)</a></p>
+<p><a href="../group___runtime_object_1ga7db877575d1b92c06f6f0c574b93d15a/">ref_count_t object_release_weak(object_t object_ptr)</a></p>
 <p>Decreases the weak refernece counter value by one. </p>
 </li>
 <li>
-<p><a href="../group___runtime_object_1gab006a9ca608307374757bc7d9bdd8c20/">LUNA_RUNTIME_API ref_count_t object_weak_ref_count(object_t object_ptr)</a></p>
+<p><a href="../group___runtime_object_1ga19abee83cfb28d61706d21b381ef19b6/">ref_count_t object_weak_ref_count(object_t object_ptr)</a></p>
 <p>Fetches the weak refernece counter value of the boxed object. </p>
 </li>
 <li>
-<p><a href="../group___runtime_object_1ga5f1ea1fdc9db2b3f2bc17d22acfda13f/">LUNA_RUNTIME_API bool object_expired(object_t object_ptr)</a></p>
+<p><a href="../group___runtime_object_1ga50969679bdddcd28a4f928c1da2959a7/">bool object_expired(object_t object_ptr)</a></p>
 <p>Checks if the boxed object is expired, that is, destructed but its memeory is not freed. </p>
 </li>
 <li>
-<p><a href="../group___runtime_object_1ga86ba8bb53caec919089287e4b89aa0b0/">LUNA_RUNTIME_API bool object_retain_if_not_expired(object_t object_ptr)</a></p>
+<p><a href="../group___runtime_object_1ga9b9cee2ec7070dbd1b08dce660286306/">bool object_retain_if_not_expired(object_t object_ptr)</a></p>
 <p>Increases the strong refernece counter value by one if the boxed object is not expired. </p>
 </li>
 <li>
-<p><a href="../group___runtime_object_1ga7693a4a4b103ca1bb0fa1e41ea795ce2/">LUNA_RUNTIME_API typeinfo_t get_object_type(object_t object_ptr)</a></p>
+<p><a href="../group___runtime_object_1gaaaf5d608c320cd98447d41b15d8978b0/">typeinfo_t get_object_type(object_t object_ptr)</a></p>
 <p>Gets the type object of the boxed object. </p>
 </li>
 <li>
-<p><a href="../group___runtime_object_1gabe23034b4be97972a3340bbc70165eb8/">LUNA_RUNTIME_API bool object_is_type(object_t object_ptr, typeinfo_t type)</a></p>
+<p><a href="../group___runtime_object_1gaad33cfe88e42fcc1929b7949b6d8574f/">bool object_is_type(object_t object_ptr, typeinfo_t type)</a></p>
 <p>Checks whether the boxed object is the specified type or derived types of the specified type. </p>
 </li>
 <li>

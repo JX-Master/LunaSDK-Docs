@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaset_enum_instance_value">Luna::set_enum_instance_value</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void set_enum_instance_value(typeinfo_t type, void *data, i64 value)
+<pre><code class="language-c++">void set_enum_instance_value(typeinfo_t type, void *data, i64 value)
 </code></pre>
 <p>Sets the enumeration value to the specified mapped value. </p>
 <p>The value is converted to the underlying type of the enumeration before set. </p>
@@ -158,7 +158,7 @@
 <p>The instance data. </p>
 <h3 id="value">value</h3>
 <p>The value to set. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li>
 <p><code>type</code> must specify one valid enumeration type object.</p>

@@ -152,8 +152,12 @@
 <p>Get the decoded binary size from the encoded base64 string size. </p>
 <p>This value may be greater than the actual data size if the size of raw data is not times of 3. You should use this value to allocate memory, and use the size value returned by the actual decode function as the size information, since that is precise. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="encoded_size">encoded_size</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>encoded_size</strong></p>
 <p>The size of the encoded string, in bytes, and not including the null terminator. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>The size of the decoded raw data, in bytes. </p>
               

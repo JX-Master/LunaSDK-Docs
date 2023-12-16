@@ -150,9 +150,8 @@
 <p>Represents one object that supports manual construction and destruction. </p>
 <pre><code class="language-c++">class Luna::Unconstructed
 </code></pre>
-<h2 id="overview">Overview</h2>
-<p><code>[Unconstructed](class_luna_1_1_unconstructed.md)</code> provides a way to allocate the memory for a C++ object without their constructor/destructor being called by system. You have the ability to call their constructor/destructor manually. Such feature is useful when you need to declare some static constructed objects and want to control their construction/ destruction orders. Note that the <code>[Unconstructed](class_luna_1_1_unconstructed.md)</code> class does not actually know if the object is constructed, you need to manage it manually and always call the destructor of the object when you want to destroy it. </p>
-<h2 id="functions">Functions</h2>
+<p><code>Unconstructed</code> provides a way to allocate the memory for a C++ object without their constructor/destructor being called by system. You have the ability to call their constructor/destructor manually. Such feature is useful when you need to declare some static constructed objects and want to control their construction/ destruction orders. Note that the <code>Unconstructed</code> class does not actually know if the object is constructed, you need to manage it manually and always call the destructor of the object when you want to destroy it. </p>
+<h2 id="member-functions">Member functions</h2>
 <ul>
 <li>
 <p><a href="../class_luna_1_1_unconstructed_1a38a9abd57df742d690f2ca0c668abab8/">_Ty &amp; get()</a></p>

@@ -147,12 +147,14 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunafree_library">Luna::free_library</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void free_library(opaque_t handle)
+<pre><code class="language-c++">void free_library(opaque_t handle)
 </code></pre>
 <p>Unloads the specified library. </p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="handle">handle</h3>
-<p>The library handle returned by load_library. </p>
+<p>The library handle returned by <a href="../group___runtime_d_l_l_1gaf089b17ba5687b844e5ab7233a65a24e/">load_library</a>. </p>
+<h2 id="remark">Remark</h2>
+<p>The library handle is reference counted: every call to <a href="../group___runtime_d_l_l_1gaf089b17ba5687b844e5ab7233a65a24e/">load_library</a> for the same library file increases the reference counter, and every <a href="./">free_library</a> for the same library handle decreases the reference counter. The library will be removed from the process's address space when the reference counter drop to 0.</p>
 <p>When one library is removed from the process's address space, it will decrease reference counters for all its dependent libraries, and removes them as well if their reference counters drop to 0. </p>
               
             </div>

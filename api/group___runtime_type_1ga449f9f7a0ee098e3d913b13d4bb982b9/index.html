@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunahash_type">Luna::hash_type</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API usize hash_type(typeinfo_t type, const void *inst)
+<pre><code class="language-c++">usize hash_type(typeinfo_t type, const void *inst)
 </code></pre>
 <p>Computes the hash code of one instance of the specified type. </p>
 <h2 id="parameters">Parameters</h2>
@@ -157,7 +157,7 @@
 <p>The pointer to the instance. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns the computed hash code. Returns <code>0</code> if the type does not support hash code computing. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li><code>type</code> must specify one valid type object and cannot be a generic structure type. </li>
 </ul>

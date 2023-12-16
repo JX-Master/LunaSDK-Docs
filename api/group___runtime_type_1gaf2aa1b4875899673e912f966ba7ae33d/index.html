@@ -147,12 +147,33 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunadestruct_type_range">Luna::destruct_type_range</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void destruct_type_range(typeinfo_t type, void *data, usize count)
+<pre><code class="language-c++">void destruct_type_range(typeinfo_t type, void *data, usize count)
 </code></pre>
 <p>Destructs one array of instances of the specified type. </p>
-<p>The destruction is performed as follows:* <code>type</code> must specify one valid type object and cannot be a generic structure type.</p>
+<p>The destruction is performed as follows:1. If <code>type</code> is a trivially destructable type, does nothing.</p>
+<ol>
+<li>
+<p>If <code>type</code> is a non-trivially-destructable type with user defined destructor function, calls the function.</p>
+</li>
+<li>
+<p>If <code>type</code> is a non-trivially-destructable type without user defined destructor function, destructs every property of the structure recursively. </p>
+</li>
+</ol>
+<h2 id="parameters">Parameters</h2>
+<h3 id="type">type</h3>
+<p>The type object. </p>
+<h3 id="data">data</h3>
+<p>The pointer to the instance array. </p>
+<h3 id="count">count</h3>
+<p>The number of instances to destruct. </p>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
-<li><code>data</code> must specify one valid memory address. </li>
+<li>
+<p><code>type</code> must specify one valid type object and cannot be a generic structure type.</p>
+</li>
+<li>
+<p><code>data</code> must specify one valid memory address. </p>
+</li>
 </ul>
               
             </div>

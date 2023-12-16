@@ -153,11 +153,17 @@ void merge(List &amp;&amp;other, _Compare comp)
 <p>Merges another list into this list. </p>
 <p>No memory allocation or element copy/move will be performed, this function transfers elements by changing their pointers directly so that they link to the new list. Elements are compared using the user-specified comparison function object. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="other">other</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>other</strong></p>
 <p>The list to merge. This list will be empty after this operation. If this is equal to <code>*this</code>, this function does nothing. </p>
-<h3 id="comp">comp</h3>
+</li>
+<li>
+<p><em>in</em> <strong>comp</strong></p>
 <p>The comparison function object to use. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+</li>
+</ul>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li>
 <p><code>comp</code> must provide the following function: <code>bool operator()(const _Ty&amp; a, const _Ty&amp; b)</code>, that returns <code>true</code> if <code>a</code> should appear in the list before <code>b</code>.</p>

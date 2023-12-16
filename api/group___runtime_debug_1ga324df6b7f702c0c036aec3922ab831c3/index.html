@@ -147,15 +147,18 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunastack_backtrace_symbols">Luna::stack_backtrace_symbols</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API const c8 ** stack_backtrace_symbols(Span&lt; const opaque_t &gt; frames)
+<pre><code class="language-c++">const c8 ** stack_backtrace_symbols(Span&lt; const opaque_t &gt; frames)
 </code></pre>
-<p>Gets symbolic names for frames returned by stack_backtrace. </p>
+<p>Gets symbolic names for frames returned by <a href="../group___runtime_debug_1gacf9a33547a6d81bec8edfb2e23ffd020/">stack_backtrace</a>. </p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="frames">frames</h3>
 <p>One buffer that contains frames to query. </p>
 <h2 id="return-value">Return value</h2>
 <p>Returns one array of strings that store symbolic names for frames. Strings are stored in the same order as <code>frames</code>. If the symbolic name of one frame is not found, <code>nullptr</code> will be written. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
+<ol>
+<li>All frames in <code>frames</code> must be valid frames returned by <a href="../group___runtime_debug_1gacf9a33547a6d81bec8edfb2e23ffd020/">stack_backtrace</a>. In particular, if the return value of <a href="../group___runtime_debug_1gacf9a33547a6d81bec8edfb2e23ffd020/">stack_backtrace</a> is smaller than the size of the frame buffer passed to <a href="../group___runtime_debug_1gacf9a33547a6d81bec8edfb2e23ffd020/">stack_backtrace</a>, only valid frames, not the whole buffer, shall be specified in this call. </li>
+</ol>
               
             </div>
           </div><footer>

@@ -150,9 +150,8 @@
 <p>Represents one array of fixed or dynamic size. </p>
 <pre><code class="language-c++">class Luna::Array
 </code></pre>
-<h2 id="overview">Overview</h2>
 <p><a href="./">Array</a> is one container that contains fixed number of elements. The size of one array can be set in compile time by specifying <code>_Size</code> of the array, or can be set when creating the array by setting <code>_Size</code> to DYNAMIC_ARRAY_SIZE. Unlike <a href="../class_luna_1_1_vector/">Vector</a>, the size of one array cannot be changed after the array is created. If the size of the array is determined in compile time, the memory for elements will be allocated directly in the array object; if the size of the array is determined in run time, the memory for elements will be allocated dynamically on heap. </p>
-<h2 id="functions">Functions</h2>
+<h2 id="member-functions">Member functions</h2>
 <ul>
 <li>
 <p><a href="../class_luna_1_1_array_1a4246559492a9ac95f5fd5e33e5077cc0/">constexpr reference at(usize pos)</a></p>
@@ -180,11 +179,11 @@
 </li>
 <li>
 <p><a href="../class_luna_1_1_array_1ae869682a778dc77a8dd62bbfa22f9d9a/">constexpr reference back()</a></p>
-<p>Gets a reference to the last (size - 1) element in the array. </p>
+<p>Gets a reference to the last (<a href="../class_luna_1_1_array_1adb59c183f075f048ae90778d15189686/">size</a> - 1) element in the array. </p>
 </li>
 <li>
 <p><a href="../class_luna_1_1_array_1a20a48cfbeb064093c00708b233c17883/">constexpr const_reference back() const</a></p>
-<p>Gets a reference to the last (size - 1) element in the array. </p>
+<p>Gets a reference to the last (<a href="../class_luna_1_1_array_1adb59c183f075f048ae90778d15189686/">size</a> - 1) element in the array. </p>
 </li>
 <li>
 <p><a href="../class_luna_1_1_array_1aaf0bf16ebc5c8c11cb351557b61e4b9c/">constexpr _Ty * data()</a></p>

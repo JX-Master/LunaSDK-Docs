@@ -152,10 +152,16 @@ List&lt; _Ty, _Alloc &gt;::iterator emplace(const_iterator pos, _Args &amp;&amp;
 </code></pre>
 <p>Constructs one element directly on the specified position of the list using the provided arguments. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="pos">pos</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>pos</strong></p>
 <p>The iterator pointing to the position to construct the element. The elements will be inserted before the element pointed by this iterator. This can be <code>end()</code>, indicating that the element will be inserted at the end of the list. </p>
-<h3 id="args">args</h3>
+</li>
+<li>
+<p><em>in</em> <strong>args</strong></p>
 <p>The arguments to construct the element. <code>_Ty(args...)</code> will be used to construct the element. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns one iterator pointing to the constructed element. </p>
               

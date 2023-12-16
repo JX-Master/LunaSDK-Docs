@@ -147,17 +147,17 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunamemfree">Luna::memfree</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void memfree(void *ptr, usize alignment=0)
+<pre><code class="language-c++">void memfree(void *ptr, usize alignment=0)
 </code></pre>
 <p>Frees heap memory. </p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="ptr">ptr</h3>
-<p>The pointer returned by memalloc or memrealloc. If this is <code>nullptr</code>, this function does nothing. </p>
+<p>The pointer returned by <a href="../group___runtime_memory_1ga76969916b035a432b54deb6920d3259c/">memalloc</a> or <a href="../group___runtime_memory_1ga60e9e4772655c0a60fbd5e311010b6d5/">memrealloc</a>. If this is <code>nullptr</code>, this function does nothing. </p>
 <h3 id="alignment">alignment</h3>
 <p>Optional. The alignment requirement specified when allocating the memory block. Default is 0. </p>
-<h4 id="valid-usage">Valid Usage</h4>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
-<li>If <code>ptr</code> is not <code>nullptr</code>, <code>alignment</code> be equal to <code>alignment</code> passed to memalloc or memrealloc which allocates <code>ptr</code>. </li>
+<li>If <code>ptr</code> is not <code>nullptr</code>, <code>alignment</code> be equal to <code>alignment</code> passed to <a href="../group___runtime_memory_1ga76969916b035a432b54deb6920d3259c/">memalloc</a> or <a href="../group___runtime_memory_1ga60e9e4772655c0a60fbd5e311010b6d5/">memrealloc</a> which allocates <code>ptr</code>. </li>
 </ul>
               
             </div>

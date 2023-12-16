@@ -147,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunanew_thread">Luna::new_thread</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API Ref&lt; IThread &gt; new_thread(void(*entry_func)(void *params), void *params, const c8 *name=nullptr, u32 stack_size=0)
+<pre><code class="language-c++">Ref&lt; IThread &gt; new_thread(void(*entry_func)(void *params), void *params, const c8 *name=nullptr, u32 stack_size=0)
 </code></pre>
 <p>Create a new system thread and make it run the callback function. The thread will be closed when the callback function returns. </p>
 <h2 id="parameters">Parameters</h2>

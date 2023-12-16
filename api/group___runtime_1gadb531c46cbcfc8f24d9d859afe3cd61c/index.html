@@ -152,12 +152,20 @@ constexpr auto set_flags(_Ty flags, _Ty options, bool value) -&gt; enable_if_t&l
 </code></pre>
 <p>Sets the provided enumeration options to 1 or 0 based on the value provided. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="flags">flags</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>flags</strong></p>
 <p>The original flags before set. </p>
-<h3 id="options">options</h3>
+</li>
+<li>
+<p><em>in</em> <strong>options</strong></p>
 <p>The options to set to 1 or 0. </p>
-<h3 id="value">value</h3>
+</li>
+<li>
+<p><em>in</em> <strong>value</strong></p>
 <p>If this is <code>true</code>, all options specified will be set to 1, else they will be set to 0. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns the enumeration after all options specified being set. </p>
               

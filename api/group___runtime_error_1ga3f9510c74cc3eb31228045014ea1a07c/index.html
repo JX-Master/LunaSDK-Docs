@@ -151,8 +151,12 @@
 </code></pre>
 <p>Gets the real error code if the error code is BasicError::error_object. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="err_code">err_code</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>err_code</strong></p>
 <p>The error code to unwrap. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>If the error code is BasicError::error_object, returns <code>get_error().code</code>. Otherwise, returns <code>err_code</code> directly. </p>
               

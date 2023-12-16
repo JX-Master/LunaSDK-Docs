@@ -147,13 +147,13 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunadelete_file">Luna::delete_file</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API RV delete_file(const c8 *file_path)
+<pre><code class="language-c++">RV delete_file(const c8 *file_path)
 </code></pre>
 <p>Deletes the specified file or directory. </p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="file_path">file_path</h3>
 <p>The file or directory to delete. If this is a non-empty directory, all its contexts will also be deleted. </p>
-<h4 id="possible-errors">Possible Errors</h4>
+<h2 id="possible-errors">Possible Errors</h2>
 <ul>
 <li>
 <p>BasicError::bad_arguments</p>

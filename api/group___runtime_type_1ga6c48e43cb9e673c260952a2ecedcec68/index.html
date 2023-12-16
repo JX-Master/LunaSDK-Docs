@@ -152,10 +152,16 @@ typeinfo_t register_enum_type(Span&lt; const EnumerationOptionDesc &gt; options,
 </code></pre>
 <p>Registers one enumeration type to the type system. The enumeration type must have one luenum macro defined directly in <code>Luna</code> namespace. </p>
 <h2 id="parameters">Parameters</h2>
-<h3 id="options">options</h3>
+<ul>
+<li>
+<p><em>in</em> <strong>options</strong></p>
 <p>A list of options that should be tracked by the type system. The user can use luoption macro to declare options conveniently. </p>
-<h3 id="multienum">multienum</h3>
+</li>
+<li>
+<p><em>in</em> <strong>multienum</strong></p>
 <p>Whether this enumeration type is a multi-value enumeration. See remarks of <a href="../struct_luna_1_1_enumeration_type_desc/">EnumerationTypeDesc</a> for details. </p>
+</li>
+</ul>
 <h2 id="return-value">Return value</h2>
 <p>Returns the registered structure type. </p>
               

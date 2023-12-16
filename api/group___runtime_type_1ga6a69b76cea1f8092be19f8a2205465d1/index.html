@@ -147,12 +147,31 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaconstruct_type">Luna::construct_type</h1>
-<pre><code class="language-c++">LUNA_RUNTIME_API void construct_type(typeinfo_t type, void *data)
+<pre><code class="language-c++">void construct_type(typeinfo_t type, void *data)
 </code></pre>
 <p>Constructs one instance of the specified type. </p>
-<p>The construction is performed as follows:* <code>type</code> must specify one valid type object and cannot be a generic structure type.</p>
+<p>The construction is performed as follows:1. If <code>type</code> is a trivially constructable type, fills the memory with zeros.</p>
+<ol>
+<li>
+<p>If <code>type</code> is a non-trivially-constructable type with user defined constructor function, calls the function.</p>
+</li>
+<li>
+<p>If <code>type</code> is a non-trivially-constructable type without user defined constructor function, constructs every property of the structure recursively. </p>
+</li>
+</ol>
+<h2 id="parameters">Parameters</h2>
+<h3 id="type">type</h3>
+<p>The type object. </p>
+<h3 id="data">data</h3>
+<p>The pointer to the instance. </p>
+<h2 id="valid-usage">Valid Usage</h2>
 <ul>
-<li><code>data</code> must specify one valid memory address. </li>
+<li>
+<p><code>type</code> must specify one valid type object and cannot be a generic structure type.</p>
+</li>
+<li>
+<p><code>data</code> must specify one valid memory address. </p>
+</li>
 </ul>
               
             </div>
