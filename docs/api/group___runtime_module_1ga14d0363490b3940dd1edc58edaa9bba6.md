@@ -11,7 +11,7 @@ Registers one module statically. Define this in one of CPP files of your module.
 ## Parameters
 * *in* **_name**
 
-    The name of the module. *Used* by the **system** to index this module. 
+    The name of the module. Used by the system to index this module. 
 
 * *in* **_dependencies**
 
