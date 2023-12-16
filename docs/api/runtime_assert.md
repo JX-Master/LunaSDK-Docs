@@ -6,7 +6,7 @@
 
 * [luassert_msg_always(_condition, _message)](group___runtime_assert_1ga7cb678a69cc15617424105ec1889f55f.md)
 
-    Same as luassert_always, but displays a custom message instead of the expression. 
+    Same as [luassert_always](group___runtime_assert_1ga6ff7328a1c0f2aad0370c688e4484c0b.md), but displays a custom message instead of the expression. 
 
 * [lupanic_always()](group___runtime_assert_1gab0ffa5909cac7ae483c08743e71bb77a.md)
 

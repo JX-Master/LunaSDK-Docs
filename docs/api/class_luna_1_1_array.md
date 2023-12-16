@@ -5,7 +5,7 @@ Represents one array of fixed or dynamic size.
 class Luna::Array
 ```
 
-[Array](class_luna_1_1_array.md) is one container that contains fixed number of elements. The size of one array can be set in compile time by specifying `_Size` of the array, or can be set when creating the array by setting `_Size` to DYNAMIC_ARRAY_SIZE. Unlike [Vector](class_luna_1_1_vector.md), the size of one array cannot be changed after the array is created. If the size of the array is determined in compile time, the memory for elements will be allocated directly in the array object; if the size of the array is determined in run time, the memory for elements will be allocated dynamically on heap. 
+[Array](class_luna_1_1_array.md) is one container that contains fixed number of elements. The size of one array can be set in compile time by specifying `_Size` of the array, or can be set when creating the array by setting `_Size` to [DYNAMIC_ARRAY_SIZE](group___runtime_container_1gac211fb2fcac88253a56c67d77c041a02.md). Unlike [Vector](class_luna_1_1_vector.md), the size of one array cannot be changed after the array is created. If the size of the array is determined in compile time, the memory for elements will be allocated directly in the array object; if the size of the array is determined in run time, the memory for elements will be allocated dynamically on heap. 
 
 ## Member functions
 * [constexpr reference at(usize pos)](class_luna_1_1_array_1a4246559492a9ac95f5fd5e33e5077cc0.md)

@@ -23,7 +23,7 @@ Sets user defined private data for the specified type.
 
 * *in* **data_alignment**
 
-    The alignment requirement of the data in bytes. Specify `0` to use the default alignment, which is MAX_ALIGN. 
+    The alignment requirement of the data in bytes. Specify `0` to use the default alignment, which is [MAX_ALIGN](group___runtime_base_type_1gae771c7d05b7f7738144b784fa44ce6a9.md). 
 
 * *in* **data_dtor**
 
