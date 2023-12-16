@@ -6,7 +6,7 @@ interface Luna::ISignal : public virtual IWaitable
 ```
 
 ## Base type
-* IWaitable
+* [IWaitable](struct_luna_1_1_i_waitable.md)
 ## Member functions
 * [virtual void trigger()=0](struct_luna_1_1_i_signal_1a195530e6278298441214fa3b1ed938f3.md)
 

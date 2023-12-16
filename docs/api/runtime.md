@@ -1,9 +1,5 @@
 # Runtime
-Represents a waitable object used for multi-thread synchronization. 
-
-The Runtime module provides the runtime environment of Luna SDK and defines core functionalities that will be used by almost all modules.
-
-Objects that implements `IWaitable` cannot be used cross process boundary. 
+The Runtime module provides the runtime environment of Luna SDK and defines core functionalities that will be used by almost all modules. 
 
 ## Topics
 * [Algorithms](runtime_algorithm.md)
@@ -50,6 +46,7 @@ Objects that implements `IWaitable` cannot be used cross process boundary.
 * [Luna::ISeekableStream](struct_luna_1_1_i_seekable_stream.md)
 * [Luna::Variant](class_luna_1_1_variant.md)
 * [Luna::Vector](class_luna_1_1_vector.md)
+* [Luna::IWaitable](struct_luna_1_1_i_waitable.md)
 ## Functions
 * [auto invoke(_Func &&f) -> decltype(static_cast< _Func && >(f)())](group___runtime_1gaf7411fc1e4c76b86c6f6b69eeb62b704.md)
 

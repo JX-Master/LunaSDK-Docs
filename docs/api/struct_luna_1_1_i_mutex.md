@@ -14,7 +14,7 @@ The mutex can be acquired recursively, that is, the thread that already owns the
 Acquiring the mutex from one thread and releasing from another thread is not allowed. 
 
 ## Base type
-* IWaitable
+* [IWaitable](struct_luna_1_1_i_waitable.md)
 ## Member functions
 * [virtual void unlock()=0](struct_luna_1_1_i_mutex_1a31262d17e02fcf1524984b10d72dee3e.md)
 
