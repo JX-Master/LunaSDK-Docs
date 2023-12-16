@@ -8,11 +8,11 @@
 
     Get the decoded binary size from the encoded base64 string size. 
 
-* [LUNA_RUNTIME_API usize base64_encode(c8 *dst, usize dst_max_chars, const void *src, usize src_size_bytes)](group___runtime_base64_1gac35704080d8056581fa46d6098112ca1.md)
+* [usize base64_encode(c8 *dst, usize dst_max_chars, const void *src, usize src_size_bytes)](group___runtime_base64_1ga3ab5e3157915500a7b4931d0b0426227.md)
 
     Encode a binary data to a base64 string. 
 
-* [LUNA_RUNTIME_API usize base64_decode(void *dst, usize dst_max_bytes, const c8 *src, usize src_size_chars=USIZE_MAX)](group___runtime_base64_1gab65c5e01817dfa051460e90392b09b1f.md)
+* [usize base64_decode(void *dst, usize dst_max_bytes, const c8 *src, usize src_size_chars=USIZE_MAX)](group___runtime_base64_1ga6c88e517c9ea423eff8d705041ee2d9a.md)
 
     Decode a base64 string to binary data. The system assumes the string passed in is a valid base64 string. 
 

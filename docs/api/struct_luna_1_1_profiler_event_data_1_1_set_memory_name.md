@@ -5,7 +5,7 @@ The set memory name event data.
 struct Luna::ProfilerEventData::SetMemoryName
 ```
 
-## Properties
+## Member objects
 * [void* ptr](struct_luna_1_1_profiler_event_data_1_1_set_memory_name_1add9af9569af79ec26dd741fb226b38ba.md)
 
     The memory pointer. 

@@ -10,6 +10,7 @@ Constructs a reverse iterator by coping from the specified reverse iterator of d
 
 
 ## Parameters
-### ri
-The reverse iterator to use. 
+* *in* **ri**
+
+    The reverse iterator to use. 
 

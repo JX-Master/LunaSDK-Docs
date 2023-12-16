@@ -10,8 +10,9 @@ Tests whether the specified result is failed.
 
 
 ## Parameters
-### r
-The result to test. 
+* *in* **r**
+
+    The result to test. 
 
 ## Return value
 Returns `true` if the result is failed. Returns `false` otherwise. 

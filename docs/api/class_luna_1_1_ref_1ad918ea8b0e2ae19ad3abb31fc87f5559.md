@@ -9,8 +9,9 @@ Compares one reference with one native pointer for equality.
 
 
 ## Parameters
-### rhs
-The native pointer to compare with. 
+* *in* **rhs**
+
+    The native pointer to compare with. 
 
 ## Return value
 Returns `true` if `get() == rhs` . Returns `false` otherwise. 

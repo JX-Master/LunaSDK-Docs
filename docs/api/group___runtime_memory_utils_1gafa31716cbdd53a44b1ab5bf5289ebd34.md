@@ -10,18 +10,28 @@ Performs copy assignment operation on every object in the destination range usin
 
 
 ## Parameters
-### first
-An iterator to the first object to be copied from. 
+* *in* **first**
 
-### last
-An iterator to one-past-last object to be copied from. 
+    An iterator to the first object to be copied from. 
 
-### d_first
-An iterator to the first object to be assigned. 
+* *in* **last**
+
+    An iterator to one-past-last object to be copied from. 
+
+* *in* **d_first**
+
+    An iterator to the first object to be assigned. 
 
 ## Return value
 Returns an iterator to the one-past-last object to be assigned. 
 
-#### Valid Usage
+## Valid Usage
 * The source range and the destination range must not overlap. 
+
+## Remark
+`memcpy` is used to copy the data directly if:1. Both `_Iter1` and `_Iter2` are pointer types.
+
+1. `value_type` of `_Iter1` and `_Iter2` is same.
+
+1. `value_type` is trivially copy assignable. Otherwise, the copy assignment operator is called for every object to copy assign objects in destination range. 
 

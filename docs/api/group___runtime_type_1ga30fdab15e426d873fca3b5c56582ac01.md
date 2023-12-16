@@ -9,12 +9,15 @@ The structure move constructor used by the reflection system.
 
 
 ## Parameters
-### type
-The type of the instance. 
+* *in* **type**
 
-### dst
-The instance data to construct. 
+    The type of the instance. 
 
-### src
-The instance data to move data from. 
+* *in* **dst**
+
+    The instance data to construct. 
+
+* *in* **src**
+
+    The instance data to move data from. 
 

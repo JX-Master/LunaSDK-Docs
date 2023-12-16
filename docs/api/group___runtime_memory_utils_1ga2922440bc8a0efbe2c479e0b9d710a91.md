@@ -10,15 +10,25 @@ Performs move assignment operation on every object in the destination range usin
 
 
 ## Parameters
-### first
-An iterator to the first object to be moved from. 
+* *in* **first**
 
-### last
-An iterator to one-past-last object to be moved from. 
+    An iterator to the first object to be moved from. 
 
-### d_first
-An iterator to the first object to be assigned. 
+* *in* **last**
+
+    An iterator to one-past-last object to be moved from. 
+
+* *in* **d_first**
+
+    An iterator to the first object to be assigned. 
 
 ## Return value
 Returns an iterator to the one-past-last object to be assigned. 
+
+## Remark
+The move operation is performed from first to last, the first element in destination range must not in the source range. `memmove` is used to move the data directly if:1. Both `_Iter1` and `_Iter2` are pointer types.
+
+1. `value_type` of `_Iter1` and `_Iter2` is same.
+
+1. `value_type` is trivially copy assignable and trivially move assignable. (If the type is trivially move assignable but not trivially copy assignable, the move assignment operator behaves the same as the copy assignment operator.) Otherwise, the move assignment operator is called for every object to move assign objects in destination range. 
 

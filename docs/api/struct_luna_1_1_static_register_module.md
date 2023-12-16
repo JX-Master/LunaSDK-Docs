@@ -5,6 +5,5 @@ One static module registration helper class that registers the specified module 
 struct Luna::StaticRegisterModule
 ```
 
-## Overview
 Do not use this structure directly, instead, use LUNA_STATIC_REGISTER_MODULE to register one module, which will define this structure internally. 
 

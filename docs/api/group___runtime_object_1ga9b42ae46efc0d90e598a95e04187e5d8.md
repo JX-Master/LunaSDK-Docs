@@ -10,8 +10,9 @@ Casts the object to the specified type.
 
 
 ## Parameters
-### object_ptr
-The object pointer. 
+* *in* **object_ptr**
+
+    The object pointer. 
 
 ## Return value
 Returns `object_ptr` casted to the specified type if type casting is succeeded, returns `nullptr` otherwise. 

@@ -5,7 +5,7 @@ The string template used by String, String16 and String32.
 class Luna::BasicString
 ```
 
-## Functions
+## Member functions
 * [BasicString< _Char, _Alloc >::pointer data()](class_luna_1_1_basic_string_1abbe2708e47e4589174382b703afa3f15.md)
 
     May returns `nullptr` if the string is empty. 

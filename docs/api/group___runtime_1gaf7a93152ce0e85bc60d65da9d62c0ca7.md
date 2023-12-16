@@ -10,14 +10,17 @@ Invokes the specified callable object.
 
 
 ## Parameters
-### f
-The callable object to invoke. 
+* *in* **f**
 
-### arg1
-The first argument passed to the callable object. 
+    The callable object to invoke. 
 
-### args
-The rest arguments passed to the callable object. 
+* *in* **arg1**
+
+    The first argument passed to the callable object. 
+
+* *in* **args**
+
+    The rest arguments passed to the callable object. 
 
 ## Return value
 Returns the return value of the callable object. 

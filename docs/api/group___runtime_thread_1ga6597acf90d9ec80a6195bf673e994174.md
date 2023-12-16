@@ -1,7 +1,7 @@
 # Luna::tls_get
 
 ```c++
-LUNA_RUNTIME_API void * tls_get(opaque_t handle)
+void * tls_get(opaque_t handle)
 ```
 
 Get the value bound to the TLS slot of current thread. 

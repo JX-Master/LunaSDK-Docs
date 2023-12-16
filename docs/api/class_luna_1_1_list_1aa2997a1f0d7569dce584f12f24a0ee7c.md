@@ -9,9 +9,11 @@ Constructs a list with the specified number of elements. Elements will be defaul
 
 
 ## Parameters
-### count
-The number of elements to insert. 
+* *in* **count**
 
-### alloc
-The allocator to use. The allocator object will be copy-constructed into the list. 
+    The number of elements to insert. 
+
+* *in* **alloc**
+
+    The allocator to use. The allocator object will be copy-constructed into the list. 
 

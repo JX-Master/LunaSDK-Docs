@@ -9,8 +9,9 @@ Checks whether at least one element with the specified key exists.
 
 
 ## Parameters
-### key
-The key of the element to check. 
+* *in* **key**
+
+    The key of the element to check. 
 
 ## Return value
 Returns `ture` if at least one element with the specified key exists. Returns `false` otherwise. 

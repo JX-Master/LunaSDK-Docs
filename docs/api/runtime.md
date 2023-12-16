@@ -54,7 +54,7 @@ Objects that implements `IWaitable` cannot be used cross process boundary.
 * [Luna::ISeekableStream](struct_luna_1_1_i_seekable_stream.md)
 * [Luna::Variant](class_luna_1_1_variant.md)
 * [Luna::Vector](class_luna_1_1_vector.md)
-## Aliasing types
+## Alias types
 * [using u8 =  std::uint8_t](group___runtime_1ga254d32383658e016368673396e7afc1b.md)
 
     Unsigned 8-bit integer (0~255). 

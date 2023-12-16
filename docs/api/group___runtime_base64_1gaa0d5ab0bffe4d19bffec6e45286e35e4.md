@@ -9,8 +9,9 @@ Get the encoded base64 string size from the raw data size.
 
 
 ## Parameters
-### raw_size
-The size of the raw binary data in bytes. 
+* *in* **raw_size**
+
+    The size of the raw binary data in bytes. 
 
 ## Return value
 The size of the encoded string in bytes. The string size does not include the null-terminator. 

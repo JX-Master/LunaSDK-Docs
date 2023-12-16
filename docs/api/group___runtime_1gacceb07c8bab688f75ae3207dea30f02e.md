@@ -10,9 +10,11 @@ Gets the number of elements between two iterators.
 
 
 ## Parameters
-### first
-The iterator pointing to the first element. 
+* *in* **first**
 
-### last
-The iterator pointing to the one-past-last element. 
+    The iterator pointing to the first element. 
+
+* *in* **last**
+
+    The iterator pointing to the one-past-last element. 
 

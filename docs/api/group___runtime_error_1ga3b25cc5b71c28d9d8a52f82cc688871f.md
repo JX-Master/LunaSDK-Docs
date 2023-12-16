@@ -9,8 +9,9 @@ Assigns the result object by coping from another result object.
 
 
 ## Parameters
-### rhs
-The object to copy from. 
+* *in* **rhs**
+
+    The object to copy from. 
 
 ## Return value
 Returns `*this`. 

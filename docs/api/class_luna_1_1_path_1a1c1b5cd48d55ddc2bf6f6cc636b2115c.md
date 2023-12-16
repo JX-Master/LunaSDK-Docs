@@ -9,8 +9,9 @@ Replaces content of the path by parsing the specified path string.
 
 
 ## Parameters
-### str
-The path string. 
+* *in* **str**
+
+    The path string. 
 
 ## Return value
 Returns `*this`. 

@@ -9,6 +9,7 @@ Replaces elements of the list by elements from one initializer list.
 
 
 ## Parameters
-### ilist
-The initializer list. 
+* *in* **ilist**
+
+    The initializer list. 
 

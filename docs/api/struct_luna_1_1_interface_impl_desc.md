@@ -5,7 +5,7 @@ Describes arguments to register an interface implementation.
 struct Luna::InterfaceImplDesc
 ```
 
-## Properties
+## Member objects
 * [Guid type_guid](struct_luna_1_1_interface_impl_desc_1ae9a2220557b7ef8a4db71662ce9becea.md)
 
     The GUID of the type that implements the interface. 

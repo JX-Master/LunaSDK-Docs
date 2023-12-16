@@ -1,7 +1,7 @@
 # Luna::get_generic_instanced_type
 
 ```c++
-LUNA_RUNTIME_API typeinfo_t get_generic_instanced_type(typeinfo_t generic_type, Span< const typeinfo_t > generic_arguments)
+typeinfo_t get_generic_instanced_type(typeinfo_t generic_type, Span< const typeinfo_t > generic_arguments)
 ```
 
 Gets one instanced type of one generic type. 

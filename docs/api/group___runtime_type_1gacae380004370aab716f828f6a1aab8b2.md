@@ -1,7 +1,7 @@
 # Luna::register_generic_struct_type
 
 ```c++
-LUNA_RUNTIME_API typeinfo_t register_generic_struct_type(const GenericStructureTypeDesc &desc)
+typeinfo_t register_generic_struct_type(const GenericStructureTypeDesc &desc)
 ```
 
 Registers one generic structure type. 

@@ -10,9 +10,11 @@ Calls the copy constructor for the object.
 
 
 ## Parameters
-### dst
-An iterator pointing to the object to be constructed. 
+* *in* **dst**
 
-### src
-An iterator pointing to the object to copy from. 
+    An iterator pointing to the object to be constructed. 
+
+* *in* **src**
+
+    An iterator pointing to the object to copy from. 
 

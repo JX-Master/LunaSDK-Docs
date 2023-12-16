@@ -1,7 +1,7 @@
 # Luna::memory_profiler_set_memory_domain
 
 ```c++
-LUNA_RUNTIME_API void memory_profiler_set_memory_domain(void *ptr, const c8 *domain, usize str_size=USIZE_MAX)
+void memory_profiler_set_memory_domain(void *ptr, const c8 *domain, usize str_size=USIZE_MAX)
 ```
 
 Sets the memory domain. 

@@ -1,7 +1,7 @@
 # Luna::is_interface_implemented_by_type
 
 ```c++
-LUNA_RUNTIME_API bool is_interface_implemented_by_type(typeinfo_t type, const Guid &iid)
+bool is_interface_implemented_by_type(typeinfo_t type, const Guid &iid)
 ```
 
 Checks whether the specified type implements the specified interface. 

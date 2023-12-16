@@ -7,57 +7,57 @@
 * [Luna::ISignal](struct_luna_1_1_i_signal.md)
 * [Luna::IThread](struct_luna_1_1_i_thread.md)
 ## Functions
-* [LUNA_RUNTIME_API Ref< IMutex > new_mutex()](group___runtime_thread_1gaee1e0f158ed71c7afce1527e76c4efaf.md)
-* [LUNA_RUNTIME_API Ref< IReadWriteLock > new_read_write_lock()](group___runtime_thread_1ga03c08e87246f2dc76f18f1645c9e734d.md)
+* [Ref< IMutex > new_mutex()](group___runtime_thread_1gaaf4b4510b9d6c01a12e3064691d15bdc.md)
+* [Ref< IReadWriteLock > new_read_write_lock()](group___runtime_thread_1ga35f290e06f79b34a7a4b72368a88e6b4.md)
 
     Creates one new read write lock. 
 
-* [LUNA_RUNTIME_API Ref< ISemaphore > new_semaphore(i32 initial_count, i32 max_count)](group___runtime_thread_1ga8f5fe21392376f0cb63e03e62a49d73b.md)
-* [LUNA_RUNTIME_API Ref< ISignal > new_signal(bool manual_reset)](group___runtime_thread_1ga89646b80a87875a1678378af7041450f.md)
+* [Ref< ISemaphore > new_semaphore(i32 initial_count, i32 max_count)](group___runtime_thread_1ga63acf4d842bfddff65e76b2e84524134.md)
+* [Ref< ISignal > new_signal(bool manual_reset)](group___runtime_thread_1ga451437bc4ec31226c33c379fbd7d7a24.md)
 
     Create a new signal object. 
 
-* [LUNA_RUNTIME_API u32 get_processors_count()](group___runtime_thread_1ga1437d8723b57ea809873c0c575eb3bc2.md)
+* [u32 get_processors_count()](group___runtime_thread_1gac8b023e3dd3ae6a46516fa958f2ad7b9.md)
 
     Gets the number of logical processors on the platform. 
 
-* [LUNA_RUNTIME_API Ref< IThread > new_thread(void(*entry_func)(void *params), void *params, const c8 *name=nullptr, u32 stack_size=0)](group___runtime_thread_1ga587d506e50d89f1dbd3eb50a1d9823b8.md)
+* [Ref< IThread > new_thread(void(*entry_func)(void *params), void *params, const c8 *name=nullptr, u32 stack_size=0)](group___runtime_thread_1gac1aad6a8f99159d07fe287db59c0a318.md)
 
     Create a new system thread and make it run the callback function. The thread will be closed when the callback function returns. 
 
-* [LUNA_RUNTIME_API IThread * get_current_thread()](group___runtime_thread_1ga18a1eaf3fc4ff341726a06d62c2d1eb5.md)
+* [IThread * get_current_thread()](group___runtime_thread_1ga3ed3f90467bd6b3e0b75a8c1c4562068.md)
 
     Gets the thread object of current running thread. 
 
-* [LUNA_RUNTIME_API IThread * get_main_thread()](group___runtime_thread_1gad33a876fa281df87180c9f54902f4a6a.md)
+* [IThread * get_main_thread()](group___runtime_thread_1ga1bed2d312e6b95a39bd841d0ededf2b4.md)
 
     Gets the thread object of the main thread. 
 
-* [LUNA_RUNTIME_API void sleep(u32 time_milliseconds)](group___runtime_thread_1gaa95d9cec0a8b41b8247d32e3d86a52f9.md)
+* [void sleep(u32 time_milliseconds)](group___runtime_thread_1ga2ed6b20ac018dd695a1189c68629132a.md)
 
     Suspends current thread for a specific period of time. 
 
-* [LUNA_RUNTIME_API void fast_sleep(u32 time_microseconds)](group___runtime_thread_1ga11420d821a7729b18412dae6d9e7152b.md)
+* [void fast_sleep(u32 time_microseconds)](group___runtime_thread_1gaf28258e2d025ad9da4aa4aa5de2bc339.md)
 
     Delays the execution of this thread for a very shout time by yielding this thread several times. 
 
-* [LUNA_RUNTIME_API void yield_current_thread()](group___runtime_thread_1gae5db165e70e5e860edb44d4fcfae8125.md)
+* [void yield_current_thread()](group___runtime_thread_1ga612f977ca8fde0829d4fcf182d4cad00.md)
 
     Yields the remain time slice of the current thread and let OS to schedule other threads. 
 
-* [LUNA_RUNTIME_API opaque_t tls_alloc(tls_destructor *destructor=nullptr)](group___runtime_thread_1gaed1656336d293f6fdbce19481fef2916.md)
+* [opaque_t tls_alloc(tls_destructor *destructor=nullptr)](group___runtime_thread_1ga627934a51a920ff58c694cdb89083fe4.md)
 
     Allocates one thread local storage (TLS) slot. 
 
-* [LUNA_RUNTIME_API void tls_free(opaque_t handle)](group___runtime_thread_1ga6b6c4e321ee1494761c429fbcb34ecc5.md)
+* [void tls_free(opaque_t handle)](group___runtime_thread_1gab3909da8f640a34cf007e78404b41226.md)
 
     Frees the TLS slot allocated by `tls_alloc`. 
 
-* [LUNA_RUNTIME_API void tls_set(opaque_t handle, void *ptr)](group___runtime_thread_1ga381ac43407ca733426c3a3ce19640900.md)
+* [void tls_set(opaque_t handle, void *ptr)](group___runtime_thread_1gacb55d976ce0cbe2683bf03116be2d2f2.md)
 
     Set the data bound to the current thread's TLS slot specified by `handle`. 
 
-* [LUNA_RUNTIME_API void * tls_get(opaque_t handle)](group___runtime_thread_1ga6597acf90d9ec80a6195bf673e994174.md)
+* [void * tls_get(opaque_t handle)](group___runtime_thread_1gab310bb1422cf8f1b192bdcc5b3668cc4.md)
 
     Get the value bound to the TLS slot of current thread. 
 

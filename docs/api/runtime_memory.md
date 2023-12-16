@@ -1,18 +1,18 @@
 # Memory allocation and deallocation
 ## Functions
-* [LUNA_RUNTIME_API void * memalloc(usize size, usize alignment=0)](group___runtime_memory_1ga76969916b035a432b54deb6920d3259c.md)
+* [void * memalloc(usize size, usize alignment=0)](group___runtime_memory_1ga341bf6dd4a6ca9712174e6548774bc31.md)
 
     Allocates heap memory. 
 
-* [LUNA_RUNTIME_API void memfree(void *ptr, usize alignment=0)](group___runtime_memory_1ga4bc8f37f2fe8c9100a8af16de794e3de.md)
+* [void memfree(void *ptr, usize alignment=0)](group___runtime_memory_1ga102bf0df13784b9f636c555461862a14.md)
 
     Frees heap memory. 
 
-* [LUNA_RUNTIME_API void * memrealloc(void *ptr, usize size, usize alignment=0)](group___runtime_memory_1ga60e9e4772655c0a60fbd5e311010b6d5.md)
+* [void * memrealloc(void *ptr, usize size, usize alignment=0)](group___runtime_memory_1ga9e2c0a02d9b513dc3f7f1b101860d11f.md)
 
     Reallocates heap memory. 
 
-* [LUNA_RUNTIME_API usize memsize(void *ptr, usize alignment=0)](group___runtime_memory_1ga49d8171ef4af8fbe6bbb6e4e6f82d69b.md)
+* [usize memsize(void *ptr, usize alignment=0)](group___runtime_memory_1gaa0742c7fff949c5eb1cabb3edb7d0a92.md)
 
     Gets the allocated size of one memory block. 
 

@@ -9,32 +9,41 @@ Copies the data for a 3D bitmap.
 
 
 ## Parameters
-### dst
-A pointer to the first pixel to be copied in destination bitmap. 
+* *in* **dst**
 
-### src
-A pointer to the first pixel to be copied in source bitmap. 
+    A pointer to the first pixel to be copied in destination bitmap. 
 
-### copy_size_per_row
-The size of the data to be copied for every row, in bytes. 
+* *in* **src**
 
-### num_rows
-The number of rows to copy. 
+    A pointer to the first pixel to be copied in source bitmap. 
 
-### num_slices
-The number of slices (layers) to copy. 
+* *in* **copy_size_per_row**
 
-### dst_row_pitch
-The pitch to advance for one row in destination bitmap in bytes. 
+    The size of the data to be copied for every row, in bytes. 
 
-### src_row_pitch
-The pitch to advance for one row in source bitmap in bytes. 
+* *in* **num_rows**
 
-### dst_slice_pitch
-The pitch to advance for one slice (layer) in destination bitmap in bytes. 
+    The number of rows to copy. 
 
-### src_slice_pitch
-The pitch to advance for one slice (layer) in source bitmap in bytes. 
+* *in* **num_slices**
+
+    The number of slices (layers) to copy. 
+
+* *in* **dst_row_pitch**
+
+    The pitch to advance for one row in destination bitmap in bytes. 
+
+* *in* **src_row_pitch**
+
+    The pitch to advance for one row in source bitmap in bytes. 
+
+* *in* **dst_slice_pitch**
+
+    The pitch to advance for one slice (layer) in destination bitmap in bytes. 
+
+* *in* **src_slice_pitch**
+
+    The pitch to advance for one slice (layer) in source bitmap in bytes. 
 
 ## Return value
 Returns the `dst` pointer. 

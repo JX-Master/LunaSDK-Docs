@@ -10,18 +10,21 @@ Applies the given function object to every element in the range, in order.
 
 
 ## Parameters
-### first
-The iterator pointing to the first element of the range. 
+* *in* **first**
 
-### last
-The iterator pointing to the one-past-last element of the range. 
+    The iterator pointing to the first element of the range. 
 
-### f
-The user-defined unary function object to be applied. 
+* *in* **last**
+
+    The iterator pointing to the one-past-last element of the range. 
+
+* *in* **f**
+
+    The user-defined unary function object to be applied. 
 
 ## Return value
 Returns `f`. 
 
-#### Valid Usage
+## Valid Usage
 * `f` must have the following function signature: `void f(const Type& v)`, where `Type` is the value type of `_InputIt`. 
 

@@ -9,9 +9,10 @@ Appends the extension.
 The system adds one extension separator (".") between extension and filename automatically. 
 
 ## Parameters
-### new_extension
-The extension to append. 
+* *in* **new_extension**
 
-#### Valid Usage
+    The extension to append. 
+
+## Valid Usage
 * `new_extension` must be null-terminated. 
 

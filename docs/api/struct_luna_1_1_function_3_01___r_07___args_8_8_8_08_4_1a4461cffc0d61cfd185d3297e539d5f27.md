@@ -9,8 +9,9 @@ Invokes the function wrapper. This will invoke the callable object that is store
 
 
 ## Parameters
-### args
-The arguments passed to the callable object. 
+* *in* **args**
+
+    The arguments passed to the callable object. 
 
 ## Return value
 Returns the return value of the callable object if `_R` is not `void`. Returns nothing otherwise. 

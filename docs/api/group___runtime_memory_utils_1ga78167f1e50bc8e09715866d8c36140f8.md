@@ -9,23 +9,29 @@ Copies the data for a 2D bitmap.
 
 
 ## Parameters
-### dst
-A pointer to the first pixel to be copied in destination bitmap. 
+* *in* **dst**
 
-### src
-A pointer to the first pixel to be copied in source bitmap. 
+    A pointer to the first pixel to be copied in destination bitmap. 
 
-### copy_size_per_row
-The size of the data to be copied for every row, in bytes. 
+* *in* **src**
 
-### num_rows
-The number of rows to copy. 
+    A pointer to the first pixel to be copied in source bitmap. 
 
-### dst_row_pitch
-The pitch to advance for one row in destination bitmap in bytes. 
+* *in* **copy_size_per_row**
 
-### src_row_pitch
-The pitch to advance for one row in source bitmap in bytes. 
+    The size of the data to be copied for every row, in bytes. 
+
+* *in* **num_rows**
+
+    The number of rows to copy. 
+
+* *in* **dst_row_pitch**
+
+    The pitch to advance for one row in destination bitmap in bytes. 
+
+* *in* **src_row_pitch**
+
+    The pitch to advance for one row in source bitmap in bytes. 
 
 ## Return value
 Returns the `dst` pointer. 

@@ -9,12 +9,13 @@ Removes one element from the list.
 
 
 ## Parameters
-### pos
-The iterator pointing to the element to be removed. 
+* *in* **pos**
+
+    The iterator pointing to the element to be removed. 
 
 ## Return value
 Returns one iterator pointing to the next element of the removed element when iterating elements. 
 
-#### Valid Usage
+## Valid Usage
 * `pos` must points to a valid element in the list. 
 

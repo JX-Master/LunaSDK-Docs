@@ -1,7 +1,7 @@
 # Luna::set_type_private_data
 
 ```c++
-LUNA_RUNTIME_API void * set_type_private_data(typeinfo_t type, const Guid &data_guid, usize data_size, usize data_alignment=0, void(*data_dtor)(void *)=nullptr)
+void * set_type_private_data(typeinfo_t type, const Guid &data_guid, usize data_size, usize data_alignment=0, void(*data_dtor)(void *)=nullptr)
 ```
 
 Sets user defined private data for the specified type. 
@@ -24,6 +24,6 @@ The alignment requirement of the data in bytes. Specify `0` to use the default a
 ### data_dtor
 One optional callback function that will be called when the data is going to be freed if specified. 
 
-#### Valid Usage
+## Valid Usage
 * `type` must specify one valid type object. 
 

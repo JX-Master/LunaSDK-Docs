@@ -5,7 +5,12 @@ An container that contains a set of unique objects using open-addressing hashing
 class Luna::HashSet
 ```
 
-## Functions
+
+
+## Remark
+See remarks of [HashMap](class_luna_1_1_hash_map.md) for details. 
+
+## Member functions
 * [HashSet()](class_luna_1_1_hash_set_1aa4f0e7330b8f252895e4efe56ff777e9.md)
 
     Constructs an empty set. 

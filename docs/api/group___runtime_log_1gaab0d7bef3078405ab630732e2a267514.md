@@ -1,7 +1,7 @@
 # Luna::logv_debug
 
 ```c++
-LUNA_RUNTIME_API void logv_debug(const c8 *tag, const c8 *format, VarList args)
+void logv_debug(const c8 *tag, const c8 *format, VarList args)
 ```
 
 Outputs one log message with LogVerbosity::debug verbosity. 

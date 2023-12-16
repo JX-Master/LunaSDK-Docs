@@ -1,7 +1,7 @@
 # Luna::get_file_attribute
 
 ```c++
-LUNA_RUNTIME_API R< FileAttribute > get_file_attribute(const c8 *path)
+R< FileAttribute > get_file_attribute(const c8 *path)
 ```
 
 Gets the file attribute. 
@@ -15,7 +15,7 @@ The path of the file.
 ## Return value
 Returns the file attribute structure. 
 
-#### Possible Errors
+## Possible Errors
 * BasicError::access_denied
 
 * BasicError::not_found

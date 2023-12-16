@@ -10,22 +10,26 @@ Finds the first element in the range such that `comp(element, value)` is `false`
 
 
 ## Parameters
-### first
-The iterator pointing to the first element of the range. 
+* *in* **first**
 
-### last
-The iterator pointing to the one-past-last element of the range. 
+    The iterator pointing to the first element of the range. 
 
-### value
-The value to compare elements to. 
+* *in* **last**
 
-### comp
-The user-provided binary predicate which returns `​true` if the first argument is less than the second. 
+    The iterator pointing to the one-past-last element of the range. 
+
+* *in* **value**
+
+    The value to compare elements to. 
+
+* *in* **comp**
+
+    The user-provided binary predicate which returns `​true` if the first argument is less than the second. 
 
 ## Return value
 Returns an iterator pointing to the first element in the range such that `comp(element, value)` is `false`, or `last` if no such element is found. 
 
-#### Valid Usage
+## Valid Usage
 * Elements in the range specified by [`first`, `last`) must be sorted in non-descending order.
 
 * `comp` must have the following function signature: `bool comp(const Type& a, const Type& b)`, where `Type` is the value type of `_ForwardIt`. 

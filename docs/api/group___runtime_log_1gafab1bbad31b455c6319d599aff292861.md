@@ -1,7 +1,7 @@
 # Luna::log_verbose
 
 ```c++
-LUNA_RUNTIME_API void log_verbose(const c8 *tag, const c8 *format,...)
+void log_verbose(const c8 *tag, const c8 *format,...)
 ```
 
 Outputs one log message with LogVerbosity::verbose verbosity. 

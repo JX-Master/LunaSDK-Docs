@@ -9,8 +9,9 @@ Replaces content of the path by coping content from another path.
 
 
 ## Parameters
-### rhs
-The path to move from. 
+* *in* **rhs**
+
+    The path to move from. 
 
 ## Return value
 Returns `*this`. 

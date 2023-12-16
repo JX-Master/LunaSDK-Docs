@@ -9,6 +9,7 @@ Inserts one element at the front of the list.
 
 
 ## Parameters
-### value
-The element to insert. The element will be copy-inserted to the list. 
+* *in* **value**
+
+    The element to insert. The element will be copy-inserted to the list. 
 

@@ -9,6 +9,7 @@ Constructs one failed result object with the specified error code.
 
 
 ## Parameters
-### error
-The error code to set. 
+* *in* **error**
+
+    The error code to set. 
 

@@ -1,7 +1,7 @@
 # Luna::get_error_code_name
 
 ```c++
-LUNA_RUNTIME_API const c8 * get_error_code_name(ErrCode err_code)
+const c8 * get_error_code_name(ErrCode err_code)
 ```
 
 Fetches the name of the error code. 

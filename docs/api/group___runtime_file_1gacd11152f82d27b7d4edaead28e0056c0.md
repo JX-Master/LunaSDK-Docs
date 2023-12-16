@@ -1,7 +1,7 @@
 # Luna::move_file
 
 ```c++
-LUNA_RUNTIME_API RV move_file(const c8 *from_path, const c8 *to_path, FileMoveFlag flags=FileMoveFlag::none)
+RV move_file(const c8 *from_path, const c8 *to_path, FileMoveFlag flags=FileMoveFlag::none)
 ```
 
 Moves the file or directory from the source path to the destination path. This call can also be used to rename a file. 
@@ -18,7 +18,7 @@ Destination file or directory path.
 ### flags
 The attributes for one file move operation. 
 
-#### Possible Errors
+## Possible Errors
 * BasicError::bad_arguments
 
 * BasicError::already_exists

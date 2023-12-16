@@ -8,11 +8,11 @@
 
     Get the decoded binary size from the encoded base85 string size. 
 
-* [LUNA_RUNTIME_API usize base85_encode(c8 *dst, usize dst_max_chars, const void *src, usize src_size_bytes)](group___runtime_base85_1gad78cb4c9aa1e3efed5ba6aa94a26b473.md)
+* [usize base85_encode(c8 *dst, usize dst_max_chars, const void *src, usize src_size_bytes)](group___runtime_base85_1ga74de51a3c69c4dc675b719d044a58b2b.md)
 
     Encode a binary data to a base85 string. 
 
-* [LUNA_RUNTIME_API usize base85_decode(void *dst, usize dst_max_bytes, const c8 *src, usize src_size_chars=USIZE_MAX)](group___runtime_base85_1gae83719ffcccb1216cbaf51c6ecd3a302.md)
+* [usize base85_decode(void *dst, usize dst_max_bytes, const c8 *src, usize src_size_chars=USIZE_MAX)](group___runtime_base85_1ga76c1ba86becd881d16395ed723ae0644.md)
 
     Decode a base85 string to binary data. The system assumes the string passed in is a valid base85 string. 
 

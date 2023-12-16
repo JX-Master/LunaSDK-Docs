@@ -1,7 +1,7 @@
 # Luna::get_type_attributes
 
 ```c++
-LUNA_RUNTIME_API Vector< Name > get_type_attributes(typeinfo_t type)
+Vector< Name > get_type_attributes(typeinfo_t type)
 ```
 
 Gets all attributes of the specified type. 
@@ -15,6 +15,6 @@ The type object.
 ## Return value
 Returns one vector that contains attribute names of all attributes of the specified type. 
 
-#### Valid Usage
+## Valid Usage
 * `type` must specify one valid type object. 
 

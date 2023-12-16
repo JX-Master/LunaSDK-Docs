@@ -9,6 +9,7 @@ Swaps elements of this set with the specified set.
 
 
 ## Parameters
-### rhs
-The set to swap elements with. 
+* *in* **rhs**
+
+    The set to swap elements with. 
 

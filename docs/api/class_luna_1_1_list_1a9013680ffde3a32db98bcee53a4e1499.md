@@ -10,12 +10,15 @@ Constructs a list with elements specified by one range. Elements in the range wi
 
 
 ## Parameters
-### first
-The iterator pointing to the first element of the range. 
+* *in* **first**
 
-### last
-The iterator pointing to the one-past-last element of the range. 
+    The iterator pointing to the first element of the range. 
 
-### alloc
-The allocator to use. The allocator object will be copy-constructed into the list. 
+* *in* **last**
+
+    The iterator pointing to the one-past-last element of the range. 
+
+* *in* **alloc**
+
+    The allocator to use. The allocator object will be copy-constructed into the list. 
 

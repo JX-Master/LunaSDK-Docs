@@ -9,6 +9,7 @@ Constructs an function wrapper using one function pointer.
 
 
 ## Parameters
-### func
-The function pointer to assign. 
+* *in* **func**
+
+    The function pointer to assign. 
 

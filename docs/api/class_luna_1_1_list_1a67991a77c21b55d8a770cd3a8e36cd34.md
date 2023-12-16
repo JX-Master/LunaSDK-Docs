@@ -9,6 +9,7 @@ Swaps elements of this list with the specified list.
 
 
 ## Parameters
-### rhs
-The list to swap elements with. 
+* *in* **rhs**
+
+    The list to swap elements with. 
 

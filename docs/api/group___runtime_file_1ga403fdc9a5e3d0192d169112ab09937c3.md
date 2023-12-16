@@ -1,7 +1,7 @@
 # Luna::copy_file
 
 ```c++
-LUNA_RUNTIME_API RV copy_file(const c8 *from_path, const c8 *to_path, FileCopyFlag flags=FileCopyFlag::none)
+RV copy_file(const c8 *from_path, const c8 *to_path, FileCopyFlag flags=FileCopyFlag::none)
 ```
 
 Copies the file or directory from the source path to the destination path. 
@@ -18,7 +18,7 @@ Destination file or directory path.
 ### flags
 The attributes for one file copy operation. 
 
-#### Possible Errors
+## Possible Errors
 * BasicError::bad_arguments
 
 * BasicError::already_exists

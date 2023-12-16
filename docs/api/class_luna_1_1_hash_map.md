@@ -5,11 +5,38 @@ An container that contains key-value pairs with unique keys using open-addressin
 class Luna::HashMap
 ```
 
-## Overview
+
+
+## Remark
+LunaSDK provides two kinds of hashing-based containers: open-addressing containers and closed-addressing containers. The following containers are open-addressing containers, implemented using Robinhood hashing:
+
+1. [HashMap](class_luna_1_1_hash_map.md)
+
+1. [HashSet](class_luna_1_1_hash_set.md)
+
+1. SelfIndexedHashmap The following containers are closed-addressing containers, implemented using buckets and per-bucket linked-lists:
+
+1. UnorderedMap
+
+1. UnorderedSet
+
+1. UnorderedMultiMap
+
+1. UnorderedMultiSet
+
+1. [SelfIndexedUnorderedMap](class_luna_1_1_self_indexed_unordered_map.md)
+
+1. [SelfIndexedUnorderedMultiMap](class_luna_1_1_self_indexed_unordered_multi_map.md)
+
+Open addressing (also known as closed hashing) algorithms store elements directly in hash table arrays, while closed addressing (also known as open hashing) algorithms allocate dedicated memory for every element, and stores pointers to such elements in hash table arrays. In open-addressing containers, one hash table slot can only store on element, the second element with the same hash value must be relocated to another empty slot; in closed-addressing containers, all elements with the same hash value can be stored in the same hash table slot, usually stored as linked lists. See [Open vs Closed Addressing](https://programming.guide/hash-tables-open-vs-closed-addressing.html) for a detailed comparison of open addressing and closed addressing.
 
 Prefer [HashMap](class_luna_1_1_hash_map.md) and [HashSet](class_luna_1_1_hash_set.md) instead of UnorderedMap and UnorderedSet, since it performs better in memory fragmentation, memory locality and cache performance. Use UnorderedMap and UnorderedSet if you have the following requirements:
 
-## Functions
+1. You want to insert multiple elements with the same key to the map, which is only supported by closed-addressing maps. Use UnorderedMultiMap, [SelfIndexedUnorderedMultiMap](class_luna_1_1_self_indexed_unordered_multi_map.md) and UnorderedMultiSet in such case.
+
+1. You element type has very big size, usually larger than 256, causing allocating element memory in data table become unacceptable because it will waste a lot of memory when the load factor is low. Closed-addressing maps only allocate memory for alive elements, making it consuming much less memory than open-addressing maps when the element size is big. Closed-addressing maps also support extracting element nodes from one map and insert them to another maps without the need of allocating memory for elements, making it efficient to transfer elements between maps. 
+
+## Member functions
 * [HashMap()](class_luna_1_1_hash_map_1a8e7da885280257b837a2de2b94e02fcd.md)
 
     Constructs an empty map. 

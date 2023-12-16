@@ -10,11 +10,13 @@ Returns the address/size that aligns the origin address/size to the nearest matc
 
 
 ## Parameters
-### origin
-The unaligned address/size. 
+* *in* **origin**
 
-### alignment
-The alignment boundary. If alignment is 0, `origin` will be returned as-is. 
+    The unaligned address/size. 
+
+* *in* **alignment**
+
+    The alignment boundary. If alignment is 0, `origin` will be returned as-is. 
 
 ## Return value
 Returns the aligned address/size. 

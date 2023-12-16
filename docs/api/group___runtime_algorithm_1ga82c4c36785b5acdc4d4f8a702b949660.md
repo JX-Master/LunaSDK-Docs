@@ -10,14 +10,17 @@ Copies elements from one range to another range.
 
 
 ## Parameters
-### first
-The iterator pointing to the first element of the source range. 
+* *in* **first**
 
-### last
-The iterator pointing to the one-past-last element of the source range. 
+    The iterator pointing to the first element of the source range. 
 
-### d_first
-The iterator pointing to the first element of the destination range. 
+* *in* **last**
+
+    The iterator pointing to the one-past-last element of the source range. 
+
+* *in* **d_first**
+
+    The iterator pointing to the first element of the destination range. 
 
 ## Return value
 Returns one iterator pointing to the one-past-last element of the destination range. 

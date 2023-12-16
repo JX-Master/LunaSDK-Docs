@@ -9,6 +9,7 @@ Constructs a map by coping elements from another map.
 
 
 ## Parameters
-### rhs
-The map to copy elements from. 
+* *in* **rhs**
+
+    The map to copy elements from. 
 

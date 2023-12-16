@@ -9,8 +9,9 @@ Gets the number of UTF-16 characters needed to store the Unicode char in UTF-16 
 
 
 ## Parameters
-### ch
-The Unicode codepoint of the character. 
+* *in* **ch**
+
+    The Unicode codepoint of the character. 
 
 ## Return value
 Returns the number of UTF-16 characters needed to store the Unicode char in UTF-16 encoding. 

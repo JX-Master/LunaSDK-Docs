@@ -10,9 +10,11 @@ Resets the provided enumeration options to 0.
 
 
 ## Parameters
-### flags
-The flag variable to reset. 
+* *in* **flags**
 
-### options
-The options to set to 0. 
+    The flag variable to reset. 
+
+* *in* **options**
+
+    The options to set to 0. 
 

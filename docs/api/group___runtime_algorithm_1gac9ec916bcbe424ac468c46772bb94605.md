@@ -10,21 +10,25 @@ Copies elements that pass user-defined function from one range to another range.
 
 
 ## Parameters
-### first
-The iterator pointing to the first element of the source range. 
+* *in* **first**
 
-### last
-The iterator pointing to the one-past-last element of the source range. 
+    The iterator pointing to the first element of the source range. 
 
-### d_first
-The iterator pointing to the first element of the destination range. 
+* *in* **last**
 
-### pred
-The user-defined unary predicate which returns `​true` for elements that should be copied. 
+    The iterator pointing to the one-past-last element of the source range. 
+
+* *in* **d_first**
+
+    The iterator pointing to the first element of the destination range. 
+
+* *in* **pred**
+
+    The user-defined unary predicate which returns `​true` for elements that should be copied. 
 
 ## Return value
 Returns one iterator pointing to the one-past-last element of the destination range. 
 
-#### Valid Usage
+## Valid Usage
 * The expression `pred(v)` must be convertible to `bool` for every argument `v` of type `VT`, where `VT` is the value type of `_InputIt`, and must not modify `v`. 
 

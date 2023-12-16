@@ -1,7 +1,7 @@
 # Luna::random_f32
 
 ```c++
-LUNA_RUNTIME_API f32 random_f32(f32 range_begin, f32 range_end)
+f32 random_f32(f32 range_begin, f32 range_end)
 ```
 
 Generates one random 32-bit floating-point number. 

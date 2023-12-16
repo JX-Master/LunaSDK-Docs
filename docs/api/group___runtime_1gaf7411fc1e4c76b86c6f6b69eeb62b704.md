@@ -10,8 +10,9 @@ Invokes the specified callable object.
 
 
 ## Parameters
-### f
-The callable object to invoke. 
+* *in* **f**
+
+    The callable object to invoke. 
 
 ## Return value
 Returns the return value of the callable object. 

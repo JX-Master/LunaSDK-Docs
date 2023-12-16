@@ -9,26 +9,33 @@ Returns a pointer that offsets the specified pixels in the bitmap.
 
 
 ## Parameters
-### base
-The pointer to the first pixel in the bitmap. 
+* *in* **base**
 
-### x
-The x offset in pixels. 
+    The pointer to the first pixel in the bitmap. 
 
-### y
-The y offset in pixels. 
+* *in* **x**
 
-### z
-The z offset in pixels. 
+    The x offset in pixels. 
 
-### bytes_per_pixel
-The number of bytes per pixel. 
+* *in* **y**
 
-### row_pitch
-The pitch to advance for one row in bytes. 
+    The y offset in pixels. 
 
-### slice_pitch
-The pitch to advance for one slice in bytes. 
+* *in* **z**
+
+    The z offset in pixels. 
+
+* *in* **bytes_per_pixel**
+
+    The number of bytes per pixel. 
+
+* *in* **row_pitch**
+
+    The pitch to advance for one row in bytes. 
+
+* *in* **slice_pitch**
+
+    The pitch to advance for one slice in bytes. 
 
 ## Return value
 Returns the offseted pointer. 

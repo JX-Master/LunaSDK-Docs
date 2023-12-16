@@ -10,9 +10,11 @@ Replaces elements of the list by elements specified by one range. Elements in th
 
 
 ## Parameters
-### first
-The iterator pointing to the first element of the range. 
+* *in* **first**
 
-### last
-The iterator pointing to the one-past-last element of the range. 
+    The iterator pointing to the first element of the range. 
+
+* *in* **last**
+
+    The iterator pointing to the one-past-last element of the range. 
 

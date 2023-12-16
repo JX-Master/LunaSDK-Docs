@@ -9,9 +9,11 @@ The generic structure instantiation function called by the reflection system whe
 
 
 ## Parameters
-### generic_type
-The generic type to instantiate. 
+* *in* **generic_type**
 
-### generic_arguments
-Types that are used as arguments to instantiate one generic structure instanced type. 
+    The generic type to instantiate. 
+
+* *in* **generic_arguments**
+
+    Types that are used as arguments to instantiate one generic structure instanced type. 
 

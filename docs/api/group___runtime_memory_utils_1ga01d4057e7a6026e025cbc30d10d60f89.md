@@ -10,6 +10,7 @@ Calls the destructor of the object.
 
 
 ## Parameters
-### dst
-An iterator pointing to the object to be destructed. 
+* *in* **dst**
+
+    An iterator pointing to the object to be destructed. 
 

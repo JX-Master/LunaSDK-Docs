@@ -10,14 +10,17 @@ Performs copy construct on each of the object in the range by taking a copy of t
 
 
 ## Parameters
-### first
-An iterator to the first object to be constructed. 
+* *in* **first**
 
-### last
-An iterator to one-past-last object to be constructed. 
+    An iterator to the first object to be constructed. 
 
-### value
-The object to copy from for each object to be constructed. 
+* *in* **last**
+
+    An iterator to one-past-last object to be constructed. 
+
+* *in* **value**
+
+    The object to copy from for each object to be constructed. 
 
 ## Return value
 Returns an iterator to one-past-last object to be constructed. 

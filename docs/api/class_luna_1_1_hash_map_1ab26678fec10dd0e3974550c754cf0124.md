@@ -9,6 +9,7 @@ Swaps elements of this map with the specified map.
 
 
 ## Parameters
-### rhs
-The map to swap elements with. 
+* *in* **rhs**
+
+    The map to swap elements with. 
 

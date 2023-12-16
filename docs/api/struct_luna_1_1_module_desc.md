@@ -5,10 +5,9 @@ Module description structure.
 struct Luna::ModuleDesc
 ```
 
-## Overview
 This shall be allocated on static memory and being kept valid during the application lifetime. 
 
-## Properties
+## Member objects
 * [c8 reserved[32]](struct_luna_1_1_module_desc_1aa4599232e3e8acf0218788de720c9439.md)
 
     Used by the Runtime. The user should not change these memory. 

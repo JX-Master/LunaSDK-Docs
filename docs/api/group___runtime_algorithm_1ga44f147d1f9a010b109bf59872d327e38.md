@@ -10,11 +10,13 @@ Returns the greater of the given values.
 
 
 ## Parameters
-### a
-The first value to compare. 
+* *in* **a**
 
-### b
-The second value to compare. 
+    The first value to compare. 
+
+* *in* **b**
+
+    The second value to compare. 
 
 ## Return value
 Returns the greater of the given values. Returns `a` if values are equivalent. 

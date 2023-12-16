@@ -9,8 +9,9 @@ Gets the number of UTF-8 characters the Unicode character takes from the first U
 
 
 ## Parameters
-### ch
-The first UTF-8 character of the Unicode character. 
+* *in* **ch**
+
+    The first UTF-8 character of the Unicode character. 
 
 ## Return value
 Returns the number of UTF-8 characters the Unicode character takes. 

@@ -2,35 +2,35 @@
 ## Classes
 * [Luna::IRandom](struct_luna_1_1_i_random.md)
 ## Functions
-* [LUNA_RUNTIME_API Ref< IRandom > new_random_number_generator(u32 initial_seed)](group___runtime_random_1ga9ef63fee76504d9ec1c31b5a042e5a43.md)
+* [Ref< IRandom > new_random_number_generator(u32 initial_seed)](group___runtime_random_1ga4d22ddc6d3fd89122313822def32e1ea.md)
 
     Creates one new random number generator. 
 
-* [LUNA_RUNTIME_API u32 random_u32()](group___runtime_random_1ga67e0bcc2efe657e1b7ffa27e55efc9f0.md)
+* [u32 random_u32()](group___runtime_random_1gac5112cfac0055797c0aa6451e887e762.md)
 
     Generates one random 32-bit unsigned integer. 
 
-* [LUNA_RUNTIME_API i32 random_i32()](group___runtime_random_1ga5a3e2c7c5d4754828dcd69803d678c6f.md)
+* [i32 random_i32()](group___runtime_random_1gae94cdb746dbc607e0a34e7c42f5692e8.md)
 
     Generates one random 32-bit signed integer. 
 
-* [LUNA_RUNTIME_API u64 random_u64()](group___runtime_random_1gae9f4c4338b72774b2db57a40e4583dd5.md)
+* [u64 random_u64()](group___runtime_random_1ga06fe74cda4464d7072fa5096c6d685ad.md)
 
     Generates one random 64-bit unsigned integer. 
 
-* [LUNA_RUNTIME_API i64 random_i64()](group___runtime_random_1ga9a7d9d45aff083affc98b9e960ed4617.md)
+* [i64 random_i64()](group___runtime_random_1ga10ff6fe6259b70d0744364684ef51c2e.md)
 
     Generates one random 64-bit signed integer. 
 
-* [LUNA_RUNTIME_API f32 random_f32(f32 range_begin, f32 range_end)](group___runtime_random_1ga07d57e0ba5cd801af251cf05d959b8dc.md)
+* [f32 random_f32(f32 range_begin, f32 range_end)](group___runtime_random_1gad06db24fb024458a05ca16ee8e767971.md)
 
     Generates one random 32-bit floating-point number. 
 
-* [LUNA_RUNTIME_API f64 random_f64(f64 range_begin, f64 range_end)](group___runtime_random_1ga12bb86126a98fb8e8dc04bde9bf95d8e.md)
+* [f64 random_f64(f64 range_begin, f64 range_end)](group___runtime_random_1ga4df2e3f62d9babeb14b904132093bd24.md)
 
     Generates one random 64-bit floating-point number. 
 
-* [LUNA_RUNTIME_API Guid random_guid()](group___runtime_random_1ga7606d672c0477b082073992a18f45f58.md)
+* [Guid random_guid()](group___runtime_random_1ga3c5cef04223e71c27d0044db451c0b48.md)
 
     Generates one random GUID (Globally Unique Identifier). 
 

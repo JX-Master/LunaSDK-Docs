@@ -1,7 +1,7 @@
 # Luna::object_retain_if_not_expired
 
 ```c++
-LUNA_RUNTIME_API bool object_retain_if_not_expired(object_t object_ptr)
+bool object_retain_if_not_expired(object_t object_ptr)
 ```
 
 Increases the strong refernece counter value by one if the boxed object is not expired. 
@@ -15,6 +15,6 @@ The object pointer.
 ## Return value
 Returns `true` if the object is valid and the strong reference counter value is successfully increased, returns `false` otherwise. 
 
-#### Valid Usage
-* `object_ptr` must points to one memory returned by object_alloc. 
+## Valid Usage
+* `object_ptr` must points to one memory returned by [object_alloc](group___runtime_object_1ga8ba411b5dc3e81b9d5c0283752e22b9e.md). 
 

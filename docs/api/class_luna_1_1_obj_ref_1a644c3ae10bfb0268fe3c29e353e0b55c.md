@@ -9,8 +9,9 @@ Compares two references for non-equality.
 Two references are not equal if their underlying pointers are not equal. 
 
 ## Parameters
-### rhs
-The reference to compare with. 
+* *in* **rhs**
+
+    The reference to compare with. 
 
 ## Return value
 Returns `true` if two references are not equal. Returns `false` otherwise. 

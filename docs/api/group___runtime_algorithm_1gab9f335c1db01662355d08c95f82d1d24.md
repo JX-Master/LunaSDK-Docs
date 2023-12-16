@@ -10,9 +10,11 @@ Swaps two values.
 
 
 ## Parameters
-### a
-The first value to swap. 
+* *in* **a**
 
-### b
-The second value to swap. 
+    The first value to swap. 
+
+* *in* **b**
+
+    The second value to swap. 
 

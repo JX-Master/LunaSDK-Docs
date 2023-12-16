@@ -9,6 +9,7 @@ Constructs a mutex lock that locks the specified mutex.
 
 
 ## Parameters
-### mtx
-The mutex to lock. 
+* *in* **mtx**
+
+    The mutex to lock. 
 

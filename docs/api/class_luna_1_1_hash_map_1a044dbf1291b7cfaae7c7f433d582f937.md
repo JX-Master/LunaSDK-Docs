@@ -10,8 +10,9 @@ Constructs one element directly in the map using the provided arguments.
 
 
 ## Parameters
-### args
-The arguments to construct the element. `[Pair](struct_luna_1_1_pair.md)<const _Kty, _Ty>(args...)` will be used to construct the element. 
+* *in* **args**
+
+    The arguments to construct the element. `Pair<const _Kty, _Ty>(args...)` will be used to construct the element. 
 
 ## Return value
 Returns one iterator-bool pair indicating the result:* If the returned Boolean value is `true`, then the element is successfully constructed and inserted to the map, and the returned iterator points to the inserted element.

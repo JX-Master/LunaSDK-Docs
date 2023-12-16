@@ -10,11 +10,13 @@ Tests if the provided enumeration contains the specified enumeration option.
 
 
 ## Parameters
-### flags
-The flags to test. 
+* *in* **flags**
 
-### options
-A combination of flags to test. 
+    The flags to test. 
+
+* *in* **options**
+
+    A combination of flags to test. 
 
 ## Return value
 Returns `true` if all flags in the `options` combination are set in `flags`, returns `false` otherwise. 

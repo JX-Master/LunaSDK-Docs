@@ -1,7 +1,7 @@
 # Luna::register_enum_type
 
 ```c++
-LUNA_RUNTIME_API typeinfo_t register_enum_type(const EnumerationTypeDesc &desc)
+typeinfo_t register_enum_type(const EnumerationTypeDesc &desc)
 ```
 
 Registers one enumeration type. 

@@ -5,10 +5,9 @@ A function wrapper that can store one callable object, and enable coping, moving
 struct Luna::Function< _R(_Args...)>
 ```
 
-## Overview
 The callable object can be a function pointer or a function object (types that overloads `operator()`). 
 
-## Functions
+## Member functions
 * [Function()](struct_luna_1_1_function_3_01___r_07___args_8_8_8_08_4_1aa61125691a5b694a46ce9f6a0fbe5093.md)
 
     Constructs an empty function wrapper. 

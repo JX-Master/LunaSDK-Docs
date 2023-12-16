@@ -9,9 +9,11 @@ Constructs a set with an custom allocator and with elements moved from another s
 
 
 ## Parameters
-### rhs
-The set to move elements from. 
+* *in* **rhs**
 
-### alloc
-The allocator to use. The allocator object will be copy-constructed into the set. 
+    The set to move elements from. 
+
+* *in* **alloc**
+
+    The allocator to use. The allocator object will be copy-constructed into the set. 
 

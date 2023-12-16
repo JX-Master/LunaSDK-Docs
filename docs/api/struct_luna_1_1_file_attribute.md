@@ -5,7 +5,7 @@ Specifies file attributes.
 struct Luna::FileAttribute
 ```
 
-## Properties
+## Member objects
 * [u64 size](struct_luna_1_1_file_attribute_1ad3aa5c6909d7fbfc6e5ae6e652f06934.md)
 
     The size, in bytes, of the file. 

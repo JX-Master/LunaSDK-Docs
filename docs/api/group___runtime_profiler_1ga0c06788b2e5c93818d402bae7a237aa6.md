@@ -1,7 +1,7 @@
 # Luna::allocate_profiler_event_data
 
 ```c++
-LUNA_RUNTIME_API void * allocate_profiler_event_data(usize size, usize alignment, void(*dtor)(void *)=nullptr)
+void * allocate_profiler_event_data(usize size, usize alignment, void(*dtor)(void *)=nullptr)
 ```
 
 Allocates one temporary buffer that can be used to store event data for the next profiler event. 
@@ -21,6 +21,6 @@ The function that will be called when the memory is going to be freed. This can 
 ## Return value
 Returns the allocated memory. 
 
-#### Valid Usage
+## Valid Usage
 * If `alignment` is not `0`, `alignment` must be power of 2 (like 4, 8, 16, etc.). 
 

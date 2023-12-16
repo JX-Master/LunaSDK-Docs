@@ -5,7 +5,7 @@ A container that stores elements as double-linked lists (nodes connected by poin
 class Luna::List
 ```
 
-## Functions
+## Member functions
 * [List()](class_luna_1_1_list_1a17e6c90f14225bdac5c65ed915b0a2f6.md)
 
     Constructs an empty list. 

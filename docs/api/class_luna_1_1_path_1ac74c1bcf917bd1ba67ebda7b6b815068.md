@@ -9,9 +9,11 @@ Constructs one path by parsing the specified path string with custom starting po
 
 
 ## Parameters
-### str
-The path string. 
+* *in* **str**
 
-### pos
-The index of the first character to parse. 
+    The path string. 
+
+* *in* **pos**
+
+    The index of the first character to parse. 
 

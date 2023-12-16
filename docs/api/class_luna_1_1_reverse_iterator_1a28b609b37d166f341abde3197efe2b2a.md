@@ -9,6 +9,7 @@ Returns a reference to the element at specified relative location.
 
 
 ## Parameters
-### n
-The position relative to the current position. 
+* *in* **n**
+
+    The position relative to the current position. 
 

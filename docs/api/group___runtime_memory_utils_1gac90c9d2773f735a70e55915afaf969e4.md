@@ -9,12 +9,15 @@ Calculates the size, alignment and memory layout for one structure type.
 The calculated size, alignment and memory layout is compatible with C standard structure layout. 
 
 ## Parameters
-### members
-One span that provides members of the structure. 
+* *inout* **members**
 
-### out_size
-The calculated size of the structure. 
+    One span that provides members of the structure. 
 
-### out_alignment
-The calculated alignment of the structure. 
+* *out* **out_size**
+
+    The calculated size of the structure. 
+
+* *out* **out_alignment**
+
+    The calculated alignment of the structure. 
 

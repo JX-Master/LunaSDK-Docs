@@ -10,18 +10,21 @@ Gets a range containing all elements equivalent to the specified value in the ra
 
 
 ## Parameters
-### first
-The iterator pointing to the first element of the range. 
+* *in* **first**
 
-### last
-The iterator pointing to the one-past-last element of the range. 
+    The iterator pointing to the first element of the range. 
 
-### value
-The value to compare elements to. 
+* *in* **last**
+
+    The iterator pointing to the one-past-last element of the range. 
+
+* *in* **value**
+
+    The value to compare elements to. 
 
 ## Return value
 Returns a pair of iterators pointing to the begin and end of the range. The first iterator points to the first element of the range, the second iterator points to the one-past-last element of the range. If the specified element is not found in the range, returns one pair of iterators that are equal to each other. 
 
-#### Valid Usage
+## Valid Usage
 * Elements in the range specified by [`first`, `last`) must be sorted in non-descending order. 
 

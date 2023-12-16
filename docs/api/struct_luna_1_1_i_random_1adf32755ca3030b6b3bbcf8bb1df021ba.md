@@ -9,11 +9,13 @@ Generates one random 32-bit floating-point number.
 
 
 ## Parameters
-### range_begin
-The minimum number that will be generated. 
+* *in* **range_begin**
 
-### range_end
-The maximum number that will be generated. 
+    The minimum number that will be generated. 
+
+* *in* **range_end**
+
+    The maximum number that will be generated. 
 
 ## Return value
 Returns the generated number in range [`range_begin`, `range_end`]. 

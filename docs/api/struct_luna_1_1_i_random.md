@@ -5,7 +5,9 @@ Represents a Pseudo-random number generator.
 interface Luna::IRandom : public virtual Interface
 ```
 
-## Functions
+## Base type
+* [Interface](struct_luna_1_1_interface.md)
+## Member functions
 * [virtual void set_seed(u32 seed)=0](struct_luna_1_1_i_random_1aea5e5d0ead35d611e22be97fef9d4ad0.md)
 
     Sets random seed for the generator. 

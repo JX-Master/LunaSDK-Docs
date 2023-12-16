@@ -5,7 +5,9 @@ Represents one stream object that supports setting the cursor position.
 interface Luna::ISeekableStream : public virtual IStream
 ```
 
-## Functions
+## Base type
+* [IStream](struct_luna_1_1_i_stream.md)
+## Member functions
 * [virtual R< u64 > tell()=0](struct_luna_1_1_i_seekable_stream_1a62f27c4617444c74fd3c5e30fa146020.md)
 
     Gets the current position of the stream cursor. 

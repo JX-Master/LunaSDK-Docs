@@ -9,8 +9,9 @@ Compares two names for equality.
 
 
 ## Parameters
-### rhs
-The name to compare with. 
+* *in* **rhs**
+
+    The name to compare with. 
 
 ## Return value
 Returns `true` if two names are equal, returns `false` otherwise. 

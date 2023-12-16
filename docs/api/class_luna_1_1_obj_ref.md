@@ -5,7 +5,7 @@ The smart pointer that represents one typeless strong reference to one boxed obj
 class Luna::ObjRef
 ```
 
-## Functions
+## Member functions
 * [void reset()](class_luna_1_1_obj_ref_1ad20897c5c8bd47f5d4005989bead0e55.md)
 
     Resets the reference to null. 

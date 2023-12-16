@@ -1,11 +1,13 @@
 # Luna::IFileIterator
-Represents a directory stream that can be used to iterate all files and directories in the specified directory. See open_dir for details. 
+Represents a directory stream that can be used to iterate all files and directories in the specified directory. See [open_dir](group___runtime_file_1ga7a98d4ebd233ae412f59326e7e51af14.md) for details. 
 
 ```c++
 interface Luna::IFileIterator : public virtual Interface
 ```
 
-## Functions
+## Base type
+* [Interface](struct_luna_1_1_interface.md)
+## Member functions
 * [virtual bool is_valid()=0](struct_luna_1_1_i_file_iterator_1a8ad5b340ebf155189dae99f009494ff5.md)
 
     Checks if this iterator points to a valid file in the directory stream. 

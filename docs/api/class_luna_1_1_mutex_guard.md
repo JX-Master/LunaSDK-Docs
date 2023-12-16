@@ -5,7 +5,7 @@ A RAII wrapper for one mutex object that releases the mutex automatically when t
 class Luna::MutexGuard
 ```
 
-## Functions
+## Member functions
 * [MutexGuard()](class_luna_1_1_mutex_guard_1a7d8cdf5a9287b37a4456378eeeaa98a1.md)
 
     Constructs an empty mutex lock. 

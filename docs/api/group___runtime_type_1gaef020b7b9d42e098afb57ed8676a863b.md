@@ -10,11 +10,13 @@ Registers one structure type to the type system. The structure type must have on
 
 
 ## Parameters
-### properties
-A list of properties that should be tracked by the type system. The user can use luproperty macro to declare properties conveniently. 
+* *in* **properties**
 
-### base_type
-The base type of the type to register. This can be `nullptr`. 
+    A list of properties that should be tracked by the type system. The user can use luproperty macro to declare properties conveniently. 
+
+* *in* **base_type**
+
+    The base type of the type to register. This can be `nullptr`. 
 
 ## Return value
 Returns the registered structure type. 

@@ -9,6 +9,7 @@ Constructs a list by copying elements from another list.
 
 
 ## Parameters
-### rhs
-The list to copy elements from. 
+* *in* **rhs**
+
+    The list to copy elements from. 
 

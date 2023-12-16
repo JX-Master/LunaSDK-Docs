@@ -10,9 +10,11 @@ Sorts the elements in the range in non-descending order. The order of equal elem
 
 
 ## Parameters
-### first
-The iterator pointing to the first element of the range. 
+* *in* **first**
 
-### last
-The iterator pointing to the one-past-last element of the range. 
+    The iterator pointing to the first element of the range. 
+
+* *in* **last**
+
+    The iterator pointing to the one-past-last element of the range. 
 

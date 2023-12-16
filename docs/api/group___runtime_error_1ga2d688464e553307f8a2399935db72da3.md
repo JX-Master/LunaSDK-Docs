@@ -1,7 +1,7 @@
 # Luna::get_error_code_category
 
 ```c++
-LUNA_RUNTIME_API errcat_t get_error_code_category(ErrCode err_code)
+errcat_t get_error_code_category(ErrCode err_code)
 ```
 
 Fetches the error category that holds the error code. 

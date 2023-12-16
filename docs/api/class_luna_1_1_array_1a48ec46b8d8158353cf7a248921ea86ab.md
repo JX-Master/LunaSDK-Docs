@@ -9,8 +9,9 @@ Gets a const refernece of the element at the specified index.
 
 
 ## Parameters
-### pos
-The index of the element. 
+* *in* **pos**
+
+    The index of the element. 
 
 ## Return value
 Returns a const reference of the specified element. 

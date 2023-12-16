@@ -9,8 +9,9 @@ Gets the name node at the specified index.
 
 
 ## Parameters
-### index
-The index of the name node. 
+* *in* **index**
+
+    The index of the name node. 
 
 ## Return value
 Returns one reference of the name node. 

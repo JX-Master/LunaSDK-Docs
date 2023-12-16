@@ -10,15 +10,18 @@ Sorts the elements in the range in non-descending order. The order of equal elem
 
 
 ## Parameters
-### first
-The iterator pointing to the first element of the range. 
+* *in* **first**
 
-### last
-The iterator pointing to the one-past-last element of the range. 
+    The iterator pointing to the first element of the range. 
 
-### comp
-The user-defined comparision function object, which returns `true` if the first argument is less than the second. 
+* *in* **last**
 
-#### Valid Usage
+    The iterator pointing to the one-past-last element of the range. 
+
+* *in* **comp**
+
+    The user-defined comparision function object, which returns `true` if the first argument is less than the second. 
+
+## Valid Usage
 * `comp` must have the following function signature: `bool comp(const Type& a, const Type& b)`, where `Type` is the value type of `_RandomIt`. 
 

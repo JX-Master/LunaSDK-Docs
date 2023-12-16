@@ -10,8 +10,9 @@ Creates one reverse iterator from one iterator.
 
 
 ## Parameters
-### i
-The base iterator to create reverse iterator for. 
+* *in* **i**
+
+    The base iterator to create reverse iterator for. 
 
 ## Return value
 Returns the created reverse iterator. 

@@ -5,7 +5,9 @@ Represents a system-level signal object. @threadsafe.
 interface Luna::ISignal : public virtual IWaitable
 ```
 
-## Functions
+## Base type
+* IWaitable
+## Member functions
 * [virtual void trigger()=0](struct_luna_1_1_i_signal_1a195530e6278298441214fa3b1ed938f3.md)
 
     Set this signal to trigged state. 

@@ -10,14 +10,17 @@ Returns the smaller of the given values.
 
 
 ## Parameters
-### a
-The first value to compare. 
+* *in* **a**
 
-### b
-The second value to compare. 
+    The first value to compare. 
 
-### less_comp
-The user-defined less (<) comparison function used for comparing. 
+* *in* **b**
+
+    The second value to compare. 
+
+* *in* **less_comp**
+
+    The user-defined less (<) comparison function used for comparing. 
 
 ## Return value
 Returns the smaller of the given values. Returns `a` if values are equivalent. 

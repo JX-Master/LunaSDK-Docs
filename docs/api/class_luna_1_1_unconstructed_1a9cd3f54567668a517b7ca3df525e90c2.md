@@ -10,6 +10,7 @@ Constructs the object.
 
 
 ## Parameters
-### args
-Arguments that will be passed to the constructor of the object. 
+* *in* **args**
+
+    Arguments that will be passed to the constructor of the object. 
 

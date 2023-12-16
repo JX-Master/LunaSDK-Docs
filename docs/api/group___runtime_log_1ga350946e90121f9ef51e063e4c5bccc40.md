@@ -1,7 +1,7 @@
 # Luna::log
 
 ```c++
-LUNA_RUNTIME_API void log(LogVerbosity verbosity, const c8 *tag, const c8 *format,...)
+void log(LogVerbosity verbosity, const c8 *tag, const c8 *format,...)
 ```
 
 Logs one message. 

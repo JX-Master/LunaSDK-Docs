@@ -9,8 +9,9 @@ Gets one iterator which is advanced by `n` positions respectively.
 
 
 ## Parameters
-### n
-The position to advance relative to the current position. 
+* *in* **n**
+
+    The position to advance relative to the current position. 
 
 ## Return value
 Returns one iterator which is advanced by `n` positions respectively. 

@@ -9,6 +9,7 @@ Constructs an empty set with an custom allocator.
 
 
 ## Parameters
-### alloc
-The allocator to use. The allocator object will be copy-constructed into the set. 
+* *in* **alloc**
+
+    The allocator to use. The allocator object will be copy-constructed into the set. 
 

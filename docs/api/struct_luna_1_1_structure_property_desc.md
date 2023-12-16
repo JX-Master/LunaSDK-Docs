@@ -5,7 +5,7 @@ Describes one structure property.
 struct Luna::StructurePropertyDesc
 ```
 
-## Properties
+## Member objects
 * [Name name](struct_luna_1_1_structure_property_desc_1a7082db574ba2d2d69ccafb060398b7d8.md)
 
     The property name. 

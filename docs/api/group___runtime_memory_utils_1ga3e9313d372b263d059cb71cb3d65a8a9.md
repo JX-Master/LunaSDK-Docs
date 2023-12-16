@@ -10,14 +10,17 @@ Performs copy assignment on each of the object in the range by taking a copy of 
 
 
 ## Parameters
-### first
-An iterator to the first object to be assigned. 
+* *in* **first**
 
-### last
-An iterator to one-past-last object to be assigned. 
+    An iterator to the first object to be assigned. 
 
-### value
-The object to copy from for each object to be assigned. 
+* *in* **last**
+
+    An iterator to one-past-last object to be assigned. 
+
+* *in* **value**
+
+    The object to copy from for each object to be assigned. 
 
 ## Return value
 Returns an iterator to one-past-last object to be assigned. 

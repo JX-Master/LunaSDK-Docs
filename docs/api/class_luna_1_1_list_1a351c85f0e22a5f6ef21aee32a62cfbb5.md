@@ -9,16 +9,18 @@ Removes one range of elements from the list.
 
 
 ## Parameters
-### first
-The iterator pointing to the first element to be removed. 
+* *in* **first**
 
-### last
-The iterator pointing to the one-past-last element to be removed. 
+    The iterator pointing to the first element to be removed. 
+
+* *in* **last**
+
+    The iterator pointing to the one-past-last element to be removed. 
 
 ## Return value
 Returns one iterator pointing to the next element of the removed elements when iterating elements. 
 
-#### Valid Usage
+## Valid Usage
 * `first` must be either `end()` or one valid element in the list.
 
 * If `first != end()`, [`first`, `last`) must specifies either one empty range (`first == last`) or one valid element range of the list.

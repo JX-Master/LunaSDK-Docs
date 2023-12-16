@@ -9,6 +9,7 @@ Inserts one element at the back of the list.
 
 
 ## Parameters
-### value
-The element to insert. The element will be move-inserted to the list. 
+* *in* **value**
+
+    The element to insert. The element will be move-inserted to the list. 
 

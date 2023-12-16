@@ -9,9 +9,10 @@ Replaces content of the path by parsing the specified path string.
 
 
 ## Parameters
-### s
-The path string. 
+* *in* **s**
 
-#### Valid Usage
+    The path string. 
+
+## Valid Usage
 * `s` must be null-terminated. 
 

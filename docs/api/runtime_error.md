@@ -4,49 +4,49 @@
 * [Luna::Error](struct_luna_1_1_error.md)
 * [Luna::R](struct_luna_1_1_r.md)
 * [Luna::R< void >](struct_luna_1_1_r_3_01void_01_4.md)
-## Aliasing types
+## Alias types
 * [using errcat_t =  usize](group___runtime_error_1ga2fb0ec3bd79226d7a6357732e810b3d9.md)
 
     The error category type represents one container that can hold multiple error codes and sub-categories. 
 
 * [using RV =  R<void>](group___runtime_error_1gab6ff284901ba6c715fed0c96f8ee5c74.md)
 
-    An alias of `[R](struct_luna_1_1_r.md)<void>` for representing one throwable function with no return value. 
+    An alias of `R<void>` for representing one throwable function with no return value. 
 
 ## Functions
-* [LUNA_RUNTIME_API ErrCode get_error_code_by_name(const c8 *errcat_name, const c8 *errcode_name)](group___runtime_error_1ga1f70b7b7d6832c50eca9fcee754738e5.md)
+* [ErrCode get_error_code_by_name(const c8 *errcat_name, const c8 *errcode_name)](group___runtime_error_1gac2cf4135d372c8b93bc5dd51a1a5a3a2.md)
 
     Gets the error code represented by the error name. 
 
-* [LUNA_RUNTIME_API errcat_t get_error_category_by_name(const c8 *errcat_name)](group___runtime_error_1gafe222dee1f7cd3d2beb8e32604dddd71.md)
+* [errcat_t get_error_category_by_name(const c8 *errcat_name)](group___runtime_error_1gac7e9fd4f2431ea0709d0899cfee536c7.md)
 
     Gets the error category represented by the error category name. 
 
-* [LUNA_RUNTIME_API const c8 * get_error_code_name(ErrCode err_code)](group___runtime_error_1ga282ca73bbf2ecb824b31f111225f452a.md)
+* [const c8 * get_error_code_name(ErrCode err_code)](group___runtime_error_1ga75d9ae8fc66e253da7bc9d90167baaf0.md)
 
     Fetches the name of the error code. 
 
-* [LUNA_RUNTIME_API const c8 * get_error_category_name(errcat_t err_category)](group___runtime_error_1gaae9e733615f31d34d2caacc345f5cfa4.md)
+* [const c8 * get_error_category_name(errcat_t err_category)](group___runtime_error_1gadda3f4a1becfdbaf57a9fed96030f95b.md)
 
     Fetches the name of the error category. 
 
-* [LUNA_RUNTIME_API errcat_t get_error_code_category(ErrCode err_code)](group___runtime_error_1ga2d688464e553307f8a2399935db72da3.md)
+* [errcat_t get_error_code_category(ErrCode err_code)](group___runtime_error_1gaf28bcde18fe38cf58195e662ebcd8b4b.md)
 
     Fetches the error category that holds the error code. 
 
-* [LUNA_RUNTIME_API Vector< errcat_t > get_all_error_categories()](group___runtime_error_1ga67d5908c99b79c7154f6e1e6e342a72e.md)
+* [Vector< errcat_t > get_all_error_categories()](group___runtime_error_1gae082bb725c117dca8ebb6d4930a85148.md)
 
     Fetches all error categories registered in the system, including all subcategories. 
 
-* [LUNA_RUNTIME_API Vector< ErrCode > get_all_error_codes_of_category(errcat_t err_category)](group___runtime_error_1gae1aeb6bafa3695ea3c6e6dc1acea72ff.md)
+* [Vector< ErrCode > get_all_error_codes_of_category(errcat_t err_category)](group___runtime_error_1ga98bcabdee045687efff56c4ce5649e43.md)
 
     Fetches all error codes that belongs to the specified error category. 
 
-* [LUNA_RUNTIME_API Vector< errcat_t > get_all_error_subcategories_of_category(errcat_t err_category)](group___runtime_error_1gafa7d509a05e3f4029e5976bbfd8631f1.md)
+* [Vector< errcat_t > get_all_error_subcategories_of_category(errcat_t err_category)](group___runtime_error_1ga3316dfabb9dec565b522b52d687313a9.md)
 
     Fetches all child error categories that belongs to the specified error category. 
 
-* [LUNA_RUNTIME_API Error & get_error()](group___runtime_error_1gae92623cecc5f4224389fda59a2b46707.md)
+* [Error & get_error()](group___runtime_error_1ga89d49593e13c02ae38a8d75c9700756c.md)
 
     Gets the error object of this thread. Every thread will be assigned with one error object. 
 
@@ -145,4 +145,45 @@
 * [ErrCode unwrap_errcode(const R< _Ty > &obj)](group___runtime_error_1gad35f7f747a4f2cc86d549a67c090681a.md)
 
     Unwraps the real error code from the result. 
+
+## Macros
+* [lupanic_if_failed(_res)](group___runtime_error_1gac1a979c01037533b5f7ec07c635a41d6.md)
+
+    Crashes the program if the specified result is failed. 
+
+* [lupanic_if_failed_msg(_res, _msg)](group___runtime_error_1gaeb3e75ee53288d8bdf7fcac3889f22e7.md)
+
+    Crashes the program if the specified result is failed with custom message. 
+
+* [luerr](group___runtime_error_1ga24ac080adf09c45becbe0255f4e7c968.md)
+
+    The error code used in `lucatch` block to identify the error. 
+
+* [lutry](group___runtime_error_1ga27044b65837c4ae8ea0a267dd4b13670.md)
+
+    Opens one try block that encapsulates expressions that may fail. 
+
+* [luthrow(_r)](group___runtime_error_1ga6e2423aec58cef0861156156c0845805.md)
+
+    Throws one error and jumps execution to the `lucatch` block. 
+
+* [lucatch](group___runtime_error_1ga92d64054822274f5341a06e22ed519ee.md)
+
+    Opens one catch block that handles errors thrown from try block. 
+
+* [lucatchret](group___runtime_error_1ga52994675a8f990d3166434e361971324.md)
+
+    Defines one catch block that returns the error code (if any) thrown from try block. 
+
+* [luexp(_exp)](group___runtime_error_1ga618a04348c5eec9062aa85bae5fff91a.md)
+
+    Tests whether the specified expression returns one failed result, and throws the error code if failed. 
+
+* [luset(_v, _exp)](group___runtime_error_1gad360047f2ac9303c32e17ef565d83627.md)
+
+    Assigns the return value of the specified expression to the specified variable if the return value is valid, and throws the error code if not. 
+
+* [lulet(_v, _exp)](group___runtime_error_1ga1c5f015bbf7bd9d53e7b0cc6a4338142.md)
+
+    Creates one local variable to hold the return value of the specified expression if the return value is valid, and throws the error code if not. 
 

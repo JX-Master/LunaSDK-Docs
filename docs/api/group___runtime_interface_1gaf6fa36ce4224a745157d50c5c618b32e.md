@@ -10,9 +10,13 @@ Gets one interface pointer from one pointer to one boxed object that implements 
 
 
 ## Parameters
-### object
-The pointer to the boxed object to query interface from. 
+* *in* **object**
+
+    The pointer to the boxed object to query interface from. 
 
 ## Return value
 Returns the specified interface pointer for the boxed object. Returns `nullptr` if the specified interface is not implemented by the specified boxed object. 
+
+## Remark
+The template version of `query_interface` provides a more convenient way to fetch one interface pointer from one boxed object pointer like so: 
 

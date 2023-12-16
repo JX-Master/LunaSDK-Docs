@@ -5,10 +5,9 @@ Describes the information of one generic structure instantiation operation.
 struct Luna::GenericStructureInstantiateInfo
 ```
 
-## Overview
 This is returned by the instantiation callback function when one new generic structure instanced type is required. 
 
-## Properties
+## Member objects
 * [usize size](struct_luna_1_1_generic_structure_instantiate_info_1a59f6400efda18d25d7b3cf3c2e7a3d3d.md)
 
     The size of the structure type, this should include the size for the base type of this type. 

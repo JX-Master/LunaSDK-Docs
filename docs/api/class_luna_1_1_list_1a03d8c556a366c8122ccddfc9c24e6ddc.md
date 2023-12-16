@@ -10,8 +10,9 @@ Removes all elements for which the specified predicate returns `true`.
 
 
 ## Parameters
-### p
-The unary predicate which returns `​true` if the element should be removed. 
+* *in* **p**
+
+    The unary predicate which returns `​true` if the element should be removed. 
 
 ## Return value
 Returns the number of elements removed. 

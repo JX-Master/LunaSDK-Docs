@@ -20,11 +20,11 @@
 
     Gets the index of the first UTF-8 character for the specified Unicode character. 
 
-* [LUNA_RUNTIME_API usize utf8_encode_char(c8 *dst, c32 ch)](group___runtime_unicode_1ga3a868c509b45614efc6f67a97c45ebac.md)
+* [usize utf8_encode_char(c8 *dst, c32 ch)](group___runtime_unicode_1gad7d7f2da8d4e0b42347f65f5b09e9b9c.md)
 
     Encodes the Unicode character into 1~6 UTF-8 characters. 
 
-* [LUNA_RUNTIME_API c32 utf8_decode_char(const c8 *str)](group___runtime_unicode_1ga8ebc9e15201060e9e6765ac7d8fd63dc.md)
+* [c32 utf8_decode_char(const c8 *str)](group___runtime_unicode_1ga7668255218e6bb10a3d6434f5465c875.md)
 
     Decodes one Unicode character from 1~6 UTF-8 characters. 
 
@@ -48,27 +48,27 @@
 
     Gets the index of the first UTF-16 character for the specified Unicode character. 
 
-* [LUNA_RUNTIME_API usize utf16_encode_char(c16 *dst, c32 ch)](group___runtime_unicode_1gae1e4b93bea300345a4c9a39d104c956a.md)
+* [usize utf16_encode_char(c16 *dst, c32 ch)](group___runtime_unicode_1ga8a4f912177e13745d6b347daca9271e3.md)
 
     Encodes the Unicode character into 1~2 UTF-16 characters using platform-native endian. 
 
-* [LUNA_RUNTIME_API c32 utf16_decode_char(const c16 *str)](group___runtime_unicode_1gaeb3a0408fb00d9e81297c1596b8f5205.md)
+* [c32 utf16_decode_char(const c16 *str)](group___runtime_unicode_1gadd4dba786d538553166c91368a2fbbae.md)
 
     Decodes one Unicode character from 1~2 UTF-16 characters. 
 
-* [LUNA_RUNTIME_API usize utf16_to_utf8(c8 *dst, usize dst_max_chars, const c16 *src, usize src_chars=USIZE_MAX)](group___runtime_unicode_1ga616fd70f9d2086579bc2a1a911c60989.md)
+* [usize utf16_to_utf8(c8 *dst, usize dst_max_chars, const c16 *src, usize src_chars=USIZE_MAX)](group___runtime_unicode_1ga4a6a2af3121c7200e85a617b862d15ea.md)
 
     Converts a UTF-16 string to UTF-8 string. 
 
-* [LUNA_RUNTIME_API usize utf16_to_utf8_len(const c16 *src, usize src_chars=USIZE_MAX)](group___runtime_unicode_1ga197d55a887c6b28c409a2e08a8262fce.md)
+* [usize utf16_to_utf8_len(const c16 *src, usize src_chars=USIZE_MAX)](group___runtime_unicode_1ga65526a3b58a8de0969ad66cfe9327da0.md)
 
     Determines the length of the corresponding UTF-8 string for a UTF-16 string, not include the null-terminator. 
 
-* [LUNA_RUNTIME_API usize utf8_to_utf16(c16 *dst, usize dst_max_chars, const c8 *src, usize src_chars=USIZE_MAX)](group___runtime_unicode_1ga69ed8657938fe5dd902db0ca43a7ffac.md)
+* [usize utf8_to_utf16(c16 *dst, usize dst_max_chars, const c8 *src, usize src_chars=USIZE_MAX)](group___runtime_unicode_1ga6103c57eaa8e7f268b40ec76d51404f0.md)
 
     Converts a UTF-8 string to UTF-16 string. 
 
-* [LUNA_RUNTIME_API usize utf8_to_utf16_len(const c8 *src, usize src_chars=USIZE_MAX)](group___runtime_unicode_1gaef6da72d8bc9ff2351b9ecd5745f746d.md)
+* [usize utf8_to_utf16_len(const c8 *src, usize src_chars=USIZE_MAX)](group___runtime_unicode_1gad5f06f0a3a8dc6938c4d359f60bfbe74.md)
 
     Determines the length of the corresponding UTF-16 string for a UTF-8 string, not include the null-terminator. 
 

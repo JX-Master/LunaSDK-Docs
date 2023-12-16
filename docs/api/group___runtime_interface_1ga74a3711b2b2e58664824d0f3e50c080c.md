@@ -1,7 +1,7 @@
 # Luna::query_interface
 
 ```c++
-LUNA_RUNTIME_API void * query_interface(object_t object, const Guid &iid)
+void * query_interface(object_t object, const Guid &iid)
 ```
 
 Gets one interface pointer from one pointer to one boxed object that implements the interface. 

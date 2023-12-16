@@ -9,6 +9,7 @@ Sets random seed for the generator.
 
 
 ## Parameters
-### seed
-The new random seed to set. 
+* *in* **seed**
+
+    The new random seed to set. 
 

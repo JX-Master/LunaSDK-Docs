@@ -1,7 +1,7 @@
 # Luna::memory_profiler_allocate
 
 ```c++
-LUNA_RUNTIME_API void memory_profiler_allocate(void *ptr, usize size)
+void memory_profiler_allocate(void *ptr, usize size)
 ```
 
 Emits one PROFILER_EVENT_ID_MEMORY_ALLOCATE profiler event. 
@@ -14,4 +14,7 @@ The pointer that represents the memory. This pointer is used only for identifing
 
 ### size
 The size of the memory block, in bytes. 
+
+## Remark
+Memory allocations through `memalloc` call this internally when memory profiling is enabled, thus the user does not need to call this again. 
 

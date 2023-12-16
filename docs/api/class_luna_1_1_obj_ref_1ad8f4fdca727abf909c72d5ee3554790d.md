@@ -9,8 +9,9 @@ Compares two references for equality.
 Two references are equal if their underlying pointers are equal. 
 
 ## Parameters
-### rhs
-The reference to compare with. 
+* *in* **rhs**
+
+    The reference to compare with. 
 
 ## Return value
 Returns `true` if two references are equal. Returns `false` otherwise. 

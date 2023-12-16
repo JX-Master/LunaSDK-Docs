@@ -9,12 +9,13 @@ Gets the number of Unicode characters in a null-terminated UTF-16 string, not in
 
 
 ## Parameters
-### src
-The UTF-16 string to check. 
+* *in* **src**
+
+    The UTF-16 string to check. 
 
 ## Return value
 Returns the number of Unicode characters in the UTF-16 string. 
 
-#### Valid Usage
+## Valid Usage
 * `src` must points to a valid, null-terminated UTF-16 string. 
 

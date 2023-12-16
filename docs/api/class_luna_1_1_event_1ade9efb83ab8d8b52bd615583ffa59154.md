@@ -10,6 +10,7 @@ Triggers this event and invokes all handlers.
 
 
 ## Parameters
-### args
-[Event](class_luna_1_1_event.md) arguments that will be broadcasted to every handler of this event. 
+* *in* **args**
+
+    [Event](class_luna_1_1_event.md) arguments that will be broadcasted to every handler of this event. 
 

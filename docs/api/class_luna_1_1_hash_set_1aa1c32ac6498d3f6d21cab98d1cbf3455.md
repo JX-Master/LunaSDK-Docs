@@ -9,6 +9,10 @@ Expands the data table size to the specified value.
 
 
 ## Parameters
-### new_cap
-The new data table size to expand to. 
+* *in* **new_cap**
+
+    The new data table size to expand to. 
+
+## Remark
+This function does nothing if `new_cap` is smaller than or equal to `capacity()`. 
 

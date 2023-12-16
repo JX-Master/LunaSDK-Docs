@@ -9,6 +9,7 @@ Constructs a reverse iterator for the given iterator.
 
 
 ## Parameters
-### i
-The iterator to use. 
+* *in* **i**
+
+    The iterator to use. 
 

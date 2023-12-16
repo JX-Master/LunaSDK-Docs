@@ -9,12 +9,15 @@ CReplaces content of the path by parsing the specified path string with custom s
 
 
 ## Parameters
-### str
-The path string. 
+* *in* **str**
 
-### pos
-The index of the first character to parse. 
+    The path string. 
 
-### count
-The number of characters to parse. 
+* *in* **pos**
+
+    The index of the first character to parse. 
+
+* *in* **count**
+
+    The number of characters to parse. 
 

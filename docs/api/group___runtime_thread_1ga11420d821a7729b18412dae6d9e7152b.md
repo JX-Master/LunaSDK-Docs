@@ -1,7 +1,7 @@
 # Luna::fast_sleep
 
 ```c++
-LUNA_RUNTIME_API void fast_sleep(u32 time_microseconds)
+void fast_sleep(u32 time_microseconds)
 ```
 
 Delays the execution of this thread for a very shout time by yielding this thread several times. 

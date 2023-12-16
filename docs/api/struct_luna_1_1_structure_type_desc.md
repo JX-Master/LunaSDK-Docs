@@ -5,7 +5,7 @@ Describes one structure type.
 struct Luna::StructureTypeDesc
 ```
 
-## Properties
+## Member objects
 * [Guid guid](struct_luna_1_1_structure_type_desc_1a0c8f65c9d3118ff62b1d40950e5154f8.md)
 
     The GUID of the structure type. This should be unique for every type. 

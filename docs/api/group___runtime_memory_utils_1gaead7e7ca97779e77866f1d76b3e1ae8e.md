@@ -10,8 +10,9 @@ Gets the real address for object or function `value`, even if the `operator&` of
 
 
 ## Parameters
-### value
-The object to fetch address. 
+* *in* **value**
+
+    The object to fetch address. 
 
 ## Return value
 Returns one pointer to the object. 

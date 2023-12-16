@@ -10,9 +10,11 @@ Calls the direct constructor for the object.
 
 
 ## Parameters
-### dst
-An iterator pointing to the object to be constructed. 
+* *in* **dst**
 
-### args
-Arguments that will be passed to the constructor. 
+    An iterator pointing to the object to be constructed. 
+
+* *in* **args**
+
+    Arguments that will be passed to the constructor. 
 

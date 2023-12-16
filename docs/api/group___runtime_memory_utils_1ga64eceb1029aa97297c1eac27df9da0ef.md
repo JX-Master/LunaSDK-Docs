@@ -10,9 +10,14 @@ Destructs every object in the range.
 
 
 ## Parameters
-### first
-An iterator to the first object to be destructed. 
+* *in* **first**
 
-### last
-An iterator to one-past-last object to be destructed. 
+    An iterator to the first object to be destructed. 
+
+* *in* **last**
+
+    An iterator to one-past-last object to be destructed. 
+
+## Remark
+If `value_type` is trivially destructible, do nothing. Else, calls the destructor for each object in the range. 
 

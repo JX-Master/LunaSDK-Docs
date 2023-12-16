@@ -1,7 +1,7 @@
 # Luna::utf16_to_utf8
 
 ```c++
-LUNA_RUNTIME_API usize utf16_to_utf8(c8 *dst, usize dst_max_chars, const c16 *src, usize src_chars=USIZE_MAX)
+usize utf16_to_utf8(c8 *dst, usize dst_max_chars, const c16 *src, usize src_chars=USIZE_MAX)
 ```
 
 Converts a UTF-16 string to UTF-8 string. 
@@ -24,6 +24,6 @@ The maximum characters to read. Specify `USIZE_MAX` to read till the end of the 
 ## Return value
 Returns the number of characters outputted to the `dst` buffer, not including the null-terminator. 
 
-#### Valid Usage
+## Valid Usage
 * `src` must be a valid UTF-16 string. 
 

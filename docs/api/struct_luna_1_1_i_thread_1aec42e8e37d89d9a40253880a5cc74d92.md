@@ -9,6 +9,7 @@ Sets thread priority.
 
 
 ## Parameters
-### priority
-The new priority of the thread. 
+* *in* **priority**
+
+    The new priority of the thread. 
 

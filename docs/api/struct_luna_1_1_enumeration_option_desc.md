@@ -5,7 +5,7 @@ Describes one enumeration option.
 struct Luna::EnumerationOptionDesc
 ```
 
-## Properties
+## Member objects
 * [Name name](struct_luna_1_1_enumeration_option_desc_1a7082db574ba2d2d69ccafb060398b7d8.md)
 
     The option name. 

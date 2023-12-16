@@ -10,11 +10,13 @@ Registers one enumeration type to the type system. The enumeration type must hav
 
 
 ## Parameters
-### options
-A list of options that should be tracked by the type system. The user can use luoption macro to declare options conveniently. 
+* *in* **options**
 
-### multienum
-Whether this enumeration type is a multi-value enumeration. See remarks of [EnumerationTypeDesc](struct_luna_1_1_enumeration_type_desc.md) for details. 
+    A list of options that should be tracked by the type system. The user can use luoption macro to declare options conveniently. 
+
+* *in* **multienum**
+
+    Whether this enumeration type is a multi-value enumeration. See remarks of [EnumerationTypeDesc](struct_luna_1_1_enumeration_type_desc.md) for details. 
 
 ## Return value
 Returns the registered structure type. 

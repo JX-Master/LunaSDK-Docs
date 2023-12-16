@@ -9,6 +9,7 @@ Inserts one name node at the back of the path.
 
 
 ## Parameters
-### path_node
-The name node to insert. The name node will be copy-inserted to the path. 
+* *in* **path_node**
+
+    The name node to insert. The name node will be copy-inserted to the path. 
 

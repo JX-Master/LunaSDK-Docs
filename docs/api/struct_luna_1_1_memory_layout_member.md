@@ -5,7 +5,7 @@ Describes one member used by memory layouting algorithms.
 struct Luna::MemoryLayoutMember
 ```
 
-## Properties
+## Member objects
 * [usize size](struct_luna_1_1_memory_layout_member_1a59f6400efda18d25d7b3cf3c2e7a3d3d.md)
 
     The size of this member in bytes. This property is filled by the user before calculating memory layouts. 

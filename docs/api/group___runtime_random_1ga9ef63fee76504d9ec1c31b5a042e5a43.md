@@ -1,7 +1,7 @@
 # Luna::new_random_number_generator
 
 ```c++
-LUNA_RUNTIME_API Ref< IRandom > new_random_number_generator(u32 initial_seed)
+Ref< IRandom > new_random_number_generator(u32 initial_seed)
 ```
 
 Creates one new random number generator. 

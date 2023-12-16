@@ -9,6 +9,7 @@ Constructs an empty list with an custom allocator.
 
 
 ## Parameters
-### alloc
-The allocator to use. The allocator object will be copy-constructed into the list. 
+* *in* **alloc**
+
+    The allocator to use. The allocator object will be copy-constructed into the list. 
 

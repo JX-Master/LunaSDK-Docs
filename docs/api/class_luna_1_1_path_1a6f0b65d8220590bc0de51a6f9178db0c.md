@@ -9,6 +9,7 @@ Constructs one path by moving coping content from another path.
 
 
 ## Parameters
-### rhs
-The path to copy from. 
+* *in* **rhs**
+
+    The path to copy from. 
 

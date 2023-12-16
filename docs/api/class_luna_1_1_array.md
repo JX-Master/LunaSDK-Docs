@@ -5,10 +5,9 @@ Represents one array of fixed or dynamic size.
 class Luna::Array
 ```
 
-## Overview
 [Array](class_luna_1_1_array.md) is one container that contains fixed number of elements. The size of one array can be set in compile time by specifying `_Size` of the array, or can be set when creating the array by setting `_Size` to DYNAMIC_ARRAY_SIZE. Unlike [Vector](class_luna_1_1_vector.md), the size of one array cannot be changed after the array is created. If the size of the array is determined in compile time, the memory for elements will be allocated directly in the array object; if the size of the array is determined in run time, the memory for elements will be allocated dynamically on heap. 
 
-## Functions
+## Member functions
 * [constexpr reference at(usize pos)](class_luna_1_1_array_1a4246559492a9ac95f5fd5e33e5077cc0.md)
 
     Gets a refernece of the element at the specified index. 
@@ -35,11 +34,11 @@ class Luna::Array
 
 * [constexpr reference back()](class_luna_1_1_array_1ae869682a778dc77a8dd62bbfa22f9d9a.md)
 
-    Gets a reference to the last (size - 1) element in the array. 
+    Gets a reference to the last ([size](class_luna_1_1_array_1adb59c183f075f048ae90778d15189686.md) - 1) element in the array. 
 
 * [constexpr const_reference back() const](class_luna_1_1_array_1a20a48cfbeb064093c00708b233c17883.md)
 
-    Gets a reference to the last (size - 1) element in the array. 
+    Gets a reference to the last ([size](class_luna_1_1_array_1adb59c183f075f048ae90778d15189686.md) - 1) element in the array. 
 
 * [constexpr _Ty * data()](class_luna_1_1_array_1aaf0bf16ebc5c8c11cb351557b61e4b9c.md)
 

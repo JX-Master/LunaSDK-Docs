@@ -9,9 +9,11 @@ Constructs a list with an custom allocator and with elements copied from another
 
 
 ## Parameters
-### rhs
-The list to copy elements from. 
+* *in* **rhs**
 
-### alloc
-The allocator to use. The allocator object will be copy-constructed into the list. 
+    The list to copy elements from. 
+
+* *in* **alloc**
+
+    The allocator to use. The allocator object will be copy-constructed into the list. 
 

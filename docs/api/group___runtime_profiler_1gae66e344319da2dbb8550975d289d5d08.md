@@ -1,7 +1,7 @@
 # Luna::memory_profiler_set_memory_type
 
 ```c++
-LUNA_RUNTIME_API void memory_profiler_set_memory_type(void *ptr, const c8 *type, usize str_size=USIZE_MAX)
+void memory_profiler_set_memory_type(void *ptr, const c8 *type, usize str_size=USIZE_MAX)
 ```
 
 Sets the type of the object this memory block. 

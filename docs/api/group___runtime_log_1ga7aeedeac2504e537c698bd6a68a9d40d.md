@@ -1,7 +1,7 @@
 # Luna::logv_warning
 
 ```c++
-LUNA_RUNTIME_API void logv_warning(const c8 *tag, const c8 *format, VarList args)
+void logv_warning(const c8 *tag, const c8 *format, VarList args)
 ```
 
 Outputs one log message with LogVerbosity::warning verbosity. 

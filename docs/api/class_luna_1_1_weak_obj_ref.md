@@ -5,7 +5,7 @@ The smart pointer that represents one typeless weak reference to one boxed objec
 class Luna::WeakObjRef
 ```
 
-## Functions
+## Member functions
 * [void reset()](class_luna_1_1_weak_obj_ref_1ad20897c5c8bd47f5d4005989bead0e55.md)
 
     Resets the reference to null. 

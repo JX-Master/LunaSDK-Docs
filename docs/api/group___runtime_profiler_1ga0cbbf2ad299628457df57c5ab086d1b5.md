@@ -1,7 +1,7 @@
 # Luna::register_profiler_callback
 
 ```c++
-LUNA_RUNTIME_API usize register_profiler_callback(const Function< on_profiler_event_t > &handler)
+usize register_profiler_callback(const Function< on_profiler_event_t > &handler)
 ```
 
 Registers one profiler callback function. 

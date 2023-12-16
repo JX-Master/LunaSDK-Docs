@@ -9,9 +9,11 @@ Replaces the extension.
 
 
 ## Parameters
-### new_extension
-The new extension to replace. 
+* *in* **new_extension**
 
-### count
-The length of the new extension string. 
+    The new extension to replace. 
+
+* *in* **count**
+
+    The length of the new extension string. 
 

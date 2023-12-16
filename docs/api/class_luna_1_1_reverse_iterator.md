@@ -5,10 +5,9 @@ An iterator adaptor that reverses the direction of a given iterator.
 class Luna::ReverseIterator
 ```
 
-## Overview
 The given iterator must be at least an bidirectional iterator. 
 
-## Functions
+## Member functions
 * [constexpr ReverseIterator()](class_luna_1_1_reverse_iterator_1a7a27a93824c22c3d1062eda8f36bf9b0.md)
 
     Constructs an empty reverse iterator. 

@@ -1,7 +1,7 @@
 # Luna::log_error
 
 ```c++
-LUNA_RUNTIME_API void log_error(const c8 *tag, const c8 *format,...)
+void log_error(const c8 *tag, const c8 *format,...)
 ```
 
 Outputs one log message with LogVerbosity::error verbosity. 

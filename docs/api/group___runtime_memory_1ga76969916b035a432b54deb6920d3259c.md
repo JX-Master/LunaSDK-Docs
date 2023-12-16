@@ -1,7 +1,7 @@
 # Luna::memalloc
 
 ```c++
-LUNA_RUNTIME_API void * memalloc(usize size, usize alignment=0)
+void * memalloc(usize size, usize alignment=0)
 ```
 
 Allocates heap memory. 
@@ -21,6 +21,6 @@ If this is 0 (default), then the memory is allocated with no additional alignmen
 ## Return value
 Returns one pointer to the allocated memory block. Returns `nullptr` if memory allocation failed or if `size` is `0`. 
 
-#### Valid Usage
+## Valid Usage
 * If `alignment` is not `0`, `alignment` be powers of 2 (like 32, 64, 128, 256, etc). 
 

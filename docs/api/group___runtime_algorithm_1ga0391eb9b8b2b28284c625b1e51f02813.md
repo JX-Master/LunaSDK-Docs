@@ -10,17 +10,21 @@ Tests the equality of two ranges.
 
 
 ## Parameters
-### first1
-The iterator pointing to the first element of the first range. 
+* *in* **first1**
 
-### last1
-The iterator pointing to the one-past-last element of the first range. 
+    The iterator pointing to the first element of the first range. 
 
-### first2
-The iterator pointing to the first element of the second range. 
+* *in* **last1**
 
-### equal_compare
-The user-defined equal (==) comparison function used for comparing. 
+    The iterator pointing to the one-past-last element of the first range. 
+
+* *in* **first2**
+
+    The iterator pointing to the first element of the second range. 
+
+* *in* **equal_compare**
+
+    The user-defined equal (==) comparison function used for comparing. 
 
 ## Return value
 Returns `true` if two ranges are equal, returns `false` otherwise. 

@@ -10,11 +10,13 @@ Relocates one object.
 After this call, the object in the destination memory behaves the same as the object formerly in the source memory, except that the place(memory address) for the object is changed. 
 
 ## Parameters
-### dst
-An iterator to relocation destination. 
+* *in* **dst**
 
-### src
-An iterator to the object to be relocated. 
+    An iterator to relocation destination. 
+
+* *in* **src**
+
+    An iterator to the object to be relocated. 
 
 ## Return value
 Returns `dst`. 

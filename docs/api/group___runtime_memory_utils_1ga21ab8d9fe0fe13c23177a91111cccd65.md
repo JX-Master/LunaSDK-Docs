@@ -9,11 +9,13 @@ Clears the specified memory region to 0.
 
 
 ## Parameters
-### dst
-The start address of memory region to clear. 
+* *in* **dst**
 
-### byte_count
-The size, in bytes, of the memory region to clear. 
+    The start address of memory region to clear. 
+
+* *in* **byte_count**
+
+    The size, in bytes, of the memory region to clear. 
 
 ## Return value
 Returns the `dst` pointer. 

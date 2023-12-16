@@ -1,7 +1,7 @@
 # Luna::memory_profiler_deallocate
 
 ```c++
-LUNA_RUNTIME_API void memory_profiler_deallocate(void *ptr)
+void memory_profiler_deallocate(void *ptr)
 ```
 
 Emits one PROFILER_EVENT_ID_MEMORY_DEALLOCATE profiler event. 
@@ -11,4 +11,7 @@ Emits one PROFILER_EVENT_ID_MEMORY_DEALLOCATE profiler event.
 ## Parameters
 ### ptr
 The registered memory pointer. 
+
+## Remark
+Memory deallocations through `memfree` call this internally when memory profiling is enabled, thus the user does not need to call this again. 
 

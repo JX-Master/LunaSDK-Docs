@@ -8,6 +8,6 @@ Removes the last element of the list.
 
 
 
-#### Valid Usage
+## Valid Usage
 * `empty()` must be `false` when calling this function. 
 

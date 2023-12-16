@@ -10,8 +10,9 @@ Constructs one element directly on the back of the list using the provided argum
 
 
 ## Parameters
-### args
-The arguments to construct the element. `_Ty(args...)` will be used to construct the element. 
+* *in* **args**
+
+    The arguments to construct the element. `_Ty(args...)` will be used to construct the element. 
 
 ## Return value
 Returns one reference to the constructed element. 

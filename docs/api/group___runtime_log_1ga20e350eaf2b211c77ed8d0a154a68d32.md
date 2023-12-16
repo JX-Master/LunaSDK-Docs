@@ -1,7 +1,7 @@
 # Luna::logv_info
 
 ```c++
-LUNA_RUNTIME_API void logv_info(const c8 *tag, const c8 *format, VarList args)
+void logv_info(const c8 *tag, const c8 *format, VarList args)
 ```
 
 Outputs one log message with LogVerbosity::info verbosity. 

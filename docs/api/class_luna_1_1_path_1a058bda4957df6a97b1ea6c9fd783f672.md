@@ -8,6 +8,6 @@ Removes the last name node of the path.
 
 
 
-#### Valid Usage
+## Valid Usage
 * `empty()` must be `false` when calling this function. 
 

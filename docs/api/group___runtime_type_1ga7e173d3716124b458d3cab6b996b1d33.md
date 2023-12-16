@@ -9,12 +9,15 @@ The structure copy assignment operator used by the reflection system.
 
 
 ## Parameters
-### type
-The type of the instance. 
+* *in* **type**
 
-### dst
-The instance data to assign. 
+    The type of the instance. 
 
-### src
-The instance data to copy data from. 
+* *in* **dst**
+
+    The instance data to assign. 
+
+* *in* **src**
+
+    The instance data to copy data from. 
 

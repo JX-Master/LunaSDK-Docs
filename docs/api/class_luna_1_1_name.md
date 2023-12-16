@@ -5,10 +5,9 @@ Represents one name string.
 class Luna::Name
 ```
 
-## Overview
 The name string is one constant string that is mainly used to identify entities in LunaSDK. [Name](class_luna_1_1_name.md) strings are reference counted and managed by system, all [Name](class_luna_1_1_name.md) objects containing the same name string will refer the same name internal string data, enabling fast comparison: instead of comparing the whole string, we only need to compare one pointer to determine whether two name strings are the same. 
 
-## Functions
+## Member functions
 * [Name()](class_luna_1_1_name_1aee637aaac62ffd89b7b7c6b6529e913b.md)
 
     Constructs one empty name. 

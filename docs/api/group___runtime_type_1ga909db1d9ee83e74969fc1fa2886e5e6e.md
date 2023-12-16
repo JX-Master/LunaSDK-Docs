@@ -9,11 +9,13 @@ The hash code computing function used by the reflection system.
 
 
 ## Parameters
-### type
-The type of the instance. 
+* *in* **type**
 
-### inst
-The pointer to the instance. 
+    The type of the instance. 
+
+* *in* **inst**
+
+    The pointer to the instance. 
 
 ## Return value
 Returns the computed hash code. 

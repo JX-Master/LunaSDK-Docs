@@ -9,8 +9,9 @@ Adds one new handler to the event.
 
 
 ## Parameters
-### func
-The handler to add to this event. 
+* *in* **func**
+
+    The handler to add to this event. 
 
 ## Return value
 Returns one integer that can be used to remove this handler manually. 

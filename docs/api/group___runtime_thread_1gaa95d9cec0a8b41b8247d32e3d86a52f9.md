@@ -1,7 +1,7 @@
 # Luna::sleep
 
 ```c++
-LUNA_RUNTIME_API void sleep(u32 time_milliseconds)
+void sleep(u32 time_milliseconds)
 ```
 
 Suspends current thread for a specific period of time. 

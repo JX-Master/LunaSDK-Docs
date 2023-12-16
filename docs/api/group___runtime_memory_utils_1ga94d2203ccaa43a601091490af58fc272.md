@@ -10,14 +10,17 @@ Move-constructs a range of objects.
 
 
 ## Parameters
-### first
-An iterator to the first object to be moved from. 
+* *in* **first**
 
-### last
-An iterator to one-past-last object to be moved from. 
+    An iterator to the first object to be moved from. 
 
-### d_first
-An iterator to the first object to be constructed. 
+* *in* **last**
+
+    An iterator to one-past-last object to be moved from. 
+
+* *in* **d_first**
+
+    An iterator to the first object to be constructed. 
 
 ## Return value
 Returns an iterator to the one-past-last object to be constructed.
@@ -25,6 +28,9 @@ Returns an iterator to the one-past-last object to be constructed.
 
 This function uses each object in the range [`first`, `last`) to performs move initialization on corresponding objects beginning with `d_first`. 
 
-#### Valid Usage
+## Valid Usage
 * The source range and the destination range must not overlap. 
+
+## Remark
+If `value_type` of `_Iter2` is trivially move constructible, calls `copy_construct_range` to do the move construct. Otherwise, the move constructor is called for every object to construct objects in destination range. 
 

@@ -10,11 +10,13 @@ Assigns the value to the element with the specified key, or inserts the key-valu
 
 
 ## Parameters
-### key
-The key of the element to assign or insert. 
+* *in* **key**
 
-### value
-The element value to assign or insert. 
+    The key of the element to assign or insert. 
+
+* *in* **value**
+
+    The element value to assign or insert. 
 
 ## Return value
 Returns one iterator-bool pair indicating the result:* If the returned Boolean value is `true`, then the element is inserted to the map, and the returned iterator points to the inserted element.

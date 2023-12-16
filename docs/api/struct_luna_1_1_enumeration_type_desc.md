@@ -5,7 +5,7 @@ Describes one enumeration type.
 struct Luna::EnumerationTypeDesc
 ```
 
-## Properties
+## Member objects
 * [Guid guid](struct_luna_1_1_enumeration_type_desc_1a0c8f65c9d3118ff62b1d40950e5154f8.md)
 
     The GUID of the enumeration type. This should be unique for every type. 

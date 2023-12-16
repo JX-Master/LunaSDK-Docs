@@ -9,14 +9,17 @@ The equality testing function used by the reflection system.
 
 
 ## Parameters
-### type
-The type object. 
+* *in* **type**
 
-### lhs
-The pointer to the first instance to be compared. 
+    The type object. 
 
-### rhs
-The pointer to the second instance to be compared. 
+* *in* **lhs**
+
+    The pointer to the first instance to be compared. 
+
+* *in* **rhs**
+
+    The pointer to the second instance to be compared. 
 
 ## Return value
 Returns `true` if two instances are equal. Returns `false` otherwise. 

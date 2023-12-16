@@ -5,7 +5,7 @@ A emitted profiler event.
 struct Luna::ProfilerEvent
 ```
 
-## Properties
+## Member objects
 * [u64 timestamp](struct_luna_1_1_profiler_event_1aadc697c6a8acc6c49459bb88dc082326.md)
 
     The time that this. 

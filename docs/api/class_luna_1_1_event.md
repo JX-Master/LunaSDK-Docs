@@ -5,7 +5,7 @@ Represents one event that once triggered, invokes all handlers registered to it.
 class Luna::Event
 ```
 
-## Functions
+## Member functions
 * [void clear()](class_luna_1_1_event_1ac8bb3912a3ce86b15842e79d0b421204.md)
 
     Removes all handlers registered to this event. 

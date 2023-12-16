@@ -1,7 +1,7 @@
 # Luna::stack_backtrace
 
 ```c++
-LUNA_RUNTIME_API u32 stack_backtrace(Span< opaque_t > frames)
+u32 stack_backtrace(Span< opaque_t > frames)
 ```
 
 Captures function call stack information of the current thread. 

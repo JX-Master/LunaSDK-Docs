@@ -9,14 +9,19 @@ Tests if specified bit is 1.
 
 
 ## Parameters
-### base_addr
-The address of the bit to offset from. 
+* *in* **base_addr**
 
-### bit_offset
-The number of bits shifted from the `base_addr`. 
+    The address of the bit to offset from. 
+
+* *in* **bit_offset**
+
+    The number of bits shifted from the `base_addr`. 
 
 ## Return value
 Returns `true` if the bit is 1, `false` if the bit is 0. 
+
+## Remark
+The following cases demonstrate the index order of `bit_test`, `bit_set` and `bit_reset`.
 
 
 base_addr: 0x1000, bit_offset: 0, `*((u8*)0x1000)`: 0000 1000b* test result: false.

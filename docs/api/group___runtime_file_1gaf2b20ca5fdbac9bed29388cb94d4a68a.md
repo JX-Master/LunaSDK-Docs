@@ -1,7 +1,7 @@
 # Luna::get_current_dir
 
 ```c++
-LUNA_RUNTIME_API u32 get_current_dir(u32 buffer_length, c8 *buffer)
+u32 get_current_dir(u32 buffer_length, c8 *buffer)
 ```
 
 Gets the current working directory path for the underlying system. 

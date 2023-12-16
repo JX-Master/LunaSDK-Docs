@@ -10,9 +10,11 @@ Sets the provided enumeration options to 1.
 
 
 ## Parameters
-### flags
-The flag variable to set. 
+* *in* **flags**
 
-### options
-The options to set to 1. 
+    The flag variable to set. 
+
+* *in* **options**
+
+    The options to set to 1. 
 

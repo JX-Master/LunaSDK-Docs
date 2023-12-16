@@ -10,11 +10,13 @@ Gets one iterator pointing to the last `n`th element of the element pointed by t
 
 
 ## Parameters
-### it
-The base iterator. 
+* *in* **it**
 
-### n
-The position relative to the base iterator. 
+    The base iterator. 
+
+* *in* **n**
+
+    The position relative to the base iterator. 
 
 ## Return value
 Returns the iterator pointing to the last `n`th element of the element pointed by the input iterator. 

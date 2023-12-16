@@ -9,12 +9,15 @@ Transfers one element from another list to this list.
 No memory allocation or element copy/move will be performed, this function transfers elements by changing their pointers directly so that they link to the new list. 
 
 ## Parameters
-### pos
-The iterator pointing to the position to insert the transferred element. 
+* *in* **pos**
 
-### other
-The list to transfer the element from. 
+    The iterator pointing to the position to insert the transferred element. 
 
-### it
-The iterator pointing to the element to be transferred. 
+* *in* **other**
+
+    The list to transfer the element from. 
+
+* *in* **it**
+
+    The iterator pointing to the element to be transferred. 
 

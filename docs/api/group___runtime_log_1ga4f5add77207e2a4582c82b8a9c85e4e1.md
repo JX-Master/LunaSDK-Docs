@@ -9,18 +9,23 @@ Called by the log system when one log is emitted.
 
 
 ## Parameters
-### verbosity
-The log verbosity. 
+* *in* **verbosity**
 
-### tag
-The log tag. Used by the implementation to filter logs. 
+    The log verbosity. 
 
-### tag_len
-The length of the tag string. 
+* *in* **tag**
 
-### message
-The log message. 
+    The log tag. Used by the implementation to filter logs. 
 
-### message_length
-The message length. 
+* *in* **tag_len**
+
+    The length of the tag string. 
+
+* *in* **message**
+
+    The log message. 
+
+* *in* **message_length**
+
+    The message length. 
 

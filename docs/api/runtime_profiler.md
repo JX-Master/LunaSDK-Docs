@@ -7,7 +7,7 @@
 * [Luna::ProfilerEventData::SetMemoryType](struct_luna_1_1_profiler_event_data_1_1_set_memory_type.md)
 * [Luna::ProfilerEventData::SetMemoryDomain](struct_luna_1_1_profiler_event_data_1_1_set_memory_domain.md)
 ## Functions
-* [LUNA_RUNTIME_API void * allocate_profiler_event_data(usize size, usize alignment, void(*dtor)(void *)=nullptr)](group___runtime_profiler_1ga0c06788b2e5c93818d402bae7a237aa6.md)
+* [void * allocate_profiler_event_data(usize size, usize alignment, void(*dtor)(void *)=nullptr)](group___runtime_profiler_1ga7eaa2c6dab0d6b10da8f589ae1faceaf.md)
 
     Allocates one temporary buffer that can be used to store event data for the next profiler event. 
 
@@ -19,35 +19,35 @@
 
     Allocates one temporary object that can be used to store event data for the next profiler event. 
 
-* [LUNA_RUNTIME_API void submit_profiler_event(u64 event_id)](group___runtime_profiler_1gac1c18a61488c579ee7e57689a00066f6.md)
+* [void submit_profiler_event(u64 event_id)](group___runtime_profiler_1ga9606e89a2918c82f675423172519de00.md)
 
     Submits one profiler event. 
 
-* [LUNA_RUNTIME_API usize register_profiler_callback(const Function< on_profiler_event_t > &handler)](group___runtime_profiler_1ga0cbbf2ad299628457df57c5ab086d1b5.md)
+* [usize register_profiler_callback(const Function< on_profiler_event_t > &handler)](group___runtime_profiler_1ga22959c4b1b3b648ea696bb268c925f32.md)
 
     Registers one profiler callback function. 
 
-* [LUNA_RUNTIME_API void unregister_profiler_callback(usize handler_id)](group___runtime_profiler_1ga96c6c6b48e4693f93f9a032c8e8bf24d.md)
+* [void unregister_profiler_callback(usize handler_id)](group___runtime_profiler_1ga61119861f9b1baaa12126748287a6a61.md)
 
     Unregisters one profiler callback function. 
 
-* [LUNA_RUNTIME_API void memory_profiler_allocate(void *ptr, usize size)](group___runtime_profiler_1ga4f66b7d3d7446ab9831db2b85650fed9.md)
+* [void memory_profiler_allocate(void *ptr, usize size)](group___runtime_profiler_1ga93eae32928d521552eb67865e576c03d.md)
 
     Emits one PROFILER_EVENT_ID_MEMORY_ALLOCATE profiler event. 
 
-* [LUNA_RUNTIME_API void memory_profiler_deallocate(void *ptr)](group___runtime_profiler_1ga484ebdca3d68138f5bf05b13bc2e67c9.md)
+* [void memory_profiler_deallocate(void *ptr)](group___runtime_profiler_1ga78750728333548e6d934696710eb64a5.md)
 
     Emits one PROFILER_EVENT_ID_MEMORY_DEALLOCATE profiler event. 
 
-* [LUNA_RUNTIME_API void memory_profiler_set_memory_name(void *ptr, const c8 *name, usize str_size=USIZE_MAX)](group___runtime_profiler_1ga70a0f39db69fda4df489d3f375665d1c.md)
+* [void memory_profiler_set_memory_name(void *ptr, const c8 *name, usize str_size=USIZE_MAX)](group___runtime_profiler_1ga731879fecbe041bf54b3a17f471ae93b.md)
 
     Sets a debug name for the memory block, for example, the name of the resource file this memory block is allocated for. This function emits one PROFILER_EVENT_ID_SET_MEMORY_NAME profiler event. 
 
-* [LUNA_RUNTIME_API void memory_profiler_set_memory_type(void *ptr, const c8 *type, usize str_size=USIZE_MAX)](group___runtime_profiler_1gae66e344319da2dbb8550975d289d5d08.md)
+* [void memory_profiler_set_memory_type(void *ptr, const c8 *type, usize str_size=USIZE_MAX)](group___runtime_profiler_1ga528082599fe26fa41bc437284edba5a6.md)
 
     Sets the type of the object this memory block. 
 
-* [LUNA_RUNTIME_API void memory_profiler_set_memory_domain(void *ptr, const c8 *domain, usize str_size=USIZE_MAX)](group___runtime_profiler_1ga48f319dc9914aa2adce844ea385d28f5.md)
+* [void memory_profiler_set_memory_domain(void *ptr, const c8 *domain, usize str_size=USIZE_MAX)](group___runtime_profiler_1ga29e87893674b7781230d72457b42d2db.md)
 
     Sets the memory domain. 
 

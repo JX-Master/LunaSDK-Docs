@@ -10,8 +10,9 @@ Creates a strong reference from one raw pointer without modifing its reference c
 
 
 ## Parameters
-### obj
-The raw pointer. 
+* *in* **obj**
+
+    The raw pointer. 
 
 ## Return value
 Returns the strong reference created from the raw pointer. 

@@ -1,7 +1,7 @@
 # Luna::open_file
 
 ```c++
-LUNA_RUNTIME_API R< Ref< IFile > > open_file(const c8 *path, FileOpenFlag flags, FileCreationMode creation)
+R< Ref< IFile > > open_file(const c8 *path, FileOpenFlag flags, FileCreationMode creation)
 ```
 
 Opens one file. 
@@ -21,7 +21,7 @@ The file creation mode.
 ## Return value
 Returns the new opened file object. 
 
-#### Possible Errors
+## Possible Errors
 * BasicError::bad_arguments
 
 * BasicError::access_denied

@@ -1,7 +1,7 @@
 # Luna::utf16_to_utf8_len
 
 ```c++
-LUNA_RUNTIME_API usize utf16_to_utf8_len(const c16 *src, usize src_chars=USIZE_MAX)
+usize utf16_to_utf8_len(const c16 *src, usize src_chars=USIZE_MAX)
 ```
 
 Determines the length of the corresponding UTF-8 string for a UTF-16 string, not include the null-terminator. 

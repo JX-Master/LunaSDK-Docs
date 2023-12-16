@@ -10,9 +10,11 @@ Advances the given iterator by `n` positions respectively.
 
 
 ## Parameters
-### it
-The iterator to advance. 
+* *in* **it**
 
-### n
-The position to advance relative to the current position. 
+    The iterator to advance. 
+
+* *in* **n**
+
+    The position to advance relative to the current position. 
 

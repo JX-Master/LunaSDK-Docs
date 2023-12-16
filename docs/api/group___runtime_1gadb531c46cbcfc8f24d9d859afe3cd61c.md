@@ -10,14 +10,17 @@ Sets the provided enumeration options to 1 or 0 based on the value provided.
 
 
 ## Parameters
-### flags
-The original flags before set. 
+* *in* **flags**
 
-### options
-The options to set to 1 or 0. 
+    The original flags before set. 
 
-### value
-If this is `true`, all options specified will be set to 1, else they will be set to 0. 
+* *in* **options**
+
+    The options to set to 1 or 0. 
+
+* *in* **value**
+
+    If this is `true`, all options specified will be set to 1, else they will be set to 0. 
 
 ## Return value
 Returns the enumeration after all options specified being set. 

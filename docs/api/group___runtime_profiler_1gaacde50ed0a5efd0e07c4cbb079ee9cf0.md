@@ -10,6 +10,7 @@ One helper function that calls the destructor of the specified type on the point
 
 
 ## Parameters
-### data
-The pointer to the object to be destructed. 
+* *in* **data**
+
+    The pointer to the object to be destructed. 
 

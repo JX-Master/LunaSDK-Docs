@@ -9,6 +9,7 @@ Constructs a set by moving elements from another set.
 
 
 ## Parameters
-### rhs
-The set to move elements from. 
+* *in* **rhs**
+
+    The set to move elements from. 
 
