@@ -13,6 +13,11 @@
 
     An alias of `R<void>` for representing one throwable function with no return value. 
 
+## Constants
+* [constexpr RV ok](group___runtime_error_1ga5b239ee8917aacd639e36743f8561eb2.md)
+
+    A special constant result object that represents one successful result. 
+
 ## Functions
 * [ErrCode get_error_code_by_name(const c8 *errcat_name, const c8 *errcode_name)](group___runtime_error_1gac2cf4135d372c8b93bc5dd51a1a5a3a2.md)
 
