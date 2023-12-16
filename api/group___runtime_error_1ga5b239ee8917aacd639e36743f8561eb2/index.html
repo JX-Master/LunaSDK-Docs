@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/runtime_container/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/group___runtime_error_1ga5b239ee8917aacd639e36743f8561eb2/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Containers - Luna SDK Docs</title>
+    <title>Luna::ok - Luna SDK Docs</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Containers";
-        var mkdocs_page_input_path = "api\\runtime_container.md";
-        var mkdocs_page_url = "/api/runtime_container/";
+        var mkdocs_page_name = "Luna::ok";
+        var mkdocs_page_input_path = "api\\group___runtime_error_1ga5b239ee8917aacd639e36743f8561eb2.md";
+        var mkdocs_page_url = "/api/group___runtime_error_1ga5b239ee8917aacd639e36743f8561eb2/";
       </script>
     
     <!--[if lt IE 9]>
@@ -137,7 +137,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Containers</li>
+      <li class="breadcrumb-item active">Luna::ok</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -146,27 +146,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="containers">Containers</h1>
-<h2 id="classes">Classes</h2>
-<ul>
-<li><a href="../class_luna_1_1_array/">Luna::Array</a></li>
-<li><a href="../class_luna_1_1_hash_map/">Luna::HashMap</a></li>
-<li><a href="../class_luna_1_1_hash_set/">Luna::HashSet</a></li>
-<li><a href="../class_luna_1_1_list/">Luna::List</a></li>
-<li><a href="../class_luna_1_1_ring_deque/">Luna::RingDeque</a></li>
-</ul>
-<h2 id="constants">Constants</h2>
-<ul>
-<li>
-<p><a href="../group___runtime_container_1gac211fb2fcac88253a56c67d77c041a02/">constexpr usize DYNAMIC_ARRAY_SIZE</a></p>
-<p>Specifies a dynamic-sized array for <a href="../class_luna_1_1_array/">Array</a>. </p>
-</li>
-</ul>
-<h2 id="functions">Functions</h2>
-<ul>
-<li><a href="../group___runtime_container_1ga1d3057e6d50ac9a9463512b59e3d8a6f/">typeinfo_t hash_map_type()</a></li>
-<li><a href="../group___runtime_container_1ga743bdc5ea347716089749522959567a2/">typeinfo_t hash_set_type()</a></li>
-</ul>
+                <h1 id="lunaok">Luna::ok</h1>
+<pre><code class="language-c++">constexpr RV ok 
+</code></pre>
+<p>A special constant result object that represents one successful result. </p>
+<p>You can return <code>ok</code> instead of <code>RV()</code> to clearly represent one successful call for one function without return value. </p>
               
             </div>
           </div><footer>
