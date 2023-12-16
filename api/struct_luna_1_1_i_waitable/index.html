@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/runtime/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/struct_luna_1_1_i_waitable/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Runtime - Luna SDK Docs</title>
+    <title>Luna::IWaitable - Luna SDK Docs</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Runtime";
-        var mkdocs_page_input_path = "api\\runtime.md";
-        var mkdocs_page_url = "/api/runtime/";
+        var mkdocs_page_name = "Luna::IWaitable";
+        var mkdocs_page_input_path = "api\\struct_luna_1_1_i_waitable.md";
+        var mkdocs_page_url = "/api/struct_luna_1_1_i_waitable/";
       </script>
     
     <!--[if lt IE 9]>
@@ -119,16 +119,8 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Programming Reference</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Runtime</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#topics">Topics</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
-    </li>
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
                   </li>
               </ul>
       </div>
@@ -145,8 +137,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Programming Reference</li>
-      <li class="breadcrumb-item active">Runtime</li>
+      <li class="breadcrumb-item active">Luna::IWaitable</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -155,107 +146,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="runtime">Runtime</h1>
-<p>The Runtime module provides the runtime environment of Luna SDK and defines core functionalities that will be used by almost all modules. </p>
-<h2 id="topics">Topics</h2>
+                <h1 id="lunaiwaitable">Luna::IWaitable</h1>
+<p>Represents a waitable object used for multi-thread synchronization. </p>
+<pre><code class="language-c++">interface Luna::IWaitable : public virtual Interface
+</code></pre>
+<p>Objects that implements <code>IWaitable</code> cannot be used cross process boundary. </p>
+<h2 id="base-type">Base type</h2>
 <ul>
-<li><a href="../runtime_algorithm/">Algorithms</a></li>
-<li><a href="../runtime_container/">Containers</a></li>
-<li><a href="../runtime_assert/">Assertions</a></li>
-<li><a href="../runtime_atomic/">Atomic Operations</a></li>
-<li><a href="../runtime_base_type/">Basic types</a></li>
-<li><a href="../runtime_base64/">Base64 encoding/decoding</a></li>
-<li><a href="../runtime_base85/">Base85 encoding/decoding</a></li>
-<li><a href="../runtime_debug/">Debugging</a></li>
-<li><a href="../runtime_d_l_l/">DLL loading</a></li>
-<li><a href="../runtime_error/">Error handling</a></li>
-<li><a href="../runtime_file/">Files</a></li>
-<li><a href="../runtime_hash/">Hashing functions</a></li>
-<li><a href="../runtime_interface/">Interfaces</a></li>
-<li><a href="../runtime_log/">Logging</a></li>
-<li><a href="../runtime_memory/">Memory allocation and deallocation</a></li>
-<li><a href="../runtime_memory_utils/">Memory utility library</a></li>
-<li><a href="../runtime_module/">Module system</a></li>
-<li><a href="../runtime_name/">Name strings</a></li>
-<li><a href="../runtime_object/">Boxed objects</a></li>
-<li><a href="../runtime_path/">Path</a></li>
-<li><a href="../runtime_profiler/">Debugging</a></li>
-<li><a href="../runtime_random/">Generating random numbers</a></li>
-<li><a href="../runtime_init/">SDK initialization and shutdown</a></li>
-<li><a href="../runtime_thread/">Thread management and synchronization methods</a></li>
-<li><a href="../runtime_type/">Type reflection</a></li>
-<li><a href="../runtime_unicode/">Unicode encoding/decoding</a></li>
+<li><a href="../struct_luna_1_1_interface/">Interface</a></li>
 </ul>
-<h2 id="classes">Classes</h2>
-<ul>
-<li><a href="../class_luna_1_1_allocator/">Luna::Allocator</a></li>
-<li><a href="../class_luna_1_1_blob/">Luna::Blob</a></li>
-<li><a href="../class_luna_1_1_event/">Luna::Event</a></li>
-<li><a href="../struct_luna_1_1equal__to/">Luna::equal_to</a></li>
-<li><a href="../struct_luna_1_1less/">Luna::less</a></li>
-<li><a href="../struct_luna_1_1hash/">Luna::hash</a></li>
-<li><a href="../class_luna_1_1_reference_wrapper/">Luna::ReferenceWrapper</a></li>
-<li><a href="../struct_luna_1_1_function_3_01___r_07___args_8_8_8_08_4/">Luna::Function&lt; _R(_Args...)&gt;</a></li>
-<li><a href="../class_luna_1_1_reverse_iterator/">Luna::ReverseIterator</a></li>
-<li><a href="../class_luna_1_1_obj_ref/">Luna::ObjRef</a></li>
-<li><a href="../class_luna_1_1_ref/">Luna::Ref</a></li>
-<li><a href="../class_luna_1_1_weak_obj_ref/">Luna::WeakObjRef</a></li>
-<li><a href="../class_luna_1_1_weak_ref/">Luna::WeakRef</a></li>
-<li><a href="../struct_luna_1_1_i_stream/">Luna::IStream</a></li>
-<li><a href="../struct_luna_1_1_i_seekable_stream/">Luna::ISeekableStream</a></li>
-<li><a href="../class_luna_1_1_variant/">Luna::Variant</a></li>
-<li><a href="../class_luna_1_1_vector/">Luna::Vector</a></li>
-<li><a href="../struct_luna_1_1_i_waitable/">Luna::IWaitable</a></li>
-</ul>
-<h2 id="functions">Functions</h2>
+<h2 id="member-functions">Member functions</h2>
 <ul>
 <li>
-<p><a href="../group___runtime_1gaf7411fc1e4c76b86c6f6b69eeb62b704/">auto invoke(_Func &amp;&amp;f) -&gt; decltype(static_cast&lt; _Func &amp;&amp; &gt;(f)())</a></p>
-<p>Invokes the specified callable object. </p>
+<p><a href="../struct_luna_1_1_i_waitable_1a0c78500b6312f13b1d666b30b40fe132/">virtual void wait()=0</a></p>
+<p>Waits for this object to be signaled. </p>
 </li>
 <li>
-<p><a href="../group___runtime_1gaf7a93152ce0e85bc60d65da9d62c0ca7/">auto invoke(_Func &amp;&amp;f, _Ty &amp;&amp;arg1, _Args &amp;&amp;... args) -&gt; invoke_result_t&lt; _Func, _Ty, _Args... &gt;</a></p>
-<p>Invokes the specified callable object. </p>
-</li>
-<li>
-<p><a href="../group___runtime_1gac769aef9bea2b465a9437c25ac6ac9ac/">_Return invoke_r(_Func &amp;&amp;f, _Args &amp;&amp;... args)</a></p>
-<p>Invokes the specified callable object. </p>
-</li>
-<li>
-<p><a href="../group___runtime_1gab53d4c159697d19e8fda0a022d611150/">constexpr ReverseIterator&lt; _Iter &gt; make_reverse_iterator(_Iter i)</a></p>
-<p>Creates one reverse iterator from one iterator. </p>
-</li>
-<li>
-<p><a href="../group___runtime_1gaeb004dafbae757b1fe66452065ae8739/">void advance(_Iter &amp;it, _Distance n)</a></p>
-<p>Advances the given iterator by <code>n</code> positions respectively. </p>
-</li>
-<li>
-<p><a href="../group___runtime_1gacceb07c8bab688f75ae3207dea30f02e/">isize distance(_It first, _It last)</a></p>
-<p>Gets the number of elements between two iterators. </p>
-</li>
-<li>
-<p><a href="../group___runtime_1ga4e2d965044b1d306278d256d980423fd/">_Iter next(_Iter it, isize n=1)</a></p>
-<p>Gets one iterator pointing to the next <code>n</code>th element of the element pointed by the input iterator. </p>
-</li>
-<li>
-<p><a href="../group___runtime_1ga3eab7cd933798dde3a66eb98069ea222/">_BidirIt prev(_BidirIt it, isize n=1)</a></p>
-<p>Gets one iterator pointing to the last <code>n</code>th element of the element pointed by the input iterator. </p>
-</li>
-<li>
-<p><a href="../group___runtime_1ga9ffa672f4edd97e1402ea85d169de3aa/">Ref&lt; _Ty &gt; box_ptr(_Ty *obj)</a></p>
-<p>Creates a strong reference from one raw pointer without modifing its reference count. </p>
-</li>
-<li>
-<p><a href="../group___runtime_1gaa7e539a91bc5a8e68c91db8d2d8a9c23/">Ref&lt; _Ty &gt; new_object(_Args &amp;&amp;... args)</a></p>
-<p>Creates one new boxed object. </p>
+<p><a href="../struct_luna_1_1_i_waitable_1a1d4f6f60c080472543ae26b4fa1cc62c/">virtual bool try_wait()=0</a></p>
+<p>Tries to wait for this object to be signaled. </p>
 </li>
 </ul>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../manual/rhi/shader_resource_binding/" class="btn btn-neutral float-left" title="Shader Resource Binding"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-    </div>
 
   <hr/>
 
@@ -276,8 +189,6 @@
   <div class="rst-versions" role="note" aria-label="Versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     
-    
-      <span><a href="../../manual/rhi/shader_resource_binding/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
   </span>

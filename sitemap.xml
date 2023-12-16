@@ -4881,6 +4881,21 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.lunasdk.org/api/struct_luna_1_1_i_waitable/</loc>
+         <lastmod>2023-12-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.lunasdk.org/api/struct_luna_1_1_i_waitable_1a0c78500b6312f13b1d666b30b40fe132/</loc>
+         <lastmod>2023-12-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.lunasdk.org/api/struct_luna_1_1_i_waitable_1a1d4f6f60c080472543ae26b4fa1cc62c/</loc>
+         <lastmod>2023-12-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.lunasdk.org/api/struct_luna_1_1_index_tuple/</loc>
          <lastmod>2023-12-16</lastmod>
          <changefreq>daily</changefreq>
