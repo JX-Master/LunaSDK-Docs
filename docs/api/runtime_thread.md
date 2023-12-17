@@ -6,6 +6,11 @@
 * [Luna::ISemaphore](struct_luna_1_1_i_semaphore.md)
 * [Luna::ISignal](struct_luna_1_1_i_signal.md)
 * [Luna::IThread](struct_luna_1_1_i_thread.md)
+## Enumerations
+* [Luna::ThreadPriority](group___runtime_thread_1ga80351cf39ce9e4d1d110fb249699db07.md)
+
+    Specifies the thread schedule priority. 
+
 ## Functions
 * [Ref< IMutex > new_mutex()](group___runtime_thread_1gaaf4b4510b9d6c01a12e3064691d15bdc.md)
 * [Ref< IReadWriteLock > new_read_write_lock()](group___runtime_thread_1ga35f290e06f79b34a7a4b72368a88e6b4.md)
@@ -13,6 +18,9 @@
     Creates one new read write lock. 
 
 * [Ref< ISemaphore > new_semaphore(i32 initial_count, i32 max_count)](group___runtime_thread_1ga63acf4d842bfddff65e76b2e84524134.md)
+
+    Create a new semaphore object. 
+
 * [Ref< ISignal > new_signal(bool manual_reset)](group___runtime_thread_1ga451437bc4ec31226c33c379fbd7d7a24.md)
 
     Create a new signal object. 

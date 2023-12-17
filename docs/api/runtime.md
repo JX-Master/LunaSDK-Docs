@@ -25,6 +25,7 @@ The Runtime module provides the runtime environment of Luna SDK and defines core
 * [Debugging](runtime_profiler.md)
 * [Generating random numbers](runtime_random.md)
 * [SDK initialization and shutdown](runtime_init.md)
+* [Serialization](runtime_serialization.md)
 * [Thread management and synchronization methods](runtime_thread.md)
 * [Type reflection](runtime_type.md)
 * [Unicode encoding/decoding](runtime_unicode.md)
@@ -47,6 +48,19 @@ The Runtime module provides the runtime environment of Luna SDK and defines core
 * [Luna::Variant](class_luna_1_1_variant.md)
 * [Luna::Vector](class_luna_1_1_vector.md)
 * [Luna::IWaitable](struct_luna_1_1_i_waitable.md)
+## Enumerations
+* [Luna::SeekMode](group___runtime_1gaf2c27cfc991f5e917923e425d0bf1106.md)
+
+    Specify the seek mode for one seekable stream. 
+
+* [Luna::VariantType](group___runtime_1gac1ce0b9d7902d01bfd860c08aed25233.md)
+
+    Defines all possible types of one [Variant](class_luna_1_1_variant.md) object. 
+
+* [Luna::VariantNumberType](group___runtime_1ga736977eb95737aa8503b91d026bac3fa.md)
+
+    Defines all possible number types of one number variant. 
+
 ## Functions
 * [auto invoke(_Func &&f) -> decltype(static_cast< _Func && >(f)())](group___runtime_1gaf7411fc1e4c76b86c6f6b69eeb62b704.md)
 

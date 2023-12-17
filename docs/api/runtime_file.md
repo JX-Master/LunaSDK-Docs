@@ -5,6 +5,27 @@
 * [Luna::FileAttribute](struct_luna_1_1_file_attribute.md)
 * [Luna::IFile](struct_luna_1_1_i_file.md)
 * [Luna::IFileIterator](struct_luna_1_1_i_file_iterator.md)
+## Enumerations
+* [Luna::FileAttributeFlag](group___runtime_file_1gaabba864469d3eddd3ad511d82a10d2fa.md)
+
+    Represents file binary attributes. 
+
+* [Luna::FileOpenFlag](group___runtime_file_1gaa6e577ca0057e9e199efe810f7876d3d.md)
+
+    Specifies attributes for one file open operation. 
+
+* [Luna::FileCreationMode](group___runtime_file_1ga191cbeed882d989eae99623be3fd60d3.md)
+
+    Specifies file creation mmode. 
+
+* [Luna::FileCopyFlag](group___runtime_file_1ga962b4537444d213445aa995acbfd667b.md)
+
+    Specify attributes for one file copy operation. 
+
+* [Luna::FileMoveFlag](group___runtime_file_1ga1c21e7a50d0ce43bee48a939a2b7ab4b.md)
+
+    Specify attributes for one file move operation. 
+
 ## Functions
 * [R< Ref< IFile > > open_file(const c8 *path, FileOpenFlag flags, FileCreationMode creation)](group___runtime_file_1gac58018b1b29fb266021f23592cc864e2.md)
 

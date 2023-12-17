@@ -6,6 +6,8 @@ Ref< ISemaphore > new_semaphore(i32 initial_count, i32 max_count)
 
 Create a new semaphore object. 
 
+
+
 ## Parameters
 * *in* **initial_count**
 

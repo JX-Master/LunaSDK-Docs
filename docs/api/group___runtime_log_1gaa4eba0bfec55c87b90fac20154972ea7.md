@@ -4,7 +4,7 @@
 void logv_debug(const c8 *tag, const c8 *format, VarList args)
 ```
 
-Outputs one log message with LogVerbosity::debug verbosity. 
+Outputs one log message with [LogVerbosity::debug](group___runtime_log_1ggaaa645d680acae5981bbcd34580811bf2aad42f6697b035b7580e4fef93be20b4d.md) verbosity. 
 
 
 
