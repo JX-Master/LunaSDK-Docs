@@ -149,7 +149,10 @@
                 <h1 id="lunabasicstringc_str">Luna::BasicString::c_str</h1>
 <pre><code class="language-c++">BasicString&lt; _Char, _Alloc &gt;::const_pointer c_str() const
 </code></pre>
-<p>Unlike <code>data</code>, this call always returns a valid string, not <code>nullptr</code>, even if the string is empty. </p>
+<p>Gets a non-modifiable C string pointer to the characters stored by this string. </p>
+<p>Unlike <code>data</code>, this call always returns a valid string, not <code>nullptr</code>, even if the string is empty.</p>
+<h2 id="return-value">Return value</h2>
+<p>Returns the C string pointer to the characters stored by this string. The returned pointer will never be <code>nullptr</code>. If this string is empty, one valid pointer to a null character is returned. </p>
               
             </div>
           </div><footer>

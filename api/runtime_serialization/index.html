@@ -164,13 +164,34 @@
 </ul>
 <h2 id="functions">Functions</h2>
 <ul>
-<li><a href="../group___runtime_serialization_1ga68bc4c02766d6c46c170d5266897f551/">bool is_type_serializable(typeinfo_t type)</a></li>
-<li><a href="../group___runtime_serialization_1ga1f1684079655c909c53a7c3ffa916a5a/">void set_serializable(typeinfo_t type, SerializableTypeDesc *desc=nullptr)</a></li>
-<li><a href="../group___runtime_serialization_1ga47944dee94b7b65503b429b073bd8cb3/">void set_serializable(SerializableTypeDesc *desc=nullptr)</a></li>
-<li><a href="../group___runtime_serialization_1gadbc56f9e44fcbc205ef78a64a00e450d/">R&lt; Variant &gt; serialize(typeinfo_t type, const void *inst)</a></li>
-<li><a href="../group___runtime_serialization_1ga233e0d1b7a4c8c7d7fa8f6d2ae1d13a1/">R&lt; Variant &gt; serialize(const _Ty &amp;inst)</a></li>
-<li><a href="../group___runtime_serialization_1gae38e1193604336f0c9f7309046a4d014/">RV deserialize(typeinfo_t type, void *inst, const Variant &amp;data)</a></li>
-<li><a href="../group___runtime_serialization_1ga2d6e026e3ce699ccb752d84755e9b90d/">RV deserialize(_Ty &amp;inst, const Variant &amp;data)</a></li>
+<li>
+<p><a href="../group___runtime_serialization_1ga68bc4c02766d6c46c170d5266897f551/">bool is_type_serializable(typeinfo_t type)</a></p>
+<p>Checks whether one type is serializable. </p>
+</li>
+<li>
+<p><a href="../group___runtime_serialization_1ga1f1684079655c909c53a7c3ffa916a5a/">void set_serializable(typeinfo_t type, SerializableTypeDesc *desc=nullptr)</a></p>
+<p>Sets one type to be serializable. </p>
+</li>
+<li>
+<p><a href="../group___runtime_serialization_1ga47944dee94b7b65503b429b073bd8cb3/">void set_serializable(SerializableTypeDesc *desc=nullptr)</a></p>
+<p>Sets one type <code>_Ty</code> to be serializable. </p>
+</li>
+<li>
+<p><a href="../group___runtime_serialization_1gadbc56f9e44fcbc205ef78a64a00e450d/">R&lt; Variant &gt; serialize(typeinfo_t type, const void *inst)</a></p>
+<p>Serializes one instance. </p>
+</li>
+<li>
+<p><a href="../group___runtime_serialization_1ga233e0d1b7a4c8c7d7fa8f6d2ae1d13a1/">R&lt; Variant &gt; serialize(const _Ty &amp;inst)</a></p>
+<p>Serializes one instance of type <code>_Ty</code>. </p>
+</li>
+<li>
+<p><a href="../group___runtime_serialization_1gae38e1193604336f0c9f7309046a4d014/">RV deserialize(typeinfo_t type, void *inst, const Variant &amp;data)</a></p>
+<p>Deserializes one value. </p>
+</li>
+<li>
+<p><a href="../group___runtime_serialization_1ga2d6e026e3ce699ccb752d84755e9b90d/">RV deserialize(_Ty &amp;inst, const Variant &amp;data)</a></p>
+<p>Deserializes one value of type <code>_Ty</code>. </p>
+</li>
 </ul>
               
             </div>

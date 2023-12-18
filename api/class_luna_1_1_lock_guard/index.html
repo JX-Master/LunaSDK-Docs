@@ -147,9 +147,25 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunalockguard">Luna::LockGuard</h1>
-<p>The RAII wrapper for fetching one spin lock. </p>
+<p>The RAII wrapper that locks the specified lock upon construction, and unlocks the specified lock upon destruction. </p>
 <pre><code class="language-c++">class Luna::LockGuard
 </code></pre>
+<p>This can be used for both <a href="../class_luna_1_1_spin_lock/">SpinLock</a> and <a href="../class_luna_1_1_recursive_spin_lock/">RecursiveSpinLock</a></p>
+<h2 id="member-functions">Member functions</h2>
+<ul>
+<li>
+<p><a href="../class_luna_1_1_lock_guard_1abcad6cffe0c365739483d67cfcd08926/">LockGuard(_SpinLock &amp;lock)</a></p>
+<p>Constructs one lock guard and acquires the specified lock. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_lock_guard_1a9278be8203e1c42e2619179882ae4403/">void unlock()</a></p>
+<p>Releases the acquired spin lock manually. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_lock_guard_1a84e43ac52480e865488ca9c31bce7b10/">LockGuard &amp; operator=(_SpinLock &amp;lock)</a></p>
+<p>Replaces the acquired spin lock. </p>
+</li>
+</ul>
               
             </div>
           </div><footer>

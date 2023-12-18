@@ -155,11 +155,11 @@ constexpr _InputIt find_if_not(_InputIt first, _InputIt last, _UnaryPredicate q)
 <ul>
 <li>
 <p><em>in</em> <strong>first</strong></p>
-<p>The iterator pointing to the first element of the search range. </p>
+<p>The iterator to the first element of the search range. </p>
 </li>
 <li>
 <p><em>in</em> <strong>last</strong></p>
-<p>The iterator pointing to the one-past-last element of the search range. </p>
+<p>The iterator to the one-past-last element of the search range. </p>
 </li>
 <li>
 <p><em>in</em> <strong>q</strong></p>
@@ -167,7 +167,7 @@ constexpr _InputIt find_if_not(_InputIt first, _InputIt last, _UnaryPredicate q)
 </li>
 </ul>
 <h2 id="return-value">Return value</h2>
-<p>Returns one iterator pointing to the first element that <code>q(v)</code> is <code>false</code>. Returns <code>last</code> if not found. </p>
+<p>Returns one iterator to the first element that <code>q(v)</code> is <code>false</code>. Returns <code>last</code> if not found. </p>
 <h2 id="valid-usage">Valid Usage</h2>
 <ul>
 <li>The expression <code>q(v)</code> must be convertible to <code>bool</code> for every argument <code>v</code> of type <code>VT</code>, where <code>VT</code> is the value type of <code>_InputIt</code>, and must not modify <code>v</code>. </li>

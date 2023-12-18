@@ -149,7 +149,8 @@
                 <h1 id="lunaistreamread">Luna::IStream::read</h1>
 <pre><code class="language-c++">virtual RV read(void *buffer, usize size, usize *read_bytes=nullptr)=0
 </code></pre>
-<p>Reads data from the current position the cursor is pointing to and advances the cursor. If the data to be read is not ready, the platform suspends the calling thread until the data is ready. </p>
+<p>Reads data from the current position the cursor is pointing to and advances the cursor. </p>
+<p>If the data to be read is not ready, the platform suspends the calling thread until the data is ready. </p>
 <h2 id="parameters">Parameters</h2>
 <ul>
 <li>
@@ -162,9 +163,10 @@
 </li>
 <li>
 <p><em>out</em> <strong>read_bytes</strong></p>
-<p>If not <code>nullptr</code>, the system sets the actual size of bytes being read to the buffer to this parameter. The actual size of bytes being read may be smaller than the size of bytes required to be read if the cursor reaches the end of the stream, but this is NOT an error. Specially, if one read operation is performed when the cursor is beyond or at the end of the stream, the read operation succeeds with 0 bytes being read. This can be considered as an EOF symbol in stdlib. </p>
+<p>If not <code>nullptr</code>, the system sets the actual size of bytes being read to the buffer to this parameter.</p>
 </li>
 </ul>
+<p>The actual size of bytes being read may be smaller than the size of bytes required to be read if the cursor reaches the end of the stream, but this is NOT an error. Specially, if one read operation is performed when the cursor is beyond or at the end of the stream, the read operation succeeds with 0 bytes being read. This can be considered as an EOF symbol in stdlib. </p>
               
             </div>
           </div><footer>

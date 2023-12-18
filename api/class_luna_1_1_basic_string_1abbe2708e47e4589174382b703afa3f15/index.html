@@ -149,7 +149,10 @@
                 <h1 id="lunabasicstringdata">Luna::BasicString::data</h1>
 <pre><code class="language-c++">BasicString&lt; _Char, _Alloc &gt;::pointer data()
 </code></pre>
-<p>May returns <code>nullptr</code> if the string is empty. </p>
+<p>Gets one pointer to the underlying character data. </p>
+<p>May returns <code>nullptr</code> if the string is empty.</p>
+<h2 id="return-value">Return value</h2>
+<p>Returns one pointer to the underlying character data. The returned pointer may be <code>nullptr</code> if the string is empty, to ensure one non-null return value, use <a href="../class_luna_1_1_basic_string_1ab63a641601252a6a8ddd2b28ee6d19b7/">c_str</a> instead, which always return one valid but empty string buffer ("") if the string is empty. </p>
               
             </div>
           </div><footer>

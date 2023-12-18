@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Luna::Span< _Ty, DYNAMIC_EXTENT > - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Luna::Span\u003c _Ty, DYNAMIC_EXTENT \u003e";
+        var mkdocs_page_input_path = "api\\class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4.md";
+        var mkdocs_page_url = "/api/class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Luna::Span< _Ty, DYNAMIC_EXTENT ></li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lunaspan-_ty-dynamic_extent">Luna::Span&lt; _Ty, DYNAMIC_EXTENT &gt;</h1>
+<p>Represents one reference to one continuous sequence of instances. The size of the span is determined at runtime. </p>
+<pre><code class="language-c++">class Luna::Span&lt; _Ty, DYNAMIC_EXTENT &gt;
+</code></pre>
+<h2 id="member-functions">Member functions</h2>
+<ul>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1a8d068f5faac74fa3f3c35bbf7720383d/">constexpr Span()</a></p>
+<p>Constructs one empty span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1a3b084866e2ffcc8620f37c8e76faef43/">constexpr Span(element_type *data, usize size)</a></p>
+<p>Constructs one span by providing the referred range directly. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1a64585f3aab513db8e318eaacdea37aaa/">constexpr Span(InitializerList&lt; remove_cv_t&lt; _Ty &gt; &gt; ilist)</a></p>
+<p>Constructs one span using the data provided by the specified initializer list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1a3f5c9fb85ddd0d24fd47128f0753fe03/">constexpr Span(const Span &amp;rhs)</a></p>
+<p>Constructs one span by coping data from another span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1aaf44879c8b76a508e4acb5d87010de85/">constexpr Span &amp; operator=(const Span &amp;rhs)</a></p>
+<p>Assigns one span by coping data from another span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1ad6b612835d1d31f5de4de170810bdce1/">constexpr iterator begin() const</a></p>
+<p>Gets one iterator to the first element of the span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1abaef5f7fc8ca1254e8ecd8554f0383c9/">constexpr iterator end() const</a></p>
+<p>Gets one iterator to the one past last element of the span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1a6eb197430bcfe5f252645ef622d2f527/">constexpr reverse_iterator rbegin() const</a></p>
+<p>Gets one reverse iterator to the last element of the span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1aa7e1a84f0be016a585ede27c006ca37d/">constexpr reverse_iterator rend() const</a></p>
+<p>Gets one reverse iterator to the one-before-first element of the span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1ada7549faa8cde6cb3ed467550cc01233/">constexpr reference front() const</a></p>
+<p>Gets a reference to the first (index 0) element in the span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1a04dd6cf78d02c2011673cf2046720b8e/">constexpr reference back() const</a></p>
+<p>Gets a reference to the last (index <code>size()</code> - 1) element in the span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1afefa2aa6ac0e04fc3f8292582a3d9362/">constexpr reference operator[](usize index) const</a></p>
+<p>Gets a refernece of the element at the specified index. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1af4c79a978fadf42753f0034c4d3a3e5c/">constexpr pointer data() const</a></p>
+<p>Gets one pointer to the span data memory. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1adb59c183f075f048ae90778d15189686/">constexpr usize size() const</a></p>
+<p>Gets the size (number of elements) of the span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1aebe478efcbe0a2465e4a605594dd8ca0/">constexpr usize size_bytes() const</a></p>
+<p>Gets the size of the span in bytes, which is <code>size() * sizeof(element_type)</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1afaafdfc441c2433c70959e3dfe46fd97/">constexpr bool empty() const</a></p>
+<p>Checks whether this span is empty, that is, the size of this span is <code>0</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1a5ab239c213ff8a775d6d5f14dea7d9de/">constexpr Span&lt; element_type, _Count &gt; first() const</a></p>
+<p>Creates a new fixed-sized span referring the first <code>_Count</code> elements of this span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1aa1c5f72b31d5f62bcc96bd2f05c4ef56/">constexpr Span&lt; element_type, DYNAMIC_EXTENT &gt; first(usize count) const</a></p>
+<p>Creates a new dynamic-sized span referring the first <code>count</code> elements of this span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1a8eea75165d56f1e11ee6ce7e693093c1/">constexpr Span&lt; element_type, _Count &gt; last() const</a></p>
+<p>Creates a new fixed-sized span referring the last <code>_Count</code> elements of this span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1add30b62e5d676d91fe4bc7d72da55683/">constexpr Span&lt; element_type, DYNAMIC_EXTENT &gt; last(usize count) const</a></p>
+<p>Creates a new dynamic-sized span referring the last <code>count</code> elements of this span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1ac48c9e3eeddf0fc993b947ae0dc900f0/">constexpr Span&lt; element_type, _Count &gt; subspan(usize offset) const</a></p>
+<p>Creates a new fixed-sized span referring <code>_Count</code> elements beginning at <code>offset</code> of this span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_3_01___ty_00_01_d_y_n_a_m_i_c___e_x_t_e_n_t_01_4_1a3d591b31f09473a778716126837d0f9e/">constexpr Span&lt; element_type, DYNAMIC_EXTENT &gt; subspan(usize offset, usize count) const</a></p>
+<p>Creates a new dynamic-sized span referring <code>count</code> elements beginning at <code>offset</code> of this span. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

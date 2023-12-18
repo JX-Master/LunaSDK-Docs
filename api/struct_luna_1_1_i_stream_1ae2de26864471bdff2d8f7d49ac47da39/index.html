@@ -149,7 +149,8 @@
                 <h1 id="lunaistreamwrite">Luna::IStream::write</h1>
 <pre><code class="language-c++">virtual RV write(const void *buffer, usize size, usize *write_bytes=nullptr)=0
 </code></pre>
-<p>Writes data to the current position the cursor is pointing to and advances the cursor. This call returns after all data have been written. </p>
+<p>Writes data to the current position the cursor is pointing to and advances the cursor. </p>
+<p>This call returns after all data have been written. </p>
 <h2 id="parameters">Parameters</h2>
 <ul>
 <li>
@@ -162,9 +163,10 @@
 </li>
 <li>
 <p><em>out</em> <strong>write_bytes</strong></p>
-<p>If not <code>nullptr</code>, the system sets the actual size of bytes being written to this parameter. Mostly, if the cursor goes beyond the end of the stream buffer while writing data, the stream will be expanded so the succeeding data can be written, so unless an error occurs, the size of bytes written will always equal to the size of bytes required by the user to write. However, if an error occurs while writing data, some of the data may have already be written while others are not, in such case the <code>write_bytes</code> reported by system may not be equal to <code>size</code> specified by the user. </p>
+<p>If not <code>nullptr</code>, the system sets the actual size of bytes being written to this parameter.</p>
 </li>
 </ul>
+<p>Mostly, if the cursor goes beyond the end of the stream buffer while writing data, the stream will be expanded so the succeeding data can be written, so unless an error occurs, the size of bytes written will always equal to the size of bytes required by the user to write. However, if an error occurs while writing data, some of the data may have already be written while others are not, in such case the <code>write_bytes</code> reported by system may not be equal to <code>size</code> specified by the user. </p>
               
             </div>
           </div><footer>

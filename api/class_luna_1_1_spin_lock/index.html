@@ -147,6 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaspinlock">Luna::SpinLock</h1>
+<p>Provides one spin lock that can give one thread exclusive access to one resource in multi-thread environments. </p>
 <pre><code class="language-c++">class Luna::SpinLock
 </code></pre>
 <p>A spin lock is like a light-weight mutex. Both mutex and spin lock are used to give one thread exclusive access to some specific resource, but they have the following differences:1. The spin lock is implemented purely in user-mode by C++, while the mutex is implemented by the underlying platform/OS and is usually implemented in kernel-mode as an OS component, which means locking and releasing one spin lock is much faster than locking and releasing one mutex, since the later is usually performed through a system call.</p>
@@ -158,6 +159,25 @@
 <p>Creating one spin lock creation consumes much less memory than creating one mutex (only 4 bytes for non-recursive spin lock). Meanwhile, creating one spin lock does not need to allocate any dynamic memory, which makes it suitable for embedding into other objects. </p>
 </li>
 </ol>
+<h2 id="member-functions">Member functions</h2>
+<ul>
+<li>
+<p><a href="../class_luna_1_1_spin_lock_1a3175971aac6aef2f7bea331e70d2bdca/">SpinLock()</a></p>
+<p>Constructs one spin lock. The spin lock is unlocked after creation. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_spin_lock_1aa81aed607133209dade63a226818224d/">void lock()</a></p>
+<p>Locks the spin lock. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_spin_lock_1aa24a64f788f142df670c3abc809d32b6/">bool try_lock()</a></p>
+<p>Tries to lock the spin lock. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_spin_lock_1a9278be8203e1c42e2619179882ae4403/">void unlock()</a></p>
+<p>Unlocks the spin lock. </p>
+</li>
+</ul>
               
             </div>
           </div><footer>

@@ -147,9 +147,100 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaspan">Luna::Span</h1>
-<p>Represents one reference to one continuous sequence of instances. </p>
+<p>Represents one reference to one continuous sequence of instances. The size of the span is fixed and specified as template argument. </p>
 <pre><code class="language-c++">class Luna::Span
 </code></pre>
+<h2 id="member-functions">Member functions</h2>
+<ul>
+<li>
+<p><a href="../class_luna_1_1_span_1a8d068f5faac74fa3f3c35bbf7720383d/">constexpr Span()</a></p>
+<p>Constructs one empty span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1a7c5cb706d081a76b786cb1dc81cd4cc2/">constexpr Span(element_type *arr)</a></p>
+<p>Constructs one span by providing the referred range directly. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1a64585f3aab513db8e318eaacdea37aaa/">constexpr Span(InitializerList&lt; remove_cv_t&lt; _Ty &gt; &gt; ilist)</a></p>
+<p>Constructs one span using the data provided by the specified initializer list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1a60d0e59b8ec078ea87333f5b6219b791/">constexpr Span(const Span &amp;rhs)=default</a></p>
+<p>Constructs one span by coping data from another span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1a6dd33e81ac42ce4c7fbe4bb9a3e53b07/">constexpr Span &amp; operator=(const Span &amp;rhs)=default</a></p>
+<p>Assigns one span by coping data from another span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1ad6b612835d1d31f5de4de170810bdce1/">constexpr iterator begin() const</a></p>
+<p>Gets one iterator to the first element of the span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1abaef5f7fc8ca1254e8ecd8554f0383c9/">constexpr iterator end() const</a></p>
+<p>Gets one iterator to the one past last element of the span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1a6eb197430bcfe5f252645ef622d2f527/">constexpr reverse_iterator rbegin() const</a></p>
+<p>Gets one reverse iterator to the last element of the span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1aa7e1a84f0be016a585ede27c006ca37d/">constexpr reverse_iterator rend() const</a></p>
+<p>Gets one reverse iterator to the one-before-first element of the span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1ada7549faa8cde6cb3ed467550cc01233/">constexpr reference front() const</a></p>
+<p>Gets a reference to the first (index 0) element in the span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1a04dd6cf78d02c2011673cf2046720b8e/">constexpr reference back() const</a></p>
+<p>Gets a reference to the last (index <code>size()</code> - 1) element in the span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1afefa2aa6ac0e04fc3f8292582a3d9362/">constexpr reference operator[](usize index) const</a></p>
+<p>Gets a refernece of the element at the specified index. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1af4c79a978fadf42753f0034c4d3a3e5c/">constexpr pointer data() const</a></p>
+<p>Gets one pointer to the span data memory. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1adb59c183f075f048ae90778d15189686/">constexpr usize size() const</a></p>
+<p>Gets the size (number of elements) of the span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1aebe478efcbe0a2465e4a605594dd8ca0/">constexpr usize size_bytes() const</a></p>
+<p>Gets the size of the span in bytes, which is <code>size() * sizeof(element_type)</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1afaafdfc441c2433c70959e3dfe46fd97/">constexpr bool empty() const</a></p>
+<p>Checks whether this span is empty, that is, the size of this span is <code>0</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1a5ab239c213ff8a775d6d5f14dea7d9de/">constexpr Span&lt; element_type, _Count &gt; first() const</a></p>
+<p>Creates a new fixed-sized span referring the first <code>_Count</code> elements of this span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1aa1c5f72b31d5f62bcc96bd2f05c4ef56/">constexpr Span&lt; element_type, DYNAMIC_EXTENT &gt; first(usize count) const</a></p>
+<p>Creates a new dynamic-sized span referring the first <code>count</code> elements of this span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1a8eea75165d56f1e11ee6ce7e693093c1/">constexpr Span&lt; element_type, _Count &gt; last() const</a></p>
+<p>Creates a new fixed-sized span referring the last <code>_Count</code> elements of this span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1add30b62e5d676d91fe4bc7d72da55683/">constexpr Span&lt; element_type, DYNAMIC_EXTENT &gt; last(usize count) const</a></p>
+<p>Creates a new dynamic-sized span referring the last <code>count</code> elements of this span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1ac48c9e3eeddf0fc993b947ae0dc900f0/">constexpr Span&lt; element_type, _Count &gt; subspan(usize offset) const</a></p>
+<p>Creates a new fixed-sized span referring <code>_Count</code> elements beginning at <code>offset</code> of this span. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_span_1a3d591b31f09473a778716126837d0f9e/">constexpr Span&lt; element_type, DYNAMIC_EXTENT &gt; subspan(usize offset, usize count) const</a></p>
+<p>Creates a new dynamic-sized span referring <code>count</code> elements beginning at <code>offset</code> of this span. </p>
+</li>
+</ul>
               
             </div>
           </div><footer>

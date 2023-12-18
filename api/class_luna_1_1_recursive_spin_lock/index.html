@@ -147,9 +147,28 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunarecursivespinlock">Luna::RecursiveSpinLock</h1>
+<p>Similar to <a href="../class_luna_1_1_spin_lock/">SpinLock</a>, but allows the lock to be obtained mutable times from the same thread. </p>
 <pre><code class="language-c++">class Luna::RecursiveSpinLock
 </code></pre>
-<p>Similar to <a href="../class_luna_1_1_spin_lock/">SpinLock</a>, but allows the lock to be obtained mutable times from the same thread. The user should release the lock the same times as obtaining the lock to finally release the lock. </p>
+<h2 id="member-functions">Member functions</h2>
+<ul>
+<li>
+<p><a href="../class_luna_1_1_recursive_spin_lock_1a80b247570b4d1f083a263804a7f3a877/">RecursiveSpinLock()</a></p>
+<p>Constructs one spin lock. The spin lock is unlocked after creation. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_recursive_spin_lock_1aa81aed607133209dade63a226818224d/">void lock()</a></p>
+<p>Locks the spin lock. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_recursive_spin_lock_1aa24a64f788f142df670c3abc809d32b6/">bool try_lock()</a></p>
+<p>Tries to lock the spin lock. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_recursive_spin_lock_1a9278be8203e1c42e2619179882ae4403/">void unlock()</a></p>
+<p>Unlocks the spin lock. </p>
+</li>
+</ul>
               
             </div>
           </div><footer>
