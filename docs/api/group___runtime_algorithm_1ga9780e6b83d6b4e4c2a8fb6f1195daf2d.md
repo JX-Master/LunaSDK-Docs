@@ -12,18 +12,18 @@ Finds an element equivalent to the specified value in the range.
 ## Parameters
 * *in* **first**
 
-    The iterator pointing to the first element of the range. 
+    The iterator to the first element of the range. 
 
 * *in* **last**
 
-    The iterator pointing to the one-past-last element of the range. 
+    The iterator to the one-past-last element of the range. 
 
 * *in* **value**
 
     The value to compare elements to. 
 
 ## Return value
-Returns an iterator pointing to the found element. If multiple equivalent elements exist in the range, returns the first one. Returns `last` if not found. 
+Returns an iterator to the found element. If multiple equivalent elements exist in the range, returns the first one. Returns `last` if not found. 
 
 ## Valid Usage
 * Elements in the range specified by [`first`, `last`) must be sorted in non-descending order. 

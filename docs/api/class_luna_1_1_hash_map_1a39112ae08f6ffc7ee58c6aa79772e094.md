@@ -4,10 +4,10 @@
 const_iterator cbegin() const
 ```
 
-Gets one constant iterator pointing to the first element of the map. 
+Gets one constant iterator to the first element of the map. 
 
 
 
 ## Return value
-Returns one constant iterator pointing to the first element of the map. 
+Returns one constant iterator to the first element of the map. 
 

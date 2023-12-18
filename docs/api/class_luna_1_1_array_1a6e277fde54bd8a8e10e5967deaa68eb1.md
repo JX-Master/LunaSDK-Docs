@@ -4,10 +4,10 @@
 constexpr const_reverse_iterator rend() const
 ```
 
-Gets one constant reverse iterator pointing to the one-before-first element of the array. 
+Gets one constant reverse iterator to the one-before-first element of the array. 
 
 
 
 ## Return value
-Returns one constant reverse iterator pointing to the one-before-first element of the array. 
+Returns one constant reverse iterator to the one-before-first element of the array. 
 

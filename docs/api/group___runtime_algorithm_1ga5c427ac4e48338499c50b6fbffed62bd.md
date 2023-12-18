@@ -12,16 +12,16 @@ Searches for the first element in the range that is equal to (==) the specified 
 ## Parameters
 * *in* **first**
 
-    The iterator pointing to the first element of the search range. 
+    The iterator to the first element of the search range. 
 
 * *in* **last**
 
-    The iterator pointing to the one-past-last element of the search range. 
+    The iterator to the one-past-last element of the search range. 
 
 * *in* **value**
 
     The value to compare for equality. 
 
 ## Return value
-Returns one iterator pointing to the first element that is equal to the specified value. Returns `last` if not found. 
+Returns one iterator to the first element that is equal to the specified value. Returns `last` if not found. 
 

@@ -37,27 +37,27 @@ See remarks of [HashMap](class_luna_1_1_hash_map.md) for details.
 
 * [iterator begin()](class_luna_1_1_hash_set_1ad69bd11391be1a1dba5c8202259664f8.md)
 
-    Gets one iterator pointing to the first element of the set. 
+    Gets one iterator to the first element of the set. 
 
 * [const_iterator begin() const](class_luna_1_1_hash_set_1a29305669b60ca1680752e2fc3592ba99.md)
 
-    Gets one constant iterator pointing to the first element of the set. 
+    Gets one constant iterator to the first element of the set. 
 
 * [const_iterator cbegin() const](class_luna_1_1_hash_set_1a39112ae08f6ffc7ee58c6aa79772e094.md)
 
-    Gets one constant iterator pointing to the first element of the set. 
+    Gets one constant iterator to the first element of the set. 
 
 * [iterator end()](class_luna_1_1_hash_set_1acad38d52497a975bfb6f2f6acd76631f.md)
 
-    Gets one iterator pointing to the one past last element of the set. 
+    Gets one iterator to the one past last element of the set. 
 
 * [const_iterator end() const](class_luna_1_1_hash_set_1accf9a4bd0c34d4a5f6a7dab66ea10cdc.md)
 
-    Gets one constant iterator pointing to the one past last element of the set. 
+    Gets one constant iterator to the one past last element of the set. 
 
 * [const_iterator cend() const](class_luna_1_1_hash_set_1a93791e61ab486b4022c389d634b4facc.md)
 
-    Gets one constant iterator pointing to the one past last element of the set. 
+    Gets one constant iterator to the one past last element of the set. 
 
 * [bool empty() const](class_luna_1_1_hash_set_1a644718bb2fb240de962dc3c9a1fdf0dc.md)
 

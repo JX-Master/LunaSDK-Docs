@@ -14,5 +14,5 @@ Finds the specified element in the map.
     The key of the element to find. 
 
 ## Return value
-Returns one const iterator pointing to the element if the elemene is found. Returns `end()` otherwise. 
+Returns one const iterator to the element if the element is found. Returns `end()` otherwise. 
 

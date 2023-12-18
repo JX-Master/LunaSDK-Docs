@@ -12,18 +12,18 @@ Inserts one range of elements to the list.
 ## Parameters
 * *in* **pos**
 
-    The iterator pointing to the position to insert elements. The elements will be inserted before the element pointed by this iterator. This can be `end()`, indicating that the element will be inserted at the end of the list. 
+    The iterator to the position to insert elements. The elements will be inserted before the element pointed by this iterator. This can be `end()`, indicating that the element will be inserted at the end of the list. 
 
 * *in* **first**
 
-    The iterator pointing to the first element to be inserted. 
+    The iterator to the first element to be inserted. 
 
 * *in* **last**
 
-    The iterator pointing to the one-past-last element to be inserted. 
+    The iterator to the one-past-last element to be inserted. 
 
 ## Return value
-Returns one iterator pointing to the first inserted element. 
+Returns one iterator to the first inserted element. 
 
 ## Valid Usage
 * If `pos != end()`, `pos` must points to a valid element in the list. 

@@ -12,11 +12,11 @@ Finds the first element in the range such that `comp(element, value)` is `false`
 ## Parameters
 * *in* **first**
 
-    The iterator pointing to the first element of the range. 
+    The iterator to the first element of the range. 
 
 * *in* **last**
 
-    The iterator pointing to the one-past-last element of the range. 
+    The iterator to the one-past-last element of the range. 
 
 * *in* **value**
 
@@ -27,7 +27,7 @@ Finds the first element in the range such that `comp(element, value)` is `false`
     The user-provided binary predicate which returns `​true` if the first argument is less than the second. 
 
 ## Return value
-Returns an iterator pointing to the first element in the range such that `comp(element, value)` is `false`, or `last` if no such element is found. 
+Returns an iterator to the first element in the range such that `comp(element, value)` is `false`, or `last` if no such element is found. 
 
 ## Valid Usage
 * Elements in the range specified by [`first`, `last`) must be sorted in non-descending order.

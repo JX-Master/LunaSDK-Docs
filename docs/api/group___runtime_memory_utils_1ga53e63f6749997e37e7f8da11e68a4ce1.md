@@ -12,9 +12,9 @@ Calls the move constructor for the object.
 ## Parameters
 * *in* **dst**
 
-    An iterator pointing to the object to be constructed. 
+    An iterator to the object to be constructed. 
 
 * *in* **src**
 
-    An iterator pointing to the object to move from. 
+    An iterator to the object to move from. 
 

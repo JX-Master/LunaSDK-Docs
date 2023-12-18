@@ -12,19 +12,19 @@ Checks if the sorted range [`first2`, `last2`) is a subsequence of the sorted ra
 ## Parameters
 * *in* **first1**
 
-    The iterator pointing to the first element of the first range. 
+    The iterator to the first element of the first range. 
 
 * *in* **last1**
 
-    The iterator pointing to the one-past-last element of the first range. 
+    The iterator to the one-past-last element of the first range. 
 
 * *in* **first2**
 
-    The iterator pointing to the first element of the second range. 
+    The iterator to the first element of the second range. 
 
 * *in* **last2**
 
-    The iterator pointing to the one-past-last element of the second range. 
+    The iterator to the one-past-last element of the second range. 
 
 * *in* **comp**
 

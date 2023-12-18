@@ -12,23 +12,23 @@ Constructs a sorted union beginning at the destination range consisting of the s
 ## Parameters
 * *in* **first1**
 
-    The iterator pointing to the first element of the first range. 
+    The iterator to the first element of the first range. 
 
 * *in* **last1**
 
-    The iterator pointing to the one-past-last element of the first range. 
+    The iterator to the one-past-last element of the first range. 
 
 * *in* **first2**
 
-    The iterator pointing to the first element of the second range. 
+    The iterator to the first element of the second range. 
 
 * *in* **last2**
 
-    The iterator pointing to the one-past-last element of the second range. 
+    The iterator to the one-past-last element of the second range. 
 
 * *in* **d_first**
 
-    The iterator pointing to the first element of the destination range. 
+    The iterator to the first element of the destination range. 
 
 * *in* **comp**
 

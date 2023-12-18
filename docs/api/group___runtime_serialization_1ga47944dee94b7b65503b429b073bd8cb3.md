@@ -7,6 +7,8 @@ void set_serializable(SerializableTypeDesc *desc=nullptr)
 
 Sets one type `_Ty` to be serializable. 
 
+
+
 ## Parameters
 * *in* **desc**
 

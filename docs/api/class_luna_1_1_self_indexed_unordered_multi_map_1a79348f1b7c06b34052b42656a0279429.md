@@ -1,0 +1,13 @@
+# Luna::SelfIndexedUnorderedMultiMap::size
+
+```c++
+usize size() const
+```
+
+Gets the size of the map, that is, the number of elements in the map. 
+
+
+
+## Return value
+Returns the size of the map. 
+

@@ -12,11 +12,11 @@ Checks if the unary predicate returns `true` for at least one element in the ran
 ## Parameters
 * *in* **first**
 
-    The iterator pointing to the first element of the range. 
+    The iterator to the first element of the range. 
 
 * *in* **last**
 
-    The iterator pointing to the one-past-last element of the range. 
+    The iterator to the one-past-last element of the range. 
 
 * *in* **p**
 

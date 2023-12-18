@@ -11,14 +11,14 @@ Removes one range of elements from the list.
 ## Parameters
 * *in* **first**
 
-    The iterator pointing to the first element to be removed. 
+    The iterator to the first element to be removed. 
 
 * *in* **last**
 
-    The iterator pointing to the one-past-last element to be removed. 
+    The iterator to the one-past-last element to be removed. 
 
 ## Return value
-Returns one iterator pointing to the next element of the removed elements when iterating elements. 
+Returns one iterator to the next element of the removed elements when iterating elements. 
 
 ## Valid Usage
 * `first` must be either `end()` or one valid element in the list.

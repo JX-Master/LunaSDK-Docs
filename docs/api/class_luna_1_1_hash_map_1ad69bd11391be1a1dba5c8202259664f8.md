@@ -4,10 +4,10 @@
 iterator begin()
 ```
 
-Gets one iterator pointing to the first element of the map. 
+Gets one iterator to the first element of the map. 
 
 
 
 ## Return value
-Returns one iterator pointing to the first element of the map. 
+Returns one iterator to the first element of the map. 
 

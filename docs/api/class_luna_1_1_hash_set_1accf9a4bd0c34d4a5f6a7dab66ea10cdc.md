@@ -4,10 +4,10 @@
 const_iterator end() const
 ```
 
-Gets one constant iterator pointing to the one past last element of the set. 
+Gets one constant iterator to the one past last element of the set. 
 
 
 
 ## Return value
-Returns one constant iterator pointing to the one past last element of the set. 
+Returns one constant iterator to the one past last element of the set. 
 

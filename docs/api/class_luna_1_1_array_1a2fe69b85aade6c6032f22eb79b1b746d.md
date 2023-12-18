@@ -4,7 +4,7 @@
 constexpr reference front()
 ```
 
-Gets a reference to the first (#0) element in the array. 
+Gets a reference to the first (index 0) element in the array. 
 
 
 

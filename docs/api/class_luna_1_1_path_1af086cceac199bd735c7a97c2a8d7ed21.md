@@ -4,10 +4,10 @@
 const_reverse_iterator rbegin() const
 ```
 
-Gets one constant reverse iterator pointing to the last name node of the path. 
+Gets one constant reverse iterator to the last name node of the path. 
 
 
 
 ## Return value
-Returns one constant reverse iterator pointing to the last name node of the path. 
+Returns one constant reverse iterator to the last name node of the path. 
 

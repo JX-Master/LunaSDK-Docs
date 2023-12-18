@@ -12,9 +12,9 @@ Calls the move assignment operator of the object.
 ## Parameters
 * *in* **dst**
 
-    An iterator pointing to the object to be assigned. 
+    An iterator to the object to be assigned. 
 
 * *in* **src**
 
-    An iterator pointing to the object to move from. 
+    An iterator to the object to move from. 
 

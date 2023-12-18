@@ -168,51 +168,51 @@ One path is composed by the following components:1. The root name, which usually
 
 * [iterator begin()](class_luna_1_1_path_1ad69bd11391be1a1dba5c8202259664f8.md)
 
-    Gets one iterator pointing to the first name node of the path. 
+    Gets one iterator to the first name node of the path. 
 
 * [const_iterator begin() const](class_luna_1_1_path_1a29305669b60ca1680752e2fc3592ba99.md)
 
-    Gets one constant iterator pointing to the first name node of the path. 
+    Gets one constant iterator to the first name node of the path. 
 
 * [const_iterator cbegin() const](class_luna_1_1_path_1a39112ae08f6ffc7ee58c6aa79772e094.md)
 
-    Gets one constant iterator pointing to the first name node of the path. 
+    Gets one constant iterator to the first name node of the path. 
 
 * [iterator end()](class_luna_1_1_path_1acad38d52497a975bfb6f2f6acd76631f.md)
 
-    Gets one iterator pointing to the one past last name node of the path. 
+    Gets one iterator to the one past last name node of the path. 
 
 * [const_iterator end() const](class_luna_1_1_path_1accf9a4bd0c34d4a5f6a7dab66ea10cdc.md)
 
-    Gets one constant iterator pointing to the one past last name node of the path. 
+    Gets one constant iterator to the one past last name node of the path. 
 
 * [const_iterator cend() const](class_luna_1_1_path_1a93791e61ab486b4022c389d634b4facc.md)
 
-    Gets one constant iterator pointing to the one past last name node of the path. 
+    Gets one constant iterator to the one past last name node of the path. 
 
 * [reverse_iterator rbegin()](class_luna_1_1_path_1acea44ed500a54b2bb93e16b86e81afa8.md)
 
-    Gets one reverse iterator pointing to the last name node of the path. 
+    Gets one reverse iterator to the last name node of the path. 
 
 * [const_reverse_iterator rbegin() const](class_luna_1_1_path_1af086cceac199bd735c7a97c2a8d7ed21.md)
 
-    Gets one constant reverse iterator pointing to the last name node of the path. 
+    Gets one constant reverse iterator to the last name node of the path. 
 
 * [const_reverse_iterator crbegin() const](class_luna_1_1_path_1a81f80a31923e85af56a7b1ae0712a33b.md)
 
-    Gets one constant reverse iterator pointing to the last name node of the path. 
+    Gets one constant reverse iterator to the last name node of the path. 
 
 * [reverse_iterator rend()](class_luna_1_1_path_1a68c599ddcbfddc65170de524ac165e44.md)
 
-    Gets one reverse iterator pointing to the one-before-first name node of the path. 
+    Gets one reverse iterator to the one-before-first name node of the path. 
 
 * [const_reverse_iterator rend() const](class_luna_1_1_path_1a07da1fdc890b6949f1a20a1961c6fc44.md)
 
-    Gets one constant reverse iterator pointing to the one-before-first name node of the path. 
+    Gets one constant reverse iterator to the one-before-first name node of the path. 
 
 * [const_reverse_iterator crend() const](class_luna_1_1_path_1abef9dfc7607c7e1a3854788ba56a4f34.md)
 
-    Gets one constant reverse iterator pointing to the one-before-first name node of the path. 
+    Gets one constant reverse iterator to the one-before-first name node of the path. 
 
 * [usize size() const](class_luna_1_1_path_1a79348f1b7c06b34052b42656a0279429.md)
 

@@ -12,11 +12,11 @@ Checks if an element equivalent to the specified value appears within the range.
 ## Parameters
 * *in* **first**
 
-    The iterator pointing to the first element of the range. 
+    The iterator to the first element of the range. 
 
 * *in* **last**
 
-    The iterator pointing to the one-past-last element of the range. 
+    The iterator to the one-past-last element of the range. 
 
 * *in* **value**
 

@@ -26,6 +26,7 @@ The Runtime module provides the runtime environment of Luna SDK and defines core
 * [Generating random numbers](runtime_random.md)
 * [SDK initialization and shutdown](runtime_init.md)
 * [Serialization](runtime_serialization.md)
+* [String library](runtime_string.md)
 * [Thread management and synchronization methods](runtime_thread.md)
 * [Type reflection](runtime_type.md)
 * [Unicode encoding/decoding](runtime_unicode.md)
@@ -88,11 +89,11 @@ The Runtime module provides the runtime environment of Luna SDK and defines core
 
 * [_Iter next(_Iter it, isize n=1)](group___runtime_1ga4e2d965044b1d306278d256d980423fd.md)
 
-    Gets one iterator pointing to the next `n`th element of the element pointed by the input iterator. 
+    Gets one iterator to the next `n`th element of the element pointed by the input iterator. 
 
 * [_BidirIt prev(_BidirIt it, isize n=1)](group___runtime_1ga3eab7cd933798dde3a66eb98069ea222.md)
 
-    Gets one iterator pointing to the last `n`th element of the element pointed by the input iterator. 
+    Gets one iterator to the last `n`th element of the element pointed by the input iterator. 
 
 * [Ref< _Ty > box_ptr(_Ty *obj)](group___runtime_1ga9ffa672f4edd97e1402ea85d169de3aa.md)
 

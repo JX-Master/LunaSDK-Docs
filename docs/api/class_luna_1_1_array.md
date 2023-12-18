@@ -26,19 +26,19 @@ class Luna::Array
 
 * [constexpr reference front()](class_luna_1_1_array_1a2fe69b85aade6c6032f22eb79b1b746d.md)
 
-    Gets a reference to the first (#0) element in the array. 
+    Gets a reference to the first (index 0) element in the array. 
 
 * [constexpr const_reference front() const](class_luna_1_1_array_1a0d2f4af381faa34ace382c87aeed32e3.md)
 
-    Gets a constant reference to the first (#0) element in the array. 
+    Gets a constant reference to the first (index 0) element in the array. 
 
 * [constexpr reference back()](class_luna_1_1_array_1ae869682a778dc77a8dd62bbfa22f9d9a.md)
 
-    Gets a reference to the last ([size](class_luna_1_1_array_1adb59c183f075f048ae90778d15189686.md) - 1) element in the array. 
+    Gets a reference to the last (index `size()` - 1) element in the array. 
 
 * [constexpr const_reference back() const](class_luna_1_1_array_1a20a48cfbeb064093c00708b233c17883.md)
 
-    Gets a reference to the last ([size](class_luna_1_1_array_1adb59c183f075f048ae90778d15189686.md) - 1) element in the array. 
+    Gets a reference to the last (index `size()` - 1) element in the array. 
 
 * [constexpr _Ty * data()](class_luna_1_1_array_1aaf0bf16ebc5c8c11cb351557b61e4b9c.md)
 
@@ -50,51 +50,51 @@ class Luna::Array
 
 * [constexpr iterator begin()](class_luna_1_1_array_1a82061640a279283f5d16614b196fcd1d.md)
 
-    Gets one iterator pointing to the first element of the array. 
+    Gets one iterator to the first element of the array. 
 
 * [constexpr const_iterator begin() const](class_luna_1_1_array_1a43564d19bdbc133e4a81cc1a2c002254.md)
 
-    Gets one constant iterator pointing to the first element of the array. 
+    Gets one constant iterator to the first element of the array. 
 
 * [constexpr const_iterator cbegin() const](class_luna_1_1_array_1a098840b38d4f639ee9f69cf026be323c.md)
 
-    Gets one constant iterator pointing to the first element of the array. 
+    Gets one constant iterator to the first element of the array. 
 
 * [constexpr iterator end()](class_luna_1_1_array_1afe07af266a2f066a51af64000d746cb9.md)
 
-    Gets one iterator pointing to the one past last element of the array. 
+    Gets one iterator to the one past last element of the array. 
 
 * [constexpr const_iterator end() const](class_luna_1_1_array_1a428cfcc26f33036be7c76ab287ea06c5.md)
 
-    Gets one constant iterator pointing to the one past last element of the array. 
+    Gets one constant iterator to the one past last element of the array. 
 
 * [constexpr const_iterator cend() const](class_luna_1_1_array_1abee57f5c6cacf03f590795737d18e7e8.md)
 
-    Gets one constant iterator pointing to the one past last element of the array. 
+    Gets one constant iterator to the one past last element of the array. 
 
 * [constexpr reverse_iterator rbegin()](class_luna_1_1_array_1a3c6e58d7002c8e81a78dcd3b59a4e396.md)
 
-    Gets one reverse iterator pointing to the last element of the array. 
+    Gets one reverse iterator to the last element of the array. 
 
 * [constexpr const_reverse_iterator rbegin() const](class_luna_1_1_array_1a68e95b44627370eea593b039c42e1244.md)
 
-    Gets one constant reverse iterator pointing to the last element of the array. 
+    Gets one constant reverse iterator to the last element of the array. 
 
 * [constexpr const_reverse_iterator crbegin() const](class_luna_1_1_array_1a0c080710404cf54608566718e135ed4e.md)
 
-    Gets one constant reverse iterator pointing to the last element of the array. 
+    Gets one constant reverse iterator to the last element of the array. 
 
 * [constexpr reverse_iterator rend()](class_luna_1_1_array_1a35220c6806307b7311a170920af27d26.md)
 
-    Gets one reverse iterator pointing to the one-before-first element of the array. 
+    Gets one reverse iterator to the one-before-first element of the array. 
 
 * [constexpr const_reverse_iterator rend() const](class_luna_1_1_array_1a6e277fde54bd8a8e10e5967deaa68eb1.md)
 
-    Gets one constant reverse iterator pointing to the one-before-first element of the array. 
+    Gets one constant reverse iterator to the one-before-first element of the array. 
 
 * [constexpr const_reverse_iterator crend() const](class_luna_1_1_array_1a56d3a1867f42d8f5551c9771bf6ec06f.md)
 
-    Gets one constant reverse iterator pointing to the one-before-first element of the array. 
+    Gets one constant reverse iterator to the one-before-first element of the array. 
 
 * [constexpr bool empty() const](class_luna_1_1_array_1afaafdfc441c2433c70959e3dfe46fd97.md)
 

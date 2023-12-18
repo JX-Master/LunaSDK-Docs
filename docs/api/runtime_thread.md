@@ -5,6 +5,9 @@
 * [Luna::IReadWriteLock](struct_luna_1_1_i_read_write_lock.md)
 * [Luna::ISemaphore](struct_luna_1_1_i_semaphore.md)
 * [Luna::ISignal](struct_luna_1_1_i_signal.md)
+* [Luna::SpinLock](class_luna_1_1_spin_lock.md)
+* [Luna::RecursiveSpinLock](class_luna_1_1_recursive_spin_lock.md)
+* [Luna::LockGuard](class_luna_1_1_lock_guard.md)
 * [Luna::IThread](struct_luna_1_1_i_thread.md)
 ## Enumerations
 * [Luna::ThreadPriority](group___runtime_thread_1ga80351cf39ce9e4d1d110fb249699db07.md)

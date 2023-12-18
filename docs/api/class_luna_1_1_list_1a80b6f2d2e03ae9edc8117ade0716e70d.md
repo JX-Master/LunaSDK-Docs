@@ -11,14 +11,14 @@ Inserts the specified element to the list.
 ## Parameters
 * *in* **pos**
 
-    The iterator pointing to the position to insert the element. The element will be inserted before the element pointed by this iterator. This can be `end()`, indicating that the element will be inserted at the end of the list. 
+    The iterator to the position to insert the element. The element will be inserted before the element pointed by this iterator. This can be `end()`, indicating that the element will be inserted at the end of the list. 
 
 * *in* **value**
 
     The element to insert. The element will be move-inserted into the list. 
 
 ## Return value
-Returns one iterator pointing to the inserted element. 
+Returns one iterator to the inserted element. 
 
 ## Valid Usage
 * If `pos != end()`, `pos` must points to a valid element in the list. 

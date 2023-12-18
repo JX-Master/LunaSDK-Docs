@@ -13,4 +13,10 @@ This object is not thread safe and the I/O operations on this object is not asyn
 * [Interface](struct_luna_1_1_interface.md)
 ## Member functions
 * [virtual RV read(void *buffer, usize size, usize *read_bytes=nullptr)=0](struct_luna_1_1_i_stream_1a6a5956c629eb0bba95dc0dd89bd0abde.md)
+
+    Reads data from the current position the cursor is pointing to and advances the cursor. 
+
 * [virtual RV write(const void *buffer, usize size, usize *write_bytes=nullptr)=0](struct_luna_1_1_i_stream_1ae2de26864471bdff2d8f7d49ac47da39.md)
+
+    Writes data to the current position the cursor is pointing to and advances the cursor. 
+

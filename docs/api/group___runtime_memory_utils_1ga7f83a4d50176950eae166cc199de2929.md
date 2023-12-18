@@ -12,7 +12,7 @@ Calls the direct constructor for the object.
 ## Parameters
 * *in* **dst**
 
-    An iterator pointing to the object to be constructed. 
+    An iterator to the object to be constructed. 
 
 * *in* **args**
 

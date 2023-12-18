@@ -11,10 +11,10 @@ Removes one name node from the path.
 ## Parameters
 * *in* **pos**
 
-    The iterator pointing to the name node to be removed. 
+    The iterator to the name node to be removed. 
 
 ## Return value
-Returns one iterator pointing to the next name node of the removed name node when iterating nodes. 
+Returns one iterator to the next name node of the removed name node when iterating nodes. 
 
 ## Valid Usage
 * `pos` must points to a valid name node in the path. 

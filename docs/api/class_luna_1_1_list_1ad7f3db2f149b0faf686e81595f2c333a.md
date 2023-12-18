@@ -11,7 +11,7 @@ No memory allocation or element copy/move will be performed, this function trans
 ## Parameters
 * *in* **pos**
 
-    The iterator pointing to the position to insert the transferred element. 
+    The iterator to the position to insert the transferred element. 
 
 * *in* **other**
 
@@ -19,5 +19,5 @@ No memory allocation or element copy/move will be performed, this function trans
 
 * *in* **it**
 
-    The iterator pointing to the element to be transferred. 
+    The iterator to the element to be transferred. 
 

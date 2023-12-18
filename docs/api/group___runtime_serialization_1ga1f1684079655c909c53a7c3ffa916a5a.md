@@ -6,6 +6,8 @@ void set_serializable(typeinfo_t type, SerializableTypeDesc *desc=nullptr)
 
 Sets one type to be serializable. 
 
+
+
 ## Parameters
 * *in* **type**
 

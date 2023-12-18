@@ -12,26 +12,26 @@ Computes symmetric difference of two sorted ranges: elements that are found in e
 ## Parameters
 * *in* **first1**
 
-    The iterator pointing to the first element of the first range. 
+    The iterator to the first element of the first range. 
 
 * *in* **last1**
 
-    The iterator pointing to the one-past-last element of the first range. 
+    The iterator to the one-past-last element of the first range. 
 
 * *in* **first2**
 
-    The iterator pointing to the first element of the second range. 
+    The iterator to the first element of the second range. 
 
 * *in* **last2**
 
-    The iterator pointing to the one-past-last element of the second range. 
+    The iterator to the one-past-last element of the second range. 
 
 * *in* **d_first**
 
-    The iterator pointing to the first element of the destination range. 
+    The iterator to the first element of the destination range. 
 
 ## Return value
-Returns one iterator pointing to the one-past-last element of the destination range. 
+Returns one iterator to the one-past-last element of the destination range. 
 
 ## Remark
 If [`first1`, `last1`) contains `m` elements that are equivalent to each otherand [`first2`, `last2`) contains `n` elements that are equivalent to them, then `abs(m - n)` of those elements will be copied to the output range, preserving order:* if `m > n`, the final `m - n` of these elements from [`first1`, `last1`).

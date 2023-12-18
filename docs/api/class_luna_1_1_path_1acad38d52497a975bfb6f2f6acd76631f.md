@@ -4,10 +4,10 @@
 iterator end()
 ```
 
-Gets one iterator pointing to the one past last name node of the path. 
+Gets one iterator to the one past last name node of the path. 
 
 
 
 ## Return value
-Returns one iterator pointing to the one past last name node of the path. 
+Returns one iterator to the one past last name node of the path. 
 

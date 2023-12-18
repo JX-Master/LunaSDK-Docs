@@ -4,10 +4,10 @@
 iterator begin()
 ```
 
-Gets one iterator pointing to the first element of the set. 
+Gets one iterator to the first element of the set. 
 
 
 
 ## Return value
-Returns one iterator pointing to the first element of the set. 
+Returns one iterator to the first element of the set. 
 

@@ -12,15 +12,15 @@ Tests the equality of two ranges.
 ## Parameters
 * *in* **first1**
 
-    The iterator pointing to the first element of the first range. 
+    The iterator to the first element of the first range. 
 
 * *in* **last1**
 
-    The iterator pointing to the one-past-last element of the first range. 
+    The iterator to the one-past-last element of the first range. 
 
 * *in* **first2**
 
-    The iterator pointing to the first element of the second range. 
+    The iterator to the first element of the second range. 
 
 ## Return value
 Returns `true` if two ranges are equal, returns `false` otherwise. 

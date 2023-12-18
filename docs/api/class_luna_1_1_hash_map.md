@@ -61,29 +61,37 @@ Prefer [HashMap](class_luna_1_1_hash_map.md) and [HashSet](class_luna_1_1_hash_s
 
     Constructs a map with an custom allocator and with elements moved from another map. 
 
+* [HashMap & operator=(const HashMap &rhs)](class_luna_1_1_hash_map_1ab66c4c58784d209e1bd33fdf4f794056.md)
+
+    Replaces elements of the map by coping elements from another map. 
+
+* [HashMap & operator=(HashMap &&rhs)](class_luna_1_1_hash_map_1a1bdcfce84379a6f8aca122d1b52cd33a.md)
+
+    Replaces elements of the map by moving elements from another map. 
+
 * [iterator begin()](class_luna_1_1_hash_map_1ad69bd11391be1a1dba5c8202259664f8.md)
 
-    Gets one iterator pointing to the first element of the map. 
+    Gets one iterator to the first element of the map. 
 
 * [const_iterator begin() const](class_luna_1_1_hash_map_1a29305669b60ca1680752e2fc3592ba99.md)
 
-    Gets one constant iterator pointing to the first element of the map. 
+    Gets one constant iterator to the first element of the map. 
 
 * [const_iterator cbegin() const](class_luna_1_1_hash_map_1a39112ae08f6ffc7ee58c6aa79772e094.md)
 
-    Gets one constant iterator pointing to the first element of the map. 
+    Gets one constant iterator to the first element of the map. 
 
 * [iterator end()](class_luna_1_1_hash_map_1acad38d52497a975bfb6f2f6acd76631f.md)
 
-    Gets one iterator pointing to the one past last element of the map. 
+    Gets one iterator to the one past last element of the map. 
 
 * [const_iterator end() const](class_luna_1_1_hash_map_1accf9a4bd0c34d4a5f6a7dab66ea10cdc.md)
 
-    Gets one constant iterator pointing to the one past last element of the map. 
+    Gets one constant iterator to the one past last element of the map. 
 
 * [const_iterator cend() const](class_luna_1_1_hash_map_1a93791e61ab486b4022c389d634b4facc.md)
 
-    Gets one constant iterator pointing to the one past last element of the map. 
+    Gets one constant iterator to the one past last element of the map. 
 
 * [bool empty() const](class_luna_1_1_hash_map_1a644718bb2fb240de962dc3c9a1fdf0dc.md)
 

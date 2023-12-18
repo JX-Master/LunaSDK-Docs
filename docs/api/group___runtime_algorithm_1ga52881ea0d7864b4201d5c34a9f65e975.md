@@ -12,23 +12,23 @@ Constructs a sorted union beginning at the destination range consisting of the s
 ## Parameters
 * *in* **first1**
 
-    The iterator pointing to the first element of the first range. 
+    The iterator to the first element of the first range. 
 
 * *in* **last1**
 
-    The iterator pointing to the one-past-last element of the first range. 
+    The iterator to the one-past-last element of the first range. 
 
 * *in* **first2**
 
-    The iterator pointing to the first element of the second range. 
+    The iterator to the first element of the second range. 
 
 * *in* **last2**
 
-    The iterator pointing to the one-past-last element of the second range. 
+    The iterator to the one-past-last element of the second range. 
 
 * *in* **d_first**
 
-    The iterator pointing to the first element of the destination range. 
+    The iterator to the first element of the destination range. 
 
 ## Remark
 If [`first1`, `last1`) contains `m` elements that are equivalent to each otherand [`first2`, `last2`) contains `n` elements that are equivalent to them, then all `m` elements will be copied from [`first1`, `last1`) to the output range, preserving order, and then the final `max(n - m, 0)` elements will be copied from [`first2`, `last2`) to the output range, also preserving order. 

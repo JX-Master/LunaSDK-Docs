@@ -21,3 +21,6 @@ Specifies attributes for one file open operation.
     Grants write access to the file so that [IFile::write](struct_luna_1_1_i_stream_1ae2de26864471bdff2d8f7d49ac47da39.md) operations can be performed. 
 
 * [user_buffering](group___runtime_file_1ggaa6e577ca0057e9e199efe810f7876d3daef378d24dd8957b844c64cab7f2ae7ab.md)
+
+    Allocates one user-mode buffer for the opened file. 
+

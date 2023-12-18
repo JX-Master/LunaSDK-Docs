@@ -5,6 +5,9 @@
 * [Luna::HashSet](class_luna_1_1_hash_set.md)
 * [Luna::List](class_luna_1_1_list.md)
 * [Luna::RingDeque](class_luna_1_1_ring_deque.md)
+* [Luna::SelfIndexedHashMap](class_luna_1_1_self_indexed_hash_map.md)
+* [Luna::SelfIndexedUnorderedMap](class_luna_1_1_self_indexed_unordered_map.md)
+* [Luna::SelfIndexedUnorderedMultiMap](class_luna_1_1_self_indexed_unordered_multi_map.md)
 ## Constants
 * [constexpr usize DYNAMIC_ARRAY_SIZE](group___runtime_container_1gac211fb2fcac88253a56c67d77c041a02.md)
 

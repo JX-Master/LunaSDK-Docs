@@ -88,51 +88,51 @@ class Luna::List
 
 * [List< _Ty, _Alloc >::iterator begin()](class_luna_1_1_list_1ae49b602ba0b25adb8379bf8727507324.md)
 
-    Gets one iterator pointing to the first element of the list. 
+    Gets one iterator to the first element of the list. 
 
 * [List< _Ty, _Alloc >::const_iterator begin() const](class_luna_1_1_list_1a520e28135a0b37738c459a2f0c182dff.md)
 
-    Gets one constant iterator pointing to the first element of the list. 
+    Gets one constant iterator to the first element of the list. 
 
 * [List< _Ty, _Alloc >::const_iterator cbegin() const](class_luna_1_1_list_1a75f81254aa74d19c9e72bbe3bdd92c8a.md)
 
-    Gets one constant iterator pointing to the first element of the list. 
+    Gets one constant iterator to the first element of the list. 
 
 * [List< _Ty, _Alloc >::iterator end()](class_luna_1_1_list_1a7ec56631bf0f334d845e6a198618360a.md)
 
-    Gets one iterator pointing to the one past last element of the list. 
+    Gets one iterator to the one past last element of the list. 
 
 * [List< _Ty, _Alloc >::const_iterator end() const](class_luna_1_1_list_1a33e164de8d71f0ce8ddc3d7b8fc567e0.md)
 
-    Gets one constant iterator pointing to the one past last element of the list. 
+    Gets one constant iterator to the one past last element of the list. 
 
 * [List< _Ty, _Alloc >::const_iterator cend() const](class_luna_1_1_list_1a55c434a81cad9990fb3429a3e549657f.md)
 
-    Gets one constant iterator pointing to the one past last element of the list. 
+    Gets one constant iterator to the one past last element of the list. 
 
 * [List< _Ty, _Alloc >::reverse_iterator rbegin()](class_luna_1_1_list_1abe03ab15dca2df019aa3b28ae52081d7.md)
 
-    Gets one reverse iterator pointing to the last element of the list. 
+    Gets one reverse iterator to the last element of the list. 
 
 * [List< _Ty, _Alloc >::const_reverse_iterator rbegin() const](class_luna_1_1_list_1ae9756b0302b9bea3fc6094fcc773acef.md)
 
-    Gets one constant reverse iterator pointing to the last element of the list. 
+    Gets one constant reverse iterator to the last element of the list. 
 
 * [List< _Ty, _Alloc >::const_reverse_iterator crbegin() const](class_luna_1_1_list_1aa378c7002668de375ecb9b69f0173520.md)
 
-    Gets one constant reverse iterator pointing to the last element of the list. 
+    Gets one constant reverse iterator to the last element of the list. 
 
 * [List< _Ty, _Alloc >::reverse_iterator rend()](class_luna_1_1_list_1a5b16bb5e06bf3ed7733795fab95d9492.md)
 
-    Gets one reverse iterator pointing to the one-before-first element of the list. 
+    Gets one reverse iterator to the one-before-first element of the list. 
 
 * [List< _Ty, _Alloc >::const_reverse_iterator rend() const](class_luna_1_1_list_1acef94bdef07ba09516830c5d427f7c87.md)
 
-    Gets one constant reverse iterator pointing to the one-before-first element of the list. 
+    Gets one constant reverse iterator to the one-before-first element of the list. 
 
 * [List< _Ty, _Alloc >::const_reverse_iterator crend() const](class_luna_1_1_list_1aeeb4338da0a6043328f277d27c783d34.md)
 
-    Gets one constant reverse iterator pointing to the one-before-first element of the list. 
+    Gets one constant reverse iterator to the one-before-first element of the list. 
 
 * [bool empty() const](class_luna_1_1_list_1a644718bb2fb240de962dc3c9a1fdf0dc.md)
 

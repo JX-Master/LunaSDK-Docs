@@ -6,6 +6,8 @@ R< Variant > serialize(typeinfo_t type, const void *inst)
 
 Serializes one instance. 
 
+
+
 ## Parameters
 * *in* **type**
 

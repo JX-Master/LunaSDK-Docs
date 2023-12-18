@@ -6,6 +6,8 @@ bool is_type_serializable(typeinfo_t type)
 
 Checks whether one type is serializable. 
 
+
+
 ## Parameters
 * *in* **type**
 

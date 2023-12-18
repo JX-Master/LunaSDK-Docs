@@ -6,6 +6,8 @@ RV deserialize(typeinfo_t type, void *inst, const Variant &data)
 
 Deserializes one value. 
 
+
+
 ## Parameters
 * *in* **type**
 

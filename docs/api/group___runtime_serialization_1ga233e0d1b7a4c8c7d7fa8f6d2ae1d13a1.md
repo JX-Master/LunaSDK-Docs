@@ -7,6 +7,8 @@ R< Variant > serialize(const _Ty &inst)
 
 Serializes one instance of type `_Ty`. 
 
+
+
 ## Parameters
 * *in* **inst**
 
