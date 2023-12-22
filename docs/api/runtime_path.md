@@ -1,6 +1,10 @@
 # Path
-## Classes
+## Types
 * [Luna::Path](class_luna_1_1_path.md)
+
+    A container that contains a sequence of names that describe one path. 
+
+
 ## Enumerations
 * [Luna::PathSeparator](group___runtime_path_1ga0eb40e5baceec5e5c8d726951e2c0b65.md)
 

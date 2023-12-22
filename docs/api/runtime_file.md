@@ -1,10 +1,20 @@
 # Files
-
-
-## Classes
+## Types
 * [Luna::FileAttribute](struct_luna_1_1_file_attribute.md)
+
+    Specifies file attributes. 
+
+
 * [Luna::IFile](struct_luna_1_1_i_file.md)
+
+    Represents a opened file object. 
+
+
 * [Luna::IFileIterator](struct_luna_1_1_i_file_iterator.md)
+
+    Represents a directory stream that can be used to iterate all files and directories in the specified directory. See [open_dir](group___runtime_file_1ga7a98d4ebd233ae412f59326e7e51af14.md) for details. 
+
+
 ## Enumerations
 * [Luna::FileAttributeFlag](group___runtime_file_1gaabba864469d3eddd3ad511d82a10d2fa.md)
 

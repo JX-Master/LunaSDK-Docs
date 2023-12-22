@@ -28,27 +28,106 @@ The Runtime module provides the runtime environment of Luna SDK and defines core
 * [Serialization](runtime_serialization.md)
 * [String library](runtime_string.md)
 * [Thread management and synchronization methods](runtime_thread.md)
+* [Times](runtime_time.md)
+* [Thread safe assertion](runtime_t_s_assert.md)
 * [Type reflection](runtime_type.md)
 * [Unicode encoding/decoding](runtime_unicode.md)
-## Classes
+## Types
 * [Luna::Allocator](class_luna_1_1_allocator.md)
+
+    The default allocator implementation that can be used for allocating memory for containers defined in Runtime module. 
+
+
 * [Luna::Blob](class_luna_1_1_blob.md)
+
+    Represents one binary large object (BLOB). 
+
+
 * [Luna::Event](class_luna_1_1_event.md)
+
+    Represents one event that once triggered, invokes all handlers registered to it. 
+
+
 * [Luna::equal_to](struct_luna_1_1equal__to.md)
+
+    Function object for performing comparisons. Unless specialised, invokes `operator==` on type T. 
+
+
 * [Luna::less](struct_luna_1_1less.md)
+
+    Function object for performing comparisons. Unless specialized, invokes `operator<` on type T. 
+
+
 * [Luna::hash](struct_luna_1_1hash.md)
+
+    Function object that hashes the specified type into a `usize` hash code that can be used in hash map and hash set. 
+
+
 * [Luna::ReferenceWrapper](class_luna_1_1_reference_wrapper.md)
+
+    Wraps one reference to one copyable, assignable object. 
+
+
 * [Luna::Function< _R(_Args...)>](struct_luna_1_1_function_3_01___r_07___args_8_8_8_08_4.md)
+
+    A function wrapper that can store one callable object, and enable coping, moving and invoking of such callable object. 
+
+
 * [Luna::ReverseIterator](class_luna_1_1_reverse_iterator.md)
+
+    An iterator adaptor that reverses the direction of a given iterator. 
+
+
 * [Luna::ObjRef](class_luna_1_1_obj_ref.md)
+
+    The smart pointer that represents one typeless strong reference to one boxed object. 
+
+
 * [Luna::Ref](class_luna_1_1_ref.md)
+
+    The smart pointer that represents one typed strong reference to one boxed object. 
+
+
 * [Luna::WeakObjRef](class_luna_1_1_weak_obj_ref.md)
+
+    The smart pointer that represents one typeless weak reference to one boxed object. 
+
+
 * [Luna::WeakRef](class_luna_1_1_weak_ref.md)
+
+    The smart pointer that represents one typed weak reference to one boxed object. 
+
+
 * [Luna::IStream](struct_luna_1_1_i_stream.md)
+
+    Represents a serial stream sequence of bytes and supports read/write operations on them. 
+
+
 * [Luna::ISeekableStream](struct_luna_1_1_i_seekable_stream.md)
+
+    Represents one stream object that supports setting the cursor position. 
+
+
+* [Luna::Tuple](class_luna_1_1_tuple.md)
+
+    Represents a sequence of fixed-size elements. Every element can have one different type. 
+
+
 * [Luna::Variant](class_luna_1_1_variant.md)
+
+    Represents a dynamic typed object that stores data in a schema-less (self-described) manner. 
+
+
 * [Luna::Vector](class_luna_1_1_vector.md)
+
+    A dynamic container type that stores a continuous array of elements. 
+
+
 * [Luna::IWaitable](struct_luna_1_1_i_waitable.md)
+
+    Represents a waitable object used for multi-thread synchronization. 
+
+
 ## Enumerations
 * [Luna::SeekMode](group___runtime_1gaf2c27cfc991f5e917923e425d0bf1106.md)
 
@@ -102,4 +181,40 @@ The Runtime module provides the runtime environment of Luna SDK and defines core
 * [Ref< _Ty > new_object(_Args &&... args)](group___runtime_1gaa7e539a91bc5a8e68c91db8d2d8a9c23.md)
 
     Creates one new boxed object. 
+
+* [TupleElement< _I, Tuple< _Tys... > >::type & get(Tuple< _Tys... > &t)](group___runtime_1ga9aae6d134b69bdfb7f054dcd50ddf57c.md)
+
+    Gets the `_I`th element from the tuple. 
+
+* [TupleElement< _I, Tuple< _Tys... > >::type && get(Tuple< _Tys... > &&t)](group___runtime_1gacd20ef40077353ef2010188bf15f7efd.md)
+
+    Gets the `_I`th element from the tuple. 
+
+* [TupleElement< _I, Tuple< _Tys... > >::type const  & get(const Tuple< _Tys... > &t)](group___runtime_1gaa2974b4a26c9dfcb6bb4d25d51be4a65.md)
+
+    Gets the `_I`th element from the tuple. 
+
+* [TupleElement< _I, Tuple< _Tys... > >::type const  && get(const Tuple< _Tys... > &&t)](group___runtime_1gac24377ec6084290e12571664003bd153.md)
+
+    Gets the `_I`th element from the tuple. 
+
+* [TupleElement< _I, Tuple< _Tys... > >::type volatile & get(volatile Tuple< _Tys... > &t)](group___runtime_1ga89f6c77e0282488319d7e9fcf5513350.md)
+
+    Gets the `_I`th element from the tuple. 
+
+* [TupleElement< _I, Tuple< _Tys... > >::type volatile && get(volatile Tuple< _Tys... > &&t)](group___runtime_1gad849811e59b2a93e85659d4fe0bf7604.md)
+
+    Gets the `_I`th element from the tuple. 
+
+* [TupleElement< _I, Tuple< _Tys... > >::type const volatile & get(const volatile Tuple< _Tys... > &t)](group___runtime_1ga6f00a23ba63eaefec5ff55bf6c8c269f.md)
+
+    Gets the `_I`th element from the tuple. 
+
+* [TupleElement< _I, Tuple< _Tys... > >::type const volatile && get(const volatile Tuple< _Tys... > &&t)](group___runtime_1ga573a4679d91cbf159ed82aaf27d2ce60.md)
+
+    Gets the `_I`th element from the tuple. 
+
+* [typeinfo_t tuple_type()](group___runtime_1gaf340d535f67d84438e25d13ef53faee8.md)
+
+    Gets the type object of [Tuple](class_luna_1_1_tuple.md). 
 

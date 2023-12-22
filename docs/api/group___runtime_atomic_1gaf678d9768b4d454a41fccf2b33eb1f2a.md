@@ -26,4 +26,14 @@ Returns the value of the variable before this operation took place.
 
 ## Remark
 The following code demostrates the behavior of this function: 
+```
+ ++
+vtype [atom_compare_exchange_i32](group___runtime_atomic_1gaf678d9768b4d454a41fccf2b33eb1f2a.md)(vtype volatile* dst, vtype exchange, vtype comperand)
+{
+    vtype r = *dst;
+    if(*dst == comperand) *dst = exchange;
+    return r;
+}
+```
+
 

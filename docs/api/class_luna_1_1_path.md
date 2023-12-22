@@ -268,7 +268,7 @@ One path is composed by the following components:1. The root name, which usually
 
 * [void reset()](class_luna_1_1_path_1ad20897c5c8bd47f5d4005989bead0e55.md)
 
-    Resets the path object. 
+    Resets the path object. This operation clears all nodes in the path, then clears the root name and flags of the path. 
 
 * [iterator erase(const_iterator pos)](class_luna_1_1_path_1a29790c28710ec0e64b48c2f4edd0b08c.md)
 

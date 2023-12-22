@@ -15,3 +15,6 @@ struct Luna::MemoryLayoutMember
     The alignment requirement of this member in bytes. This property is filled by the user before calculating memory layouts. 
 
 * [usize offset](struct_luna_1_1_memory_layout_member_1af54fc49734a070e8a5568b09bb23a9d5.md)
+
+    The offset of this member in bytes. This property is filled by the memory layouting algorithm and can remain uninitialized when calculating memory layouts. 
+

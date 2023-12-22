@@ -1,6 +1,10 @@
 # Generating random numbers
-## Classes
+## Types
 * [Luna::IRandom](struct_luna_1_1_i_random.md)
+
+    Represents a Pseudo-random number generator. 
+
+
 ## Functions
 * [Ref< IRandom > new_random_number_generator(u32 initial_seed)](group___runtime_random_1ga4d22ddc6d3fd89122313822def32e1ea.md)
 

@@ -14,7 +14,7 @@ Removes one element from the set.
     The iterator to the element to be removed. 
 
 ## Return value
-Returns one iterator to the next element of the removed element when iterating elements. 
+Returns one iterator to the next element after the removed element, or `end()` if such element does not exist. 
 
 ## Valid Usage
 * `pos` must points to a valid element in the set. 

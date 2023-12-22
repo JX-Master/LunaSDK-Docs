@@ -1,7 +1,7 @@
 # Luna::BasicString::insert
 
 ```c++
-void insert(usize index, const BasicString &str, usize index_str, usize count)
+void insert(usize index, const BasicString &str, usize index_str, usize count=npos)
 ```
 
 Inserts one subrange of another string at the specified position. 
@@ -23,5 +23,5 @@ Inserts one subrange of another string at the specified position.
 
 * *in* **count**
 
-    The number of characters to insert. 
+    The number of characters to insert. If `count` is greater than `str.size() - index_str`, only `str.size() - index_str` characters will be inserted. 
 

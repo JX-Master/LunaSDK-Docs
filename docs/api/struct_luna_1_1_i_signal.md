@@ -1,5 +1,5 @@
 # Luna::ISignal
-Represents a system-level signal object. @threadsafe. 
+Represents a system-level signal object. This\ type\ is\ thread\ safe. 
 
 ```c++
 interface Luna::ISignal : public virtual IWaitable

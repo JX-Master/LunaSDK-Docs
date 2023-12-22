@@ -1,6 +1,10 @@
 # Name strings
-## Classes
+## Types
 * [Luna::Name](class_luna_1_1_name.md)
+
+    Represents one name string. 
+
+
 ## Alias types
 * [using name_id_t =  u32](group___runtime_name_1ga025e1affb824b441b7da6b1ad7bb14ca.md)
 

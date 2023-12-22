@@ -1,7 +1,7 @@
 # Luna::tls_alloc
 
 ```c++
-opaque_t tls_alloc(tls_destructor *destructor=nullptr)
+opaque_t tls_alloc(void(*destructor)(void *ptr)=nullptr)
 ```
 
 Allocates one thread local storage (TLS) slot. 

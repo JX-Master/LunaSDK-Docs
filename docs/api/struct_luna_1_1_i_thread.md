@@ -1,11 +1,9 @@
 # Luna::IThread
-Represents a system thread object. 
+Represents a system thread object. This\ type\ is\ thread\ safe. 
 
 ```c++
 interface Luna::IThread : public virtual IWaitable
 ```
-
-@threadsafe 
 
 ## Base type
 * [IWaitable](struct_luna_1_1_i_waitable.md)

@@ -19,5 +19,5 @@ The memory domain is usually the heap or pool that allocates this memory block. 
 
 * *in* **str_size**
 
-    The size of the name, not including the null terminator. If this is `USIZE_MAX`, the size is determined by the system using strlen. 
+    The size of the name, not including the null terminator. If this is `USIZE_MAX`, the size is determined by the system using [strlen](group___runtime_string_1gacabe981ca12e2bfa89fc57ca022360a5.md). 
 

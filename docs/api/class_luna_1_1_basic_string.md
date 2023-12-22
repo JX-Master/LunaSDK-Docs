@@ -263,7 +263,7 @@ class Luna::BasicString
 
     Inserts another string at the specified position. 
 
-* [void insert(usize index, const BasicString &str, usize index_str, usize count)](class_luna_1_1_basic_string_1a496120a9d0bb9092d8f9871e25452b7a.md)
+* [void insert(usize index, const BasicString &str, usize index_str, usize count=npos)](class_luna_1_1_basic_string_1a22ef9a75352db0c2f37f3cc5581d0470.md)
 
     Inserts one subrange of another string at the specified position. 
 
@@ -274,4 +274,168 @@ class Luna::BasicString
 * [BasicString< _Char, _Alloc >::iterator insert(const_iterator pos, usize count, value_type ch)](class_luna_1_1_basic_string_1a086ca2e7c9a1d4e090567cc7409ae23d.md)
 
     Inserts `count` copies of `ch` at the specified position. 
+
+* [BasicString< _Char, _Alloc >::iterator insert(const_iterator pos, _InputIt first, _InputIt last)](class_luna_1_1_basic_string_1a819ac8c437bf70a69cb028757a2f9cf1.md)
+
+    Inserts characters from the iterator range at the specified position. 
+
+* [BasicString< _Char, _Alloc >::iterator insert(const_iterator pos, InitializerList< value_type > ilist)](class_luna_1_1_basic_string_1af623e3655e9b307d40582f9a274b7d98.md)
+
+    Inserts characters from the specified initializer list at the specified position. 
+
+* [void erase(usize index=0, usize count=npos)](class_luna_1_1_basic_string_1aa545ad0e9ed1fa69cc395a42856cbce4.md)
+
+    Removes `count` characters from the specified position. 
+
+* [BasicString< _Char, _Alloc >::iterator erase(const_iterator pos)](class_luna_1_1_basic_string_1a367811c9cce4501631bd61133b5af24c.md)
+
+    Removes one character. 
+
+* [BasicString< _Char, _Alloc >::iterator erase(const_iterator first, const_iterator last)](class_luna_1_1_basic_string_1a2bd8bd8d9e8f3f1e3d252285f0d0a8f8.md)
+
+    Removes characters in the specified range. 
+
+* [void swap(BasicString &rhs)](class_luna_1_1_basic_string_1a8696fba9dad5e2d99af377769d1ae0c6.md)
+
+    Swaps characters of this string with the specified string. 
+
+* [void append(usize count, value_type ch)](class_luna_1_1_basic_string_1a960d21333a39ee642559f87fd78037a6.md)
+
+    Appends `count` copies of character `ch` to the back of the string. 
+
+* [void append(const BasicString &str)](class_luna_1_1_basic_string_1abad911fa2fe712fc30b6f1371d9ccca1.md)
+
+    Appends another string to the back of the string. 
+
+* [void append(const BasicString &str, usize pos, usize count=npos)](class_luna_1_1_basic_string_1a5524c1733f03a62e069e6269e87fd9d0.md)
+
+    Appends one subrange of another string to the back of the string. 
+
+* [void append(const value_type *s, usize count)](class_luna_1_1_basic_string_1a62dbef30f3cf6cba3cd8e4db913f8ff5.md)
+
+    Appends one character array to the back of the string. 
+
+* [void append(const value_type *s)](class_luna_1_1_basic_string_1abfaf38cfd88e70a7d638d057f3702cb3.md)
+
+    Appends one null-terminated C string to the back of the string. 
+
+* [void append(_InputIt first, _InputIt last)](class_luna_1_1_basic_string_1aa23a815a1690960c24e7531da65f7d74.md)
+
+    Appends characters from the iterator range to the back of the string. 
+
+* [void append(InitializerList< value_type > ilist)](class_luna_1_1_basic_string_1adf931fc77df229e63f55a1cd25fb3105.md)
+
+    Appends characters from the specified initializer list to the back of the string. 
+
+* [i32 compare(const BasicString &rhs) const](class_luna_1_1_basic_string_1a0aa300bc340ead2704f51c0f929041b8.md)
+
+    Compares this string with the specified string. 
+
+* [i32 compare(usize pos1, usize count1, const BasicString &rhs) const](class_luna_1_1_basic_string_1a64605f0e903436fa93460f1e9fbbafad.md)
+
+    Compares [`pos1`, `pos1 + count1`) substring of this string to `rhs`. 
+
+* [i32 compare(usize pos1, usize count1, const BasicString &rhs, usize pos2, usize count2=npos) const](class_luna_1_1_basic_string_1add78057fe7546a3fe35216ccbda5bd50.md)
+
+    Compares a [`pos1`, `pos1 + count1`) substring of this string to a substring [`pos2`, `pos2 + count2`) of `rhs`. 
+
+* [i32 compare(const value_type *s) const](class_luna_1_1_basic_string_1a536e301c18bf7ac0bb43c6b665d06eb2.md)
+
+    Compares this string to the null-terminated C string. 
+
+* [i32 compare(usize pos1, usize count1, const value_type *s) const](class_luna_1_1_basic_string_1afe6fef3ffff75c23d2499957b222173a.md)
+
+    Compares [`pos1`, `pos1 + count1`) substring of this string to the null-terminated C string. 
+
+* [i32 compare(usize pos1, usize count1, const value_type *s, usize count2) const](class_luna_1_1_basic_string_1a47c3a331b179cfd884faef8e88caf293.md)
+
+    Compares [`pos1`, `pos1 + count1`) substring of this string to the characters in the range [`s`, `s + count2`). 
+
+* [void replace(usize pos, usize count, const BasicString &str)](class_luna_1_1_basic_string_1a6d17d834a99bca76c180bd9aee728253.md)
+
+    Replaces characters in range [`pos`, `pos + count`) with characters of `str`. 
+
+* [void replace(const_iterator first, const_iterator last, const BasicString &str)](class_luna_1_1_basic_string_1a6005903a2055c24eaec414fd0f3cdc89.md)
+
+    Replaces characters in range [`first`, `last`) with characters of `str`. 
+
+* [void replace(usize pos, usize count, const BasicString &str, usize pos2, usize count2=npos)](class_luna_1_1_basic_string_1a1e35bd1c2f378b8a51b65c495348aec4.md)
+
+    Replaces characters in range [`pos`, `pos + count`) with a substring [`pos2`, `pos2 + count2`) of `str`. 
+
+* [void replace(const_iterator first, const_iterator last, _InputIt first2, _InputIt last2)](class_luna_1_1_basic_string_1a4b70247166e39d11f67f37b239f326b2.md)
+
+    Replaces characters in range [`first`, `last`) with the characters in the range [`first2`, `last2`). 
+
+* [void replace(usize pos, usize count, const value_type *cstr, usize count2)](class_luna_1_1_basic_string_1a9800e2b9792e254849818ec5861e3a8e.md)
+
+    Replaces characters in range [`pos`, `pos + count`) with a character array [`cstr`, `cstr + count2). @param[in] pos The index of the first character to replace. @param[in] count The number of characters to replace. If`pos + count`is greater than`this->[size()](class_luna_1_1_basic_string_1a79348f1b7c06b34052b42656a0279429.md)`,`count`will be clamped to`this->[size()](class_luna_1_1_basic_string_1a79348f1b7c06b34052b42656a0279429.md) - pos`. @param[in] cstr The pointer to the character array to use for replacement. @param[in] count2 The number of characters in`cstr`to use for replacement. @par Valid Usage *`pos`must not be greater than`this->[size()](class_luna_1_1_basic_string_1a79348f1b7c06b34052b42656a0279429.md)`. 
+
+* [void replace(const_iterator first, const_iterator last, const value_type *cstr, usize count2)](class_luna_1_1_basic_string_1ae6433c006f58290420c9ee6fdd051885.md)
+
+    Replaces characters in range [`first`, `last`) with a character array [`cstr`, `cstr + count2). @param[in] first The iterator to the first character to replace. @param[in] last The iterator to the one-past-last character to replace. @param[in] cstr The pointer to the character array to use for replacement. @param[in] count2 The number of characters in`cstr`to use for replacement. @par Valid Usage. `
+
+* [void replace(usize pos, usize count, const value_type *cstr)](class_luna_1_1_basic_string_1a4b26260265e9a9a22db847a27a3b9941.md)
+
+    Replaces characters in range [`pos`, `pos + count`) with a null-terminated C string. 
+
+* [void replace(const_iterator first, const_iterator last, const value_type *cstr)](class_luna_1_1_basic_string_1ac785ff9f4e7f00251c2fc902eb6cf00f.md)
+
+    Replaces characters in range [`first`, `last`) with a null-terminated C string. 
+
+* [void replace(usize pos, usize count, usize count2, value_type ch)](class_luna_1_1_basic_string_1aa74f73d93d069eb10f5746467c009cfe.md)
+
+    Replaces characters in range [`pos`, `pos + count`) with `count2` copies of character `ch`. 
+
+* [void replace(const_iterator first, const_iterator last, usize count2, value_type ch)](class_luna_1_1_basic_string_1a861d541f8e33a502bbf985c6bee9e39c.md)
+
+    Replaces characters in range [`first`, `last`) with `count2` copies of character `ch`. 
+
+* [void replace(const_iterator first, const_iterator last, InitializerList< value_type > ilist)](class_luna_1_1_basic_string_1a5a4028436760fb23d593e0c48bc7436a.md)
+
+    Replaces characters in range [`first`, `last`) with characters from the specified initializer list. 
+
+* [BasicString< _Char, _Alloc > substr(usize pos=0, usize count=npos) const](class_luna_1_1_basic_string_1a04b6fefb11a9d480a598c81a0d29e9bb.md)
+
+    Creates a substring of this string. 
+
+* [usize copy(value_type *dst, usize count, usize pos=0) const](class_luna_1_1_basic_string_1a49b5c5c2c2fb221c030699f473a7578c.md)
+
+    Copies a substring [`pos`, `pos + count`) to character string pointed to by `dst`. 
+
+* [BasicString< _Char, _Alloc >::allocator_type get_allocator() const](class_luna_1_1_basic_string_1a8abd645420e7dbfa486b5eff756c97b0.md)
+
+    Gets the allocator of the string. 
+
+* [usize find(const BasicString &str, usize pos=0) const](class_luna_1_1_basic_string_1accbf8d53216f91730aa09611b24384b5.md)
+
+    Finds the first occurrence of the specified character sequence in the string. 
+
+* [usize find(const value_type *s, usize pos, usize count) const](class_luna_1_1_basic_string_1a94d0a547db1d7bd35eab7d2bdde40344.md)
+
+    Finds the first occurrence of the specified character sequence in the string. 
+
+* [usize find(const value_type *s, usize pos=0) const](class_luna_1_1_basic_string_1acf6eab9445892ede4098e9778af4a2d4.md)
+
+    Finds the first occurrence of the specified character sequence in the string. 
+
+* [usize find(value_type ch, usize pos=0) const](class_luna_1_1_basic_string_1a8db62d39b6326c458c383f5c792f90bb.md)
+
+    Finds the first occurrence of the specified character in the string. 
+
+* [usize rfind(const BasicString &str, usize pos=npos) const](class_luna_1_1_basic_string_1a7503833fd0adcf86380c970edcd84afb.md)
+
+    Finds the last occurrence of the specified character sequence in the string. 
+
+* [usize rfind(const value_type *s, usize pos, usize count) const](class_luna_1_1_basic_string_1a8a8f41ef4cfe42a7233e2318c253ac00.md)
+
+    Finds the last occurrence of the specified character sequence in the string. 
+
+* [usize rfind(const value_type *s, usize pos=0) const](class_luna_1_1_basic_string_1a7d3ce44621aabfcbfbf0005b0a0479ac.md)
+
+    Finds the last occurrence of the specified character sequence in the string. 
+
+* [usize rfind(value_type ch, usize pos=npos) const](class_luna_1_1_basic_string_1ab54fbd34cb23148a39defea3b2e1f5ea.md)
+
+    Finds the first occurrence of the specified character in the string. 
 

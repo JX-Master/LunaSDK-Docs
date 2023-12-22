@@ -1,11 +1,35 @@
 # Debugging
-## Classes
+## Types
 * [Luna::ProfilerEvent](struct_luna_1_1_profiler_event.md)
+
+    A emitted profiler event. 
+
+
 * [Luna::ProfilerEventData::MemoryAllocate](struct_luna_1_1_profiler_event_data_1_1_memory_allocate.md)
+
+    The memory allocation event data. 
+
+
 * [Luna::ProfilerEventData::MemoryDeallocate](struct_luna_1_1_profiler_event_data_1_1_memory_deallocate.md)
+
+    The memory deallocation event data. 
+
+
 * [Luna::ProfilerEventData::SetMemoryName](struct_luna_1_1_profiler_event_data_1_1_set_memory_name.md)
+
+    The set memory name event data. 
+
+
 * [Luna::ProfilerEventData::SetMemoryType](struct_luna_1_1_profiler_event_data_1_1_set_memory_type.md)
+
+    The set memory type event data. 
+
+
 * [Luna::ProfilerEventData::SetMemoryDomain](struct_luna_1_1_profiler_event_data_1_1_set_memory_domain.md)
+
+    The set memory domain event data. 
+
+
 ## Functions
 * [void * allocate_profiler_event_data(usize size, usize alignment, void(*dtor)(void *)=nullptr)](group___runtime_profiler_1ga7eaa2c6dab0d6b10da8f589ae1faceaf.md)
 

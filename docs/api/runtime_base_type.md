@@ -41,8 +41,17 @@
     64-bit (double precision) floating point number. 
 
 * [using byte_t =  u8](group___runtime_base_type_1gaac1fbcf6f355341ea568024167e570fe.md)
+
+    An alias of `u8` that represents one byte. You may use this type to differentiate the concept of byte stream (byte_t*) from number array (u8*). 
+
 * [using nullptr_t =  std::nullptr_t](group___runtime_base_type_1ga7b29db1791dc9e52d93ada17d953ed6d.md)
+
+    `usize` is the unsigned integer type of whose length marches the machine architecture. In particular, in 32-bit application, this is 32-bit unsigned integer; in 64-bit application, this is 64-bit unsigned integer. The `usize` type is guaranteed to be large enough to store a indexable memory address, so that any pointer can be reinterpreted casted to `usize`. 
+
 * [using opaque_t =  void*](group___runtime_base_type_1ga1d45eaaf0075f53ddcda26ad3a960faf.md)
+
+    `opaque_t` is used to represent one opaque pointer that shall not be reinterpreted or dereferred by the user. opaque_t are ususally used as arguments or returns values of interface functions to hide the implementation from the user. 
+
 * [using c8 =  char](group___runtime_base_type_1ga47d3dca6512d0867b2a4126b4643756c.md)
 
     8-bit character. Signed/unsigned is unspecified, cast this to u8/i8 for fetching number. 

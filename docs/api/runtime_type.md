@@ -1,12 +1,40 @@
 # Type reflection
-## Classes
+## Types
 * [Luna::StructurePropertyDesc](struct_luna_1_1_structure_property_desc.md)
+
+    Describes one structure property. 
+
+
 * [Luna::EnumerationOptionDesc](struct_luna_1_1_enumeration_option_desc.md)
+
+    Describes one enumeration option. 
+
+
 * [Luna::StructureTypeDesc](struct_luna_1_1_structure_type_desc.md)
+
+    Describes one structure type. 
+
+
 * [Luna::GenericStructureInstantiateInfo](struct_luna_1_1_generic_structure_instantiate_info.md)
+
+    Describes the information of one generic structure instantiation operation. 
+
+
 * [Luna::GenericStructureTypeDesc](struct_luna_1_1_generic_structure_type_desc.md)
+
+    Describes one generic structure type. 
+
+
 * [Luna::EnumerationTypeDesc](struct_luna_1_1_enumeration_type_desc.md)
+
+    Describes one enumeration type. 
+
+
 * [Luna::typeof_t](struct_luna_1_1typeof__t.md)
+
+    The functional obejct that can be overloaded to define custom behavior of [typeof](group___runtime_type_1ga13a36b97bddb354ee6046139b9d92f32.md) for user-defined types. 
+
+
 ## Alias types
 * [using equal_to_func_t =  bool(typeinfo_t type, const void* lhs, const void* rhs)](group___runtime_type_1gaa25ce33574555d8be053cd84f12d64a6.md)
 
@@ -331,11 +359,11 @@
 
 * [typeinfo_t register_struct_type(Span< const StructurePropertyDesc > properties, typeinfo_t base_type=nullptr)](group___runtime_type_1gaef020b7b9d42e098afb57ed8676a863b.md)
 
-    Registers one structure type to the type system. The structure type must have one lustruct macro defined in the structure body. 
+    Registers one structure type to the type system. The structure type must have one [lustruct](group___runtime_type_1ga706ef093389171fcac4e2745b5a325a5.md) macro defined in the structure body. 
 
 * [typeinfo_t register_enum_type(Span< const EnumerationOptionDesc > options, bool multienum=false)](group___runtime_type_1ga6c48e43cb9e673c260952a2ecedcec68.md)
 
-    Registers one enumeration type to the type system. The enumeration type must have one luenum macro defined directly in `Luna` namespace. 
+    Registers one enumeration type to the type system. The enumeration type must have one [luenum](group___runtime_type_1gaa5c575c676819bd6348365fba48b6769.md) macro defined directly in `Luna` namespace. 
 
 * [typeinfo_t get_type_by_guid(const Guid &guid)](group___runtime_type_1gae067905858c7ea088d2059362811ae57.md)
 
@@ -428,4 +456,21 @@
 * [typeinfo_t get_generic_instanced_type(typeinfo_t generic_type, Span< const typeinfo_t > generic_arguments)](group___runtime_type_1ga49059ae1daffad4476ce6c3f8ed127f7.md)
 
     Gets one instanced type of one generic type. 
+
+## Macros
+* [lustruct(_name, _guid)](group___runtime_type_1ga706ef093389171fcac4e2745b5a325a5.md)
+
+    Declares the name and guid for one structure or class type. 
+
+* [luproperty(_struct, _type, _name)](group___runtime_type_1gaa77d452893e669bfab5269edb321ff75.md)
+
+    Declares one property used in register_struct_type. 
+
+* [luenum(_type, _name, _guid)](group___runtime_type_1gaa5c575c676819bd6348365fba48b6769.md)
+
+    Declares the name and guid for one enumeration type. 
+
+* [luoption(_enum, _item)](group___runtime_type_1ga2c3ef7a6cd6e691e08c11d97650d53a5.md)
+
+    Declares one option used in register_enum_type. 
 

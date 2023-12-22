@@ -11,3 +11,6 @@ struct Luna::ProfilerEventData::SetMemoryDomain
     The memory pointer. 
 
 * [const c8 domain[1]](struct_luna_1_1_profiler_event_data_1_1_set_memory_domain_1a74472a6556a749aa69a830de854e22d0.md)
+
+    The domain of the memory to set. The name of the memory to set. The string buffer is allocated along with this structure, and can be referred directly by referring this property. The string buffer is valid so long as this structure is valid. 
+

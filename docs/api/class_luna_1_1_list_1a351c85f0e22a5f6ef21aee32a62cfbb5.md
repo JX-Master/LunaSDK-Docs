@@ -18,7 +18,7 @@ Removes one range of elements from the list.
     The iterator to the one-past-last element to be removed. 
 
 ## Return value
-Returns one iterator to the next element of the removed elements when iterating elements. 
+Returns one iterator to the next element after the removed elements, or `end()` if such element does not exist. 
 
 ## Valid Usage
 * `first` must be either `end()` or one valid element in the list.

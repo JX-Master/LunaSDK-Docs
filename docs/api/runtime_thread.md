@@ -1,14 +1,50 @@
 # Thread management and synchronization methods
-## Classes
+## Types
 * [Luna::IMutex](struct_luna_1_1_i_mutex.md)
+
+    This\ type\ is\ thread\ safe. Represents a system-level mutex object. 
+
+
 * [Luna::MutexGuard](class_luna_1_1_mutex_guard.md)
+
+    A RAII wrapper for one mutex object that releases the mutex automatically when the wrapper is destructed. 
+
+
 * [Luna::IReadWriteLock](struct_luna_1_1_i_read_write_lock.md)
+
+    Represents one system-level read write lock. 
+
+
 * [Luna::ISemaphore](struct_luna_1_1_i_semaphore.md)
+
+    Represents one system-level semaphore object. 
+
+
 * [Luna::ISignal](struct_luna_1_1_i_signal.md)
+
+    Represents a system-level signal object. This\ type\ is\ thread\ safe. 
+
+
 * [Luna::SpinLock](class_luna_1_1_spin_lock.md)
+
+    Provides one spin lock that can give one thread exclusive access to one resource in multi-thread environments. 
+
+
 * [Luna::RecursiveSpinLock](class_luna_1_1_recursive_spin_lock.md)
+
+    Similar to [SpinLock](class_luna_1_1_spin_lock.md), but allows the lock to be obtained mutable times from the same thread. 
+
+
 * [Luna::LockGuard](class_luna_1_1_lock_guard.md)
+
+    The RAII wrapper that locks the specified lock upon construction, and unlocks the specified lock upon destruction. 
+
+
 * [Luna::IThread](struct_luna_1_1_i_thread.md)
+
+    Represents a system thread object. This\ type\ is\ thread\ safe. 
+
+
 ## Enumerations
 * [Luna::ThreadPriority](group___runtime_thread_1ga80351cf39ce9e4d1d110fb249699db07.md)
 
@@ -16,6 +52,9 @@
 
 ## Functions
 * [Ref< IMutex > new_mutex()](group___runtime_thread_1gaaf4b4510b9d6c01a12e3064691d15bdc.md)
+
+    Creates a new mutex object. 
+
 * [Ref< IReadWriteLock > new_read_write_lock()](group___runtime_thread_1ga35f290e06f79b34a7a4b72368a88e6b4.md)
 
     Creates one new read write lock. 
@@ -56,7 +95,7 @@
 
     Yields the remain time slice of the current thread and let OS to schedule other threads. 
 
-* [opaque_t tls_alloc(tls_destructor *destructor=nullptr)](group___runtime_thread_1ga627934a51a920ff58c694cdb89083fe4.md)
+* [opaque_t tls_alloc(void(*destructor)(void *ptr)=nullptr)](group___runtime_thread_1ga8dd9f89cdebe83f1c1e31b21ad1b1811.md)
 
     Allocates one thread local storage (TLS) slot. 
 

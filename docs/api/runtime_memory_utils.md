@@ -1,7 +1,15 @@
 # Memory utility library
-## Classes
+## Types
 * [Luna::Unconstructed](class_luna_1_1_unconstructed.md)
+
+    Represents one object that supports manual construction and destruction. 
+
+
 * [Luna::MemoryLayoutMember](struct_luna_1_1_memory_layout_member.md)
+
+    Describes one member used by memory layouting algorithms. 
+
+
 ## Functions
 * [void * memzero(void *dst, usize byte_count)](group___runtime_memory_utils_1ga21ab8d9fe0fe13c23177a91111cccd65.md)
 

@@ -1,6 +1,10 @@
 # Serialization
-## Classes
+## Types
 * [Luna::SerializableTypeDesc](struct_luna_1_1_serializable_type_desc.md)
+
+    Describes one serializable type. 
+
+
 ## Alias types
 * [using serialize_func_t =  R<Variant>(typeinfo_t type, const void* inst)](group___runtime_serialization_1ga45c924a8136fdc66c3db539f9e0c0a41.md)
 

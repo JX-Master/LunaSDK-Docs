@@ -19,4 +19,9 @@ Returns the specified interface pointer for the boxed object. Returns `nullptr` 
 
 ## Remark
 The template version of `query_interface` provides a more convenient way to fetch one interface pointer from one boxed object pointer like so: 
+```
+[object_t](group___runtime_object_1ga4d287a1c3bd0821c2391f4613686e35a.md) object = ...;
+Interface1* i = query_interface<Interface1>(object);
+```
+
 

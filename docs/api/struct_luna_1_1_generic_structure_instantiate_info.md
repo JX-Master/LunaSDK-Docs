@@ -21,11 +21,17 @@ This is returned by the instantiation callback function when one new generic str
     The base type of this structure type. 
 
 * [structure_ctor_t* ctor](struct_luna_1_1_generic_structure_instantiate_info_1a8b562d2692e5808232b9a65c240e6103.md)
+
+    The constructor function for this type. If `nullptr`, the default constructor will be used. 
+
 * [structure_dtor_t* dtor](struct_luna_1_1_generic_structure_instantiate_info_1aa498db50ab9c3d7f9f84c97b8c24ac63.md)
 
     The destructor function for this type. If `nullptr`, the default destructor will be used. 
 
 * [structure_copy_ctor_t* copy_ctor](struct_luna_1_1_generic_structure_instantiate_info_1abf45ac6225b448e989e041b420830949.md)
+
+    The copy constructor for this type. If `nullptr`, the default copy constructor will be used. 
+
 * [structure_move_ctor_t* move_ctor](struct_luna_1_1_generic_structure_instantiate_info_1a66e83256edf26122efc9735284bf5573.md)
 
     The move constructor for this type. If `nullptr`, the default move constructor will be used. 

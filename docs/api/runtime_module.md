@@ -1,7 +1,15 @@
 # Module system
-## Classes
+## Types
 * [Luna::ModuleDesc](struct_luna_1_1_module_desc.md)
+
+    Module description structure. 
+
+
 * [Luna::StaticRegisterModule](struct_luna_1_1_static_register_module.md)
+
+    One static module registration helper class that registers the specified module when being constructed. 
+
+
 ## Alias types
 * [using module_init_func_t =  RV()](group___runtime_module_1ga385723c1d909ba7d4b962c2149f7a8dd.md)
 

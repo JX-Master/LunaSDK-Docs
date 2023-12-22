@@ -1,9 +1,25 @@
 # Error handling
-## Classes
+## Types
 * [Luna::ErrCode](struct_luna_1_1_err_code.md)
+
+    The error code type represents one single error. 
+
+
 * [Luna::Error](struct_luna_1_1_error.md)
+
+    The error object encapsulates one error code along with one string that describes the error. 
+
+
 * [Luna::R](struct_luna_1_1_r.md)
+
+    A wrapper object for the return value of one function that may fail. 
+
+
 * [Luna::R< void >](struct_luna_1_1_r_3_01void_01_4.md)
+
+    Specification of [R](struct_luna_1_1_r.md) for void type. 
+
+
 ## Alias types
 * [using errcat_t =  usize](group___runtime_error_1ga2fb0ec3bd79226d7a6357732e810b3d9.md)
 
@@ -16,7 +32,7 @@
 ## Constants
 * [constexpr RV ok](group___runtime_error_1ga5b239ee8917aacd639e36743f8561eb2.md)
 
-    A special constant result object that represents one successful result. 
+    A special constant result object that represents one successful result. You can return `ok` instead of `RV()` to clearly represent one successful call for one function without return value. 
 
 ## Functions
 * [ErrCode get_error_code_by_name(const c8 *errcat_name, const c8 *errcode_name)](group___runtime_error_1gac2cf4135d372c8b93bc5dd51a1a5a3a2.md)

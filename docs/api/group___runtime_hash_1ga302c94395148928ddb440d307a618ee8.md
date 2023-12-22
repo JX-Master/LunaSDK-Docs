@@ -6,6 +6,8 @@ constexpr u64 strhash64(const c8 *s, u64 h=0)
 
 A specialization of [strhash](group___runtime_hash_1ga6afb7f86bb77e6fb15015e072e64d7f5.md) that computes 64-bit hash code. 
 
+
+
 ## Parameters
 * *in* **s**
 

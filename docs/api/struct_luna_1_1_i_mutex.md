@@ -1,11 +1,9 @@
 # Luna::IMutex
-Represents a system-level mutex object. 
+This\ type\ is\ thread\ safe. Represents a system-level mutex object. 
 
 ```c++
 interface Luna::IMutex : public virtual IWaitable
 ```
-
-@threadsafe
 
 The mutex or critical section is an important object that provides synchronization functionality for multiple threads that wants to access the same resource without data race. The mutex can be "owned" by at most one thread, when other threads wants to acquire the mutex, it must wait until the thread that currently owns the mutex to release the mutex. The threads that waits on the mutex will probably be suspended by system.
 
