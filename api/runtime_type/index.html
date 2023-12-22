@@ -147,15 +147,36 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="type-reflection">Type reflection</h1>
-<h2 id="classes">Classes</h2>
+<h2 id="types">Types</h2>
 <ul>
-<li><a href="../struct_luna_1_1_structure_property_desc/">Luna::StructurePropertyDesc</a></li>
-<li><a href="../struct_luna_1_1_enumeration_option_desc/">Luna::EnumerationOptionDesc</a></li>
-<li><a href="../struct_luna_1_1_structure_type_desc/">Luna::StructureTypeDesc</a></li>
-<li><a href="../struct_luna_1_1_generic_structure_instantiate_info/">Luna::GenericStructureInstantiateInfo</a></li>
-<li><a href="../struct_luna_1_1_generic_structure_type_desc/">Luna::GenericStructureTypeDesc</a></li>
-<li><a href="../struct_luna_1_1_enumeration_type_desc/">Luna::EnumerationTypeDesc</a></li>
-<li><a href="../struct_luna_1_1typeof__t/">Luna::typeof_t</a></li>
+<li>
+<p><a href="../struct_luna_1_1_structure_property_desc/">Luna::StructurePropertyDesc</a></p>
+<p>Describes one structure property. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_enumeration_option_desc/">Luna::EnumerationOptionDesc</a></p>
+<p>Describes one enumeration option. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_structure_type_desc/">Luna::StructureTypeDesc</a></p>
+<p>Describes one structure type. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_generic_structure_instantiate_info/">Luna::GenericStructureInstantiateInfo</a></p>
+<p>Describes the information of one generic structure instantiation operation. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_generic_structure_type_desc/">Luna::GenericStructureTypeDesc</a></p>
+<p>Describes one generic structure type. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_enumeration_type_desc/">Luna::EnumerationTypeDesc</a></p>
+<p>Describes one enumeration type. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1typeof__t/">Luna::typeof_t</a></p>
+<p>The functional obejct that can be overloaded to define custom behavior of <a href="../group___runtime_type_1ga13a36b97bddb354ee6046139b9d92f32/">typeof</a> for user-defined types. </p>
+</li>
 </ul>
 <h2 id="alias-types">Alias types</h2>
 <ul>
@@ -484,11 +505,11 @@
 </li>
 <li>
 <p><a href="../group___runtime_type_1gaef020b7b9d42e098afb57ed8676a863b/">typeinfo_t register_struct_type(Span&lt; const StructurePropertyDesc &gt; properties, typeinfo_t base_type=nullptr)</a></p>
-<p>Registers one structure type to the type system. The structure type must have one lustruct macro defined in the structure body. </p>
+<p>Registers one structure type to the type system. The structure type must have one <a href="../group___runtime_type_1ga706ef093389171fcac4e2745b5a325a5/">lustruct</a> macro defined in the structure body. </p>
 </li>
 <li>
 <p><a href="../group___runtime_type_1ga6c48e43cb9e673c260952a2ecedcec68/">typeinfo_t register_enum_type(Span&lt; const EnumerationOptionDesc &gt; options, bool multienum=false)</a></p>
-<p>Registers one enumeration type to the type system. The enumeration type must have one luenum macro defined directly in <code>Luna</code> namespace. </p>
+<p>Registers one enumeration type to the type system. The enumeration type must have one <a href="../group___runtime_type_1gaa5c575c676819bd6348365fba48b6769/">luenum</a> macro defined directly in <code>Luna</code> namespace. </p>
 </li>
 <li>
 <p><a href="../group___runtime_type_1gae067905858c7ea088d2059362811ae57/">typeinfo_t get_type_by_guid(const Guid &amp;guid)</a></p>
@@ -581,6 +602,25 @@
 <li>
 <p><a href="../group___runtime_type_1ga49059ae1daffad4476ce6c3f8ed127f7/">typeinfo_t get_generic_instanced_type(typeinfo_t generic_type, Span&lt; const typeinfo_t &gt; generic_arguments)</a></p>
 <p>Gets one instanced type of one generic type. </p>
+</li>
+</ul>
+<h2 id="macros">Macros</h2>
+<ul>
+<li>
+<p><a href="../group___runtime_type_1ga706ef093389171fcac4e2745b5a325a5/">lustruct(_name, _guid)</a></p>
+<p>Declares the name and guid for one structure or class type. </p>
+</li>
+<li>
+<p><a href="../group___runtime_type_1gaa77d452893e669bfab5269edb321ff75/">luproperty(_struct, _type, _name)</a></p>
+<p>Declares one property used in register_struct_type. </p>
+</li>
+<li>
+<p><a href="../group___runtime_type_1gaa5c575c676819bd6348365fba48b6769/">luenum(_type, _name, _guid)</a></p>
+<p>Declares the name and guid for one enumeration type. </p>
+</li>
+<li>
+<p><a href="../group___runtime_type_1ga2c3ef7a6cd6e691e08c11d97650d53a5/">luoption(_enum, _item)</a></p>
+<p>Declares one option used in register_enum_type. </p>
 </li>
 </ul>
               

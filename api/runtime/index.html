@@ -124,7 +124,7 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#topics">Topics</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a>
+    <li class="toctree-l2"><a class="reference internal" href="#types">Types</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#enumerations">Enumerations</a>
     </li>
@@ -187,29 +187,89 @@
 <li><a href="../runtime_serialization/">Serialization</a></li>
 <li><a href="../runtime_string/">String library</a></li>
 <li><a href="../runtime_thread/">Thread management and synchronization methods</a></li>
+<li><a href="../runtime_time/">Times</a></li>
+<li><a href="../runtime_t_s_assert/">Thread safe assertion</a></li>
 <li><a href="../runtime_type/">Type reflection</a></li>
 <li><a href="../runtime_unicode/">Unicode encoding/decoding</a></li>
 </ul>
-<h2 id="classes">Classes</h2>
+<h2 id="types">Types</h2>
 <ul>
-<li><a href="../class_luna_1_1_allocator/">Luna::Allocator</a></li>
-<li><a href="../class_luna_1_1_blob/">Luna::Blob</a></li>
-<li><a href="../class_luna_1_1_event/">Luna::Event</a></li>
-<li><a href="../struct_luna_1_1equal__to/">Luna::equal_to</a></li>
-<li><a href="../struct_luna_1_1less/">Luna::less</a></li>
-<li><a href="../struct_luna_1_1hash/">Luna::hash</a></li>
-<li><a href="../class_luna_1_1_reference_wrapper/">Luna::ReferenceWrapper</a></li>
-<li><a href="../struct_luna_1_1_function_3_01___r_07___args_8_8_8_08_4/">Luna::Function&lt; _R(_Args...)&gt;</a></li>
-<li><a href="../class_luna_1_1_reverse_iterator/">Luna::ReverseIterator</a></li>
-<li><a href="../class_luna_1_1_obj_ref/">Luna::ObjRef</a></li>
-<li><a href="../class_luna_1_1_ref/">Luna::Ref</a></li>
-<li><a href="../class_luna_1_1_weak_obj_ref/">Luna::WeakObjRef</a></li>
-<li><a href="../class_luna_1_1_weak_ref/">Luna::WeakRef</a></li>
-<li><a href="../struct_luna_1_1_i_stream/">Luna::IStream</a></li>
-<li><a href="../struct_luna_1_1_i_seekable_stream/">Luna::ISeekableStream</a></li>
-<li><a href="../class_luna_1_1_variant/">Luna::Variant</a></li>
-<li><a href="../class_luna_1_1_vector/">Luna::Vector</a></li>
-<li><a href="../struct_luna_1_1_i_waitable/">Luna::IWaitable</a></li>
+<li>
+<p><a href="../class_luna_1_1_allocator/">Luna::Allocator</a></p>
+<p>The default allocator implementation that can be used for allocating memory for containers defined in Runtime module. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_blob/">Luna::Blob</a></p>
+<p>Represents one binary large object (BLOB). </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_event/">Luna::Event</a></p>
+<p>Represents one event that once triggered, invokes all handlers registered to it. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1equal__to/">Luna::equal_to</a></p>
+<p>Function object for performing comparisons. Unless specialised, invokes <code>operator==</code> on type T. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1less/">Luna::less</a></p>
+<p>Function object for performing comparisons. Unless specialized, invokes <code>operator&lt;</code> on type T. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1hash/">Luna::hash</a></p>
+<p>Function object that hashes the specified type into a <code>usize</code> hash code that can be used in hash map and hash set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_reference_wrapper/">Luna::ReferenceWrapper</a></p>
+<p>Wraps one reference to one copyable, assignable object. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_function_3_01___r_07___args_8_8_8_08_4/">Luna::Function&lt; _R(_Args...)&gt;</a></p>
+<p>A function wrapper that can store one callable object, and enable coping, moving and invoking of such callable object. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_reverse_iterator/">Luna::ReverseIterator</a></p>
+<p>An iterator adaptor that reverses the direction of a given iterator. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_obj_ref/">Luna::ObjRef</a></p>
+<p>The smart pointer that represents one typeless strong reference to one boxed object. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_ref/">Luna::Ref</a></p>
+<p>The smart pointer that represents one typed strong reference to one boxed object. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_weak_obj_ref/">Luna::WeakObjRef</a></p>
+<p>The smart pointer that represents one typeless weak reference to one boxed object. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_weak_ref/">Luna::WeakRef</a></p>
+<p>The smart pointer that represents one typed weak reference to one boxed object. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_i_stream/">Luna::IStream</a></p>
+<p>Represents a serial stream sequence of bytes and supports read/write operations on them. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_i_seekable_stream/">Luna::ISeekableStream</a></p>
+<p>Represents one stream object that supports setting the cursor position. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_tuple/">Luna::Tuple</a></p>
+<p>Represents a sequence of fixed-size elements. Every element can have one different type. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_variant/">Luna::Variant</a></p>
+<p>Represents a dynamic typed object that stores data in a schema-less (self-described) manner. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_vector/">Luna::Vector</a></p>
+<p>A dynamic container type that stores a continuous array of elements. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_i_waitable/">Luna::IWaitable</a></p>
+<p>Represents a waitable object used for multi-thread synchronization. </p>
+</li>
 </ul>
 <h2 id="enumerations">Enumerations</h2>
 <ul>
@@ -267,6 +327,42 @@
 <li>
 <p><a href="../group___runtime_1gaa7e539a91bc5a8e68c91db8d2d8a9c23/">Ref&lt; _Ty &gt; new_object(_Args &amp;&amp;... args)</a></p>
 <p>Creates one new boxed object. </p>
+</li>
+<li>
+<p><a href="../group___runtime_1ga9aae6d134b69bdfb7f054dcd50ddf57c/">TupleElement&lt; _I, Tuple&lt; _Tys... &gt; &gt;::type &amp; get(Tuple&lt; _Tys... &gt; &amp;t)</a></p>
+<p>Gets the <code>_I</code>th element from the tuple. </p>
+</li>
+<li>
+<p><a href="../group___runtime_1gacd20ef40077353ef2010188bf15f7efd/">TupleElement&lt; _I, Tuple&lt; _Tys... &gt; &gt;::type &amp;&amp; get(Tuple&lt; _Tys... &gt; &amp;&amp;t)</a></p>
+<p>Gets the <code>_I</code>th element from the tuple. </p>
+</li>
+<li>
+<p><a href="../group___runtime_1gaa2974b4a26c9dfcb6bb4d25d51be4a65/">TupleElement&lt; _I, Tuple&lt; _Tys... &gt; &gt;::type const  &amp; get(const Tuple&lt; _Tys... &gt; &amp;t)</a></p>
+<p>Gets the <code>_I</code>th element from the tuple. </p>
+</li>
+<li>
+<p><a href="../group___runtime_1gac24377ec6084290e12571664003bd153/">TupleElement&lt; _I, Tuple&lt; _Tys... &gt; &gt;::type const  &amp;&amp; get(const Tuple&lt; _Tys... &gt; &amp;&amp;t)</a></p>
+<p>Gets the <code>_I</code>th element from the tuple. </p>
+</li>
+<li>
+<p><a href="../group___runtime_1ga89f6c77e0282488319d7e9fcf5513350/">TupleElement&lt; _I, Tuple&lt; _Tys... &gt; &gt;::type volatile &amp; get(volatile Tuple&lt; _Tys... &gt; &amp;t)</a></p>
+<p>Gets the <code>_I</code>th element from the tuple. </p>
+</li>
+<li>
+<p><a href="../group___runtime_1gad849811e59b2a93e85659d4fe0bf7604/">TupleElement&lt; _I, Tuple&lt; _Tys... &gt; &gt;::type volatile &amp;&amp; get(volatile Tuple&lt; _Tys... &gt; &amp;&amp;t)</a></p>
+<p>Gets the <code>_I</code>th element from the tuple. </p>
+</li>
+<li>
+<p><a href="../group___runtime_1ga6f00a23ba63eaefec5ff55bf6c8c269f/">TupleElement&lt; _I, Tuple&lt; _Tys... &gt; &gt;::type const volatile &amp; get(const volatile Tuple&lt; _Tys... &gt; &amp;t)</a></p>
+<p>Gets the <code>_I</code>th element from the tuple. </p>
+</li>
+<li>
+<p><a href="../group___runtime_1ga573a4679d91cbf159ed82aaf27d2ce60/">TupleElement&lt; _I, Tuple&lt; _Tys... &gt; &gt;::type const volatile &amp;&amp; get(const volatile Tuple&lt; _Tys... &gt; &amp;&amp;t)</a></p>
+<p>Gets the <code>_I</code>th element from the tuple. </p>
+</li>
+<li>
+<p><a href="../group___runtime_1gaf340d535f67d84438e25d13ef53faee8/">typeinfo_t tuple_type()</a></p>
+<p>Gets the type object of <a href="../class_luna_1_1_tuple/">Tuple</a>. </p>
 </li>
 </ul>
               

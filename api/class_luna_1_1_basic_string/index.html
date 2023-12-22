@@ -412,7 +412,7 @@
 <p>Inserts another string at the specified position. </p>
 </li>
 <li>
-<p><a href="../class_luna_1_1_basic_string_1a496120a9d0bb9092d8f9871e25452b7a/">void insert(usize index, const BasicString &amp;str, usize index_str, usize count)</a></p>
+<p><a href="../class_luna_1_1_basic_string_1a22ef9a75352db0c2f37f3cc5581d0470/">void insert(usize index, const BasicString &amp;str, usize index_str, usize count=npos)</a></p>
 <p>Inserts one subrange of another string at the specified position. </p>
 </li>
 <li>
@@ -422,6 +422,170 @@
 <li>
 <p><a href="../class_luna_1_1_basic_string_1a086ca2e7c9a1d4e090567cc7409ae23d/">BasicString&lt; _Char, _Alloc &gt;::iterator insert(const_iterator pos, usize count, value_type ch)</a></p>
 <p>Inserts <code>count</code> copies of <code>ch</code> at the specified position. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a819ac8c437bf70a69cb028757a2f9cf1/">BasicString&lt; _Char, _Alloc &gt;::iterator insert(const_iterator pos, _InputIt first, _InputIt last)</a></p>
+<p>Inserts characters from the iterator range at the specified position. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1af623e3655e9b307d40582f9a274b7d98/">BasicString&lt; _Char, _Alloc &gt;::iterator insert(const_iterator pos, InitializerList&lt; value_type &gt; ilist)</a></p>
+<p>Inserts characters from the specified initializer list at the specified position. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1aa545ad0e9ed1fa69cc395a42856cbce4/">void erase(usize index=0, usize count=npos)</a></p>
+<p>Removes <code>count</code> characters from the specified position. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a367811c9cce4501631bd61133b5af24c/">BasicString&lt; _Char, _Alloc &gt;::iterator erase(const_iterator pos)</a></p>
+<p>Removes one character. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a2bd8bd8d9e8f3f1e3d252285f0d0a8f8/">BasicString&lt; _Char, _Alloc &gt;::iterator erase(const_iterator first, const_iterator last)</a></p>
+<p>Removes characters in the specified range. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a8696fba9dad5e2d99af377769d1ae0c6/">void swap(BasicString &amp;rhs)</a></p>
+<p>Swaps characters of this string with the specified string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a960d21333a39ee642559f87fd78037a6/">void append(usize count, value_type ch)</a></p>
+<p>Appends <code>count</code> copies of character <code>ch</code> to the back of the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1abad911fa2fe712fc30b6f1371d9ccca1/">void append(const BasicString &amp;str)</a></p>
+<p>Appends another string to the back of the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a5524c1733f03a62e069e6269e87fd9d0/">void append(const BasicString &amp;str, usize pos, usize count=npos)</a></p>
+<p>Appends one subrange of another string to the back of the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a62dbef30f3cf6cba3cd8e4db913f8ff5/">void append(const value_type *s, usize count)</a></p>
+<p>Appends one character array to the back of the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1abfaf38cfd88e70a7d638d057f3702cb3/">void append(const value_type *s)</a></p>
+<p>Appends one null-terminated C string to the back of the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1aa23a815a1690960c24e7531da65f7d74/">void append(_InputIt first, _InputIt last)</a></p>
+<p>Appends characters from the iterator range to the back of the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1adf931fc77df229e63f55a1cd25fb3105/">void append(InitializerList&lt; value_type &gt; ilist)</a></p>
+<p>Appends characters from the specified initializer list to the back of the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a0aa300bc340ead2704f51c0f929041b8/">i32 compare(const BasicString &amp;rhs) const</a></p>
+<p>Compares this string with the specified string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a64605f0e903436fa93460f1e9fbbafad/">i32 compare(usize pos1, usize count1, const BasicString &amp;rhs) const</a></p>
+<p>Compares [<code>pos1</code>, <code>pos1 + count1</code>) substring of this string to <code>rhs</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1add78057fe7546a3fe35216ccbda5bd50/">i32 compare(usize pos1, usize count1, const BasicString &amp;rhs, usize pos2, usize count2=npos) const</a></p>
+<p>Compares a [<code>pos1</code>, <code>pos1 + count1</code>) substring of this string to a substring [<code>pos2</code>, <code>pos2 + count2</code>) of <code>rhs</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a536e301c18bf7ac0bb43c6b665d06eb2/">i32 compare(const value_type *s) const</a></p>
+<p>Compares this string to the null-terminated C string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1afe6fef3ffff75c23d2499957b222173a/">i32 compare(usize pos1, usize count1, const value_type *s) const</a></p>
+<p>Compares [<code>pos1</code>, <code>pos1 + count1</code>) substring of this string to the null-terminated C string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a47c3a331b179cfd884faef8e88caf293/">i32 compare(usize pos1, usize count1, const value_type *s, usize count2) const</a></p>
+<p>Compares [<code>pos1</code>, <code>pos1 + count1</code>) substring of this string to the characters in the range [<code>s</code>, <code>s + count2</code>). </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a6d17d834a99bca76c180bd9aee728253/">void replace(usize pos, usize count, const BasicString &amp;str)</a></p>
+<p>Replaces characters in range [<code>pos</code>, <code>pos + count</code>) with characters of <code>str</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a6005903a2055c24eaec414fd0f3cdc89/">void replace(const_iterator first, const_iterator last, const BasicString &amp;str)</a></p>
+<p>Replaces characters in range [<code>first</code>, <code>last</code>) with characters of <code>str</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a1e35bd1c2f378b8a51b65c495348aec4/">void replace(usize pos, usize count, const BasicString &amp;str, usize pos2, usize count2=npos)</a></p>
+<p>Replaces characters in range [<code>pos</code>, <code>pos + count</code>) with a substring [<code>pos2</code>, <code>pos2 + count2</code>) of <code>str</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a4b70247166e39d11f67f37b239f326b2/">void replace(const_iterator first, const_iterator last, _InputIt first2, _InputIt last2)</a></p>
+<p>Replaces characters in range [<code>first</code>, <code>last</code>) with the characters in the range [<code>first2</code>, <code>last2</code>). </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a9800e2b9792e254849818ec5861e3a8e/">void replace(usize pos, usize count, const value_type *cstr, usize count2)</a></p>
+<p>Replaces characters in range [<code>pos</code>, <code>pos + count</code>) with a character array [<code>cstr</code>, <code>cstr + count2). @param[in] pos The index of the first character to replace. @param[in] count The number of characters to replace. If</code>pos + count<code>is greater than</code>this-&gt;<a href="../class_luna_1_1_basic_string_1a79348f1b7c06b34052b42656a0279429/">size()</a><code>,</code>count<code>will be clamped to</code>this-&gt;<a href="../class_luna_1_1_basic_string_1a79348f1b7c06b34052b42656a0279429/">size()</a> - pos<code>. @param[in] cstr The pointer to the character array to use for replacement. @param[in] count2 The number of characters in</code>cstr<code>to use for replacement. @par Valid Usage *</code>pos<code>must not be greater than</code>this-&gt;<a href="../class_luna_1_1_basic_string_1a79348f1b7c06b34052b42656a0279429/">size()</a>`. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1ae6433c006f58290420c9ee6fdd051885/">void replace(const_iterator first, const_iterator last, const value_type *cstr, usize count2)</a></p>
+<p>Replaces characters in range [<code>first</code>, <code>last</code>) with a character array [<code>cstr</code>, <code>cstr + count2). @param[in] first The iterator to the first character to replace. @param[in] last The iterator to the one-past-last character to replace. @param[in] cstr The pointer to the character array to use for replacement. @param[in] count2 The number of characters in</code>cstr<code>to use for replacement. @par Valid Usage.</code></p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a4b26260265e9a9a22db847a27a3b9941/">void replace(usize pos, usize count, const value_type *cstr)</a></p>
+<p>Replaces characters in range [<code>pos</code>, <code>pos + count</code>) with a null-terminated C string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1ac785ff9f4e7f00251c2fc902eb6cf00f/">void replace(const_iterator first, const_iterator last, const value_type *cstr)</a></p>
+<p>Replaces characters in range [<code>first</code>, <code>last</code>) with a null-terminated C string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1aa74f73d93d069eb10f5746467c009cfe/">void replace(usize pos, usize count, usize count2, value_type ch)</a></p>
+<p>Replaces characters in range [<code>pos</code>, <code>pos + count</code>) with <code>count2</code> copies of character <code>ch</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a861d541f8e33a502bbf985c6bee9e39c/">void replace(const_iterator first, const_iterator last, usize count2, value_type ch)</a></p>
+<p>Replaces characters in range [<code>first</code>, <code>last</code>) with <code>count2</code> copies of character <code>ch</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a5a4028436760fb23d593e0c48bc7436a/">void replace(const_iterator first, const_iterator last, InitializerList&lt; value_type &gt; ilist)</a></p>
+<p>Replaces characters in range [<code>first</code>, <code>last</code>) with characters from the specified initializer list. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a04b6fefb11a9d480a598c81a0d29e9bb/">BasicString&lt; _Char, _Alloc &gt; substr(usize pos=0, usize count=npos) const</a></p>
+<p>Creates a substring of this string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a49b5c5c2c2fb221c030699f473a7578c/">usize copy(value_type *dst, usize count, usize pos=0) const</a></p>
+<p>Copies a substring [<code>pos</code>, <code>pos + count</code>) to character string pointed to by <code>dst</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a8abd645420e7dbfa486b5eff756c97b0/">BasicString&lt; _Char, _Alloc &gt;::allocator_type get_allocator() const</a></p>
+<p>Gets the allocator of the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1accbf8d53216f91730aa09611b24384b5/">usize find(const BasicString &amp;str, usize pos=0) const</a></p>
+<p>Finds the first occurrence of the specified character sequence in the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a94d0a547db1d7bd35eab7d2bdde40344/">usize find(const value_type *s, usize pos, usize count) const</a></p>
+<p>Finds the first occurrence of the specified character sequence in the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1acf6eab9445892ede4098e9778af4a2d4/">usize find(const value_type *s, usize pos=0) const</a></p>
+<p>Finds the first occurrence of the specified character sequence in the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a8db62d39b6326c458c383f5c792f90bb/">usize find(value_type ch, usize pos=0) const</a></p>
+<p>Finds the first occurrence of the specified character in the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a7503833fd0adcf86380c970edcd84afb/">usize rfind(const BasicString &amp;str, usize pos=npos) const</a></p>
+<p>Finds the last occurrence of the specified character sequence in the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a8a8f41ef4cfe42a7233e2318c253ac00/">usize rfind(const value_type *s, usize pos, usize count) const</a></p>
+<p>Finds the last occurrence of the specified character sequence in the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1a7d3ce44621aabfcbfbf0005b0a0479ac/">usize rfind(const value_type *s, usize pos=0) const</a></p>
+<p>Finds the last occurrence of the specified character sequence in the string. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_basic_string_1ab54fbd34cb23148a39defea3b2e1f5ea/">usize rfind(value_type ch, usize pos=npos) const</a></p>
+<p>Finds the first occurrence of the specified character in the string. </p>
 </li>
 </ul>
               

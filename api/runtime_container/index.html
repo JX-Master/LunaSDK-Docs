@@ -147,16 +147,48 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="containers">Containers</h1>
-<h2 id="classes">Classes</h2>
+<h2 id="types">Types</h2>
 <ul>
-<li><a href="../class_luna_1_1_array/">Luna::Array</a></li>
-<li><a href="../class_luna_1_1_hash_map/">Luna::HashMap</a></li>
-<li><a href="../class_luna_1_1_hash_set/">Luna::HashSet</a></li>
-<li><a href="../class_luna_1_1_list/">Luna::List</a></li>
-<li><a href="../class_luna_1_1_ring_deque/">Luna::RingDeque</a></li>
-<li><a href="../class_luna_1_1_self_indexed_hash_map/">Luna::SelfIndexedHashMap</a></li>
-<li><a href="../class_luna_1_1_self_indexed_unordered_map/">Luna::SelfIndexedUnorderedMap</a></li>
-<li><a href="../class_luna_1_1_self_indexed_unordered_multi_map/">Luna::SelfIndexedUnorderedMultiMap</a></li>
+<li>
+<p><a href="../class_luna_1_1_array/">Luna::Array</a></p>
+<p>Represents one array of fixed or dynamic size. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_hash_map/">Luna::HashMap</a></p>
+<p>An container that contains key-value pairs with unique keys using open-addressing hashing algorithm. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_hash_set/">Luna::HashSet</a></p>
+<p>An container that contains a set of unique objects using open-addressing hashing algorithm. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_list/">Luna::List</a></p>
+<p>A container that stores elements as double-linked lists (nodes connected by pointers). </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_ring_deque/">Luna::RingDeque</a></p>
+<p>A container that implements a double-ended queue and uses a ring buffer as its internal storage. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_self_indexed_hash_map/">Luna::SelfIndexedHashMap</a></p>
+<p>Represents one self-indexed hash map whose key can be extracted from the value, so that it does not need to be stored. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_self_indexed_unordered_map/">Luna::SelfIndexedUnorderedMap</a></p>
+<p>Represents one self-indexed unordered map whose key can be extracted from the value, so that it does not need to be stored. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_self_indexed_unordered_multi_map/">Luna::SelfIndexedUnorderedMultiMap</a></p>
+<p>Represents one self-indexed unordered map similar to <a href="../class_luna_1_1_self_indexed_unordered_map/">SelfIndexedUnorderedMap</a>, but allows multiple elements with the same key to be inserted. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_map/">Luna::UnorderedMap</a></p>
+<p>An container that contains key-value pairs with unique keys using closed-addressing hashing algorithm. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_multi_map/">Luna::UnorderedMultiMap</a></p>
+<p>An container that contains key-value pairs using closed-addressing hashing algorithm. This container allows multiple values with the same key exist in the container. </p>
+</li>
 </ul>
 <h2 id="constants">Constants</h2>
 <ul>
@@ -167,8 +199,14 @@
 </ul>
 <h2 id="functions">Functions</h2>
 <ul>
-<li><a href="../group___runtime_container_1ga1d3057e6d50ac9a9463512b59e3d8a6f/">typeinfo_t hash_map_type()</a></li>
-<li><a href="../group___runtime_container_1ga743bdc5ea347716089749522959567a2/">typeinfo_t hash_set_type()</a></li>
+<li>
+<p><a href="../group___runtime_container_1ga1d3057e6d50ac9a9463512b59e3d8a6f/">typeinfo_t hash_map_type()</a></p>
+<p>Gets the type object of <a href="../class_luna_1_1_hash_map/">HashMap</a>. </p>
+</li>
+<li>
+<p><a href="../group___runtime_container_1ga743bdc5ea347716089749522959567a2/">typeinfo_t hash_set_type()</a></p>
+<p>Gets the type object of <a href="../class_luna_1_1_hash_set/">HashSet</a>. </p>
+</li>
 </ul>
               
             </div>

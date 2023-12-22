@@ -162,6 +162,7 @@
 </li>
 <li>
 <p><a href="../struct_luna_1_1_structure_type_desc_1aab3519e6b2915ade2b650f777b994121/">Name alias</a></p>
+<p>The alias of the structure type. This can be empty. The alias is used to identify types with the same name. This can be used for generic specialization types. </p>
 </li>
 <li>
 <p><a href="../struct_luna_1_1_structure_type_desc_1a59f6400efda18d25d7b3cf3c2e7a3d3d/">usize size</a></p>
@@ -177,18 +178,35 @@
 </li>
 <li>
 <p><a href="../struct_luna_1_1_structure_type_desc_1a8b562d2692e5808232b9a65c240e6103/">structure_ctor_t* ctor</a></p>
+<p>The constructor function for this type. If <code>nullptr</code>, the default constructor will be used. See remarks of <a href="../group___runtime_type_1ga90deafaf36d47cd50f7af0b53f30dac5/">construct_type</a> for default constructor behavior. </p>
 </li>
-<li><a href="../struct_luna_1_1_structure_type_desc_1aa498db50ab9c3d7f9f84c97b8c24ac63/">structure_dtor_t* dtor</a></li>
-<li><a href="../struct_luna_1_1_structure_type_desc_1abf45ac6225b448e989e041b420830949/">structure_copy_ctor_t* copy_ctor</a></li>
-<li><a href="../struct_luna_1_1_structure_type_desc_1a66e83256edf26122efc9735284bf5573/">structure_move_ctor_t* move_ctor</a></li>
-<li><a href="../struct_luna_1_1_structure_type_desc_1a7daacf4ed7ed76c8c18eb17f3ff4b1ed/">structure_copy_assign_t* copy_assign</a></li>
-<li><a href="../struct_luna_1_1_structure_type_desc_1a49a2c551255183998b610cfabb0bc464/">structure_move_assign_t* move_assign</a></li>
+<li>
+<p><a href="../struct_luna_1_1_structure_type_desc_1aa498db50ab9c3d7f9f84c97b8c24ac63/">structure_dtor_t* dtor</a></p>
+<p>The destructor function for this type. If <code>nullptr</code>, the default destructor will be used. See remarks of <a href="../group___runtime_type_1gaf8ad2e47bfbc89371f6d2ef227c39f28/">destruct_type</a> for default constructor behavior. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_structure_type_desc_1abf45ac6225b448e989e041b420830949/">structure_copy_ctor_t* copy_ctor</a></p>
+<p>The copy constructor for this type. If <code>nullptr</code>, the default copy constructor will be used. See remarks of <a href="../group___runtime_type_1ga5f69494b37cb69b3547cdce14b5b1087/">copy_construct_type</a> for default constructor behavior. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_structure_type_desc_1a66e83256edf26122efc9735284bf5573/">structure_move_ctor_t* move_ctor</a></p>
+<p>The move constructor for this type. If <code>nullptr</code>, the default move constructor will be used. See remarks of <a href="../group___runtime_type_1gac7867a132f5246297db7b59105df8f9b/">move_construct_type</a> for default constructor behavior. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_structure_type_desc_1a7daacf4ed7ed76c8c18eb17f3ff4b1ed/">structure_copy_assign_t* copy_assign</a></p>
+<p>The copy assignment operator for this type. If <code>nullptr</code>, the default copy assignment operator will be used. See remarks of <a href="../group___runtime_type_1gadda24f3e17aeb6be651380445522e3e6/">copy_assign_type</a> for default constructor behavior. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_structure_type_desc_1a49a2c551255183998b610cfabb0bc464/">structure_move_assign_t* move_assign</a></p>
+<p>The mvoe assignment operator for this type. If <code>nullptr</code>, the default move assignment operator will be used. See remarks of <a href="../group___runtime_type_1gade978350a36e3988fc4c6a5894a96465/">move_assign_type</a> for default constructor behavior. </p>
+</li>
 <li>
 <p><a href="../struct_luna_1_1_structure_type_desc_1a9b43bf1a828e7baefd0522a2563c66f2/">Span<const StructurePropertyDesc> properties</a></p>
 <p>The properties of this structure type. </p>
 </li>
 <li>
 <p><a href="../struct_luna_1_1_structure_type_desc_1a8e5f4fefafed4000ee467f8de565955d/">bool trivially_relocatable</a></p>
+<p>Whether this structure is trivially relocatable. One structure is trivially relocatable if its content can be moved to another memory address using memcpy, and using the instance on new memory location behaves the same as the instance on old memory location. </p>
 </li>
 </ul>
               

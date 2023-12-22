@@ -147,10 +147,9 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunaimutex">Luna::IMutex</h1>
-<p>Represents a system-level mutex object. </p>
+<p>This\ type\ is\ thread\ safe. Represents a system-level mutex object. </p>
 <pre><code class="language-c++">interface Luna::IMutex : public virtual IWaitable
 </code></pre>
-<p>@threadsafe</p>
 <p>The mutex or critical section is an important object that provides synchronization functionality for multiple threads that wants to access the same resource without data race. The mutex can be "owned" by at most one thread, when other threads wants to acquire the mutex, it must wait until the thread that currently owns the mutex to release the mutex. The threads that waits on the mutex will probably be suspended by system.</p>
 <p>The mutex can be acquired recursively, that is, the thread that already owns the mutex can make additional calls to acquire the mutex, so long as it makes one release call for each acquire call to finally release the mutex.</p>
 <p>Acquiring the mutex from one thread and releasing from another thread is not allowed. </p>

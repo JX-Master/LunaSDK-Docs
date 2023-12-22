@@ -162,9 +162,16 @@
 </li>
 <li>
 <p><a href="../struct_luna_1_1_generic_structure_type_desc_1aab3519e6b2915ade2b650f777b994121/">Name alias</a></p>
+<p>The alias of the structure type. This can be empty. The alias is used to identify types with the same name. This can be used for generic specialization types. </p>
 </li>
-<li><a href="../struct_luna_1_1_generic_structure_type_desc_1a4fe38c70c80a420b798584bc3c75063c/">Span<const Name> generic_parameter_names</a></li>
-<li><a href="../struct_luna_1_1_generic_structure_type_desc_1af6d3f22f30f3fda40c0f41afa1058614/">bool variable_generic_parameters</a></li>
+<li>
+<p><a href="../struct_luna_1_1_generic_structure_type_desc_1a4fe38c70c80a420b798584bc3c75063c/">Span<const Name> generic_parameter_names</a></p>
+<p>The names for every generic parameter. This is only used as hints for users. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_generic_structure_type_desc_1af6d3f22f30f3fda40c0f41afa1058614/">bool variable_generic_parameters</a></p>
+<p>Whether this type suports variable number of generic arguments. If this is <code>true</code>, the user may specify zero, one or more generic arguments after arguments specified in <code>generic_argument_names</code>. This is only used as hints for users. </p>
+</li>
 <li>
 <p><a href="../struct_luna_1_1_generic_structure_type_desc_1a5b11fda769284800e8a89d90d9873035/">generic_structure_instantiate_t* instantiate</a></p>
 <p>The function used to create generic instants for this generic type. </p>

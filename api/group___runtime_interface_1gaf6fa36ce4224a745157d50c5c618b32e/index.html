@@ -162,6 +162,9 @@ _Ity * query_interface(object_t object)
 <p>Returns the specified interface pointer for the boxed object. Returns <code>nullptr</code> if the specified interface is not implemented by the specified boxed object. </p>
 <h2 id="remark">Remark</h2>
 <p>The template version of <code>query_interface</code> provides a more convenient way to fetch one interface pointer from one boxed object pointer like so: </p>
+<pre><code>[object_t](group___runtime_object_1ga4d287a1c3bd0821c2391f4613686e35a.md) object = ...;
+Interface1* i = query_interface&lt;Interface1&gt;(object);
+</code></pre>
               
             </div>
           </div><footer>
