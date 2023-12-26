@@ -148,7 +148,8 @@
               
                 <h1 id="lunahashmap">Luna::HashMap</h1>
 <p>An container that contains key-value pairs with unique keys using open-addressing hashing algorithm. </p>
-<pre><code class="language-c++">class Luna::HashMap
+<pre><code class="language-c++">template &lt;typename _Kty, typename _Ty, typename _Hash, typename _KeyEqual, typename _Alloc&gt;
+class Luna::HashMap
 </code></pre>
 <h2 id="remark">Remark</h2>
 <p>LunaSDK provides two kinds of hashing-based containers: open-addressing containers and closed-addressing containers. The following containers are open-addressing containers, implemented using Robinhood hashing:</p>
@@ -166,13 +167,13 @@
 <p><a href="../class_luna_1_1_unordered_map/">UnorderedMap</a></p>
 </li>
 <li>
-<p>UnorderedSet</p>
+<p><a href="../class_luna_1_1_unordered_set/">UnorderedSet</a></p>
 </li>
 <li>
 <p><a href="../class_luna_1_1_unordered_multi_map/">UnorderedMultiMap</a></p>
 </li>
 <li>
-<p>UnorderedMultiSet</p>
+<p><a href="../class_luna_1_1_unordered_multi_set/">UnorderedMultiSet</a></p>
 </li>
 <li>
 <p><a href="../class_luna_1_1_self_indexed_unordered_map/">SelfIndexedUnorderedMap</a></p>
@@ -182,10 +183,10 @@
 </li>
 </ol>
 <p>Open addressing (also known as closed hashing) algorithms store elements directly in hash table arrays, while closed addressing (also known as open hashing) algorithms allocate dedicated memory for every element, and stores pointers to such elements in hash table arrays. In open-addressing containers, one hash table slot can only store on element, the second element with the same hash value must be relocated to another empty slot; in closed-addressing containers, all elements with the same hash value can be stored in the same hash table slot, usually stored as linked lists. See <a href="https://programming.guide/hash-tables-open-vs-closed-addressing.html">Open vs Closed Addressing</a> for a detailed comparison of open addressing and closed addressing.</p>
-<p>Prefer <a href="./">HashMap</a> and <a href="../class_luna_1_1_hash_set/">HashSet</a> instead of <a href="../class_luna_1_1_unordered_map/">UnorderedMap</a> and UnorderedSet, since it performs better in memory fragmentation, memory locality and cache performance. Use <a href="../class_luna_1_1_unordered_map/">UnorderedMap</a> and UnorderedSet if you have the following requirements:</p>
+<p>Prefer <a href="./">HashMap</a> and <a href="../class_luna_1_1_hash_set/">HashSet</a> instead of <a href="../class_luna_1_1_unordered_map/">UnorderedMap</a> and <a href="../class_luna_1_1_unordered_set/">UnorderedSet</a>, since it performs better in memory fragmentation, memory locality and cache performance. Use <a href="../class_luna_1_1_unordered_map/">UnorderedMap</a> and <a href="../class_luna_1_1_unordered_set/">UnorderedSet</a> if you have the following requirements:</p>
 <ol>
 <li>
-<p>You want to insert multiple elements with the same key to the map, which is only supported by closed-addressing maps. Use <a href="../class_luna_1_1_unordered_multi_map/">UnorderedMultiMap</a>, <a href="../class_luna_1_1_self_indexed_unordered_multi_map/">SelfIndexedUnorderedMultiMap</a> and UnorderedMultiSet in such case.</p>
+<p>You want to insert multiple elements with the same key to the map, which is only supported by closed-addressing maps. Use <a href="../class_luna_1_1_unordered_multi_map/">UnorderedMultiMap</a>, <a href="../class_luna_1_1_self_indexed_unordered_multi_map/">SelfIndexedUnorderedMultiMap</a> and <a href="../class_luna_1_1_unordered_multi_set/">UnorderedMultiSet</a> in such case.</p>
 </li>
 <li>
 <p>You element type has very big size, usually larger than 256, causing allocating element memory in data table become unacceptable because it will waste a lot of memory when the load factor is low. Closed-addressing maps only allocate memory for alive elements, making it consuming much less memory than open-addressing maps when the element size is big. Closed-addressing maps also support extracting element nodes from one map and insert them to another maps without the need of allocating memory for elements, making it efficient to transfer elements between maps. </p>

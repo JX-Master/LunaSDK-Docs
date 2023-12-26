@@ -150,7 +150,7 @@
 <pre><code class="language-c++">const c8* dependencies
 </code></pre>
 <p>A string that records modules this module depends on. </p>
-<p>the lifetime of the module.</p>
+<p>The lifetime of the string should be no shorter than the lifetime of the module.</p>
 <p>In case that multiple modules are required, use semicolons(;) to separate them (for example: "Core;Input;Gfx"). There should not be any semicolon after the last item in the string.</p>
 <p>Dependencies to <code>Runtime</code> should not be listed here. The Runtime is always initialized before any other module gets initialized. </p>
               

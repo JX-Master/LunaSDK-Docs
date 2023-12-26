@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/class_luna_1_1_unordered_set/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Luna::UnorderedSet - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Luna::UnorderedSet";
+        var mkdocs_page_input_path = "api\\class_luna_1_1_unordered_set.md";
+        var mkdocs_page_url = "/api/class_luna_1_1_unordered_set/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Luna::UnorderedSet</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lunaunorderedset">Luna::UnorderedSet</h1>
+<p>An container that contains a set of unique objects using closed-addressing hashing algorithm. </p>
+<pre><code class="language-c++">template &lt;typename _Kty, typename _Hash, typename _KeyEqual, typename _Alloc&gt;
+class Luna::UnorderedSet
+</code></pre>
+<h2 id="remark">Remark</h2>
+<p>See remarks of <a href="../class_luna_1_1_hash_map/">HashMap</a> for details. </p>
+<h2 id="member-functions">Member functions</h2>
+<ul>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1ade6e107a9052659d995de5ffd1930fc7/">UnorderedSet()</a></p>
+<p>Constructs an empty set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a283c1a723f8e7c4e4196084c0732f661/">UnorderedSet(const allocator_type &amp;alloc)</a></p>
+<p>Constructs an empty set with an custom allocator. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a25aa573dd2c9156725be2603b6e2825f/">UnorderedSet(const UnorderedSet &amp;rhs)</a></p>
+<p>Constructs a set by coping elements from another set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a53110e90bc6793d554365446cba25d60/">UnorderedSet(const UnorderedSet &amp;rhs, const allocator_type &amp;alloc)</a></p>
+<p>Constructs a set with an custom allocator and with elements copied from another set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1ad0691e2313196959fb66c101e8b6ecf8/">UnorderedSet(UnorderedSet &amp;&amp;rhs)</a></p>
+<p>Constructs a set by moving elements from another set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a6377ae1d245a3984b4d0c4321ff4bfc3/">UnorderedSet(UnorderedSet &amp;&amp;rhs, const allocator_type &amp;alloc)</a></p>
+<p>Constructs a set with an custom allocator and with elements moved from another set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a59d3e3290203490510a3d48b1b954cb7/">UnorderedSet &amp; operator=(const UnorderedSet &amp;rhs)</a></p>
+<p>Replaces elements of the set by coping elements from another set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a99119747d7480356a43b176d9e5cb67e/">UnorderedSet &amp; operator=(UnorderedSet &amp;&amp;rhs)</a></p>
+<p>Replaces elements of the set by moving elements from another set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1ad69bd11391be1a1dba5c8202259664f8/">iterator begin()</a></p>
+<p>Gets one iterator to the first element of the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a29305669b60ca1680752e2fc3592ba99/">const_iterator begin() const</a></p>
+<p>Gets one constant iterator to the first element of the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a39112ae08f6ffc7ee58c6aa79772e094/">const_iterator cbegin() const</a></p>
+<p>Gets one constant iterator to the first element of the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1acad38d52497a975bfb6f2f6acd76631f/">iterator end()</a></p>
+<p>Gets one iterator to the one past last element of the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1accf9a4bd0c34d4a5f6a7dab66ea10cdc/">const_iterator end() const</a></p>
+<p>Gets one constant iterator to the one past last element of the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a93791e61ab486b4022c389d634b4facc/">const_iterator cend() const</a></p>
+<p>Gets one constant iterator to the one past last element of the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a93a8c27892c34625c315914f976d8ad3/">local_iterator begin(usize n)</a></p>
+<p>Gets an iterator to the first element of the bucket with specified index. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a7c785dfed34436fa185d65a54519e310/">const_local_iterator begin(usize n) const</a></p>
+<p>Gets an constant iterator to the first element of the bucket with specified index. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1acc95b83df5c80dd26cd48546ded59e53/">const_local_iterator cbegin(usize n) const</a></p>
+<p>Gets a constant iterator to the first element of the bucket with specified index. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a6c08ca2f925dec867e11119dc0653667/">local_iterator end(usize n)</a></p>
+<p>Gets an iterator to the one-past-last element of the bucket with specified index. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a7a8207811f9020c5b35303489c032193/">const_local_iterator end(usize n) const</a></p>
+<p>Gets a constant iterator to the one-past-last element of the bucket with specified index. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a4de0b59f7dab8a23fcddee7f6aea3229/">const_local_iterator cend(usize n) const</a></p>
+<p>Gets a constant iterator to the one-past-last element of the bucket with specified index. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a644718bb2fb240de962dc3c9a1fdf0dc/">bool empty() const</a></p>
+<p>Checks whether this set is empty, that is, the size of this set is <code>0</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a79348f1b7c06b34052b42656a0279429/">usize size() const</a></p>
+<p>Gets the size of the set, that is, the number of elements in the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1ad96bf59cb22e917cbd210ba068e8acb3/">usize capacity() const</a></p>
+<p>Gets the capacity of the set, that is, the number of elements the hash table can hold before expanding the hash table. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1ace2cb5dc8f915f78658dac76efacd4c1/">usize bucket_count() const</a></p>
+<p>Gets the number of buckets of the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a509e91a3ee50fd0ce4d2793de3e2e5a4/">usize bucket_size(usize n) const</a></p>
+<p>Gets the number of elements of the specified bucket. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a0f8b9f48df6b9e00c5749ceb9e057470/">usize bucket(const key_type &amp;key) const</a></p>
+<p>Gets the index of the bucket that stores the specified key. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a98c20997abc3070d80e9c2e70afa0493/">f32 load_factor() const</a></p>
+<p>Gets the load factor of the set, which can be computed by <code>(f32)size() / (f32)bucket_count()</code>. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1aebb6ef2d39e739cc28a67244e423a3a8/">f32 max_load_factor() const</a></p>
+<p>Gets the maximum load factor allowed for the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a9102a0c114eea9587ad22afc2a1ccc3c/">void max_load_factor(f32 ml)</a></p>
+<p>Sets the maximum load factor allowed for the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1ac8bb3912a3ce86b15842e79d0b421204/">void clear()</a></p>
+<p>Removes all elements in the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a72ffe2880da1c06d22d90000f9720967/">hasher hash_function() const</a></p>
+<p>Gets the hash function used by this set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a10b2be386447b0ab61e83d0f5527b688/">key_equal key_eq() const</a></p>
+<p>Gets the equality comparison function used by this set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1aa9af2af24db0f9dd476c29bc7ec7105b/">void rehash(usize new_buckets_count)</a></p>
+<p>Changes the bucket count and rehashes all elements to insert them to the new buckets. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1aa1c32ac6498d3f6d21cab98d1cbf3455/">void reserve(usize new_cap)</a></p>
+<p>Expands the bucket buffer so that it can store at least <code>new_cap</code> elements without enpanding the bucket buffer again. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a9c9766a96c492f3e9e5861d6b4f87387/">iterator find(const key_type &amp;key)</a></p>
+<p>Finds the specified element in the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1af2a080484f0b756af6f218c0e6bae306/">const_iterator find(const key_type &amp;key) const</a></p>
+<p>Finds the specified element in the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a2d5dc5e3872df3149f3c3ac730ff5607/">usize count(const key_type &amp;key) const</a></p>
+<p>Gets the number of elements whose key is equal to the specified key. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a91e5481e78677a16d94aec74dc5bb307/">Pair&lt; iterator, iterator &gt; equal_range(const key_type &amp;key)</a></p>
+<p>Gets one pair of iterators specifying one range of elements whose keys are equal to the specified key. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a040e6cd9e6ade744edce1117ac4313c0/">Pair&lt; const_iterator, const_iterator &gt; equal_range(const key_type &amp;key) const</a></p>
+<p>Gets one pair of iterators specifying one range of elements whose keys are equal to the specified key. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1aa0b05f4f6c691fbe71159c631dded53b/">bool contains(const key_type &amp;key) const</a></p>
+<p>Checks whether at least one element with the specified key exists. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a45549ac2883165244dbc0005a33dac64/">Pair&lt; iterator, bool &gt; insert(const value_type &amp;value)</a></p>
+<p>Inserts the specified value to the set. The key is extracted from the value. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1adfc3632f295d0c500bafbe68b91757f8/">Pair&lt; iterator, bool &gt; insert(value_type &amp;&amp;value)</a></p>
+<p>Inserts the specified value to the set. The key is extracted from the value. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a23a924435697eb93c6cb5b1b830e8492/">insert_return_type insert(node_type &amp;&amp;node)</a></p>
+<p>Inserts one node to the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1aad213718c308bedbbf92cb81e182cf54/">Pair&lt; iterator, bool &gt; insert_or_assign(const key_type &amp;key, _M &amp;&amp;value)</a></p>
+<p>Assigns the value to the element with the specified key, or inserts the value pair to the set if such element is not found. The key is extracted from the value. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1aec69432164a51529a980ba873fbc0c64/">Pair&lt; iterator, bool &gt; insert_or_assign(key_type &amp;&amp;key, _M &amp;&amp;value)</a></p>
+<p>Assigns the value to the element with the specified key, or inserts the value pair to the set if such element is not found. The key is extracted from the value. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a044dbf1291b7cfaae7c7f433d582f937/">Pair&lt; iterator, bool &gt; emplace(_Args &amp;&amp;... args)</a></p>
+<p>Constructs one element directly in the set using the provided arguments. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a29790c28710ec0e64b48c2f4edd0b08c/">iterator erase(const_iterator pos)</a></p>
+<p>Removes one element from the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a34dd266404ddfcb1683866f0c203904e/">usize erase(const key_type &amp;key)</a></p>
+<p>Removes elements with the specified key from the set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a1a8618be0614081d7c10a2e7eeaec9ce/">void swap(UnorderedSet &amp;rhs)</a></p>
+<p>Swaps elements of this set with the specified set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1afe46988223773995582c14171becaaa0/">node_type extract(const_iterator pos)</a></p>
+<p>Extracts one node from the set, so that it can be inserted to another set without any element copy or move operation. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_set_1a6e99c6263568d88f95ca01dc694f1051/">allocator_type get_allocator() const</a></p>
+<p>Gets the allocator used by this set. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

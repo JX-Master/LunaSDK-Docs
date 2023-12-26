@@ -148,7 +148,8 @@
               
                 <h1 id="lunaunorderedmap">Luna::UnorderedMap</h1>
 <p>An container that contains key-value pairs with unique keys using closed-addressing hashing algorithm. </p>
-<pre><code class="language-c++">class Luna::UnorderedMap
+<pre><code class="language-c++">template &lt;typename _Kty, typename _Ty, typename _Hash, typename _KeyEqual, typename _Alloc&gt;
+class Luna::UnorderedMap
 </code></pre>
 <h2 id="remark">Remark</h2>
 <p>See remarks of <a href="../class_luna_1_1_hash_map/">HashMap</a> for details. </p>
@@ -209,6 +210,30 @@
 <li>
 <p><a href="../class_luna_1_1_unordered_map_1a93791e61ab486b4022c389d634b4facc/">const_iterator cend() const</a></p>
 <p>Gets one constant iterator to the one past last element of the map. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_map_1a93a8c27892c34625c315914f976d8ad3/">local_iterator begin(usize n)</a></p>
+<p>Gets an iterator to the first element of the bucket with specified index. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_map_1a7c785dfed34436fa185d65a54519e310/">const_local_iterator begin(usize n) const</a></p>
+<p>Gets an constant iterator to the first element of the bucket with specified index. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_map_1acc95b83df5c80dd26cd48546ded59e53/">const_local_iterator cbegin(usize n) const</a></p>
+<p>Gets a constant iterator to the first element of the bucket with specified index. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_map_1a6c08ca2f925dec867e11119dc0653667/">local_iterator end(usize n)</a></p>
+<p>Gets an iterator to the one-past-last element of the bucket with specified index. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_map_1a7a8207811f9020c5b35303489c032193/">const_local_iterator end(usize n) const</a></p>
+<p>Gets a constant iterator to the one-past-last element of the bucket with specified index. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_unordered_map_1a4de0b59f7dab8a23fcddee7f6aea3229/">const_local_iterator cend(usize n) const</a></p>
+<p>Gets a constant iterator to the one-past-last element of the bucket with specified index. </p>
 </li>
 <li>
 <p><a href="../class_luna_1_1_unordered_map_1a644718bb2fb240de962dc3c9a1fdf0dc/">bool empty() const</a></p>

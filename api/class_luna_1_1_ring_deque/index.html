@@ -148,8 +148,20 @@
               
                 <h1 id="lunaringdeque">Luna::RingDeque</h1>
 <p>A container that implements a double-ended queue and uses a ring buffer as its internal storage. </p>
-<pre><code class="language-c++">class Luna::RingDeque
+<pre><code class="language-c++">template &lt;typename _Ty, typename _Alloc&gt;
+class Luna::RingDeque
 </code></pre>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li>
+<p><strong>_Ty</strong></p>
+<p>The element type of the container. </p>
+</li>
+<li>
+<p><strong>_Alloc</strong></p>
+<p>The memory allocator used by the container. If not specified, <a href="../class_luna_1_1_allocator/">Allocator</a> will be used. </p>
+</li>
+</ul>
 <h2 id="member-functions">Member functions</h2>
 <ul>
 <li>
@@ -349,8 +361,8 @@
 <p>Inserts one range of elements to the queue. </p>
 </li>
 <li>
-<p><a href="../class_luna_1_1_ring_deque_1abd51b9726472d2049829652e4ed20519/">iterator insert(const_iterator pos, InitializerList&lt; value_type &gt; iqueue)</a></p>
-<p>Inserts one range of elements specified by the initializer queue to the queue. </p>
+<p><a href="../class_luna_1_1_ring_deque_1ae23f912fce8b1988a7a54d4cbcf39c0c/">iterator insert(const_iterator pos, InitializerList&lt; value_type &gt; ilist)</a></p>
+<p>Inserts one range of elements specified by the initializer list to the queue. </p>
 </li>
 <li>
 <p><a href="../class_luna_1_1_ring_deque_1a29790c28710ec0e64b48c2f4edd0b08c/">iterator erase(const_iterator pos)</a></p>

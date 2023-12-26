@@ -148,7 +148,8 @@
               
                 <h1 id="lunalockguard">Luna::LockGuard</h1>
 <p>The RAII wrapper that locks the specified lock upon construction, and unlocks the specified lock upon destruction. </p>
-<pre><code class="language-c++">class Luna::LockGuard
+<pre><code class="language-c++">template &lt;typename _SpinLock&gt;
+class Luna::LockGuard
 </code></pre>
 <p>This can be used for both <a href="../class_luna_1_1_spin_lock/">SpinLock</a> and <a href="../class_luna_1_1_recursive_spin_lock/">RecursiveSpinLock</a></p>
 <h2 id="member-functions">Member functions</h2>

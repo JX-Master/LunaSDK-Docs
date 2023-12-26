@@ -148,7 +148,8 @@
               
                 <h1 id="lunahashset">Luna::HashSet</h1>
 <p>An container that contains a set of unique objects using open-addressing hashing algorithm. </p>
-<pre><code class="language-c++">class Luna::HashSet
+<pre><code class="language-c++">template &lt;typename _Kty, typename _Hash, typename _KeyEqual, typename _Alloc&gt;
+class Luna::HashSet
 </code></pre>
 <h2 id="remark">Remark</h2>
 <p>See remarks of <a href="../class_luna_1_1_hash_map/">HashMap</a> for details. </p>
@@ -177,6 +178,14 @@
 <li>
 <p><a href="../class_luna_1_1_hash_set_1aeaf4c216b4d13706a981282ecdb6f56c/">HashSet(HashSet &amp;&amp;rhs, const allocator_type &amp;alloc)</a></p>
 <p>Constructs a set with an custom allocator and with elements moved from another set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_hash_set_1afbeb12e649a0a8025fc93ee832037f13/">HashSet &amp; operator=(const HashSet &amp;rhs)</a></p>
+<p>Replaces elements of the set by coping elements from another set. </p>
+</li>
+<li>
+<p><a href="../class_luna_1_1_hash_set_1a4ee27e9b3735959ff4e998c2f5355251/">HashSet &amp; operator=(HashSet &amp;&amp;rhs)</a></p>
+<p>Replaces elements of the set by moving elements from another set. </p>
 </li>
 <li>
 <p><a href="../class_luna_1_1_hash_set_1ad69bd11391be1a1dba5c8202259664f8/">iterator begin()</a></p>

@@ -148,7 +148,8 @@
               
                 <h1 id="lunar">Luna::R</h1>
 <p>A wrapper object for the return value of one function that may fail. </p>
-<pre><code class="language-c++">struct Luna::R
+<pre><code class="language-c++">template &lt;typename _Ty&gt;
+struct Luna::R
 </code></pre>
 <p>If the function succeeds, this object contains the return value; if the function fails, this object contains the error code so that it can be identified. </p>
               

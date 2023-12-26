@@ -148,7 +148,8 @@
               
                 <h1 id="lunafunction-_r_args">Luna::Function&lt; _R(_Args...)&gt;</h1>
 <p>A function wrapper that can store one callable object, and enable coping, moving and invoking of such callable object. </p>
-<pre><code class="language-c++">struct Luna::Function&lt; _R(_Args...)&gt;
+<pre><code class="language-c++">template &lt;typename _R, typename... _Args&gt;
+struct Luna::Function&lt; _R(_Args...)&gt;
 </code></pre>
 <p>The callable object can be a function pointer or a function object (types that overloads <code>operator()</code>). </p>
 <h2 id="member-functions">Member functions</h2>

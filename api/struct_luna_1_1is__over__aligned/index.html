@@ -148,7 +148,8 @@
               
                 <h1 id="lunais_over_aligned">Luna::is_over_aligned</h1>
 <p>Checks if the specified type's alignment requirement is greater than alignof(max_align_t). </p>
-<pre><code class="language-c++">struct Luna::is_over_aligned : public non-virtual std::integral_constant&lt; bool, impl::is_over_aligned&lt; _Ty &gt;()&gt;
+<pre><code class="language-c++">template &lt;typename _Ty&gt;
+struct Luna::is_over_aligned : public non-virtual std::integral_constant&lt; bool, impl::is_over_aligned&lt; _Ty &gt;()&gt;
 </code></pre>
 <h2 id="base-type">Base type</h2>
 <ul>
