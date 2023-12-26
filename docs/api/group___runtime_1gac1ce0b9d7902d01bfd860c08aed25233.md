@@ -18,7 +18,7 @@ Defines all possible types of one [Variant](class_luna_1_1_variant.md) object.
 
 
 ## Remark
-To fetch the type of one variant, call Variant::type
+To fetch the type of one variant, call [Variant::type](class_luna_1_1_variant_1a9d24401239f10fa7d53b0e0a53eb90b8.md)
 
 ## Options
 * [null](group___runtime_1ggac1ce0b9d7902d01bfd860c08aed25233a37a6259cc0c1dae299a7866489dff0bd.md)

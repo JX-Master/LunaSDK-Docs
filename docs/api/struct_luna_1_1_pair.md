@@ -2,6 +2,7 @@
 Stores a pair of values. 
 
 ```c++
+template <typename _Ty1, typename _Ty2>
 struct Luna::Pair
 ```
 

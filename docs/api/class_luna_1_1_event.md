@@ -2,6 +2,7 @@
 Represents one event that once triggered, invokes all handlers registered to it. 
 
 ```c++
+template <typename _Func, typename _Alloc>
 class Luna::Event
 ```
 

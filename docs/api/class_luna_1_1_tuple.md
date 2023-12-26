@@ -2,6 +2,7 @@
 Represents a sequence of fixed-size elements. Every element can have one different type. 
 
 ```c++
+template <typename _Ty, typename... _Tys>
 class Luna::Tuple
 ```
 

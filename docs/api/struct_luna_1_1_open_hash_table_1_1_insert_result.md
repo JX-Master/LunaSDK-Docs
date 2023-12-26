@@ -2,6 +2,7 @@
 Represents the insertion result of one node. 
 
 ```c++
+template <typename _Iter, typename _Node>
 struct Luna::OpenHashTable::InsertResult
 ```
 

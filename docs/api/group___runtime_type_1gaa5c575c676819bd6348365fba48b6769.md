@@ -13,11 +13,11 @@ This macro must be defined directly in `Luna` namespace.
 
     The enumeration type. 
 
-* *in* **name**
+* *in* **_name**
 
     The name string of the type. 
 
-* *in* **guid**
+* *in* **_guid**
 
     The GUID string of the type. 
 

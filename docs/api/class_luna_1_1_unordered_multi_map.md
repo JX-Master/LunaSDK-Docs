@@ -2,6 +2,7 @@
 An container that contains key-value pairs using closed-addressing hashing algorithm. This container allows multiple values with the same key exist in the container. 
 
 ```c++
+template <typename _Kty, typename _Ty, typename _Hash, typename _KeyEqual, typename _Alloc>
 class Luna::UnorderedMultiMap
 ```
 

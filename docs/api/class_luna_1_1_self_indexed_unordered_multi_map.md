@@ -2,6 +2,7 @@
 Represents one self-indexed unordered map similar to [SelfIndexedUnorderedMap](class_luna_1_1_self_indexed_unordered_map.md), but allows multiple elements with the same key to be inserted. 
 
 ```c++
+template <typename _Kty, typename _Ty, typename _ExtractKey, typename _Hash, typename _KeyEqual, typename _Alloc>
 class Luna::SelfIndexedUnorderedMultiMap
 ```
 

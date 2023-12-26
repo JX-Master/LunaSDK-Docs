@@ -45,6 +45,11 @@
     Represents a system thread object. This\ type\ is\ thread\ safe. 
 
 
+* [Luna::IWaitable](struct_luna_1_1_i_waitable.md)
+
+    Represents a waitable object used for multi-thread synchronization. 
+
+
 ## Enumerations
 * [Luna::ThreadPriority](group___runtime_thread_1ga80351cf39ce9e4d1d110fb249699db07.md)
 

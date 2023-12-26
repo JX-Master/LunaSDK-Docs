@@ -464,7 +464,7 @@
 
 * [luproperty(_struct, _type, _name)](group___runtime_type_1gaa77d452893e669bfab5269edb321ff75.md)
 
-    Declares one property used in register_struct_type. 
+    Declares one property used in [Luna::register_struct_type](group___runtime_type_1gabdbbe8b5d92239b0af155d9d04b78f1c.md). 
 
 * [luenum(_type, _name, _guid)](group___runtime_type_1gaa5c575c676819bd6348365fba48b6769.md)
 
@@ -472,5 +472,5 @@
 
 * [luoption(_enum, _item)](group___runtime_type_1ga2c3ef7a6cd6e691e08c11d97650d53a5.md)
 
-    Declares one option used in register_enum_type. 
+    Declares one option used in [Luna::register_enum_type](group___runtime_type_1ga23359d0927de35a14f18d2e4d86d17bb.md). 
 

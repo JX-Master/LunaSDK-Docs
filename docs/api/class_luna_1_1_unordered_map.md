@@ -2,6 +2,7 @@
 An container that contains key-value pairs with unique keys using closed-addressing hashing algorithm. 
 
 ```c++
+template <typename _Kty, typename _Ty, typename _Hash, typename _KeyEqual, typename _Alloc>
 class Luna::UnorderedMap
 ```
 
@@ -66,6 +67,30 @@ See remarks of [HashMap](class_luna_1_1_hash_map.md) for details.
 * [const_iterator cend() const](class_luna_1_1_unordered_map_1a93791e61ab486b4022c389d634b4facc.md)
 
     Gets one constant iterator to the one past last element of the map. 
+
+* [local_iterator begin(usize n)](class_luna_1_1_unordered_map_1a93a8c27892c34625c315914f976d8ad3.md)
+
+    Gets an iterator to the first element of the bucket with specified index. 
+
+* [const_local_iterator begin(usize n) const](class_luna_1_1_unordered_map_1a7c785dfed34436fa185d65a54519e310.md)
+
+    Gets an constant iterator to the first element of the bucket with specified index. 
+
+* [const_local_iterator cbegin(usize n) const](class_luna_1_1_unordered_map_1acc95b83df5c80dd26cd48546ded59e53.md)
+
+    Gets a constant iterator to the first element of the bucket with specified index. 
+
+* [local_iterator end(usize n)](class_luna_1_1_unordered_map_1a6c08ca2f925dec867e11119dc0653667.md)
+
+    Gets an iterator to the one-past-last element of the bucket with specified index. 
+
+* [const_local_iterator end(usize n) const](class_luna_1_1_unordered_map_1a7a8207811f9020c5b35303489c032193.md)
+
+    Gets a constant iterator to the one-past-last element of the bucket with specified index. 
+
+* [const_local_iterator cend(usize n) const](class_luna_1_1_unordered_map_1a4de0b59f7dab8a23fcddee7f6aea3229.md)
+
+    Gets a constant iterator to the one-past-last element of the bucket with specified index. 
 
 * [bool empty() const](class_luna_1_1_unordered_map_1a644718bb2fb240de962dc3c9a1fdf0dc.md)
 

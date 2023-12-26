@@ -2,6 +2,7 @@
 A container that stores elements as double-linked lists (nodes connected by pointers). 
 
 ```c++
+template <typename _Ty, typename _Alloc>
 class Luna::List
 ```
 

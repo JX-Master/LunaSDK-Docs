@@ -2,6 +2,7 @@
 An iterator adaptor that reverses the direction of a given iterator. 
 
 ```c++
+template <typename _Iter>
 class Luna::ReverseIterator
 ```
 

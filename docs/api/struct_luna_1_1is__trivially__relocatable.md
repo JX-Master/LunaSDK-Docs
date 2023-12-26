@@ -2,6 +2,7 @@
 Checks if the specified type can be trivially relocatable. One object is trivially relocatable if the data of one well-constructed instance of object can be copied to a new uninitialized memory by bitwise copy (for example, `memcpy`, `memmove` or `realloc`) and the new copied object behaves the same as the original object, such copy is called a "relocating operation". After the operation, the original memory for the object is treated as uninitialized and does not have destructor called before it is freed. 
 
 ```c++
+template <typename _Ty>
 struct Luna::is_trivially_relocatable : public non-virtual std::integral_constant< bool, true >
 ```
 

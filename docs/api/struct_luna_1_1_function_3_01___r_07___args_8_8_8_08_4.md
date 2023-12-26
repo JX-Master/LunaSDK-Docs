@@ -2,6 +2,7 @@
 A function wrapper that can store one callable object, and enable coping, moving and invoking of such callable object. 
 
 ```c++
+template <typename _R, typename... _Args>
 struct Luna::Function< _R(_Args...)>
 ```
 

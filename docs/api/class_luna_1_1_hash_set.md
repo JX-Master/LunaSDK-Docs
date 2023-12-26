@@ -2,6 +2,7 @@
 An container that contains a set of unique objects using open-addressing hashing algorithm. 
 
 ```c++
+template <typename _Kty, typename _Hash, typename _KeyEqual, typename _Alloc>
 class Luna::HashSet
 ```
 
@@ -34,6 +35,14 @@ See remarks of [HashMap](class_luna_1_1_hash_map.md) for details.
 * [HashSet(HashSet &&rhs, const allocator_type &alloc)](class_luna_1_1_hash_set_1aeaf4c216b4d13706a981282ecdb6f56c.md)
 
     Constructs a set with an custom allocator and with elements moved from another set. 
+
+* [HashSet & operator=(const HashSet &rhs)](class_luna_1_1_hash_set_1afbeb12e649a0a8025fc93ee832037f13.md)
+
+    Replaces elements of the set by coping elements from another set. 
+
+* [HashSet & operator=(HashSet &&rhs)](class_luna_1_1_hash_set_1a4ee27e9b3735959ff4e998c2f5355251.md)
+
+    Replaces elements of the set by moving elements from another set. 
 
 * [iterator begin()](class_luna_1_1_hash_set_1ad69bd11391be1a1dba5c8202259664f8.md)
 

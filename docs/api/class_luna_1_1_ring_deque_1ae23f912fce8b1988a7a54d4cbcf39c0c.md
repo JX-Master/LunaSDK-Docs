@@ -1,10 +1,10 @@
 # Luna::RingDeque::insert
 
 ```c++
-iterator insert(const_iterator pos, InitializerList< value_type > iqueue)
+iterator insert(const_iterator pos, InitializerList< value_type > ilist)
 ```
 
-Inserts one range of elements specified by the initializer queue to the queue. 
+Inserts one range of elements specified by the initializer list to the queue. 
 
 
 
@@ -13,9 +13,9 @@ Inserts one range of elements specified by the initializer queue to the queue.
 
     The iterator to the position to insert elements. The elements will be inserted before the element pointed by this iterator. This can be `end()`, indicating that the element will be inserted at the end of the queue. 
 
-* *in* **iqueue**
+* *in* **ilist**
 
-    The initializer queue. 
+    The initializer list. 
 
 ## Return value
 Returns one iterator to the first inserted element. 

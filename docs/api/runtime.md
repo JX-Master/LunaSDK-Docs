@@ -113,19 +113,19 @@ The Runtime module provides the runtime environment of Luna SDK and defines core
     Represents a sequence of fixed-size elements. Every element can have one different type. 
 
 
+* [Luna::DefaultDelete](struct_luna_1_1_default_delete.md)
+
+    The default object deletion function used by [UniquePtr](class_luna_1_1_unique_ptr.md), which calls [memdelete](group___runtime_memory_1gaf95818ee40a0536baee3f539b019df5d.md) to delete The object. 
+
+
+* [Luna::UniquePtr](class_luna_1_1_unique_ptr.md)
+
+    A smart pointer that wraps one dynamically created object, and deletes the object when the pointer is destructed. 
+
+
 * [Luna::Variant](class_luna_1_1_variant.md)
 
     Represents a dynamic typed object that stores data in a schema-less (self-described) manner. 
-
-
-* [Luna::Vector](class_luna_1_1_vector.md)
-
-    A dynamic container type that stores a continuous array of elements. 
-
-
-* [Luna::IWaitable](struct_luna_1_1_i_waitable.md)
-
-    Represents a waitable object used for multi-thread synchronization. 
 
 
 ## Enumerations

@@ -2,6 +2,7 @@
 The basic string implementation that is suitable for any character types. 
 
 ```c++
+template <typename _Char, typename _Alloc>
 class Luna::BasicString
 ```
 

@@ -1,0 +1,13 @@
+# Luna::UnorderedMultiSet::size
+
+```c++
+usize size() const
+```
+
+Gets the size of the set, that is, the number of elements in the set. 
+
+
+
+## Return value
+Returns the size of the set. 
+

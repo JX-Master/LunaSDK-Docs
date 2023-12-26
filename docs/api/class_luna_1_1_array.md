@@ -2,6 +2,7 @@
 Represents one array of fixed or dynamic size. 
 
 ```c++
+template <typename _Ty, usize _Size>
 class Luna::Array
 ```
 

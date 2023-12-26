@@ -2,6 +2,7 @@
 A wrapper object for the return value of one function that may fail. 
 
 ```c++
+template <typename _Ty>
 struct Luna::R
 ```
 

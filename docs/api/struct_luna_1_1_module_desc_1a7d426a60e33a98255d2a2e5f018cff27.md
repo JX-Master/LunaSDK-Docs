@@ -6,7 +6,7 @@ const c8* dependencies
 
 A string that records modules this module depends on. 
 
-the lifetime of the module.
+The lifetime of the string should be no shorter than the lifetime of the module.
 
 In case that multiple modules are required, use semicolons(;) to separate them (for example: "Core;Input;Gfx"). There should not be any semicolon after the last item in the string.
 

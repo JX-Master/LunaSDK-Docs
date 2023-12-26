@@ -2,6 +2,7 @@
 Represents one self-indexed hash map whose key can be extracted from the value, so that it does not need to be stored. 
 
 ```c++
+template <typename _Kty, typename _Ty, typename _ExtractKey, typename _Hash, typename _KeyEqual, typename _Alloc>
 class Luna::SelfIndexedHashMap
 ```
 

@@ -2,7 +2,7 @@
 Represents one system-level semaphore object. 
 
 ```c++
-struct Luna::ISemaphore : public virtual IWaitable
+interface Luna::ISemaphore : public virtual IWaitable
 ```
 
 ## Base type

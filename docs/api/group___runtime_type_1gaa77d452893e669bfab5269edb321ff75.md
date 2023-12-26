@@ -4,7 +4,7 @@
 #define luproperty(_struct, _type, _name)
 ```
 
-Declares one property used in register_struct_type. 
+Declares one property used in [Luna::register_struct_type](group___runtime_type_1gabdbbe8b5d92239b0af155d9d04b78f1c.md). 
 
 
 

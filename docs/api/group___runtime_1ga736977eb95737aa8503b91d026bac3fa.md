@@ -15,7 +15,7 @@ Defines all possible number types of one number variant.
 
 
 ## Remark
-To fetch the number type of one number variant, call Variant::number_type. 
+To fetch the number type of one number variant, call [Variant::number_type](class_luna_1_1_variant_1a9724594c45d6648adc44a15aae2beb75.md). 
 
 ## Options
 * [not_number](group___runtime_1gga736977eb95737aa8503b91d026bac3faae019afae0df74b130c16579f822e33ae.md)

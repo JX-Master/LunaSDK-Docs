@@ -50,6 +50,21 @@
     An container that contains key-value pairs using closed-addressing hashing algorithm. This container allows multiple values with the same key exist in the container. 
 
 
+* [Luna::UnorderedMultiSet](class_luna_1_1_unordered_multi_set.md)
+
+    ! An container that contains a set of unique objects using closed-addressing hashing algorithm. This container allows multiple copies of the same value exist in the container. 
+
+
+* [Luna::UnorderedSet](class_luna_1_1_unordered_set.md)
+
+    An container that contains a set of unique objects using closed-addressing hashing algorithm. 
+
+
+* [Luna::Vector](class_luna_1_1_vector.md)
+
+    A container that stores a continuous array of elements. Elements can be added to or removed from the container dynamically. 
+
+
 ## Constants
 * [constexpr usize DYNAMIC_ARRAY_SIZE](group___runtime_container_1gac211fb2fcac88253a56c67d77c041a02.md)
 
@@ -63,4 +78,8 @@
 * [typeinfo_t hash_set_type()](group___runtime_container_1ga743bdc5ea347716089749522959567a2.md)
 
     Gets the type object of [HashSet](class_luna_1_1_hash_set.md). 
+
+* [typeinfo_t vector_type()](group___runtime_container_1ga180f1324922affe17ebe31e278a4716a.md)
+
+    Gets the type object of [Vector](class_luna_1_1_vector.md). 
 

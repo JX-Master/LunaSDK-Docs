@@ -2,6 +2,7 @@
 The smart pointer that represents one typed weak reference to one boxed object. 
 
 ```c++
+template <typename _Ty>
 class Luna::WeakRef
 ```
 

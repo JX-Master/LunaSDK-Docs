@@ -2,6 +2,7 @@
 Represents one reference to one continuous sequence of instances. The size of the span is fixed and specified as template argument. 
 
 ```c++
+template <typename _Ty, usize _Size>
 class Luna::Span
 ```
 

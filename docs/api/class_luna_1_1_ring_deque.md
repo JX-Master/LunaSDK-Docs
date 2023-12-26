@@ -2,8 +2,20 @@
 A container that implements a double-ended queue and uses a ring buffer as its internal storage. 
 
 ```c++
+template <typename _Ty, typename _Alloc>
 class Luna::RingDeque
 ```
+
+
+
+## Parameters
+* **_Ty**
+
+    The element type of the container. 
+
+* **_Alloc**
+
+    The memory allocator used by the container. If not specified, [Allocator](class_luna_1_1_allocator.md) will be used. 
 
 ## Member functions
 * [iterator begin()](class_luna_1_1_ring_deque_1ad69bd11391be1a1dba5c8202259664f8.md)
@@ -202,9 +214,9 @@ class Luna::RingDeque
 
     Inserts one range of elements to the queue. 
 
-* [iterator insert(const_iterator pos, InitializerList< value_type > iqueue)](class_luna_1_1_ring_deque_1abd51b9726472d2049829652e4ed20519.md)
+* [iterator insert(const_iterator pos, InitializerList< value_type > ilist)](class_luna_1_1_ring_deque_1ae23f912fce8b1988a7a54d4cbcf39c0c.md)
 
-    Inserts one range of elements specified by the initializer queue to the queue. 
+    Inserts one range of elements specified by the initializer list to the queue. 
 
 * [iterator erase(const_iterator pos)](class_luna_1_1_ring_deque_1a29790c28710ec0e64b48c2f4edd0b08c.md)
 

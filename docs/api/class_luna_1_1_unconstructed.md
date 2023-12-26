@@ -2,6 +2,7 @@
 Represents one object that supports manual construction and destruction. 
 
 ```c++
+template <typename _Ty>
 class Luna::Unconstructed
 ```
 

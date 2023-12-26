@@ -2,6 +2,7 @@
 The RAII wrapper that locks the specified lock upon construction, and unlocks the specified lock upon destruction. 
 
 ```c++
+template <typename _SpinLock>
 class Luna::LockGuard
 ```
 
