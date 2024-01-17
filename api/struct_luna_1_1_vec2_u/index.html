@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/struct_luna_1_1_vec2_u/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Luna::Vec2U - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Luna::Vec2U";
+        var mkdocs_page_input_path = "api\\struct_luna_1_1_vec2_u.md";
+        var mkdocs_page_url = "/api/struct_luna_1_1_vec2_u/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Luna::Vec2U</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lunavec2u">Luna::Vec2U</h1>
+<p>A generalized version of 2D vector. This vector type does not have specific alignment requirement. </p>
+<pre><code class="language-c++">template &lt;typename _Ty&gt;
+struct Luna::Vec2U
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<p>in] _Ty The element type of the vector. </p>
+<h2 id="member-objects">Member objects</h2>
+<ul>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1a83d614aa3a837b563ea6c640c5acbd80/">_Ty x</a></p>
+<p>The fist component of the vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1ad50589e0bf2c95d200c5e93a93725ddc/">_Ty y</a></p>
+<p>The second component of the vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1a299b956f4d51ae8b94e03fbf3d9816ce/">_Ty m[2]</a></p>
+<p>The array of components. </p>
+</li>
+</ul>
+<h2 id="member-functions">Member functions</h2>
+<ul>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1a8a0a5328beaf1186035397cf899ab657/">Vec2U()=default</a></p>
+<p>Constructs one vector with components uninitialized. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1aaae3706811166171cee7b84cfe47ef83/">Vec2U(const Vec2U &amp;)=default</a></p>
+<p>Constructs one vector by coping components from another vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1a5b1a93ae050ce0369e6f9b24549926ef/">Vec2U &amp; operator=(const Vec2U &amp;)=default</a></p>
+<p>Assigns one vector by coping components from another vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1aeb725059825128685dde784cb306691f/">Vec2U(Vec2U &amp;&amp;)=default</a></p>
+<p>Constructs one vector by coping components from another vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1ae4164f0e219179d10404750a8e687d97/">Vec2U &amp; operator=(Vec2U &amp;&amp;)=default</a></p>
+<p>Assigns one vector by coping components from another vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1a785d8fde946373238d37898ad620a147/">Vec2U(const Float2 &amp;rhs)</a></p>
+<p>Constructs one vector from one <a href="../struct_luna_1_1_float2/">Float2</a> vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1a8d0b9b86189e3f5c66d631313381f075/">Vec2U &amp; operator=(const Float2 &amp;rhs)</a></p>
+<p>Assigns one vector from one <a href="../struct_luna_1_1_float2/">Float2</a> vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1a39ce7ff2260db414ecc109a2b5e65f12/">operator Float2() const</a></p>
+<p>Converts this vector to <a href="../struct_luna_1_1_float2/">Float2</a>. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1a067e2193924163598a861cafce9dbabf/">constexpr Vec2U(_Ty s)</a></p>
+<p>Constructs one vector from one scalar. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1a1915cd8af9b09a47cff698c60ee49cca/">constexpr Vec2U(_Ty x, _Ty y)</a></p>
+<p>Constructs one vector from values. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1a1500f1e9b47cead3ceca4ae05e3477fb/">bool operator==(const Vec2U &amp;rhs) const</a></p>
+<p>Compares two vectors for equality. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec2_u_1a37f7179c6ccc0cf7ad2f0b78f7b47376/">bool operator!=(const Vec2U &amp;rhs) const</a></p>
+<p>Compares two vectors for non-equality. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

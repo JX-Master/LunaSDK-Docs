@@ -147,10 +147,55 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunarect">Luna::Rect</h1>
-<p><a href="./">Rect</a> is used to specify a region in the bitmap, texture or window. </p>
+<p>Used to specify a 2D rectangle region using position and size. </p>
 <pre><code class="language-c++">template &lt;typename _Ty&gt;
 struct Luna::Rect
 </code></pre>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li>
+<p><strong>_Ty</strong></p>
+<p>The type that represents values of the rectangle. </p>
+</li>
+</ul>
+<h2 id="member-objects">Member objects</h2>
+<ul>
+<li>
+<p><a href="../struct_luna_1_1_rect_1aad7388b0bd32fe2d41eeacdb94407d02/">_Ty offset_x</a></p>
+<p>The X position of the rectangle. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_rect_1a0d685fff6fc97586d48ad4e46782bee3/">_Ty offset_y</a></p>
+<p>The Y position of the rectangle. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_rect_1a1aaca090f7f30a3a9ddb22d76a416603/">_Ty width</a></p>
+<p>The width of the rectangle. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_rect_1a59f3bae4068b3faea664722d71c49350/">_Ty height</a></p>
+<p>The height of the rectangle. </p>
+</li>
+</ul>
+<h2 id="member-functions">Member functions</h2>
+<ul>
+<li>
+<p><a href="../struct_luna_1_1_rect_1a77ac0e9149ddedfdbe85bdbfbe8b9239/">Rect()=default</a></p>
+<p>Constructs one rectangle. Values of the rectangle is uninitialized. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_rect_1a279e63f6c87d8a6ea3585e46ab68d3bf/">Rect(_Ty offset_x, _Ty offset_y, _Ty width, _Ty height)</a></p>
+<p>Constructs one rectangle. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_rect_1a1553e6d7d9f253f30a100e3aa5f921b3/">bool operator==(const Rect &amp;rhs) const</a></p>
+<p>Compares two rectangles for equality. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_rect_1a8256b3bbc3a7312e616c0df6e00143d2/">bool operator!=(const Rect &amp;rhs) const</a></p>
+<p>Compares two rectangles for non-equality. </p>
+</li>
+</ul>
               
             </div>
           </div><footer>

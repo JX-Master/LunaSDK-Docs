@@ -147,10 +147,82 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lunavec3u">Luna::Vec3U</h1>
-<p>Unaligned version of Float3. This is used for storing or transferring data between CPU/GPU and network only. </p>
+<p>A generalized version of 3D vector. This vector type does not have specific alignment requirement. </p>
 <pre><code class="language-c++">template &lt;typename _Ty&gt;
 struct Luna::Vec3U
 </code></pre>
+<h2 id="parameters">Parameters</h2>
+<p>in] _Ty The element type of the vector. </p>
+<h2 id="member-objects">Member objects</h2>
+<ul>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1a83d614aa3a837b563ea6c640c5acbd80/">_Ty x</a></p>
+<p>The fist component of the vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1ad50589e0bf2c95d200c5e93a93725ddc/">_Ty y</a></p>
+<p>The second component of the vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1a39f7640e60d9dfd2ae55a31ab2fc86a3/">_Ty z</a></p>
+<p>The third component of the vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1a269fb9d2792d1ea27c8d7dbfa5052f38/">_Ty m[3]</a></p>
+<p>The array of components. </p>
+</li>
+</ul>
+<h2 id="member-functions">Member functions</h2>
+<ul>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1a141cd63cc6e06fec6c0e5c5a6664ec18/">Vec3U()=default</a></p>
+<p>Constructs one vector with components uninitialized. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1aaebadde563d185d64450d11bb710b305/">Vec3U(const Vec3U &amp;)=default</a></p>
+<p>Constructs one vector by coping components from another vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1aa3ae548a882635ee4b0b7eb751ad4221/">Vec3U &amp; operator=(const Vec3U &amp;)=default</a></p>
+<p>Assigns one vector by coping components from another vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1a29a86b44a544708ce61b2a5e8415cb43/">Vec3U(Vec3U &amp;&amp;)=default</a></p>
+<p>Constructs one vector by coping components from another vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1a8db84643893115e30a6b65e9d67e95c6/">Vec3U &amp; operator=(Vec3U &amp;&amp;)=default</a></p>
+<p>Assigns one vector by coping components from another vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1a38a037b796f344d5809c1e5a8469c999/">Vec3U(const Float3 &amp;rhs)</a></p>
+<p>Constructs one vector from one <a href="../struct_luna_1_1_float3/">Float3</a> vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1a39181b6988ddd21a910481a5d1ce07ff/">Vec3U &amp; operator=(const Float3 &amp;rhs)</a></p>
+<p>Assigns one vector from one <a href="../struct_luna_1_1_float3/">Float3</a> vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1ae8bdb89842794c0c122f02034717d22e/">operator Float3() const</a></p>
+<p>Converts this vector to <a href="../struct_luna_1_1_float3/">Float3</a>. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1a30da76c7e69b2721088727e581dfc565/">constexpr Vec3U(_Ty s)</a></p>
+<p>Constructs one vector from one scalar. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1a540b912e911ccf43855ae9176920b3a0/">constexpr Vec3U(_Ty x, _Ty y, _Ty z)</a></p>
+<p>Constructs one vector from values. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1ae098b0dd714b366e9fdee2fec9028480/">bool operator==(const Vec3U &amp;rhs) const</a></p>
+<p>Compares two vectors for equality. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_vec3_u_1a739b8d28a626a1340be3a0b5ccab4cca/">bool operator!=(const Vec3U &amp;rhs) const</a></p>
+<p>Compares two vectors for non-equality. </p>
+</li>
+</ul>
               
             </div>
           </div><footer>

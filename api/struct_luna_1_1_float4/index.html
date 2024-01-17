@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/struct_luna_1_1_float4/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Luna::Float4 - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Luna::Float4";
+        var mkdocs_page_input_path = "api\\struct_luna_1_1_float4.md";
+        var mkdocs_page_url = "/api/struct_luna_1_1_float4/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Luna::Float4</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lunafloat4">Luna::Float4</h1>
+<p>4D vector type with <a href="../group___runtime_base_type_1gad34d88453d37b65a09797bad37f2f527/">f32</a> components. </p>
+<pre><code class="language-c++">struct Luna::Float4
+</code></pre>
+<p>This vector type is 16-bytes aligned and will use SIMD to accelerate vector calculations when possible. </p>
+<h2 id="member-objects">Member objects</h2>
+<ul>
+<li>
+<p><a href="../struct_luna_1_1_float4_1a6b05cac69c0301ab972c27ce208373be/">f32 x</a></p>
+<p>The fist component of the vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1ab7291adeb8828a0cba3aedf332c2053d/">f32 y</a></p>
+<p>The second component of the vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1aac280fcf3516d20b5e3dec5fa770ac50/">f32 z</a></p>
+<p>The third component of the vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1adb390a9d0e1ce3b726f016e547104e35/">f32 w</a></p>
+<p>The fourth component of the vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1a913c09d0cc2a1dab1ceb500fd8704174/">f32 m[4]</a></p>
+<p>The array of components. </p>
+</li>
+</ul>
+<h2 id="member-functions">Member functions</h2>
+<ul>
+<li>
+<p><a href="../struct_luna_1_1_float4_1aaafd49eb1f30971d0eeb427e953e94d9/">Float4()=default</a></p>
+<p>Constructs one vector with components uninitialized. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1a670c70d6fd9b39fd6313048684674328/">Float4(const Float4 &amp;)=default</a></p>
+<p>Constructs one vector by coping components from another vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1ab37539e37291e5ed5bc509d195caab50/">Float4 &amp; operator=(const Float4 &amp;)=default</a></p>
+<p>Assigns one vector by coping components from another vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1a74c860b926600956ddfa13b5a7adda4b/">Float4(Float4 &amp;&amp;)=default</a></p>
+<p>Constructs one vector by coping components from another vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1ab81d6375a4023743728df153e4611660/">Float4 &amp; operator=(Float4 &amp;&amp;)=default</a></p>
+<p>Assigns one vector by coping components from another vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1a347eaab3d24379521c3d7090ac74de0e/">constexpr Float4(f32 s)</a></p>
+<p>Constructs one vector from one scalar. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1a9d9ac7f56501214f5e9d16a621e35e7c/">constexpr Float4(f32 x, f32 y, f32 z, f32 w)</a></p>
+<p>Constructs one vector from values. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1ad8856dfa046e356cfa3af84c7df7b3ed/">bool operator==(const Float4 &amp;v) const</a></p>
+<p>Compares two vectors for equality. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1a7482716f8587458b05ccb0cd1e149222/">bool operator!=(const Float4 &amp;v) const</a></p>
+<p>Compares two vectors for non-equality. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1aa4a62f0722143fb899a05edf643619d6/">Float4 &amp; operator+=(const Float4 &amp;v)</a></p>
+<p>Adds this vector with one vector, and stores the result to this vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1aae144715ce6ad450e5ad84fd7160e7a1/">Float4 &amp; operator-=(const Float4 &amp;v)</a></p>
+<p>Subtracts this vector with one vector, and stores the result to this vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1a0d3b4083598a02086ac7d28bcf7ca5dc/">Float4 &amp; operator*=(const Float4 &amp;v)</a></p>
+<p>Multiplies this vector with one vector, and stores the result to this vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1a32d36e588e57e1d8efb70c318e0f915b/">Float4 &amp; operator/=(const Float4 &amp;v)</a></p>
+<p>Divides this vector with one vector, and stores the result to this vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1ad30f9245a948f94d41762a902660afb9/">Float4 &amp; operator+=(f32 s)</a></p>
+<p>Adds this vector with one scalar, and stores the result to this vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1a059fa032990ddfff012cf9d358edcaab/">Float4 &amp; operator-=(f32 s)</a></p>
+<p>Subtracts this vector with one scalar, and stores the result to this vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1aecb9a8d785cfddf933266e8b4c1e4962/">Float4 &amp; operator*=(f32 s)</a></p>
+<p>Multiplies this vector with one scalar, and stores the result to this vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1ae2588d8a71a6f045f370625c07dd3553/">Float4 &amp; operator/=(f32 s)</a></p>
+<p>Divides this vector with one scalar, and stores the result to this vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1aa644cf8899a7d815ba1fe0b4a8c440e6/">Float4 operator+() const</a></p>
+<p>Gets the vector as-is. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1aa3d6cabb51a4a13b60a658621329d011/">Float4 operator-() const</a></p>
+<p>Gets a negation of this vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1a3d26cb019a0cf62ec748bdc96c792054/">Float2 xy() const</a></p>
+<p>Gets the first two components of this vector. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_float4_1afbbe16970862b7e5f548749537b7c229/">Float3 xyz() const</a></p>
+<p>Gets the first three components of this vector. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
