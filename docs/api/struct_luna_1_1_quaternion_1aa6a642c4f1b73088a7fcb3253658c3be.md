@@ -1,0 +1,25 @@
+# Luna::Quaternion::operator+=
+
+```c++
+Quaternion & operator+=(const Quaternion &q)
+```
+
+Adds this quaternion with one quaternion, and stores the result to this quaternion. 
+
+This function performs the following operations: 
+```
+this->[x](struct_luna_1_1_quaternion_1a6b05cac69c0301ab972c27ce208373be.md) += q.x;
+this->[y](struct_luna_1_1_quaternion_1ab7291adeb8828a0cba3aedf332c2053d.md) += q.y;
+this->[z](struct_luna_1_1_quaternion_1aac280fcf3516d20b5e3dec5fa770ac50.md) += q.z;
+this->[w](struct_luna_1_1_quaternion_1adb390a9d0e1ce3b726f016e547104e35.md) += q.w;
+```
+
+
+## Parameters
+* *in* **q**
+
+    The quaternion to add. 
+
+## Return value
+Returns `*this`. 
+

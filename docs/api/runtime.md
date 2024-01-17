@@ -16,6 +16,7 @@ The Runtime module provides the runtime environment of Luna SDK and defines core
 * [Hashing functions](runtime_hash.md)
 * [Interfaces](runtime_interface.md)
 * [Logging](runtime_log.md)
+* [Math library](runtime_math.md)
 * [Memory allocation and deallocation](runtime_memory.md)
 * [Memory utility library](runtime_memory_utils.md)
 * [Module system](runtime_module.md)

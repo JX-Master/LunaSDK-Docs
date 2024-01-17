@@ -18,5 +18,5 @@ Interprets a floating-point value in a string pointed to by `str`.
     If not `nullptr`, returns the pointer to the end of the floating-point value string being interpreted. 
 
 ## Return value
-Returns the converted value. If the converted value falls out of range of corresponding return type, F64_INFINITY is returned. If no conversion can be performed, `0`​ is returned. 
+Returns the converted value. If the converted value falls out of range of corresponding return type, [F64_INFINITY](group___runtime_math_1gab4ac7a7a782d35df2f1f174899eb10b6.md) is returned. If no conversion can be performed, `0`​ is returned. 
 

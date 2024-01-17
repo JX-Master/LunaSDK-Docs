@@ -1,0 +1,8 @@
+# Luna::Float4::Float4
+
+```c++
+Float4(Float4 &&)=default
+```
+
+Constructs one vector by coping components from another vector. 
+

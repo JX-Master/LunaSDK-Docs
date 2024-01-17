@@ -1,0 +1,8 @@
+# Luna::Float3x2U::Float3x2U
+
+```c++
+Float3x2U(const Float3x2U &)=default
+```
+
+Constructs one matrix by coping components from another matrix. 
+

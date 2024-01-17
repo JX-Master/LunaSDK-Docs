@@ -1,0 +1,8 @@
+# Luna::Float4::z
+
+```c++
+f32 z
+```
+
+The third component of the vector. 
+

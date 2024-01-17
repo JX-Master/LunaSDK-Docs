@@ -1,0 +1,18 @@
+# Luna::Vec4U::operator!=
+
+```c++
+bool operator!=(const Vec4U &rhs) const
+```
+
+Compares two vectors for non-equality. 
+
+
+
+## Parameters
+* *in* **rhs**
+
+    The vector to compare with. 
+
+## Return value
+Returns `true` if two vectors are not equal. Returns `false` otherwise. 
+
