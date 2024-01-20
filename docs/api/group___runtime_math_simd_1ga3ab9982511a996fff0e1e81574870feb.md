@@ -1,0 +1,17 @@
+# Luna::Simd::lerpv_f4
+
+```c++
+float4 lerpv_f4(float4 a, float4 b, float4 t)
+```
+
+Computes linear interpolation on packed single-precision (32-bit) floating-point elements in `a` and `b` using the corresponding packed single-precision (32-bit) floating-point element in `t`, and stores the results in `dst`. 
+
+
+```
+FOR j := 0 to 3
+    i := j*32
+    dst[i:i+31] := a[i:i+31] + t[i:i+31] * (b[i:i+31] - a[i:i+31])
+ENDFOR
+```
+
+

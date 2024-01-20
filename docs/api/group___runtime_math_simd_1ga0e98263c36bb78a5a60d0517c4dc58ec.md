@@ -1,0 +1,29 @@
+# Luna::Simd::transform3d_scaling_f4x4
+
+```c++
+float4x4 transform3d_scaling_f4x4(float4 scaling)
+```
+
+Builds a 3D affine matrix from scaling. 
+
+
+```
+ret[0].x := scaling.[x](struct_luna_1_1_float2_1a6b05cac69c0301ab972c27ce208373be.md)
+ret[0].y := 0
+ret[0].z := 0
+ret[0].w := 0
+ret[1].x := 0
+ret[1].y := scaling.[y](struct_luna_1_1_float2_1ab7291adeb8828a0cba3aedf332c2053d.md)
+ret[1].z := 0
+ret[1].w := 0
+ret[2].x := 0
+ret[2].y := 0
+ret[2].z := scaling.z
+ret[2].w := 0
+ret[3].[x](struct_luna_1_1_float2_1a6b05cac69c0301ab972c27ce208373be.md) := 0
+ret[3].y := 0
+ret[3].z := 0
+ret[3].w := 1
+```
+
+

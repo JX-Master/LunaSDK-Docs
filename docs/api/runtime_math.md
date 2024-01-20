@@ -1,6 +1,9 @@
 # Math library
 ## Topics
 * [Color operations](runtime_color.md)
+* [Quaternion operations](runtime_math_quaternion.md)
+* [SIMD library](runtime_math_simd.md)
+* [Transform operations](runtime_math_transform.md)
 * [Vectors](runtime_math_vector.md)
 ## Types
 * [Luna::Rect](struct_luna_1_1_rect.md)
@@ -51,11 +54,6 @@
 * [Luna::Float4x4U](struct_luna_1_1_float4x4_u.md)
 
     Unaligned 4x4 matrix with [f32](group___runtime_base_type_1gad34d88453d37b65a09797bad37f2f527.md) elements. 
-
-
-* [Luna::Quaternion](struct_luna_1_1_quaternion.md)
-
-    Used to represent one rotation operaiton using four [f32](group___runtime_base_type_1gad34d88453d37b65a09797bad37f2f527.md) values. 
 
 
 ## Alias types
@@ -328,8 +326,4 @@
 * [typeinfo_t float4x4_type()](group___runtime_math_1gaabc5aefbaa836565e8087689bd2d55c3.md)
 
     Gets the type object of [Float4x4](struct_luna_1_1_float4x4.md). 
-
-* [Quaternion slerp(const Quaternion &q1, const Quaternion &q2, f32 t)](group___runtime_math_1ga78cd61a301f7edec26c70fad8b8d8186.md)
-
-    Spherical interpolation. 
 
