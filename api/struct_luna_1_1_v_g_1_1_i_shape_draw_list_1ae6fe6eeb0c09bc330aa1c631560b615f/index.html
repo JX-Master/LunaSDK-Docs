@@ -148,6 +148,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_g/">VG</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -175,7 +177,14 @@
                 <h1 id="lunavgishapedrawlistset_sampler">Luna::VG::IShapeDrawList::set_sampler</h1>
 <pre><code class="language-c++">virtual void set_sampler(const RHI::SamplerDesc *desc)=0
 </code></pre>
-<p>Sets the sampler state to be used when sampling bound textures. Specify <code>nullptr</code> to reset the sampler state to initial settings. </p>
+<p>Sets the sampler state to be used when sampling bound textures. </p>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li>
+<p><em>in</em> <strong>desc</strong></p>
+<p>The sampler state descriptor. Specify <code>nullptr</code> to reset the sampler state to initial settings. </p>
+</li>
+</ul>
               
             </div>
           </div><footer>

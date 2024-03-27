@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/struct_luna_1_1_v_g_1_1_i_shape_draw_list_1a2ab4c2a45b005f0fb5d3d01ae76ea35f/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/group___v_g_1ga7517475317efab0dc674d8ac0f0ef425/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Luna::VG::IShapeDrawList::close - Luna SDK Docs</title>
+    <title>Luna::VG::COMMAND_LINE_TO - Luna SDK Docs</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Luna::VG::IShapeDrawList::close";
-        var mkdocs_page_input_path = "api\\struct_luna_1_1_v_g_1_1_i_shape_draw_list_1a2ab4c2a45b005f0fb5d3d01ae76ea35f.md";
-        var mkdocs_page_url = "/api/struct_luna_1_1_v_g_1_1_i_shape_draw_list_1a2ab4c2a45b005f0fb5d3d01ae76ea35f/";
+        var mkdocs_page_name = "Luna::VG::COMMAND_LINE_TO";
+        var mkdocs_page_input_path = "api\\group___v_g_1ga7517475317efab0dc674d8ac0f0ef425.md";
+        var mkdocs_page_url = "/api/group___v_g_1ga7517475317efab0dc674d8ac0f0ef425/";
       </script>
     
     <!--[if lt IE 9]>
@@ -148,6 +148,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_g/">VG</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -163,7 +165,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Luna::VG::IShapeDrawList::close</li>
+      <li class="breadcrumb-item active">Luna::VG::COMMAND_LINE_TO</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -172,10 +174,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="lunavgishapedrawlistclose">Luna::VG::IShapeDrawList::close</h1>
-<pre><code class="language-c++">virtual RV close()=0
+                <h1 id="lunavgcommand_line_to">Luna::VG::COMMAND_LINE_TO</h1>
+<pre><code class="language-c++">constexpr f32 COMMAND_LINE_TO = 2.0f
 </code></pre>
-<p>Finishes the shape recording and generates draw calls that can be passed to RHI. </p>
+<p>The command code that draws one line from the last point to the specified point. </p>
+<p>This command takes 3 points: {COMMAND_LINE_TO, X, Y}* X: The x coordinates of the target position.</p>
+<ul>
+<li>Y: The y coordinates of the target position. </li>
+</ul>
               
             </div>
           </div><footer>

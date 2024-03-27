@@ -148,6 +148,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_g/">VG</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -175,13 +177,14 @@
                 <h1 id="lunavgishapedrawlistset_origin">Luna::VG::IShapeDrawList::set_origin</h1>
 <pre><code class="language-c++">virtual void set_origin(const Float2 &amp;origin)=0
 </code></pre>
-<p>Sets the origin point for the following draw calls. The origin point is relative to the origin point of the canvas. The origin point of the canvas is at the bottom-left corner. The x axis points to right and the y axis points to up. </p>
-<p>The origin point is (0,0) when the draw list has been reset. </p>
+<p>Sets the origin point for the following draw calls. </p>
+<p>The origin point is relative to the origin point of the canvas. The origin point of the canvas is at the bottom-left corner. The x axis points to right and the y axis points to up.</p>
+<p>The initial origin point is (0,0) when the draw list has been reset. </p>
 <h2 id="parameters">Parameters</h2>
 <ul>
 <li>
-<p><em>in</em> <strong>offset</strong></p>
-<p>The x and y offset in pixels. </p>
+<p><em>in</em> <strong>origin</strong></p>
+<p>The origin point position to set. </p>
 </li>
 </ul>
               

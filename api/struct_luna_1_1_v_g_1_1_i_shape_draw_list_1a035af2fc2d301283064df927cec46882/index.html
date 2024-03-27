@@ -148,6 +148,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_g/">VG</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -176,6 +178,45 @@
 <pre><code class="language-c++">virtual void draw_shape(u32 begin_command, u32 num_commands, const Float2U &amp;min_position, const Float2U &amp;max_position, const Float2U &amp;min_shapecoord, const Float2U &amp;max_shapecoord, u32 color=0xFFFFFFFF, const Float2U &amp;min_texcoord=Float2U(0.0f), const Float2U &amp;max_texcoord=Float2U(0.0f))=0
 </code></pre>
 <p>Draws one shape. The shape is drawn by adding one draw rect (two triangles) to the list. </p>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li>
+<p><em>in</em> <strong>begin_command</strong></p>
+<p>The index of the first command point of the glyph to draw in shape buffer. </p>
+</li>
+<li>
+<p><em>in</em> <strong>num_commands</strong></p>
+<p>The number of command points of the glyph to draw. </p>
+</li>
+<li>
+<p><em>in</em> <strong>min_position</strong></p>
+<p>The minimum position of the bounding rect of the shape. </p>
+</li>
+<li>
+<p><em>in</em> <strong>max_position</strong></p>
+<p>The maximum position of the bounding rect of the shape. </p>
+</li>
+<li>
+<p><em>in</em> <strong>min_shapecoord</strong></p>
+<p>The shape coordinate value that maps to the minimum position of the bounding rect of the shape. </p>
+</li>
+<li>
+<p><em>in</em> <strong>max_shapecoord</strong></p>
+<p>The shape coordinate value that maps to the maximum position of the bounding rect of the shape. </p>
+</li>
+<li>
+<p><em>in</em> <strong>color</strong></p>
+<p>The color to tint the shape in RGBA8 form. </p>
+</li>
+<li>
+<p><em>in</em> <strong>min_texcoord</strong></p>
+<p>The texture coordinate value that maps to the minimum position of the bounding rect of the shape. </p>
+</li>
+<li>
+<p><em>in</em> <strong>max_shapecoord</strong></p>
+<p>The texture coordinate value that maps to the maximum position of the bounding rect of the shape. </p>
+</li>
+</ul>
               
             </div>
           </div><footer>

@@ -148,6 +148,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_g/">VG</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -176,6 +178,17 @@
 <pre><code class="language-c++">virtual void draw_shape_raw(Span&lt; const Vertex &gt; vertices, Span&lt; const u32 &gt; indices)=0
 </code></pre>
 <p>Draws one shape by submitting vertices and indices directly. </p>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li>
+<p><em>in</em> <strong>vertices</strong></p>
+<p>The draw vertices. </p>
+</li>
+<li>
+<p><em>in</em> <strong>indices</strong></p>
+<p>The draw indices. Valid index range is [<code>0</code>, <code>vertices.size()</code>). </p>
+</li>
+</ul>
               
             </div>
           </div><footer>
