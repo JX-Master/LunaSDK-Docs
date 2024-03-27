@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/a_h_i/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>AHI - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "AHI";
+        var mkdocs_page_input_path = "api\\a_h_i.md";
+        var mkdocs_page_url = "/api/a_h_i/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../window/">Window</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_h_i/">RHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../shader_compiler/">ShaderCompiler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_f_s/">VFS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../asset/">Asset</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../h_i_d/">HID</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">AHI</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#types">Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#enumerations">Enumerations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#alias-types">Alias types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../job_system/">JobSystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../font/">Font</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../image/">Image</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../obj_loader/">ObjLoader</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_g/">RG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Programming Reference</li>
+      <li class="breadcrumb-item active">AHI</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ahi">AHI</h1>
+<p>Audio Hardware <a href="../struct_luna_1_1_interface/">Interface</a> (AHI) module provides uniform API to use platform's audio input / output interface for audio capture and playback. </p>
+<h2 id="types">Types</h2>
+<ul>
+<li>
+<p><a href="../struct_luna_1_1_a_h_i_1_1_wave_format/">Luna::AHI::WaveFormat</a></p>
+<p>Describes format of one sound wave. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_a_h_i_1_1_i_adapter/">Luna::AHI::IAdapter</a></p>
+<p>Represents one audio adapter that can be used to create one device. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_a_h_i_1_1_device_i_o_desc/">Luna::AHI::DeviceIODesc</a></p>
+<p>Describes properties of the playback or capture audio data stream of one device. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_a_h_i_1_1_device_desc/">Luna::AHI::DeviceDesc</a></p>
+<p>Describes one audio device. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_a_h_i_1_1_i_device/">Luna::AHI::IDevice</a></p>
+<p>Represents one audio device that can playback sounds. </p>
+</li>
+</ul>
+<h2 id="enumerations">Enumerations</h2>
+<ul>
+<li>
+<p><a href="../group___a_h_i_1gaaebfa8d4cf6dc7db2951e0e052b7b753/">Luna::AHI::BitDepth</a></p>
+<p>Specifies bit depth of audio samples. </p>
+</li>
+<li>
+<p><a href="../group___a_h_i_1gad433bdae7e4fec2efb966cfe584aa7fb/">Luna::AHI::DeviceFlag</a></p>
+<p>Additional flags specified when creating one device. </p>
+</li>
+</ul>
+<h2 id="alias-types">Alias types</h2>
+<ul>
+<li>
+<p><a href="../group___a_h_i_1ga3665f39ee93f794913a4ac328c3dd090/">using playback_callback_t =  u32(void* dst_buffer, const WaveFormat&amp; format, u32 num_frames)</a></p>
+<p>Called when audio data is required by the audio driver. The user should write audio frames to the provided audio buffer for playback. </p>
+</li>
+<li>
+<p><a href="../group___a_h_i_1gaadb71c72a4b7ed96ddc1ce91700a7aaf/">using capture_callback_t =  void(const void* src_buffer, const WaveFormat&amp; format, u32 num_frames)</a></p>
+<p>Called when audio data is captured by the audio driver. The user should process such audio data (like coping them to application memory) if needed. </p>
+</li>
+</ul>
+<h2 id="functions">Functions</h2>
+<ul>
+<li>
+<p><a href="../group___a_h_i_1gafaa5675adf0b85910e5778e06c7009d7/">constexpr usize get_frame_size(BitDepth bit_depth, u32 num_channels)</a></p>
+<p>Gets the size of one audio frame in bytes. </p>
+</li>
+<li>
+<p><a href="../group___a_h_i_1gac636920eddec5a4dde1d6451c6584fe8/">RV get_adapters(Vector&lt; Ref&lt; IAdapter &gt; &gt; <em>playback_adapters, Vector&lt; Ref&lt; IAdapter &gt; &gt; </em>capture_adapters)</a></p>
+<p>Gets a list of adapters (driver-provided audio devices) present on the platform. </p>
+</li>
+<li>
+<p><a href="../group___a_h_i_1ga95b14c835f08e1d1d28fd77c697898f5/">R&lt; Ref&lt; IDevice &gt; &gt; new_device(const DeviceDesc &amp;desc)</a></p>
+<p>Creates one new audio device. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../h_i_d/" class="btn btn-neutral float-left" title="HID"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../job_system/" class="btn btn-neutral float-right" title="JobSystem">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../h_i_d/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../job_system/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

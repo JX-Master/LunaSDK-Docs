@@ -122,6 +122,32 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../window/">Window</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_h_i/">RHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../shader_compiler/">ShaderCompiler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_f_s/">VFS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../asset/">Asset</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../h_i_d/">HID</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../a_h_i/">AHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../job_system/">JobSystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../font/">Font</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../image/">Image</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../obj_loader/">ObjLoader</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_g/">RG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -152,7 +178,7 @@
 <p>Computes linear interpolation on packed single-precision (32-bit) floating-point elements in <code>a</code> and <code>b</code> using the corresponding packed single-precision (32-bit) floating-point element in <code>t</code>, and stores the results in <code>dst</code>. </p>
 <pre><code>FOR j := 0 to 3
     i := j*32
-    dst[i:i+31] := a[i:i+31] + t[i:i+31] * (b[i:i+31] - a[i:i+31])
+       dst[i:i+31] := a[i:i+31] + t[i:i+31] * (b[i:i+31] - a[i:i+31])
 ENDFOR
 </code></pre>
               

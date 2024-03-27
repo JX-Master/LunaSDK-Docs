@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/struct_luna_1_1_r_g_1_1_i_render_pass_context/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Luna::RG::IRenderPassContext - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Luna::RG::IRenderPassContext";
+        var mkdocs_page_input_path = "api\\struct_luna_1_1_r_g_1_1_i_render_pass_context.md";
+        var mkdocs_page_url = "/api/struct_luna_1_1_r_g_1_1_i_render_pass_context/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../window/">Window</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_h_i/">RHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../shader_compiler/">ShaderCompiler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_f_s/">VFS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../asset/">Asset</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../h_i_d/">HID</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../a_h_i/">AHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../job_system/">JobSystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../font/">Font</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../image/">Image</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../obj_loader/">ObjLoader</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_g/">RG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Luna::RG::IRenderPassContext</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lunargirenderpasscontext">Luna::RG::IRenderPassContext</h1>
+<p>Represents one render graph execution context. This is used only as the parameter of <a href="../struct_luna_1_1_r_g_1_1_i_render_pass_1ae9f98174b53e570fefb1749fd35f4c8e/">IRenderPass::execute</a>. </p>
+<pre><code class="language-c++">interface Luna::RG::IRenderPassContext : public virtual Interface
+</code></pre>
+<h2 id="base-type">Base type</h2>
+<ul>
+<li><a href="../struct_luna_1_1_interface/">Interface</a></li>
+</ul>
+<h2 id="member-functions">Member functions</h2>
+<ul>
+<li>
+<p><a href="../struct_luna_1_1_r_g_1_1_i_render_pass_context_1ade8d956f5a5ef35f93e4b4dc10c6e4fe/">virtual RHI::ICommandBuffer * get_command_buffer()=0</a></p>
+<p>Gets the command buffer used to record commands for the render pass. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_g_1_1_i_render_pass_context_1a8dcd0ea356d1b020ac35172e72f88249/">virtual RHI::IResource * get_input(const Name &amp;name)=0</a></p>
+<p>Gets the input resource of the render pass. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_g_1_1_i_render_pass_context_1a14030e5555e257d1a4bce4ba12ab1da9/">virtual RHI::IResource * get_output(const Name &amp;name)=0</a></p>
+<p>Gets the output resource of the render pass. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_g_1_1_i_render_pass_context_1a755e17384efba7d8bd6f9cf5909e423f/">virtual RHI::IQueryHeap * get_timestamp_query_heap(u32 <em>begin_index, u32 </em>end_index)=0</a></p>
+<p>Gets the timestamp query heap used to track the running time of the render pass. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_g_1_1_i_render_pass_context_1a6cff7ae113c19abb66cc6219c4ed0bc6/">virtual R&lt; Ref&lt; RHI::IResource &gt; &gt; allocate_temporary_resource(const ResourceDesc &amp;desc)=0</a></p>
+<p>Allocates new temporary resource that exists only in the current pass. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_g_1_1_i_render_pass_context_1a7b2abf307538e43e8d2ce8d2ee28bb74/">virtual void release_temporary_resource(RHI::IResource *res)=0</a></p>
+<p>Releases the temporary resource allocated from <a href="../struct_luna_1_1_r_g_1_1_i_render_pass_context_1a6cff7ae113c19abb66cc6219c4ed0bc6/">allocate_temporary_resource</a>. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

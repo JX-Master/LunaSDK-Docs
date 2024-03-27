@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/struct_luna_1_1_r_h_i_1_1_i_command_buffer/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Luna::RHI::ICommandBuffer - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Luna::RHI::ICommandBuffer";
+        var mkdocs_page_input_path = "api\\struct_luna_1_1_r_h_i_1_1_i_command_buffer.md";
+        var mkdocs_page_url = "/api/struct_luna_1_1_r_h_i_1_1_i_command_buffer/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../window/">Window</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_h_i/">RHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../shader_compiler/">ShaderCompiler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_f_s/">VFS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../asset/">Asset</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../h_i_d/">HID</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../a_h_i/">AHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../job_system/">JobSystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../font/">Font</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../image/">Image</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../obj_loader/">ObjLoader</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_g/">RG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Luna::RHI::ICommandBuffer</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lunarhiicommandbuffer">Luna::RHI::ICommandBuffer</h1>
+<p>Used to allocate memory for commands, record commands, submitting commands to GPU and tracks the state of the submitted commands. </p>
+<pre><code class="language-c++">interface Luna::RHI::ICommandBuffer : public virtual IDeviceChild, public virtual IWaitable
+</code></pre>
+<p>Command buffer is not thread safe. If the user need to record commands simultaneously, she should create multiple command buffers, one per thread.</p>
+<p>All synchroizations for command buffers are performed explicitly, for instance:1. Use <a href="../struct_luna_1_1_i_waitable_1a0c78500b6312f13b1d666b30b40fe132/">ICommandBuffer::wait</a> to wait for one command buffer from host side,</p>
+<ol>
+<li>
+<p>Use fence objects to wait for one command buffer from another command buffer.</p>
+</li>
+<li>
+<p>Only call <a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a39612d7442b0dc582b84e15c940c52a3/">ICommandBuffer::reset</a> after the command buffer is not submitted, or is finished by GPU. </p>
+</li>
+</ol>
+<h2 id="base-types">Base types</h2>
+<ul>
+<li><a href="../struct_luna_1_1_r_h_i_1_1_i_device_child/">IDeviceChild</a></li>
+<li><a href="../struct_luna_1_1_i_waitable/">IWaitable</a></li>
+</ul>
+<h2 id="member-functions">Member functions</h2>
+<ul>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a9834224add57a79eb4f28dc3ed21f144/">virtual u32 get_command_queue_index()=0</a></p>
+<p>Gets the command queue index of the command queue attached to this buffer. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a39612d7442b0dc582b84e15c940c52a3/">virtual RV reset()=0</a></p>
+<p>Resets the command buffer. This call clears all commands in the command buffer, resets the state tracking infrastructure and reopens the command buffer for recording new commands. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a8ccb3b5123e60da920f75df12fbfb75b/">virtual void attach_device_object(IDeviceChild *obj)=0</a></p>
+<p>Attaches one graphic device object to this command buffer. The command buffer keeps a strong reference to the object until the next <code>reset</code> is called. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1abed00e201a0ce30f29f4a42f8c70a370/">virtual void begin_event(const c8 *event_name)=0</a></p>
+<p>Begins a new event. This is for use in diagnostic tools like RenderDoc, PIX, XCode, etc to group commands into hierarchical sections. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1abc429c8821b0ab21c07d872f6c6153e4/">virtual void end_event()=0</a></p>
+<p>Ends the latest event opened by <a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1abed00e201a0ce30f29f4a42f8c70a370/">begin_event</a> that has not been ended. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1aa99d1993aba087706af06f8b5d00ec3e/">virtual void begin_render_pass(const RenderPassDesc &amp;desc)=0</a></p>
+<p>Starts a new render pass. The previous render pass should be closed before beginning another one. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a35de6b8341e6e61c170167b32f9ddf41/">virtual void set_graphics_pipeline_layout(IPipelineLayout *pipeline_layout)=0</a></p>
+<p>Sets the graphic pipeline layout. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a74cc0f93a3aa327e788789b87a5cd891/">virtual void set_graphics_pipeline_state(IPipelineState *pso)=0</a></p>
+<p>Sets the pipeline state for graphics pipeline. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1abc8909a35c19461cb87021c7e30be119/">virtual void set_vertex_buffers(u32 start_slot, Span&lt; const VertexBufferView &gt; views)=0</a></p>
+<p>Sets vertex buffers. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a2b2a8fb462f0d158279ea417ea652788/">virtual void set_index_buffer(const IndexBufferView &amp;view)=0</a></p>
+<p>Sets the index buffer. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a816de9e5a70152f765bc0fe701024080/">virtual void set_graphics_descriptor_set(u32 index, IDescriptorSet *descriptor_set)=0</a></p>
+<p>Sets the descriptor set to be used by the graphic pipeline. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a8000f3cf88cafdb071339a25e5b7599a/">virtual void set_graphics_descriptor_sets(u32 start_index, Span&lt; IDescriptorSet * &gt; descriptor_sets)=0</a></p>
+<p>Sets descriptor sets to be used by the graphic pipeline. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1ade5bc1a0f452cc3e355040ae00499efb/">virtual void set_viewport(const Viewport &amp;viewport)=0</a></p>
+<p>Bind one viewport to the rasterizer stage of the pipeline. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1abe3f9b469aa3574cd81974f7523f9cac/">virtual void set_viewports(Span&lt; const Viewport &gt; viewports)=0</a></p>
+<p>Bind an array of viewports to the rasterizer stage of the pipeline. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1abfac88cd5533f30b1de1e527240ec886/">virtual void set_scissor_rect(const RectI &amp;rect)=0</a></p>
+<p>Binds one scissor rectangle to the rasterizer stage. The scissor rectangle points are relative to the top-left corner of the render target, with x-axis points to right and y-axis points to down. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a33287fd90025df885a4703c4796dd0e5/">virtual void set_scissor_rects(Span&lt; const RectI &gt; rects)=0</a></p>
+<p>Binds an array of scissor rectangles to the rasterizer stage. The scissor rectangle points are relative to the top-left corner of the render target, with x-axis points to right and y-axis points to down. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1aff2ce4e90c11f489deb3c5f576693c95/">virtual void set_blend_factor(const Float4U &amp;blend_factor)=0</a></p>
+<p>Sets the blend factor of the graphics pipeline. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a02299becd77ad76f7ce0e8ebf47003e1/">virtual void set_stencil_ref(u32 stencil_ref)=0</a></p>
+<p>Sets the reference value for stencil testing. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a14dc3770ace9f0e4adff58d3e7d8ee02/">virtual void draw(u32 vertex_count, u32 start_vertex_location)=0</a></p>
+<p>Draw primitives. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1ac3608cb85ce08de63a395cad0415b73e/">virtual void draw_indexed(u32 index_count, u32 start_index_location, i32 base_vertex_location)=0</a></p>
+<p>Draw indexed primitives. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a4dba44f13cd55c94dda7a10cb77f7637/">virtual void draw_instanced(u32 vertex_count_per_instance, u32 instance_count, u32 start_vertex_location, u32 start_instance_location)=0</a></p>
+<p>Draws non-indexed, instanced primitives. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a1d4d8fef30b4a5e11139e95ebd34b2bc/">virtual void draw_indexed_instanced(u32 index_count_per_instance, u32 instance_count, u32 start_index_location, i32 base_vertex_location, u32 start_instance_location)=0</a></p>
+<p>Draws indexed, instanced primitives. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a8138cfa194c51252c1dd04887a492123/">virtual void begin_occlusion_query(OcclusionQueryMode mode, u32 index)=0</a></p>
+<p>Starts one occlusion query. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a39d362d6941faec8bfd6a030d33b2089/">virtual void end_occlusion_query(u32 index)=0</a></p>
+<p>Ends one existing occlusion query. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a47518c4983c197c3fcb31d9ef7581d26/">virtual void end_render_pass()=0</a></p>
+<p>Finishes the current render pass. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1aef457c1a4f3841c6444c5b53dc007810/">virtual void begin_compute_pass(const ComputePassDesc &amp;desc=ComputePassDesc())=0</a></p>
+<p>Begins a compute pass. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a55bde8ff3196320c0c768da812a35950/">virtual void set_compute_pipeline_layout(IPipelineLayout *pipeline_layout)=0</a></p>
+<p>Sets the compute pipeline layout. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a03ea4f33e0e8e1c5c8d420e552d0d367/">virtual void set_compute_pipeline_state(IPipelineState *pso)=0</a></p>
+<p>Sets the pipeline state for compute pipeline. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a322733bba8f19f5cc531eef32899d6e3/">virtual void set_compute_descriptor_set(u32 index, IDescriptorSet *descriptor_set)=0</a></p>
+<p>Sets the descriptor set to be used by the compute pipeline. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1af6e005e8cca6f2fb0f77714edd6c694f/">virtual void set_compute_descriptor_sets(u32 start_index, Span&lt; IDescriptorSet * &gt; descriptor_sets)=0</a></p>
+<p>Sets descriptor sets to be used by the compute pipeline. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a6653457de27dff92f18565e1790574fa/">virtual void dispatch(u32 thread_group_count_x, u32 thread_group_count_y, u32 thread_group_count_z)=0</a></p>
+<p>Dispatches one compute task. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a232159132f7e1a0ae38f0c83744a7b98/">virtual void end_compute_pass()=0</a></p>
+<p>Ends a compute pass. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1ab3e6055cc4974cb38dcd2ce5fba1c1de/">virtual void begin_copy_pass(const CopyPassDesc &amp;desc=CopyPassDesc())=0</a></p>
+<p>Begins a copy pass. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a379b1be5ee3eeaa3fdf88da8e2a8a99b/">virtual void copy_resource(IResource <em>dst, IResource </em>src)=0</a></p>
+<p>Copies the entire contents of the source resource to the destination resource. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a3967f43bb0f7dabd56a3c12697b00316/">virtual void copy_buffer(IBuffer <em>dst, u64 dst_offset, IBuffer </em>src, u64 src_offset, u64 copy_bytes)=0</a></p>
+<p>Copies buffer data region from one buffer to another. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a918d6b71f069fb7abfe41d5e32442b29/">virtual void copy_texture(ITexture <em>dst, SubresourceIndex dst_subresource, u32 dst_x, u32 dst_y, u32 dst_z, ITexture </em>src, SubresourceIndex src_subresource, u32 src_x, u32 src_y, u32 src_z, u32 copy_width, u32 copy_height, u32 copy_depth)=0</a></p>
+<p>Copies texture data region from one texture to another. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a4bae4423bd29bb23f89d88e094e2956f/">virtual void copy_buffer_to_texture(ITexture <em>dst, SubresourceIndex dst_subresource, u32 dst_x, u32 dst_y, u32 dst_z, IBuffer </em>src, u64 src_offset, u32 src_row_pitch, u32 src_slice_pitch, u32 copy_width, u32 copy_height, u32 copy_depth)=0</a></p>
+<p>Copies texture data region from one buffer to one texture. Texture data in the buffer is interpreted in row-major arrangement. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a8d530ad1e4c1e64ef49cfc6fa46b4b98/">virtual void copy_texture_to_buffer(IBuffer <em>dst, u64 dst_offset, u32 dst_row_pitch, u32 dst_slice_pitch, ITexture </em>src, SubresourceIndex src_subresource, u32 src_x, u32 src_y, u32 src_z, u32 copy_width, u32 copy_height, u32 copy_depth)=0</a></p>
+<p>Copies texture data region from one texture to one buffer. Texture data is written to the buffer in row-major arrangement. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a715afb224260669bf65650b2afb9d967/">virtual void end_copy_pass()=0</a></p>
+<p>Ends a copy pass. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1a0b773d201ee15f29ed095df3da0cfcdc/">virtual void resource_barrier(Span&lt; const BufferBarrier &gt; buffer_barriers, Span&lt; const TextureBarrier &gt; texture_barriers)=0</a></p>
+<p>Issues one resource barrier that synchronizes GPU pipeline access to multiple resources. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_r_h_i_1_1_i_command_buffer_1ad5abcba3617f9551e1f3e4e3e61c3f6f/">virtual RV submit(Span&lt; IFence * &gt; wait_fences, Span&lt; IFence * &gt; signal_fences, bool allow_host_waiting)=0</a></p>
+<p>Submits the recorded commands in this command buffer to the attached command queue. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/group___h_i_d_1ga912f74cfa86bfd7af0ee6bb9010eba51/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Luna::HID::KeyCode - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Luna::HID::KeyCode";
+        var mkdocs_page_input_path = "api\\group___h_i_d_1ga912f74cfa86bfd7af0ee6bb9010eba51.md";
+        var mkdocs_page_url = "/api/group___h_i_d_1ga912f74cfa86bfd7af0ee6bb9010eba51/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../window/">Window</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_h_i/">RHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../shader_compiler/">ShaderCompiler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_f_s/">VFS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../asset/">Asset</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../h_i_d/">HID</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../a_h_i/">AHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../job_system/">JobSystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../font/">Font</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../image/">Image</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../obj_loader/">ObjLoader</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_g/">RG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Luna::HID::KeyCode</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lunahidkeycode">Luna::HID::KeyCode</h1>
+<pre><code class="language-c++">enum KeyCode : u16
+{
+    esc
+    f1
+    f2
+    f3
+    f4
+    f5
+    f6
+    f7
+    f8
+    f9
+    f10
+    f11
+    f12
+    grave
+    num0
+    num1
+    num2
+    num3
+    num4
+    num5
+    num6
+    num7
+    num8
+    num9
+    equal
+    minus
+    backspace
+    a
+    b
+    c
+    d
+    e
+    f
+    g
+    h
+    i
+    j
+    k
+    l
+    m
+    n
+    o
+    p
+    q
+    r
+    s
+    t
+    u
+    v
+    w
+    x
+    y
+    z
+    tab
+    caps_lock
+    enter
+    ctrl
+    l_ctrl
+    r_ctrl
+    shift
+    l_shift
+    r_shift
+    menu
+    l_menu
+    r_menu
+    l_system
+    r_system
+    apps
+    spacebar
+    l_branket
+    r_branket
+    backslash
+    semicolon
+    quote
+    comma
+    period
+    slash
+    print_screen
+    scroll_lock
+    pause
+    insert
+    home
+    page_up
+    page_down
+    del
+    end
+    left
+    up
+    right
+    down
+    num_lock
+    numpad0
+    numpad1
+    numpad2
+    numpad3
+    numpad4
+    numpad5
+    numpad6
+    numpad7
+    numpad8
+    numpad9
+}
+</code></pre>
+<p>A platform-independent key code mapping for standard QWERTY keyboard. </p>
+<h2 id="options">Options</h2>
+<ul>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a3f0e951cdec5a39685cb08fa6edc6094/">esc</a></p>
+<p>ESC key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51abd19836ddb62c11c55ab251ccaca5645/">f1</a></p>
+<p>F1 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a3667f6a0c97490758d7dc9659d01ea34/">f2</a></p>
+<p>F2 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a1779cf3aa50c413afc7e05adb7e1b0de/">f3</a></p>
+<p>F3 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a6e1fcd704528ad8bf6d6bbedb9210096/">f4</a></p>
+<p>F4 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a74ce2e1a498f2fa27b5542040be774dc/">f5</a></p>
+<p>F5 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a64e4cda19b3f3ea4a7a56b5ba8cc33ca/">f6</a></p>
+<p>F6 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a6c664eeed34d9c29a711bdb374831b49/">f7</a></p>
+<p>F7 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a581c3010417303e1ee4c0657d76318d0/">f8</a></p>
+<p>F8 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a6506f0388343a1f09fd708fb15c5ade9/">f9</a></p>
+<p>F9 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a82b5f6802b727b0d948d38cbccd48904/">f10</a></p>
+<p>F10 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51af344a40a52a94ab7903e6b35896b543e/">f11</a></p>
+<p>F11 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a8039b4e0e6fe78bee7d3e5cfbfa343f0/">f12</a></p>
+<p>F12 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a386a023bd38fab85cb531824bfe9a879/">grave</a></p>
+<p>~ key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a91a0fdac7f3a5aaacef4f3259de156f1/">num0</a></p>
+<p>0 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51abc7150e29a3d90dbe393c3d5ecd10399/">num1</a></p>
+<p>1 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a5b90e6b21cecb50d29968eef295d3236/">num2</a></p>
+<p>2 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a066d796af3f499cd8db802f09269500a/">num3</a></p>
+<p>3 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a4b399f7d0b1413341223cdc995f5365b/">num4</a></p>
+<p>4 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51ad5c1ff98dde9b6059d5bf4969f1aef71/">num5</a></p>
+<p>5 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a47a7f7d102989b1a1a1cd74399e0f242/">num6</a></p>
+<p>6 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a65ee8dfd680b13de5d064cd951c47a2a/">num7</a></p>
+<p>7 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51aefd8e35482849954e792d35e715a549e/">num8</a></p>
+<p>8 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a602eee9acf81ab74b86353e7a48fb3c5/">num9</a></p>
+<p>9 key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a465289687a70db7aa7217cc240c29f0f/">equal</a></p>
+<p>=+ key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51adabe6e597b70e5760826aea1dcc564f7/">minus</a></p>
+<p>-_ key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a5528770f4bce9c9b0ce9bbb8645aef45/">backspace</a></p>
+<p>Backspace key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a0cc175b9c0f1b6a831c399e269772661/">a</a></p>
+<p>A key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a92eb5ffee6ae2fec3ad71c777531578f/">b</a></p>
+<p>B key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a4a8a08f09d37b73795649038408b5f33/">c</a></p>
+<p>C key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a8277e0910d750195b448797616e091ad/">d</a></p>
+<p>D key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51ae1671797c52e15f763380b45e841ec32/">e</a></p>
+<p>E key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a8fa14cdd754f91cc6554c9e71929cce7/">f</a></p>
+<p>F key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51ab2f5ff47436671b6e533d8dc3614845d/">g</a></p>
+<p>G key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a2510c39011c5be704182423e3a695e91/">h</a></p>
+<p>H key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a865c0c0b4ab0e063e5caa3387c1a8741/">i</a></p>
+<p>I key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a363b122c528f54df4a0446b6bab05515/">j</a></p>
+<p>J key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a8ce4b16b22b58894aa86c421e8759df3/">k</a></p>
+<p>K key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a2db95e8e1a9267b7a1188556b2013b33/">l</a></p>
+<p>L key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a6f8f57715090da2632453988d9a1501b/">m</a></p>
+<p>M key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a7b8b965ad4bca0e41ab51de7b31363a1/">n</a></p>
+<p>N key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51ad95679752134a2d9eb61dbd7b91c4bcc/">o</a></p>
+<p>O key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a83878c91171338902e0fe0fb97a8c47a/">p</a></p>
+<p>P key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a7694f4a66316e53c8cdd9d9954bd611d/">q</a></p>
+<p>Q key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a4b43b0aee35624cd95b910189b3dc231/">r</a></p>
+<p><a href="../struct_luna_1_1_r/">R</a> key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a03c7c0ace395d80182db07ae2c30f034/">s</a></p>
+<p>S key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51ae358efa489f58062f10dd7316b65649e/">t</a></p>
+<p>T key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a7b774effe4a349c6dd82ad4f4f21d34c/">u</a></p>
+<p>U key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a9e3669d19b675bd57058fd4664205d2a/">v</a></p>
+<p>V key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51af1290186a5d0b1ceab27f4e77c0c5d68/">w</a></p>
+<p>W key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a9dd4e461268c8034f5c8564e155c67a6/">x</a></p>
+<p>X key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a415290769594460e2e485922904f345d/">y</a></p>
+<p>Y key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51afbade9e36a3f36d3d676c1b808451dd7/">z</a></p>
+<p>Z key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51ae7f8cbd87d347be881cba92dad128518/">tab</a></p>
+<p>Tab key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a5605274e348d557ceb0f9ea356fa93e7/">caps_lock</a></p>
+<p>CapsLock key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51ae2a7106f1cc8bb1e1318df70aa0a3540/">enter</a></p>
+<p>Enter key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51abbf7ea1d373e03d16d1418909b05eaf6/">ctrl</a></p>
+<p>Control key on any side. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a885aa465a85ddd9e21708e08ad24c16c/">l_ctrl</a></p>
+<p>Left control key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51aee74c51937ccc0d39c5fb60c84d43a77/">r_ctrl</a></p>
+<p>Right control key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a2ab64f4ee279e5baf7ab7059b15e6d12/">shift</a></p>
+<p>Shift key on any side. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51aedc7eb43a68f6e289d3f5cede5e2bf58/">l_shift</a></p>
+<p>Left shift key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a967d030ffd65f6c9551ab7c0dbac8fd3/">r_shift</a></p>
+<p>Right shift key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a8d6ab84ca2af9fccd4e4048694176ebf/">menu</a></p>
+<p>Alt key on Windows, option key on Mac, on any side. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a9b1f9dae5aecba1346f36e8bcd16bbdb/">l_menu</a></p>
+<p>Left alt key on Windows, left option key on Mac. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a30d6a6895db1a5f29b1679061551c9f0/">r_menu</a></p>
+<p>Right alt key on Windows, right option key on Mac. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a25c94599657fb4632c67bfa1062a02a8/">l_system</a></p>
+<p>Left Windows key on Windows, left command key on Mac. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a115af90ebb97b5ccc26ecc94665fa174/">r_system</a></p>
+<p>Right Windows key on Windows, right command key on Mac. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a9a6dd283c3de653fbca500f9721f634f/">apps</a></p>
+<p>Applications key on Windows, usually the at the right of the right Windows key. Not all keyboards have this key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51abf36cdfe948ea948858133cd8cfa819b/">spacebar</a></p>
+<p>Spacebar key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a87078d2823a0946cc6dabcfbe28434f0/">l_branket</a></p>
+<p>[{ key on US standard keyboard </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a458550caf3e5bdd792ef1a771967e1de/">r_branket</a></p>
+<p>]} key on US standard keyboard </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51ac57aeddaffce62fead6be61022eb1340/">backslash</a></p>
+<p>| key on US standard keyboard </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a77b7e24bb3642a4b9d3081d393785273/">semicolon</a></p>
+<p>;: key on US standard keyboard </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a7a674c327bfa07f7c1204fb38ca6ef3b/">quote</a></p>
+<p>'" key on US standard keyboard </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51ab6d00dc1ba038e5901cd6c06b2daa192/">comma</a></p>
+<p>,&lt; key </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51aa0acfa46d86f7610b2c73dbb28f64701/">period</a></p>
+<p>.&gt; key </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a9fbbaa4cc515bc46e0c12e82a31df736/">slash</a></p>
+<p>/? key on US standard keyboard </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a58f26ac305986a702312d42b4dd87761/">print_screen</a></p>
+<p>Print screen key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a52752d17cb8e9c551c3a736c45e1ddf1/">scroll_lock</a></p>
+<p>Scroll lock key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51aec1b81965109165de6b38cd92c1e39f9/">pause</a></p>
+<p>Pause key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51ae0df5f3dfd2650ae5be9993434e2b2c0/">insert</a></p>
+<p>Insert key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a106a6c241b8797f52e1e77317b96a201/">home</a></p>
+<p>Home key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51af8e72578226499b7311f292f1deba130/">page_up</a></p>
+<p>Page up key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51ad8a0a6a1d9f3b78b1af0293cf6ac5dd7/">page_down</a></p>
+<p>Page down key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51ad2bcc286168bf8e040885c5cb7b6df13/">del</a></p>
+<p>Delete key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a7f021a1415b86f2d013b2618fb31ae53/">end</a></p>
+<p>End key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a811882fecd5c7618d7099ebbd39ea254/">left</a></p>
+<p>Left arrow key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a46c48bec0d282018b9d167eef7711b2c/">up</a></p>
+<p>Up arrow key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a7c4f29407893c334a6cb7a87bf045c0d/">right</a></p>
+<p>Right arrow key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a74e8333ad11685ff3bdae589c8f6e34d/">down</a></p>
+<p>Down arrow key. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a16269f180edc6317f3cc3d8860984b98/">num_lock</a></p>
+<p>Number lock key on Windows, clear key on Mac. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a2ee783151a23a47d6d3957244cf34f49/">numpad0</a></p>
+<p>0 key on the number pad. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a9831ea746a24bdcfd56a7e2de8ba5780/">numpad1</a></p>
+<p>1 key on the number pad. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51af0bca731d44e70acdb7bbafc51e2f0b9/">numpad2</a></p>
+<p>2 key on the number pad. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a26178ee116a33212a888c563ff401ff4/">numpad3</a></p>
+<p>3 key on the number pad. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51ab806ff267f887ac85c8c3634eb6486e2/">numpad4</a></p>
+<p>4 key on the number pad. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51acfc28346e142c43d0ea24eb4aeea49eb/">numpad5</a></p>
+<p>5 key on the number pad. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51afa87c868803621f40e6f3a194c35a28e/">numpad6</a></p>
+<p>6 key on the number pad. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a48adeb120935fdf23fe760777ad9b528/">numpad7</a></p>
+<p>7 key on the number pad. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a6c34920ae6d0b2e6c3afd4f3f423db0a/">numpad8</a></p>
+<p>8 key on the number pad. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51af244c36344c4138bdd3cd2ccaca6a0e2/">numpad9</a></p>
+<p>9 key on the number pad. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

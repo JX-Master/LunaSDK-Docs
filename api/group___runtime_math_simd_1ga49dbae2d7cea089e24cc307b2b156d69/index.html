@@ -122,6 +122,32 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../window/">Window</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_h_i/">RHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../shader_compiler/">ShaderCompiler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_f_s/">VFS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../asset/">Asset</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../h_i_d/">HID</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../a_h_i/">AHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../job_system/">JobSystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../font/">Font</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../image/">Image</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../obj_loader/">ObjLoader</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_g/">RG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -152,13 +178,13 @@ float4 permute_f4(float4 a)
 </code></pre>
 <p>Shuffles single-precision (32-bit) floating-point elements in <code>a</code> based on the control parameter <code>_SelectX</code>, <code>_SelectY</code>, <code>_SelectZ</code> and <code>_SelectW</code>, and stores the results in <code>dst</code>. </p>
 <pre><code>DEFINE SELECT4(src, control)
-    CASE(control) OF
-    0:  res := src.x
-    1:  res := src.y
-    2:  res := src.z
-    3:  res := src.w
-    ESAC
-    RETURN res
+       CASE(control) OF
+       0:    res := src.x
+       1:    res := src.y
+       2:    res := src.z
+       3:    res := src.w
+       ESAC
+       RETURN res
 ENDDEF
 dst.x := SELECT4(a, _SelectX)
 dst.y := SELECT4(a, _SelectY)

@@ -122,6 +122,32 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../window/">Window</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_h_i/">RHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../shader_compiler/">ShaderCompiler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_f_s/">VFS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../asset/">Asset</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../h_i_d/">HID</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../a_h_i/">AHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../job_system/">JobSystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../font/">Font</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../image/">Image</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../obj_loader/">ObjLoader</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_g/">RG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -151,11 +177,11 @@
 </code></pre>
 <p>Loads 12 packed single-precision (32-bit) floating-point elements from <code>mem_addr</code> to <code>dst</code>. The highest 4 packed single-precision (32-bit) floating-point elements are uninitialized. </p>
 <pre><code>FOR r := 0 to 2
-    i := 128 * r
-    dst[r].x := MEM[mem_addr + i : mem_addr + i + 31]
-    dst[r].y := MEM[mem_addr + i + 32 : mem_addr + i + 63]
-    dst[r].z := MEM[mem_addr + i + 64 : mem_addr + i + 95]
-    dst[r].w := MEM[mem_addr + i + 96 : mem_addr + i + 127]
+       i := 128 * r
+       dst[r].x := MEM[mem_addr + i : mem_addr + i + 31]
+       dst[r].y := MEM[mem_addr + i + 32 : mem_addr + i + 63]
+       dst[r].z := MEM[mem_addr + i + 64 : mem_addr + i + 95]
+       dst[r].w := MEM[mem_addr + i + 96 : mem_addr + i + 127]
 ENDFOR
 </code></pre>
               

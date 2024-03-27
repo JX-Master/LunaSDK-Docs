@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/group___h_i_d_1ga436467ac9bceac9ecfbd3775068d34da/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Luna::HID::ControllerButton - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Luna::HID::ControllerButton";
+        var mkdocs_page_input_path = "api\\group___h_i_d_1ga436467ac9bceac9ecfbd3775068d34da.md";
+        var mkdocs_page_url = "/api/group___h_i_d_1ga436467ac9bceac9ecfbd3775068d34da/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../window/">Window</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_h_i/">RHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../shader_compiler/">ShaderCompiler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_f_s/">VFS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../asset/">Asset</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../h_i_d/">HID</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../a_h_i/">AHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../job_system/">JobSystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../font/">Font</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../image/">Image</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../obj_loader/">ObjLoader</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_g/">RG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Luna::HID::ControllerButton</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lunahidcontrollerbutton">Luna::HID::ControllerButton</h1>
+<pre><code class="language-c++">enum ControllerButton : u32
+{
+    lthumb= 0x0001
+    rthumb= 0x0002
+    up= 0x0004
+    down= 0x0008
+    left= 0x0010
+    right= 0x0020
+    a= 0x0040
+    b= 0x0080
+    x= 0x0100
+    y= 0x0200
+    lb= 0x0400
+    rb= 0x0800
+    lt= 0x1000
+    rt= 0x2000
+    lspecial= 0x4000
+    rspecial= 0x8000
+}
+</code></pre>
+<p>Specifies controller buttons. These values can be bitwise-OR combined to select multiple mouse buttons if needed. </p>
+<h2 id="options">Options</h2>
+<ul>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daafdc1840cfa759149610321dd7542835a/">lthumb</a></p>
+<p>Left thumb button. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daa507c97db256ab41245abbd9c1664a767/">rthumb</a></p>
+<p>Right thumb button. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daa46c48bec0d282018b9d167eef7711b2c/">up</a></p>
+<p>Up button. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daa74e8333ad11685ff3bdae589c8f6e34d/">down</a></p>
+<p>Down button. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daa811882fecd5c7618d7099ebbd39ea254/">left</a></p>
+<p>Left button. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daa7c4f29407893c334a6cb7a87bf045c0d/">right</a></p>
+<p>Right button. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daa0cc175b9c0f1b6a831c399e269772661/">a</a></p>
+<p>A button on XBOX and Nintendo controller, cross (X) button on PS controller. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daa92eb5ffee6ae2fec3ad71c777531578f/">b</a></p>
+<p>B button on XBOX and Nintendo controller, circle (O) button on PS controller. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daa9dd4e461268c8034f5c8564e155c67a6/">x</a></p>
+<p>X button on XBOX and Nintendo controller, square button on PS controller. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daa415290769594460e2e485922904f345d/">y</a></p>
+<p>Y button on XBOX and Nintendo controller, triangle button on PS controller. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daa26403ec6d537fa31f63e294b44831734/">lb</a></p>
+<p>Left shoulder button. LB for XBOX controller, L for Nintendo controller, L1 for PS controller. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daa9e3f4f69757d07f6a0d2af4f1f2a1103/">rb</a></p>
+<p>Right shoulder button. RB for XBOX controller, <a href="../struct_luna_1_1_r/">R</a> for Nintendo controller, R1 for PS controller. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daad91af6958918af87d6a057c1cdf5b225/">lt</a></p>
+<p>Left trigger button. LT for XBOX controller, ZL for Nintendo controller, L2 for PS controller. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daa822050d9ae3c47f54bee71b85fce1487/">rt</a></p>
+<p>Right trigger button. RT for XBOX controller, ZR for Nintendo controller, R2 for PS controller. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daa31ff08c6114dd8be02f149daac8e89a5/">lspecial</a></p>
+<p>Left special button. </p>
+</li>
+<li>
+<p><a href="../group___h_i_d_1gga436467ac9bceac9ecfbd3775068d34daa5247ab476252ef8b677b80f86b684799/">rspecial</a></p>
+<p>Right special button. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

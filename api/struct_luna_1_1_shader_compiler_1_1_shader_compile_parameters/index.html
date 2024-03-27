@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Luna::ShaderCompiler::ShaderCompileParameters - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Luna::ShaderCompiler::ShaderCompileParameters";
+        var mkdocs_page_input_path = "api\\struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters.md";
+        var mkdocs_page_url = "/api/struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../window/">Window</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_h_i/">RHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../shader_compiler/">ShaderCompiler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_f_s/">VFS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../asset/">Asset</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../h_i_d/">HID</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../a_h_i/">AHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../job_system/">JobSystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../font/">Font</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../image/">Image</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../obj_loader/">ObjLoader</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_g/">RG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Luna::ShaderCompiler::ShaderCompileParameters</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lunashadercompilershadercompileparameters">Luna::ShaderCompiler::ShaderCompileParameters</h1>
+<p>Describes one shader compile action. </p>
+<pre><code class="language-c++">struct Luna::ShaderCompiler::ShaderCompileParameters
+</code></pre>
+<h2 id="member-objects">Member objects</h2>
+<ul>
+<li>
+<p><a href="../struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters_1abe616ba416cca2bfd033bc2809a00566/">Span<const c8> source</a></p>
+<p>The shader source data in HLSL or GLSL(SPIR-V) format. This is required for one shader compile action. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters_1a4990cc10bd3d7e8c4cba1e581577ba2a/">Name source_name</a></p>
+<p>The source shader name. This will be used by the compiler and the debug tools to identify the shader if not empty. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters_1aa56b4a2e68124df0490a8b2637a7cb42/">Path source_file_path</a></p>
+<p>The platform-native shader source file path. This will be used by the compiler or debugger to resolve local include file and PDB file if not empty. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters_1a032e067b21a279dbc13d9b1dd9282e5b/">Name entry_point</a></p>
+<p>The entry point function name of the shader. This must not be empty. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters_1a5e29d3fb9766ab0a01ec63afc0f7aa08/">TargetFormat target_format</a></p>
+<p>The shader compile target format. If the target is <a href="../group___shader_compiler_1gga4cad2b3eee9b7fe13c80ad2f66885bd2a334c4a4c42fdb79d7ebc3e73b517e6f8/">TargetFormat::none</a>, no shader compilation is performed. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters_1aa593e4825886e123f5bae82643543c10/">ShaderType shader_type</a></p>
+<p>The type of the shader to compile. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters_1a83cb08b911ed627d04e5bf20fa963080/">ShaderModel shader_model</a></p>
+<p>The shader model used for compiling shaders. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters_1a0d5f1d432c916dbd046f1b6eb6b46b50/">OptimizationLevel optimization_level</a></p>
+<p>The optimization level used for compiling shaders. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters_1a398527b3e9e358c345c5047b16871957/">bool debug</a></p>
+<p>Whether to add debug informations to the shader binary. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters_1a501f5201e51696c282db7c03e512ca68/">bool skip_validation</a></p>
+<p>Whether to skip shader validation. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters_1ae8044d265b93a3d41cf8775397c02570/">MatrixPackMode matrix_pack_mode</a></p>
+<p>The matrix pack mode when interpreting matrix data. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters_1a13da1249d4f9dd20f94562ed6257c4e8/">Span<const Path> include_paths</a></p>
+<p>One array of paths that the compiler will use to find include files. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters_1af267c8675d2abb4fe0a07d935e407d69/">Span<const Pair\<Name, Name> > definitions</a></p>
+<p>One set of definitions the compiler will use when preprocessing shader files. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_shader_compiler_1_1_shader_compile_parameters_1a0f084e9bfbcbcfb8da4a830c68f7731b/">MetalPlatform metal_platform</a></p>
+<p>The target platform for one metal shader. This is used only if <code>target_format</code> is <a href="../group___shader_compiler_1gga4cad2b3eee9b7fe13c80ad2f66885bd2a8cf205e11d5eb3c998ac34958304c608/">TargetFormat::msl</a>. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

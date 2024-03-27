@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://www.lunasdk.org/api/struct_luna_1_1_window_1_1_i_window/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Luna::Window::IWindow - Luna SDK Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Luna::Window::IWindow";
+        var mkdocs_page_input_path = "api\\struct_luna_1_1_window_1_1_i_window.md";
+        var mkdocs_page_url = "/api/struct_luna_1_1_window_1_1_i_window/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Luna SDK Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Introduction</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/introduction/getting_started/">Getting Started</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Basics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/">Basics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/coding_convention/">Coding Convention</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/initialization_and_shutdown/">Initialization and Shutdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/basic_types/">Basic Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/strings/">Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/memory_management/">Memory Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/modules/">Modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/variants/">Variants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/type_system/">Type System</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/serialization_and_deserialization/">Serialization and Deserialization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/boxed_objects/">Boxed Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/interfaces/">Interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/error_handling/">Error Handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/assertions/">Assertions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/file_management/">File Management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/thread_and_synchronization_objects/">Thread and Synchronization Objects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/time/">Time</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/logs/">Logs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/basics/math_library/">Math Library</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RHI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/">RHI</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/devices/">Devices</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/command_queues_and_command_buffers/">Command Queues and Command Buffers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/resources/">Resources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/pipeline_configuration/">Pipeline Configuration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/recording_commands/">Recording Commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../manual/rhi/shader_resource_binding/">Shader Resource Binding</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../runtime/">Runtime</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../window/">Window</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_h_i/">RHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../shader_compiler/">ShaderCompiler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../v_f_s/">VFS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../asset/">Asset</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../h_i_d/">HID</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../a_h_i/">AHI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../job_system/">JobSystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../font/">Font</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../image/">Image</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../obj_loader/">ObjLoader</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../r_g/">RG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../variant_utils/">VariantUtils</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Luna SDK Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Luna::Window::IWindow</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lunawindowiwindow">Luna::Window::IWindow</h1>
+<p>Represents a system window that can be used to display user interface and can be drawn as surface. </p>
+<pre><code class="language-c++">interface Luna::Window::IWindow : public virtual Interface
+</code></pre>
+<h2 id="base-type">Base type</h2>
+<ul>
+<li><a href="../struct_luna_1_1_interface/">Interface</a></li>
+</ul>
+<h2 id="member-functions">Member functions</h2>
+<ul>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1af6ee7eacbde6b379b68d954e44f6e549/">virtual void close()=0</a></p>
+<p>Closes this window. On single-window platforms, this causes the application to exit. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1ab389487cda294f9831ec97f51a8c1239/">virtual bool is_closed()=0</a></p>
+<p>Checks whether the window is closed. The window handle is invalid when one window is closed. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a638894f431c7b71bec6ea4f1e1ab611e/">virtual bool is_focused()=0</a></p>
+<p>Checks whether the window has input focus. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a90629685caf185a56d3d7014e0193149/">virtual RV set_focus()=0</a></p>
+<p>Brings this window to front and acquires input focus for the window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1ade46e6ea5b89470a7ba1aff69f84b75c/">virtual bool is_minimized()=0</a></p>
+<p>Checks whether the window is minimized. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a2974797fb50bbdfe4e2f2593f60b32eb/">virtual bool is_maximized()=0</a></p>
+<p>Checks whether the window is maximized. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a5e18ae2fc2e78c6faa58158bff41b26c/">virtual RV set_minimized()=0</a></p>
+<p>Minimize the window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a770823d0ec593012ed17ed00a30978e4/">virtual RV set_maximized()=0</a></p>
+<p>Maximize the window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1aa10ee5f4d9171d0782ce08b0a1776b7a/">virtual RV set_restored()=0</a></p>
+<p>Restore the window from minimized or maximized state. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a0780ed4e322b8db10129b2ddd7c6c466/">virtual bool is_hovered()=0</a></p>
+<p>Checks whether the cursor is currently directly over the content area of the window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1aa8edf0d24fe5bde9fd8faf533326b250/">virtual bool is_visible()=0</a></p>
+<p>Checks whether the window is visible. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a165469e3524d03378322d988719ccb72/">virtual RV set_visible(bool visible)=0</a></p>
+<p>Sets the visibility of the window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1acc722d4eaefdc679b06dc2c0a576afce/">virtual bool is_resizable()=0</a></p>
+<p>Checks whether the window is resizable by dragging the border of the window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a398b2ae9b9d43a2354140be4f5fffaf2/">virtual RV set_resizable(bool resizable)=0</a></p>
+<p>Sets the resizable state of the window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a579814f3685b3c9df436a67337062635/">virtual bool is_frameless()=0</a></p>
+<p>Checks whether the window is frameless. One frameless window does not have border, titlebar and close/minimize/maximize buttons. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1ae98487512480fec45a23144a2348d6f4/">virtual RV set_frameless(bool frameless)=0</a></p>
+<p>Sets the frameless state of the window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1ad020ca1f0bf75e0c3767277c4bfd2cf1/">virtual Int2U get_position()=0</a></p>
+<p>Gets the position of the window client area. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a0bdb9f1aaa575f2e905c5add6bb0ce8f/">virtual RV set_position(i32 x, i32 y)=0</a></p>
+<p>Sets the position of the window client area. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1ac50b4bb5ecacd4f266f68f2894dc7502/">virtual UInt2U get_size()=0</a></p>
+<p>Gets the size of the content area of the window measured in screen coordinates. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1ab9110dcacc3ebd439497f877b453e78a/">virtual RV set_size(u32 width, u32 height)=0</a></p>
+<p>Sets the size of the content area of the window measured in screen coordinates. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a7d1a3d760ad25aedb7ceb6f4a2545613/">virtual UInt2U get_framebuffer_size()=0</a></p>
+<p>Gets the framebuffer size of the window context area in pixels. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1ae797fb280d215ff8868090e526c38fce/">virtual f32 get_dpi_scale_factor()=0</a></p>
+<p>Gets the DPI scaling factor, which is the ratio between the current DPI and the platform's default DPI. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a3e213171fe5e23d612b52ab4cd7d24e2/">virtual bool is_full_screen()=0</a></p>
+<p>Checks whether the window is full screen. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a3f197fe9169a6217d0bb6ef6d5b15eb0/">virtual monitor_t get_monitor()=0</a></p>
+<p>Gets the monitor that one full screen window is attached to. Returns <code>nullptr</code> if the window is not in full-screen mode. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a94b2449acbb8428d0cc80ec1d025b7f9/">virtual RV set_title(const c8 *title)=0</a></p>
+<p>Sets the window title. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a25ccecb6822252934729664e253ccbc6/">virtual RV set_display_settings(const WindowDisplaySettings &amp;display_settings)=0</a></p>
+<p>Sets the window display settings. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1aaf5b0070cfc3150e088e336ebe6698dc/">virtual Int2U screen_to_client(const Int2U &amp;point)=0</a></p>
+<p>Converts one screen coordinate to one client coordinate. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a49f863c06b794dd2c5113c781955db48/">virtual Int2U client_to_screen(const Int2U &amp;point)=0</a></p>
+<p>Converts one client coordinate to one screen coordinate. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a7ac867511ced89dbe23482e0ce6ea1ea/">virtual Event&lt; window_close_event_handler_t &gt; &amp; get_close_event()=0</a></p>
+<p>Gets the close event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a1e493fd43ea77350e3df84dce6fa71f6/">virtual Event&lt; window_focus_event_handler_t &gt; &amp; get_focus_event()=0</a></p>
+<p>Gets the focus event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1aafaba799a84964425d67185148d5d8ed/">virtual Event&lt; window_lose_focus_event_handler_t &gt; &amp; get_lose_focus_event()=0</a></p>
+<p>Gets the lose focus event of this window. This event will be emitted when the window loses focus. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a8550133fa01a9891ea3d8bd3ac78535c/">virtual Event&lt; window_show_event_handler_t &gt; &amp; get_show_event()=0</a></p>
+<p>Gets the show event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a501108314e4878c64c73fe4af1f2d016/">virtual Event&lt; window_hide_event_handler_t &gt; &amp; get_hide_event()=0</a></p>
+<p>Gets the hide event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a7c293102d28307cfc2ccfeda1d930277/">virtual Event&lt; window_resize_event_handler_t &gt; &amp; get_resize_event()=0</a></p>
+<p>Gets the resize event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1aa139c90488d0bf46e81725a4141c03f3/">virtual Event&lt; window_framebuffer_resize_event_handler_t &gt; &amp; get_framebuffer_resize_event()=0</a></p>
+<p>Gets the framebuffer resize event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a8b64faecae9dc58137a76ace71b2dea7/">virtual Event&lt; window_move_event_handler_t &gt; &amp; get_move_event()=0</a></p>
+<p>Gets the move event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a007fd8ba54f7fbcf6082940ea4f4a457/">virtual Event&lt; window_begin_resize_move_t &gt; &amp; get_begin_resize_move_event()=0</a></p>
+<p>Gets the begin resize move event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a897eaff9f8b5d88fcd2b0a574b4ba5e8/">virtual Event&lt; window_end_resize_move_t &gt; &amp; get_end_resize_move_event()=0</a></p>
+<p>Gets the end resize move event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a5f81b7bbae803ae0a424aec1df54553a/">virtual Event&lt; window_dpi_changed_event_handler_t &gt; &amp; get_dpi_changed_event()=0</a></p>
+<p>Gets the end dpi changed event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1ac611625fa262cfaf5e629189b4a2a83f/">virtual Event&lt; window_key_down_event_handler_t &gt; &amp; get_key_down_event()=0</a></p>
+<p>Gets the key down event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1aa9357873b6affee51e9a82df9e9958b9/">virtual Event&lt; window_key_up_event_handler_t &gt; &amp; get_key_up_event()=0</a></p>
+<p>Gets the key up event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a279ff04af4c5748e44f520aa36ecee97/">virtual Event&lt; window_input_character_event_handler_t &gt; &amp; get_input_character_event()=0</a></p>
+<p>Gets the input character event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a355ab3c7b8745603e2855d52f0556d0a/">virtual Event&lt; window_mouse_move_event_handler_t &gt; &amp; get_mouse_move_event()=0</a></p>
+<p>Gets the mouse move event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1ae685cc5edb080161393bc77919fe421d/">virtual Event&lt; window_mouse_down_event_handler_t &gt; &amp; get_mouse_down_event()=0</a></p>
+<p>Gets the mouse down event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1ac95afcc9b8632f97c54bba591774ce8e/">virtual Event&lt; window_mouse_up_event_handler_t &gt; &amp; get_mouse_up_event()=0</a></p>
+<p>Gets the mouse up event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a568577c55a5b8b589f1a776d8228bf7f/">virtual Event&lt; window_mouse_wheel_event_handler_t &gt; &amp; get_mouse_wheel_event()=0</a></p>
+<p>Gets the mouse wheel event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1aa0936cdc0b127997c58291e0477971a6/">virtual Event&lt; window_touch_event_handler_t &gt; &amp; get_touch_event()=0</a></p>
+<p>Gets the touch event of this window. </p>
+</li>
+<li>
+<p><a href="../struct_luna_1_1_window_1_1_i_window_1a5174d0c15f91591c09ed85c0d84e05c8/">virtual Event&lt; window_drop_file_event_handler_t &gt; &amp; get_drop_file_event()=0</a></p>
+<p>Gets the drop file event of this window. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
