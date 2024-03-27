@@ -16,9 +16,9 @@ The returned enumerator will have `begin` and `end` methods that can be used lik
 ```
 for (auto& i : variant.[key_values](class_luna_1_1_variant_1a0dda76c8c641eb11aaae3e87e78569a5.md)())
 {
-    i.first; // key.
-    i.second; // value.
-}s
+    [i](group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a865c0c0b4ab0e063e5caa3387c1a8741.md).first; // key.
+       [i](group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a865c0c0b4ab0e063e5caa3387c1a8741.md).second; // value.
+}[s](group___h_i_d_1gga912f74cfa86bfd7af0ee6bb9010eba51a03c7c0ace395d80182db07ae2c30f034.md)
 ```
 
 

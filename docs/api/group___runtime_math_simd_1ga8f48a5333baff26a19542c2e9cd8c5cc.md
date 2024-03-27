@@ -9,11 +9,11 @@ Stores packed single-precision (32-bit) floating-point elements from `m` to `dst
 
 ```
 FOR r := 0 to 3
-    i := 128 * r
-    MEM[mem_addr + i : mem_addr + i + 31] := m[r].x
-    MEM[mem_addr + i + 32 : mem_addr + i + 63] := m[r].y
-    MEM[mem_addr + i + 64 : mem_addr + i + 95] := m[r].z
-    MEM[mem_addr + i + 96 : mem_addr + i + 127] := m[r].w
+       i := 128 * r
+       MEM[mem_addr + i : mem_addr + i + 31] := m[r].x
+       MEM[mem_addr + i + 32 : mem_addr + i + 63] := m[r].y
+       MEM[mem_addr + i + 64 : mem_addr + i + 95] := m[r].z
+       MEM[mem_addr + i + 96 : mem_addr + i + 127] := m[r].w
 ENDFOR
 ```
 

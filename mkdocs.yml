@@ -43,3 +43,16 @@ nav:
             - Shader Resource Binding: manual/rhi/shader_resource_binding.md
     - Programming Reference:
         - Runtime: api/runtime.md
+        - Window: api/window.md
+        - RHI: api/r_h_i.md
+        - ShaderCompiler: api/shader_compiler.md
+        - VFS: api/v_f_s.md
+        - Asset: api/asset.md
+        - HID: api/h_i_d.md
+        - AHI: api/a_h_i.md
+        - JobSystem: api/job_system.md
+        - Font: api/font.md
+        - Image: api/image.md
+        - ObjLoader: api/obj_loader.md
+        - RG: api/r_g.md
+        - VariantUtils: api/variant_utils.md

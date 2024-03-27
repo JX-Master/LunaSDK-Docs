@@ -10,7 +10,7 @@ Computes linear interpolation on packed single-precision (32-bit) floating-point
 ```
 FOR j := 0 to 3
     i := j*32
-    dst[i:i+31] := a[i:i+31] + t[i:i+31] * (b[i:i+31] - a[i:i+31])
+       dst[i:i+31] := a[i:i+31] + t[i:i+31] * (b[i:i+31] - a[i:i+31])
 ENDFOR
 ```
 

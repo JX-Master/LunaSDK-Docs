@@ -13,9 +13,9 @@ FOR j := 0 to 3
     IF a[i:i+31] == 0xFFFFFFFF
         dst[j] := 1
     ELSE IF a[i:i+31] == 0x00000000
-        dst[j] := 0
-    ELSE
-        dst[j] := 0 or 1 (The behavior is undefined.)
+           dst[j] := 0
+       ELSE
+           dst[j] := 0 or 1 (The behavior is undefined.)
     FI
 ENDFOR
 dst[4:MAX] := 0

@@ -9,10 +9,10 @@ Returns matrix of type `float4x4` with all elements set to zero.
 
 ```
 FOR r := 0 to 3
-    dst[r].x := 0
-    dst[r].y := 0
-    dst[r].z := 0
-    dst[r].w := 0
+       dst[r].x := 0
+       dst[r].y := 0
+       dst[r].z := 0
+       dst[r].w := 0
 ENDFOR
 ```
 

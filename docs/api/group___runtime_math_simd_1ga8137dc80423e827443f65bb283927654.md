@@ -10,7 +10,7 @@ Computes barycentric interpolation on packed single-precision (32-bit) floating-
 ```
 FOR j := 0 to 3
     i := j*32
-    dst[i:i+31] := a[i:i+31] + (b[i:i+31] - a[i:i+31]) * f + (c[i:i+31] - a[i:i+31]) * g
+       dst[i:i+31] := a[i:i+31] + (b[i:i+31] - a[i:i+31]) * f + (c[i:i+31] - a[i:i+31]) * g
 ENDFOR
 ```
 

@@ -242,11 +242,11 @@ class Luna::Variant
 
     Gets the data of one Boolean variant. 
 
-* [byte_t * blob_data()](class_luna_1_1_variant_1ae3fc3887c6b13778183226f9e2207087.md)
+* [void * blob_data()](class_luna_1_1_variant_1a97bb1d2166a90fcc5244e5d86c80b9be.md)
 
     Gets the data pointer of one BLOB variant. 
 
-* [const byte_t * blob_data() const](class_luna_1_1_variant_1a5645dc816c98ce8a7436b7a42cb749a5.md)
+* [const void * blob_data() const](class_luna_1_1_variant_1a5a2aa58c6d5c53f326b005c2d6de0543.md)
 
     Gets the data pointer of one BLOB variant. 
 

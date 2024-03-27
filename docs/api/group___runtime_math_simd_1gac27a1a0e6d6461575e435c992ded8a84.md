@@ -11,12 +11,12 @@ Performs refraction operation based on the first three elements of `i` (incident
 PROJ := (a.x * b.x) + (a.y * b.y) + (a.z * b.z)
 DETER := 1.0 - index * index  * (1.0 - PROJ * PROJ)
 FOR j := 0 to 4
-    i := j*32
-    IF DETER >= 0
-        dst[i:i+31] := index * i[i:i+31] - n[i:i+31] * (index * PROJ + SQRT(DETER))
-    ELSE
-        dst[i:i+31] := 0
-    ENDIF
+       i := j*32
+       IF DETER >= 0
+           dst[i:i+31] := index * i[i:i+31] - n[i:i+31] * (index * PROJ + SQRT(DETER))
+       ELSE
+           dst[i:i+31] := 0
+       ENDIF
 ENDFOR
 ```
 `i` and `n` should be properly normalized before calling this function.

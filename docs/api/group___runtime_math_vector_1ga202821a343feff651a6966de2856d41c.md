@@ -10,8 +10,8 @@ This function performs the following operations:
 ```
 if (point.x >= min_bound.x && point.x <= max_bound.x 
     && point.y >= min_bound.y && point.y <= max_bound.y
-    && point.z >= min_bound.z && point.z <= max_bound.z
-    && point.w >= min_bound.w && point.w <= max_bound.w)
+       && point.z >= min_bound.z && point.z <= max_bound.z
+       && point.w >= min_bound.w && point.w <= max_bound.w)
     return true;
 else return false;
 ```

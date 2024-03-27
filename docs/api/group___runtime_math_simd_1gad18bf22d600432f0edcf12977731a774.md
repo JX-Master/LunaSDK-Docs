@@ -10,17 +10,17 @@ Shuffles single-precision (32-bit) floating-point elements in `a` and `b` based 
 
 ```
 DEFINE SELECT8(a, b, control)
-    CASE(control) OF
-    0:  res := a.x
-    1:  res := a.y
-    2:  res := a.z
-    3:  res := a.w
-    4:  res := b.x
-    5:  res := b.y
-    6:  res := b.z
-    7:  res := b.w
-    ESAC
-    RETURN res
+       CASE(control) OF
+       0:    res := a.x
+       1:    res := a.y
+       2:    res := a.z
+       3:    res := a.w
+       4:    res := b.x
+       5:    res := b.y
+       6:    res := b.z
+       7:    res := b.w
+       ESAC
+       RETURN res
 ENDDEF
 dst.x := SELECT4(a, b _SelectX)
 dst.y := SELECT4(a, b, _SelectY)

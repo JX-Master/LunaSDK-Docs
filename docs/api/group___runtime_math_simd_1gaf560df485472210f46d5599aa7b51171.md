@@ -10,11 +10,11 @@ Performs a per-component selection between `a` and `b` based on the control para
 
 ```
 DEFINE SELECT2(a, b control)
-    CASE(control) OF
-    0:  res := a
-    1:  res := b
-    ESAC
-    RETURN res
+       CASE(control) OF
+       0:    res := a
+       1:    res := b
+       ESAC
+       RETURN res
 ENDDEF
 dst.x := SELECT2(a.x, b.x, _SelectX)
 dst.y := SELECT4(a.y, b.y, _SelectY)

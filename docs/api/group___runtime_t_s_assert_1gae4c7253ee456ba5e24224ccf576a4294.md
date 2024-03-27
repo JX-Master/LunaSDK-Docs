@@ -17,17 +17,17 @@ class MyType
     lutsassert_lock();
     i32 value; // The data that should be accessed by only one thread.
     
-    // Will crash the program if another thread is also calling functions of the same object
+       // Will crash the program if another thread is also calling functions of the same object
     // with lutsassert() set
-    void set_value(i32 v)
+       void set_value(i32 v)
     {
-        lutsassert();
-        value = v;
-    }
-    // 
+           lutsassert();
+           value = v;
+       }
+       // 
     i32 get_value()
-    {
-        lutsassert();
+       {
+           lutsassert();
         return value;
     }
 };

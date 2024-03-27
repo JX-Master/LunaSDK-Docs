@@ -10,13 +10,13 @@ Shuffles single-precision (32-bit) floating-point elements in `a` based on the c
 
 ```
 DEFINE SELECT4(src, control)
-    CASE(control) OF
-    0:  res := src.x
-    1:  res := src.y
-    2:  res := src.z
-    3:  res := src.w
-    ESAC
-    RETURN res
+       CASE(control) OF
+       0:    res := src.x
+       1:    res := src.y
+       2:    res := src.z
+       3:    res := src.w
+       ESAC
+       RETURN res
 ENDDEF
 dst.x := SELECT4(a, _SelectX)
 dst.y := SELECT4(a, _SelectY)

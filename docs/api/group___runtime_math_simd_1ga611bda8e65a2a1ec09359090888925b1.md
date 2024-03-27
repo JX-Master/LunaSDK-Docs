@@ -9,11 +9,11 @@ Computes the determinant and the inverse matrix of `a`, stores the determinant i
 
 ```
 DETER := a[0].x * (a[1].y * (a[2].z * a[3].w - a[2].w * a[3].z) + a[1].z * (a[2].w * a[3].y - a[2].y * a[3].w) + a[1].w * (a[2].y * a[3].z - a[2].z * a[3].y))
-        -a[0].y * (a[1].x * (a[2].z * a[3].w - a[2].w * a[3].z) + a[1].z * (a[2].w * a[3].x - a[2].x * a[3].w) + a[1].w * (a[2].x * a[3].z - a[2].z * a[3].x))
-        +a[0].z * (a[1].x * (a[2].y * a[3].w - a[2].w * a[3].y) + a[1].y * (a[2].w * a[3].x - a[2].x * a[3].w) + a[1].w * (a[2].x * a[3].y - a[2].y * a[3].x))
-        -a[0].w * (a[1].x * (a[2].y * a[3].z - a[2].z * a[3].y) + a[1].y * (a[2].z * a[3].x - a[2].x * a[3].z) + a[1].z * (a[2].x * a[3].y - a[2].y * a[3].x))
+           -a[0].y * (a[1].x * (a[2].z * a[3].w - a[2].w * a[3].z) + a[1].z * (a[2].w * a[3].x - a[2].x * a[3].w) + a[1].w * (a[2].x * a[3].z - a[2].z * a[3].x))
+           +a[0].z * (a[1].x * (a[2].y * a[3].w - a[2].w * a[3].y) + a[1].y * (a[2].w * a[3].x - a[2].x * a[3].w) + a[1].w * (a[2].x * a[3].y - a[2].y * a[3].x))
+           -a[0].w * (a[1].x * (a[2].y * a[3].z - a[2].z * a[3].y) + a[1].y * (a[2].z * a[3].x - a[2].x * a[3].z) + a[1].z * (a[2].x * a[3].y - a[2].y * a[3].x))
 IF out_determinant != 0
-    MEM[out_determinant:out_determinant+31] := DETER
+       MEM[out_determinant:out_determinant+31] := DETER
 ENDIF
 INV_DETER := 1.0 / DETER
 dst[0].x :=  INV_DETER * (a[1].y * (a[2].z * a[3].w - a[2].w * a[3].z) + a[1].z * (a[2].w * a[3].y - a[2].y * a[3].w) + a[1].w * (a[2].y * a[3].z - a[2].z * a[3].y));
