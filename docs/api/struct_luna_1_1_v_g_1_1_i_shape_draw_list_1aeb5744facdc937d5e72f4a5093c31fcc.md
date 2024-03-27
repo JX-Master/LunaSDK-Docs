@@ -6,3 +6,8 @@ virtual Float2 get_origin()=0
 
 Gets the origin point for the following draw calls. 
 
+
+
+## Return value
+Returns the origin point for the following draw calls. 
+

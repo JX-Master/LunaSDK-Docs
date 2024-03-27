@@ -56,3 +56,4 @@ nav:
         - ObjLoader: api/obj_loader.md
         - RG: api/r_g.md
         - VariantUtils: api/variant_utils.md
+        - VG: api/v_g.md
