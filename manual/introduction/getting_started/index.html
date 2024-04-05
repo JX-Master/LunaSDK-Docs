@@ -8,7 +8,7 @@
     <title>Getting Started - Luna SDK Docs</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,11 +17,12 @@
         var mkdocs_page_url = "/manual/introduction/getting_started/";
       </script>
     
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../../../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -33,7 +34,7 @@
           <a href="../../.." class="icon icon-home"> Luna SDK Docs
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -212,10 +213,10 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Manual</li>
-          <li class="breadcrumb-item">Introduction</li>
-      <li class="breadcrumb-item active">Getting Started</li>
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Manual &raquo;</li>
+          <li>Introduction &raquo;</li>
+      <li>Getting Started</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -274,7 +275,13 @@ bool DemoApp::is_closed()
 }
 RV run_app()
 {
-    auto result = init_modules();
+    auto result = add_modules({
+        module_window(),
+        module_rhi(),
+        module_shader_compiler()
+    });
+    if(failed(result)) return result;
+    result = init_modules();
     if(failed(result)) return result;
     UniquePtr&lt;DemoApp&gt; app (memnew&lt;DemoApp&gt;());
     result = app-&gt;init();
@@ -305,7 +312,8 @@ int main()
 <p>The next statement is <code>using namespace Luna</code>. In Luna SDK, all types, functions and variables are defined in <code>Luna</code> namespace, and every module will define its elements in nested namespace, such as <code>Luna::RHI</code>. So, we use this statement to prevent spelling the <code>Luna::</code> namespace prefix in our following code.</p>
 <p>The program starts with the <code>main</code> function, just like any normal C/C++ program. In the main function, we firstly call <code>Luna::init</code> to initialize Luna SDK. This function should be called before any other Luna SDK function. <code>Luna::init</code> returns one Boolean value to indicate whether the SDK initialization is succeeded, if the return value is <code>false</code>, we then return <code>-1</code> and exit the program to indicate one runtime error. If <code>Luna::init</code> returns <code>true</code>, then one <code>Luna::close</code> call is need before the program exit to let the SDK clean up all internal resources.</p>
 <p>We then wrap the real program logic in one <code>run_app</code> function. The return type of <code>run_app</code> is <code>RV</code>, which is a shortcut for <code>R&lt;void&gt;</code>, this is part of the error handling mechanism of Luna SDK. <code>R&lt;T&gt;</code> is a structure that encapsulates one return value with type <code>T</code> and one error code with type <code>ErrCode</code>, which is simply an alias of <code>usize</code> (or <code>std::size_t</code>). If the function succeeds, the returned value will be one <code>T</code>-typed value and one error code <code>0</code>; if the function fails, the returned value will be one non-zero error code, and the <code>T</code>-typed value will be uninitialized and inaccessible, you may call <code>errcode()</code> to fetch the error code from <code>R&lt;T&gt;</code>, and may call <code>explain</code> to get a brief description of the error. In our <code>main</code> function, we check whether our <code>run_app</code> function is failed by using <code>failed</code> helper function (there is also one <code>succeeded</code> helper function available), then we print the error description and exits the program if any error occurs.</p>
-<p>In our <code>run_app</code> function, the first thing to do is calling <code>init_modules</code>, which will initialize all linked SDK modules for our program. We deliberately separate module initialization from <code>Luna::init</code> so that the user get a chance to set module initialization parameters before initializing modules, and modules can also indicate initialization failure by returning error codes (error handling system is available after <code>Luna::init</code>). Then, we allocate and initialize one new object of <code>DemoApp</code> type by calling <code>memnew</code> function. The following table shows memory allocation functions used in Luna SDK:</p>
+<p>In our <code>run_app</code> function, the first thing to do is calling <code>add_modules</code>, which will add all modules we need to use into the module system, so that we can initialize such modules by calling <code>init_modules</code>. The program only needs to add modules that are directly used by the program, if such modules have dependent modules, they will be added to the module system automatically when such modules are added. The <code>Runtime</code> module is always implicitly added to the module system, so the program should not add <code>Runtime</code> module explicitly. After adding modules, <code>run_app</code> then calls <code>init_modules</code>, which will initialize all linked SDK modules for our program. We deliberately separate module initialization from <code>Luna::init</code> so that the user get a chance to set module initialization parameters before initializing modules, and modules can also indicate initialization failure by returning error codes (error handling system is available after <code>Luna::init</code>). </p>
+<p>Then, we allocate and initialize one new object of <code>DemoApp</code> type by calling <code>memnew</code> function. The following table shows memory allocation functions used in Luna SDK:</p>
 <table>
 <thead>
 <tr>
@@ -473,7 +481,13 @@ RV DemoApp::resize(u32 width, u32 height)
 }
 RV run_app()
 {
-    auto result = init_modules();
+    auto result = add_modules({
+        module_window(),
+        module_rhi(),
+        module_shader_compiler()
+    });
+    if(failed(result)) return result;
+    result = init_modules();
     if(failed(result)) return result;
     UniquePtr&lt;DemoApp&gt; app (memnew&lt;DemoApp&gt;());
     result = app-&gt;init();
@@ -707,30 +721,21 @@ float4 main(PS_INPUT input) : SV_Target
 <p>here we use C++ raw string syntax <code>R"()"</code> to declare multiline string without appending <code>\</code> for every string line. Note the register number specified in shader must match the binding slot specified in descriptor set layout we just created. Since we use the same slot numbering system for all descriptor types, the register number for <code>b</code>, <code>t</code>, <code>u</code> and <code>s</code> should not overlap.</p>
 <p>Then we can compile shaders using <code>ShaderCompiler::ICompiler</code> object:</p>
 <pre><code class="language-c++">auto compiler = ShaderCompiler::new_compiler();
-compiler-&gt;set_source({ vs_shader_code, strlen(vs_shader_code) });
-compiler-&gt;set_source_name(&quot;DemoAppVS&quot;);
-compiler-&gt;set_entry_point(&quot;main&quot;);
-compiler-&gt;set_target_format(RHI::get_current_platform_shader_target_format());
-compiler-&gt;set_shader_type(ShaderCompiler::ShaderType::vertex);
-compiler-&gt;set_shader_model(6, 0);
-compiler-&gt;set_optimization_level(ShaderCompiler::OptimizationLevel::full);
-luexp(compiler-&gt;compile());
-auto vs_data = compiler-&gt;get_output();
-Blob vs(vs_data.data(), vs_data.size());
-
-compiler-&gt;reset();
-compiler-&gt;set_source({ ps_shader_code, strlen(ps_shader_code) });
-compiler-&gt;set_source_name(&quot;DemoAppPS&quot;);
-compiler-&gt;set_entry_point(&quot;main&quot;);
-compiler-&gt;set_target_format(RHI::get_current_platform_shader_target_format());
-compiler-&gt;set_shader_type(ShaderCompiler::ShaderType::pixel);
-compiler-&gt;set_shader_model(6, 0);
-compiler-&gt;set_optimization_level(ShaderCompiler::OptimizationLevel::full);
-luexp(compiler-&gt;compile());
-auto ps_data = compiler-&gt;get_output();
-Blob ps(ps_data.data(), ps_data.size());
+ShaderCompiler::ShaderCompileParameters params;
+params.source = { vs_shader_code, strlen(vs_shader_code) };
+params.source_name = &quot;DemoAppVS&quot;;
+params.entry_point = &quot;main&quot;;
+params.target_format = RHI::get_current_platform_shader_target_format();
+params.shader_type = ShaderCompiler::ShaderType::vertex;
+params.shader_model = {6, 0};
+params.optimization_level = ShaderCompiler::OptimizationLevel::full;
+lulet(vs_data, compiler-&gt;compile(params));
+params.source = { ps_shader_code, strlen(ps_shader_code) };
+params.source_name = &quot;DemoAppPS&quot;;
+params.shader_type = ShaderCompiler::ShaderType::pixel;
+lulet(ps_data, compiler-&gt;compile(params));
 </code></pre>
-<p>The shader compilation process is fairly simple, we just set source code, compilation settings, then triggers the compilation. The compilation result will be given by <code>get_output</code>, we use one <code>Blob</code> object , a container for binary data, to hold the compilation result. The compiled shader data will be used when creating pipeline state object later.</p>
+<p>The shader compilation process is fairly simple, we fill all shader compilation settings to one <code>ShaderCompileParameters</code> object, then pass that object to <code>IShaderCompiler::compile</code> to compile the shader source code. <code>IShaderCompiler::compile</code> returns one <code>ShaderCompileResult</code> object, will contains the shader compilation result, and can be converted to <code>RHI::ShaderData</code>, which is used to create RHI pipeline state objects.</p>
 <h2 id="creating-pipeline-layout-and-pipeline-state">Creating pipeline layout and pipeline state</h2>
 <p>The graphics and compute pipeline state is described by two objects: pipeline layout object and pipeline state object. Pipeline layout object stores the shader binding layout information for all shader stages, while pipeline state object stores pipeline settings for all graphics stages. </p>
 <p>Pipeline layout is described by the <code>PipelineLayoutDesc</code> structure, which is configured by specifying layouts of descriptor sets that will be bound to this pipeline and flags that specifies shaders that are allowed to access shader inputs.</p>
@@ -784,14 +789,15 @@ InputBindingDesc input_bindings[] = {
 };
 ps_desc.input_layout.attributes = {input_attributes, 2};
 ps_desc.input_layout.bindings = {input_bindings, 1};
-ps_desc.vs = vs.cspan();
-ps_desc.ps = ps.cspan();
+ps_desc.vs = get_shader_data_from_compile_result(vs_data);
+ps_desc.ps = get_shader_data_from_compile_result(ps_data);
 ps_desc.pipeline_layout = playout;
 ps_desc.num_color_attachments = 1;
 ps_desc.color_formats[0] = Format::rgba8_unorm;
 ps_desc.depth_stencil_format = Format::d32_float;
 luset(pso, dev-&gt;new_graphics_pipeline_state(ps_desc));
 </code></pre>
+<p>Note that <code>RHI::get_shader_data_from_compile_result</code> is from <code>&lt;Luna/RHI/ShaderCompileHelper.hpp&gt;</code> header, which converts one <code>ShaderCompiler::ShaderCompileResult</code> object to one <code>RHI::ShaderData</code> object conveniently. The user can also perform such conversion manually by assigning every properties of <code>RHI::ShaderData</code> using corresponding properties in <code>ShaderCompiler::ShaderCompileResult</code>.</p>
 <h2 id="creating-depth-textures">Creating depth textures</h2>
 <p>The next step is to create one depth texture that is used as the depth stencil attachment when drawing our box. Texture objects in Luna SDK are represented by <code>ITexture</code> interface, and are described by <code>TextureDesc</code> structure, which is defined as follows:</p>
 <pre><code class="language-c++">struct TextureDesc
@@ -1146,16 +1152,15 @@ luexp(cmdbuf-&gt;reset());
     
   </span>
 </div>
-    <script src="../../../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "../../..";</script>
-    <script src="../../../js/theme_extra.js"></script>
-    <script src="../../../js/theme.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="../../../search/main.js"></script>
-    <script>
-        jQuery(function () {
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);
-        });
+        };
     </script>
 
 </body>
