@@ -60,7 +60,13 @@ bool DemoApp::is_closed()
 }
 RV run_app()
 {
-    auto result = init_modules();
+    auto result = add_modules({
+        module_window(),
+        module_rhi(),
+        module_shader_compiler()
+    });
+    if(failed(result)) return result;
+    result = init_modules();
     if(failed(result)) return result;
     UniquePtr<DemoApp> app (memnew<DemoApp>());
     result = app->init();
@@ -96,7 +102,9 @@ The program starts with the `main` function, just like any normal C/C++ program.
 
 We then wrap the real program logic in one `run_app` function. The return type of `run_app` is `RV`, which is a shortcut for `R<void>`, this is part of the error handling mechanism of Luna SDK. `R<T>` is a structure that encapsulates one return value with type `T` and one error code with type `ErrCode`, which is simply an alias of `usize` (or `std::size_t`). If the function succeeds, the returned value will be one `T`-typed value and one error code `0`; if the function fails, the returned value will be one non-zero error code, and the `T`-typed value will be uninitialized and inaccessible, you may call `errcode()` to fetch the error code from `R<T>`, and may call `explain` to get a brief description of the error. In our `main` function, we check whether our `run_app` function is failed by using `failed` helper function (there is also one `succeeded` helper function available), then we print the error description and exits the program if any error occurs.
 
-In our `run_app` function, the first thing to do is calling `init_modules`, which will initialize all linked SDK modules for our program. We deliberately separate module initialization from `Luna::init` so that the user get a chance to set module initialization parameters before initializing modules, and modules can also indicate initialization failure by returning error codes (error handling system is available after `Luna::init`). Then, we allocate and initialize one new object of `DemoApp` type by calling `memnew` function. The following table shows memory allocation functions used in Luna SDK:
+In our `run_app` function, the first thing to do is calling `add_modules`, which will add all modules we need to use into the module system, so that we can initialize such modules by calling `init_modules`. The program only needs to add modules that are directly used by the program, if such modules have dependent modules, they will be added to the module system automatically when such modules are added. The `Runtime` module is always implicitly added to the module system, so the program should not add `Runtime` module explicitly. After adding modules, `run_app` then calls `init_modules`, which will initialize all linked SDK modules for our program. We deliberately separate module initialization from `Luna::init` so that the user get a chance to set module initialization parameters before initializing modules, and modules can also indicate initialization failure by returning error codes (error handling system is available after `Luna::init`). 
+
+Then, we allocate and initialize one new object of `DemoApp` type by calling `memnew` function. The following table shows memory allocation functions used in Luna SDK:
 
 | Luna SDK functions                 | C++ functions/keywords |
 | ---------------------------------- | ---------------------- |
@@ -282,7 +290,13 @@ RV DemoApp::resize(u32 width, u32 height)
 }
 RV run_app()
 {
-    auto result = init_modules();
+    auto result = add_modules({
+        module_window(),
+        module_rhi(),
+        module_shader_compiler()
+    });
+    if(failed(result)) return result;
+    result = init_modules();
     if(failed(result)) return result;
     UniquePtr<DemoApp> app (memnew<DemoApp>());
     result = app->init();
@@ -603,31 +617,22 @@ Then we can compile shaders using `ShaderCompiler::ICompiler` object:
 
 ```c++
 auto compiler = ShaderCompiler::new_compiler();
-compiler->set_source({ vs_shader_code, strlen(vs_shader_code) });
-compiler->set_source_name("DemoAppVS");
-compiler->set_entry_point("main");
-compiler->set_target_format(RHI::get_current_platform_shader_target_format());
-compiler->set_shader_type(ShaderCompiler::ShaderType::vertex);
-compiler->set_shader_model(6, 0);
-compiler->set_optimization_level(ShaderCompiler::OptimizationLevel::full);
-luexp(compiler->compile());
-auto vs_data = compiler->get_output();
-Blob vs(vs_data.data(), vs_data.size());
-
-compiler->reset();
-compiler->set_source({ ps_shader_code, strlen(ps_shader_code) });
-compiler->set_source_name("DemoAppPS");
-compiler->set_entry_point("main");
-compiler->set_target_format(RHI::get_current_platform_shader_target_format());
-compiler->set_shader_type(ShaderCompiler::ShaderType::pixel);
-compiler->set_shader_model(6, 0);
-compiler->set_optimization_level(ShaderCompiler::OptimizationLevel::full);
-luexp(compiler->compile());
-auto ps_data = compiler->get_output();
-Blob ps(ps_data.data(), ps_data.size());
+ShaderCompiler::ShaderCompileParameters params;
+params.source = { vs_shader_code, strlen(vs_shader_code) };
+params.source_name = "DemoAppVS";
+params.entry_point = "main";
+params.target_format = RHI::get_current_platform_shader_target_format();
+params.shader_type = ShaderCompiler::ShaderType::vertex;
+params.shader_model = {6, 0};
+params.optimization_level = ShaderCompiler::OptimizationLevel::full;
+lulet(vs_data, compiler->compile(params));
+params.source = { ps_shader_code, strlen(ps_shader_code) };
+params.source_name = "DemoAppPS";
+params.shader_type = ShaderCompiler::ShaderType::pixel;
+lulet(ps_data, compiler->compile(params));
 ```
 
-The shader compilation process is fairly simple, we just set source code, compilation settings, then triggers the compilation. The compilation result will be given by `get_output`, we use one `Blob` object , a container for binary data, to hold the compilation result. The compiled shader data will be used when creating pipeline state object later.
+The shader compilation process is fairly simple, we fill all shader compilation settings to one `ShaderCompileParameters` object, then pass that object to `IShaderCompiler::compile` to compile the shader source code. `IShaderCompiler::compile` returns one `ShaderCompileResult` object, will contains the shader compilation result, and can be converted to `RHI::ShaderData`, which is used to create RHI pipeline state objects.
 
 ## Creating pipeline layout and pipeline state
 
@@ -702,14 +707,16 @@ InputBindingDesc input_bindings[] = {
 };
 ps_desc.input_layout.attributes = {input_attributes, 2};
 ps_desc.input_layout.bindings = {input_bindings, 1};
-ps_desc.vs = vs.cspan();
-ps_desc.ps = ps.cspan();
+ps_desc.vs = get_shader_data_from_compile_result(vs_data);
+ps_desc.ps = get_shader_data_from_compile_result(ps_data);
 ps_desc.pipeline_layout = playout;
 ps_desc.num_color_attachments = 1;
 ps_desc.color_formats[0] = Format::rgba8_unorm;
 ps_desc.depth_stencil_format = Format::d32_float;
 luset(pso, dev->new_graphics_pipeline_state(ps_desc));
 ```
+
+Note that `RHI::get_shader_data_from_compile_result` is from `<Luna/RHI/ShaderCompileHelper.hpp>` header, which converts one `ShaderCompiler::ShaderCompileResult` object to one `RHI::ShaderData` object conveniently. The user can also perform such conversion manually by assigning every properties of `RHI::ShaderData` using corresponding properties in `ShaderCompiler::ShaderCompileResult`.
 
 ## Creating depth textures
 

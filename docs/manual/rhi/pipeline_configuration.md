@@ -250,15 +250,15 @@ Compute pipelines are used to perform arbitrary compute tasks, which is somethin
 ## Shaders
 Shaders are user-defined functions that can be invoked by GPU to perform certain tasks. In LunaSDK, wehave the following shaders:
 
-* Vertex shader, set by `GraphicsPipelineStateDesc::vs`.
-* Pixel shader, set by `GraphicsPipelineStateDesc::ps`.
-* Compute shader, set by `ComputePipelineStateDesc::cs`.
-All shaders are specified by providing shader binary data to the pipeline state descriptor when creatingthe pipeline state. The shader binary data has different formats in different backends:
-* Direct3D 12 accepts DXBC (produced by `D3DCompile` or `fxc`) or DXIL (produced by `dxc`) shader binarycode.
-* Vulkan accepts SPIR-V shader binary code produced by `glslc` or `dxc`.
-* Metal is a little bit complicated. Since some settings (like the entry point of the shader) are notrecorded in the shader code, but in application side, we need to append additional parameters to theshader data. Metal accepts a JSON string that indicates one object with the following properties:
-    * `source`(String): The MSL shader source code.
-    * `entry_point`(String): The name of the entry point function of the shader.
-    * `numthreads`(Array of integer): For compute shaders, specify the number of threads per thread group.
-    
-    Currently, Metal shaders are compiled during the pipeline object creation process.
+1. Vertex shader, set by `GraphicsPipelineStateDesc::vs`.
+1. Pixel shader, set by `GraphicsPipelineStateDesc::ps`.
+1. Compute shader, set by `ComputePipelineStateDesc::cs`.
+
+All shaders are specified by filling a `ShaderData` object, which has the following properties:
+1. `data`, which is the shader binary data.
+1. `entry_point`, the entry point (main function) of the shader.
+1. `format`, the shader binary data format, with one of the following options:
+    1. `dxil`: DirectX intermediate language format. Used only for Direct3D 12 backend.
+    1. `spirv`: SPIR-V format. Used only for Vulkan backend.
+    1. `msl`: Metal shading language source form. Used only for Metal backend.
+    1. `metallib`: Metal library. Used only for Metal backend.
